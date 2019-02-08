@@ -1,0 +1,54 @@
+% stil za bilješke s predavanja
+
+% paketi
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+\RequirePackage[croatian]{babel}
+\RequirePackage{geometry}
+
+\RequirePackage{enumitem}
+
+
+% teoremi
+\newtheorem{tm}{Teorem}[section]
+\newtheorem{lm}[tm]{Lema}
+\newtheorem{kor}[tm]{Korolar}
+\newtheorem{defn}[tm]{Definicija} % def je predefiniran
+\newtheorem{nap}[tm]{Napomena}
+\newtheorem{prop}[tm]{Propozicija}
+\newtheorem{pr}[tm]{Primjer}
+\newtheorem{zad}[tm]{Zadatak}
+\newtheorem{slut}[tm]{Slutnja}
+
+%\theoremsymbol{\ensuremath{\square}}
+\theoremstyle{definition}
+\newtheorem*{rj}{Rje\v senje}
+
+% naredbe
+\newcommand{\partitive}[1]{\mathcal{P}({#1})}
+\newcommand{\mjera}[1]{\mu({#1})}
+\newcommand{\vjeroj}[1]{\mathbb{P}({#1})}
+\newcommand{\unija}[2]{\bigcup\limits_{#1}^{#2}}
+\newcommand{\presjek}[2]{\bigcap\limits_{#1}^{#2}}
+\newcommand{\suma}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\card}[1]{\textnormal{card}({#1})}
+
+\newcommand{\segment}[2]{[{#1}, \:{#2}]}
+\newcommand{\niz}[2]{({#1} \: | \: {#2})}
+\newcommand{\indFamilija}[2]{\{{#1} \: | \: {#2}\}}
+
+
+%skupovi
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Pp}{\mathbb{P}}
+
+\newcommand{\F}{\mathcal{F}}
+
+\newcommand{\izmjerivProstor}{(\Omega, \: \F)}
+\newcommand{\prostorMjere}{(\Omega, \: \F, \: \mu)}
+\newcommand{\vjerojatnosniProstor}{(\Omega, \: \F, \: \mathbb{P})}
