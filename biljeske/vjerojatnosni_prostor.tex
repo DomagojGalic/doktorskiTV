@@ -1,0 +1,299 @@
+% o vjerojatnosnom prostoru
+
+\chapter{Vjerojatnosni prostor}
+
+
+Po\v cinjemo s definicijom $\sigma-$algebre, osnovne strukuture na kojoj ima
+smisla definirati vjerojatnost.
+
+\begin{defn}
+    Neka je $\Omega \neq \emptyset$ skup i $ \F
+        \subseteq \partitive{\Omega}$ familija podskupova od $\Omega$.
+    Ka\v emo da je \emph{$\F$ $\sigma -$algebra} ako vrijedi:
+    \begin{enumerate}[label={(\arabic*)}]
+        \item $\emptyset \in \F$
+        \item $A \in \F \implies A^{C} \in \F$
+        \item $(A_n)_{n \in \N} \subseteq \F \implies \unija{n \in \N}{} A_n \in \F$.
+    \end{enumerate}
+\end{defn}
+
+\begin{nap}
+    Osim termina $\sigma-$algebra koristi se i termin $\sigma-$polje.
+\end{nap}
+
+Nastavljamo s osnovnim definicijama.
+
+\begin{defn}
+    Neka je $\Omega \neq \emptyset$ i $\F$ $\sigma-$algebra na $\F$, uređeni par
+    $(\Omega, \: \F)$ zovemo \emph{izmjerivim prostorom}.
+\end{defn}
+
+Izmjeriv prostor je dovoljno bogata struktura za definirati pojam mjere, time
+i vjerojatnosti.
+
+\begin{defn}
+    Neka je $\izmjerivProstor$ izmjeriv prostor, za funkciju $\mu : \F \to \R$
+    ka\v zemo da je \emph{mjera}, ako vrijedi:
+    \begin{enumerate}[label={(\arabic*)}]
+        \item $\mjera{A} \geq 0$, $\forall A \in \F$
+        \item $\mjera{\emptyset} = 0$
+        \item $(A_n)_{n \in \N} \subseteq \F$ td. $A_i \cap A_j =
+            \emptyset, \: i \neq j, \;$ vrijedi $\; \mjera{ \unija{n \in \N}{} A_n }
+            = \suma{n \in \N}{} \mjera{ A_n }.$
+    \end{enumerate}
+\end{defn}
+
+Mjera za koju vrijedi i uvijet normiranosti, tj. $\mjera{\Omega} = 1$, zovemo
+vjerojatnosnom mjerom. Ona se aksiomatski mo\v ze opisati na sljede\' ci na\v cin.
+
+\begin{defn} \label{definicijaVjerojatnosti}
+    Neka je $\izmjerivProstor$ izmjeriv prostor, za funkciju
+    $ \mathbb{P} : \F \to [ 0, \: 1 ]$, ka\v zemo da je \emph{vjerojatnost}
+    (\emph{vjerojatnosna mjera}), ako vrijedi:
+    \begin{enumerate}[label={(\arabic*)}]
+        \item $\vjeroj{A} \geq 0$, $\forall A \in \F $
+        \item $\vjeroj{\Omega} = 1$
+        \item $(A_n)_{n \in \N} \subseteq \F $ td. $A_i \cap A_j = \emptyset, \:
+            i \neq j, \;$ vrijedi $\; \vjeroj{\unija{n \in \N}{} A_n} =
+            \suma{n \in \N}{} \vjeroj{A_n}$. \label{sigmaAditivnost}
+    \end{enumerate}
+\end{defn}
+
+\begin{nap}
+    Svojstvo \eqref{sigmaAditivnost} iz definicije \ref{definicijaVjerojatnosti}
+    nazivamo svojstvom \emph{$\sigma-$aditivnosti}.
+\end{nap}
+
+\begin{defn}
+    Neka je $\izmjerivProstor$ i $\mu$ mjera na njemu. Ure\dj enu trojku
+    $\prostorMjere$ nazivamo \emph{prostorom mjere}. Ako je $\mu$
+    vjerojatnost, tada $\prostorMjere$ nazivamo
+    \emph{vjerojatnosnim prostorom}.
+\end{defn}
+
+\begin{prop}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, vrijedi
+    $\vjeroj{\emptyset} = 0$.
+\end{prop}
+
+\begin{proof}
+    Definirajmo niz $(A_n)_{n \in \N}$ sa $A_1 = \Omega$ i $A_n = \emptyset$,
+    $n \geq 2$. Vidimo da su skupovi me\dj usobno disjunktni, tako\dj er vidimo
+    da vrijedi $\unija{n \in \N}{} A_n = \Omega$. Sada vidimo:
+    \begin{align*}
+        \vjeroj{\Omega} &= \vjeroj{\unija{n=1}{\infty} A_n} = \suma{n=1}{\infty}
+            \vjeroj{A_n} = \vjeroj{A_1} + \suma{n=2}{\infty} \vjeroj{A_n} = \\
+            &= \vjeroj{\Omega} + \suma{n=2}{\infty} \vjeroj{\emptyset}
+    \end{align*}
+    Odavde vrijedi:
+    \begin{equation*}
+        1 = 1 + \suma{n = 2}{\infty} \vjeroj{\emptyset}
+    \end{equation*}
+    Odakle nu\v zno vrijedi $\vjeroj{\emptyset} = 0$.
+
+\end{proof}
+
+\begin{prop} \label{sigAditImplKonAdit}
+    Neka je $\prostorMjere$ prostor mjere, tada za me\dj usobno disjunktne skupove
+    $A_1, \: A_2, \: \dots A_n$ vrijedi $\mjera{\unija{k=1}{n} A_k} = \suma{k = 1}{n}
+    \mjera{A_k}.$
+\end{prop}
+
+Gornja propozicija \ref{sigAditImplKonAdit} zapravo tvrdi da $\sigma-$aditivnost
+povla\' ci kona\v cnu aditivnost.
+
+\begin{proof}
+    Definirajmo niz $(B_n)_{n \in \N}$ na sljede\' ci na\' cin, za $k \leq n$
+    $B_k := A_k$, za $k > n$ $B_k := \emptyset$. Primjetimo
+    $\unija{n \in \N}{}B_n = \unija{K=1}{n} A_k$, tako\dj er $(B_k)_{k \in \N}$ su
+    me\dj usobno disjunktni, tada vrijedi:
+    \begin{align*}
+        \mjera{\unija{k = 1}{n} A_k} &= \mjera{\unija{k = 1}{\infty} B_k} =
+            \suma{k = 1}{n} \mjera{B_k} + \suma{k = n + 1}{\infty} \mjera{B_k}
+            \suma{k=1}{n} \mjera{A_k} + \suma{k=n+1}{\infty}
+            \underbrace{\mjera{\emptyset}}_{= 0} = \\
+        &= \suma{k=1}{n} \mjera{A_k}.
+    \end{align*}
+\end{proof}
+
+\begin{lm}  \label{beskDeMorgan}
+    Neka je $A$ skup i $(B_n)_{n \in \N}$ niz skupova. Tada vrijedi $\unija{n=1}{\infty}
+    (A \setminus B_n) = A \setminus \presjek{n=1}{\infty} B_n$.
+\end{lm}
+
+\begin{proof}
+    \begin{itemize}
+        \item[($\subseteq$)] Neka je $x \in \unija{n=1}{\infty} (A \setminus B_n) \implies
+            \exists n_o \in \N$ takav da $x \in A \setminus B_{n_0}$, to jest $x \in A \land
+            x \in B_{n_0}$, tada $x \notin B_{n_0} \implies x \notin \presjek{n=1}{\infty} B_n$.
+            U suprotnom, ako bi vrijedilo $x \in \presjek{n=1}{\infty} B_n$, tada bi nu\v zno
+            moralo vrijediti $x \in B_{n_0}$.
+        \item[($\subseteq$)] Neka je sada $x \in A \setminus \presjek{n=1}{\infty} B_n$,
+            tada $x \in A \land x \notin \presjek{n=1}{\infty} B_n$, ali tada postoji
+            $n_0$ takav da $x \notin B_{n_0}$. U suprotnom, kada bi vrijedilo
+            $x \in B_n \forall n \in \N$, tada bi $x \in \presjek{n=1}{\infty} B_n$.
+            Budu\' ci imamo $x \in A \land x \notin B_{n_0} \implies x \in A \setminus
+            B_{n_0} \implies x \in \unija{n=1}{\infty} (A \setminus B_n)$.
+    \end{itemize}
+\end{proof}
+
+\begin{tm}[O osnovnim svojstvima mjere]
+    Neka je $\prostorMjere$ prostor mjere, tada vrijedi:
+    \begin{enumerate}[label={(\roman*)}]
+        \item \emph{Monotonost}: Ako je $A \subseteq B$, vrijedi \label{tmOsSvVjerojMon}
+            $\mjera{A} \leq \mjera{B}$
+        \item \emph{Subaditivnost}: Ako je $A \subseteq \unija{n=1}{\infty} A_n$, tada
+            vrijedi $\mjera{A} \leq \suma{n=1}{\infty} \mjera{A_n}$
+        \item \emph{Neprekidnost odozdo}: Ako $A_n \nearrow A$, \label{tmOsSvVjerojNOdd}
+            tj. $(A_n)_{n \in \N}$ td. $A_1 \subseteq A_2 \subseteq \dots$ i vrijedi
+            $\unija{n \in \N}{} A_n = A$, tada vrijedi $\mjera{A} =
+            \lim\limits_{n} \mjera{A_n}$.
+        \item \emph{Neprekidnost odozgo}: Ako $A_n \searrow A$, tj. $(A_n)_{n \in \N}$ td.
+            $A_1 \supseteq A_2 \supseteq \dots$, ako postoji $n_0 \in \N$ tako da
+            $\mjera{A_{n_0}} < \infty$ i vrijedi $\presjek{n \in \N}{} A_n = A$,
+            tada vrijedi $\mjera{A} = \lim\limits_{n} \mjera{A_n}$.
+    \end{enumerate}
+\end{tm}
+
+\begin{proof}
+    \begin{enumerate}[label={(\roman*)}]
+        \item Neka je $A \subseteq B$, tada je $B = A \dot{\cup} (B \setminus A)$, a sada
+            vrijedi $\mjera{B} = \mjera{A} + \mjera{B \setminus A}$, budu\' ci je
+            $\mjera{B \setminus A} \geq 0$, vrijedi da je $\mjera{A} \leq \mjera{B}$.
+
+        \item Definiramo $B_1 := A_1, \: B_k := A_k \setminus (\unija{i=1}{k} A_i),
+            \: k \geq 1$. Tvrdim da je $(B_n)_{n \in \N}$ niz disjunktnih skupova.
+            Neka su $m, \: n \in \N$, takvi da $m \neq n$, bez smanjenja op\' cenitosti
+            mo\v zemo pretpostaviti da je $m < n$. Neka je $x \in B_n \implies x \in A_n 
+            \land x \notin A_k, \: k < n \implies x \notin B_m$.
+            Dakle $B_m \cap B_n = \emptyset.$ Tako\dj er tvrdimo da je $\unija{k=1}{n} A_k
+            = \unija{k=1}{n} B_k, \: \forall n n \in \N$.
+            Dokaz vr\v simo matemati\v ckom indukcijom po $n \in \N$.
+            \begin{enumerate}
+                \item[(B)] $A_1 = B_1$.
+                \item[(P)] Neka je $n \in \N$, pretpostavimo da vrijedi $\unija{k=1}{n} A_k
+                = \unija{k=1}{n} B_k$.
+                \item[(K)] $\unija{k=1}{n+1} B_k = (\unija{k=1}{n} B_k) \cup B_{n+1}
+                    = (\unija{k=1}{n} A_k) \cup \underbrace{(A_n \setminus
+                    \unija{k=1}{n} A_k)}_{\textnormal{po definiciji}}
+                    = \unija{k=1}{n+1} A_k$.
+            \end{enumerate}
+            Po principu matemati\v cke indukcije tvrdnja vrijedi za svaki $n \in \N$.
+            Sada vrijedi $\unija{n \in \N}{} A_n = \unija{n \in \N}{} B_n$, primjetimo
+            $x \in \unija{n \in \N}{} A_n \implies \exists n_0 \in \N$, takav da
+            $x \in A_{n_0} \implies x \in \unija{k=1}{n_0} A_k = \unija{k=1}{n_0} B_k
+            \implies x \in \unija{n \in \N}{} B_n$. Obratna inkluzija se dokazuje identi\v
+            cno.
+            Po pretpostavci je $A \subset \unija{n \in \N}{} A_n = \unija{n \in \N}{} B_n$,
+            sada po \ref{tmOsSvVjerojMon} vrijedi $\mjera{A} \leq
+            \mjera{\unija{n \in \N}{} B_n} = \suma{n=1}{\infty} B_n$. Tako\dj er budu\' ci
+            vrijedi $B_k \subseteq A_k$, vrijedi i $\mjera{B_k} \leq \mjera{A_k}$, stoga
+            imamo $\suma{n=1}{\infty} \mjera{B_n} \leq \suma{n=1}{\infty} \mjera{A_n}$.
+            Odavde vidimo da vrijedi:
+            \begin{equation*}
+                \mjera{A} \leq \suma{n=1}{\infty} A_n.
+            \end{equation*}
+        \item Definiramo niz $(B_n)_{n \in \N}$ sa $B_1 := A_1, \: B_n = A_n \setminus
+            A_{n-1}, \: n > 1$. Tvrdimo da je $(B_n)_{n \in \N}$ niz disjunktnih skupova
+            te vrijedi $\unija{k=1}{n} A_k = \unija{k=1}{n} B_k$. Neka $m, \: n \in \N
+            \: m \neq n$, bez smanjenja op\' cenitosti mo\v zemo pretpostaviti $m < n$.
+            Neka je $x \in B_m \cap B_n, \: x \in B_n \implies x \notin A_{n-1}
+            \implies x \in A_k, \: k \leq n-1$, jer je $(A_n)_{n \in \N}$ rastu\' c,
+            a kako je $B_m \subseteq A_{n-1}$, \v sto je kontradikcija, dakle vrijedi
+            $B_n \cap B_m = \emptyset$. Drugu tvrdnju dokazujemo po indukciji.
+            \begin{enumerate}
+                \item[(B)] $B_1 = A_1$.
+                \item[(P)] Neka je $n \in \N$, tada vrijedi $\unija{k=1}{n} A_k
+                    = \unija{k=1}{n} B_k$.
+                \item[(K)] $\unija{k=1}{n+1} B_k = (\unija{k=1}{n} A_k) \cup B_{n+1}
+                    = (\unija{k=1}{n} A_k) \cap (A_{n+1} \setminus A_n)
+                    = \unija{k=1}{n+1} A_k$.
+            \end{enumerate}
+            Po Principu matemati\v cke indukcije tvrdnja vrijedi za svaki $n \in \N$.
+            Vrijedi $A_n = \unija{k=1}{n} A_k$, jer je rije\v c o rastu\' cim nizu,
+            dakle vrijedi $\unija{k=1}{n} A_k = \unija{k = 1}{n} B_k = A_n$.
+            Sada imamo $\mjera{A} = \mjera{\unija{n \in \N}{} A_n} = \mjera{
+                \unija{n \in \N}{} B_n} = \suma{n=1}{\infty} \mjera{B_n}
+                = \lim\limits_{n} \suma{k=1}{n} \mjera{B_k} = \lim\limits_{n}
+                \mjera{\unija{k=1}{n} B_k} = \lim\limits_{n} \mjera{A_n}$.
+        \item Definirajmo niz $(B_n)_{n \in \N}$ sa $B_n := A_{n_0} \setminus
+            A_{n_0 + n}$, tvrdimo da vrijedi $B_1 \subseteq B_2 \subseteq \dots$ te
+            $\unija{n=1}{\infty} B_n = A_{n_0} \setminus \presjek{n=1}{\infty} A_n$.
+            Neka je $x \in B_m = A_{n_0} \setminus A_{n_0+m} \implies x \in A_{n_0}
+            \land x \notin A_{n_0+m} \implies x \in A_{n_0} \land x \in (A_{n_0+m})^c$.
+            Budu\' ci je $A_{n_0+m} \supseteq A_{n_0+m+k} \implies (A_{n_0+m})^c
+            \subseteq (A_{n_0+m+k})^c$.
+            Dakle $x \in A_{n_0} \land x \in (A_{n_0+m})^c \implies x \in A_{n_0}
+            \land x \in (A_{n_0+m+k})^c \implies x \in A_{n_0} \setminus A_{n_0+(m+k)}
+            = B_{m+k}$.
+            Posebno za $k=1$ tvrdnja slijedi to jest $B_n \subseteq B_{n+1},
+            \forall n \in \N$, pa vrijedi $B_1 \subseteq B_2 \subseteq \dots$.
+            Nadalje po \eqref{beskDeMorgan} vrijedi $\unija{n=1}{\infty}
+            B_n = A_{n_0} \setminus \presjek{n=1}{\infty} A_{n_0+n}$.
+            Budu\' ci je $(A_n)_{n \in \N}$ padaju\' ci niz, onda vrijedi
+            $\presjek{n=1}{\infty} A_n = \presjek{n=1}{\infty} A_{n_0+n}$, stoga je
+            $\unija{n=1}{\infty} B_n = A_{n_0} \setminus \presjek{n=1}{\infty} A_n$.
+            Sada iz tvrdnje \ref{tmOsSvVjerojNOdd} vrijedi $\mjera{A_{n_0} \setminus
+            \presjek{n=1}{\infty} A_n} = \mjera{\unija{n=1}{\infty} B_n}
+            = \lim\limits_{n} \mjera{B_n} = \lim\limits_{n} \mjera{A_{n_0} \setminus
+            A_{n_0+n}}$.
+            Sada, zbog $\mjera{A_{n_0}} < \infty$, vrijedi $\mjera{A_{n_0}}
+            - \mjera{\presjek{n=1}{\infty} A_n} = \lim\limits_{n}
+            (\mjera{A_{n_0}} - \mjera{A_{n_0+n}}) = \mjera{A_{n_0}}
+            - \lim\limits_{n} \mjera{A_{n_0+n}} = \mjera{A_{n_0}} - \lim\limits_{n}
+            \mjera{A_n}$, dakle vrijedi
+            \begin{equation*}
+                \mjera{\presjek{n=1}{\infty} A_n} = \lim\limits_{n} \mjera{A_n}.
+            \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+\begin{prop}
+    Neka je $\izmjerivProstor$ izmjeriv prostor, neka je $\mu : \F \to \R$ kona\v cno
+    aditivna mjera za koju vrijedi da za svaki niz $(A_n)_{n \in \N}$ iz $\F$ tako da
+    $A_1 \supseteq A_2 \supseteq \dots \land \presjek{n=1}{\infty} A_n = \emptyset$,
+    vrijedi $\lim\limits_{n} \mjera{A_n} = 0$. Tada je $\mu$ mjera.
+\end{prop}
+
+\begin{proof}
+    Neka je $(A_n)_{n \in \N}$ disjunktan niz u $\F$. Tada za $n \in \N$ vrijedi:
+    $\mjera{\unija{k=1}{\infty} A_k} = \mjera{(\unija{k=1}{n} A_k) \cup
+    (\unija{k=n+1}{\infty} A_k)} = \mjera{\unija{k=1}{n} A_k}
+    + \mjera{\unija{k=n+1}{\infty} A_k} = \suma{k=1}{n} \mjera{A_k}
+    + \mjera{\unija{k=n+1}{\infty} A_k}$.
+    Definirajmo niz $(B_n)_{n \in \N}$ sa $B_n := \unija{k=n}{\infty} A_k$.
+    Tvrdimo da vrijedi $B_1 \supseteq B_2 \subseteq \dots$, te vrijedi
+    $\presjek{n=1}{\infty} B_n = \emptyset$.
+    Neka je $x \in B_{n+1} \iff x \in \unija{k=n}{\infty} A_k \implies x \in
+    (\unija{k=n+1}{\infty} A_k) \cup A_n = \unija{k=n}{\infty} A_n = B_n$, dakle
+    $B_n \supseteq B_{n+1}$.
+    Pretpostavimo da je $x \in \presjek{n=1}{\infty}$, tada $x \in B_n \forall n \in \N$,
+    to jest $x \in \unija{k=n}{\infty} A_k$, budu\' ci su $(A_n)_{n \in \N}$ disjunktni,
+    postoji jedinstveni $n_0 \in \N$ takav da $x \in A_{n_0}$ ali tada $x \notin
+    \unija{k=n_0+1}{\infty} A_k \implies x \notin B_{n_0+1} \implies x \notin
+    \presjek{n=1}{\infty} B_n$, \v sto je kontradikcija, dakle $\presjek{n=1}{\infty}
+    B_n = \emptyset$.
+    Tada, po pretpostavci, vrijedi $\lim\limits_n \mjera{B_n} = \lim\limits_n
+    \mjera{\unija{k=n}{\infty} A_k} = 0$.
+    Sada imamo $\mjera{\unija{k=1}{\infty} A_k} = \suma{k=1}{n} \mjera{A_k}
+    + \mjera{\unija{k=n+1}{\infty} A_k}$. Napadnemo li izraz limesom po n, dobijemo
+    sljede\' ci izraz.
+    \begin{equation*}
+        \mjera{\unija{k=1}{\infty} A_k} = \lim\limits_n \big( \suma{k=1}{n}
+        \mjera{A_k} + \mjera{\unija{k=n+1}{\infty} A_k} \big).
+    \end{equation*}
+    Malo mentalne akrobatike, limes na lijevoj strani postoji (jer izraz ne ovisi o n),
+    stoga mora postojati i na desnoj, me\dj utim jo\v s ne znamo smijemo li limes suma
+    razbiti na sumu limesa, da bi to mogli, svaki od sumanada mora imati limes, budu\'
+    ci je $\lim\limits_n \mjera{\unija{k=1}{\infty}A_k} = 0$, onda vrijedi da je
+    $\lim\limits_n (\suma{k=1}{n} \mjera{A_k}) = \suma{k=1}{\infty} \mjera{A_k}$
+    postoji i vrijedi:
+    \begin{equation*}
+        \mjera{\unija{k=1}{\infty} A_k} = \suma{k=1}{\infty} \mjera{A_k}.
+    \end{equation*}
+    Primjetimo ovaj \v cinjenicu da zadnji limes postoji mo\v zemo opravdati tako
+    da promatramo izraz $\mjera{\unija{k=1}{\infty} A_k}
+    - \mjera{\unija{k=n+1}{\infty} A_k} = \suma{k=1}{n} \mjera{A_k}$. Sada na lijevoj strani
+    imamo dva izraza koji imaju limese, pa kada napadnemo limesom mo\v zemo ga razbiti.
+
+\end{proof}
