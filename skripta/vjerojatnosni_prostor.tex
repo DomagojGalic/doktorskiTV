@@ -26,3 +26,45 @@ vezanu uz taj slu\v cajni pokus. Ovo nas vodi na takozvani
 pristup konceptualno ograni\v cavaju\' ce djeluje na teoriju,
 matemati\v cnost ovog pristupa postaje klju\v cnim razlogom njegove
 op\' ce prihva\' cenosti.
+Osobito je za nas va\v zan Kolmogorovljev pristup teoriji
+vjerojatnosti, koji ne razmi\v slja o tome kako pojedinom stvarnom
+doga\dj aju dati odre\dj enu dati odre\dj enu vjerojatnost
+$p \in [0, \: 1]$, ve\' c uz pretpostavku da takvi brojevi postoje,
+razvija pravila o njihovim odnosima. Time sama priroda doga\dj aja
+postaje sekundarna u toj teoriji (jasno, u primjenama je i dalje od
+prvorazredne va\v znosti), a bitna postaje analiza "distribucije"
+i njenih pravila.
+S druge strane, za bolje razumjevanje koncepata teorije, a osobito
+u njenim primjenama, \v cest uzimamo u obzir konkretne primjere.
+Primjeri iz hazardnih igara (od arapskog al-zahr za igra\v cu
+kocku) \v cesto donose boljem razumijevanju same teorije. Na
+primjer, jako je jednostavno modelirati jedno bacanje simetri\v cne
+kovanice ($50\%$ \v sanse za ishod glave i $50\%$ za ishod pisma).
+Dvije kovanice ve\' c mogu predstavljati problem.
+
+\begin{pr}[D'Alambert 1754]
+    Kolika je vjerojatnost da prilikom jednog bacanja dvije
+    simetri\v cne kovanice bar jednom "padne pismo"?
+\end{pr}
+
+\begin{rj}
+    D'Alambert ka\v ze da imamo 3 mogu\' cnosti (dvije glave,
+    dva pisma i po jedno od svakoga), od kojih su za nas povoljne
+    dvije, stoga je vjerojatnost $^2 / _3$!?
+    
+    Ovaj primjer pokazuje koliko je va\v zno precizno odrediti
+    \emph{osnovne (elementarne) ishode}. Uzmemo li 2G, 2P i 1G1P kao
+    osnovne ishode, onda moramo dobro razmisliti koje su njihove
+    vjerojatnosti (nisu $^1 / _3$). Zamislimo da smo jednu
+    kovanicu obojili. Jesmo li time promjenili pokus? Nismo.
+    Sada ishode pokusa mo\v zemo prikazati kao ure\dj ene parove,
+    ako obojanu kovanicu stavio na prvo mjesto, vidimo da su
+    mogu\' ci ishodi:
+    (G, G), (G, P), (P, G), (P, P)
+    
+    Odakle vidimo da je tra\v zena vjerojatnost zapravo $^3 / _4$.
+\end{rj}
+
+Prvi va\v zan objekt je takozvani \emph{prostor elementarnih
+doga\dj aja} (sample space). U jeziku teorije skupova dovoljno je
+zahtjevati da to bude neprazan skup $\Omega \neq \varnothing$
