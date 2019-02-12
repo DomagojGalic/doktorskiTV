@@ -172,6 +172,61 @@ $\Omega$ ako dodamo poop\' cenje pravila \eqref{vjerPrav3}:
 %% rješenje zadatka 12
 %%
 
+\begin{rj}
+    \begin{enumerate}[label=(\alph*)]
+        \item Definiramo niz $(C_n \: | \: n \in \N)$, sa $C_1 = A,
+            \; C_2 = B, \; C_{n + 2} = \varnothing, \; n \in \N$.
+            Vidimo da je to niz disjunktnih doga\dj aja.
+            Sada vrijedi
+            \begin{equation*}
+                \vjeroj{\unija{n \in \N}{} C_n}
+                \overset{\eqref{vjerPrav4}}{=} \suma{n \in \N}{}
+                \vjeroj{C_n} = \vjeroj{C_1} + \vjeroj{C_2}
+                + \underbrace{\suma{n = 3}{\infty} \vjeroj{C_n}}_{=0}
+            \end{equation*}
+            Odakle je lako vidjeti:
+            \begin{align*}
+                \vjeroj{A \cup B \cup \unija{n = 3}{\infty}
+                \varnothing} &= \vjeroj{A \cup B} \\
+                &= \vjeroj{A} + \vjeroj{B}
+            \end{align*}
+        \item Neka je $\niz{A_n}{n \in \N} \subseteq \F$ niz
+            disjunktnih doga\dj aja. Definiramo $B_n :=
+            \unija{k = n}{\infty} A_k$, te primjetimo da je
+            $B_1 \supseteq B_2 \supseteq \dots$, tako\dj er
+            primjetimo da je $\presjek{n = 1}{\infty} B_n =
+            \varnothing$. Naime prepostavimo da je $x \in
+            \presjek{k = n_0}{\infty} B_n$, tada je $x \in B_n
+            \; \forall n \in \N$, to jest, $ \forall n \in \N \;
+            x \in \unija{k = n}{\infty} A_k$.
+            Odabreimo neki $n_0 \in \N$, sada $x \in
+            \unija{k = n_0}{\infty} A_k \implies \exists ! \: k_0
+            \geq n_0$ takav da $x \in A_{k_0}$, jer je
+            $\niz{A_n}{n \in \N}$ familija disjunktnih doga\dj aja,
+            ali tada $x \in A_k$, za $k > k_0 \implies x  \in
+            \unija{k = n_1}{\infty} A_k, \; n_1 > k_0$ stoga
+            $x \in B_n$ za $n > k_0$, \v sto je kontradikcija pa je
+            $\presjek{n = 1}{\infty} B_n = \varnothing$.\\
+            Sada imamo
+            \begin{align*}
+                \vjeroj{\unija{k = 1}{\infty} A_k}
+                &= \vjeroj{\unija{k = 1}{n} A_k}
+                + \vjeroj{\unija{k = n + 1}{\infty} A_k} \\
+                &= \suma{k = 1}{n} \vjeroj{A_k}
+                + \vjeroj{\unija{k = n + 1}{\infty} A_k}. 
+            \end{align*}
+            Pu\v stanjem limesa dobijemo:
+            \begin{align*}
+                \lim_n \vjeroj{\unija{k = n + 1}{\infty} A_k}
+                \overset{\eqref{neprPrazSkup}}{=}& \lim_n
+                \vjeroj{\presjek{n + 1}{\infty}(
+                    \unija{k = n + 1}{\infty} A_k)}\\
+                =& 0.
+            \end{align*}
+            I prelaskom na limes dobijemo tra\v zenu tvrdnju.
+    \end{enumerate}
+\end{rj}
+
 \begin{pr} \label{primjer14}
     Neka je $\card{\Omega} = \aleph_0$ i poredajmo $\Omega$ u niz
     $\{ \omega_1, \: \omega_2, \dots \}$. Svaki model koji
