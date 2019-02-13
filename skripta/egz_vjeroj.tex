@@ -1,0 +1,264 @@
+% o egzistenciji i vjerojatnosti vjerojatnosne mjere
+
+\chapter{Egzistencija i jedinstvenst vjerojatnosti}
+
+Mo\v zemo li u ovoj poop\' cenoj situacij dobro modelirati primjer
+\ref{primjer1.18}? Ovo pitanje nas vodi na pitanje egzistencije
+(a time i jedinstvenosti) vjerojatnosti. Budu\' ci je vjerojatnost
+poseban slu\v caj mjere, teoremi iz teorije mjere vrijedi i ovdije.
+Podsjetimo se.
+
+Najmanja $\sigma$-algebra na nepraznom skupu $\Omega$ je
+$\{\varnothing, \Omega\}$, a najve\' ca $\sigma$-algebra je
+$\partitive{\Omega}$.
+Dakle svaka familija $\E \subseteq \partitive{\Omega}$ je sadr\v zana
+u barem jednon $\sigma$-algebri na $\Omega$.
+Lako se vidi da je presjek neprazne familije $\sigma$-algebri ponovo
+$\sigma$-algebra, pa je i
+\begin{equation} \label{jed:2.1}
+    \sigAlg{\E} := \presjek{\shortstack{$\E \subseteq \hh \subseteq
+    \partitive{\Omega}$ \\ $\hh$ $\sigma$-algebra}}{} 
+    %\presjek{\shortstack{\E \subseteq \hh \subseteq
+        %\partitive{\Omega}\\ \hh \: \sigma \textnormal{-algebra}}}{}
+        \hh
+\end{equation}
+
+tako\dj er $\sigma$-algebra i to najmanje $\sigma$-algebra koja
+sadr\v zi $\E$ (ka\v zemo jo\v s da je $\sigma$-algebra
+$\sigAlg{\E}$, $\sigma$-algebra generirana s $\E$).
+O\v cito je $\sigAlg{\{\Omega\}} = \{ \varnothing, \; \Omega\}$,
+te tako\dj er
+$\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
+
+\begin{zad} \label{zad:2.2}
+    Neka je $\E = \indFamilija{\{ \omega \}}{\omega \in \Omega}$.
+    Tada je $\sigAlg{\E} =\{ A \subseteq \Omega \: |$ $A$ ili $A^c$
+    prebrojiv $\}$. Tada je $\sigAlg{\E} = \partitive{\Omega}$ ako
+    i samo ako je $\Omega$ kona\v can ili prebrojiv.
+\end{zad}
+
+%
+% rješi i nadopiši zadatak
+%
+
+Ako je $\topProstor$ topolo\v ski prostor s topologijom $\ttop$, tada
+$\sigAlg{\ttop}$ ozna\v cavamo s $\borel{X}$ i nazivamo
+$\sigma$-algebrom \emph{Borelovih skupova}.
+
+\begin{pr}  \label{pr:2.3}
+    Ako je $X = \R$ ili je $X = \segment{A}{B}$, za $A, \: B \in \R$,
+    $A < B$, s euklidskom topologijom, onda se $\borel{X}$ mo\v ze
+    prikazati kao $\sigAlg{\E}$, za razne familije $\E$.
+    Na primjer za $\E$ mo\v zemo uzeti
+    \begin{itemize}
+        \item $\mathcal{I} := \skup{\lijInt{a}{b} \cap X}{a < b, \:
+            a, \: b \in \R} \bigcup \{\varnothing\}$
+        \item $\mathcal{I}_{\Q} := \skup{\lijInt{a}{b} \cap X}{a < b,
+            \: a, \: b \in \Q} \bigcup \{ \varnothing \}$
+        \item $\mathcal{O}_{\Q} := \skup{\obInt{a}{b} \cap X}{a < b,
+            \: a, \: b \in \Q} \bigcup \{ \varnothing \}$
+        \item $\mathcal{K} := \skup{\lijInt{-\infty}{b} \cap X}{b
+            \in \R}$
+        \item $\mathcal{K}_{\Q} := \skup{\lijInt{-\infty}{b}
+            \cap X}{b \in \Q}$.
+    \end{itemize}
+\end{pr}
+
+Sve familije u primjeru \ref{pr:2.3} imaju zanimljivo svojstvo:
+\begin{equation}    \label{jed:2.4}
+    A, \: B \in \E \implies A \cap B \in \E.
+\end{equation}
+
+Svaka neprazna familija koja ima svojstvo \eqref{jed:2.4} naziva se
+\emph{$\pi$-sistem}. Svaka familija $\E \subseteq \partitive{\Omega}$,
+Koja sadr\v zi $\Omega$, zatvorena je na prave skupovne razlike i
+rastu\' ce prebrojive unije naziva se \emph{Dynkinovom klasom}.
+
+Presjek Dynkinovih klasa je Dynkinova klasa. Svaka $\sigma$-algebra
+je i $\pi$-sistem i Dynkinova klasa. Posebno $\partitive{\Omega}$
+je Dynkinova klasa, pa se kao i u \eqref{jed:2.1} mo\v ze napraviti
+najmanja Dynkinova klasa generirana klasom $\E$; oznaka je
+$\dynk{\E}$. Iz teorije mjere poznat nam je sljede\' ci zadatak.
+
+\begin{zad}   \label{zad:2.5}
+    Neka je $\E$, $\pi$-sistem na $\Omega$.
+    Tada je $\sigAlg{\E} = \dynk{\E}$.    
+\end{zad}
+
+%
+%  rješi zadatak
+%
+
+\begin{tm}  \label{tm:2.6}
+    Neka je $\izmjerivProstor$ izmjeriv prostor i $\E$ $\pi$-sistem
+    na $\Omega$ sa svojstvom $\F = \sigAlg{\E}$.
+    Ako su $\mu$ i $\nu$ kona\v cne pozitivne mjere na
+    $\izmjerivProstor$ takve da je $\mjera{\Omega}
+    = \nu(\Omega)$ i $\restr{\mu}{\E} = \restr{\nu}{\E}$, tada je
+    $\mu = \nu$.   
+\end{tm}
+
+\begin{proof}
+    Neka je $\hh := \skup{A \in \F}{\mjera{A} = \nu(A)}$.
+    O\v cito je $\E \subseteq \hh$. S druge strane $\Omega \in \hh$,
+    te je $\hh$ zatvoren rastu\' ce prebrojive unije zbog
+    neprekidnosti pozitivnih mjera na rastu\' ce unije.
+    Za $A, \: B \in \hh, \: A \subseteq B$, zbog kona\v cnosti mjera
+    $mu$ i $nu$, vrijedi $\mjera{B \setminus A} = \mjera{B}
+    - \mjera{A} = \nu(B) - \nu(A) = \nu(B \setminus A)$.
+    Dakle $\hh$ je Dynkinova klasa, pa je $\F = \underbrace{
+    \sigAlg{\E} = \dynk{\E}}_{\textnormal{zadatak \ref{zad:2.5}}}
+    \subseteq \hh$, to jest $\F = \hh$.
+\end{proof}
+
+\begin{kor} \label{kor:2.7}
+    Neka je $\izmjerivProstor$ i $\E$ $\pi$-sistem na $\Omega$ sa
+    svojstvom $\F = \sigAlg{\E}$. Ako su $\Pp$ i $\overline{\Pp}$
+    dvije vjerojatnosti na $\izmjerivProstor$ takve da je
+    $\restr{\Pp}{\E} = \restr{\overline{\Pp}}{\E}$, takav da je $\Pp
+    = \overline{\Pp}$.
+\end{kor}
+
+\begin{zad} \label{zad:2.9}
+    Neka je $\izmjerivProstor$ izmjeriv prostor i $\E$ $\pi$-sistem
+    na $\Omega$ sa svojstvom $\F = \sigAlg{\E}$.
+    Ako su $\mu$ i $\nu$ dvije mjere na $\izmjerivProstor$ takve
+    da je $\restr{\mu}{\E} = \restr{\nu}{\E}$ i postoji rastu\' ci
+    niz skupova $\niz{C_n}{n \in \N} \subseteq \E$ takav da je
+    $\unija{n}{}C_n = \Omega$ i $\mjera{C_n} = \nu(C_n) < +\infty, \;
+    \forall n \in \N$, tada je $\mu = \nu$.
+\end{zad}
+
+\begin{nap} \label{nap:2.10}
+    Grubo govore\' ci ovi rezultati pokazuju da je $\pi$-sistem
+    dovoljno bogata struktura da bi se osigurala jedinstvenost mjere
+    (a time i vjerojatnosti). To je vrlo sna\v zan rezultat,
+    budu\' ci da velik broj klasa \v cini $\pi$-sistem, te je lako iz
+    svake klase napraviti $\pi$-sistem; uzme se proizvoljna klasa
+    $\E \subseteq \partitive{\Omega}$, klasa koja se sastoji iz svih
+    kona\v cnih presjeka elementat iz $\E$.
+
+    Prirodno je pitanje mo\v ze li se mjera sa $\pi$-sistema
+    pro\v siriti na pripadnu $\sigma$-algebru. Uzmemo li klasu
+    $\mathcal{K}$ iz primjera \ref{pr:2.3} i za svaki $a \in \R_+$
+    izabermo $\mu_a$ takav da je $\mu_a(A) = a, \; \forall A \in
+    \mathcal{K}$, takva \' ce funkcija zadovoljavati
+    \eqref{vjerPrav4} na $\mathcal{K}$ (jer na $\mathcal{K}$ nemamo
+    niti dva disjunktna skupa). O\v cito se $\mu_a$ ne mo\v ze
+    pro\v siriti do mjere na $\borel{\R}$.
+    Dakle za egzistenciju  (pro\v sirivanje) mjere trebamo ne\v sto
+    bogatiju klasu od $\pi$-sistema.
+\end{nap}
+
+Re\' ci cemo da je $\E \subseteq \partitive{\Omega}$ \emph{poluprsten}
+na $\Omega$ ako vrijedi:
+\begin{enumerate}[label=(\roman*)]
+    \item $\varnothing \in \E$
+    \item $\E$ je $\pi$-sistem
+    \item $A, \: B \in \E, \: A \subseteq B \implies B \setminus
+        A \in \E$ je kona\v cna disjunktna unija elemenata iz $\E$.
+\end{enumerate}
+
+Osnovni teorem o pro\v sirenju mjere (Caratheodoryjeva konstrukcija)
+ka\v ze:
+
+\begin{tm}  \label{tm:2.11}
+    Neka je $\E$ poluprsten skupova na nepraznom skupu $\Omega$. Ako
+    je funkcija $\nu: \E \to [0, \: + \infty]$ $\sigma$-aditivna
+    (u smislu da zadovoljava svojstvo \eqref{vjerPrav4} na $\E$)
+    i $\nu(\varnothing) = 0$, tada postoji mjera $\mu$ na $(\Omega,
+    \: \partitive{\Omega})$, takva da je $\restr{\mu}{\E} = \nu$.
+\end{tm}
+
+\begin{nap} \label{nap:2.12}
+    Neka je $\Omega$ neprazan skup, $\E := \{\varnothing\} \cup
+    \indFamilija{\{ \omega \}}{\omega in \Omega}$. Tada je $\E$
+    poluprsten i svaka funkcija $\nu: \E \to [0, \: +\infty]$
+    za koju je $\nu(\varnothing) = 0$ je $\sigma$-aditivna;
+    preciznije potpuno je opisana familijom "brojeva"
+    $\nu(\{ \omega \}) \in [0, \: +\infty], \; \omega \in \Omega$.
+
+    Po zadatku \ref{zad:2.2} i teoremu \ref{tm:2.11} postoji mjera
+    $\mu$ na $\sigAlg{\E}$ koja je pro\v sirenje od $\nu$ i za svaki
+    $A \subseteq \Omega$, $A$ prebrojiv je $\mjera{A}
+    = \suma{\omega \in A}{} \nu(\{ \omega \})$.
+
+    ako je i $\Omega$ prebrojiv, onda je ovim pro\v sirenjem
+    jedinstveno odre\dj ena mjera $\mu$ na $\partitive{\Omega}$.
+    U su\v stini situacija je sli\v cna kao i u primjeru
+    \ref{primjer7} i primjeru \ref{primjer14}.
+    \v Sto ako je $\Omega$ neprebrojiv?
+    %
+    % provedi detaljniju analizu
+    %
+    Pogledajmo dva ekstremna slu\v caja:
+    \begin{enumerate}[label=(\roman*)]
+        \item $\nu(\{ \omega \}) = 0, \; \forall \omega \in \Omega$.
+            Uzmemo bilo koji $c \in \segment{0}{+\infty}$ i defnirajmo
+            $\mu_c$ pomo\' cu
+            \begin{equation*}
+                \mu_c(A) = 
+                \begin{cases}
+                    0, &A \;\; \textnormal{prebrojiv}\\
+                    c, &A^c \;\; \textnormal{prebrojiv}
+                \end{cases}
+            \end{equation*}
+            Svaki $\mu_c$ je pro\v sirenje od $\nu$. Uo\v cimo da
+            uvijeti iz zadatka \ref{zad:2.9} nisu ispunjeni pa nema
+            jedinstvenosti pro\v sirenja. Ako je $\Omega
+            = \segment{a}{b}, \; \sigAlg{\E}
+            \subsetneq \borel{\Omega}$ i pro\v sirenje sa $\E$ na
+            $\borel{\Omega}$ ne vodi ka nekoj konkretnoj mjeri.
+        \item Ako je $\nu(\{\omega\}) > 0, \; \forall \omega \in
+            \Omega$ Onda postoji $\varepsilon > 0$ takav da za
+            neprebrojivo $\omega$ iz zadanog neprebrojivog skupa
+            imamo $\nu(\{\omega\}) \geq \varepsilon$.
+            Posebno, to zna\v ci da je $\mjera{A} = +\infty$ za svaki
+            $A$, za koji je $A^c$ prebrojiv. Ponovo ne osobito
+            korisna konstrukcija.
+    \end{enumerate}
+\end{nap}
+
+U slu\v caju $X = \R$ ili $X = \segment{A}{B}$, kao i u drugim
+neprebrojivim slu\v cajevima korisniji je sljede\' ci postupak.
+Neka je $\mu$ (pozitivna) mjera na $(\R, \: \borel{\R})$, takva da je
+$\mjera{K} < +\infty$, za svaki kompaktan skup $K \subseteq \R$
+(posebno, takva mjera je \emph{regularna}). Budu\' ci da je za
+$a < 0$ (i za $b geq 0$) skup $\lijInt{a}{0}$ ($\lijInt{0}{b}$),
+sadr\v zan u kompaktu, sljede\' ca definicija opisuje neopdaju\' cu
+funkciju $F_{\mu}: \R \to \R$ danu sa
+\begin{equation}    \label{jed:2.13}
+    F_{\mu}(x) :=
+        \begin{cases}
+            \mjera{\lijInt{0}{x}}, &x > 0\\
+            0,   &x = 0\\
+            - \mjera{\lijInt{x}{0}}, &x < 0.
+        \end{cases}
+\end{equation}
+Uo\v cimo da je za svaki $a, \: b \in \R, \: a < b$,
+\begin{equation}    \label{jed:1.14}
+    \mjera{\lijInt{a}{b}} = F_{\mu}(b) - F_{\mu}(a).
+\end{equation}
+
+\begin{zad} \label{zad:2.15}
+    Doka\v zite da je $F_{\mu}$ neopadaju\' ca neprekidna zdesna i da
+    postoje (u skupu $\overline{\R}$).
+    \begin{align*}
+        F_{\mu}(-\infty) :=& \lim_{x \searrow -\infty} F_{\mu}(x)\\
+        F_{\mu}(+\infty) :=& \lim_{x \nearrow +\infty} F_{\mu}(x).
+    \end{align*}
+\end{zad}
+
+Neka je sada $F$ funkcija sa svojstvima iz zadatka \ref{zad:2.15}.
+Pomo\' cu \eqref{jed:1.14} definiramo "mjeru" $\mu$ na klasi
+$\mathcal{I}$ iz primjera \eqref{pr:2.3}. Nije te\v sko pokazati
+da je $\mu$ $\sigma$-aditivna na $\mathcal{I}$, pa prema teoremu
+\ref{tm:2.11} i zadatku \ref{zad:2.9} postoji jedinstveno
+pro\v sirenje od $\mu$ na $\borel{\R}$ koje daje regularnu mjeru
+$\mu$. Za funkciju $F(x) = x$ ova konstrukcija daje tako zvanu
+\emph{Lebesgue-ovu mjeru} $\lambda$ \v cija restrikcija na
+$\borel{\segment{0}{1}}$ zadovoljava primjer \ref{primjer1.18}.
+Uo\v cimo da funkcije s istim prirastima \eqref{jed:1.14}
+daju istu mjeru.
+
+
