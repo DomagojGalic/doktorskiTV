@@ -174,7 +174,7 @@ $\Omega$ ako dodamo poop\' cenje pravila \eqref{vjerPrav3}:
 
 \begin{rj}
     \begin{enumerate}[label=(\alph*)]
-        \item Definiramo niz $(C_n \: | \: n \in \N)$, sa $C_1 = A,
+        \item Definiramo niz $\niz{C_n}{n \in \N}$, sa $C_1 = A,
             \; C_2 = B, \; C_{n + 2} = \varnothing, \; n \in \N$.
             Vidimo da je to niz disjunktnih doga\dj aja.
             Sada vrijedi
@@ -296,7 +296,7 @@ sa \eqref{konacVP} ili \eqref{prebVP}
     _{\sim}$), $\card{A \cap [x]} = 1$ (u $A$ smo stavili samo jedan
     element iz svake klase ekvivalencije).
     Skup $\Q \cap \segment{-2}{2}$ je prebrojiv pa ga mo\v zemo
-    poredati u niz $\{ q_n \: | \: n \in \N \}$.
+    poredati u niz $\indFamilija{q_n}{n \in \N}$. 
     Definirajmo $A_n = q_n + A \subseteq \segment{-3}{3}, \; n \in
     \N$. Neka je $H := \unija{n=1}{\infty} A_n \subseteq
     \segment{-3}{3}$. 
@@ -327,10 +327,10 @@ sa \eqref{konacVP} ili \eqref{prebVP}
 Priroda problema je takva da nemo\v zemo odustati niti od jednog od
 zahtjeva \eqref{vjerPrav1}, \eqref{vjerPrav2}, \eqref{vjerPrav4},
 \eqref{mjeraDilat}, \eqref{mjeraTransl}, stoga moramo odustati od
-zahtjeva da definiramo funkciju $\Pp$ na $\partitive{\Omega}$.
+zahtjeva definicije funkcije $\Pp$ na $\partitive{\Omega}$.
 
-\v Zelimo sa\v cuvati osnovne operacije i to nas vodi na sljede\' ce
-definicije.
+\v Zelimo sa\v cuvati osnovne operacije i to nas vodi na sljede\' cu
+definiciju.
 
 \begin{defn}
     Vjerojatnosni prostor je ure\dj ena trojka
@@ -357,7 +357,7 @@ definicije.
             \segment{0}{+ \infty}$ koja zadovoljava \eqref{vjerPrav4}
             i $\mjera{\varnothing} = 0$, onda ka\v zemo da je $\mu$
             \emph{(pozitivna) mjera}.
-            Ako postoje $(E_n, \: n \in \N) \subseteq \F$, takvi da
+            Ako postoje $\niz{E_n}{n \in \N} \subseteq \F$, takvi da
             je $\unija{n \in \N}{} E_n = \Omega$ i $\mjera{E_n} <
             +\infty, \; \forall n \in \N$, tada ka\v zemo da je $\mu$
             \emph{$\sigma$-kona\v cna (pozitivna) mjera}.
