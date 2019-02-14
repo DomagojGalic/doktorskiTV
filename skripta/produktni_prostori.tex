@@ -1,2 +1,47 @@
 % produktni prostori
 
+\chapter{Produktni prostori}
+
+Neka je $T \neq \varnothing$ skup indeksa i $\indFamilija{\Omega_t}{t \in T}$ familija nepraznih skupova.
+Skup svih funkcija $f: T \to \unija{t \in T}{} \Omega_t$, takvih da je $f(t) \in \Omega_t, \; \forall t \in T$, ozna\v cavamo sa $\produkt{t \in T}{} \Omega_t$.
+Aksiom izbora garantira da je $\produkt{t \in T}{} \Omega_t$ neprazan (jer su svi $\Omega_t \neq \varnothing$).
+
+Definicija se mo\v ze pro\v siriti na proizvoljne $\Omega_t$ i tada dobivamo da je $\produkt{t \in T}{} \Omega_t$ \v ci je barem jedan $\Omega_t$ prazan.
+Uz \emph{kartezijev produkt} $\produkt{t \in T}{} \Omega_t$, prirodno su vezane \emph{koordinaten projekcije $pi_t$}, $t \in T$, pri \v cemu je $\pi_{t_0}: \produkt{t \in T}{} \to \Omega_{t_0}$ definiramo sa
+\begin{equation*}
+    \pi_{t_0} (f) := f(t_0).
+\end{equation*}
+
+Podsjetimo se da su $(X_t, \: \famU_t), \; t \in T$, topolo\v ski prostori, tada se na $\produkt{t \in T}{} X_t$ definira \emph{produktna (ili Tihonovljeva) topologija} $\dirProd{t \in T}{} \famU_t$, kao najmanja topologija u odnosu na koju su sve $\pi_t$ neprekidne.
+Ako su svi $X_t$ kompaktni,tada je i $\produkt{t \in T}{} X_t$ kompaktan u produktnoj topologiji.
+Analogno postupamo u izmjerivoj situaciji.
+
+Neka su $(\Omega_t, \: \famF_t), \; t \in T$ izmjerivi prostori.
+Produktna $\sigma$-algebra $\dirProd{t \in T}{} \famF_t$ na $\produkt{t \in T}{} \Omega_t$, definirana je sa:
+\begin{equation}    \label{jed:4.1}
+    \dirProd{t \in T}{} \famF_t := \indSigAlg{\pi_t}{t \in T}.
+\end{equation} 
+Element $\produkt{t \in T}{} A_t \in \partitive{\produkt{t \in T}{}} \Omega_t$, takav da postoji kona\v can $J \subseteq T$ sa svojstvima:
+\begin{itemize}[label=]
+    \item $t \in J \implies A_t \in \famF_t$
+    \item $ t \in T \setminus J \implies A_t = \Omega_t $
+\end{itemize}
+nazivamo \emph{izmjerivi cilindri\v cni pravokutnik}.
+Lako se vidi da svi takvi skupovi tvore poluprsten skupova $\prsten{\produkt{t \in T}{} \Omega_t}$ i da vrijedi:
+\begin{equation}    \label{jed:4.2}
+    \sigAlg{\prsten{\produkt{t \in T}{} \Omega_t}} = \dirProd{t \in T}{} \famF_t.
+\end{equation}
+Uo\v cimo da se za topolo\v ske prostore javlja pitanje veze $\borel{\produkt{t \i T}{} \Omega_t}$ (\v sto je $= \sigAlg{\dirProd{t \in T}{} \famU_t}$) i $\dirProd{t \in T}{} \borel{X_t}$.
+Lako se vidi da za topolo\v ske prostore $(X_t, \: \famU_t), \; t \in T$, vrijedi:
+\begin{equation}    \label{jed:4.3}
+    \dirProd{t \in T}{} \borel{X_t} \subseteq \borel{\produkt{t \in T}{} X_t},
+\end{equation}
+a nije osobito te\v sko konstruirati kontraprimjere koji pokazuju da u \eqref{jed:4.3} op\' cenito ne vrijedi jednakost.
+
+\begin{zad} \label{zad:4.4}
+    Ako je $T$ najvi\v se prebrojiv i svaki $X_t$ je separabilan metri\v cki prostor, tada u \eqref{jed:4.3} vrijedi jednakost.
+    Posebno, za $d \in \nat$ vrijedi:
+    \begin{equation}    \label{jed:4.5}
+        \borel{\real^d} = \borel{\real} \otimes \dots \otimes \borel{\real}.
+    \end{equation}
+\end{zad}
