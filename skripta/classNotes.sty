@@ -8,6 +8,7 @@
 \RequirePackage{geometry}
 
 \RequirePackage{enumitem}
+\RequirePackage{mathtools}
 
 
 % teoremi
@@ -39,20 +40,26 @@
 \newcommand{\niz}[2]{({#1} \: | \: {#2})}
 \newcommand{\indFamilija}[2]{\{{#1} \: | \: {#2}\}}
 \newcommand{\sigAlg}[1]{\sigma({#1})}
+\newcommand{\indSigAlg}[2]{\sigma({#1} \: | \: {#2})}
 \newcommand{\dynk}[1]{\mathcal{D}({#1})}
 
 \newcommand{\skup}[2]{\{{#1} \: | \: {#2}\}}
 \newcommand{\lijInt}[2]{\langle {#1}, \: {#2}]}
+\newcommand{\desInt}[2]{[ {#1}, \: {#2} \rangle}
 \newcommand{\obInt}[2]{\langle {#1}, \: {#2} \rangle}
 
 \newcommand{\restr}[2]{\left. \kern- \nulldelimiterspace {#1}
     \vphantom{\big|} \right|_{#2}}
+\newcommand{\praslika}[1]{{#1}^{\leftarrow}}
 
 %skupovi
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\nat}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\extReal}{\overline{\mathbb{R}}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\Pp}{\mathbb{P}}
 \newcommand{\Ee}{\mathbb{E}}
@@ -61,6 +68,15 @@
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\hh}{\mathcal{H}}
 \newcommand{\ttop}{\mathcal{T}}
+\newcommand{\famD}{\mathcal{D}}
+\newcommand{\famK}{\mathcal{K}}
+\newcommand{\famU}{\mathcal{U}}
+\newcommand{\famV}{\mathcal{V}}
+\newcommand{\famA}{\mathcal{A}}
+\newcommand{\famB}{\mathcal{B}}
+\newcommand{\famC}{\mathcal{C}}
+\newcommand{\famE}{\mathcal{E}}
+\newcommand{\famF}{\mathcal{F}}
 
 \newcommand{\borel}[1]{\mathcal{B}_{#1}}
 
@@ -68,3 +84,6 @@
 \newcommand{\topProstor}{(X, \: \mathcal{T})}
 \newcommand{\prostorMjere}{(\Omega, \: \F, \: \mu)}
 \newcommand{\vjerojatnosniProstor}{(\Omega, \: \F, \: \mathbb{P})}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
