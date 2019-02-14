@@ -1,0 +1,249 @@
+% poglavlje o slučajnim elementima
+
+\chapter{Slu\v cajni elementi}
+
+Neka su $D$, $K$ neprazni podskupovi i $f: D \to K$ preslikavanje.
+Postoji bitna razlika izme\dj u slika i inverznih slika kada govorimo
+o skupovnim operacijama. Ako je $*$ bilo koja od operacija $cup, \:
+\cap, \: \setminus$, a $B_1, \: B_2 \subseteq K$, tada je
+\begin{equation} \label{jed:3.1}
+    \praslika{f} (B_1 * B_2) = \praslika{f}(B_1) * \praslika{f}(B_2),
+\end{equation}
+ali ako su $A_1, \: A_2 \subseteq D$, tada je
+\begin{align*}
+    f(A_1 \cap A_2) \subsetneq& f(A_1) \cap f(A_2) \\
+    f(A_1 \setminus A_2) \supsetneq& f(A_1) \setminus f(A_2). 
+\end{align*}
+Posebno to zna\v ci da ako je $\famD \subseteq \partitive{D}$
+$\sigma$-algebra na $D$, $f(\famD) := \skup{f(A)}{A \in
+\famD}$ nije nu\v zno $\sigma$-algebra na $K$.
+S druge strane iz \eqref{jed:3.1} (i sli\v cnih relacija za
+prebrojive operacije) direktno slijedi:
+
+Ako je $\famK \subseteq \partitive{K}$ "struktura", tada je i
+\begin{equation} \label{jed:3.2}
+    \praslika{f}(\famK) := \skup{\praslika{f}(B)}{B \in
+        \famK}
+\end{equation}
+tako\dj er "struktura", kao i ako je $\famD \subseteq
+\partitive{D}$, tako\dj er je i
+\begin{equation} \label{jed:3.3}
+    \skup{B \in \partitive{K}}{\praslika{f}(B) \in \famD},
+\end{equation}
+tako\dj er "struktura";
+pri \v cemu pod "struktura" mislimo $\pi$-sistem, poluprsten, prsten,
+Dynkinova klasa, algebra, $\sigma$-prsten ili $\sigma$-algebra.
+
+Od posebnog su interesa preslikavanja koja po\v stuju odre\dj en
+izbor $\sigma$-algebri. Ako su $(D, \: \famD)$ i
+$(K, \: \famK)$ izmjerivi prostori i $f: D \to K$ preslikavanje
+tada ka\v zemo da je $f$ \emph{izmjerivo} (ili \emph{$(\famD,
+\: \famK)$-izmjerivo}) ako je $\praslika{f}(\famK) \subseteq \famD$.
+Uo\v cimo da iz \eqref{jed:3.2} slijedi da je $\praslika{f}(\famK)$
+uvijek $\sigma$-algebra i da je to najmanja $\sigma$-algebra na $D$
+u odnosu na koju je $f$ izmjeriva (u odnosu na $\famK$).
+Zato ka\v zemo da je $\praslika{f}(\famK)$ \emph{$\sigma$-algebra
+generirana sa $f$} i \v cesto ju ozna\v cavamo sa \emph{$\sigAlg{f}$}.
+Dakle $f$ je izmjeriva ako i samo ako vrijedi:
+\begin{equation*}
+    \sigAlg{f} \subseteq \famD.
+\end{equation*}
+Ovaj pojam se lako poop\' ci. Neka je $\indFamilija{(K_t, \: \famK_t)}
+{t \in T}$ proizvoljna indeksirana familija izmjerivih prostora i
+neka za svaki $t \in T$ imamo preslikavanje $f_t : D \to K_t$.
+Tada je  $\indSigAlg{f_t}{t \in T} := \sigAlg{\unija{t \in T}{}
+\sigAlg{f_t}}$ \emph{$\sigma$-algebra generirana familijom
+$\indFamilija{f_t}{t \in T}$} i to je najmanja $\sigma$-algebra
+na $D$ u odnosu na koju su sva preslikavanja $f_t$ izmjeriva.
+
+Ako su $(X, \: \famU)$ i $(Y, \: \famV)$ topolo\v ski prostori, onda
+$(\borel{X}, \: \borel{Y})$-izmjerivo preslikavanje $f: X \to Y$
+nazivamo \emph{Borelovim preslikavanjem}. Podsjetimo se da je
+$f: X \to Y$ neprekidno ako je $\praslika{f}(\famV) \subseteq \famU$.
+Kakva je veza izme\dj u ovih pojmova?
+
+\begin{lm}  \label{lm:3.4}
+    Ako je $f: D \to K$ preslikavanje i $\famC \subseteq
+    \partitive{K}$, tada je $\sigAlg{\praslika{f}(\famC)}
+    = \praslika{f} (\sigAlg{\famC})$.
+\end{lm}
+
+\begin{proof}
+    Po \eqref{jed:3.2} $\praslika{\sigAlg{\famC}}$ je
+    $\sigma$-algebra, koja o\v cito sadr\v zi $\praslika{\famC}$
+    , \v sto povla\' ci $\sigAlg{\praslika{\famC}} \subseteq
+    \praslika{f}(\sigAlg{\famC})$.
+
+    Sada po \eqref{jed:3.3} slijedi da je $\skup{B \in \partitive{K}}
+    {\praslika{f}(B) \in \sigAlg{\praslika{f}(\famC)}}$ je
+    $\sigma$-algebra, koja o\v cito sadr\v zi $\famC$, pa onda
+    nu\v zno mora sadr\v zavati i $\sigAlg{\famC}$.
+    Slijedi da je $\praslika{\sigAlg{\famC}} \subseteq
+    \sigAlg{\praslika{f}(\famC)}$. 
+\end{proof}
+
+Zbog $\praslika{f}(\borel{Y}) = \praslika{f}(\sigAlg{\famV})
+= \sigAlg{\praslika{f}(\famV)} \subseteq \sigAlg{\famU} = \borel{X}$,
+slijedi:
+
+\begin{kor} \label{kor:3.5}
+    Ako je $f: (X, \: \famU) \to (Y, \: \famV)$ neprekidna, tada je
+    $f$ Borelova.
+\end{kor}
+
+Uo\v cimo nadalje da direktno iz definicije slijedi:
+
+\begin{lm}  \label{lm:3.6}
+    Neka su $(A, \: \famA)$, $(B, \: \famB)$ i $(C, \: \famC)$ izmjerivi prostori. Ako su $f: A \to B$ i $g:B \to C$ izmjeriva preslikavanja, tada je izmjeriva i $g \circ f$.
+\end{lm}
+
+\begin{defn}    \label{defn:3.7}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor i $(E, \: \E)$ izmjeriv prostor. Preslikavanje $f: \Omega \to E$ je \emph{slu\v cajni element} (\emph{s vrijednostima u $E$}) ako je $f$
+    $(\F, \: \E)$-izmjerivo.
+\end{defn}
+
+\begin{pr}  \label{pr:3.8}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosti prostor i $(E, \: \E) := (\R, \: \borel{\extReal})$, pri \v cemu je $\extReal := \R \cup \{-\infty, \: +\infty\}$, s odgovaraju\' com topologijom skupovi $\desInt{-\infty}{a}$, $\lijInt{b}{+\infty}$ su otvoreni).
+    Slu\v cajne elemente s vrijednostima u $\extReal$ nazivamo \emph{pro\v sirenim slu\v cajnim varijablama}.
+    Uo\v cimo da su $\{ -\infty \}, \; \{+\infty\} \in \borel{\extReal}$ (na primjer $\{+\infty\} = \presjek{n \in \N}{} \lijInt{n}{+\infty}$).
+    Ako je $X$ pro\v sirena slu\v cajana varijabla i $\vjeroj{|X| = \infty} = 0$, tada ka\v zemo da je $X$ \emph{slu\v cajna varijabla}.
+    Posebno, slu\v cajni element s vrijednostima u $\R$ je slu\v cajna varijabla.
+    Na sli\v can na\v cin mo\v zemo promatraiti i slu\v cajne elemente s vrijednostima u $\R_+ := \desInt{0}{+\infty}$, ili $\extReal_+ := \segment{0}{+\infty}$. 
+\end{pr}
+
+\begin{nap} \label{nap:3.8.1}
+    $\borel{\extReal}$ mo\v zemo promatrati i kao najmanju $\sigma$-algebru koja sadr\v zi sve elemente iz $\borel{\R}$, kao i skupove $\{-\infty\}$, $\{+\infty\}$.
+    Odnosno vrijedi:
+    \begin{equation*}
+        \borel{\extReal} = \sigAlg{\borel{\R} \cup \{\{-\infty\}, \: \{+\infty\}\}}
+    \end{equation*}
+\end{nap}
+
+\begin{nap} \label{nap:3.9}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor i $S$ neka je neko svojstvo, takvo da za svaki $\omega \in \Omega$ mo\v zemo utvrditi (u principu) da "$\omega$ zadovoljava $S$" ili da "$\omega$ ne zadovoljava $S$".
+    Ka\v zemo da je $S$ zadovoljeno \emph{gotovo sigurno} ($g.s.$) ako postoji skup $A \in \F$ takvo da je $\vjeroj{A} = 1$ i $A \subseteq \skup{\omega \in \Omega}{\omega \; \textnormal{zadovoljava} \; S}$.
+    Uo\v cimo da skup $\vjeroj{A} = 1$ i $A \subseteq \skup{\omega \in \Omega}{\omega \; \textnormal{zadovoljava} \; S}$ ne mora biti doga\dj aj.
+    Sjetimo se da je vjerojatnosni prostor \emph{potpun} ako vrijedi:
+    \begin{equation*}
+        A \subseteq E, \; E \in \F, \; \vjeroj{E} = 0 \implies A \in \F.
+    \end{equation*}
+    O\v cito, ako je $\vjerojatnosniProstor$ potpun i $S$ je zadovoljeno gotovo sigurno, tada je $\vjeroj{A} = 1$ i $A \subseteq \skup{\omega \in \Omega}{\omega \; \textnormal{zadovoljava} \; S} \in \F$.
+
+    Uz ove pojmove mo\v zemo re\' ci da je pro\v sirena slu\v cajna varijabla $X$ slu\v cajna varijabla ako i samo ako je $X \in \R \; (g.s.)$
+\end{nap}
+
+\begin{zad} \label{zad:3.10}
+    Doka\v zite da se svaki vjerojatnosni prostor mo\v ze upotpuniti.
+    Nadalje, ako je $f$ slu\v cajni element na polaznom vjerojatnosnom
+    prostoru, tada je $f$ slu\v cajni element i na upotpunjenu.
+\end{zad}
+
+%
+%   rješi zadatak
+%
+
+\begin{nap} \label{nap:3.11}
+    Kod slu\v cajnih elemenata treba provjeriti da vrijedi $\praslika{f}(\famE) \subseteq \famF$. Zbog leme \ref{lm:3.4} dovljno je provjeriti da je $\praslika{f}(\famC) \subseteq \famF$, ako je $\famC$ generiraju\' ca familija za $\famE$, to jest ako je $\famE = \sigAlg{\famC}$.
+\end{nap}
+
+Koriste\' ci napomenu \ref{nap:3.11} i primjer \ref{pr:2.3} dobivamo:
+
+\begin{kor} \label{kor:3.12}
+    Neka je $X : \Omega \to \extReal$ preslikavanje i $\famC$ bilo koja klasa iz primjera \ref{pr:2.3} (za slu\v caj $\real$).
+    Tada je $X$ pro\v sirena slu\v cajna varijabla ako i samo ako je $\praslika{X}(\famC) \subseteq \famF$.
+\end{kor}
+
+Podsjetimo se da je za $x, \; y \in \extReal$, $x \lor y := \max \{x, \: y\}$ i $x \land y := \min \{x, \: y\}$.
+Podsjetimo se i da koristimo konvencije $0 \cdot \pm \infty = 0$, te $c \cdot (\pm \infty) = \pm \infty$ za $c > 0$ i $(-1) \cdot (\pm \infty) = \mp \infty$. Koriste\' ci korolar \ref{kor:3.5} i lemu \ref{lm:3.6} dobijemo:
+
+\begin{kor} \label{kor:3.13}
+    Ako je $X$ (pro\v sirena) slu\v cajan varijabla, tada su i
+    \begin{itemize}[label=]
+        \item $c \cdot X, \; c \in \real$,
+        \item $|X|$,
+        \item $X^+ := X \lor 0$,
+        \item $X^- := (-X) \land 0$
+    \end{itemize}
+    pro\v sirene slu\v cajne varijable.
+\end{kor}
+
+\begin{kor} \label{kor:3.14}
+    Ako je $\niz{X_n}{n \in \nat}$ niz pro\v sirenih slu\v cajnih varijabli, tada su:
+    \begin{itemize}[label=]
+        \item $\sup\limits_{n} X_n$,
+        \item $\inf\limits_{n} X_n$,
+        \item $\limsup\limits_{n} X_n$,
+        \item $\liminf\limits_{n} X_n$,
+    \end{itemize}
+    pro\v sirena slu\v cajne varijable.
+\end{kor}
+
+\begin{proof}
+    Po korolaru \ref{kor:3.12} i $\famC = \famK$ iz primjera \ref{pr:2.3} slijedi da je $\sup\limits_n X_n$ pro\v sirena slu\v cajna varijabla, jer $\{ \sup\limits_n X_n \leq b \} = \presjek{n \in \nat}{} \{ X_n \leq b \}$.
+    Iz korolara \ref{kor:3.13} slijedi tvrdnja za infimum, zbog $\inf\limits_n X_n = - (\sup\limits_n - X_n)$.
+    Nadalje, $\liminf\limits_n X_n = \sup\limits_k (\inf\limits_{n \geq k}) X_n$, $\limsup\limits_n X_n = \inf\limits_k (\sup\limits_{n\geq k} X_n)$.
+\end{proof}
+
+Mo\v ze se dogoditi da slu\v cajni element $f:\Omega \to E$ ima vrijednosti u nekom podskupu $A \subseteq E$ koji mo\v ze i ne mora biti u $\famE$. Koriste\' ci \eqref{jed:3.2},\eqref{jed:3.3} i lemu \ref{lm:3.4} te inkluziju $i: A \to E$, mo\v zemo jednostavno opisati takve situacije.
+
+\begin{zad} \label{zad:3.15}
+    Neka je $(E, \: \famE)$ izmjeriv prostor i $A \subseteq E$.
+    Poka\v zi da je
+    \begin{equation*}
+        A \cap \famE := \skup{A \cap B}{B \in \famE}
+    \end{equation*}
+    $\sigma$-algebra na $A$.
+    Pove\v zi s pojmom relativne topologije ako je $E$ topolo\v ski prostor i $\famE = \borel{E}$.
+    Ako je $f$ slu\v cajni element u $(A, \: A \cap \famE)$ mo\v zete li ga interpretirati kao slu\v cajni element u $E$?
+    S druge strane, ako je $f$ slu\v cajni element s vrijednostima u $E$ i $f \in A \; (g.s.)$, mo\v zete li interpretirati $f$ kao slu\v cajni element u $(A, \: a \cap \famE)$?
+\end{zad}
+
+% Ovo revidiraj, primjer nije točan
+
+\begin{pr}  \label{pr:3.16}
+    Neka su $(A, \: \famA)$, $(B, \: \famB)$ izmjerivi prostori i $f: A \to B$ $(\famA, \: \famB)$-izmjerivo preslikavanje.
+    Ka\v zemo da je $f$ \emph{jednostavno} ako je $f(A)$ kona\v can skup. To o\v cito vrijedi ako i samo ako postoje $n \in \nat$, $\{ b_1, \: \dots, \: b_n \} \subseteq B$, particija $\{ A_1, \: \dots, \: A_n \} \subseteq \famA$ skupa $A$, takvi da je $\restr{f}{A_j} = b_j$, za $j = 1, \dots, n$.
+    
+    U slu\v caju da je $(B, \: \famB) = (\extReal, \: \borel{\extReal})$ vrijedi:
+    \begin{equation*}
+        f = \suma{j = 1}{n} b_j \mathbb{1}_{A_j}.
+    \end{equation*}
+    Posebno, jednostave slu\v cajne varijable tvore vektorski prostor nad $\extReal$.
+\end{pr}
+
+\begin{lm}  \label{lm:3.17}
+    Ako je $X$ nenegativan pro\v sirena slu\v cajna varijabla, tada postoji niz jednostavnih slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ takav da, za svaki $\omega \in \Omega$ vrijedi:
+    \begin{equation*}
+        0 \leq X_1(\omega) \leq X_1(\omega) \leq  \dots \nearrow X(\omega).
+    \end{equation*} 
+\end{lm}
+
+\begin{proof}
+    Za $\omega \in \Omega$ i $n \in \nat$ definiramo
+    \begin{equation*}
+        X_n(\omega) := \frac{1}{2^n} \floor*{2^n \cdot X(\omega)} \land n.
+    \end{equation*}
+\end{proof}
+
+Iz leme \ref{lm:3.17} i iz korolara \ref{kor:3.14} slijedi:
+
+\begin{tm}  \label{tm:3.18}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor i $X: \Omega \to \real$. Tada je $X$ slu\v cajna varijabla ako i samo ako je $X$ limes niza jednostavnih slu\v cajnih varijabli.
+\end{tm}
+
+\begin{zad} \label{zad:3.19}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, $X, \; Y$ pro\v sirene slu\v cajne varijable na $\Omega$ i $\alpha, \; \beta \in \real$.
+    \begin{enumerate}[label=(\alph*)]
+        \item Ako su $X \geq 0$, $Y \geq 0$, $\alpha \geq 0$, $\beta    \geq 0$, tada je $\alpha X + \beta Y$ pro\v sirena nenegativan slu\v cajna varijabla.
+        \item Ako su $X$ i $Y$ slu\v cajne  varijable, tada je $\alpha X + \beta Y$ gotovo sigurno dobro definirana i mo\v ze se interpretirati kao slu\v cajna varijabla.
+    \end{enumerate}
+\end{zad}
+
+\begin{zad}
+    Neka je $X$ slu\v cajna varijabla i $Y$ slu\v cajni element s vrijednostima u $(E, \: \famE)$.
+    Tada je $X$ $(\sigAlg{Y}, \: \borel{\real})$-izmjeriva ako i samo ako postoji funckija $f: E \to \real$ $(\famE, \: \borel{\real})$-izmjeriva takva da je $X = f \circ Y$.
+\end{zad}
+
+%
+% rješi i dodaj ovdje.
+%
