@@ -9,6 +9,8 @@
 
 \RequirePackage{enumitem}
 \RequirePackage{mathtools}
+\RequirePackage{centernot}
+\RequirePackage{stackengine}
 
 
 % teoremi
@@ -38,6 +40,8 @@
 \newcommand{\dirProd}[2]{\bigotimes\limits_{#1}^{#2}}
 \newcommand{\card}[1]{\textnormal{card}({#1})}
 
+\newcommand{\notimpliedby}{\centernot\impliedby}
+
 \newcommand{\segment}[2]{[{#1}, \:{#2}]}
 \newcommand{\niz}[2]{({#1} \: | \: {#2})}
 \newcommand{\indFamilija}[2]{\{{#1} \: | \: {#2}\}}
@@ -55,6 +59,7 @@
 \newcommand{\restr}[2]{\left. \kern- \nulldelimiterspace {#1}
     \vphantom{\big|} \right|_{#2}}
 \newcommand{\praslika}[1]{{#1}^{\leftarrow}}
+\newcommand{\distJed}{\overset{d}{=}}
 
 %skupovi
 \newcommand{\N}{\mathbb{N}}
@@ -85,6 +90,7 @@
 \newcommand{\famG}{\mathcal{G}}
 
 \newcommand{\masP}{\mathbb{P}}
+\newcommand{\masO}{\mathbb{O}}
 
 \newcommand{\borel}[1]{\mathcal{B}_{#1}}
 

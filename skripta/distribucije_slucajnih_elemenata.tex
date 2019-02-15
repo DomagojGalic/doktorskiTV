@@ -6,5 +6,81 @@
     Promatrajmo vjerojatnosni prostor $\vjerojatnosniProstor = (\segment{0}{1}, \: \borel{\segment{0}{1}}, \: \restr{\lambda}{\borel{\segment{0}{1}}})$ i dvije slu\v cajne varijable $X (\omega) := \omega$, $Y (\omega) := 1 - X (\omega)$.
     O\' cito $X(\omega) = Y(\omega)$, za svaki $\omega \in \Omega \setminus \{ \frac{1}{2} \}$, to jest kao funkcije u skupovnom smislu $X$ i $Y$ su "potpuno" razli\v cite.
     \v Sto mo\v zemo re\' ci o "vjerojatnosnim informacijama" koje mo\v zemo saznati o $X$ i $Y$?
-    Za proizvoljan $A \in \famF = \borel{\segment{0}{1}}$ imamo $1-A = 1 + (-A) \in \borel{\segment{0}{1}}$ i 
+    Za proizvoljan $A \in \famF = \borel{\segment{0}{1}}$ imamo $1-A = 1 + (-A) \in \borel{\segment{0}{1}}$ i $\lambda (1 - A) = \lambda (A) \implies \vjeroj{X \in A} = \vjeroj{Y \in A}, \; forall A \in \famF$.
+    Dakle iako su $X$ i $Y$ vlo razli\v cite slu\v cajne varijable, njihove "vjerojatnosne distribucije" su jednake.
 \end{pr}
+
+\begin{defn}    \label{defn:5.2}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor na kojem je definiran slu\v cajan element $X$ s vrijednostima u izmjerivom prostoru $\urePar{E}{\famE}$.
+    \emph{Vjerojatnosna distribucija} slu\v cajnog elementa $X$ je vjerojatnosna mjera $\masP_X$, definirana na $\urePar{E}{\famE}$
+    sa:
+    \begin{equation*}
+        \masP_X (A) := \masP(X \in A), \; A \in \famE.
+    \end{equation*}
+\end{defn}
+
+Uo\v cimo $\masP_X$ je poseban slu\v caj tako zvane mjere inducirane izmjerivim preslikavanjem.
+
+\begin{nap} \label{nap:5.3}
+    \begin{enumerate}[label=(\alph*)]
+        \item Uo\v cimo da je u $\masP$ sadr\v zana "sva vjerojatnosna informacija" o $X$.
+        \item Bavljenje slu\v cajnim elementima s vjerojatnostima u $\urePar{E}{\famE}$ (bez obzira na kojem vjerojatnosnom prostoru bili definirani) mo\v ze se svesti na tako zvani \emph{kanonski slu\v caj}.
+        \item Preciznije, mi fiksiramo "vjerojatnosni prostor" i "slu\v cajni element", to jest uzmemo $\tilde{\Omega} := E$, $\tilde{\famF} := \famE$, $\tilde{X} := id : E \to E$ i dr\v zimo uvijek fiksirano, a slu\v cajni element "realiziramo" postavljanjem odgovaraju\' ce vjerojatnosne mjere $\masP_X$ na taj prostor.
+        Tada $X$ (uz $\masP$) i $\tilde{X}$ (uz $\masP_X$) imaju istu distribuciju (i to je $\masP_X$).
+        \item Time se uvodi nova ideja o pojmu jednakosti u vjerojatnosti.
+        vidjeli smo da za slu\v cajne elemente (definirane na istom prostoru s vjerojatnostima u istom prostoru) mo\v zemo promatrati obi\v cnu skupovnu jednakost $X = Y$, jednakost gotovo sigurno $(g.s.)$, a sada i jednakost po distribuciji.
+        Preciznije, ako su $X$ i $Y$ slu\v cajni elementi s vjerojatnostima u $\urePar{E}{\famE}$, definirani na vjerojatnosnim prostorima $(\Omega_1, \: \famF_1, \: \masP)$ i $(\Omega_1, \: \famF_2, \: \masO)$, re\' ci \' cemo da su \emph{jednaki po distribuciji}, i pisati $X \distJed Y$, ako je $\masP_X = \masO_Y$.
+        Lako se vidi (primjer \ref{pr:5.1})
+        \begin{equation*}
+            X = Y
+            \begin{smallmatrix}
+                \implies&  \\
+                \notimpliedby&
+            \end{smallmatrix}
+            X = Y \; (g.s.)
+            \begin{smallmatrix}
+                \implies&  \\
+                \notimpliedby&
+            \end{smallmatrix}
+            X \distJed Y.
+        \end{equation*}
+    \end{enumerate}
+\end{nap}
+
+U slu\v caju $\urePar{E}{\famE} = \urePar{\extReal}{\borel{\extReal}}$ informaciju o $\masP_X$ mo\v zemo prevesti na jezik obi\v cnih realnih funkcija realne varijable.
+
+\begin{defn}    \label{defn:5.4}
+    Neka je $X$ pro\v sirena slu\v cajna varijabla na $\vjerojatnosniProstor$.
+    Funkcija $F_X : \extReal \to \segment{0}{1}$, definiran sa
+    \begin{equation*}
+        F_X (a) := \masP (X \leq a) = \masP (\skup{\omega \in \Omega}{X(\omega) \leq a}) = \masP_X (\segment{-\infty}{a}), \; a \in \real
+    \end{equation*}
+    nazivamo \emph{vjerojatnosnom funkcijom distribucije} slu\v cajnog elementa $X$.
+\end{defn}
+
+Funkcija $F_X$ je neopadaju\' ca (jer $a \leq b \implies \segment{-\infty}{a} \subseteq \segment{-\infty}{b} \implies \masP_X (\segment{-\infty}{a}) \leq \masP_X (\segment{-\infty}{b}) $) i neprekidna zdesna (jer $a_n \searrow a \implies \segment{-\infty}{a} = \presjek{n = 1}{\infty} \segment{-\infty}{a_n}$).
+Uo\v cimo da je $F_X (-\infty) \geq 0$ i da je
+\begin{equation*}
+    F_X (-\infty) = 0 \iff \masP (X = -\infty) = 0,
+\end{equation*}
+a zbog neprekidnosti zdesna je $F_X (-\infty) = \lim\limits_{a \ \searrow -\infty} F_X (a)$.
+S druge strane postoji i $\lim\limits_{a \nearrow +\infty} F_X (a) \leq F_X(+\infty) = 1$, te je
+\begin{equation*}
+    F_X(+\infty) = \lim\limits_{a \nearrow +\infty} F_X (a) \iff \masP (X = +\infty) = 1.
+\end{equation*}
+
+Posebno, $X$ je slu\v cajna varijabla ako i samo ako vrijedi:
+\begin{align}    \label{jed:5.5}
+    \begin{split}
+        F_X(-\infty) &= 0, \\
+        \lim\limits_{a \nearrow +\infty} F_X(a) &= 1
+    \end{split}
+\end{align}
+
+Mo\v zemo gledati s druge strane i re\' ci da je $F: \extReal \to \segment{0}{1}$ \emph{p.d.F.} ako je $F$ neopadaju\' ca, neprekidna zdesna i zadovoljava uvjet \eqref{jed:5.5}.
+Time dolazimo do fundamentalog pitanja: "Je li svaka p.d.F. vjerojatnosna funkcija distribucije neke slu\v cajne varijable?"
+Odgovor je: Da!
+
+\begin{tm}  \label{tm:5.6}
+    Neka je $F: \extReal \to \segment{0}{1}$ neopadaju\' ca, neprekidna zdesna i zadovoljava uvijet \eqref{jed:5.5}, tada postoji vjerojatnosni prostor $\vjerojatnosniProstor$ i slu\v cajana varijabla $X$ na tom vjerojatnosnom prostoru, takva da je $F$ vjerojatnosna funkcija distribucije od $X$.
+\end{tm}
