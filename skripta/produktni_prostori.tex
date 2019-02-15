@@ -182,3 +182,33 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
 
 \v Sto mo\v zemo re\' ci o beskona\v cnom produktu?
 Prvo gledamo slu\v aj $T = \nat$. Neka su $\urePar{\Omega_n}{\famF_n}$, $n \in \nat$, izmjerivi prostori. Po \eqref{jed:4.2}, znamo da je $\prsten{\produkt{n \in \nat}{} \Omega_n}$ generiraju\' ci poluprsten za $\dirProd{n \in \nat}{} \famF$, pa bi bilo dovoljno mjere zadati na $\prsten{\produkt{n \in \nat}{} \Omega_n}$.
+Ako na svakom $\urePar{\Omega_n}{\famF_n}$ imamo $\sigma$-kona\v cnu mjeru $\mu_n$, prirodno bi se moglo o\v cekivati da na $A_1 \times \dots \times A_n \times \Omega_{n + 1} \times \dots$ zadamo mjeru pomo\' cu $\mu_1(A), \; mu_1(A) \times \mu_2(\Omega_2), \: mu_1(A) \times \mu_2(\Omega_2) \times \mu_3 (\Omega_3)$, i tako dalje.
+U pravilu one \' ce biti jednake, jedino ako su to vjerojatnosne mjere.
+No mo\v zemo postupati druga\' cije.
+Neka je, za svaki $n \in \nat$, $\famG_n := \sigAlg{\pi_1, \dots, \pi_n}$, pa je $\famG_1 \subseteq \famG_2 \subseteq \dots$, tvore uzlazni niz $\sigma$-algebri takav da je $\famG_{\infty} := \unija{n = 1}{\infty} \famG_n$ algebra, ali ne nu\v zno i $\sigma$-algebra, i $\sigAlg{\famG_{\infty}} = \dirProd{n \in \nat}{} \famF_n$.
+% nisam siguran što je ovaj G točno :/
+Sada bi se na $\famG$ mogli promatrati nizovi $\niz{(\mu_1 \otimes \dots \otimes \mu_2)(G)}{n \in \nat}$ i u slu\v caju da postoje limesi $\lim\limits_{n \to \infty} (\mu_1 \otimes \dots \otimes \mu_2)(G)$, taj bi se limes mogao uzeti za $\nu (G)$.
+Ali i taj put vodi na probleme, ilustrirajmo jedan od njih.
+
+\begin{pr}  \label{pr:4.20}
+    Neka je $(\Omega_n, \: \famF_n, \: \mu_n) = (\{0, \: 1\}, \: \partitive{\Omega_n}, \: \mu_n(\{0\}) = \mu_n (\{1\}) = 1)$.
+    Uzmemo li bilo koju to\v cku $a \in \{ 0, \: 1 \}^{\nat}$, postoji $\lim\limits_{n \to \infty} (\mu_1 (\{ a_1 \}) \cdot \mu_2 (\{ a_2 \}) \cdot \dots \mu_n (\{ a_n \}) ) = 1$ pa bi "mjera" na $\{ 0, \: 1 \}^{\infty}$ koja bi bila kandidat za $\dirProd{n \in \nat}{} \mu_n$ imala neprebrojivo jedno\v clanih skupova mjere $1$, to jest nikako ni bi mogla biti $\sigma$-kona\v cna. 
+\end{pr}
+
+U vjerojatnosnom slu\v caju sve je u redu.
+
+\begin{tm}  \label{tm:4.21}
+    Neka je $(\Omega_n, \: \famF_n, \: \Pp_n), \; n \in \nat$, niz vjerojatnosnih prostora.
+    Postoji i jedinstvena je vjerojatnosna mjera $\masP$ na $\urePar{\produkt{n \in \nat}{} \Omega_n}{\dirProd{n \in \nat}{} \famF_n}$ takva da je za svaki $n \in \nat$, za svaki izbor $A_1 \in \famF_1, \dots, A_n \in \famF_n$,
+    \begin{equation*}
+        %\masP (\praslika{\pi_1}(A_1) \cap \dots \cap \praslika{\pi_n}(A_n))
+        \masP(\pi_1 \in A_1, \: \dots, \pi_n \in A_n)
+        = \produkt{k = 1}{n} \masP_k (A_k).
+    \end{equation*}
+    Tu vjerojatnost nazivamo \emph{beskona\v cnim produktom} i ozna\v cavamo sa $\dirProd{n \in \nat}{} \masP_n$.
+\end{tm}
+
+\begin{zad} \label{zad:4.22}
+    Formulirajte op\' ci teorem o produktu vjerojatnosnih mjera i poka\v zite da se dokazuje u su\v stini potpuno isto kao kao i teorem \ref{tm:4.21}.
+    % uputa: vidi zadatak 6, a u dokazu koristi zadatak 1.12 b i Cantorov diagonalni postupak.
+\end{zad}
