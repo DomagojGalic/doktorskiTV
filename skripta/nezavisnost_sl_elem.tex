@@ -1,0 +1,235 @@
+% nezavisnost slučajnih elemenata
+
+\chapter{Nezavisnost i slu\v cajni elementi}
+
+I u ovom poglavlju $\vjerojatnosniProstor$ uvijek ozna\v cava proizvoljan vjerojatnosni prostor.
+
+\begin{defn}   \label{defn:7.1}
+    Neka je $\Lambda \neq \varnothing$ indeksni skup, $\indFamilija{\urePar{E_\lambda}{\famE_\lambda}}{\lambda \in \Lambda}$ familija izmjerivih prostora i $\niz{X_\lambda : \Omega \to E_\lambda}{\lambda \in \Lambda}$ familija slu\v cajnih elemenata.
+    Familija $\niz{X_\lambda}{\lambda \in \Lambda}$ je \emph{nezavisna} (ili nepreciznije \emph{slu\v cajni elementi} $X_\lambda$ \emph{su nezavisni}) ako su $\sigma$-algebre $\sigAlg{X_\lambda}$, $\lambda \in \Lambda$ nezavisne.
+\end{defn}
+
+O\v cito, to je ekvivalentno svojstvu:
+\begin{equation}    \label{jed:7.2}
+    \begin{gathered}
+        (\forall n \in \nat) (\forall \lambda_1, \ldots, \lambda_n \in \Lambda, \; \textnormal{ me\dj usobno razli\v cite}) (\forall F_1 \in \famE_1, \ldots, F_n \in \famE_n)\\ 
+        \vjeroj{\presjek{i = 1}{n} \{ X_{\lambda_i} \in F_i \}} = \produkt{i = 1}{n} \vjeroj{X_{\lambda_i} \in F_i}.
+    \end{gathered}
+\end{equation}
+
+Nadalje, definicija \ref{defn:7.1} (odnosno \eqref{jed:7.2}) ekvivalentno je sa:
+\begin{equation}    \label{jed:7.3}
+    \begin{gathered}
+        (\forall n \in \nat) (\forall \lambda_1, \ldots, \lambda_n \in \Lambda, \textnormal{ me\dj usobno razli\v cite})\\
+        X_{\lambda_1}, \ldots, X_{\lambda_n} \textnormal{ su nezavisne}.
+    \end{gathered}
+\end{equation}
+
+Tada postaje jasno da je vrlo korisno imati operativnu i preciznu karakterizaciju nezavisnosti kona\v cne familije slu\v cajnih elemenata.
+
+\begin{tm}  \label{tm:7.4}
+    Neka je $n \in \nat$, $\urePar{E_1}{\famE_1}, \ldots, \urePar{E_n}{\famE_n}$ izmjerivi prostori i $X_1 : \Omega \to E_1, \ldots, X_n \to E_n$, slu\v cajni elementi.
+    Tada su $X_1, \ldots, X_n$ nezavisni ako i samo ako je
+    \begin{equation*}
+        \masP_{\nvektor{X}} = \masP_{X_1} \otimes \ldots \otimes \masP_{X_n}.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Uo\v cimo da tvrdnja ima smisla, jer po propoziciji \ref{prop:4.9} slijedi da je $\nvektor{X}$ slu\v cajni element na $E_1 \times \ldots \times E_n$, to jest obje vjerojatnosti su definirane na $\famE_1 \otimes \ldots \otimes \famE_n$ koje su generirane $\pi$-sistemom cilindrova oblika $A_1 \times \ldots \times A_n$, $A_1 \in \famE_1, \ldots, A_n \in \famE_n$.
+    Stoga su navedene vjerojatnosti jednake ako i samo ako su jednake na cilindrima.
+    Budu\' ci da je
+    \begin{equation*}
+        \masP_{\nvektor{X}}(A_1 \times \ldots \times A_n) = \vjeroj{\presjek{i = 1}{n} \{ X_i \in A_i \}}
+    \end{equation*}
+    i da vrijedi
+    \begin{equation*}
+        \masP_{X_1} \otimes \ldots \otimes \masP_{X_n} (A_1 \times \ldots \times A_n) = \produkt{i = 1}{n} \vjeroj{X_i \in A_i}
+    \end{equation*}
+    stoga tvrdnja slijedi.
+\end{proof}
+
+Uzmemo li poseban slu\v caj $E_1 = \ldots = E_n = \real$ i iskoristimo li napomenu \ref{nap:5.8} \ref{nap:5.8a} i zadatak \ref{zad:5.11}, iz teorema \ref{tm:7.4} dobivamo:
+
+\begin{kor} \label{kor:7.5}
+    Slu\v cajne varijable $X_1, \ldots, X_n$ su nezavisne ako i samo ako, za svaki $x_1, \ldots, x_n \in \real$ vrijedi
+    \begin{equation*}
+        F_{\nvektor{X}}(x_1, \ldots, x_n) = F_{X_1} (x_1) \cdot \ldots \cdot F_{X_n} (x_n).
+    \end{equation*}
+\end{kor}
+
+Primjenimo li teorem \ref{tm:7.4} na prebrojiv skup oblika $A \times \ldots \times A$, dobijemo jednostavan kriterij nezavisnosti diskretne za slu\v cajne varijable:
+
+\begin{kor} \label{kor:7.6}
+    Neka su $X_1, \ldots, X_n$, slu\v cajne varijable za koje postoji prebrojiv skup $A \subseteq \real$ takav da je $X_i \in A \; (g.s.)$, za svaki $i = 1, \ldots, n$.
+    Tada su $X_1, \ldots, X_n$ nezavisne ako i samo ako za svaki izbor $\nBezZagVekt{a} \in A$, vrijedi
+    \begin{equation*}
+        \masP (X_1 = a_1, \ldots, X_n = a_n) = \vjeroj{X_1 = a_1} \cdot \ldots \cdot \vjeroj{X_n = a_n}.
+    \end{equation*}
+\end{kor}
+
+Podsjetimo se da za $X, \; Y \in L^1$, $X \cdot Y$ ne mora biti u $L^1$. Ako su pak $X, \; Y \in L^2$, onda je $X \cdot Y \in L^1$, ali $\masE [X \cdot Y]$ ne mora biti jednako $\masE X \cdot \masE Y$.
+
+\begin{tm}  \label{tm:7.7}
+    Ako su $X, \; Y \in L^1 \vjerojatnosniProstor$ nezavisne slu\v cajne varijable, tada je $X \cdot Y \in L^1(\masP)$ i vrijedi
+    \begin{equation*}
+        \masE [X \cdot Y] = \masE X \cdot \masE Y.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Uo\v cimo da je $Z:=\urePar{X}{Y}$ dvodimenzionalan slu\v cajan vektor i po teoremu \ref{tm:7.4} je $\masP_Z = \masP_X \otimes \masP_Y$.
+    Po zadatku \ref{zad:4.15}
+    \begin{align*}
+        \int_\Omega |X(\omega)| \cdot |Y(\omega)| \: d \masP
+        &= \int_{\real^2} |x| \cdot |y| \: d \masP_Z \urePar{x}{y} = \int_\real |x| \: d \masP_X (x) \cdot \int_{\real} |y| \: d \masP_Y (y)\\
+        &= \masE [|X|] \cdot \masE [|Y|] < +\infty \implies X \cdot Y \in L^1.
+    \end{align*}
+    Sada na slu\v can na\v cin Fubinije teorem (zadatak \ref{zad:4.16}) daje
+    \begin{equation*}
+        \masE [X \cdot Y] = \masE X \cdot \masE Y.
+    \end{equation*}
+\end{proof}
+
+\begin{zad} \label{zad:7.8}
+    Ako su $X, \; Y \in L^2 \vjerojatnosniProstor$ nezavisne, tada je
+    \begin{equation*}
+        \Var (X + Y) = \Var X + \Var Y.
+    \end{equation*}
+\end{zad}
+
+Uo\v cimo da sada direktno iz korolara \ref{kor:6.11} direktno dobivamo:
+
+\begin{kor} \label{kor:7.9}
+    Neka je $\Lambda \neq  \varnothing$ indeksni skup, $\indFamilija{\urePar{E_\lambda}{\famE_\lambda}}{\lambda \in \Lambda}$ familija izmjerivih prostora i $\niz{X_\lambda : \Omega \to E_\lambda}{\lambda \in \Lambda}$ familija nezavisnih slu\v cajnih elemenata.
+    Neka je $\famT$ particija od $\Lambda$ i neka je za svaki $T \in \famT$ zadan izmjeriv prostor $\urePar{H_T}{\famH_T}$ i izmjerivo preslikavanje $f_T : \urePar{\produkt{t \in T}{} E_t}{\dirProd{t \in T}{} \famE_t} \to \urePar{H_T}{\famH_T}$.
+    Tada je $\niz{f_T \circ \niz{X_\lambda}{\lambda \in T}}{T \in \famT}$ nezavisna familija slu\v cajnih elemenata.
+\end{kor}
+
+%% koriste\' ci dokaz sli\v can onome iz \ref{tm:7.7} rje\v site.
+\begin{zad} \label{zad:7.10}
+    Neka su $X : \Omega \to \urePar{E}{\famE}$ i $Y : \Omega \to \urePar{H}{\famH}$ nezavisni slu\v cajni elementi.
+    Neka je $f : \urePar{E \times H}{\famE \otimes \famH} \to \urePar{\real}{\borel{\real}}$ izmjeriva za koju vrijedi:
+    ili je $f \geq 0$ ili je $\masE [|f \urePar{X}{Y}|] < +\infty$.
+    Tada je
+    \begin{align*}
+        \masE [ f \urePar{X}{Y} ]
+        &= \int_{E} \int_{H} f \urePar{x}{y} \: d \masP_Y (y) \: \masP_X (x) \\
+        &= \int_H \int_E f \urePar{x}{y} \: d \masP_X (x) \: \masP_Y (y).
+    \end{align*}
+\end{zad}
+
+\begin{zad} \label{zad:7.11}
+    Slu\v cajni element sa vrijednostima u $\urePar{E}{\famE}$ je \emph{degeneriran} ako postoji $a \in E$, takav da je $X = a \; (g.s.)$ (u ovoj situaciji \emph{nije nu\v zno} da je $\{a\} \in \famE$, to jest da je $\{X = a\} \in \famF$).
+    Ako je $X$ degenerirani slu\v cajni element, a $Y$ bilo koji slu\v cajni element (ne nu\v zno s vrijednostima u istom prostoru) tada su $X$ i $Y$ nezavisni.
+    Ako su $X$ i $Y$ nezavisni slu\v cajni elementi takvi da je $X + Y$ degenerirana, tada su $X$ i $Y$ degenerirane.
+\end{zad}
+
+
+Grupa $\urePar{G}{\cdot}$ sa $\sigma$-algebrom $\famG$ je \emph{izmjeriva grupa} ako je grupovna operacija $\cdot : G \times G \to G$ izmjeriva u paru $\urePar{\famG \otimes \famG}{\famG}$.
+Neka su $\mu$ i $\nu$ $\sigma$-kon\v cne mjere na $\urePar{G}{\famG}$.
+Tada je i $\mu \otimes \nu$ $\sigma$-kona\v cna mjera na $\urePar{G \times G}{\famG \otimes \famG}$, pa mo\v zemo promatrati mjeru na $\urePar{G}{\famG}$ induciranu preslikavanjem $\cdot$ u odnosu na $\mu \otimes \nu$.
+Tu mjeru nazivamo \emph{konvolucijeom} mjera $\mu$ i $\nu$ te ozna\v cavamo sa $\mu * \nu$.
+Po zadatku \ref{zad:4.15} dobijemo da je za svaki $H \in \famG$
+\begin{equation*}   \label{jed:7.12}
+    (\mu * \nu)(H) := \int_G \nu (a^{-1} \: H) \: d \mu (a).
+\end{equation*}
+
+\begin{zad} \label{zad:7.13}
+    Ako je $\urePar{G}{\cdot}$ Abelova grupa, tada je konvolucija komutativana operacija.
+\end{zad}
+
+\begin{nap} \label{nap:7.14}
+    \begin{enumerate}[label=(\alph*)]
+        \item Op\' cenito govore\' ci mjera $\mu * \nu$ ne mora biti $\sigma$-kona\v cna.
+        Ako su $\mu$ i $\nu$ kona\v cne mjere, tada je i $\mu * \nu$ kona\v cna i
+        \begin{equation*}
+            (\mu * \nu) (G) = \mu (G) \: \nu (G),
+        \end{equation*}
+        \v sto slijedi iz \eqref{jed:7.12}.
+        \item Ako su $\mu, \; \nu, \; \eta$ $\sigma$-kona\v cne mjere na $\urePar{G}{\famG}$, takve da su $\mu * \nu$ i $\nu * \eta$ $\sigma$-kon\v cne, tada vrijedi
+        \begin{equation*}
+            (\mu * \nu) * \eta = \mu * (\nu * \eta).
+        \end{equation*}
+        \item   \label{nap:7.14c}
+        Ako na $\urePar{G}{\famG}$ postoji $\sigma$-kona\v cna mjera $\lambda$ takva da je $\mu << \lambda$ i $\nu << \lambda$, tada za $f = \frac{d \mu}{d \lambda}$ i $g = \frac{d \nu}{d \lambda}$ vrijedi
+        \begin{equation*}
+            (\mu * \nu) (H) = \int_G \int_{a^{-1} H} f(a) \: g(b) \: d \lambda (b) \: d \lambda (a).
+        \end{equation*}
+        \item Ako je $\lambda$ iz \ref{nap:7.14c} jo\v s i \emph{invarijantna} u odnosu na sve lijeve translacije (to jest za svaki $g \in G$ i za svaki $C \in \famG$ je $\lambda (g^{-1} C) = \lambda (C)$), tada je
+        \begin{equation*}
+            (\mu * nu) (H) = \int_H \Big( \int_G f(a) \: g (a^{-1} b) \: d \lambda (a) \Big) \: d \lambda (b),
+        \end{equation*}
+        to jest $\mu * \nu << \lambda$ i postoji gusto\' ca
+        \begin{equation*}
+            \frac{d (\mu * \nu)}{d \lambda} (b) = \int_G f(a) \: g (a^{-1} b) \: d \lambda (a)
+        \end{equation*}
+        koju ozna\v cavamo sa \emph{$f*g$}.
+    \end{enumerate}
+\end{nap}
+
+\begin{tm}  \label{tm:7.15}
+    Ako su $X$ i $Y$ nezavisni slu\v cajni elementi s vjerojatnostima u izmjerivoj grupi $\urePar{G}{\cdot}$, tada je $\masP_{X \cdot Y} = \masP_X * \masP_Y$.
+\end{tm}
+
+\begin{proof}
+    Uo\v cimo da je $Z:= \urePar{X}{Y}$, su\v cajni element s vrijednostima u $G \times G$ i da je $\masP_Z = \masP_X \otimes \masP_Y$.
+    Budu\' ci da je $\cdot$ izmjerivo, slijedi da je $X \cdot Y$ slu\v cajni element s vrijednostima u $G$ i $\masP_{X \cdot Y}$ je vjerojatnost inducirana s $\cdot$ u odnosu na $\masP_Z$.
+    To je po definiciji to\v cno $\masP_X * \masP_Y$.
+\end{proof}
+
+\begin{zad} \label{zad:7.16}
+    Primjenite ove rezultate na Abelovu grupu $\urePar{\real^d}{+}$ i posebno obratite pa\v znju na slu\v caj $d = 1$.
+    Za slu\v caj $d = 1$izvedite pravila za konvluciju d.f.
+\end{zad}
+
+Promotrimo sada nezavisne familije slu\v cajnih elemenata.
+Po\v cnimo od kona\v cnog slu\v caja.
+Uo\v cimo prvo da ako su $\nBezZagVekt{X}, \; n \in \nat$, \emph{nezavisni} slu\v cajni elementi s vrijednostima u (respektivno) $\urePar{E_1}{\famE_1}, \ldots, \urePar{E_n}{\famE_n}$, tada je distribucija slu\v cajnog elementa $\nvektor{X}$ (s vrijednostima u $\urePar{E_1 \times \ldots \times E_n}{\famE_1 \otimes \ldots \otimes \famE_n}$) u potpunosti odre\dj ena s $\masP_{X_1}, \ldots, \masP_{X_n}$; vidi teorem \ref{tm:7.4}
+
+U statistici i primjenama \v cesto je obrnuta situacija.
+Pretpostavimo da su nam zadane distribucije $\nBezZagVekt{\masP}$ na (respektivno) $\urePar{E_1}{\famE_1}, \ldots, \urePar{E_n}{\famE_n}$ i \v zelimo formirati slu\v cajni element $X = \nvektor{X}$ na $E_1 \times \ldots \times E_n$, tako da su $\nBezZagVekt{X}$ \emph{nezavisni} i $\masP_{X_1} = \masP_1, \ldots, \masP_{X_n} = \masP_n$.
+Iz dokazanog lako slijedi da se to jednostavno posti\v ze na vjerojatnosnom prostoru \emph{kononskog oblika}
+\begin{equation} \label{jed:7.17}
+    \begin{aligned}
+        \Omega &:= E_1 \times \ldots \times E_n\\
+        \famF &:= \famE_1 \otimes \ldots \otimes \famE_n\\
+        \masP &:= \masP_1 \otimes \ldots \otimes \masP_n\\
+        X &:= \id : \Omega \to \Omega\\
+        X_i &= \pi_i : E_1 \times \ldots \times E_n \to E_i, \quad i = 1, \ldots, n.
+    \end{aligned}
+\end{equation}
+U klasi\v cnoj situaciji, kada su $X_i$ slu\v cajne varijable, ovaj zahtjev mo\v zemo ispuniti i direktnije.
+
+\begin{prop}    \label{prop:7.18}
+    Neka su $\nBezZagVekt{F}$ proizvoljne p.d.F. i $\vjerojatnosniProstor$ vjerojatnosni prostor na kojem postoji slu\v cajni vektor $U = \nvektor{U}$, takav da su $\nBezZagVekt{U} $ nezavisne i jednako distribuirane slu\v cajne varijable s uniformnom razdiobom na $\obInt{0}{1}$.
+    Tada na $\vjerojatnosniProstor$ postoji slu\v cajni vektor $X 0 \nvektor{X}$ takav da su $\nBezZagVekt{X}$ nezavisne slu\v cajne varijable i $F_{X_1} = F_1, \ldots F_{X_n} = F_n$.
+\end{prop}
+
+\begin{proof}
+    Neka je $h_i : \obInt{0}{1} \to \real, \; i = 1, \ldots n$, zadan sa $h_i (x) := \sup \skup{r \in \real}{F_i (r) < x}$ i neka je
+    \begin{equation*}
+        X := (h_1 \circ U_1, \ldots, h_n \circ U_n).
+    \end{equation*} 
+    Tada je
+    \begin{equation*}
+        \skup{w \in \obInt{0}{1}}{h_i(w) \leq x} = \skup{w \in \obInt{0}{1}}{w \leq F_i (x)}
+    \end{equation*}
+    pa je $F_{h_i \circ U_i} = F_i$.
+    Nezavisnost slijedi iz korolara \ref{kor:7.9}
+\end{proof}
+
+\begin{nap} \label{nap:7.19}
+    Lako je posti\' ci uvijete iz propozicije \ref{prop:7.18}.
+    Neka je $\Omega := \segment{0}{1}^n$, $\famF := \borel{\Omega}$, $\masP := \restr{\lambda^n}{\famF}$ i $U_i : \pi_i : \Omega \to \segment{0}{1}, \; i = 1, \ldots, n$.
+\end{nap}
+
+\begin{zad} \label{zad:7.20}
+    Uzmimo $n = 1$ u napomeni \ref{nap:7.19}. Napi\v simo svaki $U(x) = x \in \obInt{0}{1}$ u binarnom prikazi i ozna\v cimo $n$-tu znamenku s $h_n$, $n \in \nat$.
+    Doka\v zi da su $\niz{h_n}{n \in \nat}$ nezavisne i jednako distribuirane slu\v cajne varijable i vrijedi
+    $h_n \sim
+    \begin{pmatrix}
+        0& 1\\
+        \frac{1}{2}& \frac{1}{2}    
+    \end{pmatrix}$.
+\end{zad}
