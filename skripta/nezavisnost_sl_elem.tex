@@ -182,3 +182,54 @@ Po zadatku \ref{zad:4.15} dobijemo da je za svaki $H \in \famG$
     Primjenite ove rezultate na Abelovu grupu $\urePar{\real^d}{+}$ i posebno obratite pa\v znju na slu\v caj $d = 1$.
     Za slu\v caj $d = 1$izvedite pravila za konvluciju d.f.
 \end{zad}
+
+Promotrimo sada nezavisne familije slu\v cajnih elemenata.
+Po\v cnimo od kona\v cnog slu\v caja.
+Uo\v cimo prvo da ako su $\nBezZagVekt{X}, \; n \in \nat$, \emph{nezavisni} slu\v cajni elementi s vrijednostima u (respektivno) $\urePar{E_1}{\famE_1}, \ldots, \urePar{E_n}{\famE_n}$, tada je distribucija slu\v cajnog elementa $\nvektor{X}$ (s vrijednostima u $\urePar{E_1 \times \ldots \times E_n}{\famE_1 \otimes \ldots \otimes \famE_n}$) u potpunosti odre\dj ena s $\masP_{X_1}, \ldots, \masP_{X_n}$; vidi teorem \ref{tm:7.4}
+
+U statistici i primjenama \v cesto je obrnuta situacija.
+Pretpostavimo da su nam zadane distribucije $\nBezZagVekt{\masP}$ na (respektivno) $\urePar{E_1}{\famE_1}, \ldots, \urePar{E_n}{\famE_n}$ i \v zelimo formirati slu\v cajni element $X = \nvektor{X}$ na $E_1 \times \ldots \times E_n$, tako da su $\nBezZagVekt{X}$ \emph{nezavisni} i $\masP_{X_1} = \masP_1, \ldots, \masP_{X_n} = \masP_n$.
+Iz dokazanog lako slijedi da se to jednostavno posti\v ze na vjerojatnosnom prostoru \emph{kononskog oblika}
+\begin{equation} \label{jed:7.17}
+    \begin{aligned}
+        \Omega &:= E_1 \times \ldots \times E_n\\
+        \famF &:= \famE_1 \otimes \ldots \otimes \famE_n\\
+        \masP &:= \masP_1 \otimes \ldots \otimes \masP_n\\
+        X &:= \id : \Omega \to \Omega\\
+        X_i &= \pi_i : E_1 \times \ldots \times E_n \to E_i, \quad i = 1, \ldots, n.
+    \end{aligned}
+\end{equation}
+U klasi\v cnoj situaciji, kada su $X_i$ slu\v cajne varijable, ovaj zahtjev mo\v zemo ispuniti i direktnije.
+
+\begin{prop}    \label{prop:7.18}
+    Neka su $\nBezZagVekt{F}$ proizvoljne p.d.F. i $\vjerojatnosniProstor$ vjerojatnosni prostor na kojem postoji slu\v cajni vektor $U = \nvektor{U}$, takav da su $\nBezZagVekt{U} $ nezavisne i jednako distribuirane slu\v cajne varijable s uniformnom razdiobom na $\obInt{0}{1}$.
+    Tada na $\vjerojatnosniProstor$ postoji slu\v cajni vektor $X 0 \nvektor{X}$ takav da su $\nBezZagVekt{X}$ nezavisne slu\v cajne varijable i $F_{X_1} = F_1, \ldots F_{X_n} = F_n$.
+\end{prop}
+
+\begin{proof}
+    Neka je $h_i : \obInt{0}{1} \to \real, \; i = 1, \ldots n$, zadan sa $h_i (x) := \sup \skup{r \in \real}{F_i (r) < x}$ i neka je
+    \begin{equation*}
+        X := (h_1 \circ U_1, \ldots, h_n \circ U_n).
+    \end{equation*} 
+    Tada je
+    \begin{equation*}
+        \skup{w \in \obInt{0}{1}}{h_i(w) \leq x} = \skup{w \in \obInt{0}{1}}{w \leq F_i (x)}
+    \end{equation*}
+    pa je $F_{h_i \circ U_i} = F_i$.
+    Nezavisnost slijedi iz korolara \ref{kor:7.9}
+\end{proof}
+
+\begin{nap} \label{nap:7.19}
+    Lako je posti\' ci uvijete iz propozicije \ref{prop:7.18}.
+    Neka je $\Omega := \segment{0}{1}^n$, $\famF := \borel{\Omega}$, $\masP := \restr{\lambda^n}{\famF}$ i $U_i : \pi_i : \Omega \to \segment{0}{1}, \; i = 1, \ldots, n$.
+\end{nap}
+
+\begin{zad} \label{zad:7.20}
+    Uzmimo $n = 1$ u napomeni \ref{nap:7.19}. Napi\v simo svaki $U(x) = x \in \obInt{0}{1}$ u binarnom prikazi i ozna\v cimo $n$-tu znamenku s $h_n$, $n \in \nat$.
+    Doka\v zi da su $\niz{h_n}{n \in \nat}$ nezavisne i jednako distribuirane slu\v cajne varijable i vrijedi
+    $h_n \sim
+    \begin{pmatrix}
+        0& 1\\
+        \frac{1}{2}& \frac{1}{2}    
+    \end{pmatrix}$.
+\end{zad}
