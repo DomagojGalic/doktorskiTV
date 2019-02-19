@@ -1,1 +1,39 @@
 % beskonačne familije slučajnih elemenata
+
+\chapter{Beskona\v cne familije slu\v cajnih elemenata}
+
+Podsjetimo se na oznaku u napomeni \ref{nap:4.10}.
+
+\begin{defn}    \label{defn:8.1}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, $\urePar{E}{\famE}$ izmjeriv prostor, $T \neq \varnothing$ skup indeksa.
+    \emph{$E$-zna\v cni stohasti\v cki} (ili \emph{slu\v cajni}) \emph{proces} je svako preslikavanje $X : \Omega \to E^T$ koje je $\urePar{\famF}{\famE^T}$-izmjerivo.
+    Ako je $T$ beskona\v can i prebrojiv, obi\v cno ka\v zemo da je $X$ \emph{$E$-zna\v cni slu\v cajni niz}, a ako je $T$ kona\v can, ka\v zemo da je $X$ \emph{$E$-zna\v cni slu\v cajni vektor}.
+    Ako je $E = \extReal$, $\famE = \borel{\extReal}$, umjesto rje\v ci "$E$-zna\v cni" koristimo rje\v c "pro\v sireni", a ako jo\v s postoji $A \in \famF, \; \vjeroj{A} = 0$, takav da je $\unija{t \in T}{} \{ |\pi_t \circ X| = \infty \} \subseteq A$, tada se rje\v c "$E$-zna\v cni" u gornjoj definicij izbacuje.
+\end{defn}
+
+\begin{nap} \label{nap:8.2}
+    \begin{enumerate}[label=(\alph*)]
+        \item Umjesto $\pi_t \circ X$ naj\v ce\v s\' ce koristimo oznaku $X_t$ i stohasti\v cki proces promatramo kao familiju $E$-zna\v cnih funkcija $\niz{X_t}{t \in T}$.
+        Po propoziciji \ref{prop:4.9} $X$ je $E$-zna\v cni stohasti\v cki proces ako i samo ako su sve $X_t$ $E$-zna\v cni slu\v cajni elementi.
+        \item Mo\v ze se desiti da i $\urePar{T}{\famT}$ ima strukturu izmjerivog prostora
+        Tada je mogu\' ca jo\v s jedna interpretacija stohasti\v ckog procesa $\niz{X_t}{t \in T}$.
+        Ponovo se (neprecizno!) koristi slovo $X$ za preslikavanje $X : T \times \Omega \to E$, definirano sa $X \urePar{t}{\omega} := X_t (\omega)$.
+        Re\' ci \' cemo da je stohasti\v cki proces \emph{izmjeriv} ako je ovako definirani $X$ $\urePar{\famT \otimes \famF}{\famE}$-izmjeriv.
+        Uo\v cimo (po \eqref{jed:4.7}) da za svako $\urePar{\famT \otimes \famF}{\famE}$-preslikavanje $X$ vrijedi da su sve $X_t$ slu\v cajni elementi u $E$ to jest $\niz{X_t}{t \in T}$ je $E$-zna\v cni stohasti\v cki proces.
+        Obrat op\' cenito ne vrijedi.
+        \item Ako je $T \subseteq \overline{\Z}$ ili $T \subseteq \extReal$, obi\v cno $t \in T$ interpretiramo kao vrijeme.
+        Za svaki $\omega \in \Omega$ promatramo preslikavanje $T \ni t \mapsto X_t (\omega) \in E$ koje nazivamo \emph{trajektorijom} ("sample path") procesa $X$.
+        Ako $X$ ima i topolo\v sku strukturu obi\v cno se promatraju i neka "analiti\v cka" svojstva trajektorije (neprekidnost, neprekidnost slijeva, neprekidnost zdesna, limesi i sli\v cno).
+        Naj\v ces\v s\' ci slu\v cajevi kada je $T = \nat_0$ - \emph{diskretni vremenski parametar} (trajektorije su nizovi u $E$) i $T = \desInt{0}{+\infty}$ - \emph{neprekidni vremenski parametar} (trajektorije su funkcije realne varijable).
+        U oba slu\v caja Ozna\v cavamo trenutak po\v cetka  (promatranja) slu\v cajnog procesa.
+        \item Razni su nivoi jednakosti kod slu\v cajnih procesa.
+        Ako su $\niz{X_t}{t \in T}$ i $\niz{Y_t}{t \in T}$ $E$-zna\v cni stohasti\v cki procesi na $\vjerojatnosniProstor$, imamo dvije vrste $(g.s.)$ jednakosti.
+        Re\' ci \' cemo da su $X$ i $Y$ \emph{nerazlu\v civi} ako postoje $A \in \famF, \; \vjeroj{A} = 0$, takvi da je
+        \begin{equation*}
+            \skup{\omega \in \Omega}{(\exists t \in T) \quad X_t (\omega) \neq Y_t (\omega)} \subseteq A.
+        \end{equation*}
+        Re\' ci \' cemo da su $X$ i $Y$ \emph{modifikacije} (jedan drugoga) ako je za svaki $t \in T$ $X_t = Y_t \; (g.s.)$.
+        Nerazlu\v civost uvijek povla\' ci modificiranost, ali obrat op\' cenito ne vrijedi.
+        Ako je $T$ prebrojiv, pojmovi su ekvivalentni.
+    \end{enumerate}
+\end{nap}
