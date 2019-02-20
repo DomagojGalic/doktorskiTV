@@ -1,0 +1,48 @@
+% zakoni 0 - 1
+
+\chapter{Zakoni 0 - 1}
+
+\begin{pr}[majmun za pisa\' cim strojem]  \label{pr:9.1}
+    Zamislimo majmuna koji nasumica tipka po pisa\' cem stroju sa $M$ tipki.
+    Mo\v zemo zamisliti da je to niz nezavisnih pokusa (nasumice) u kojima majmun poga\dj a pojedinu tipku sa vjerojatno\v s\' cu $\frac{1}{M}$.
+    Zamislimo li da majmu tipka unedogled, koja je vjerojatnost da \' ce majmun u nekom "intervalu" natipkati "Dundo Maroje"?
+    Uo\v cimo li da je "D.M." specifi\v can niz simbola duljine $T$, pa mo\v zemo niz pokusa promatrati kao niz simbolja duljine $T$.
+    Po korolaru \ref{kor:7.9} to su opet nezavisni slu\v cajni elementi i vjerojatnsot da u jednoj sekvenci majmun pogodi "D.M." je $p = \frac{1}{M^T}$.
+    Iako je $p$ izrazito mali, va\v zno je da je $p > 0$.
+    Ozna\v cimo li sekvencu sa $X_n$ dobivamo
+    \begin{equation*}
+        \begin{aligned}
+            \vjeroj{\textnormal{bar jedna sekvenca "D.M."}}
+            &= \vjeroj{\unija{n \in \nat}{} (X_n = \textnormal{D.M.})}\\
+            &= \vjeroj{\unija{n \in \nat}{} (X_1 \neq \textnormal{D.M.}), \ldots, X_{n-1} \neq \textnormal{D.M.}, \: X_n = \textnormal{D.M.})}\\
+            &= \textnormal{(disjunktna)}\\
+            &= \suma{n \in \nat}{} (1 - p)^{n - 1} = p + (1 - p) \: p + (1 - p)^2 \: p + \ldots\\
+            &= \Big( \suma{n = 1}{\infty} \Big) \cdot p = \frac{1}{1 - (1 - p)} \cdot p\\
+            &= 1.
+        \end{aligned}
+    \end{equation*}
+\end{pr}
+
+\begin{lm}[Borel - Cantelli]  \label{lm:9.2}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor i $\niz{A_n}{n \in \nat} \subseteq \famF$ niz doga\dj aja za koje vrijedi $\suma{n = 1}{\infty} \vjeroj{A_n} < +\infty$.
+    Tada je $\vjeroj{A_n \; i.o.} = \vjeroj{\limsup\limits_{n \to +\infty} A_n} = 0$.
+\end{lm}
+
+\begin{proof}
+    Po teoremu o monotonoj konvergenciji
+    $+\infty > \suma{n = 1}{\infty} \vjeroj{A_n} = \suma{n = 1}{\infty} \masE [ \karaktFja_{A_n} ] = \masE [\suma{n = 1}{\infty} \karaktFja_{A_n}] \implies (\exists C \in \famF)$ takav da je $\vjeroj{C} = 1$ i da je $\suma{n = 1}{\infty} \karaktFja_{A_n}(\omega) < +\infty$, $\forall \omega \in C$
+    \begin{equation*}
+        \implies \vjeroj{A_n \; i.o.} \leq \vjeroj{C^c} = 0. 
+    \end{equation*}
+\end{proof}
+
+\begin{tm}[Borelov zakon 0 - 1]   \label{tm:9.3}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor i neka je $\niz{A_n}{n \in \nat} \subseteq \famF$ niz nezavisnih doga\dj aja.
+    Tada vrijedi:
+    \begin{equation*}
+        \begin{aligned}
+            \vjeroj{A_n \; i.o.} = 0 &\iff \suma{n = 1}{\infty} \vjeroj{A_n} < +\infty\\
+            \vjeroj{A_n \; i.o.} = 1 &\iff \suma{n = 1}{\infty} \vjeroj{A_n} = +\infty.
+        \end{aligned}
+    \end{equation*}
+\end{tm}
