@@ -37,3 +37,120 @@ Podsjetimo se na oznaku u napomeni \ref{nap:4.10}.
         Ako je $T$ prebrojiv, pojmovi su ekvivalentni.
     \end{enumerate}
 \end{nap}
+
+U skladu s poglavljem \ref{dist_sl_elem}, $E$-zna\v cni stohasti\v c ki procesi $X$ i $Y$ (ne nu\v zno definirani na istom vjerojatnosnom prostoru) imaju istu distribuciju ($X \distJed Y$) ako je $\masP_X = \masP_Y$.
+Op\' cenito vrijedi
+\begin{equation*}
+    \textnormal{nerazlu\v civost}
+    \begin{smallmatrix}
+        \implies\\
+        \notimpliedby
+    \end{smallmatrix}
+    \textnormal{modifikacija}
+    \begin{smallmatrix}
+        \implies\\
+        \notimpliedby
+    \end{smallmatrix}
+    \textnormal{ista distribucija}
+\end{equation*}
+Za\v sto vrijedi ova zadnja implikacija?
+Kada su $\masP_X$ i $\masP_Y$ jednaki?
+Uo\v cimo da su $\masP_X$ i $\masP_Y$ definirane na $\urePar{E^T}{\famE^T}$ i da je $\prsten{E^T}$ generiraju\' ci poluprsten za $\famE^T$.
+Slijedi da je
+\begin{equation}    \label{jed:8.3}
+    \masP_X = \masP_Y
+    \iff
+    \restr{\masP_X}{\prsten{E^T}} = \restr{\masP_Y}{\prsten{E^T}}.
+\end{equation}
+
+Relacija \ref{jed:8.3} sugerira da se mo\v zemo ograni\v citi na kona\v cne koordinate kako bismo postigli jedakost po distribuciji.
+Preciznije, neka je $J \subseteq T$, $J$ kona\v can i neprazan.
+Ozna\v cimo sa $\famE^{T, \: \pi_J}$ $\sigma$-algebru (na $E^T$) $\indSigAlg{\pi_t}{t \in J}$ i sa $\masP_{X, \: J}$ restrikciju od $\masP$ na $\famE^{T, \: \pi_J}$.
+Uo\v cimo da je jednostavno direktno poistovjetiti mjeru $\masP_{X, \: J}$ sa mjerom na kona\v cnom produktu $\urePar{E^J}{\famE^J}$.
+Zato ka\v zemo da je
+\begin{equation}    \label{jed:8.4}
+    \skup{\masP_{X, \: J}}{J \subseteq T, \; J \neq \varnothing, \; \card{J} < \infty},
+\end{equation}
+familija \emph{kona\v cno dimenzionalnih distribucija stohasti\v ckog procesa $X$}.
+Iz \eqref{jed:8.3} direktno slijedi:
+
+\begin{tm}  \label{tm:8.5}
+    $E$-zna\v cni stohasti\v cki procesi $X$ i $Y$ su jednaki po distribuciji ako i samo ako su im sve kona\v cno-dimenzionalne distribucije jednake.
+\end{tm}
+
+Promatramo li $\masP_{X, \: J}$ kao mjeru na $\urePar{E^J}{\famE^J}$ mo\v zemo iskoristiti teorem \ref{tm:7.4} i teorem \ref{tm:8.5} kako bismo opisali jednakost po distribuciji u nezavisnom slu\v caju (za jedno\v clane $J = \{j\}$ uvodimo oznaku $\masP_{X, \: J} = \masP_{X, \: j}$ i uo\v cimo da se $\masP_{X, \: J}$ mo\v ze poistovjetiti sa $\masP_{X_j}$).
+
+\begin{kor} \label{kor:8.6}
+    Neka je $\niz{X_t}{t \in T}$ $E$-zna\v cni stohasti\v cki proces i nezavisna familija slu\v cajnih elemenata.
+    Neka je $\niz{Y_t}{t \in T}$ $E$-zna\v cni stohasti\v cki proces i nezavisna familija slu\v cajnih elemenata.
+    Tada je $X \distJed Y$ ako i samo ako je $X_t \distJed Y_t$, za svaki $t \in T$.
+\end{kor}
+
+\v Sto re\' ci o egzistenciji procesa uz zadane distribucije?
+Ako su za svaki $\varnothing \neq J \subseteq T$, $J$ kona\v can, zadane vjerojatnosti $\masP_J$ na $\famE^{T, \: \pi_J}$, potrebna nam je barem \emph{konzistentnost}, to jest na $\varnothing \neq J \subseteq  I \subseteq T$, $J,$, $I$ kona\v cni,
+\begin{equation}    \label{jed:8.7}
+    \restr{\masP_I}{\famE^{T, \: \pi_J}} = \masP_J.
+\end{equation}
+Zaista, ako vrijedi \eqref{jed:8.7} nije te\v sko vidjeti da je sa
+\begin{equation*}
+    \nu (A) := \masP_J (A), \quad A \in \prsten{E^T} \cap \famE^{T, \: \pi_j},
+\end{equation*}
+zadane, (to jest dobro definirana) kona\v cno aditivna funkcija
+\begin{equation*}
+    \nu : \prsten{E^T} \to \segment{0}{1}.
+\end{equation*}
+Uspijemo li pokazati da je $\nu$ $\sigma$-aditivna, onda Carateodoriyjeva konstrukcija daje mjeru na $\famE^T$.
+Pokazuje se da za $\sigma$-aditivnost trebamo neku vrstu kompaktnosti i regularnosti.
+Na primjer:
+
+\begin{lm}  \label{lm:8.6}
+    Ako je $E$ potpun, separabilan metri\v cki prostor i $\famE = \borel{E}$, tada je $\nu$ $\sigma$-aditivna.
+\end{lm}
+
+\begin{proof}{(Skica)}
+    Zbog kona\v cne aditivnosti dovoljno je dokazati da za svaki niz $\niz{A_n}{n \in \nat} \subseteq \prsten{E^T}$, takav da je
+    $A_1 \supseteq A_2 \supseteq \ldots$ i $\presjek{n}{} A_n \neq \varnothing$ vrijedi $\lim\limits_{n \to +\infty} \nu (A_n) = 0$.
+    U suprotnom postojao bi $\varepsilon \geq 0$ i $\nu (A_n) \geq \varepsilon, \; \forall n \in \nat$.
+    Tada se $A_n$ mogu dovoljno dobro aproksimirati odozdo kompaktima $C_n$ (po $\masP_J$, a time i po $\nu$) i dijagonalni postupak (kompaktnost je va\v zna!) po koordinatama daje to\v cku "u presjeku" $C_n$-ova, a time u $\presjek{n}{} A_n$.
+\end{proof}
+
+Iz leme \ref{lm:8.6} i prethodne diskusije slijedi:
+
+\begin{tm}[Kolmogorov]    \label{tm:8.9}
+    Za svaku konzistentnu familiju vjerojatnosti\\
+    $\niz{\masP_J}{J \subseteq T, \; J \neq \varnothing, \; \card{J} < \infty}$ na $\urePar{E^T}{\famE^T}$ pri \v cemu je $E$ potpun separabilan metri\v cki prostor i $\famE = \borel{E}$, postoji i jedinstvena je vjerojatnost $\masP$ na $\urePar{E^T}{\famE^T}$ takva da je za svaki $\varnothing \neq J \subseteq T$, $J$ kona\v can, $\restr{\masP}{\famE^{\famE^T, \: \pi_J}} = \masP_J$.
+\end{tm}
+
+\begin{nap} \label{nap:8.10}
+    \begin{enumerate}[label=(\alph*)]
+        \item Teorem \ref{tm:8.9} garantira da za svaku zadanu distribuciju stohasti\v cki proces na $E$ postoji realizacija tog procesa na kanonskom prostru $\urePar{E^T}{\famE^T}$ uz $X_t = \pi_t$.
+        \item U nezavisnom slu\v caju teorem \ref{tm:8.9} garantira da za svaku familiju jednodimenzionalnih distribucija na $\urePar{E}{\borel{E}}$ postojih stohasti\v cki proces $(X_t)$ s takvim distribucijama i familija $(X_t)$ je nezavisna.
+        Naime, produktne mjere \' ce sigurno biti konzistentne.
+        Ovaj zadnji rezultat se mo\v ze u slu\v caju prebrojivog $T$ i direktnom vjerojatnosnom konstrukcijom.
+    \end{enumerate}
+\end{nap}
+
+\begin{tm}  \label{tm:8.11}
+    Neka je $\niz{\masP_n}{n \in \nat}$ niz vjerojatnosnih mjera na $\urePar{E}{\borel{E}}$, pri \v cemu je $E$ potpun, separabilan metri\v cki prostor.
+    Tada na vjerojatnosnom prostoru $(\segment{0}{1}, \; \borel{\segment{0}{1}}, \; \restr{\lambda}{\borel{\segment{0}{1}}})$ postoji $E$-zna\v cni stohasti\v cki proces $\niz{X_n}{n \in \nat}$, takav da je familija $\indFamilija{X_n}{n \in \nat}$ nezavisna i $\masP_{X_n} = \masP_n$, za svaki $n \in \nat$.
+\end{tm}
+
+\begin{proof}
+    Podsjetimo se da za $E$ postoji Borelov skup $A \subseteq \segment{0}{1}$ i bijekcija $f : E \to A$ takav da su $f$ i $f^{-1}$ izmjerive u paru $\sigma$-algebri $\famE =  \borel{E}$ i $\borel{A}$.
+    Dakle, bez smanjenja op\' cenitosti uzmemo $E \subseteq \segment{0}{1}$. Neka je $h(x) = x$, $h: \segment{0}{1} \to \segment{0}{1}$.
+    To je onda uniformno distribuirana slu\v cajna varijabla i po zadatku \ref{zad:7.20} njene binarne znamenke tvore niz $\niz{h_n}{n \in \nat}$ nezavisnih jednako distribuiranih Bernoullijevih slu\v cajnih varijabli.
+    Preuredimo niz $(h_n)$ u beskona\v cnu matricu $\niz{h_{ij}}{i, \; j \in \nat}$ (kao na primjer u bijekciji izme\dj u $\nat$ i $\nat \times \nat$).
+    Za svaki $i \in \nat$ je $\niz{h_{ij}}{n \in \nat}$ niz nezavisnih Bernoulijevih slu\v cajnih varijabli.
+    Definiramo
+    \begin{equation*}
+        g_i := \suma{j \in \nat}{} 2^{-j} h_{ij}.
+    \end{equation*}
+    Po korolaru \ref{kor:8.6} slijedi da je $g_i \distJed h$, to jest svaka $g_i$ je uniformno distribuirana na $\segment{0}{1}$.
+    Po korolaru \ref{kor:7.9} $\indFamilija{g_i}{i \in \nat}$ tvore nezavisnu familiju slu\v cajnih varijabli.
+    Za svaki $i \in \nat$, $\masP$ odre\dj uje p.d.F. $F_i$, pa kao u propoziciji \ref{prop:7.18} stavimo
+    \begin{equation*}
+        f_i (x) := \sup \skup{r \in \real}{F_i (r) < x}
+    \end{equation*}
+    i definiramo $X_i = f_i \circ g_i$.
+    Opet po korolaru \ref{kor:7.9} $\niz{X_i}{i \in \nat}$ su nezavisne, a po propozicij \ref{prop:7.18} $F_{X_i} = F_i$, to jest $\masP_{X_i} = \masP_i$.
+\end{proof}
