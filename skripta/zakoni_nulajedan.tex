@@ -1,0 +1,182 @@
+% zakoni 0 - 1
+
+\chapter{Zakoni 0 - 1}
+
+\begin{pr}[majmun za pisa\' cim strojem]  \label{pr:9.1}
+    Zamislimo majmuna koji nasumica tipka po pisa\' cem stroju sa $M$ tipki.
+    Mo\v zemo zamisliti da je to niz nezavisnih pokusa (nasumice) u kojima majmun poga\dj a pojedinu tipku sa vjerojatno\v s\' cu $\frac{1}{M}$.
+    Zamislimo li da majmu tipka unedogled, koja je vjerojatnost da \' ce majmun u nekom "intervalu" natipkati "Dundo Maroje"?
+    Uo\v cimo li da je "D.M." specifi\v can niz simbola duljine $T$, pa mo\v zemo niz pokusa promatrati kao niz simbolja duljine $T$.
+    Po korolaru \ref{kor:7.9} to su opet nezavisni slu\v cajni elementi i vjerojatnsot da u jednoj sekvenci majmun pogodi "D.M." je $p = \frac{1}{M^T}$.
+    Iako je $p$ izrazito mali, va\v zno je da je $p > 0$.
+    Ozna\v cimo li sekvencu sa $X_n$ dobivamo
+    \begin{equation*}
+        \begin{aligned}
+            \vjeroj{\textnormal{bar jedna sekvenca "D.M."}}
+            &= \vjeroj{\unija{n \in \nat}{} (X_n = \textnormal{D.M.})}\\
+            &= \vjeroj{\unija{n \in \nat}{} (X_1 \neq \textnormal{D.M.}), \ldots, X_{n-1} \neq \textnormal{D.M.}, \: X_n = \textnormal{D.M.})}\\
+            &= \textnormal{(disjunktna)}\\
+            &= \suma{n \in \nat}{} (1 - p)^{n - 1} = p + (1 - p) \: p + (1 - p)^2 \: p + \ldots\\
+            &= \Big( \suma{n = 1}{\infty} \Big) \cdot p = \frac{1}{1 - (1 - p)} \cdot p\\
+            &= 1.
+        \end{aligned}
+    \end{equation*}
+\end{pr}
+
+\begin{lm}[Borel - Cantelli]  \label{lm:9.2}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor i $\niz{A_n}{n \in \nat} \subseteq \famF$ niz doga\dj aja za koje vrijedi $\suma{n = 1}{\infty} \vjeroj{A_n} < +\infty$.
+    Tada je $\vjeroj{A_n \; i.o.} = \vjeroj{\limsup\limits_{n \to +\infty} A_n} = 0$.
+\end{lm}
+
+\begin{proof}
+    Po teoremu o monotonoj konvergenciji
+    $+\infty > \suma{n = 1}{\infty} \vjeroj{A_n} = \suma{n = 1}{\infty} \masE [ \karaktFja_{A_n} ] = \masE [\suma{n = 1}{\infty} \karaktFja_{A_n}] \implies (\exists C \in \famF)$ takav da je $\vjeroj{C} = 1$ i da je $\suma{n = 1}{\infty} \karaktFja_{A_n}(\omega) < +\infty$, $\forall \omega \in C$
+    \begin{equation*}
+        \implies \vjeroj{A_n \; i.o.} \leq \vjeroj{C^c} = 0. 
+    \end{equation*}
+\end{proof}
+
+\begin{tm}[Borelov zakon 0 - 1]   \label{tm:9.3}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor i neka je $\niz{A_n}{n \in \nat} \subseteq \famF$ niz nezavisnih doga\dj aja.
+    Tada vrijedi:
+    \begin{equation*}
+        \begin{aligned}
+            \vjeroj{A_n \; i.o.} = 0 &\iff \suma{n = 1}{\infty} \vjeroj{A_n} < +\infty\\
+            \vjeroj{A_n \; i.o.} = 1 &\iff \suma{n = 1}{\infty} \vjeroj{A_n} = +\infty.
+        \end{aligned}
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Po lemi \ref{lm:9.2} dovoljno je dokazati ($\Sigma = + \infty \implies \vjeroj{\cdot} = 1$).
+    Koristimo $1 - x \leq e^{-x}$ (deriviraj $h(x) = e^{-x} + x - 1$).
+    $\vjeroj{\unija{k \geq n}{} A_k} = 1 - \vjeroj{\presjek{k \geq n}{} A_k^c} = $ zadatak \ref{zad:6.14} $= \produkt{k \geq n}{} (1 - \vjeroj{A_k}) \geq 1 - \produkt{k \geq n}{} e^{-\suma{k \geq n}{} \vjeroj{A_k}} = 1 \implies \vjeroj{A_n \; i.o.} = \vjeroj{\presjek{n \in \nat}{} \unija{k \geq n}{} A_k} = \lim\limits_{n \to \infty} \vjeroj{\unija{k \geq n}{} A_k} = 1$.
+\end{proof}
+
+\begin{nap} \label{nap:9.4}
+    U primjeru \ref{pr:9.1}. $A_n = \{ X_n = \textnormal{D.M.} \}$ su nezavisni i $\vjeroj{A_n} = p = \frac{1}{M^T} > 0 \implies \sum \vjeroj{A_n} = +\infty \implies \vjeroj{A_n \; i.o.} = 1$ (!).
+    Pa ipak prosje\v cno vrijeme (ili prvi $n$) da se dogodi $A_n$ je $\frac{1}{p} = M^T = 10^{10^7}$ (ako treba 1 sekunda po znaku, prije \' ce se sunce ohladiti).
+\end{nap}
+
+\begin{defn}    \label{defn:9.5}
+    Ka\v zemo da je $\sigma$-algebra na vjerojatnosnom prostoru $\vjerojatnosniProstor$ \emph{trivijalna} ako vrijedi
+    \begin{equation*}
+        A \in \famG \implies \vjeroj{A} \in \{0, \; 1\}
+    \end{equation*}
+\end{defn}
+
+Uo\v cimo da je $\famG$ trivijalna ako i samo ako je nezavisna sa samom sobom.
+Dodavanje ili oduzimanje proizvoljnog broja trivijalnih $\sigma$-algebri ne\' ce mjenjati status nezavisnosti te familije.
+
+\begin{lm}  \label{lm:9.6}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, $\famG \subseteq \famF$ $\sigma$-algebra, $E$ potpun, separabilan metri\v cki prostor i $X : \Omega \to E$ $\famG$-izmjeriv slu\v cajni element.
+    Ako je $\famG$ trivijalna, tada je $X$ degenerirana.
+\end{lm}
+
+\begin{proof}
+    Za svaki $n \in \nat$, $E = \unija{j \in \nat}{} B_j^n$, pri \v cemu je ovo disjunktna unija Borelovih skupova i $\diam{B_j^n} < \frac{1}{n}$, za svaki $j \in \nat$.
+    Tada su $\{ X \in B_j^n \}$ u $\sigma$-algebri $\famG$, pa su im vjerojatnosti $0$ ili $1$.
+    $1 = \vjeroj{\Omega} = \suma{j \in \nat}{} = \vjeroj{X \in B_{j(n)^n}} = 1 \implies \vjeroj{X \in \presjek{n \in \nat}{} B_{j(n)}^n} = 1 \implies \presjek{n \in \nat}{} B_{j(n)}^n \neq \varnothing$.
+    S druge strane $\diam{\presjek{n \in \nat}{}B_{j(n)}^n} = 0 \implies (\exists x \in E) \; \presjek{n \in \nat}{} B_{j(n)}^n = \{ x \}$.
+\end{proof}
+
+\begin{defn}    \label{defn:9.7}
+    Neka je $\indFamilija{\famF_n}{n \in \nat}$ niz $\sigma$-algebri na nepraznom skupu $\Omega$.
+    Definiramo $\sigma$-algebru $\famT$ sa
+    \begin{equation*}
+        \famT := \presjek{n \in \nat}{} \indSigAlg{\famF_k}{k > n},
+    \end{equation*}
+    nazivamo \emph{repnom $\sigma$-algebrom} (u odnosu na $\{ \famF_n \}$).
+    Funkciju $X : \Omega \to \urePar{E}{\famE}$ koja je $\urePar{\famT}{\famE}$-izmjeriva nazivamo \emph{repnom funkcijom}.
+    Ako je $\vjerojatnosniProstor$ vjerojatnosni prostor i $\famF_n \subseteq \famF$ za svaki $n \in \nat$, elemente $\sigma$-algebre $\famT$ nazivamo \emph{repnim doga\dj ajima}.
+\end{defn}
+
+\begin{pr}  \label{pr:9.8}
+    Neka je $\niz{X_n}{n \in \nat}$ niz slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$ i neka je $\famF_n = \sigAlg{X_n}$ za svaki $n \in \nat$.
+    Tipi\v cni repni doga\dj aju su $(a \in \extReal)$ $\skup{\omega \in \Omega}{(X_n(\omega))_{n \in \nat} \; \textnormal{ konvergira}}$, $\skup{\omega \in \Omega}{\lim\limits_{n \to \infty} X_n(\omega) = a}$, $\skup{\omega \in \Omega}{\suma{n = 1}{\infty} X_n(\omega) \; \textnormal{ konvergira}}$, dok $\skup{\omega}{\suma{n = 1}{\infty} X_n (\omega) = a}$ nije repni doga\dj aj.
+\end{pr}
+
+\begin{tm}[Kolmogorovljev zakon 0 - 1]  \label{tm:9.9}
+    Ako su $\niz{\famF_n}{n \in \nat}$, $\famF_n \subseteq \famF$, nezavisne $\sigma$-algebre na vjerojatnosnom prostrou $\vjerojatnosniProstor$, tada je repna $\sigma$-algebra $\famT$ trivijalna.
+\end{tm}
+
+\begin{proof}
+    Za $n \in \nat$ definiramo $\famT_n := \indSigAlg{\famF_k}{k > n}$.
+    Po korolaru \ref{kor:6.11} $\famF_1, \ldots, \famF_n, \; \famT_n$ su nezavisne.
+    Budu\' ci da je $\famT \subseteq \famT_n$, po napomeni \ref{nap:6.9} \ref{nap:6.9d} slijedi da su $\famF_1, \ldots, \famF_n, \; \famT$ nezavisne za svaki $n \in \nat$.
+    To, prema napomeni \ref{nap:6.9} \ref{nap:6.9c}, zna\v ci da su $\famT, \; \famF_1, \; \famF_2, \ldots$ nezavisne $\sigma$-algebre.
+    Po korolaru \ref{kor:6.11} $\famT$ i $\indSigAlg{\famF_n}{n \in \nat}$ su nezavisne, a po napomeni \ref{nap:6.9} \ref{nap:6.9d} i $\famT \subseteq \indSigAlg{\famF_n}{n \in \nat}$ slijedi da su $\famT$ i $\famT$ nezavisne, to jest $\famT$ je trivijalna.
+\end{proof}
+
+Usporedimo li primjer \ref{pr:9.8} s teoremom \ref{tm:9.9}, jasno je da \' ce teorem \ref{tm:9.9} igrati va\v znu ulogu u analizi grani\v cnog pona\v sanja nezavisnih slu\v cajnih nizova.
+Time \' cemo se detaljno bavit kasnije, a sad obratimo pa\v znju na jo\v s jedan klasi\v cni 0-1 zakon.
+
+Pod kona\v cnom permutacijom na $\nat$ podrazumjevamo bijekciju $p: \nat \to \nat$ takvu da postoji $m \in \nat$ sa svojstvom ($n \geq m \implies p_n := p(n) = n$).
+Ako je $S$ neprazan skup i $p$ kona\v cna permutacija na $\nat$, tada $p$ inducira permutaciju $f_p$ na $S^\infty$ definiranu s
+\begin{equation*}
+    f_p (s_1, \; s_2, \ldots) = (s_{p_1}, \; s_{p_2}, \ldots).
+\end{equation*}
+Skup $A \subseteq S^\infty$ je \emph{simetri\v can u odnosu na kona\v cne permutacije} ak je $f_p^{-1} (A) = A$, za svaku kona\v cnu permutaciju $p$ na $\nat$.
+Uo\v cimo da na izmjerivom prostoru $\urePar{S}{\famS}$ simetri\v cni skupovi tvore $\sigma$-algebru, ozna\v cenu s $\famS_{\simetr}^\infty$, koja je sadr\v zana u $\sigma$-algebri $\famS^\infty$.
+% dokaži tu tvrdnju!
+Tu $\sigma$-algebru $\famS_{\simetr}^{\infty}$ obi\v cno zovemo \emph{permutacijski invarijantnom} na $S^\infty$.
+
+\begin{nap} %interna napomena
+    Doka\v zi gornju tvrdnju.
+\end{nap}
+
+\begin{zad} \label{zad:9.10}
+    Neka su $\famF_1 \subseteq \famF_2 \subseteq \ldots \subseteq \famF$ $\sigma$-algebre na vjerojatnosnom prostoru $\vjerojatnosniProstor$.
+    Za svaki $A \in \indSigAlg{\famF_n}{n \in \nat}$ postoji niz $\niz{A_n}{n \in \nat} \subseteq \unija{n \in \nat}{} \famF_n$, takav da je $\lim\limits_{n \to \infty} \vjeroj{A_n \triangle A} = 0$.
+\end{zad}
+
+Podsjetimo se da za niz $E$-zna\v cnih slu\v cajnih elemenata $(X_n)$, mo\v zemo promatrati $X:=(X_1, \; X_2, \ldots)$ kao preslikavanje
+$X: \urePar{\Omega}{\famF} \to \urePar{E^\infty}{\famE^\infty}$.
+
+\begin{tm}[Hewitt-Savagev zakon 0-1]    \label{tm:9.11}
+    Neka su $X_1, \; X_2, \ldots$ nezavisni jednako distribuirani slu\v cajni elementi s vjerojatnostima u izmjerivom prostoru $\urePar{E}{\famE}$.
+    Tada je  $\praslika{X}(\famE_{\simetr}^\infty) \subseteq \famF$ trivijalna $\sigma$-algebra.
+\end{tm}
+
+\begin{proof}
+    $\praslika{X} (\famE^\infty) \subseteq \famF$, pa je $\praslika{X} (\famE_{\simetr}^\infty) \subseteq \famF$ i $\sigma$-algebra je.
+    Treba dokazati da je trivijalna.
+    Uo\v cimo da je $\masP_X$ vjerojatnost na $\urePar{E^\infty}{\famE^\infty}$, pa treba dokazati da je $\famE_{\simetr}^\infty$ trivijalno u odnosu na $\masP_X$.
+    Neka je $\famE_n := \sigAlg{\pi_1, \ldots, \pi_n}$, $n \in \nat$, pri\v cemu su $\pi_i : E^\infty \to E$ projekcije.
+    Uo\v cimo da je $\famE^\infty = \indSigAlg{\famE_n}{n \in \nat}$ i $\famE_{\simetr}^\infty \subseteq \famE^\infty$, pa za $A \in \famE_{\simetr}^\infty$ primijenimo zadatak \ref{zad:9.10}.
+    Dobivamo niz $(A_n) \subseteq \unija{n}{} \famE_n$ takav da je
+    $\lim\limits_{n \to \infty} \masP_X (A \triangle A_n) = 0$.
+    Bez smanjenja op\' cenitosti mo\v zemo posti\' ci za svaki $A_n \in \famE_n$, za svaki $n \in \nat$.
+    Uzmimo permutaciju takvu da $\{1, \ldots, n\} \to \{n+1, \ldots, 2n\}$ i $\{n+1, \ldots, 2n\} \to \{1, \ldots, n\}$.
+    Tada je $f_p(A) = A$ (uo\v cimo i $f_p^{-1} = f_p$) i neka je $B_n = f_p (A_n)$.
+    Budu\' ci da su $(X_n)$ nizovi i jednako distribuirani $(\masP_X)_{f_p} = \masP_X$ pa je $\masP_X (B_n) = \masP_X (A_n) \xrightarrow[n \to \infty]{} \masP_X (A)$ i $\masP_X (B_n \triangle A) \xrightarrow[n \to \infty]{} 0$.
+    Slijedi da je
+    \begin{equation*}
+        \masP_X (A \triangle (A_n \cap B_n)) \leq \masP_X (A \triangle A_n) + \masP_X (A \triangle B_n) \xrightarrow[n \to \infty]{} 0.
+    \end{equation*}
+    Uo\v cimo da su zbog nezavisnosti $(X_n)$ skupovi $A_n$ i $B_n$ nezavisni u odnosu na $\masP_X$, pa dobivamo:
+    \begin{equation*}
+        \begin{aligned}
+            \masP_X (A)
+            &= \lim\limits_{n \to \infty} \masP (A_n \cap B_n) = \lim\limits_{n \to \infty} \masP_X (A_n) \cdot \masP_X (B_n)\\
+            &= \masP_X (A) \cdot \masP_X(A) \implies \masP(A) \in \{0, \; 1\}.
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+\begin{nap} \label{nap:9.12}
+    Slu\v cajna varijabla numeri\v cke ishode nekog slu\v cajnog pokusa.
+    Kona\v cno ponavljanje pokusa modeliramo slu\v cajnim vektorima.
+    U oba slu\v caja je vjerojatnosna informacija sadr\v zana u funkciji distribucije koja je $F: \real^d \to \segment{0}{1}$ i za koju imamo razvijen analiti\v cki (ili kombinatorni) aparat.
+    Vrlo \v cesto nam je (i s teoriskog i s primjenjenog stajali\v sta) va\v zno, barem konceptalno, razmi\v sljati o beskona\v cnom ponavaljanju pokusa.
+    Prva najjednostavnija prepostavka je da se ti pokusi provode \emph{nezavisno}.
+    Stoga osnovni objekti na\v se teorije postaje niz nezavisnih slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ na vjerojatnosnom prostoru $\vjerojatnosniProstor$.
+    Uo\v cimo da rezultati iz poglavlja \ref{poglavlje3} pokazuju da se takav niz uvijek mo\v ze realizirati (i to \v cak na $\segment{0}{1}$).
+    Dakle, za svaki izbor p.d.F. $F_1, \; F_2, \ldots$ postoji niz nezavisnih slu\v cajnih varijabli, na istom vjerojatnosnom prostoru, koje imaju to\v cno one zadane distribucije.
+    Jedno od najva\v znijih pitanja postoje asimptotsko pona\v sanje niza $(X_n)$.
+    Osobito je va\v zan poseban slu\v caj u kojem postoji p.d.F. $F$ takav da je $F_{X_n} = F$, za svaki $n \in \nat$.
+    To je slu\v caj niza \emph{nezavisnih i jednako distribuiranih slu\v cajnih varijabli}, koji \' cemo kra\' ce ozna\v cavati s
+    \begin{equation*}
+        \iid
+    \end{equation*}
+\end{nap}
