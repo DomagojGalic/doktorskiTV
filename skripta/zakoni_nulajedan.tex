@@ -112,3 +112,71 @@ Usporedimo li primjer \ref{pr:9.8} s teoremom \ref{tm:9.9}, jasno je da \' ce te
 Time \' cemo se detaljno bavit kasnije, a sad obratimo pa\v znju na jo\v s jedan klasi\v cni 0-1 zakon.
 
 Pod kona\v cnom permutacijom na $\nat$ podrazumjevamo bijekciju $p: \nat \to \nat$ takvu da postoji $m \in \nat$ sa svojstvom ($n \geq m \implies p_n := p(n) = n$).
+Ako je $S$ neprazan skup i $p$ kona\v cna permutacija na $\nat$, tada $p$ inducira permutaciju $f_p$ na $S^\infty$ definiranu s
+\begin{equation*}
+    f_p (s_1, \; s_2, \ldots) = (s_{p_1}, \; s_{p_2}, \ldots).
+\end{equation*}
+Skup $A \subseteq S^\infty$ je \emph{simetri\v can u odnosu na kona\v cne permutacije} ak je $f_p^{-1} (A) = A$, za svaku kona\v cnu permutaciju $p$ na $\nat$.
+Uo\v cimo da na izmjerivom prostoru $\urePar{S}{\famS}$ simetri\v cni skupovi tvore $\sigma$-algebru, ozna\v cenu s $\famS_{\simetr}^\infty$, koja je sadr\v zana u $\sigma$-algebri $\famS^\infty$.
+% dokaži tu tvrdnju!
+Tu $\sigma$-algebru $\famS_{\simetr}^{\infty}$ obi\v cno zovemo \emph{permutacijski invarijantnom} na $S^\infty$.
+
+\begin{nap} %interna napomena
+    Doka\v zi gornju tvrdnju.
+\end{nap}
+
+\begin{zad} \label{zad:9.10}
+    Neka su $\famF_1 \subseteq \famF_2 \subseteq \ldots \subseteq \famF$ $\sigma$-algebre na vjerojatnosnom prostoru $\vjerojatnosniProstor$.
+    Za svaki $A \in \indSigAlg{\famF_n}{n \in \nat}$ postoji niz $\niz{A_n}{n \in \nat} \subseteq \unija{n \in \nat}{} \famF_n$, takav da je $\lim\limits_{n \to \infty} \vjeroj{A_n \triangle A} = 0$.
+\end{zad}
+
+Podsjetimo se da za niz $E$-zna\v cnih slu\v cajnih elemenata $(X_n)$, mo\v zemo promatrati $X:=(X_1, \; X_2, \ldots)$ kao preslikavanje
+$X: \urePar{\Omega}{\famF} \to \urePar{E^\infty}{\famE^\infty}$.
+
+\begin{tm}[Hewitt-Savagev zakon 0-1]    \label{tm:9.11}
+    Neka su $X_1, \; X_2, \ldots$ nezavisni jednako distribuirani slu\v cajni elementi s vjerojatnostima u izmjerivom prostoru $\urePar{E}{\famE}$.
+    Tada je  $\praslika{X}(\famE_{\simetr}^\infty) \subseteq \famF$ trivijalna $\sigma$-algebra.
+\end{tm}
+
+\begin{proof}
+    $\praslika{X} (\famE^\infty) \subseteq \famF$, pa je $\praslika{X} (\famE_{\simetr}^\infty) \subseteq \famF$ i $\sigma$-algebra je.
+    Treba dokazati da je trivijalna.
+    Uo\v cimo da je $\masP_X$ vjerojatnost na $\urePar{E^\infty}{\famE^\infty}$, pa treba dokazati da je $\famE_{\simetr}^\infty$ trivijalno u odnosu na $\masP_X$.
+    Neka je $\famE_n := \sigAlg{\pi_1, \ldots, \pi_n}$, $n \in \nat$, pri\v cemu su $\pi_i : E^\infty \to E$ projekcije.
+    Uo\v cimo da je $\famE^\infty = \indSigAlg{\famE_n}{n \in \nat}$ i $\famE_{\simetr}^\infty \subseteq \famE^\infty$, pa za $A \in \famE_{\simetr}^\infty$ primijenimo zadatak \ref{zad:9.10}.
+    Dobivamo niz $(A_n) \subseteq \unija{n}{} \famE_n$ takav da je
+    $\lim\limits_{n \to \infty} \masP_X (A \triangle A_n) = 0$.
+    Bez smanjenja op\' cenitosti mo\v zemo posti\' ci za svaki $A_n \in \famE_n$, za svaki $n \in \nat$.
+    Uzmimo permutaciju takvu da $\{1, \ldots, n\} \to \{n+1, \ldots, 2n\}$ i $\{n+1, \ldots, 2n\} \to \{1, \ldots, n\}$.
+    Tada je $f_p(A) = A$ (uo\v cimo i $f_p^{-1} = f_p$) i neka je $B_n = f_p (A_n)$.
+    Budu\' ci da su $(X_n)$ nizovi i jednako distribuirani $(\masP_X)_{f_p} = \masP_X$ pa je $\masP_X (B_n) = \masP_X (A_n) \xrightarrow[n \to \infty]{} \masP_X (A)$ i $\masP_X (B_n \triangle A) \xrightarrow[n \to \infty]{} 0$.
+    Slijedi da je
+    \begin{equation*}
+        \masP_X (A \triangle (A_n \cap B_n)) \leq \masP_X (A \triangle A_n) + \masP_X (A \triangle B_n) \xrightarrow[n \to \infty]{} 0.
+    \end{equation*}
+    Uo\v cimo da su zbog nezavisnosti $(X_n)$ skupovi $A_n$ i $B_n$ nezavisni u odnosu na $\masP_X$, pa dobivamo:
+    \begin{equation*}
+        \begin{aligned}
+            \masP_X (A)
+            &= \lim\limits_{n \to \infty} \masP (A_n \cap B_n) = \lim\limits_{n \to \infty} \masP_X (A_n) \cdot \masP_X (B_n)\\
+            &= \masP_X (A) \cdot \masP_X(A) \implies \masP(A) \in \{0, \; 1\}.
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+\begin{nap} \label{nap:9.12}
+    Slu\v cajna varijabla numeri\v cke ishode nekog slu\v cajnog pokusa.
+    Kona\v cno ponavljanje pokusa modeliramo slu\v cajnim vektorima.
+    U oba slu\v caja je vjerojatnosna informacija sadr\v zana u funkciji distribucije koja je $F: \real^d \to \segment{0}{1}$ i za koju imamo razvijen analiti\v cki (ili kombinatorni) aparat.
+    Vrlo \v cesto nam je (i s teoriskog i s primjenjenog stajali\v sta) va\v zno, barem konceptalno, razmi\v sljati o beskona\v cnom ponavaljanju pokusa.
+    Prva najjednostavnija prepostavka je da se ti pokusi provode \emph{nezavisno}.
+    Stoga osnovni objekti na\v se teorije postaje niz nezavisnih slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ na vjerojatnosnom prostoru $\vjerojatnosniProstor$.
+    Uo\v cimo da rezultati iz poglavlja \ref{poglavlje3} pokazuju da se takav niz uvijek mo\v ze realizirati (i to \v cak na $\segment{0}{1}$).
+    Dakle, za svaki izbor p.d.F. $F_1, \; F_2, \ldots$ postoji niz nezavisnih slu\v cajnih varijabli, na istom vjerojatnosnom prostoru, koje imaju to\v cno one zadane distribucije.
+    Jedno od najva\v znijih pitanja postoje asimptotsko pona\v sanje niza $(X_n)$.
+    Osobito je va\v zan poseban slu\v caj u kojem postoji p.d.F. $F$ takav da je $F_{X_n} = F$, za svaki $n \in \nat$.
+    To je slu\v caj niza \emph{nezavisnih i jednako distribuiranih slu\v cajnih varijabli}, koji \' cemo kra\' ce ozna\v cavati s
+    \begin{equation*}
+        \iid
+    \end{equation*}
+\end{nap}
