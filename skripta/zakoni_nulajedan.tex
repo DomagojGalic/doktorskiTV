@@ -46,3 +46,52 @@
         \end{aligned}
     \end{equation*}
 \end{tm}
+
+\begin{proof}
+    Po lemi \ref{lm:9.2} dovoljno je dokazati ($\Sigma = + \infty \implies \vjeroj{\cdot} = 1$).
+    Koristimo $1 - x \leq e^{-x}$ (deriviraj $h(x) = e^{-x} + x - 1$).
+    $\vjeroj{\unija{k \geq n}{} A_k} = 1 - \vjeroj{\presjek{k \geq n}{} A_k^c} = $ zadatak \ref{zad:6.14} $= \produkt{k \geq n}{} (1 - \vjeroj{A_k}) \geq 1 - \produkt{k \geq n}{} e^{-\suma{k \geq n}{} \vjeroj{A_k}} = 1 \implies \vjeroj{A_n \; i.o.} = \vjeroj{\presjek{n \in \nat}{} \unija{k \geq n}{} A_k} = \lim\limits_{n \to \infty} \vjeroj{\unija{k \geq n}{} A_k} = 1$.
+\end{proof}
+
+\begin{nap} \label{nap:9.4}
+    U primjeru \ref{pr:9.1}. $A_n = \{ X_n = \textnormal{D.M.} \}$ su nezavisni i $\vjeroj{A_n} = p = \frac{1}{M^T} > 0 \implies \sum \vjeroj{A_n} = +\infty \implies \vjeroj{A_n \; i.o.} = 1$ (!).
+    Pa ipak prosje\v cno vrijeme (ili prvi $n$) da se dogodi $A_n$ je $\frac{1}{p} = M^T = 10^{10^7}$ (ako treba 1 sekunda po znaku, prije \' ce se sunce ohladiti).
+\end{nap}
+
+\begin{defn}    \label{defn:9.5}
+    Ka\v zemo da je $\sigma$-algebra na vjerojatnosnom prostoru $\vjerojatnosniProstor$ \emph{trivijalna} ako vrijedi
+    \begin{equation*}
+        A \in \famG \implies \vjeroj{A} \in \{0, \; 1\}
+    \end{equation*}
+\end{defn}
+
+Uo\v cimo da je $\famG$ trivijalna ako i samo ako je nezavisna sa samom sobom.
+Dodavanje ili oduzimanje proizvoljnog broja trivijalnih $\sigma$-algebri ne\' ce mjenjati status nezavisnosti te familije.
+
+\begin{lm}  \label{lm:9.6}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, $\famG \subseteq \famF$ $\sigma$-algebra, $E$ potpun, separabilan metri\v cki prostor i $X : \Omega \to E$ $\famG$-izmjeriv slu\v cajni element.
+    Ako je $\famG$ trivijalna, tada je $X$ degenerirana.
+\end{lm}
+
+\begin{proof}
+    Za svaki $n \in \nat$, $E = \unija{j \in \nat}{} B_j^n$, pri \v cemu je ovo disjunktna unija Borelovih skupova i $\diam{B_j^n} < \frac{1}{n}$, za svaki $j \in \nat$.
+    Tada su $\{ X \in B_j^n \}$ u $\sigma$-algebri $\famG$, pa su im vjerojatnosti $0$ ili $1$.
+    $1 = \vjeroj{\Omega} = \suma{j \in \nat}{} = \vjeroj{X \in B_{j(n)^n}} = 1 \implies \vjeroj{X \in \presjek{n \in \nat}{} B_{j(n)}^n} = 1 \implies \presjek{n \in \nat}{} B_{j(n)}^n \neq \varnothing$.
+    S druge strane $\diam{\presjek{n \in \nat}{}B_{j(n)}^n} = 0 \implies (\exists x \in E) \; \presjek{n \in \nat}{} B_{j(n)}^n = \{ x \}$.
+\end{proof}
+
+\begin{defn}    \label{defn:9.7}
+    Neka je $\indFamilija{\famF_n}{n \in \nat}$ niz $\sigma$-algebri na nepraznom skupu $\Omega$.
+    Definiramo $\sigma$-algebru $\famT$ sa
+    \begin{equation*}
+        \famT := \presjek{n \in \nat}{} \indSigAlg{\famF_k}{k > n},
+    \end{equation*}
+    nazivamo \emph{repnom $\sigma$-algebrom} (u odnosu na $\{ \famF_n \}$).
+    Funkciju $X : \Omega \to \urePar{E}{\famE}$ koja je $\urePar{\famT}{\famE}$-izmjeriva nazivamo \emph{repnom funkcijom}.
+    Ako je $\vjerojatnosniProstor$ vjerojatnosni prostor i $\famF_n \subseteq \famF$ za svaki $n \in \nat$, elemente $\sigma$-algebre $\famT$ nazivamo \emph{repnim doga\dj ajima}.
+\end{defn}
+
+\begin{pr}  \label{pr:9.8}
+    Neka je $\niz{X_n}{n \in \nat}$ niz slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$ i neka je $\famF_n = \sigAlg{X_n}$ za svaki $n \in \nat$.
+    Tipi\v cni repni doga\dj aju su $(a \in \extReal)$ $\skup{\omega \in \Omega}{(X_n(\omega))_{n \in \nat} \; \textnormal{ konvergira}}$, $\skup{\omega \in \Omega}{\lim\limits_{n \to \infty} X_n(\omega) = a}$, $\skup{\omega \in \Omega}{\suma{n = 1}{\infty} X_n(\omega) \; \textnormal{ konvergira}}$, dok $\skup{\omega}{\suma{n = 1}{\infty} X_n (\omega) = a}$ nije repni doga\dj aj.
+\end{pr}
