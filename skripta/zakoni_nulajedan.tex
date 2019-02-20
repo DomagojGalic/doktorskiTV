@@ -95,3 +95,20 @@ Dodavanje ili oduzimanje proizvoljnog broja trivijalnih $\sigma$-algebri ne\' ce
     Neka je $\niz{X_n}{n \in \nat}$ niz slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$ i neka je $\famF_n = \sigAlg{X_n}$ za svaki $n \in \nat$.
     Tipi\v cni repni doga\dj aju su $(a \in \extReal)$ $\skup{\omega \in \Omega}{(X_n(\omega))_{n \in \nat} \; \textnormal{ konvergira}}$, $\skup{\omega \in \Omega}{\lim\limits_{n \to \infty} X_n(\omega) = a}$, $\skup{\omega \in \Omega}{\suma{n = 1}{\infty} X_n(\omega) \; \textnormal{ konvergira}}$, dok $\skup{\omega}{\suma{n = 1}{\infty} X_n (\omega) = a}$ nije repni doga\dj aj.
 \end{pr}
+
+\begin{tm}[Kolmogorovljev zakon 0 - 1]  \label{tm:9.9}
+    Ako su $\niz{\famF_n}{n \in \nat}$, $\famF_n \subseteq \famF$, nezavisne $\sigma$-algebre na vjerojatnosnom prostrou $\vjerojatnosniProstor$, tada je repna $\sigma$-algebra $\famT$ trivijalna.
+\end{tm}
+
+\begin{proof}
+    Za $n \in \nat$ definiramo $\famT_n := \indSigAlg{\famF_k}{k > n}$.
+    Po korolaru \ref{kor:6.11} $\famF_1, \ldots, \famF_n, \; \famT_n$ su nezavisne.
+    Budu\' ci da je $\famT \subseteq \famT_n$, po napomeni \ref{nap:6.9} \ref{nap:6.9d} slijedi da su $\famF_1, \ldots, \famF_n, \; \famT$ nezavisne za svaki $n \in \nat$.
+    To, prema napomeni \ref{nap:6.9} \ref{nap:6.9c}, zna\v ci da su $\famT, \; \famF_1, \; \famF_2, \ldots$ nezavisne $\sigma$-algebre.
+    Po korolaru \ref{kor:6.11} $\famT$ i $\indSigAlg{\famF_n}{n \in \nat}$ su nezavisne, a po napomeni \ref{nap:6.9} \ref{nap:6.9d} i $\famT \subseteq \indSigAlg{\famF_n}{n \in \nat}$ slijedi da su $\famT$ i $\famT$ nezavisne, to jest $\famT$ je trivijalna.
+\end{proof}
+
+Usporedimo li primjer \ref{pr:9.8} s teoremom \ref{tm:9.9}, jasno je da \' ce teorem \ref{tm:9.9} igrati va\v znu ulogu u analizi grani\v cnog pona\v sanja nezavisnih slu\v cajnih nizova.
+Time \' cemo se detaljno bavit kasnije, a sad obratimo pa\v znju na jo\v s jedan klasi\v cni 0-1 zakon.
+
+Pod kona\v cnom permutacijom na $\nat$ podrazumjevamo bijekciju $p: \nat \to \nat$ takvu da postoji $m \in \nat$ sa svojstvom ($n \geq m \implies p_n := p(n) = n$).
