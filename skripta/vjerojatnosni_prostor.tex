@@ -3,168 +3,116 @@
 
 \chapter{Vjerojatnosni prostor}
 
-Sustavno razmi\v sljanje o vjerojatnosnim pojmovima po\v cinje u 16.
-stolje\' cu nove ere u Italiji (Cardano, Tartaglia). Ve\' c do 19.
-stolje\' ca razvijaju se slo\v zenije ideje, kao uvijetna vjerojatnost,
-Laplace-ov model, te prvi grani\v cni teoremi. Odnos intuitivnog
-poimanja vjerojatnost i pripadnog matemati\v ckog pojma suptilno
-je pitanje. Ilustrirajmo jedan aspekt tog odnosa uspore\dj uju\' ci
-pitanje tipa "Koja je vjerojatnost da na Marsu postoji \v zivot?",
-s pitanjem "Koja je vjerojatnost da subotom izme\dj u 12 i 13 sati
-autoputom Zagreb - Karlovac pro\dj e barem tisu\' cu automobila?".
-U prvom slu\' caju htjeli bismo pridru\v ziti odre\dj enu "mjeru"
-(dakle broj) stupnju vjerovanja da na Marsu postoji \v zivot.
-To vodi na ideju tako zvane \emph{subjektivne vjerojatnosti}
-(Keynes 1921.). Uo\v cimo da je uz prvo pitanje vrlo te\v sko
-vezati neki pokus, a ne mogu\' ce ideju "ponavljanja pokusa".
-S druge strane, u drugom slu\v caju mo\v zemo jednostavno provoditi
-mjerenja svake subote (ponavljanje pokusa) i formirati "distribuciju"
-vezanu uz taj slu\v cajni pokus. Ovo nas vodi na takozvani
-\emph{Objektivni pristup} koji se tako\dj er razvija u prvoj polovici
-20. stolje\' ca (von Mises 1928. i Kolmogorov 1933.) Iako ovaj
-pristup konceptualno ograni\v cavaju\' ce djeluje na teoriju,
-matemati\v cnost ovog pristupa postaje klju\v cnim razlogom njegove
-op\' ce prihva\' cenosti.
-Osobito je za nas va\v zan Kolmogorovljev pristup teoriji
-vjerojatnosti, koji ne razmi\v slja o tome kako pojedinom stvarnom
-doga\dj aju dati odre\dj enu dati odre\dj enu vjerojatnost
-$p \in [0, \: 1]$, ve\' c uz pretpostavku da takvi brojevi postoje,
-razvija pravila o njihovim odnosima. Time sama priroda doga\dj aja
-postaje sekundarna u toj teoriji (jasno, u primjenama je i dalje od
-prvorazredne va\v znosti), a bitna postaje analiza "distribucije"
-i njenih pravila.
-S druge strane, za bolje razumjevanje koncepata teorije, a osobito
-u njenim primjenama, \v cest uzimamo u obzir konkretne primjere.
-Primjeri iz hazardnih igara (od arapskog al-zahr za igra\v cu
-kocku) \v cesto donose boljem razumijevanju same teorije. Na
-primjer, jako je jednostavno modelirati jedno bacanje simetri\v cne
-kovanice ($50\%$ \v sanse za ishod glave i $50\%$ za ishod pisma).
+Sustavno razmi\v sljanje o vjerojatnosnim pojmovima po\v cinje u 16. stolje\' cu nove ere u Italiji (Cardano, Tartaglia). Ve\' c do 19. stolje\' ca razvijaju se slo\v zenije ideje, kao uvijetna vjerojatnost, Laplace-ov model, te prvi grani\v cni teoremi. Odnos intuitivnog poimanja vjerojatnost i pripadnog matemati\v ckog pojma suptilno je pitanje.
+Ilustrirajmo jedan aspekt tog odnosa uspore\dj uju\' ci pitanje tipa "Koja je vjerojatnost da na Marsu postoji \v zivot?", s pitanjem "Koja je vjerojatnost da subotom izme\dj u 12 i 13 sati autoputom Zagreb - Karlovac pro\dj e barem tisu\' cu automobila?".
+U prvom slu\' caju htjeli bismo pridru\v ziti odre\dj enu "mjeru" (dakle broj) stupnju vjerovanja da na Marsu postoji \v zivot.
+To vodi na ideju tako zvane \emph{subjektivne vjerojatnosti} (Keynes 1921.).
+Uo\v cimo da je uz prvo pitanje vrlo te\v sko vezati neki pokus, a nemogu\' ce ideju "ponavljanja pokusa".
+S druge strane, u drugom slu\v caju mo\v zemo jednostavno provoditi mjerenja svake subote (ponavljanje pokusa) i formirati "distribuciju" vezanu uz taj slu\v cajni pokus.
+Ovo nas vodi na takozvani \emph{Objektivni pristup} koji se tako\dj er razvija u prvoj polovici 20. stolje\' ca (von Mises 1928. i Kolmogorov 1933.)
+Iako ovaj pristup konceptualno ograni\v cavaju\' ce djeluje na teoriju, matemati\v cnost ovog pristupa postaje klju\v cnim razlogom njegove op\' ce prihva\' cenosti.
+Osobito je za nas va\v zan Kolmogorovljev pristup teoriji vjerojatnosti, koji ne razmi\v slja o tome kako pojedinom stvarnom doga\dj aju dati odre\dj enu dati odre\dj enu vjerojatnost $p \in [0, \: 1]$, ve\' c uz pretpostavku da takvi brojevi postoje, razvija pravila o njihovim odnosima.
+Time sama priroda doga\dj aja postaje sekundarna u toj teoriji (jasno, u primjenama je i dalje od prvorazredne va\v znosti), a bitna postaje analiza "distribucije" i njenih pravila.
+S druge strane, za bolje razumjevanje koncepata teorije, a osobito u njenim primjenama, \v cest uzimamo u obzir konkretne primjere.
+Primjeri iz hazardnih igara (od arapskog al-zahr za igra\v cu kocku) \v cesto donose boljem razumijevanju same teorije.
+Na primjer, jako je jednostavno modelirati jedno bacanje simetri\v cne kovanice ($50\%$ \v sanse za ishod glave i $50\%$ za ishod pisma).
 Dvije kovanice ve\' c mogu predstavljati problem.
 
-\begin{pr}[D'Alambert 1754] \label{primjer1}
-    Kolika je vjerojatnost da prilikom jednog bacanja dvije
-    simetri\v cne kovanice bar jednom "padne pismo"?
+\begin{pr}[D'Alambert 1754] \label{pr:1.1}
+    Kolika je vjerojatnost da prilikom jednog bacanja dvije simetri\v cne kovanice bar jednom "padne pismo"?
 \end{pr}
 
 \begin{rj}
     D'Alambert ka\v ze da imamo 3 mogu\' cnosti (dvije glave,
     dva pisma i po jedno od svakoga), od kojih su za nas povoljne
-    dvije, stoga je vjerojatnost $^2 / _3$!?
+    dvije, stoga je vjerojatnost $\frac{2}{3}$!?
     
-    Ovaj primjer pokazuje koliko je va\v zno precizno odrediti
-    \emph{osnovne (elementarne) ishode}. Uzmemo li 2G, 2P i 1G1P kao
-    osnovne ishode, onda moramo dobro razmisliti koje su njihove
-    vjerojatnosti (nisu $^1 / _3$). Zamislimo da smo jednu
-    kovanicu obojili. Jesmo li time promjenili pokus? Nismo.
-    Sada ishode pokusa mo\v zemo prikazati kao ure\dj ene parove,
-    ako obojanu kovanicu stavio na prvo mjesto, vidimo da su
-    mogu\' ci ishodi:
+    Ovaj primjer pokazuje koliko je va\v zno precizno odrediti \emph{osnovne (elementarne) ishode}.
+    Uzmemo li 2G, 2P i 1G1P kao osnovne ishode, onda moramo dobro razmisliti koje su njihove vjerojatnosti (nisu $\frac{1}{3}$). Zamislimo da smo jednu kovanicu obojili.
+    Jesmo li time promjenili pokus?
+    Nismo.
+    Sada ishode pokusa mo\v zemo prikazati kao ure\dj ene parove, ako obojanu kovanicu stavio na prvo mjesto, vidimo da su mogu\' ci ishodi:
     (G, G), (G, P), (P, G), (P, P)
     
-    Odakle vidimo da je tra\v zena vjerojatnost zapravo $^3 / _4$.
+    Odakle vidimo da je tra\v zena vjerojatnost zapravo $\frac{3}{4}$.
 \end{rj}
 
-Prvi va\v zan objekt je takozvani \emph{prostor elementarnih
-doga\dj aja} (sample space). U jeziku teorije skupova dovoljno je
-zahtjevati da to bude neprazan skup $\Omega \neq \varnothing$.
+Prvi va\v zan objekt je takozvani \emph{prostor elementarni doga\dj aja} (sample space).
+U jeziku teorije skupova dovoljno je zahtjevati da to bude neprazan skup $\Omega \neq \varnothing$.
 
-U primjeru \ref{primjer1} imamo $ \Omega = \{(G, \: G), (G, \: P),
-(P, \: G), (P, \: P)\}$. \v Sto su doga\dj aji? Na primjer doga\dj aj
-iz primjera \ref{primjer1} je opisan sa \emph{"palo je barem
-jedno pismo"}, to jest, to je podskup $A = \{(G, \: P),(P, \: G),
-(P, \: P)\} \subseteq \Omega$.
+U primjeru \ref{pr:1.1} imamo $ \Omega = \{(G, \: G), (G, \: P), (P, \: G), (P, \: P)\}$.
+\v Sto su doga\dj aji?
+Na primjer doga\dj aj iz primjera \ref{pr:1.1} je opisan sa \emph{"palo je barem jedno pismo"}, to jest, to je podskup $A = \{(G, \: P),(P, \: G), (P, \: P)\} \subseteq \Omega$.
 
-Dakle, doga\dj aje je prirodno promatrati kao elemente neke familije
-$\F \subseteq \partitive{\Omega}$. Zapravo, najbolje bi bilo uzeti
-sve podskupove, dakle familiju $\partitive{\Omega}$, kao doga\dj aje.
-\v Sto \' ce biti vjerojatnosti? Ve\' c primjeri sugeriraju da su
-vjerojatnosti brojevi pridru\v zeni doga\dj ajima. Dosta je o\v cito
-da od tih brojeva zahtjevamo bar sljede\' ca svojstva: ako su $A$,
-$B$ doga\dj aji tada za vjerojatnosti $\vjeroj{A}$, $\vjeroj{B}$
-vrijedi:
+Dakle, doga\dj aje je prirodno promatrati kao elemente neke familije $\F \subseteq \partitive{\Omega}$.
+Zapravo, najbolje bi bilo uzeti sve podskupove, dakle familiju $\partitive{\Omega}$, kao doga\dj aje.
+\v Sto \' ce biti vjerojatnosti?
+Ve\' c primjeri sugeriraju da su vjerojatnosti brojevi pridru\v zeni doga\dj ajima.
+Dosta je o\v cito da od tih brojeva zahtjevamo bar sljede\' ca svojstva: ako su $A$, $B$ doga\dj aji tada za vjerojatnosti $\vjeroj{A}$, $\vjeroj{B}$ vrijedi:
 
-\begin{equation} \label{vjerPrav1}
+\begin{equation} \label{jed:1.2}
     0 \leq \vjeroj{A} \leq 1
 \end{equation}
 
-\begin{align} \label{vjerPrav2}
+\begin{align} \label{jed:1.3}
     \begin{split}
         \vjeroj{\varnothing} &= 0 \\
         \vjeroj{\Omega} &= 1
     \end{split}
 \end{align}
 
-\begin{equation} \label{vjerPrav3}
-    A \cap B = \varnothing \implies \vjeroj{A \cup B} = \vjeroj{A}
-        + \vjeroj{B}
+\begin{equation} \label{jed:1.4}
+    A \cap B = \varnothing \implies \vjeroj{A \cup B} = \vjeroj{A} + \vjeroj{B}
 \end{equation}
 
-\begin{pr}[Laplace-ov model] \label{primjer5}
-    Neka je $\Omega \neq \varnothing$ kona\v can skup. Ideja je
-    modelirati slu\v caj u kojem su svi osnovni ishodi \emph{jednako
-    vjerojatni}. Lako se vidi da taj zahtjev zajedno sa pravilima
-    \eqref{vjerPrav1}, \eqref{vjerPrav2} i \eqref{vjerPrav3},
-    nu\v zno vodi na to\v cno jedan model, onaj u kojem je svaki
-    $A \subseteq \Omega$ doga\dj aj i vrijedi:
-    \begin{equation} \label{lapVjeroj}
+\begin{pr}[Laplace-ov model] \label{pr:1.5}
+    Neka je $\Omega \neq \varnothing$ kona\v can skup.
+    Ideja je modelirati slu\v caj u kojem su svi osnovni ishodi \emph{jednako vjerojatni}.
+    Lako se vidi da taj zahtjev zajedno sa pravilima \eqref{jed:1.2}, \eqref{jed:1.3} i \eqref{jed:1.4}, nu\v zno vodi na to\v cno jedan model, onaj u kojem je svaki $A \subseteq \Omega$ doga\dj aj i vrijedi:
+
+    \begin{equation} \label{jed:1.6}
         \vjeroj{A} = \frac{\card{A}}{\card{\Omega}}
     \end{equation}
 \end{pr}
 
-U ovom primjeru imamo zadane vjerojatnosti $\vjeroj{\{ \omega\}}
-= 1 / {\card{\Omega}}$, za svaki $\omega \in \Omega$ i onda nas
-pravilo \eqref{vjerPrav3} vodi do formule \eqref{lapVjeroj}.
+U ovom primjeru imamo zadane vjerojatnosti $\vjeroj{\{ \omega\}} = \frac{1}{\card{\Omega}}$, za svaki $\omega \in \Omega$ i onda nas pravilo \eqref{jed:1.4} vodi do formule \eqref{jed:1.6}.
 
-To se mo\v ze i poop\' citi, te je svaki model nad kon\v cnim
-$\Omega$ mogu\' ce opisati na sljede\' ci na\v cin.
+To se mo\v ze i poop\' citi, te je svaki model nad kon\v cnim $\Omega$ mogu\' ce opisati na sljede\' ci na\v cin.
 
-\begin{pr} \label{primjer7}
-    Neka je $\card{\Omega} = n \in \N$. Neka su $p_1, \dots p_n$
-    realni brojevi za koje vrijedi:
-    \begin{equation}
+\begin{pr} \label{pr:1.7}
+    Neka je $\card{\Omega} = n \in \N$.
+    Neka su $p_1, \dots p_n$ realni brojevi za koje vrijedi:
+    \begin{equation}    \label{jed:1.8}
         p_1, \dots, p_n \in [0, \: 1]
     \end{equation}
 
-    \begin{equation}
+    \begin{equation}    \label{jed:1.9}
         \suma{i = 1}{n} p_i = 1
     \end{equation}
 
     Tada je sa
 
-    \begin{equation} \label{konacVP}
+    \begin{equation} \label{jed:1.10}
         \vjeroj{A} = \suma{\omega_i \in A}{} p_i
     \end{equation}
-    dana vjerojatnost na $\partitive{\Omega}$ koja zadovoljava
-    pravila \eqref{vjerPrav1}, \eqref{vjerPrav2} i \eqref{vjerPrav3}
-    i svaka vjerojatnost na $\partitive{\Omega}$ koja zadovoljava
-    \eqref{vjerPrav1}, \eqref{vjerPrav2} i \eqref{vjerPrav3} mo\v ze
-    se prikazati na ovaj na\v cin.
+    dana vjerojatnost na $\partitive{\Omega}$ koja zadovoljava pravila \eqref{jed:1.2}, \eqref{jed:1.3} i \eqref{jed:1.4} i svaka vjerojatnost na $\partitive{\Omega}$ koja zadovoljava \eqref{jed:1.2}, \eqref{jed:1.3} i \eqref{jed:1.4} mo\v ze se prikazati na ovaj na\v cin.
 \end{pr}
 
-Primjetimo da se ovaj pristup direktno prenosi i na prebrojive
-$\Omega$ ako dodamo poop\' cenje pravila \eqref{vjerPrav3}:
+Primjetimo da se ovaj pristup direktno prenosi i na prebrojive $\Omega$ ako dodamo poop\' cenje pravila \eqref{jed:1.4}:
 
-\begin{equation} \label{vjerPrav4}
-    (A_n, \: n \in \N) \subseteq \partitive{\Omega}, \; A_i
-        \cap A_j = \varnothing, \; i \neq j \implies
-        \vjeroj{\unija{n}{} A_n} = \suma{n}{} \vjeroj{A_n}
+\begin{equation} \label{jed:1.11}
+    (A_n, \: n \in \N) \subseteq \partitive{\Omega}, \; A_i \cap A_j = \varnothing, \; i \neq j \implies \vjeroj{\unija{n}{} A_n} = \suma{n}{} \vjeroj{A_n}
 \end{equation}
 
-\begin{zad} \label{zadatak12}
+\begin{zad} \label{zad:1.12}
     Doka\v zi sljede\' ce tvrdnje.
     \begin{enumerate}[label=(\alph*)]
-        \item Doka\v zi da \eqref{vjerPrav1}, \eqref{vjerPrav2}
-            i \eqref{vjerPrav4} $\implies$ \eqref{vjerPrav3}
-        \item Doka\v zi da \eqref{vjerPrav1}, \eqref{vjerPrav2},
-            \eqref{vjerPrav3} i pravilo:
-            \begin{align} \label{neprPrazSkup}
-                (A_n, \: n \in \N) \subseteq \partitive{\Omega},
-                    \; A_1 \supseteq A_2 \supset \dots, \quad
-                    \presjek{n}{} A_n
-                    = \varnothing \implies \lim_{n \to \infty}
-                    \vjeroj{A_n} = 0
-             \end{align}
-             impliciraju \eqref{vjerPrav4}
+        \item Doka\v zi da \eqref{jed:1.2}, \eqref{jed:1.3} i \eqref{jed:1.11} $\implies$ \eqref{jed:1.4}
+        \item Doka\v zi da \eqref{jed:1.2}, \eqref{jed:1.3}, \eqref{jed:1.4} i pravilo:
+        \begin{equation} \label{jed:1.13}
+            (A_n, \: n \in \N) \subseteq \partitive{\Omega}, \; A_1 \supseteq A_2 \supset \dots, \quad \presjek{n}{} A_n = \varnothing \implies \lim_{n \to \infty} \vjeroj{A_n} = 0
+        \end{equation}
+        impliciraju \eqref{jed:1.11}
     \end{enumerate}
 \end{zad}
 
@@ -174,66 +122,43 @@ $\Omega$ ako dodamo poop\' cenje pravila \eqref{vjerPrav3}:
 
 \begin{rj}
     \begin{enumerate}[label=(\alph*)]
-        \item Definiramo niz $\niz{C_n}{n \in \N}$, sa $C_1 = A,
-            \; C_2 = B, \; C_{n + 2} = \varnothing, \; n \in \N$.
+        \item Definiramo niz $\niz{C_n}{n \in \N}$, sa $C_1 = A, \; C_2 = B, \; C_{n + 2} = \varnothing, \; n \in \N$.
             Vidimo da je to niz disjunktnih doga\dj aja.
             Sada vrijedi
             \begin{equation*}
-                \vjeroj{\unija{n \in \N}{} C_n}
-                \overset{\eqref{vjerPrav4}}{=} \suma{n \in \N}{}
-                \vjeroj{C_n} = \vjeroj{C_1} + \vjeroj{C_2}
-                + \underbrace{\suma{n = 3}{\infty} \vjeroj{C_n}}_{=0}
+                \vjeroj{\unija{n \in \N}{} C_n} \overset{\eqref{jed:1.11}}{=} \suma{n \in \N}{} \vjeroj{C_n} = \vjeroj{C_1} + \vjeroj{C_2} + \underbrace{\suma{n = 3}{\infty} \vjeroj{C_n}}_{=0}
             \end{equation*}
             Odakle je lako vidjeti:
             \begin{align*}
-                \vjeroj{A \cup B \cup \unija{n = 3}{\infty}
-                \varnothing} &= \vjeroj{A \cup B} \\
+                \vjeroj{A \cup B \cup \unija{n = 3}{\infty} \varnothing} &= \vjeroj{A \cup B} \\
                 &= \vjeroj{A} + \vjeroj{B}
             \end{align*}
-        \item Neka je $\niz{A_n}{n \in \N} \subseteq \F$ niz
-            disjunktnih doga\dj aja. Definiramo $B_n :=
-            \unija{k = n}{\infty} A_k$, te primjetimo da je
-            $B_1 \supseteq B_2 \supseteq \dots$, tako\dj er
-            primjetimo da je $\presjek{n = 1}{\infty} B_n =
-            \varnothing$. Naime prepostavimo da je $x \in
-            \presjek{k = n_0}{\infty} B_n$, tada je $x \in B_n
-            \; \forall n \in \N$, to jest, $ \forall n \in \N \;
-            x \in \unija{k = n}{\infty} A_k$.
-            Odabreimo neki $n_0 \in \N$, sada $x \in
-            \unija{k = n_0}{\infty} A_k \implies \exists ! \: k_0
-            \geq n_0$ takav da $x \in A_{k_0}$, jer je
-            $\niz{A_n}{n \in \N}$ familija disjunktnih doga\dj aja,
-            ali tada $x \in A_k$, za $k > k_0 \implies x  \in
-            \unija{k = n_1}{\infty} A_k, \; n_1 > k_0$ stoga
-            $x \in B_n$ za $n > k_0$, \v sto je kontradikcija pa je
-            $\presjek{n = 1}{\infty} B_n = \varnothing$.\\
-            Sada imamo
-            \begin{align*}
-                \vjeroj{\unija{k = 1}{\infty} A_k}
-                &= \vjeroj{\unija{k = 1}{n} A_k}
-                + \vjeroj{\unija{k = n + 1}{\infty} A_k} \\
-                &= \suma{k = 1}{n} \vjeroj{A_k}
-                + \vjeroj{\unija{k = n + 1}{\infty} A_k}. 
+        \item Neka je $\niz{A_n}{n \in \N} \subseteq \F$ niz disjunktnih doga\dj aja.
+        Definiramo $B_n := \unija{k = n}{\infty} A_k$, te primjetimo da je $B_1 \supseteq B_2 \supseteq \dots$, tako\dj er primjetimo da je $\presjek{n = 1}{\infty} B_n = \varnothing$.
+        Naime prepostavimo da je $x \in \presjek{k = n_0}{\infty} B_n$, tada je $x \in B_n \; \forall n \in \N$, to jest, $ \forall n \in \N \; x \in \unija{k = n}{\infty} A_k$.
+        Odabreimo neki $n_0 \in \N$, sada $x \in \unija{k = n_0}{\infty} A_k \implies \exists ! \: k_0 \geq n_0$ takav da $x \in A_{k_0}$, jer je $\niz{A_n}{n \in \N}$ familija disjunktnih doga\dj aja, ali tada $x \in A_k$, za $k > k_0 \implies x  \in \unija{k = n_1}{\infty} A_k, \; n_1 > k_0$ stoga $x \in B_n$ za $n > k_0$, \v sto je kontradikcija pa je $\presjek{n = 1}{\infty} B_n = \varnothing$.\\
+        Sada imamo
+        \begin{align*}
+            \vjeroj{\unija{k = 1}{\infty} A_k}
+            &= \vjeroj{\unija{k = 1}{n} A_k}
+            + \vjeroj{\unija{k = n + 1}{\infty} A_k} \\
+            &= \suma{k = 1}{n} \vjeroj{A_k}
+            + \vjeroj{\unija{k = n + 1}{\infty} A_k}. 
+        \end{align*}
+        Pu\v stanjem limesa dobijemo:
+        \begin{align*}
+            \lim_n \vjeroj{\unija{k = n + 1}{\infty} A_k}
+            \overset{\eqref{jed:1.13}}{=}& \lim_n
+            \vjeroj{\presjek{n + 1}{\infty}( \unija{k = n + 1}{\infty} A_k)}\\
+            =& 0.
             \end{align*}
-            Pu\v stanjem limesa dobijemo:
-            \begin{align*}
-                \lim_n \vjeroj{\unija{k = n + 1}{\infty} A_k}
-                \overset{\eqref{neprPrazSkup}}{=}& \lim_n
-                \vjeroj{\presjek{n + 1}{\infty}(
-                    \unija{k = n + 1}{\infty} A_k)}\\
-                =& 0.
-            \end{align*}
-            I prelaskom na limes dobijemo tra\v zenu tvrdnju.
+        I prelaskom na limes dobijemo tra\v zenu tvrdnju.
     \end{enumerate}
 \end{rj}
 
-\begin{pr} \label{primjer14}
-    Neka je $\card{\Omega} = \aleph_0$ i poredajmo $\Omega$ u niz
-    $\{ \omega_1, \: \omega_2, \dots \}$. Svaki model koji
-    zadovoljava \eqref{vjerPrav1}, \eqref{vjerPrav2} i
-    \eqref{vjerPrav4} na $\partitive{\Omega}$ mo\v ze se dobiti
-    preko niza realnih brojeva $\{p_n, \: n \in \N \}$ tako da
-    vrijedi:
+\begin{pr} \label{pr:1.14}
+    Neka je $\card{\Omega} = \aleph_0$ i poredajmo $\Omega$ u niz $\{ \omega_1, \: \omega_2, \dots \}$.
+    Svaki model koji zadovoljava \eqref{jed:1.2}, \eqref{jed:1.3} i \eqref{jed:1.11} na $\partitive{\Omega}$ mo\v ze se dobiti preko niza realnih brojeva $\{p_n, \: n \in \N \}$ tako da vrijedi:
     \begin{equation}   % možda promjeniti format ovoga? 
         p_n \in [0, \: 1], \quad \forall n \in \N
     \end{equation}
@@ -242,38 +167,32 @@ $\Omega$ ako dodamo poop\' cenje pravila \eqref{vjerPrav3}:
         \suma{n \in \N}{} p_n = 1
     \end{equation}
 
-    \begin{equation} \label{prebVP}
+    \begin{equation} \label{jed:1.17}
         \vjeroj{A} = \suma{\omega_n \in A}{} p_n, \quad A
             \subseteq \Omega
     \end{equation}
 \end{pr}
 
-To zna\v ci da prakti\v cki sve situacije u kojima je $\Omega$ najvi\v se
-prebrojiv mo\v zemo svesti na \emph{vjerojatnosti prostor} $(\Omega,
-\: \partitive{\Omega}, \: \Pp)$, pri \v cemu je $\Pp$ opisan
-sa \eqref{konacVP} ili \eqref{prebVP}
+To zna\v ci da prakti\v cki sve situacije u kojima je $\Omega$ najvi\v se prebrojiv mo\v zemo svesti na \emph{vjerojatnosti prostor} $(\Omega, \: \partitive{\Omega}, \: \Pp)$, pri \v cemu je $\Pp$ opisan sa \eqref{jed:1.10} ili \eqref{jed:1.17}
 
 \v Sto ako je $\Omega$ neprebrojiv?
 
-\begin{pr}  \label{primjer1.18}
-    Neka je $\Omega = \segment{a}{b} \subseteq \R$ i opi\v simo pokus
-    "slu\v cajnog odabira to\v cke u $\Omega$". Prirodno je
-    o\v cekivati da za $\segment{c}{d} \subseteq \segment{a}{b}$ vrijedi:
-    \begin{equation} \label{mjeraDilat}
+\begin{pr}  \label{pr:1.18}
+    Neka je $\Omega = \segment{a}{b} \subseteq \R$ i opi\v simo pokus "slu\v cajnog odabira to\v cke u $\Omega$".
+    Prirodno je o\v cekivati da za $\segment{c}{d} \subseteq \segment{a}{b}$ vrijedi:
+    \begin{equation} \label{jed:1.19}
         \vjeroj{\segment{c}{d}} = \frac{d - c}{b - a}
     \end{equation}
     Te za doga\dj aj $A \subseteq \Omega$ i $x \in \R$, takve da je
     $x + A \subseteq \Omega$, vrijedi
-    \begin{equation} \label{mjeraTransl}
+    \begin{equation} \label{jed:1.20}
         \vjeroj{x + A} = \vjeroj{A}.
     \end{equation}
     Postoji li takav model na $\partitive{\Omega}$
 \end{pr}
 
 \begin{tm}
-    Ne postoji funkcija $\Pp: \partitive{\segment{a}{b}} \to \R$
-    koja zadovoljava \eqref{vjerPrav1}, \eqref{vjerPrav2},
-    \eqref{vjerPrav4}, \eqref{mjeraDilat} i \eqref{mjeraTransl}.
+    Ne postoji funkcija $\Pp: \partitive{\segment{a}{b}} \to \R$ koja zadovoljava \eqref{jed:1.2}, \eqref{jed:1.3}, \eqref{jed:1.11}, \eqref{jed:1.19} i \eqref{jed:1.20}.
 \end{tm}
 
 %% možda dodati kao zadatak teorem o osnovnim svojstvima mjere?
@@ -281,89 +200,66 @@ sa \eqref{konacVP} ili \eqref{prebVP}
 %% vjerojatnosti slijedi da je vjerojatnost praznog skupa 0
 
 \begin{proof}
-    Bez smanjanja op\' cenitosti uzmemo $\segment{a}{b}
-    = \segment{-3}{3}$ i pretpostavimo suprotno, to jest da postoji
-    $\Pp$ s tra\v zenim svojstvima. Iz \eqref{vjerPrav1},
-    \eqref{vjerPrav2}, \eqref{vjerPrav4} po zadatku \ref{zadatak12}
-    slijedi \eqref{vjerPrav3}, te se lako poka\v ze i
+    Bez smanjanja op\' cenitosti uzmemo $\segment{a}{b} = \segment{-3}{3}$ i pretpostavimo suprotno, to jest da postoji $\Pp$ s tra\v zenim svojstvima.
+    Iz \eqref{jed:1.2}, \eqref{jed:1.3}, \eqref{jed:1.11} po zadatku \ref{zad:1.12} slijedi \eqref{jed:1.4}, te se lako poka\v ze i
     \begin{equation} \label{monotonstVjeroj}
         A \subseteq B \implies \vjeroj{A} \leq \vjeroj{B}
     \end{equation}
-    Na $\segment{-1}{1}$ definiramo relaciju ekvivalencije $\sim$
-    sa $x \sim y \iff x - y \in \Q$. Po \emph{aksiomu izbora} postoji
-    $A \subseteq \segment{-1}{1}$, takav da je za svaki $x \in
-    \segment{-1}{1}$ (i pripadni $[x] \in \segment{-1}{1} \big/
-    _{\sim}$), $\card{A \cap [x]} = 1$ (u $A$ smo stavili samo jedan
-    element iz svake klase ekvivalencije).
-    Skup $\Q \cap \segment{-2}{2}$ je prebrojiv pa ga mo\v zemo
-    poredati u niz $\indFamilija{q_n}{n \in \N}$. 
+    Na $\segment{-1}{1}$ definiramo relaciju ekvivalencije $\sim$ sa $x \sim y \iff x - y \in \Q$.
+    Po \emph{aksiomu izbora} postoji $A \subseteq \segment{-1}{1}$, takav da je za svaki $x \in \segment{-1}{1}$ (i pripadni $[x] \in \segment{-1}{1} \big/_{\sim}$), $\card{A \cap [x]} = 1$ (u $A$ smo stavili samo jedan element iz svake klase ekvivalencije).
+    Skup $\Q \cap \segment{-2}{2}$ je prebrojiv pa ga mo\v zemo poredati u niz $\niz{q_n}{n \in \N}$. 
     Definirajmo $A_n = q_n + A \subseteq \segment{-3}{3}, \; n \in
-    \N$. Neka je $H := \unija{n=1}{\infty} A_n \subseteq
-    \segment{-3}{3}$. 
-    Iz definicije relacije $\sim$ slijedi da su $A_n$ me\dj usobno
-    disjunktni, pa \eqref{vjerPrav4} daje:
+    \N$.
+    Neka je $H := \unija{n=1}{\infty} A_n \subseteq \segment{-3}{3}$. 
+    Iz definicije relacije $\sim$ slijedi da su $A_n$ me\dj usobno disjunktni, pa \eqref{jed:1.11} daje:
     \begin{equation*}
         \vjeroj{H} = \suma{n=1}{\infty} \vjeroj{A_n}
-            \overset{\eqref{mjeraTransl}}{=} \suma{n=1}{\infty}
+            \overset{\eqref{jed:1.20}}{=} \suma{n=1}{\infty}
             \vjeroj{A}.
     \end{equation*}
-    Kada bi $\vjeroj{A} > 0$, onda bi vrijedilo $\suma{n=1}{\infty}
-    \vjeroj{A} = + \infty \implies \vjeroj{H} = +\infty$, \v sto je
-    kontradikcija sa \v cinjenicom da je $\vjeroj{H} \in
-    \segment{0}{1}$, stoga nu\v zno vrijedi $\vjeroj{A} = 0$, pa onda
-    i $\vjeroj{H} = 0$.
-    Za svaki $x \in \segment{-1}{1}$, vrijedi $A \cap [x] = \{y\},
-    \; y \in \segment{-1}{1}, \; x - y \in \Q \cap \segment{-2}{2}$.
-    Dakle $x \in q_n + A \subseteq H$, za neki $n$. Pa mora vrijediti
-    $\segment{-1}{1} \subseteq H$, pa po \eqref{mjeraDilat} i
-    \eqref{monotonstVjeroj} slijedi
+    Kada bi $\vjeroj{A} > 0$, onda bi vrijedilo $\suma{n=1}{\infty} \vjeroj{A} = + \infty \implies \vjeroj{H} = +\infty$, \v sto je kontradikcija sa \v cinjenicom da je $\vjeroj{H} \in \segment{0}{1}$, stoga nu\v zno vrijedi $\vjeroj{A} = 0$, pa onda i $\vjeroj{H} = 0$.
+    Za svaki $x \in \segment{-1}{1}$, vrijedi $A \cap [x] = \{y\}, \; y \in \segment{-1}{1}, \; x - y \in \Q \cap \segment{-2}{2}$.
+    Dakle $x \in q_n + A \subseteq H$, za neki $n$.
+    Pa mora vrijediti $\segment{-1}{1} \subseteq H$, pa po \eqref{jed:1.19} i \eqref{monotonstVjeroj} slijedi
     \begin{equation*}
         \frac{1}{3} = \vjeroj{\segment{-1}{1}} \leq \vjeroj{H} = 0,
     \end{equation*}
-    \v sto je kontradikcija, stoga funkcija $\Pp$ sa tra\v zenim
-    svojstvima ne postoji.
+    \v sto je kontradikcija, stoga funkcija $\Pp$ sa tra\v zenim svojstvima ne postoji.
 \end{proof}
 
-Priroda problema je takva da nemo\v zemo odustati niti od jednog od
-zahtjeva \eqref{vjerPrav1}, \eqref{vjerPrav2}, \eqref{vjerPrav4},
-\eqref{mjeraDilat}, \eqref{mjeraTransl}, stoga moramo odustati od
-zahtjeva definicije funkcije $\Pp$ na $\partitive{\Omega}$.
+Priroda problema je takva da nemo\v zemo odustati niti od jednog od zahtjeva \eqref{jed:1.2}, \eqref{jed:1.3}, \eqref{jed:1.11}, \eqref{jed:1.19}, \eqref{jed:1.20}, stoga moramo odustati od zahtjeva definicije funkcije $\Pp$ na $\partitive{\Omega}$.
 
-\v Zelimo sa\v cuvati osnovne operacije i to nas vodi na sljede\' cu
-definiciju.
+\v Zelimo sa\v cuvati osnovne operacije i to nas vodi na sljede\' cu definiciju.
 
 \begin{defn}
-    Vjerojatnosni prostor je ure\dj ena trojka
-    $\vjerojatnosniProstor$ koja se sastoji od nepraznog skupa
-    $\Omega$, $\sigma$-algebre $\F$ doga\dj aja na $\Omega$ te
-    funkcije $\Pp: \F \to \R$ koja zadovoljava \eqref{vjerPrav1},
-    \eqref{vjerPrav2} i \eqref{vjerPrav4}.
+    Vjerojatnosni prostor je ure\dj ena trojka $\vjerojatnosniProstor$ koja se sastoji od nepraznog skupa $\Omega$, $\sigma$-algebre $\F$ doga\dj aja na $\Omega$ te funkcije $\Pp: \F \to \R$ koja zadovoljava \eqref{jed:1.2}, \eqref{jed:1.3} i \eqref{jed:1.11}.
     Funkciju $\Pp$ nazivamo \emph{vjerojatnosnom mjerom}.
 \end{defn}
 
-\begin{nap}
+\begin{nap} \label{nap:1.24}
     \begin{enumerate}[label=(\alph*)]
-        \item Podsjetimo se da je $\F \subseteq \partitive{\Omega}$
-            $\sigma$-algebra, ako je $\varnothing \in \F$, $\F$ je
-            zatvoren na komplemente i prebrojive unije. Posljedica
-            toga je da je $\F$ zatvorena na kona\v cne i prebrojive
-            upotrebe uobi\v cajenih skupovnih operacija.
-            \emph{Doga\dj aji}  su samo oni podskupovi od $\Omega$
-            koji su elementi $\sigma$-algebre $\F$.
-        \item Ure\dj en par $\izmjerivProstor$ koji se sastoji od
-            nepraznog skupa $\Omega$ i $\sigma$-algebre $\F$ na
-            $\Omega$ nazivamo \emph{izmjerivim prostorom}.
-            Ako na $\F$ imamo funkciju $\mu : \F \to
-            \segment{0}{+ \infty}$ koja zadovoljava \eqref{vjerPrav4}
-            i $\mjera{\varnothing} = 0$, onda ka\v zemo da je $\mu$
-            \emph{(pozitivna) mjera}.
-            Ako postoje $\niz{E_n}{n \in \N} \subseteq \F$, takvi da
-            je $\unija{n \in \N}{} E_n = \Omega$ i $\mjera{E_n} <
-            +\infty, \; \forall n \in \N$, tada ka\v zemo da je $\mu$
-            \emph{$\sigma$-kona\v cna (pozitivna) mjera}.
-            Ako je $\mjera{\Omega} < +\infty$, tada ka\v zemo da je
-            $\mu$ kona\v cna (pozitivna) mjera.
-            Dakle Kolmogorov je definirao vjerojatnosni prostor kao
-            poseban slu\v caj prostora kona\v cne mjere.
+        \item Podsjetimo se da je $\F \subseteq \partitive{\Omega}$ $\sigma$-algebra, ako je $\varnothing \in \F$, $\F$ je zatvoren na komplemente i prebrojive unije. Posljedica toga je da je $\F$ zatvorena na kona\v cne i prebrojive upotrebe uobi\v cajenih skupovnih operacija.
+        \emph{Doga\dj aji}  su samo oni podskupovi od $\Omega$ koji su elementi $\sigma$-algebre $\F$.
+        \item Za $\sigma$-algebru $\famF$ na $\Omega \neq  \varnothing$, dovoljno je tra\v ziti:
+        \begin{enumerate}[label=(\roman*)]
+            \item $\varnothing \in \famF$
+            \item $A \in \famF \implies A^c \in \famF$
+            \item $\niz{A_n}{n \in \nat} \subseteq \famF \implies \unija{n \in \nat}{} A_n \in \famF$.
+        \end{enumerate}
+        \item Ure\dj en par $\izmjerivProstor$ koji se sastoji od nepraznog skupa $\Omega$ i $\sigma$-algebre $\F$ na $\Omega$ nazivamo \emph{izmjerivim prostorom}.
+        Ako na $\F$ imamo funkciju $\mu : \F \to \segment{0}{+ \infty}$ koja zadovoljava \eqref{jed:1.11} i $\mjera{\varnothing} = 0$, onda ka\v zemo da je $\mu$ \emph{(pozitivna) mjera}.
+        Ako postoje $\niz{E_n}{n \in \N} \subseteq \F$, takvi da je $\unija{n \in \N}{} E_n = \Omega$ i $\mjera{E_n} < +\infty, \; \forall n \in \N$, tada ka\v zemo da je $\mu$ \emph{$\sigma$-kona\v cna (pozitivna) mjera}.
+        Ako je $\mjera{\Omega} < +\infty$, tada ka\v zemo da je $\mu$ kona\v cna (pozitivna) mjera.
+        Dakle Kolmogorov je definirao vjerojatnosni prostor kao poseban slu\v caj prostora kona\v cne mjere.
+        \item Za vjerojatnosnu mjeru nije potrebno zahtjevati $\vjeroj{\varnothing} = 0$.
+        Minimalni zahtjevi da bi na izmjerivom prostoru $\izmjerivProstor$ funkcija $\masP: \famF \to \real$ bila vjerojatnost su:
+        \begin{enumerate}[label=(\roman*)]
+            \item $\vjeroj{A} \geq 0, \quad \forall A \in \famF$
+            \item $\vjeroj{\Omega} = 1$
+            \item $\niz{A_n}{n \in \nat}$ niz disjunktnih doga\dj aja,
+            \begin{equation*}
+                \vjeroj{\unija{n \in \nat}{} A_n} = \suma{n \in \nat}{} \vjeroj{A_n}.
+            \end{equation*}
+        \end{enumerate}
     \end{enumerate}
 \end{nap}
