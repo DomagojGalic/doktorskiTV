@@ -2,64 +2,108 @@
 
 \chapter{Egzistencija i jedinstvenst vjerojatnosti}
 
-Mo\v zemo li u ovoj poop\' cenoj situacij dobro modelirati primjer
-\ref{pr:1.18}? Ovo pitanje nas vodi na pitanje egzistencije
-(a time i jedinstvenosti) vjerojatnosti. Budu\' ci je vjerojatnost
-poseban slu\v caj mjere, teoremi iz teorije mjere vrijedi i ovdije.
+Mo\v zemo li u ovoj poop\' cenoj situacij dobro modelirati primjer \ref{pr:1.18}?
+Ovo pitanje nas vodi na pitanje egzistencije (a time i jedinstvenosti) vjerojatnosti.
+Budu\' ci je vjerojatnost poseban slu\v caj mjere, teoremi iz teorije mjere vrijedi i ovdje.
 Podsjetimo se.
 
-Najmanja $\sigma$-algebra na nepraznom skupu $\Omega$ je
-$\{\varnothing, \Omega\}$, a najve\' ca $\sigma$-algebra je
-$\partitive{\Omega}$.
-Dakle svaka familija $\E \subseteq \partitive{\Omega}$ je sadr\v zana
-u barem jednoj $\sigma$-algebri na $\Omega$.
-Lako se vidi da je presjek neprazne familije $\sigma$-algebri ponovo
-$\sigma$-algebra, pa je i
+Najmanja $\sigma$-algebra na nepraznom skupu $\Omega$ je $\{\varnothing, \Omega\}$, a najve\' ca $\sigma$-algebra je $\partitive{\Omega}$.
+Dakle svaka familija $\E \subseteq \partitive{\Omega}$ je sadr\v zana u barem jednoj $\sigma$-algebri na $\Omega$.
+Lako se vidi da je presjek neprazne familije $\sigma$-algebri ponovo $\sigma$-algebra, pa je i
 \begin{equation} \label{jed:2.1}
-    \sigAlg{\E} := \presjek{\shortstack{$\E \subseteq \hh \subseteq
-    \partitive{\Omega}$ \\ $\hh$ $\sigma$-algebra}}{} 
-    %\presjek{\shortstack{\E \subseteq \hh \subseteq
-        %\partitive{\Omega}\\ \hh \: \sigma \textnormal{-algebra}}}{}
-        \hh
+    \sigAlg{\famE} := \presjek{
+        \begin{smallmatrix}
+            \famE \subseteq \famH \subseteq \partitive{\Omega}\\
+            \famH \; \sigma \textnormal{-algebra}
+        \end{smallmatrix}
+    }{} \famH
 \end{equation}
 
-tako\dj er $\sigma$-algebra i to najmanje $\sigma$-algebra koja
-sadr\v zi $\E$ (ka\v zemo jo\v s da je $\sigma$-algebra
-$\sigAlg{\E}$, $\sigma$-algebra generirana s $\E$).
+tako\dj er $\sigma$-algebra i to najmanje $\sigma$-algebra koja sadr\v zi $\E$ (ka\v zemo jo\v s da je $\sigma$-algebra $\sigAlg{\E}$, $\sigma$-algebra generirana s $\E$).
 O\v cito je $\sigAlg{\{\Omega\}} = \{ \varnothing, \; \Omega\}$,
-te tako\dj er
-$\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
+te tako\dj er $\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
 
 \begin{zad} \label{zad:2.2}
-    Neka je $\E = \indFamilija{\{ \omega \}}{\omega \in \Omega}$.
-    Tada je $\sigAlg{\E} =\{ A \subseteq \Omega \: |$ $A$ ili $A^c$
-    prebrojiv $\}$. Tada je $\sigAlg{\E} = \partitive{\Omega}$ ako
-    i samo ako je $\Omega$ kona\v can ili prebrojiv.
+    Neka je $\famE = \indFamilija{\{ \omega \}}{\omega \in \Omega}$.
+    Tada je $\sigAlg{\famE} =\{ A \subseteq \Omega \: |$ $A$ ili $A^c$ prebrojiv $\}$. Tada je $\sigAlg{\famE} = \partitive{\Omega}$ ako i samo ako je $\Omega$ kona\v can ili prebrojiv.
 \end{zad}
 
-%
-% rješi i nadopiši zadatak
-%
+\begin{rj}
+    Zadatak se zapravo sastoji od dvije tvrdnje:
+    \begin{enumerate}[label=(\arabic*)]
+        \item \label{rj:2.2a}
+        $\sigAlg{\famE} = \skup{A \subseteq \Omega}{\card{A} \land \card{A^c} \leq \aleph_0}$, odnosno $A$ ili $A^c$ moraju biti najvi\v se prebrojivi. Budu\' ci da je u tom slu\v caju
+        \item   \label{rj:2.2b}
+        $\sigAlg{\famE} = \partitive{\Omega}$, ako i samo ako je $\Omega$ najvi\v se prebrojiv.
+    \end{enumerate}
+    Primjetimo da \ref{rj:2.2b} o\v cito vrijedi za kona\v cne i prebrojive $\Omega$, zato \v sto svaki podskup od $\Omega$ nu\v zno mora biti kona\v can ili prebrojiv, a kako je $\partitive{\Omega}$ $\sigma$-algebra, onda je i skup $\skup{A \subseteq \Omega}{\card{A} \land \card{A^c} \leq \aleph_0}$ $\sigma$-algebra, dakle vrijedi i \ref{rj:2.2a}.
 
-Ako je $\topProstor$ topolo\v ski prostor s topologijom $\ttop$, tada
-$\sigAlg{\ttop}$ ozna\v cavamo s $\borel{X}$ i nazivamo
-$\sigma$-algebrom \emph{Borelovih skupova}.
+    Dakle promatrajmo neprebrojiv slu\v caj.
+    Ozna\v cimo $\famF := \skup{A \subseteq \Omega}{\card{A} \land \card{A^c}}$, te doka\v zimo da je $\famF$ $\sigma$-algebra.
+    \begin{enumerate}[label=(\roman*)]
+        \item O\v cito je $\varnothing \in \famF$
+        \item $A \in \famF$ ako i samo ako je $A$ najvi\v se prebrojiv ili je $A^c$ najvi\v se prebrojiv.
+        Vidimo da je uvijet simetri\v can s obzirom na operaciju uzimanja komplementa, stoga slijedi da je $A^c \in \famF$
+        \item Neka je $\niz{A_n}{n \in \nat}$ elemenata iz $\famF$, promatramo dvije mogu\' cnosti:
+        \begin{enumerate}[label=\arabic*$\degree$)]
+            \item Za svaki $n \in \nat$ je $A_n$ najvi\v se prebrojiv, tada je $\unija{n \in \nat}{} A_n$ najvi\v se prebrojiva, pa je $\unija{n \in \nat}{} A_n \in \famF$.
+            \item Postoji $n_0 \in \nat$ takav da je $A_{n_0}^c$ najvi\v se prebrojiv.
+            Tada je $A_{n_0} \subseteq \unija{n \in \nat}{} A_n$, pa je $\Big( \unija{n \in \nat}{} A_n \Big)^c = \presjek{n \in \nat}{} A_n^c \subseteq A_{n_0}^c$, stoga je $\Big( \unija{n \in \nat}{} A_n \Big)^c$ najvi\v se prebrojiv, pa je $\unija{n \in \nat}{} A_n \in \famF$
+        \end{enumerate}
+    \end{enumerate}
+    Dakle $\famF$ je $\sigma$-algebra.
+
+    Doka\v zimo sada tvrdnju \ref{rj:2.2b}, dovoljan uvijet smo pokazali, ostao je jo\v s nu\v zan.
+    Preciznije, treba pokazati da $\sigAlg{\famE} = \partitive{\Omega} \implies$ $\Omega$ najvi\v se prebrojiv.
+    Dokazujemo tvrdnju obratom po kontrapoziciji, to jest dokazujemo tvrdnju:\\
+    $\Omega$ neprebrojiv $\implies \sigAlg{\famE} \neq \partitive{\Omega}$.
+
+    Za svaka dva beskona\v cna kardinalna broja njihova suma (koja zapravo odgovara njihovoj disjunktnoj uniji) je maksimum ta dva broja.
+    Ako je $S$ skup sa kardinalnim brojem $\alpha$, tada vrijedi da je $\alpha + \alpha = \alpha$.
+    Dakle postoje dva disjunktna skupa $S_1$, $S_2$, takvi da je njihova unija iste kardinalnosti kao i $S$.
+    Postoji bijekcija $f: S_1 \cup S_2 \to S$, takvi da su $f(S_1)$ i $f(S_2)$ disjunktni, neprebrojivi podskupovi od $S$. Konstruirajmo je.
+
+    Neka je $\famF$ familija svih bijekcija sa nekog (proizvoljnog) $T \subseteq S$ u $T \times \{0, \; 1\}$.
+    To\v cnije:
+    \begin{equation*}
+        \famF = \skup{f: T \to T \times \{0, \; 1\}}{T \subseteq S, \; f \textnormal{ je bijekcija}}
+    \end{equation*}
+    Takva bijekcija uvijek postoji kada je $T$ prebrojiv skup.
+    Uredimo te funkcije relacijom "$\subseteq$" na njihovim grafovima.
+    Sada po Zornovoj lemi nu\v zno mora postojati maksimalni element, to jest funkcija neka $f_0: T_0 \to T_0 \times \{0, \; 1\}$.
+    Kada bi $S \setminus T_0$ bio beskona\v can, tada bi on sadr\v zavao prebrojiv podskup, te bi funkciju $f_0$ mogli pro\v siriti, \v sto je kontradikcija s maksimalno\v scu.
+    Dakle $S \setminus T_0$ je kona\v can, pa postoji bijekcija $g: \{1, \; 2, \ldots n\} \to S \setminus T_0 \times \{0, \; 1\}$.
+    Neka je $A = \indFamilija{x_n}{n \in \nat} \subseteq S$ prebrojiva familija, mo\v zemo konstruirati novu bijekciju
+    $f : S \to S \times \{0, \; 1\}$ sa:
+    \begin{equation*}
+        f(x) :=
+        \begin{cases}
+            g(m)    &, x_m \in \{ x_1, \; x_2, \ldots, x_n \} \subseteq A\\
+            f_0(x_{m - n})  &, x_m \in A \; \land \; m > n\\
+            f_0(x)  &, \textnormal{ina\v ce}
+        \end{cases}.
+    \end{equation*}
+    Dakle ako je $\Omega$ neprebrojiv, mogu\' ce ga je particionirati na dva neprebrojiva disjunktan skupa $\Omega = S_1 \dot{\cup} S_2$, tada je $S_1^c = S_2$, te je $S_1 \in \partitive{\Omega}$, a tako\dj er $S_1 \notin \famF$.
+\end{rj}
+
+
+\begin{defn}
+    Ako je $\topProstor$ topolo\v ski prostor s topologijom $\famT$, tada $\sigAlg{\famT}$ ozna\v cavamo s $\borel{X}$ i nazivamo $\sigma$-algebrom \emph{Borelovih skupova}.        
+\end{defn}
 
 \begin{pr}  \label{pr:2.3}
-    Ako je $X = \R$ ili je $X = \segment{A}{B}$, za $A, \: B \in \R$,
-    $A < B$, s euklidskom topologijom, onda se $\borel{X}$ mo\v ze
-    prikazati kao $\sigAlg{\E}$, za razne familije $\E$.
+    Ako je $X = \R$ ili je $X = \segment{A}{B}$, za $A, \: B \in \R$, $A < B$, s euklidskom topologijom, onda se $\borel{X}$ mo\v ze prikazati kao $\sigAlg{\E}$, za razne familije $\E$.
     Na primjer za $\E$ mo\v zemo uzeti
     \begin{itemize}
-        \item $\mathcal{I} := \skup{\lijInt{a}{b} \cap X}{a < b, \:
+        \item $\famI := \skup{\lijInt{a}{b} \cap X}{a < b, \:
             a, \: b \in \R} \bigcup \{\varnothing\}$
-        \item $\mathcal{I}_{\Q} := \skup{\lijInt{a}{b} \cap X}{a < b,
+        \item $\famI_{\Q} := \skup{\lijInt{a}{b} \cap X}{a < b,
             \: a, \: b \in \Q} \bigcup \{ \varnothing \}$
-        \item $\mathcal{O}_{\Q} := \skup{\obInt{a}{b} \cap X}{a < b,
+        \item $\famO_{\Q} := \skup{\obInt{a}{b} \cap X}{a < b,
             \: a, \: b \in \Q} \bigcup \{ \varnothing \}$
-        \item $\mathcal{K} := \skup{\lijInt{-\infty}{b} \cap X}{b
+        \item $\famK := \skup{\lijInt{-\infty}{b} \cap X}{b
             \in \R}$
-        \item $\mathcal{K}_{\Q} := \skup{\lijInt{-\infty}{b}
+        \item $\famK_{\Q} := \skup{\lijInt{-\infty}{b}
             \cap X}{b \in \Q}$.
     \end{itemize}
 \end{pr}
@@ -69,131 +113,177 @@ Sve familije u primjeru \ref{pr:2.3} imaju zanimljivo svojstvo:
     A, \: B \in \E \implies A \cap B \in \E.
 \end{equation}
 
-Svaka neprazna familija koja ima svojstvo \eqref{jed:2.4} naziva se
-\emph{$\pi$-sistem}. Svaka familija $\E \subseteq \partitive{\Omega}$,
-Koja sadr\v zi $\Omega$, zatvorena je na prave skupovne razlike i
-rastu\' ce prebrojive unije naziva se \emph{Dynkinovom klasom}.
+Svaka neprazna familija koja ima svojstvo \eqref{jed:2.4} naziva se \emph{$\pi$-sistem}.
 
-Presjek Dynkinovih klasa je Dynkinova klasa. Svaka $\sigma$-algebra
-je i $\pi$-sistem i Dynkinova klasa. Posebno $\partitive{\Omega}$
-je Dynkinova klasa, pa se kao i u \eqref{jed:2.1} mo\v ze napraviti
-najmanja Dynkinova klasa generirana klasom $\E$; oznaka je
-$\dynk{\E}$. Iz teorije mjere poznat nam je sljede\' ci zadatak.
+Svaka familija $\E \subseteq \partitive{\Omega}$, Koja sadr\v zi $\Omega$, zatvorena je na prave skupovne razlike i rastu\' ce prebrojive unije naziva se \emph{Dynkinovom klasom}.
+
+\begin{nap} \label{nap:2.4-1}
+    Familija $\famD \subseteq \partitive{\Omega}$ je dakle Dynkinova klasa ako vrijedi:
+    \begin{enumerate}[label=(\roman*)]
+        \item   \label{nap:2.4-1.1}
+        $\Omega \in \famD$
+        \item   \label{nap:2.4-1.2}
+        $A, \; B \in \famD, \; B \subseteq A \implies A \setminus B \in \famD$
+        \item $A_1 \subseteq A_2 \subseteq \ldots \in \famD \implies \unija{n \in \nat}{} A_n \in \famD$.
+    \end{enumerate}
+\end{nap}
+
+\begin{nap} \label{nap:2.4-2}
+    Primjetimo da iz \ref{nap:2.4-1.1} i \ref{nap:2.4-1.2} vrijedi $A \in \famD \implies A^c = \Omega \setminus A \in \famD$, dakle Dynkinova klasa je zatvorena na uzimanje komplementa.
+\end{nap}
+
+Presjek Dynkinovih klasa je Dynkinova klasa.
+Svaka $\sigma$-algebra je i $\pi$-sistem i Dynkinova klasa.
+Posebno $\partitive{\Omega}$ je Dynkinova klasa, pa se kao i u \eqref{jed:2.1} mo\v ze napraviti najmanja Dynkinova klasa generirana klasom $\famE$; oznaka je $\dynk{\famE}$.
+Iz teorije mjere poznat nam je sljede\' ci zadatak.
 
 \begin{zad}   \label{zad:2.5}
-    Neka je $\E$, $\pi$-sistem na $\Omega$.
-    Tada je $\sigAlg{\E} = \dynk{\E}$.    
+    Neka je $\famE$, $\pi$-sistem na $\Omega$.
+    Tada je $\sigAlg{\famE} = \dynk{\famE}$.    
 \end{zad}
 
-%
-%  rješi zadatak
-%
+\begin{rj}
+    Prvo \' cemo dokazati da je $\dynk{\famE}$ $\pi$-sistem, odatle \' ce lako slijediti da je $\sigma$-algebra, a samim time, i najmanja $\sigma$-algebra odnosno $\sigAlg{\famE}$.
+
+    Definiramo familiju
+    \begin{equation*}
+        \famD_1 := \skup{A \subseteq \dynk{\famE}}{A \cap B \in \dynk{\famE}, \; \forall B \in \dynk{\famE}}.
+    \end{equation*}
+    \v Zelimo pokazati da je $\dynk{\famE} = \famD_1$.
+    Vidimo da vrijedi $\famD_1 \subseteq \dynk{\famE}$, ako poka\v zemo da je $\famD_1$ Dynkinova klasa koja sadr\v zi $\famE$, tada \' ce nu\v zno vrijediti da je $\dynk{\famE} \subseteq \famD_1$, jer je $\dynk{\famE}$ najmanja Dynkinova klasa koja sadr\v zi $\famE$.
+    
+    \begin{enumerate}[label=(\arabic*)]
+        \item \label{rj:2.5a}
+        Prvo \' cemo pokazati da je $\famD_1$ Dynkinova klasa.
+        \begin{enumerate}[label=(\roman*)]
+            \item Neka je $B \in \dynk{\famE}$, primjetimo $\Omega \cap B = B \in \dynk{\famE}$, dakle $\Omega \in \famD_1$.
+            \item Neka su $A, \;B \in \famD_1$, takvi da je $B \subseteq A$, za svaki $C \in \dynk{\famE}$ vrijedi $A \cap C, \; B \cap C \in \dynk{\famE}$, a tada je i $(A \setminus B) \cap C = (A \cap C) \setminus (B \cap C) \in \dynk{\famE}$, dakle $A \setminus B \in \famD_1$.
+            %\begin{equation*}
+            %    \begin{aligned}
+            %        (A \cap C) \setminus (B \cap C) &= (A \cap C) \cap (B \cap C)^c\\
+            %        &= (A \cap C) \cap (B^c \cup C^c)\\
+            %        &= [(A \cap C) \cup B^c] \cup \underbrace{[(A \cap C) \cup C^c]}_{\varnothing}\\
+            %        &= (A \cap C) \cap B^c\\
+            %        &= (A \cap C) \setminus B
+            %    \end{aligned}            
+            %\end{equation*}
+            \item Neka su $A_1 \subseteq A_2 \subseteq \ldots \in \famD_1$ i neka je $B \in \dynk{\famE}$, tada je $A_k \cap B \in \dynk{\famE}$, za svaki $k \in \nat$.
+            Sada imamo $\Big(\unija{n \in \nat}{} A_n \Big) \cap B = \unija{n \in \nat}{} (A_n \cap B) \in \dynk{\famE}$
+        \end{enumerate}
+
+        \item   \label{rj:2.5b}
+        Poka\v zimo da je $\famE \subseteq \famD_1$.
+        Definirajmo familiju:
+        \begin{equation*}
+            \famD_2 := \skup{A \in \dynk{\famE}}{A \cap B \in \dynk{\famE}, \; \forall B \in \famE}.
+        \end{equation*}
+        Budu\' ci da je $\famE$ $\pi$-sustav, slijedi da je $\famE \subseteq \famD_2$. Primjetimo ako poka\v zemo da je $\famD_2 = \dynk{\famE}$, onda \' ce direktno slijediti da je $\famE \subseteq \famD_1$, jer tada za $A \in \famE$ vrijedi $A \cap B \in \dynk{\famE}, \; \forall B \in \dynk{\famE}$, dakle $A$ zadovoljava definicijsko svojstvo skupa $\famD_1$, a budu\' ci je $A$ proizvoljan, slijedi $\famE \subseteq \famD_1$.
+
+        Analogno kao i gore, mo\v ze se pokazati da je $\famD_2$ Dynkinova klasa, a budu\' ci je $\famE \subseteq \famD_2$, slijedi da je $\dynk{\famE} = \famD_2$, stoga $\famE \subseteq \famD_1$. Dakle $\dynk{\famE}$ je $\pi$-sistem.
+    \end{enumerate}
+
+    Ostalo je jo\v s pokazati da je onda $\dynk{\famE}$ $\sigma$-algebra.
+    Sada vidimo da za $A, \; B \in \dynk{\famE}$ vrijedi $A \cup B = (A^c \cap B^c)^c$. Kako je Dynkinova klasa prema \ref{nap:2.4-2} zatvorena na uzimanje komplementa slijedi $A^c, \; B^c \in \dynk{\famE}$, te je $\dynk{\famE}$ $\pi$-sistem, a time zatvoren na presjeke, slijedi da je $A \cup B \in \dynk{\famE}$. Dakle $\dynk{\famE}$ je zatvoren na kona\v cne unije.\\
+    Sada imamo:
+    \begin{enumerate}[label=(\roman*)]
+        \item $\Omega \in \dynk{\famE} \implies \Omega \setminus \Omega = \varnothing \in \dynk{\famE}$
+        \item $A \in \dynk{\famE} \implies A^c \in \dynk{\famE}$ slijedi prema napomeni \ref{nap:2.4-2}
+        \item Neka je $\niz{A_n}{n \in \nat} \subseteq \dynk{\famE}$.
+        Definirajmo niz $\niz{B_n}{n \in \nat}$ sa $B_n := \unija{k = 1}{n} A_k$, primjetimo $B_n \subseteq B_{n + 1}, \; \forall n \in \nat$. Dakle $\niz{B_n}{n \in \nat}$ je rastu\' ci niz, a kako je $\dynk{\famE}$ zatvoren na kon\v cne unije slijedi da je $B_n \in \dynk{\famE}$, stoga slijedi da je $\unija{n \in \nat}{} B_n = \unija{n \in \nat}{} A_n \in \dynk{\famE}$
+    \end{enumerate}
+    Dakle $\dynk{\famE}$ je $\sigma$-algebra pa, budu\' ci da vrijedi $\dynk{\famE} \subseteq \sigAlg{\famE}$ to povla\v ci da je $\dynk{\famE} = \sigAlg{\famE}$.
+\end{rj}
+
+\begin{nap} \label{nap:2.5-1}
+    Op\' cenito je korisna strategija, kada \v zelimo pokazati da neko svojstvo vrijedi na cijeloj familiji, definirati podfamiliju objekata koji zadovoljavaju tra\v zeno svojstvo i onda pokazati da je tako definirana podfamilija jednaka po\v cetnoj familiji. 
+\end{nap}
+
 
 \begin{tm}  \label{tm:2.6}
-    Neka je $\izmjerivProstor$ izmjeriv prostor i $\E$ $\pi$-sistem
-    na $\Omega$ sa svojstvom $\F = \sigAlg{\E}$.
-    Ako su $\mu$ i $\nu$ kona\v cne pozitivne mjere na
-    $\izmjerivProstor$ takve da je $\mjera{\Omega}
-    = \nu(\Omega)$ i $\restr{\mu}{\E} = \restr{\nu}{\E}$, tada je
-    $\mu = \nu$.   
+    Neka je $\izmjerivProstor$ izmjeriv prostor i $\famE$ $\pi$-sistem na $\Omega$ sa svojstvom $\F = \sigAlg{\famE}$.
+    Ako su $\mu$ i $\nu$ kona\v cne pozitivne mjere na $\izmjerivProstor$ takve da je $\mjera{\Omega} = \nu(\Omega)$ i $\restr{\mu}{\famE} = \restr{\nu}{\famE}$, tada je $\mu = \nu$.   
 \end{tm}
 
 \begin{proof}
-    Neka je $\hh := \skup{A \in \F}{\mjera{A} = \nu(A)}$.
-    O\v cito je $\E \subseteq \hh$. S druge strane $\Omega \in \hh$,
-    te je $\hh$ zatvoren rastu\' ce prebrojive unije zbog
-    neprekidnosti pozitivnih mjera na rastu\' ce unije.
-    Za $A, \: B \in \hh, \: A \subseteq B$, zbog kona\v cnosti mjera
-    $mu$ i $nu$, vrijedi $\mjera{B \setminus A} = \mjera{B}
-    - \mjera{A} = \nu(B) - \nu(A) = \nu(B \setminus A)$.
-    Dakle $\hh$ je Dynkinova klasa, pa je $\F = \underbrace{
-    \sigAlg{\E} = \dynk{\E}}_{\textnormal{zadatak \ref{zad:2.5}}}
-    \subseteq \hh$, to jest $\F = \hh$.
+    Neka je $\famH := \skup{A \in \F}{\mjera{A} = \nu(A)}$.
+    O\v cito je $\famE \subseteq \famH$. S druge strane $\Omega \in \famH$, te je $\famH$ zatvoren rastu\' ce prebrojive unije zbog neprekidnosti pozitivnih mjera na rastu\' ce unije.
+    Za $A, \: B \in \famH, \: A \subseteq B$, zbog kona\v cnosti mjera $\mu$ i $\nu$, vrijedi $\mjera{B \setminus A} = \mjera{B} - \mjera{A} = \nu(B) - \nu(A) = \nu(B \setminus A)$.
+    Dakle $\famH$ je Dynkinova klasa, pa je $\famF = \underbrace{\sigAlg{\E} = \dynk{\famE}}_{\textnormal{zadatak \ref{zad:2.5}}} \subseteq \famH$, to jest $\famF = \famH$.
 \end{proof}
 
 \begin{kor} \label{kor:2.7}
-    Neka je $\izmjerivProstor$ i $\E$ $\pi$-sistem na $\Omega$ sa
-    svojstvom $\F = \sigAlg{\E}$. Ako su $\Pp$ i $\overline{\Pp}$
-    dvije vjerojatnosti na $\izmjerivProstor$ takve da je
-    $\restr{\Pp}{\E} = \restr{\overline{\Pp}}{\E}$, tada je $\Pp
-    = \overline{\Pp}$.
+    Neka je $\izmjerivProstor$ i $\famE$ $\pi$-sistem na $\Omega$ sa svojstvom $\famF = \sigAlg{\famE}$.
+    Ako su $\masP$ i $\masO$ dvije vjerojatnosti na $\izmjerivProstor$ takve da je $\restr{\masP}{\famE} = \restr{\masO}{\famE}$, tada je $\masP
+    = \masO$.
 \end{kor}
 
 \begin{kor} \label{kor:2.8}
     Neka je $X = \real$ ili $X = \segment{A}{B}$, $A, \; B \in \real, \; A < B$, s euklidskom topologijom.
-    Neka su $\masP$ i $\mathbb{O}$ vjerojatnosti na $\urePar{X}{\borel{X}}$.
-    Neka je $\famE$ bilokoja od 5 klasa iz primjera \ref{pr:2.3}.
-    Ako je $\restr{\masP}{\famE} = \restr{\mathbb{O}}{\famE}$, tada je $\masP = \mathbb{O}$.
+    Neka su $\masP$ i $\masO$ vjerojatnosti na $\urePar{X}{\borel{X}}$.
+    Neka je $\famE$ bilo koja od 5 klasa iz primjera \ref{pr:2.3}.
+    Ako je $\restr{\masP}{\famE} = \restr{\masO}{\famE}$, tada je $\masP = \masO$.
 \end{kor}
 
 \begin{zad} \label{zad:2.9}
-    Neka je $\izmjerivProstor$ izmjeriv prostor i $\E$ $\pi$-sistem
-    na $\Omega$ sa svojstvom $\F = \sigAlg{\E}$.
-    Ako su $\mu$ i $\nu$ dvije mjere na $\izmjerivProstor$ takve
-    da je $\restr{\mu}{\E} = \restr{\nu}{\E}$ i postoji rastu\' ci
-    niz skupova $\niz{C_n}{n \in \N} \subseteq \E$ takav da je
-    $\unija{n}{}C_n = \Omega$ i $\mjera{C_n} = \nu(C_n) < +\infty, \;
+    Neka je $\izmjerivProstor$ izmjeriv prostor i $\famE$ $\pi$-sistem na $\Omega$ sa svojstvom $\famF = \sigAlg{\famE}$.
+    Ako su $\mu$ i $\nu$ dvije mjere na $\izmjerivProstor$ takve da je $\restr{\mu}{\famE} = \restr{\nu}{\famE}$ i postoji rastu\' ci niz skupova $\niz{C_n}{n \in \N} \subseteq \famE$ takav da je $\unija{n}{}C_n = \Omega$ i $\mjera{C_n} = \nu(C_n) < +\infty, \;
     \forall n \in \N$, tada je $\mu = \nu$.
 \end{zad}
 
-\begin{nap} \label{nap:2.10}
-    Grubo govore\' ci ovi rezultati pokazuju da je $\pi$-sistem
-    dovoljno bogata struktura da bi se osigurala jedinstvenost mjere
-    (a time i vjerojatnosti). To je vrlo sna\v zan rezultat,
-    budu\' ci da velik broj klasa \v cini $\pi$-sistem, te je lako iz
-    svake klase napraviti $\pi$-sistem; uzme se proizvoljna klasa
-    $\E \subseteq \partitive{\Omega}$, klasa koja se sastoji iz svih
-    kona\v cnih presjeka elementat iz $\E$.
+% dodaj teorem o osnovnim svojstvima mjere i referenciraj se na njega ovdje za neprekidnost mjere (vjerojatnosti) odozdo.
+\begin{rj}
+    Za svaki $n \in \nat$ definirajmo mjere
+    \begin{equation*}
+        \begin{aligned}
+            \mu_n (A) &:= \mu (A \cap C_n), \; \forall A \in \famF\\
+            \nu_n (A) &:= \nu (A \cap C_n), \; \forall A \in \famF.
+        \end{aligned}
+    \end{equation*}
+    Prema teoremu \ref{tm:2.6} slijedi da su $\mu_n = \nu_n, \; \forall n \in \nat$. Sada imamo:
+    \begin{equation*}
+        \begin{aligned}
+            \mu (A) &= \mu (A \cap \Omega) = \mu \Big( A \cap \unija{n \in \nat}{} C_n \Big) = \mu \Big( \unija{n \in \nat}{} (A \cap C_n) \Big) \overset{\ref{tm:1.24-1} \eqref{tm:1.24-1.3}}{=}\\
+            &= \lim\limits_{n \to \infty} \mu(A \cap C_n) = \lim\limits_{n \to \infty} \mu_n (A) = \lim\limits_{n \to \infty} \nu_n (A) = \lim\limits_{n \to \infty} \nu (A \cap C_n) \overset{\ref{tm:1.24-1} \eqref{tm:1.24-1.3}}{=}\\
+            &= \nu \Big( \unija{n \in \nat}{} (A \cap C_n) \Big) = \nu \Big( A \cap \unija{n \in \nat}{} C_n \Big) = \nu(A \cap \Omega)\\
+            &= \nu(A), \; \forall A \in \famF.
+        \end{aligned}
+    \end{equation*}
+\end{rj}
 
-    Prirodno je pitanje mo\v ze li se mjera sa $\pi$-sistema
-    pro\v siriti na pripadnu $\sigma$-algebru. Uzmemo li klasu
-    $\mathcal{K}$ iz primjera \ref{pr:2.3} i za svaki $a \in \R_+$
-    izabermo $\mu_a$ takav da je $\mu_a(A) = a, \; \forall A \in
-    \mathcal{K}$, takva \' ce funkcija zadovoljavati
-    \eqref{jed:1.11} na $\mathcal{K}$ (jer na $\mathcal{K}$ nemamo
-    niti dva disjunktna skupa). O\v cito se $\mu_a$ ne mo\v ze
-    pro\v siriti do mjere na $\borel{\R}$.
-    Dakle za egzistenciju  (pro\v sirivanje) mjere trebamo ne\v sto
-    bogatiju klasu od $\pi$-sistema.
+\begin{nap} \label{nap:2.10}
+    Grubo govore\' ci ovi rezultati pokazuju da je $\pi$-sistem dovoljno bogata struktura da bi se osigurala jedinstvenost mjere (a time i vjerojatnosti).
+    To je vrlo sna\v zan rezultat, budu\' ci da velik broj klasa \v cini $\pi$-sistem, te je lako iz svake klase napraviti $\pi$-sistem; uzme se proizvoljna klasa $\famE \subseteq \partitive{\Omega}$, klasa koja se sastoji iz svih kona\v cnih presjeka elementat iz $\famE$ \v cini $pi$-sistem.
+
+    Prirodno je pitanje mo\v ze li se mjera sa $\pi$-sistema pro\v siriti na pripadnu $\sigma$-algebru.
+    Uzmemo li klasu $\famK$ iz primjera \ref{pr:2.3} i za svaki $a \in \R_+$ izabermo $\mu_a$ takav da je $\mu_a(A) = a, \; \forall A \in \famK$, takva \' ce funkcija zadovoljavati \eqref{jed:1.11} na $\famK$ (jer na $\famK$ nemamo niti dva disjunktna skupa).
+    O\v cito se $\mu_a$ ne mo\v ze pro\v siriti do mjere na $\borel{\R}$.
+    Dakle za egzistenciju  (pro\v sirivanje) mjere trebamo ne\v sto bogatiju klasu od $\pi$-sistema.
 \end{nap}
 
-Re\' ci cemo da je $\E \subseteq \partitive{\Omega}$ \emph{poluprsten}
+Re\' ci cemo da je $\famE \subseteq \partitive{\Omega}$ \emph{poluprsten}
 na $\Omega$ ako vrijedi:
 \begin{enumerate}[label=(\roman*)]
-    \item $\varnothing \in \E$
-    \item $\E$ je $\pi$-sistem
-    \item $A, \: B \in \E, \: A \subseteq B \implies B \setminus
-        A \in \E$ je kona\v cna disjunktna unija elemenata iz $\E$.
+    \item $\varnothing \in \famE$
+    \item $A, \; B \in \famE \implies A \cap B \in \famE$
+    \item $A, \: B \in \famE, \: A \subseteq B \implies B \setminus
+        A \in \famE$ je kona\v cna disjunktna unija elemenata iz $\famE$.
 \end{enumerate}
 
-Osnovni teorem o pro\v sirenju mjere (Caratheodoryjeva konstrukcija)
-ka\v ze:
+Osnovni teorem o pro\v sirenju mjere (Caratheodoryjeva konstrukcija) ka\v ze:
 
 \begin{tm}  \label{tm:2.11}
-    Neka je $\E$ poluprsten skupova na nepraznom skupu $\Omega$. Ako
-    je funkcija $\nu: \E \to [0, \: + \infty]$ $\sigma$-aditivna
-    (u smislu da zadovoljava svojstvo \eqref{jed:1.11} na $\E$)
-    i $\nu(\varnothing) = 0$, tada postoji mjera $\mu$ na $(\Omega,
-    \: \partitive{\Omega})$, takva da je $\restr{\mu}{\E} = \nu$.
+    Neka je $\famE$ poluprsten skupova na nepraznom skupu $\Omega$. Ako je funkcija $\nu: \famE \to [0, \: + \infty]$ $\sigma$-aditivna (u smislu da zadovoljava svojstvo \eqref{jed:1.11} na $\famE$) i $\nu(\varnothing) = 0$, tada postoji mjera $\mu$ na $(\Omega, \: \partitive{\Omega})$, takva da je $\restr{\mu}{\famE} = \nu$.
 \end{tm}
 
 \begin{nap} \label{nap:2.12}
-    Neka je $\Omega$ neprazan skup, $\E := \{\varnothing\} \cup
-    \indFamilija{\{ \omega \}}{\omega in \Omega}$. Tada je $\E$
-    poluprsten i svaka funkcija $\nu: \E \to [0, \: +\infty]$
-    za koju je $\nu(\varnothing) = 0$ je $\sigma$-aditivna;
-    preciznije potpuno je opisana familijom "brojeva"
-    $\nu(\{ \omega \}) \in [0, \: +\infty], \; \omega \in \Omega$.
+    Neka je $\Omega$ neprazan skup, $\famE := \{\varnothing\} \cup \indFamilija{\{ \omega \}}{\omega \in \Omega}$.
+    Tada je $\famE$ poluprsten i svaka funkcija $\nu: \famE \to [0, \: +\infty]$ za koju je $\nu(\varnothing) = 0$ je $\sigma$-aditivna;
+    preciznije potpuno je opisana familijom "brojeva" $\nu(\{ \omega \}) \in [0, \: +\infty], \; \omega \in \Omega$.
 
-    Po zadatku \ref{zad:2.2} i teoremu \ref{tm:2.11} postoji mjera
-    $\mu$ na $\sigAlg{\E}$ koja je pro\v sirenje od $\nu$ i za svaki
-    $A \subseteq \Omega$, $A$ prebrojiv je $\mjera{A}
-    = \suma{\omega \in A}{} \nu(\{ \omega \})$.
+    Po zadatku \ref{zad:2.2} i teoremu \ref{tm:2.11} postoji mjera $\mu$ na $\sigAlg{\famE}$ koja je pro\v sirenje od $\nu$ i za svaki $A \subseteq \Omega$, $A$ prebrojiv je $\mjera{A} = \suma{\omega \in A}{} \nu(\{ \omega \})$.
+    Ako je i $\Omega$ prebrojiv, onda je ovim pro\v sirenjem jedinstveno odre\dj ena mjera $\mu$ na $\partitive{\Omega}$.
+    U su\v stini situacija je sli\v cna kao i u primjeru \ref{pr:1.7} i primjeru \ref{pr:1.14}.
 
-    ako je i $\Omega$ prebrojiv, onda je ovim pro\v sirenjem
-    jedinstveno odre\dj ena mjera $\mu$ na $\partitive{\Omega}$.
-    U su\v stini situacija je sli\v cna kao i u primjeru
-    \ref{pr:1.7} i primjeru \ref{pr:1.14}.
     \v Sto ako je $\Omega$ neprebrojiv?
     %
     % provedi detaljniju analizu
@@ -201,39 +291,26 @@ ka\v ze:
     Pogledajmo dva ekstremna slu\v caja:
     \begin{enumerate}[label=(\roman*)]
         \item $\nu(\{ \omega \}) = 0, \; \forall \omega \in \Omega$.
-            Uzmemo bilo koji $c \in \segment{0}{+\infty}$ i defnirajmo
-            $\mu_c$ pomo\' cu
-            \begin{equation*}
-                \mu_c(A) = 
-                \begin{cases}
-                    0, &A \;\; \textnormal{prebrojiv}\\
-                    c, &A^c \;\; \textnormal{prebrojiv}
-                \end{cases}
-            \end{equation*}
-            Svaki $\mu_c$ je pro\v sirenje od $\nu$. Uo\v cimo da
-            uvijeti iz zadatka \ref{zad:2.9} nisu ispunjeni pa nema
-            jedinstvenosti pro\v sirenja. Ako je $\Omega
-            = \segment{a}{b}, \; \sigAlg{\E}
-            \subsetneq \borel{\Omega}$ i pro\v sirenje sa $\E$ na
-            $\borel{\Omega}$ ne vodi ka nekoj konkretnoj mjeri.
-        \item Ako je $\nu(\{\omega\}) > 0, \; \forall \omega \in
-            \Omega$ Onda postoji $\varepsilon > 0$ takav da za
-            neprebrojivo $\omega$ iz zadanog neprebrojivog skupa
-            imamo $\nu(\{\omega\}) \geq \varepsilon$.
-            Posebno, to zna\v ci da je $\mjera{A} = +\infty$ za svaki
-            $A$, za koji je $A^c$ prebrojiv. Ponovo ne osobito
-            korisna konstrukcija.
+        Uzmemo bilo koji $c \in \segment{0}{+\infty}$ i defnirajmo $\mu_c$ pomo\' cu
+        \begin{equation*}
+            \mu_c(A) = 
+            \begin{cases}
+                0, &A \;\; \textnormal{prebrojiv}\\
+                c, &A^c \;\; \textnormal{prebrojiv}
+            \end{cases}
+        \end{equation*}
+        Svaki $\mu_c$ je pro\v sirenje od $\nu$.
+        Uo\v cimo da uvijeti iz zadatka \ref{zad:2.9} nisu ispunjeni pa nema jedinstvenosti pro\v sirenja.
+        Ako je $\Omega = \segment{a}{b}, \; \sigAlg{\E} \subsetneq \borel{\Omega}$ i pro\v sirenje sa $\E$ na $\borel{\Omega}$ ne vodi ka nekoj konkretnoj mjeri.
+        \item Ako je $\nu(\{\omega\}) > 0, \; \forall \omega \in \Omega$ Onda postoji $\varepsilon > 0$ takav da za neprebrojivo $\omega$ iz zadanog neprebrojivog skupa imamo $\nu(\{\omega\}) \geq \varepsilon$.
+        Posebno, to zna\v ci da je $\mjera{A} = +\infty$ za svaki $A$, za koji je $A^c$ prebrojiv.
+        Ponovo ne osobito korisna konstrukcija.
     \end{enumerate}
 \end{nap}
 
-U slu\v caju $X = \R$ ili $X = \segment{A}{B}$, kao i u drugim
-neprebrojivim slu\v cajevima korisniji je sljede\' ci postupak.
-Neka je $\mu$ (pozitivna) mjera na $(\R, \: \borel{\R})$, takva da je
-$\mjera{K} < +\infty$, za svaki kompaktan skup $K \subseteq \R$
-(posebno, takva mjera je \emph{regularna}). Budu\' ci da je za
-$a < 0$ (i za $b \geq 0$) skup $\lijInt{a}{0}$ ($\lijInt{0}{b}$),
-sadr\v zan u kompaktu, sljede\' ca definicija opisuje neopdaju\' cu
-funkciju $F_{\mu}: \R \to \R$ danu sa
+U slu\v caju $X = \R$ ili $X = \segment{A}{B}$, kao i u drugim neprebrojivim slu\v cajevima korisniji je sljede\' ci postupak.
+Neka je $\mu$ (pozitivna) mjera na $(\R, \: \borel{\R})$, takva da je $\mjera{K} < +\infty$, za svaki kompaktan skup $K \subseteq \R$ (posebno, takva mjera je \emph{regularna}).
+Budu\' ci da je za $a < 0$ (i za $b \geq 0$) skup $\lijInt{a}{0}$ ($\lijInt{0}{b}$), sadr\v zan u kompaktu, sljede\' ca definicija opisuje neopdaju\' cu funkciju $F_{\mu}: \R \to \R$ danu sa
 \begin{equation}    \label{jed:2.13}
     F_{\mu}(x) :=
         \begin{cases}
@@ -248,24 +325,46 @@ Uo\v cimo da je za svaki $a, \: b \in \R, \: a < b$,
 \end{equation}
 
 \begin{zad} \label{zad:2.15}
-    Doka\v zite da je $F_{\mu}$ neopadaju\' ca neprekidna zdesna i da
-    postoje (u skupu $\overline{\R}$).
+    Doka\v zite da je $F_{\mu}$ neopadaju\' ca neprekidna zdesna i da postoje (u skupu $\overline{\R}$).
     \begin{align*}
         F_{\mu}(-\infty) :=& \lim_{x \searrow -\infty} F_{\mu}(x)\\
         F_{\mu}(+\infty) :=& \lim_{x \nearrow +\infty} F_{\mu}(x).
     \end{align*}
 \end{zad}
 
+\begin{rj}  \label{rj:2.15}
+    \begin{enumerate}[label=\arabic*.]
+        \item $F_{\mu}$ je neopadaju\' ca:\\
+        Neka su $a, \; b \in \real, \; a < b$, iz \eqref{jed:2.13} slijedi,
+        \begin{equation*}
+            F_\mu (b) = F_\mu (a) + \underbrace{\mu (\lijInt{a}{b})}_{\geq 0} \implies F_\mu (a) \leq F_\mu (b).
+        \end{equation*}
+        \item $F_\mu$ je neprekidna zdesna:\\
+        Neka je $a > 0$ i $(a_n)$ niz takav da $a_n \searrow a$, tada vrijedi $\presjek{n \in \nat}{} \lijInt{0}{a_n} = \lijInt{0}{a}$.
+        Pa imamo:
+        \begin{equation*}
+            \begin{aligned}
+                F_\mu (a) &= \mu(\lijInt{0}{a}) = \mu (\presjek{n \in \nat}{} \lijInt{0}{a_n}) = \lim\limits_{n \to \infty} F_\mu (a_n)\\
+                &= \lim_{x \searrow a} F_\mu (x)
+            \end{aligned}
+        \end{equation*}
+        Analogno za slu\v caj $a < 0$.
+        \item Neka je niz $(a_n) \searrow -\infty$, pa je $\lijInt{-\infty}{0} = \unija{n \in \nat}{} \lijInt{a_n}{0}$.
+        Sada imamo:
+        \begin{equation*}
+            \begin{aligned}
+                \mu (\lijInt{-\infty}{0}) &= \mu (\unija{n \in \nat}{} \lijInt{a_n}{0}) \overset{\ref{tm:1.24-1} \ref{tm:1.24-1.3}}{=} \lim\limits_{n \to \infty} \mjera{\lijInt{a_n}{0}} = \lim\limits_{n \to \infty} - F_\mu (a_n) = \lim\limits_{x \searrow a} - F_\mu (x)\\
+                &= - F_\mu (-\infty)
+            \end{aligned}
+        \end{equation*}
+        Dakle $F_\mu (-\infty) = - \mu (\lijInt{-\infty}{0})$.\\
+        Analogno za $(b_n) \nearrow +\infty$ dobijemo:
+        $F_\mu (+\infty) = \mu (\obInt{0}{+\infty})$.
+    \end{enumerate}
+\end{rj}
+
 Neka je sada $F$ funkcija sa svojstvima iz zadatka \ref{zad:2.15}.
-Pomo\' cu \eqref{jed:2.14} definiramo "mjeru" $\mu$ na klasi
-$\mathcal{I}$ iz primjera \eqref{pr:2.3}. Nije te\v sko pokazati
-da je $\mu$ $\sigma$-aditivna na $\mathcal{I}$, pa prema teoremu
-\ref{tm:2.11} i zadatku \ref{zad:2.9} postoji jedinstveno
-pro\v sirenje od $\mu$ na $\borel{\R}$ koje daje regularnu mjeru
-$\mu$. Za funkciju $F(x) = x$ ova konstrukcija daje tako zvanu
-\emph{Lebesgue-ovu mjeru} $\lambda$ \v cija restrikcija na
-$\borel{\segment{0}{1}}$ zadovoljava primjer \ref{pr:1.18}.
-Uo\v cimo da funkcije s istim prirastima \eqref{jed:2.14}
-daju istu mjeru.
-
-
+Pomo\' cu \eqref{jed:2.14} definiramo "mjeru" $\mu$ na klasi $\mathcal{I}$ iz primjera \eqref{pr:2.3}.
+Nije te\v sko pokazati da je $\mu$ $\sigma$-aditivna na $\mathcal{I}$, pa prema teoremu \ref{tm:2.11} i zadatku \ref{zad:2.9} postoji jedinstveno pro\v sirenje od $\mu$ na $\borel{\R}$ koje daje regularnu mjeru $\mu$.
+Za funkciju $F(x) = x$ ova konstrukcija daje tako zvanu \emph{Lebesgue-ovu mjeru} $\lambda$ \v cija restrikcija na $\borel{\segment{0}{1}}$ zadovoljava primjer \ref{pr:1.18}.
+Uo\v cimo da funkcije s istim prirastima \eqref{jed:2.14} daju istu mjeru.
