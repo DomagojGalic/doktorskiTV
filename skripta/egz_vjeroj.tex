@@ -60,7 +60,30 @@ te tako\dj er $\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
 
     Za svaka dva beskona\v cna kardinalna broja njihova suma (koja zapravo odgovara njihovoj disjunktnoj uniji) je maksimum ta dva broja.
     Ako je $S$ skup sa kardinalnim brojem $\alpha$, tada vrijedi da je $\alpha + \alpha = \alpha$.
-    Dakle postoje dva disjunktna skupa $S_1$, $S_2$
+    Dakle postoje dva disjunktna skupa $S_1$, $S_2$, takvi da je njihova unija iste kardinalnosti kao i $S$.
+    Postoji bijekcija $f: S_1 \cup S_2 \to S$, takvi da su $f(S_1)$ i $f(S_2)$ disjunktni, neprebrojivi podskupovi od $S$. Konstruirajmo je.
+
+    Neka je $\famF$ familija svih bijekcija sa nekog (proizvoljnog) $T \subseteq S$ u $T \times \{0, \; 1\}$.
+    To\v cnije:
+    \begin{equation*}
+        \famF = \skup{f: T \to T \times \{0, \; 1\}}{T \subseteq S, \; f \textnormal{ je bijekcija}}
+    \end{equation*}
+    Takva bijekcija uvijek postoji kada je $T$ prebrojiv skup.
+    Uredimo te funkcije relacijom "$\subseteq$" na njihovim grafovima.
+    Sada po Zornovoj lemi nu\v zno mora postojati maksimalni element, to jest funkcija neka $f_0: T_0 \to T_0 \times \{0, \; 1\}$.
+    Kada bi $S \setminus T_0$ bio beskona\v can, tada bi on sadr\v zavao prebrojiv podskup, te bi funkciju $f_0$ mogli pro\v siriti, \v sto je kontradikcija s maksimalno\v scu.
+    Dakle $S \setminus T_0$ je kona\v can, pa postoji bijekcija $g: \{1, \; 2, \ldots n\} \to S \setminus T_0 \times \{0, \; 1\}$.
+    Neka je $A = \indFamilija{x_n}{n \in \nat} \subseteq S$ prebrojiva familija, mo\v zemo konstruirati novu bijekciju
+    $f : S \to S \times \{0, \; 1\}$ sa:
+    \begin{equation*}
+        f(x) :=
+        \begin{cases}
+            g(m)    &, x_m \in \{ x_1, \; x_2, \ldots, x_n \} \subseteq A\\
+            f_0(x_{m - n})  &, x_m \in A \; \land \; m > n\\
+            f_0(x)  &, \textnormal{ina\v ce}
+        \end{cases}.
+    \end{equation*}
+    Dakle ako je $\Omega$ neprebrojiv, mogu\' ce ga je particionirati na dva neprebrojiva disjunktan skupa $\Omega = S_1 \dot{\cup} S_2$, tada je $S_1^c = S_2$, te je $S_1 \in \partitive{\Omega}$, a tako\dj er $S_1 \neq \famF$.
 \end{rj}
 
 
