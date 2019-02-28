@@ -83,7 +83,7 @@ te tako\dj er $\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
             f_0(x)  &, \textnormal{ina\v ce}
         \end{cases}.
     \end{equation*}
-    Dakle ako je $\Omega$ neprebrojiv, mogu\' ce ga je particionirati na dva neprebrojiva disjunktan skupa $\Omega = S_1 \dot{\cup} S_2$, tada je $S_1^c = S_2$, te je $S_1 \in \partitive{\Omega}$, a tako\dj er $S_1 \neq \famF$.
+    Dakle ako je $\Omega$ neprebrojiv, mogu\' ce ga je particionirati na dva neprebrojiva disjunktan skupa $\Omega = S_1 \dot{\cup} S_2$, tada je $S_1^c = S_2$, te je $S_1 \in \partitive{\Omega}$, a tako\dj er $S_1 \notin \famF$.
 \end{rj}
 
 
@@ -117,18 +117,24 @@ Svaka neprazna familija koja ima svojstvo \eqref{jed:2.4} naziva se \emph{$\pi$-
 
 Svaka familija $\E \subseteq \partitive{\Omega}$, Koja sadr\v zi $\Omega$, zatvorena je na prave skupovne razlike i rastu\' ce prebrojive unije naziva se \emph{Dynkinovom klasom}.
 
-\begin{nap}
+\begin{nap} \label{nap:2.4-1}
     Familija $\famD \subseteq \partitive{\Omega}$ je dakle Dynkinova klasa ako vrijedi:
     \begin{enumerate}[label=(\roman*)]
-        \item $\Omega \in \famD$
-        \item $A, \; B \in \famD, \; B \subseteq A \implies A \setminus B \in \famD$
+        \item   \label{nap:2.4-1.1}
+        $\Omega \in \famD$
+        \item   \label{nap:2.4-1.2}
+        $A, \; B \in \famD, \; B \subseteq A \implies A \setminus B \in \famD$
         \item $A_1 \subseteq A_2 \subseteq \ldots \in \famD \implies \unija{n \in \nat}{} A_n \in \famD$.
-    \end{enumerate} 
+    \end{enumerate}
+\end{nap}
+
+\begin{nap} \label{nap:2.4-2}
+    Primjetimo da iz \ref{nap:2.4-1.1} i \ref{nap:2.4-1.2} vrijedi $A \in \famD \implies A^c = \Omega \setminus A \in \famD$, dakle Dynkinova klasa je zatvorena na uzimanje komplementa.
 \end{nap}
 
 Presjek Dynkinovih klasa je Dynkinova klasa.
 Svaka $\sigma$-algebra je i $\pi$-sistem i Dynkinova klasa.
-Posebno $\partitive{\Omega}$ je Dynkinova klasa, pa se kao i u \eqref{jed:2.1} mo\v ze napraviti najmanja Dynkinova klasa generirana klasom $\E$; oznaka je $\dynk{\famE}$.
+Posebno $\partitive{\Omega}$ je Dynkinova klasa, pa se kao i u \eqref{jed:2.1} mo\v ze napraviti najmanja Dynkinova klasa generirana klasom $\famE$; oznaka je $\dynk{\famE}$.
 Iz teorije mjere poznat nam je sljede\' ci zadatak.
 
 \begin{zad}   \label{zad:2.5}
@@ -136,9 +142,62 @@ Iz teorije mjere poznat nam je sljede\' ci zadatak.
     Tada je $\sigAlg{\famE} = \dynk{\famE}$.    
 \end{zad}
 
-%
-%  rješi zadatak
-%
+\begin{rj}
+    Prvo \' cemo dokazati da je $\dynk{\famE}$ $\pi$-sistem, odatle \' ce lako slijediti da je $\sigma$-algebra, a samim time, i najmanja $\sigma$-algebra odnosno $\sigAlg{\famE}$.
+
+    Definiramo familiju
+    \begin{equation*}
+        \famD_1 := \skup{A \subseteq \dynk{\famE}}{A \cap B \in \dynk{\famE}, \; \forall B \in \dynk{\famE}}.
+    \end{equation*}
+    \v Zelimo pokazati da je $\dynk{\famE} = \famD_1$.
+    Vidimo da vrijedi $\famD_1 \subseteq \dynk{\famE}$, ako poka\v zemo da je $\famD_1$ Dynkinova klasa koja sadr\v zi $\famE$, tada \' ce nu\v zno vrijediti da je $\dynk{\famE} \subseteq \famD_1$, jer je $\dynk{\famE}$ najmanja Dynkinova klasa koja sadr\v zi $\famE$.
+    
+    \begin{enumerate}[label=(\arabic*)]
+        \item \label{rj:2.5a}
+        Prvo \' cemo pokazati da je $\famD_1$ Dynkinova klasa.
+        \begin{enumerate}[label=(\roman*)]
+            \item Neka je $B \in \dynk{\famE}$, primjetimo $\Omega \cap B = B \in \dynk{\famE}$, dakle $\Omega \in \famD_1$.
+            \item Neka su $A, \;B \in \famD_1$, takvi da je $B \subseteq A$, za svaki $C \in \dynk{\famE}$ vrijedi $A \cap C, \; B \cap C \in \dynk{\famE}$, a tada je i $(A \setminus B) \cap C = (A \cap C) \setminus (B \cap C) \in \dynk{\famE}$, dakle $A \setminus B \in \famD_1$.
+            %\begin{equation*}
+            %    \begin{aligned}
+            %        (A \cap C) \setminus (B \cap C) &= (A \cap C) \cap (B \cap C)^c\\
+            %        &= (A \cap C) \cap (B^c \cup C^c)\\
+            %        &= [(A \cap C) \cup B^c] \cup \underbrace{[(A \cap C) \cup C^c]}_{\varnothing}\\
+            %        &= (A \cap C) \cap B^c\\
+            %        &= (A \cap C) \setminus B
+            %    \end{aligned}            
+            %\end{equation*}
+            \item Neka su $A_1 \subseteq A_2 \subseteq \ldots \in \famD_1$ i neka je $B \in \dynk{\famE}$, tada je $A_k \cap B \in \dynk{\famE}$, za svaki $k \in \nat$.
+            Sada imamo $\Big(\unija{n \in \nat}{} A_n \Big) \cap B = \unija{n \in \nat}{} (A_n \cap B) \in \dynk{\famE}$
+        \end{enumerate}
+
+        \item   \label{rj:2.5b}
+        Poka\v zimo da je $\famE \subseteq \famD_1$.
+        Definirajmo familiju:
+        \begin{equation*}
+            \famD_2 := \skup{A \in \dynk{\famE}}{A \cap B \in \dynk{\famE}, \; \forall B \in \famE}.
+        \end{equation*}
+        Budu\' ci da je $\famE$ $\pi$-sustav, slijedi da je $\famE \subseteq \famD_2$. Primjetimo ako poka\v zemo da je $\famD_2 = \dynk{\famE}$, onda \' ce direktno slijediti da je $\famE \subseteq \famD_1$, jer tada za $A \in \famE$ vrijedi $A \cap B \in \dynk{\famE}, \; \forall B \in \dynk{\famE}$, dakle $A$ zadovoljava definicijsko svojstvo skupa $\famD_1$, a budu\' ci je $A$ proizvoljan, slijedi $\famE \subseteq \famD_1$.
+
+        Analogno kao i gore, mo\v ze se pokazati da je $\famD_2$ Dynkinova klasa, a budu\' ci je $\famE \subseteq \famD_2$, slijedi da je $\dynk{\famE} = \famD_2$, stoga $\famE \subseteq \famD_1$. Dakle $\dynk{\famE}$ je $\pi$-sistem.
+    \end{enumerate}
+
+    Ostalo je jo\v s pokazati da je onda $\dynk{\famE}$ $\sigma$-algebra.
+    Sada vidimo da za $A, \; B \in \dynk{\famE}$ vrijedi $A \cup B = (A^c \cap B^c)^c$. Kako je Dynkinova klasa prema \ref{nap:2.4-2} zatvorena na uzimanje komplementa slijedi $A^c, \; B^c \in \dynk{\famE}$, te je $\dynk{\famE}$ $\pi$-sistem, a time zatvoren na presjeke, slijedi da je $A \cup B \in \dynk{\famE}$. Dakle $\dynk{\famE}$ je zatvoren na kona\v cne unije.\\
+    Sada imamo:
+    \begin{enumerate}[label=(\roman*)]
+        \item $\Omega \in \dynk{\famE} \implies \Omega \setminus \Omega = \varnothing \in \dynk{\famE}$
+        \item $A \in \dynk{\famE} \implies A^c \in \dynk{\famE}$ slijedi prema napomeni \ref{nap:2.4-2}
+        \item Neka je $\niz{A_n}{n \in \nat} \subseteq \dynk{\famE}$.
+        Definirajmo niz $\niz{B_n}{n \in \nat}$ sa $B_n := \unija{k = 1}{n} A_k$, primjetimo $B_n \subseteq B_{n + 1}, \; \forall n \in \nat$. Dakle $\niz{B_n}{n \in \nat}$ je rastu\' ci niz, a kako je $\dynk{\famE}$ zatvoren na kon\v cne unije slijedi da je $B_n \in \dynk{\famE}$, stoga slijedi da je $\unija{n \in \nat}{} B_n = \unija{n \in \nat}{} A_n \in \dynk{\famE}$
+    \end{enumerate}
+    Dakle $\dynk{\famE}$ je $\sigma$-algebra pa, budu\' ci da vrijedi $\dynk{\famE} \subseteq \sigAlg{\famE}$ to povla\v ci da je $\dynk{\famE} = \sigAlg{\famE}$.
+\end{rj}
+
+\begin{nap} \label{nap:2.5-1}
+    Op\' cenito je korisna strategija, kada \v zelimo pokazati da neko svojstvo vrijedi na cijeloj familiji, definirati podfamiliju objekata koji zadovoljavaju tra\v zeno svojstvo i onda pokazati da je tako definirana podfamilija jednaka po\v cetnoj familiji. 
+\end{nap}
+
 
 \begin{tm}  \label{tm:2.6}
     Neka je $\izmjerivProstor$ izmjeriv prostor i $\famE$ $\pi$-sistem na $\Omega$ sa svojstvom $\F = \sigAlg{\famE}$.
@@ -149,19 +208,19 @@ Iz teorije mjere poznat nam je sljede\' ci zadatak.
     Neka je $\famH := \skup{A \in \F}{\mjera{A} = \nu(A)}$.
     O\v cito je $\famE \subseteq \famH$. S druge strane $\Omega \in \famH$, te je $\famH$ zatvoren rastu\' ce prebrojive unije zbog neprekidnosti pozitivnih mjera na rastu\' ce unije.
     Za $A, \: B \in \famH, \: A \subseteq B$, zbog kona\v cnosti mjera $\mu$ i $\nu$, vrijedi $\mjera{B \setminus A} = \mjera{B} - \mjera{A} = \nu(B) - \nu(A) = \nu(B \setminus A)$.
-    Dakle $\famH$ je Dynkinova klasa, pa je $\F = \underbrace{\sigAlg{\E} = \dynk{\famE}}_{\textnormal{zadatak \ref{zad:2.5}}} \subseteq \famH$, to jest $\famF = \famH$.
+    Dakle $\famH$ je Dynkinova klasa, pa je $\famF = \underbrace{\sigAlg{\E} = \dynk{\famE}}_{\textnormal{zadatak \ref{zad:2.5}}} \subseteq \famH$, to jest $\famF = \famH$.
 \end{proof}
 
 \begin{kor} \label{kor:2.7}
     Neka je $\izmjerivProstor$ i $\famE$ $\pi$-sistem na $\Omega$ sa svojstvom $\famF = \sigAlg{\famE}$.
-    Ako su $\masP$ i $\overline{\masP}$ dvije vjerojatnosti na $\izmjerivProstor$ takve da je $\restr{\masP}{\famE} = \restr{\overline{\masP}}{\famE}$, tada je $\masP
-    = \overline{\masP}$.
+    Ako su $\masP$ i $\masO$ dvije vjerojatnosti na $\izmjerivProstor$ takve da je $\restr{\masP}{\famE} = \restr{\masO}{\famE}$, tada je $\masP
+    = \masO$.
 \end{kor}
 
 \begin{kor} \label{kor:2.8}
     Neka je $X = \real$ ili $X = \segment{A}{B}$, $A, \; B \in \real, \; A < B$, s euklidskom topologijom.
     Neka su $\masP$ i $\masO$ vjerojatnosti na $\urePar{X}{\borel{X}}$.
-    Neka je $\famE$ bilokoja od 5 klasa iz primjera \ref{pr:2.3}.
+    Neka je $\famE$ bilo koja od 5 klasa iz primjera \ref{pr:2.3}.
     Ako je $\restr{\masP}{\famE} = \restr{\masO}{\famE}$, tada je $\masP = \masO$.
 \end{kor}
 
@@ -171,9 +230,38 @@ Iz teorije mjere poznat nam je sljede\' ci zadatak.
     \forall n \in \N$, tada je $\mu = \nu$.
 \end{zad}
 
+% dodaj teorem o osnovnim svojstvima mjere i referenciraj se na njega ovdje za neprekidnost mjere (vjerojatnosti) odozdo.
+\begin{rj}
+    Za svaki $n \in \nat$ definirajmo mjere
+    \begin{equation*}
+        \begin{aligned}
+            \mu_n (A) &:= \mu (A \cap C_n), \; \forall A \in \famF\\
+            \nu_n (A) &:= \nu (A \cap C_n), \; \forall A \in \famF.
+        \end{aligned}
+    \end{equation*}
+    Prema teoremu \ref{tm:2.6} slijedi da su $\mu_n = \nu_n, \; \forall n \in \nat$. Sada imamo:
+    \begin{equation*}
+        \begin{aligned}
+            \mu (A) &= \mu (A \cap \Omega) = \mu \Big( A \cap \unija{n \in \nat}{} C_n \Big) = \mu \Big( \unija{n \in \nat}{} (A \cap C_n) \Big) =
+                \begin{pmatrix}
+                    \textnormal{neprekidnost}\\
+                    \textnormal{mjere odozdo}
+                \end{pmatrix}\\
+            &= \lim\limits_{n \to \infty} \mu(A \cap C_n) = \lim\limits_{n \to \infty} \mu_n (A) = \lim\limits_{n \to \infty} \nu_n (A) = \lim\limits_{n \to \infty} \nu (A \cap C_n)\\
+            &=
+            \begin{pmatrix}
+                \textnormal{neprekidnost}\\
+                \textnormal{mjere odozdo}    
+            \end{pmatrix}
+            = \nu \Big( \unija{n \in \nat}{} (A \cap C_n) \Big) = \nu \Big( A \cap \unija{n \in \nat}{} C_n \Big) = \nu(A \cap \Omega)\\
+            &= \nu(A), \; \forall A \in \famF.
+        \end{aligned}
+    \end{equation*}
+\end{rj}
+
 \begin{nap} \label{nap:2.10}
     Grubo govore\' ci ovi rezultati pokazuju da je $\pi$-sistem dovoljno bogata struktura da bi se osigurala jedinstvenost mjere (a time i vjerojatnosti).
-    To je vrlo sna\v zan rezultat, budu\' ci da velik broj klasa \v cini $\pi$-sistem, te je lako iz svake klase napraviti $\pi$-sistem; uzme se proizvoljna klasa $\famE \subseteq \partitive{\Omega}$, klasa koja se sastoji iz svih kona\v cnih presjeka elementat iz $\famE$.
+    To je vrlo sna\v zan rezultat, budu\' ci da velik broj klasa \v cini $\pi$-sistem, te je lako iz svake klase napraviti $\pi$-sistem; uzme se proizvoljna klasa $\famE \subseteq \partitive{\Omega}$, klasa koja se sastoji iz svih kona\v cnih presjeka elementat iz $\famE$ \v cini $pi$-sistem.
 
     Prirodno je pitanje mo\v ze li se mjera sa $\pi$-sistema pro\v siriti na pripadnu $\sigma$-algebru.
     Uzmemo li klasu $\famK$ iz primjera \ref{pr:2.3} i za svaki $a \in \R_+$ izabermo $\mu_a$ takav da je $\mu_a(A) = a, \; \forall A \in \famK$, takva \' ce funkcija zadovoljavati \eqref{jed:1.11} na $\famK$ (jer na $\famK$ nemamo niti dva disjunktna skupa).
@@ -202,9 +290,9 @@ Osnovni teorem o pro\v sirenju mjere (Caratheodoryjeva konstrukcija) ka\v ze:
     preciznije potpuno je opisana familijom "brojeva" $\nu(\{ \omega \}) \in [0, \: +\infty], \; \omega \in \Omega$.
 
     Po zadatku \ref{zad:2.2} i teoremu \ref{tm:2.11} postoji mjera $\mu$ na $\sigAlg{\famE}$ koja je pro\v sirenje od $\nu$ i za svaki $A \subseteq \Omega$, $A$ prebrojiv je $\mjera{A} = \suma{\omega \in A}{} \nu(\{ \omega \})$.
-
-    ako je i $\Omega$ prebrojiv, onda je ovim pro\v sirenjem jedinstveno odre\dj ena mjera $\mu$ na $\partitive{\Omega}$.
+    Ako je i $\Omega$ prebrojiv, onda je ovim pro\v sirenjem jedinstveno odre\dj ena mjera $\mu$ na $\partitive{\Omega}$.
     U su\v stini situacija je sli\v cna kao i u primjeru \ref{pr:1.7} i primjeru \ref{pr:1.14}.
+
     \v Sto ako je $\Omega$ neprebrojiv?
     %
     % provedi detaljniju analizu
