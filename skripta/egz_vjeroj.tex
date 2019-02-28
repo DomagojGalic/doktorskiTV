@@ -242,18 +242,9 @@ Iz teorije mjere poznat nam je sljede\' ci zadatak.
     Prema teoremu \ref{tm:2.6} slijedi da su $\mu_n = \nu_n, \; \forall n \in \nat$. Sada imamo:
     \begin{equation*}
         \begin{aligned}
-            \mu (A) &= \mu (A \cap \Omega) = \mu \Big( A \cap \unija{n \in \nat}{} C_n \Big) = \mu \Big( \unija{n \in \nat}{} (A \cap C_n) \Big) =
-                \begin{pmatrix}
-                    \textnormal{neprekidnost}\\
-                    \textnormal{mjere odozdo}
-                \end{pmatrix}\\
-            &= \lim\limits_{n \to \infty} \mu(A \cap C_n) = \lim\limits_{n \to \infty} \mu_n (A) = \lim\limits_{n \to \infty} \nu_n (A) = \lim\limits_{n \to \infty} \nu (A \cap C_n)\\
-            &=
-            \begin{pmatrix}
-                \textnormal{neprekidnost}\\
-                \textnormal{mjere odozdo}    
-            \end{pmatrix}
-            = \nu \Big( \unija{n \in \nat}{} (A \cap C_n) \Big) = \nu \Big( A \cap \unija{n \in \nat}{} C_n \Big) = \nu(A \cap \Omega)\\
+            \mu (A) &= \mu (A \cap \Omega) = \mu \Big( A \cap \unija{n \in \nat}{} C_n \Big) = \mu \Big( \unija{n \in \nat}{} (A \cap C_n) \Big) \overset{\ref{tm:1.24-1} \eqref{tm:1.24-1.3}}{=}\\
+            &= \lim\limits_{n \to \infty} \mu(A \cap C_n) = \lim\limits_{n \to \infty} \mu_n (A) = \lim\limits_{n \to \infty} \nu_n (A) = \lim\limits_{n \to \infty} \nu (A \cap C_n) \overset{\ref{tm:1.24-1} \eqref{tm:1.24-1.3}}{=}\\
+            &= \nu \Big( \unija{n \in \nat}{} (A \cap C_n) \Big) = \nu \Big( A \cap \unija{n \in \nat}{} C_n \Big) = \nu(A \cap \Omega)\\
             &= \nu(A), \; \forall A \in \famF.
         \end{aligned}
     \end{equation*}
@@ -340,6 +331,37 @@ Uo\v cimo da je za svaki $a, \: b \in \R, \: a < b$,
         F_{\mu}(+\infty) :=& \lim_{x \nearrow +\infty} F_{\mu}(x).
     \end{align*}
 \end{zad}
+
+\begin{rj}  \label{rj:2.15}
+    \begin{enumerate}[label=\arabic*.]
+        \item $F_{\mu}$ je neopadaju\' ca:\\
+        Neka su $a, \; b \in \real, \; a < b$, iz \eqref{jed:2.13} slijedi,
+        \begin{equation*}
+            F_\mu (b) = F_\mu (a) + \underbrace{\mu (\lijInt{a}{b})}_{\geq 0} \implies F_\mu (a) \leq F_\mu (b).
+        \end{equation*}
+        \item $F_\mu$ je neprekidna zdesna:\\
+        Neka je $a > 0$ i $(a_n)$ niz takav da $a_n \searrow a$, tada vrijedi $\presjek{n \in \nat}{} \lijInt{0}{a_n} = \lijInt{0}{a}$.
+        Pa imamo:
+        \begin{equation*}
+            \begin{aligned}
+                F_\mu (a) &= \mu(\lijInt{0}{a}) = \mu (\presjek{n \in \nat}{} \lijInt{0}{a_n}) = \lim\limits_{n \to \infty} F_\mu (a_n)\\
+                &= \lim_{x \searrow a} F_\mu (x)
+            \end{aligned}
+        \end{equation*}
+        Analogno za slu\v caj $a < 0$.
+        \item Neka je niz $(a_n) \searrow -\infty$, pa je $\lijInt{-\infty}{0} = \unija{n \in \nat}{} \lijInt{a_n}{0}$.
+        Sada imamo:
+        \begin{equation*}
+            \begin{aligned}
+                \mu (\lijInt{-\infty}{0}) &= \mu (\unija{n \in \nat}{} \lijInt{a_n}{0}) \overset{\ref{tm:1.24-1} \ref{tm:1.24-1.3}}{=} \lim\limits_{n \to \infty} \mjera{\lijInt{a_n}{0}} = \lim\limits_{n \to \infty} - F_\mu (a_n) = \lim\limits_{x \searrow a} - F_\mu (x)\\
+                &= - F_\mu (-\infty)
+            \end{aligned}
+        \end{equation*}
+        Dakle $F_\mu (-\infty) = - \mu (\lijInt{-\infty}{0})$.\\
+        Analogno za $(b_n) \nearrow +\infty$ dobijemo:
+        $F_\mu (+\infty) = \mu (\obInt{0}{+\infty})$.
+    \end{enumerate}
+\end{rj}
 
 Neka je sada $F$ funkcija sa svojstvima iz zadatka \ref{zad:2.15}.
 Pomo\' cu \eqref{jed:2.14} definiramo "mjeru" $\mu$ na klasi $\mathcal{I}$ iz primjera \eqref{pr:2.3}.
