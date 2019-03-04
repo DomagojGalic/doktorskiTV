@@ -170,8 +170,39 @@ Mo\v ze se dogoditi da slu\v cajni element $f:\Omega \to E$ ima vrijednosti u ne
     $\sigma$-algebra na $A$.
     Pove\v zi s pojmom relativne topologije ako je $E$ topolo\v ski prostor i $\famE = \borel{E}$.
     Ako je $f$ slu\v cajni element u $(A, \: A \cap \famE)$ mo\v zete li ga interpretirati kao slu\v cajni element u $E$?
-    S druge strane, ako je $f$ slu\v cajni element s vrijednostima u $E$ i $f \in A \; (g.s.)$, mo\v zete li interpretirati $f$ kao slu\v cajni element u $(A, \: a \cap \famE)$?
+    S druge strane, ako je $f$ slu\v cajni element s vrijednostima u $E$ i $f \in A \; (g.s.)$, mo\v zete li interpretirati $f$ kao slu\v cajni element u $\urePar{A}{A \cap \famE}$?
 \end{zad}
+
+\begin{nap} \label{nap:3.15-1}
+    Sjetimo se, ako je $\urePar{X}{\famT}$ topolo\v ski prostor, te ako je $Y \subseteq X$, ne nu\v zno otvoren, tada familiju
+    \begin{equation*}
+        \skup{Y \cap U}{U \in \famT}
+    \end{equation*}
+    nazivamo \emph{relativnom topologijom na $Y$} (induciranom topologijom $\famT$).
+\end{nap}
+
+\begin{rj}  \label{rj:3.15}
+    Neka je $\urePar{E}{\famT}$ topolo\v ski prostor i $\borel{E} = \sigAlg{\famT}$.
+    Ovaj zadatak se sastoji od nekoliko tvrdnji.
+    \begin{enumerate}[label=(\arabic*)]
+        \item \label{rj:3.15.1}
+        Treba pokazati da je $ A \cap \famE$ $\sigma$-algebra.
+        \item \label{rj:3.15.2}
+        Vrijedi li $A \cap \famE = \sigAlg{A \cap \famT}$?
+        \item \label{rj:3.15.3}
+        Ako je $f$ slu\v cajni element u $\urePar{A}{A \cap \famE}$, je li onda i slu\v cajni element u $E$?
+        \item \label{rj:3.15.4}
+        Ako je $f$ slu\v cajni element u $E$ i $f \in A \; (g.s.)$, je li $f$ i slu\v cajni element u $\urePar{A}{A \cap \famE}$?
+    \end{enumerate}
+    Idemo redom.
+    Poka\v zimo prvo \ref{rj:3.15.1}.
+    \begin{enumerate}[label=(\roman*)]
+        \item Primjetimo $\varnothing \in \famE \implies \varnothing \in A \cap \famE$.
+        \item U ovom slu\v caju komplement se podrazumjeva u odnosu na $A$.
+        Neka je $B \in A \cap \famE$, dakle postoji $C \in \famE$ takav da $B = A \cap C$, a kako je $C \in \famE$, tada slijedi $C^c \in \famE$ odakle imamo $A \cap C^c = B^c \in A \cap \famE$.
+        \item Neka su $\niz{B_n}{n \in \nat} \subseteq A \cap \famE$, tada za svaki $n \in \nat$ postoji $C_n \in \famE$, takav da $B_n = A \cap C_n$, tada imamo $\unija{n \in \nat}{} B_n = \unija{n \in \nat}{} (A \cap C_n) = A \cap \unija{n \in \nat}{} C_n$, a kako je $\unija{n \in \nat}{} C_n \in \famE$, tada je nu\v zno $unija{n \in \nat}{} B_n = A \cap \unija{n \in \nat}{} C_n$ u $A \cap \famE$.
+    \end{enumerate}
+\end{rj}
 
 % Ovo revidiraj, primjer nije točan
 
