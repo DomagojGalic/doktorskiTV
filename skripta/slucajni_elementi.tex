@@ -200,8 +200,31 @@ Mo\v ze se dogoditi da slu\v cajni element $f:\Omega \to E$ ima vrijednosti u ne
         \item Primjetimo $\varnothing \in \famE \implies \varnothing \in A \cap \famE$.
         \item U ovom slu\v caju komplement se podrazumjeva u odnosu na $A$.
         Neka je $B \in A \cap \famE$, dakle postoji $C \in \famE$ takav da $B = A \cap C$, a kako je $C \in \famE$, tada slijedi $C^c \in \famE$ odakle imamo $A \cap C^c = B^c \in A \cap \famE$.
-        \item Neka su $\niz{B_n}{n \in \nat} \subseteq A \cap \famE$, tada za svaki $n \in \nat$ postoji $C_n \in \famE$, takav da $B_n = A \cap C_n$, tada imamo $\unija{n \in \nat}{} B_n = \unija{n \in \nat}{} (A \cap C_n) = A \cap \unija{n \in \nat}{} C_n$, a kako je $\unija{n \in \nat}{} C_n \in \famE$, tada je nu\v zno $unija{n \in \nat}{} B_n = A \cap \unija{n \in \nat}{} C_n$ u $A \cap \famE$.
+        \item Neka su $\niz{B_n}{n \in \nat} \subseteq A \cap \famE$, tada za svaki $n \in \nat$ postoji $C_n \in \famE$, takav da $B_n = A \cap C_n$.
+        Tada imamo $\unija{n \in \nat}{} B_n = \unija{n \in \nat}{} (A \cap C_n) = A \cap \unija{n \in \nat}{} C_n$, a kako je $\unija{n \in \nat}{} C_n \in \famE$, tada je nu\v zno $\unija{n \in \nat}{} B_n = A \cap \unija{n \in \nat}{} C_n \in A \cap \famE$.
     \end{enumerate}
+
+    Poka\v zimo sada \ref{rj:3.15.2}.
+    \begin{itemize}
+        \item[$\subseteq$] Neka je $i : A \to E$ inkluzija.
+        To je neprekidna funckija, pa je i izmjeriva u paru Borelovih $\sigma$-algebri.
+        Dakle za $B \in \famT$ je $\praslika{i}(B)$ Borelov u $\sigma$-algebri generiranoj relativnom topologijom i vrijedi $\praslika{i}(B) = A \cap B$, pa je\\
+        $\skup{A \cap B}{A \in \sigAlg{\famT}} = A \cap \famE \subseteq \sigAlg{A \cap \famT}$.
+        \item[$\supseteq$] Primjetimo $\famT \subseteq \famE$, dakle vrijedi i $A \cap \famT \subseteq \famE$ pa $A \cap \famE$ sadr\v zi sve otvorene podskupove od $A$ i prema \ref{rj:3.15.1} je $\sigma$-algebra, stoga vrijedi:\\
+        $\sigAlg{A \cap \famT} \subseteq \sigAlg{A \cap \famE} = A \cap \famE$.
+    \end{itemize}
+    
+    Promotrimo \ref{rj:3.15.3}.
+    Neka je $f: \Omega \to A \cap E$ slu\v cajni element u $\urePar{A}{A \cap \famE}$ te neka je $i : A \cap E \to E$ inkluzija.
+    Funkcija $i$ je neprekidna, pa samim time i izmjeriva, pa je
+    $X := i \circ f : \Omega \to E$ slu\v cajni element na $\urePar{E}{\famE}$ koji mo\v zemo promatrati kao pro\v sirenje slu\v cajnog elementa $f$ na $E$.
+    Na taj na\v cin mo\v zemo $f$ promatrati kao slu\v cajni element na $E$.
+
+    Te na kraju promotrimo \ref{rj:3.15.4}.
+    Promatrajmo restrikciju slu\v cajnog elementa $f$ na $A$, $\restr{f}{A} : \Omega \to A$.
+    %%
+    %%  doradi ovo - upotpunjenje prostora i restrikcija.
+    %%
 \end{rj}
 
 % Ovo revidiraj, primjer nije točan
