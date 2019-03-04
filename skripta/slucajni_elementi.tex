@@ -1,11 +1,10 @@
 % poglavlje o slučajnim elementima
+\usetikzlibrary{arrows,chains,matrix,positioning,scopes}
 
 \chapter{Slu\v cajni elementi} \label{poglavlje3}
 
 Neka su $D$, $K$ neprazni podskupovi i $f: D \to K$ preslikavanje.
-Postoji bitna razlika izme\dj u slika i inverznih slika kada govorimo
-o skupovnim operacijama. Ako je $*$ bilo koja od operacija $cup, \:
-\cap, \: \setminus$, a $B_1, \: B_2 \subseteq K$, tada je
+Postoji bitna razlika izme\dj u slika i inverznih slika kada govorimo o skupovnim operacijama. Ako je $*$ bilo koja od operacija $\cup, \: \cap, \: \setminus$, a $B_1, \: B_2 \subseteq K$, tada je
 \begin{equation} \label{jed:3.1}
     \praslika{f} (B_1 * B_2) = \praslika{f}(B_1) * \praslika{f}(B_2),
 \end{equation}
@@ -14,81 +13,57 @@ ali ako su $A_1, \: A_2 \subseteq D$, tada je
     f(A_1 \cap A_2) \subsetneq& f(A_1) \cap f(A_2) \\
     f(A_1 \setminus A_2) \supsetneq& f(A_1) \setminus f(A_2). 
 \end{align*}
-Posebno to zna\v ci da ako je $\famD \subseteq \partitive{D}$
-$\sigma$-algebra na $D$, $f(\famD) := \skup{f(A)}{A \in
-\famD}$ nije nu\v zno $\sigma$-algebra na $K$.
-S druge strane iz \eqref{jed:3.1} (i sli\v cnih relacija za
-prebrojive operacije) direktno slijedi:
+Posebno to zna\v ci da ako je $\famD \subseteq \partitive{D}$ $\sigma$-algebra na $D$, $f(\famD) := \skup{f(A)}{A \in \famD}$ nije nu\v zno $\sigma$-algebra na $K$.
+S druge strane iz \eqref{jed:3.1} (i sli\v cnih relacija za prebrojive operacije) direktno slijedi:
 
 Ako je $\famK \subseteq \partitive{K}$ "struktura", tada je i
 \begin{equation} \label{jed:3.2}
     \praslika{f}(\famK) := \skup{\praslika{f}(B)}{B \in
         \famK}
 \end{equation}
-tako\dj er "struktura", kao i ako je $\famD \subseteq
-\partitive{D}$, tako\dj er je i
+tako\dj er "struktura", kao i ako je $\famD \subseteq \partitive{D}$, tada je i
 \begin{equation} \label{jed:3.3}
     \skup{B \in \partitive{K}}{\praslika{f}(B) \in \famD},
 \end{equation}
-tako\dj er "struktura";
-pri \v cemu pod "struktura" mislimo $\pi$-sistem, poluprsten, prsten,
-Dynkinova klasa, algebra, $\sigma$-prsten ili $\sigma$-algebra.
+tako\dj er "struktura"; pri \v cemu pod "struktura" mislimo $\pi$-sistem, poluprsten, prsten, Dynkinova klasa, algebra, $\sigma$-prsten ili $\sigma$-algebra.
 
 Od posebnog su interesa preslikavanja koja po\v stuju odre\dj en
-izbor $\sigma$-algebri. Ako su $(D, \: \famD)$ i
-$(K, \: \famK)$ izmjerivi prostori i $f: D \to K$ preslikavanje
-tada ka\v zemo da je $f$ \emph{izmjerivo} (ili \emph{$(\famD,
-\: \famK)$-izmjerivo}) ako je $\praslika{f}(\famK) \subseteq \famD$.
-Uo\v cimo da iz \eqref{jed:3.2} slijedi da je $\praslika{f}(\famK)$
-uvijek $\sigma$-algebra i da je to najmanja $\sigma$-algebra na $D$
-u odnosu na koju je $f$ izmjeriva (u odnosu na $\famK$).
-Zato ka\v zemo da je $\praslika{f}(\famK)$ \emph{$\sigma$-algebra
-generirana sa $f$} i \v cesto ju ozna\v cavamo sa \emph{$\sigAlg{f}$}.
+izbor $\sigma$-algebri.
+\begin{defn}    \label{defn:3.3-1}
+    Ako su $(D, \: \famD)$ i $(K, \: \famK)$ izmjerivi prostori i $f: D \to K$ preslikavanje, tada ka\v zemo da je $f$ \emph{izmjerivo} (ili \emph{$(\famD, \: \famK)$-izmjerivo}) ako je
+    \begin{equation*}
+        \praslika{f}(\famK) \subseteq \famD.
+    \end{equation*}
+\end{defn}
+
+Uo\v cimo da iz \eqref{jed:3.2} slijedi da je $\praslika{f}(\famK)$ uvijek $\sigma$-algebra i da je to najmanja $\sigma$-algebra na $D$ u odnosu na koju je $f$ izmjeriva (u odnosu na $\famK$).
+Zato ka\v zemo da je $\praslika{f}(\famK)$ \emph{$\sigma$-algebra generirana sa $f$} i \v cesto ju ozna\v cavamo sa \emph{$\sigAlg{f}$}.
 Dakle $f$ je izmjeriva ako i samo ako vrijedi:
 \begin{equation*}
     \sigAlg{f} \subseteq \famD.
 \end{equation*}
-Ovaj pojam se lako poop\' ci. Neka je $\indFamilija{(K_t, \: \famK_t)}
-{t \in T}$ proizvoljna indeksirana familija izmjerivih prostora i
-neka za svaki $t \in T$ imamo preslikavanje $f_t : D \to K_t$.
-Tada je  $\indSigAlg{f_t}{t \in T} := \sigAlg{\unija{t \in T}{}
-\sigAlg{f_t}}$ \emph{$\sigma$-algebra generirana familijom
-$\indFamilija{f_t}{t \in T}$} i to je najmanja $\sigma$-algebra
-na $D$ u odnosu na koju su sva preslikavanja $f_t$ izmjeriva.
+Ovaj pojam se lako poop\' ci.
+Neka je $\indFamilija{(K_t, \: \famK_t)} {t \in T}$ proizvoljna indeksirana familija izmjerivih prostora i neka za svaki $t \in T$ imamo preslikavanje $f_t : D \to K_t$.
+Tada je  $\indSigAlg{f_t}{t \in T} := \sigAlg{\unija{t \in T}{} \sigAlg{f_t}}$ \emph{$\sigma$-algebra generirana familijom $\indFamilija{f_t}{t \in T}$} i to je najmanja $\sigma$-algebra na $D$ u odnosu na koju su sva preslikavanja $f_t$ izmjeriva.
 
-Ako su $(X, \: \famU)$ i $(Y, \: \famV)$ topolo\v ski prostori, onda
-$(\borel{X}, \: \borel{Y})$-izmjerivo preslikavanje $f: X \to Y$
-nazivamo \emph{Borelovim preslikavanjem}. Podsjetimo se da je
-$f: X \to Y$ neprekidno ako je $\praslika{f}(\famV) \subseteq \famU$.
+Ako su $(X, \: \famU)$ i $(Y, \: \famV)$ topolo\v ski prostori, onda $(\borel{X}, \: \borel{Y})$-izmjerivo preslikavanje $f: X \to Y$ nazivamo \emph{Borelovim preslikavanjem}.
+Podsjetimo se da je $f: X \to Y$ neprekidno ako je $\praslika{f}(\famV) \subseteq \famU$.
 Kakva je veza izme\dj u ovih pojmova?
 
 \begin{lm}  \label{lm:3.4}
-    Ako je $f: D \to K$ preslikavanje i $\famC \subseteq
-    \partitive{K}$, tada je $\sigAlg{\praslika{f}(\famC)}
-    = \praslika{f} (\sigAlg{\famC})$.
+    Ako je $f: D \to K$ preslikavanje i $\famC \subseteq \partitive{K}$, tada je $\sigAlg{\praslika{f}(\famC)} = \praslika{f} (\sigAlg{\famC})$.
 \end{lm}
 
 \begin{proof}
-    Po \eqref{jed:3.2} $\praslika{\sigAlg{\famC}}$ je
-    $\sigma$-algebra, koja o\v cito sadr\v zi $\praslika{\famC}$
-    , \v sto povla\' ci $\sigAlg{\praslika{\famC}} \subseteq
-    \praslika{f}(\sigAlg{\famC})$.
-
-    Sada po \eqref{jed:3.3} slijedi da je $\skup{B \in \partitive{K}}
-    {\praslika{f}(B) \in \sigAlg{\praslika{f}(\famC)}}$ je
-    $\sigma$-algebra, koja o\v cito sadr\v zi $\famC$, pa onda
-    nu\v zno mora sadr\v zavati i $\sigAlg{\famC}$.
-    Slijedi da je $\praslika{\sigAlg{\famC}} \subseteq
-    \sigAlg{\praslika{f}(\famC)}$. 
+    Po \eqref{jed:3.2} $\praslika{f}(\sigAlg{\famC})$ je $\sigma$-algebra, koja o\v cito sadr\v zi $\praslika{f}(\famC)$, \v sto povla\' ci $\sigAlg{\praslika{f}(\famC)} \subseteq \praslika{f}(\sigAlg{\famC})$.
+    Sada po \eqref{jed:3.3} slijedi da je $\skup{B \in \partitive{K}} {\praslika{f}(B) \in \sigAlg{\praslika{f}(\famC)}}$ je $\sigma$-algebra, koja o\v cito sadr\v zi $\famC$, pa onda nu\v zno mora sadr\v zavati i $\sigAlg{\famC}$.
+    Slijedi da je $\praslika{f}(\sigAlg{\famC}) \subseteq \sigAlg{\praslika{f}(\famC)}$.
 \end{proof}
 
-Zbog $\praslika{f}(\borel{Y}) = \praslika{f}(\sigAlg{\famV})
-= \sigAlg{\praslika{f}(\famV)} \subseteq \sigAlg{\famU} = \borel{X}$,
-slijedi:
+Zbog $\praslika{f}(\borel{Y}) = \praslika{f}(\sigAlg{\famV}) = \sigAlg{\praslika{f}(\famV)} \subseteq \sigAlg{\famU} = \borel{X}$, slijedi:
 
 \begin{kor} \label{kor:3.5}
-    Ako je $f: (X, \: \famU) \to (Y, \: \famV)$ neprekidna, tada je
-    $f$ Borelova.
+    Ako je $f: (X, \: \famU) \to (Y, \: \famV)$ neprekidna, tada je $f$ Borelova.
 \end{kor}
 
 Uo\v cimo nadalje da direktno iz definicije slijedi:
