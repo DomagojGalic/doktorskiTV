@@ -107,6 +107,13 @@ Uo\v cimo nadalje da direktno iz definicije slijedi:
     Uz ove pojmove mo\v zemo re\' ci da je pro\v sirena slu\v cajna varijabla $X$ slu\v cajna varijabla ako i samo ako je $X \in \R \; (g.s.)$
 \end{nap}
 
+\begin{nap} \label{nap:3.9-1}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, \emph{upotpunjenje vjerojatnosnog prostora} je potpun vjerojatnosni prostor $(\Omega, \: \overline{\famF}, \overline{\masP})$, gdje je $\famF \subseteq \overline{\famF}$ i gdje je $\overline{\masP}$ pro\v sireneje od $\masP$, odnosno vrijedi:
+    \begin{equation*}
+        \forall A \in \famF \quad \vjeroj{A} = \overline{\masP}(A).
+    \end{equation*}
+\end{nap}
+
 \begin{zad} \label{zad:3.10}
     Doka\v zite da se svaki vjerojatnosni prostor mo\v ze upotpuniti.
     Nadalje, ako je $f$ slu\v cajni element na polaznom vjerojatnosnom
@@ -116,6 +123,107 @@ Uo\v cimo nadalje da direktno iz definicije slijedi:
 %
 %   rješi zadatak
 %
+
+
+
+\begin{rj}  \label{rj:3.10}
+    Doka\v zimo prvo da je svaki vjerojatnosni prostor mogu\' ce upotpuniti. Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, tada postoji (minimalano) upotpunjenje $(\Omega, \: \overline{\famF}, \overline{\masP})$.
+
+    Definirajmo $\famN := \skup{E \subset F}{F \in \famF \; \land \; \vjeroj{F} = 0}$ te $\overline{\famF} = \skup{A \cup E}{A \in \famF, \; E \in \famN}$ te tako\dj er $\overline{\masP} : \overline{\famF} \to \segment{0}{+\infty}$ na elementima $\overline{\famF}$ sa $\overline{\masP}(A \cup E) = \vjeroj{A}$.
+    Dokazujemo sljede\' ce tvrdnje.
+    \begin{enumerate}[label=(\arabic*)]
+        \item   \label{rj:3.10.1}
+        $\overline{\famF}$ je $\sigma$-algebra
+        \item   \label{rj:3.10.2}
+        $\overline{\masP}$ je vjerojatnosti
+        \item   \label{rj:3.10.3}
+        $(\Omega, \: \overline{\famF}, \overline{\masP})$ je potpun vjerojatnosni prostor
+        \item   \label{rj:3.10.4}
+        $(\Omega, \: \overline{\famF}, \overline{\masP})$ je minimalno potpuno pro\v sirenje of $\vjerojatnosniProstor$.
+    \end{enumerate}
+
+    Krenimo redom, poka\v zimo \ref{rj:3.15.1}.
+    Primjetimo na po\v cetku da je $\forall A \in \famF, \; A = A \cup \varnothing$, stoga vrijedi $\famF \subseteq \overline{\famF}$
+    \begin{enumerate}[label=(\roman*)]
+        \item O\v cito je $\varnothing \in \overline{\famF}$
+        \item Neka je $A \cap E \in \overline{\famF}$, sada postoji $E \in \famF$ takav da $\vjeroj{F} = 0$ i $F \subseteq E$.
+        Vrijedi:
+        \begin{equation*}
+            \begin{aligned}
+                (A \cup E)^c &= (A \cup (E \cap F))^c = (A \cup (F \setminus (F \setminus E)))^c = (A \cup (F \cap (F \setminus E)^c))^c\\
+                &= A^c \cap (F \cap (F \setminus E)^c)^c = A^c \cap (F^c \cup (F \setminus E))\\
+                &= (A^c \cap F^c) \cup (A^c \cap (F \setminus E))
+            \end{aligned}
+        \end{equation*}
+        Budu\' ci su $A, \; F \in \famF$, i da je $A^c \cap (F \setminus E) \subseteq F$, vrijedi da je $\vjeroj{F} = 0$, vidimo da je $(A \cup E)^c \in \overline{\famF}$.
+        \item Neka je $\niz{A_n \cup E_n}{n \in \nat}$ niz u $\overline{\famF}$, gdje je $A_n \in \famF$, a $E_n \subseteq F_n$ za neke $F_n \in \famF$, za koje vrijedi $\vjeroj{F_n} = 0$.
+        Sada vidimo:
+        \begin{equation*}
+            \unija{n \in \nat}{} (A_n \cup E_n) = \unija{n \in \nat}{} A_n \cup \unija{n \in \nat}{} E_n.
+        \end{equation*}
+        Vrijedi da je $\unija{n \in \nat}{} A_n \in \famF$ i tako\dj er vrijedi $\unija{n \in \nat}{} E_n \subseteq \unija{n \in \nat}{} F_n$, gdje je $\unija{n \in \nat}{} F_n \in \famF$ i uz to vrijedi $\vjeroj{\unija{n \in \nat}{} F_n} \leq \suma{n \in \nat}{} \vjeroj{F_n} = \suma{n \in \nat}{} 0 = 0$.
+        Dakle vidimo da je $\unija{n \in \nat}{} (A_n \cup E_n) \in \overline{\famF}$
+    \end{enumerate}
+    pa je $\overline{\famF}$ $\sigma$-algebra na $\Omega$.
+
+    Poka\v zimo sada \ref{rj:3.15.2}.
+    Prvo poka\v zimo da je $\overline{\masP}$ dobro definirana, odnosno da ne ovisiti o reprezentaciji, to jest ako imamo skupove $A \cup E$, $A' \cup E'$ takve da $A, \; A' \in \famF$, $E \subseteq F, \; E' \subseteq F'$ takvi da $F, \; F' \in \famF$, sa $\vjeroj{F} = \vjeroj{F'} = 0$ te uz to jo\v s i vrijedi $A \cup E = A' \cup E'$, tada mora biti $\overline{\masP} (A \cup E) = \overline{\masP} (A' \cup E')$.
+    Primjetimo vrijedi:
+    \begin{equation*}
+        (A \cup E) \cup (F \cup F') = (A' \cup E') \cup (F \cup F') \iff A \cup F \cup F' = A' \cup F \cup F',
+    \end{equation*}
+    dakle,
+    \begin{equation*}
+        \begin{aligned}
+            \vjeroj{A} \leq \vjeroj{A \cup F \cup F'} = \vjeroj{A' \cup F \cup F'} \leq \vjeroj{A'} + \vjeroj{F \cup F'} = \vjeroj{A'} + 0 = \vjeroj{A'}\\
+            \vjeroj{A'} \leq \vjeroj{A' \cup F \cup F'} = \vjeroj{A \cup F \cup F'} \leq \vjeroj{A} + \vjeroj{F \cup F'} = \vjeroj{A} + 0 = \vjeroj{A}.
+        \end{aligned}
+    \end{equation*}
+    Odakle vidimo da nu\v zno vrijedi $\vjeroj{A} = \vjeroj{A'}$, samim time mora vrijediti i $\overline{\masP} (A \cup E) = \overline{\masP} (A' \cup E')$, pa je $\overline{\masP}$ dobro definirana.
+    Da je $\overline{\masP}$ ekstenzija od $\masP$ vidimo tako da za svaki $A \in \famF$ vrijedi $A = A \cup \varnothing$, pa prema tome $\vjeroj{A} = \overline{\masP} (A)$.
+    Poka\v zimo da je $\overline{\masP}$ vjerojatnost.
+    \begin{enumerate}[label=(\roman*)]
+        \item $\overline{\masP} (A \cup E) = \vjeroj{A} \geq 0, \quad \forall (A \cup E) \in \overline{\famF}$
+        \item $\overline{\masP} (\Omega) = \vjeroj{\Omega} = 1$
+        \item Neka je $\niz{A_n \cup E_n}{n \in \nat} \subseteq \overline{\famF}$ tada vrijedi $A_n \in \famF$ i za svaki $E_n$, postoji $F_n \in \famF$ takav da vrijedi $E_n \subseteq F_n, \; \vjeroj{F_n} = 0$. Sada imamo
+        \begin{equation}    \label{jed:3.10-1}
+            \begin{aligned}
+                \unija{n \in \nat}{} E_n &\subseteq \unija{n \in \nat}{} F_n\\
+                \vjeroj{\unija{n \in \nat}{} F_n} &\leq \suma{n \in \nat}{} \vjeroj{F_n} = 0.
+            \end{aligned}
+        \end{equation}
+        Odakle dobijemo:
+        \begin{equation*}
+            \begin{aligned}
+                \overline{\masP} (\unija{n \in \nat}{} (A_n \cup E_n)) &= \overline{\masP} (\unija{n \in \nat}{} A_n \cup \unija{n \in \nat}{} E_n) \overset{\eqref{jed:3.10-1}}{=} \vjeroj{\unija{n \in \nat}{} A_n} = \suma{n \in \nat}{} \vjeroj{A_n}\\ &= \suma{n \in \nat}{} \overline{\masP} (A_n \cup E_n).
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+    Pa je $\overline{\masP}$ mjera na $\overline{\famF}$.
+
+    Poka\v zimo sada \ref{rj:3.10.3}.
+    Neka je $F \in \overline{\famF}$ takav da je $\overline{\masP} (F) = 0$ i neka je $E \subseteq F$.
+    \v Zelimo pokazati da je $E \in \overline{\famF}$.
+    Kako je $F \in \overline{\famF}$, postoje $A \in \famF, \; E' \in \famN$ takvi da vrijedi $F = A \cup E'$.
+    Po definicijskom uvijetu je $\overline{\masP} (F) = \vjeroj{A} = 0$.
+    Kako je $E' \in \famN$, postoji $F' \in \famF$ takav da je $E' \subseteq F'$, $\vjeroj{F'} = 0$.
+    Sada imamo $\vjeroj{A \cup F'} \leq \vjeroj{A} + \vjeroj{F'} = 0 + 0$, a kako imamo:
+    \begin{equation*}
+        E \subseteq F = A \cup E' \subseteq A \cup F',
+    \end{equation*}
+    te vrijedi $\vjeroj{A \cup F'} = 0$, pa slijedi da je $E \in \famN$.
+    Kako je $\famE \subseteq \overline{\famF}$, slijedi $E \in \overline{\famF}$, pa je po monotonosti vjerojatnosti $\overline{\masP} (E) = 0$.
+    Pa je $(\Omega, \: \overline{\famF}, \: \overline{\masP})$ potpun vjerojatnosni prostor.
+
+    Na poslijetku poka\v zimo da vrijedi \ref{rj:3.10.4}.
+    Neka je $(\Omega, \: \famG, \: \masO)$ potpun vjerojatnosni prostor, takav da je $\famF \subseteq \famG$ te $\restr{\masO}{\famF} = \masP$.
+    Neka je $A \cup E \in \overline{\famF}$, takav da je $A \in \famF, \; E \in \famN$, tada postoji $F \in \famF$ takav da je $E \subseteq F$, $\vjeroj{F} = 0$.
+    Kako je $\masO$ pro\v sirenje od $\masP$ nu\v zno vrijedi $\masO (F) = 0$.
+    Kako je $(\Omega, \: \famG, \: \masO)$ potpun, tada je $E \in \famG$, pa posljedi\v cno $A \cup E \in \famG$, stoga je $\overline{\famF} \subseteq \famG$.
+    Dakle $(\Omega, \; \overline{\famF}, \; \overline{\masP})$ je minimalno upotpunjenje.
+    
+    Komentirajmo jo\v drugi dio zadatka, 
+\end{rj}
 
 \begin{nap} \label{nap:3.11}
     Kod slu\v cajnih elemenata treba provjeriti da vrijedi $\praslika{f}(\famE) \subseteq \famF$. Zbog leme \ref{lm:3.4} dovljno je provjeriti da je $\praslika{f}(\famC) \subseteq \famF$, ako je $\famC$ generiraju\' ca familija za $\famE$, to jest ako je $\famE = \sigAlg{\famC}$.
