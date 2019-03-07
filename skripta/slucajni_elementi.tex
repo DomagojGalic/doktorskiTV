@@ -222,7 +222,17 @@ Uo\v cimo nadalje da direktno iz definicije slijedi:
     Kako je $(\Omega, \: \famG, \: \masO)$ potpun, tada je $E \in \famG$, pa posljedi\v cno $A \cup E \in \famG$, stoga je $\overline{\famF} \subseteq \famG$.
     Dakle $(\Omega, \; \overline{\famF}, \; \overline{\masP})$ je minimalno upotpunjenje.
     
-    Komentirajmo jo\v drugi dio zadatka, 
+    Komentirajmo jo\v drugi dio zadatka.
+    Neka je $\vjerojatnosniProstor$ i neka je $\urePar{E}{\famE}$ izmjeriv prostor te $f: \Omega \to E$ slu\v cajni element.
+    Ako je $(\Omega, \; \overline{\famF}, \; \overline{\masP})$ upotpunjenje prostora $\vjerojatnosniProstor$, tada je $f$, tako\dj er slu\v cajni element na upotpunjenju.
+    Vrijedi:
+    \begin{equation*}
+        \sigAlg{f} \subseteq \famF \subseteq \overline{\famF}.
+    \end{equation*}
+
+    S druge strane, ako su $\vjerojatnosniProstor$ i $(E, \; \famE, \; \masO)$ vjerojatnosni prostori i $f: \Omega \to E$ slu\v cajni element, tada $f$ nije nu\v zno slu\v cajni element na upotpunjenju $(E, \; \overline{\famE}, \; \overline{\masO})$, vjerojatnosnog prostora $(E, \; \famE, \; \masO)$.
+    Primjetimo, ako uzmemo proizvoljan vjerojatnosni prostor $\vjerojatnosniProstor$ koji nije potpun i identitetu na njemu, ona je slu\v cajni element, ali nije $\urePar{\famF}{\overline{\famF}}$-izmjeriva.
+    %Takav prostor mo\v zemo na\' ci, uzmemo $\Omega = \{ 1, \: 2, \:, 3, \: 4\}$, $\famF = \{\varnothing, \: \Omega,\: \{1, \: 2 \}, \: \{3, \: 4 \} \}$ te stavimo $\masP (\{1, \: 2 \}) = 0$, $\masP (\{3, \: 4\}) = 1$, upotpunjenje je $\overline{\famF} = \{ \varnothing, \: \Omega, \:  \{1\}, \: \{2\}, \: \{1, \: 2\}, \: \{3, \: 4\}, \: \{1, \: 3, \: 4 \}, \: \{ 2, \: 3, \: 4 \} \}$
 \end{rj}
 
 \begin{nap} \label{nap:3.11}
@@ -329,10 +339,9 @@ Mo\v ze se dogoditi da slu\v cajni element $f:\Omega \to E$ ima vrijednosti u ne
     Na taj na\v cin mo\v zemo $f$ promatrati kao slu\v cajni element na $E$.
 
     Te na kraju promotrimo \ref{rj:3.15.4}.
-    Promatrajmo restrikciju slu\v cajnog elementa $f$ na $A$, $\restr{f}{A} : \Omega \to A$.
-    %%
-    %%  doradi ovo - upotpunjenje prostora i restrikcija.
-    %%
+    Ako je $f \in A \; (g.s.)$, onda zna\v ci da postoji $N \in \famF$ takav da je $\{f \notin A\} \subseteq N$, $\vjeroj{N} = 0$, me\dj utim, ako je vjerojatnosni prostor potpun, slijedi da je $\{f \notin A\} \in \famF$, posljedi\v cno $\{f \notin A\}^c = \{f \in A\} \in \famF$.
+    Ako je $B \in \famE$, promatramo $\{f \in B \cap A\} = \{ f \in B \} \cap \{f \in A\}$.
+    Ako je prostor potpun, onda je $\{f \in A\} \in \famF$, pa je $\{f \in B \cap A\} = \{ f \in B \} \cap \{f \in A\} \in \famF$, u suprotnom $\{f \in A\}$ ne mora nu\v zno biti u $\famF$.
 \end{rj}
 
 % Ovo revidiraj, primjer nije točan
@@ -376,7 +385,19 @@ Iz leme \ref{lm:3.17} i iz korolara \ref{kor:3.14} slijedi:
     \end{enumerate}
 \end{zad}
 
-\begin{zad}
+\begin{rj}[\ref{zad:3.19}]
+    Koristimo neke rezultate iz idu\' ceg poglavlja.
+    \begin{enumerate}[label=(\roman*)]
+        \item O\v cito vrijedi da je $\alpha X + \beta Y \geq 0$.
+        Primjetimo da su funkcije $+ : \extReal \times \extReal \to \extReal$ i $\alpha \: \cdot : \real \to \real$ neprekidna preslikavanja, pa time i Borelova.
+        Definiramo preslikavanje $Z := \urePar{X}{Y}$, primjetimo $X = \pi_1 \circ F, \; Y = \pi_2 \circ F$, budu\' ci su $X$ i $Y$ izmjerive i $F$ je izmjeriva, po propoziciji \ref{prop:4.9}.
+        Kako je kompozicija izmjerivih preslikavanja izmjerivo preslikavanje, slijedi da su $\alpha X$, $\beta Y$ i $X + Y$ izmjeriva preslikavanja, odakle slijedi tvrdnja.
+        \item Primjetimo $\{ | \alpha X + \beta Y | = \infty \} \subseteq \{ |\alpha X| + |\beta Y| = \infty \} \subseteq \{|X| = \infty\} \cup \{ |Y| = \infty \}$ stoga vrijedi $\vjeroj{ \{ | \alpha X + \beta Y | = \infty \} } \leq \vjeroj{\{|X| = \infty\}} + \vjeroj{\{|Y| = \infty\}} = 0$.
+        Dakle $\alpha X + \beta Y$ je slu\v cajna varijabla.
+    \end{enumerate}
+\end{rj}
+
+\begin{zad} \label{zad:3.20}
     Neka je $X$ slu\v cajna varijabla i $Y$ slu\v cajni element s vrijednostima u $(E, \: \famE)$.
     Tada je $X$ $(\sigAlg{Y}, \: \borel{\real})$-izmjeriva ako i samo ako postoji funckija $f: E \to \real$ $(\famE, \: \borel{\real})$-izmjeriva takva da je $X = f \circ Y$.
 \end{zad}
@@ -384,3 +405,67 @@ Iz leme \ref{lm:3.17} i iz korolara \ref{kor:3.14} slijedi:
 %
 % rješi i dodaj ovdje.
 %
+
+\begin{rj}[\ref{zad:3.20}]
+    Poka\v zimo prvo nu\v znost.
+    \begin{itemize}
+        \item[$\implies$]
+        Neka je $X$ $\urePar{\sigAlg{Y}}{\borel{\real}}$-izmjeriva.
+        Dokaz provodimo Lebesgueovom indukcijom po $X$.
+        \begin{enumerate}[label=(\arabic*. korak)]
+            \item Neka je $A \in \famF$ $X = \karaktFja_A$.
+            Primjetimo $\{ \karaktFja_A = 1 \} = A$, $\{ \karaktFja_A \neq 1 \} = A^c$.
+            Budu\' ci je $X$ $\sigAlg{Y}$-izmjeriva slijedi da postoji $F \in \famE$ takava da je $\{Y \in F\} = A$.
+            Stavimo $f = \karaktFja_F$, primjetimo:
+            \begin{equation*}
+                \begin{aligned}
+                    (\karaktFja_F \circ Y)(\omega)
+                    &= \karaktFja_F (Y(\omega))
+                    =
+                    \begin{cases}
+                        1, &Y(\omega) \in F\\
+                        0, &Y(\omega) \notin F 
+                    \end{cases}\\
+                    &=
+                    \begin{cases}
+                        1, &\omega \in \{Y \in F\}\\
+                        0, &\omega \notin \{Y \in F\}
+                    \end{cases}
+                    = \karaktFja_{\{Y \in F\}} (\omega)\\
+                    &=
+                    \begin{cases}
+                        1, &\omega \in A\\
+                        0, &\omega \notin A
+                    \end{cases}\\
+                    &= \karaktFja_A (\omega)
+                \end{aligned}
+            \end{equation*}
+            Pa uzmemo $f = \karaktFja_F$ i vrijedi $X = f \circ Y$.
+            \item Neka je $n \in \nat$ i neka su $\niz{A_k}{k = 1, \ldots, n} \subseteq \famF$, $\niz{\alpha_k}{k = 1, \ldots, n}$, $\alpha_k \geq 0$.
+            Neka je $X = \suma{k = 1}{n} \alpha_k \karaktFja_{A_k}$, bez smanjenja op\' cenitosti mo\v zemo pretpostaviti da $A_k$ particioniraju $\Omega$.
+            %Poka\v ze se da je $\sigAlg{X} = \skup{\unija{i \in I}{} A_i}{I \subseteq \{ 1,\ldots, n \}}$
+            Budu\' ci je $X$ $\sigAlg{Y}$-izmjeriva, vrijedi $A_k \in \sigAlg{Y}$, stoga postoje $F_k \in \famE$, takvi da je $\{Y \in F_k\} = A_k$.
+            Definirajmo $f = \suma{k = 1}{n} \alpha_k \karaktFja_{F_k}$.
+            Primjetimo, sada vrijedi:
+            \begin{equation*}
+                \begin{aligned}
+                    (f \circ Y)(\omega) &= (\suma{k = 1}{n} \alpha_k \karaktFja_{F_k})(Y(\omega)) = \suma{k = 1}{n} \alpha_k \karaktFja_{F_k} (Y(\omega))\\
+                    &= \suma{k = 1}{n} \alpha_k \karaktFja_{\{Y \in F_k\}} (\omega) = \suma{k = 1}{n} \alpha_k \karaktFja_{A_k} (\omega)\\
+                    &= X (\omega).
+                \end{aligned}
+            \end{equation*}
+            Dakle slijedi $X = f \circ Y$.
+            \item Neka je $X$ nenegativna izmjeriva funkcija, $X \geq 0$, tada postoji rastu\' ci niz nenegativnih jednostavnih funkcija $\niz{X_n}{n \in \nat}$, takvih da vrijedi $X_n \nearrow X \; (g.s.)$.
+            Po prethodnom koraku znamo da sada postoji niz funkcija $\niz{f_n}{n \in \nat}$ takav da vrijedi $f_n \circ Y = X_n$.
+            Primjetimo, da sada vrijedi:
+            \begin{equation*}
+                \lim\limits_{n \to \infty} (f_n \circ Y) = \lim\limits_{n \to \infty} X_n = X.
+            \end{equation*}
+            Treba pokazati da postoji $f = \lim\limits_{n \to \infty} f_n$, te da vrijedi $X = f \circ Y$.
+        \end{enumerate}
+        
+        \item[$\impliedby$]
+        Neka je $X = f \circ Y$. Neka je $A \in \sigAlg{X}$, tada postoji $B \in \borel{\real}$ takav da $A = \{ X \in B\}$, sada vrijedi $\{  X \in B \} = \{ f \circ Y \in B \} = \{ Y \in \{ f \in B \} \}$, budu\' ci je $f$ izmjeriva slijdi da je $\{f \in B\} \in \famE$, pa je $\{Y \in \{ f \in B \}\} \in \sigAlg{Y}$, odnosno $\sigAlg{X} \subseteq \sigAlg{Y}$.
+        Dakle $X$ je $\urePar{\sigAlg{Y}}{\borel{\real}}$-izmjeriva.
+    \end{itemize}
+\end{rj}
