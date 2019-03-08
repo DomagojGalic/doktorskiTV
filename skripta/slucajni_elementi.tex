@@ -407,7 +407,7 @@ Iz leme \ref{lm:3.17} i iz korolara \ref{kor:3.14} slijedi:
 %
 
 \begin{rj}[\ref{zad:3.20}]
-    Poka\v zimo prvo nu\v znost.
+    Dokazujemo obje implikacije.
     \begin{itemize}
         \item[$\implies$]
         Neka je $X$ $\urePar{\sigAlg{Y}}{\borel{\real}}$-izmjeriva.
@@ -459,9 +459,53 @@ Iz leme \ref{lm:3.17} i iz korolara \ref{kor:3.14} slijedi:
             Po prethodnom koraku znamo da sada postoji niz funkcija $\niz{f_n}{n \in \nat}$ takav da vrijedi $f_n \circ Y = X_n$.
             Primjetimo, da sada vrijedi:
             \begin{equation*}
-                \lim\limits_{n \to \infty} (f_n \circ Y) = \lim\limits_{n \to \infty} X_n = X.
+                \lim\limits_{n \to \infty} (f_n \circ Y) = \lim\limits_{n \to \infty} X_n = X \quad (g.s.).
             \end{equation*}
             Treba pokazati da postoji $f = \lim\limits_{n \to \infty} f_n$, te da vrijedi $X = f \circ Y$.
+            Budu\' ci je $X_n$ rastu\' c niz, mo\v zemo zaklju\v citi da je i $f_n$ rasu\' c niz funkcija.
+
+            Ozna\v cimo sa $R_Y$ sliku od $Y$.
+            Definirajmo $\tilde{f} : R_Y \subseteq E \to \real$, neka je $\eta \in R_Y$, tada postoji $\omega \in \Omega$ takav da je $Y(\omega) = \eta$. 
+            Stavimo
+            \begin{equation*}
+                \tilde{f} (\eta) := \lim\limits_{n \to \infty} f_n (Y(\omega)) = \lim\limits_{n \to \infty} X_n (\omega).
+            \end{equation*}
+            Poka\v zimo da je $f$ dobro definirana.
+
+            Neka su $\omega, \; \omega' \in \Omega$ takve da $Y(\omega) = Y(\omega')$, te vrijedi $X(\omega) \neq X(\omega')$.
+            Sada postoje disjunktni Borelovi skupovi $B, \; B' \in \borel{\real}$ takvi da $X(\omega) \in B$, $X(\omega') \in B'$.
+            Tako\dj er vrijedi $\{X \in B \cap B'\} = \underbrace{\{X \in B\}}_{\in \sigAlg{Y}} \cap \underbrace{\{X \in B'\}}_{\in \sigAlg{Y}} = \varnothing$.
+            Sada znamo da postoje $A, \, A' \in \famE$ takvi da je $\omega \in \{Y \in A\} = \{X \in B\}$, $\omega' \in \{Y \in A'\} = \{X \in B'\}$.
+            Kako je $Y(\omega) = Y (\omega')$, slijedi da je $Y(\omega) = Y(\omega') \in A \cap A'$, me\dj utim vrijedi $\{Y \in A\} \cup \{Y \in A'\} = \{Y \in A \cup A'\} = \varnothing$, \v sto je kontradikcija.
+            Dakle $\tilde{f}$ je dobro definirana na $R_Y$, sada definiramo $f : E \to \real$ sa:
+            \begin{equation*}
+                f(\omega) :=
+                \begin{cases}
+                    \tilde{f} (\omega), &\omega \in R_Y\\
+                    0, &\omega \notin R_Y.
+                \end{cases}
+            \end{equation*}
+            Primjetimo da je sada za gotovo svaki $\omega \in \Omega$
+            \begin{equation*}
+                \begin{aligned}
+                X(\omega) &= \lim\limits_{n \to \infty} f_n (Y(\omega)) = \tilde{f}(Y(\omega)) = f(Y(\omega))\\
+                &= (f \circ Y) (\omega).
+                \end{aligned}
+            \end{equation*}
+            \item Neka je $X$ slu\v cajna varijabla, tada postoje nenegativne slu\v cajne varijable $X^+$, $X^-$ takve da je $X = X^+ - X^-$, pa prema prethodnom koraku postoje funkcije $f^+$, $f^-$ takve da vrijedi:
+            \begin{equation*}
+                \begin{aligned}
+                   X^+ = f^+ \circ Y\\
+                   X^- = f^- \circ Y.
+                \end{aligned}
+            \end{equation*}
+            Stavimo da je $f:= f^+ - f^-$, pa sada vidimo da je
+            \begin{equation*}
+                \begin{aligned}
+                    X &= X^+ - X^- = f^+ \circ Y - f^- \circ Y = (f^+ - f^-) \circ Y\\
+                    &= f \circ Y.
+                \end{aligned}
+            \end{equation*}
         \end{enumerate}
         
         \item[$\impliedby$]
