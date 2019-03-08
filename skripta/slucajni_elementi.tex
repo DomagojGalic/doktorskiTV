@@ -120,11 +120,6 @@ Uo\v cimo nadalje da direktno iz definicije slijedi:
     prostoru, tada je $f$ slu\v cajni element i na upotpunjenu.
 \end{zad}
 
-%
-%   rješi zadatak
-%
-
-
 
 \begin{rj}  \label{rj:3.10}
     Doka\v zimo prvo da je svaki vjerojatnosni prostor mogu\' ce upotpuniti. Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, tada postoji (minimalano) upotpunjenje $(\Omega, \: \overline{\famF}, \overline{\masP})$.
@@ -273,7 +268,7 @@ Podsjetimo se i da koristimo konvencije $0 \cdot \pm \infty = 0$, te $c \cdot (\
 
 \begin{proof}
     Po korolaru \ref{kor:3.12} i $\famC = \famK$ iz primjera \ref{pr:2.3} slijedi da je $\sup\limits_n X_n$ pro\v sirena slu\v cajna varijabla, jer $\{ \sup\limits_n X_n \leq b \} = \presjek{n \in \nat}{} \{ X_n \leq b \}$.
-    Iz korolara \ref{kor:3.13} slijedi tvrdnja za infimum, zbog $\inf\limits_n X_n = - (\sup\limits_n - X_n)$.
+    Iz korolara \ref{kor:3.13} slijedi tvrdnja za infimum, zbog $\inf\limits_n X_n = - (\sup\limits_n (- X_n))$.
     Nadalje, $\liminf\limits_n X_n = \sup\limits_k (\inf\limits_{n \geq k}) X_n$, $\limsup\limits_n X_n = \inf\limits_k (\sup\limits_{n\geq k} X_n)$.
 \end{proof}
 
@@ -370,6 +365,13 @@ Mo\v ze se dogoditi da slu\v cajni element $f:\Omega \to E$ ima vrijednosti u ne
         X_n(\omega) := \frac{1}{2^n} \floor*{2^n \cdot X(\omega)} \land n.
     \end{equation*}
 \end{proof}
+
+\begin{nap} \label{nap:3.17-1}
+    Elemente niza iz leme \ref{lm:3.17} mo\v zemo definirati i sa:
+    \begin{equation*}
+        X_n := \suma{k = 0}{n \: 2^n - 1} \frac{k}{2^n} \karaktFja_{\{ X \in \desInt{\frac{k}{2^n}}{\frac{k + 1}{2^n}} \}} + n \: \karaktFja_{\{X \geq n\}}.
+    \end{equation*}
+\end{nap}
 
 Iz leme \ref{lm:3.17} i iz korolara \ref{kor:3.14} slijedi:
 
