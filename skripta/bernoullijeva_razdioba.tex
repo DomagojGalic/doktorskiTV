@@ -1,1 +1,126 @@
-% poglavlje 5 - bernoullijeva razdioba i primjene
+% poglavlje 2.5 - bernoullijeva razdioba i primjene -> 10
+
+\chapter{Bernoullijeva razdioba i primjene}
+
+Najjednostavnija slu\v cajna varijavla je degenerirana.
+Budu\' ci je suma degeneriranih ponovo degenerirana, lako je opisati \v sto se doga\dj a s degeneriranim slu\v cajem.
+Prvi slu\v caj u kojem se javalja "prava slu\v cajnost" je razdijoba s dvije mogu\' ce vjerojatnosti
+
+\begin{equation*}
+    \begin{pmatrix}
+        a & b\\
+        q & p
+    \end{pmatrix}
+    \quad \quad
+    \begin{matrix}
+        a, \; b \in \real, \; a \neq b,\\
+        0 < p < 1, \; p + q = 1.
+    \end{matrix}
+\end{equation*}
+Budu\' ci je lako $a$ i $b$ transformirati u neke druge vrijednosti $c$, $d$, promatrati \' cemo slu\v caj kada je $a = 0$, $b = 1$ ili $a = -1$, $b = 1$.
+Takva distribucija naziva se Bernoullijeva (\v svicarska matemati\v cka obitelj s preko deset matemati\v cara, nije uvijek jasno tko je \v sto radio); uglavnom u \v cast Jakoba Bernoullija (1654 - 1705).
+Podsjetimo se da, ako su $X_1, \ldots, X_n$ nezavisne i za svaki $1 \leq i \leq n$, $X_i \sim \begin{pmatrix} 0 & 1\\ q & p \end{pmatrix}$, tada je $S_n := X_1 + \ldots + X_n$, binomna slu\v cajna varijabla, to jest $S_n \sim B \urePar{n}{p}$ i za $k \in \{0, \; 1, \ldots, n \}$ $\vjeroj{S_n = k} = {n \choose k} p^k q^{n - k}$.
+Za ovakve ra\v cune \v cesto koristimo Stirlingovu formulu.
+
+\begin{zad} \label{zad:10.1}
+    Doka\v zite (koriste\' ci literaturu) da vrijedi formula koju je 1730. dokazao James Stirling:
+    Za svaki $n \in \nat$,
+    \begin{equation*}
+        n! = \sqrt{2 \pi} \: n^{n + \frac{1}{2}} e^{-n + \varepsilon_n}
+    \end{equation*}
+    pri \v cemu je $\frac{1}{12 n + 1} < \varepsilon_n < \frac{1}{12 n}$.
+    Zato za aproksimaciju uzmemo:
+    \begin{equation*}
+        n! \approx \sqrt{2 \pi} \: n^{n + \frac{1}{2}} e^{-n}
+    \end{equation*}
+    i kako je $n$ ve\' ci, aproksimacija je sve bolje (na primjer za $n = 10$, gre\v ska je $0.8\%$, a za $n = 100$ iznosi $0.08\%$).
+\end{zad}
+
+\begin{pr}  \label{pr:10.2}
+    Pozivi pristi\v zu u telefonski centralu na slu\v cajan na\v cin (ili automobili kroz kontrolnu to\v cku na autoputu, ili kupci u du\' can; op\' cenito "klijenti" nekog "servisa").
+    Razumno je pretpostaviti da nema "dogovora" me\dj u korisnicima, to jest da se radi o \emph{nezavisnim} slu\v cajnim pojavama.
+    Obi\v cno imamo ve\' ci broj podataka, pa se mo\v ze odrediti "vjerojatnost pojave barem jednog klijenta u jedinici vremena" $= p \in \obInt{0}{1}$.
+    Sli\v cno, mo\v zemo izmjeriti "prosje\v cno vrijeme koje protekne izme\dj u pojave dva uzastopna klijenta" $= \mu \in \obInt{0}{+\infty}$.
+    Uo\v cimo da $\lambda := \frac{1}{\mu}$ mo\v zemo interpretirati kao frekvenciju $=$ "prosje\v can broj dospjelih poziva u jedinici vremena".
+    Promatramo vremenski interval u jedini\v cne duljine i stavimo $I_0^1 = 1$ (uspjeh) ako se u intervalu javi bar jedan korisnik, a $I_0^1 = 0$ (neuspjeh), u suprotnom $\implies I_0^1 \sim \begin{pmatrix} 0 & 1\\ q & p \end{pmatrix}$, sa $q:= 1 - p$.
+    Promatrajmo sada vremensku skalu $t \in \lijInt{0}{+\infty}$, tako da za svaki interval jedini\v cne duljine oblika $\lijInt{n - 1}{n}$ imamo slu\v cajnu varijablu $I_0^n$ koj amjeri uspjeh ili neuspjeh ovisno o tome je li u $\lijInt{n - 1}{n}$ do\v slo do barem jednog poziva ili ne.
+    Tada $\niz{I_0^n}{n \in \nat}$ tovre niz nezavisnih, jednako distribuiranih slu\v cajnih varijabli $I_0^n \sim \begin{pmatrix}0 & 1\\ q & p \end{pmatrix}$.
+    Ozna\v cimo li s $T_0^n =$ "vrijeme (interval) $n$-tog poziva", intuitivno je prihvatljivo da su $\niz{T_0^n}{n \in \nat}$ nezavisne i jednako distribuirane.
+    Dakle $T_0^1 \distJed T_0^n$ i vrijedi
+    \begin{equation*}
+        \begin{aligned}
+        \vjeroj{T_0^n = m} &= \vjeroj{I_0^1 = 0, \ldots, I_0^{m - 1} = 0,  \; I_0^m = 1}\\
+        &= p \cdot q^{m - 1}, \quad m \in \nat.
+        \end{aligned} 
+    \end{equation*}
+    Ovakva razdioba naziva se \emph{geometrijskom}.
+    Vr\v simo sada induktivno korake "profinjenja" tako da u svakom koraku podjelimo postoje\' ce intervale na pola.
+    Dakle, u $l$-tom koraku dobijemo intervale duljine $\frac{1}{2^l}$ te varijable $\niz{I_l^n}{n \in \nat}$ koje su nezavisne i jednako distribuirane $I_l^n \sim \begin{pmatrix} 0 & 1 \\ q_l & p_l \end{pmatrix}$ (uspjeh ili neuspjeh u $\lijInt{\frac{n - 1}{2^l}}{\frac{n}{2^l}}$) i $\niz{T_l^n}{n \in \nat}$ vremena $n$-tog poziva u "mre\v zi fino\' ce $\frac{1}{2^l}$".
+    Dakle, $\vjeroj{T_l^n = m} = p_l \: q_l^{m - 1}$, a stvarno vrijeme $n$-tog poziva je $\frac{m}{2^l}$.
+    Koja je veza $p_l$ i $p$?
+    Uo\v cimo
+    \begin{equation*}
+        \begin{aligned}
+            q &= \vjeroj{I_0^1 = 0} = \vjeroj{I_l^1 = 0, \ldots, I_l^{2^l} = 0} = (q_l)^{2^l} \implies\\
+            p &= 1 - (1 - p_l)^{2^l}.
+        \end{aligned}
+    \end{equation*}
+    Ozna\v cimo li s $V_l =$ "pravo vrijeme prvog poziva u mre\v zi fino\' ce $\frac{1}{2^l}$", dobivamo
+    \begin{equation*}
+        \begin{aligned}
+            \masE (V_l) &= \masE \Big(\frac{T_l^1}{2^l} \Big) = \frac{p_l}{2^l} \suma{m = 1}{\infty} m \: q_l^{m - 1} = \frac{p_l}{2^l} \cdot \frac{1}{q_l} \: \suma{m = 1}{\infty} m \: q_l^m\\
+            &= \frac{p_l}{2^l \: q_l} \cdot \suma{m = 1}{\infty} \big( \suma{k = 1}{m} 1 \cdot q_l^m \big) \overset{Fubini}{=} \frac{p_l}{2^l \: q_l} \suma{k = 1}{\infty} \: \suma{m = k}{\infty} q_l^m\\
+            &= \frac{p_l}{2^l \: q_l} \suma{k = 1}{\infty} q_l^k \: \underbrace{\suma{m = k}{\infty} q_l^{m - k}}_{= \frac{1}{1-q_l} = \frac{1}{p_l}} = \frac{1}{2^l \: q_l} \cdot \suma{k = 1}{\infty} q_l^k = \frac{1}{2^l \: \cancel{q_l}} \cdot \frac{\cancel{q_l}}{1 - q_l}\\
+            &= \frac{1}{p_l \: 2^l}.
+        \end{aligned}
+    \end{equation*}
+    Neka su sada $\niz{T_n}{n \in \nat}$ vremena $n$-tog poziva u kontinuiranoj skali.
+    Tada je $\mu = \masE (T^n) = \masE (T^1)$ i ima smisla
+    \begin{equation*}
+        \begin{aligned}
+            & \lim\limits_{l \to \infty} \masE (V_l) = \masE (T^1) \implies \\
+            \lambda = & \lim\limits_{l \to \infty} p_l \: 2^l = \lim\limits_{l \to \infty} \: (-1) \cdot \frac{(1-p)^{\frac{1}{2^l}}}{\frac{1}{2^l}}\\
+            = & - \ln (1 - p) \implies\\
+            p =& 1 - e^{-\lambda}.
+        \end{aligned}
+    \end{equation*}
+    Potpuno analogno mogli bi gledati svako vrieme $t>0$ i dobili bismo
+    \begin{equation*}
+        p(t) = \vjeroj{T^1 \leq t} = 1 - e^{- \lambda \: t},
+    \end{equation*}
+    to jest svaka $T^n \sim Exp(\lambda)$.
+
+    Promatramo li broj poziva ostvarenih do momenta $t = 1$ i ozna\v cimo sa $N_1$, slijedi da je za $k \in \nat_0$
+    \begin{equation*}
+        \begin{aligned}
+            \vjeroj{N_1 = k} &= \lim\limits_{l \to \infty} \vjeroj{\suma{m = 1}{2^l} I_l^m = k } = \lim\limits_{l \to \infty} {2^l \choose k} p_l^k \: q_l^{2^l - k}\\
+            &= \lim\limits_{l \to \infty} \frac{1}{k!} \cdot (q_l)^{2^l} \cdot (2^l) \: (2^l - 1) \ldots (2^l - k + 1) \cdot \big( \frac{p_l}{q_l} \big)^k\\
+            &= \frac{e^{-\lambda}}{k!} \cdot 1^k \cdot \big[ \lim\limits_{l \to \infty} \frac{p_l \: 2^l}{q_l} \big]^k\\
+            &= \frac{e^{-\lambda}}{k!} \: \lambda^k.
+        \end{aligned}
+    \end{equation*}
+    Sli\v cno za $t > 0$ dobivamo $\vjeroj{N_t = k} = \frac{(\lambda \: t)^k}{k!} \: e^{-\lambda}$.
+    Dakle geometrijska $\leadsto$ eksponencijalna, binomna $\leadsto$ Poissonova.
+    Informacija o $T^n$ se mo\v ze \v citati iz $N_t$ i obratno jer $\big\{ \suma{k = 1}{n} T^k \leq t \big\} = \{ N_t \geq n \}$.
+    Stohasti\v cki proces $\niz{N_t}{t \geq 0}$ je \emph{Poissonov proces s parametrom $\lambda > 0$}.
+\end{pr}
+
+U primjeru \ref{pr:10.2} promatrali smo Bernoullijeve slu\v cajne varijable kod kojih se vjerojatnost uspjeha mjenja na svakom nivoz i bila je uskla\dj ena s veli\v cinom $l$ tako da $\frac{p_l}{\frac{q}{2^l}} \xrightarrow[l \to \infty]{} \lambda$.
+Pogledajmo tipi\v cni slu\v ca primjer u koje se $p$ ne mjenja.
+
+\begin{pr}
+    Neka je $\niz{X_n}{n \in \nat} \; \iid$ za koji vrijedi $X_n \sim \begin{pmatrix} -1 & 1\\ q & p \end{pmatrix}$, $0 < p < 1$ i $q = 1 - p$. Vidjeli smo u poglavlju \ref{zakoni_01} da se takav niz uvijek mo\v ze realizirati (i to \v cak na $\segment{0}{1}$).
+    Ovaj niz je model "beskona\v cne igre" u \v cijem svakom koraku dobijemo ili izgubimo nav\v canu jedinicu (primjene ovog modela su puno \v sire od "hazardnih igara").
+    Neka je $S_n =$ "na\v se dokumentirano bogatstvo u trenutku $n$", to jest bez smanjenja op\' cenitosti uzimamo $S_0 = 0$, a za $n \in \nat$, $S_n = X_1 + \ldots + X_n$; uo\v cimo da je lako promatrati neku drugu po\v cetnu razdiobu $Y$ - samo uzmemo $V_n = Y + S_n$.
+    O\v cito, ako je $n$ paran, $S_n$ mo\v ze posti\' ci samo parne vrijednosti izme\dj u $-n$ i $n$, te za $k = 0, \: 1, \ldots, n$ imamo
+    \begin{equation*}
+        \vjeroj{S_n = -n + 2K} = {n \choose k} p^k \: q^{n - k},
+    \end{equation*}
+    i sli\v cno dobijemo za neparne $n$.
+    \v Sto se doga\dj a s trajektorijama $n \mapsto S_n(\omega)$ za velike $n$?
+    Uo\v cimo da je funkcija $f(\omega) := \limsup\limits_{n \to \infty} S_n(\omega)$ pro\v sirena slu\v cajna varijabla.
+    Promatrajmo $\overline{\real}^{\infty}$ i skup $A_c \subseteq \overline{\real}^\infty$, za $c \in \real$, definiran sa
+    \begin{equation*}
+        A_c := \skup{(r_n) \in \overline{\real}^\infty}{\limsup\limits_{n \to \infty} r_n \leq c}.
+    \end{equation*} 
+\end{pr}
