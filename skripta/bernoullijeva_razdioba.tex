@@ -122,5 +122,30 @@ Pogledajmo tipi\v cni slu\v ca primjer u koje se $p$ ne mjenja.
     Promatrajmo $\overline{\real}^{\infty}$ i skup $A_c \subseteq \overline{\real}^\infty$, za $c \in \real$, definiran sa
     \begin{equation*}
         A_c := \skup{(r_n) \in \overline{\real}^\infty}{\limsup\limits_{n \to \infty} r_n \leq c}.
-    \end{equation*} 
+    \end{equation*}
+    Ako je $p$ kona\v cna permutacija od $\nat$, tada poredak prvih kona\v cno brojeva ne\' ce utjecati na limes superior, pa je $\praslika{f} (A_c) = A_c$, to jest $A_c \in (\borel{\real}^\infty)_\simetr$.
+    Budu\' ci su $(X_n) \; \iid$ po Hewitt-Savageovom zakon slijedi da je $\{f \leq c\} \in \praslika{X} (\borel{\real}^\infty)_\simetr$.
+    To jest $f$ je izmjeriva s obzirom na trivijalnu $\sigma$-algebru.
+    Po lemi \ref{lm:9.6} postoji to\v cno jedan $b \in \extReal$, takav da je $\limsup\limits_{n \to \infty} S_n = b \; (g.s.)$.
+    Na isti na\v cin dobijemo $\liminf\limits_{n \to \infty} S_n = a \; (g.s.)$ i vrijedi $a, \; b \in \extReal$, $a \leq b$.
+    Sli\v cno zaklju\v cujemo i slu\v caj skupa $A_B := \skup{(r_n) \in \extReal^\infty}{(r_n) \textnormal{ u $B$ beskona\v cno puta}}$, pri\v cemu je $B \in \borel{\extReal}$. Opet po Hewitt-Savage-ovom zakonu vrijedi:
+    \begin{equation*}
+        \vjeroj{S_n \in B \; \io} \in \{0, \; 1\},
+    \end{equation*}
+    gdje $\io$ ozna\v cava "beskona\v cno mnogo puta" (eng. infinitely often).
+
+    Mo\v ze li biti $b \in \real$?
+    Uo\v cimo prvo da zbog nezavisnosti i jednake distribuiranosti $(X_1, \; X_2, \ldots) = \distJed (X_2, \; X_3, \ldots)$ \v sto daje $\limsup\limits_{n \to \infty} (S_{n + 1} - X_1) = b (g.s.)$.
+    Stoga dobivamo:
+    \begin{equation*}
+        \begin{aligned}
+            b &= \limsup\limits_{n \to \infty} S_{n + 1} = \limsup\limits_{n \to \infty} \big[ (S_{n + 1} - X_1) + X_1 \big]\\
+            &= b + X_1 \; (g.s.)\\
+            \implies X_1 &= 0 \; (g.s.),
+        \end{aligned}
+    \end{equation*}
+    \v sto je kontradikcija.
+    Dakle, $b \in \{-\infty, \; +\infty\}$.
+    Posebno, ako je $b = -\infty$, ttada je $\lim\limits_{n  \to \infty} S_n = -\infty \; (g.s.)$ i ako je $a = + \infty$, tada $\lim\limits_{n \to \infty} S_n = +\infty \; (g.s.)$.
+    Ako je $a = -\infty$, $b = +\infty$, tada $(g.s.)$ trajektorije osciliraju sve vi\v se i vi\v se.
 \end{pr}
