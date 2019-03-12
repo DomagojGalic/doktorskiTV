@@ -73,7 +73,7 @@ Uo\v cimo da je $\conv{(X_n)}$ repni doga\dj aj, pa prema Kolmogorovljevom zakon
     \vjeroj{\conv{(X_n)}} \in \{ 0, \; 1 \}.
 \end{equation}
 Nadalje, $\liminf\limits_{n \to \infty} X_n$ i $\limsup\limits_{n \to \infty} X_n$ su repne funkcije, pa postoje $- \infty \leq a \leq A \leq +\infty$ takvi da vrijedi:
-\begin{equation}
+\begin{equation}    \label{jed:11.8}
     \begin{aligned}
         \liminf\limits_{n \to \infty} X_n &= a \quad (g.s.)\\
         \limsup\limits_{n \to \infty} X_n &= A \quad (g.s.)
@@ -84,9 +84,52 @@ Nadalje, $\liminf\limits_{n \to \infty} X_n$ i $\limsup\limits_{n \to \infty} X_
     Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih slu\v cajnih varijabli.
     Sljede\' ce tvrdnje su ekvivalentne:
     \begin{enumerate}[label=(\roman*)]
-        \item $(X_n)$ je konvergentan $g.s.$;
-        \item $-\infty < a = A < +\infty$;
-        \item $a \in \real$ i $X_n \xrightarrow[n \to \infty]{g.s.} a$;
-        \item $\suma{n = 1}{\infty} \vjeroj{|X_n - a| > \varepsilon} < +\infty, \quad \forall \varepsilon > 0$.
+        \item   \label{tm:11.9.1}
+        $(X_n)$ je konvergentan $g.s.$;
+        \item   \label{tm:11.9.2}
+        $-\infty < a = A < +\infty$;
+        \item   \label{tm:11.9.3}
+        $a \in \real$ i $X_n \xrightarrow[n \to \infty]{g.s.} a$;
+        \item   \label{tm:11.9.4}
+        $\suma{n = 1}{\infty} \vjeroj{|X_n - a| > \varepsilon} < +\infty, \quad \forall \varepsilon > 0$.
     \end{enumerate}
 \end{tm}
+
+\begin{proof}
+    Iz \eqref{jed:11.7} i \eqref{jed:11.8} slijedi \ref{tm:11.9.1} $\iff$ \ref{tm:11.9.2}, dok je \ref{tm:11.9.2} $\iff$ \ref{tm:11.9.3} o\v cito.
+    Doka\v zimo \ref{tm:11.9.3} $\implies$ \ref{tm:11.9.4}.
+    Ozna\v cimo sa $C_n := \{ |X_n - a| > \varepsilon\}$, za zadani $\varepsilon > 0$.
+    Po pretpostavci $\niz{C_n}{n \in \nat}$ su nezavisni doga\dj aji, a zbog $X_n \xrightarrow[n \to \infty]{g.s.} a$ dobivamo $\vjeroj{\limsup\limits_{n \to \infty} C_n} = 0$.
+    Po Borelovom zakonu 0-1 $\suma{n = 1}{\infty} \vjeroj{C_n} < +\infty$.
+    Doka\v zimo \ref{tm:11.9.4} $\implies$ \ref{tm:11.9.3}.
+    Zbog $\suma{n = 1}{\infty} \vjeroj{C_n}$, Borel 0-1 daje $\vjeroj{\limsup\limits{n \to \infty} C_n} = 0$.
+    Uo\v cimo, ako $X_n \cancel{\to} a$, tada je $\omega \in \limsup\limits_{n \to \infty} C_n$, za neki $\varnothing = \frac{1}{k}$.
+    Dokaz slijedi direktno.
+\end{proof}
+
+Dakle, vrlo su rjetki slu\v cajevi, kak niz nezavisnih slu\v cajnih varijabli kongergira gotovo sigurno.
+Slu\v caj $\iid$ je jo\v s posebniji i nema potrebe za daljnjim prou\v cavanjem.
+
+\begin{kor} \label{kor:11.10}
+    Neka je $\niz{X_n}{n \in \nat} \; \iid$ niz.
+    Tada niz $(X_n)$ konverigra gotovo sigurno ako i samo ako je $X_n = a \; (g.s.)$, za svaki $n \in \nat$.
+\end{kor}
+
+\begin{proof}
+    Dovoljnost je o\v cita, a nu\v znost slijedi iz \ref{tm:11.9} \ref{tm:11.9.4} zbog
+    \begin{equation*}
+        \begin{gathered}
+            +\infty > \suma{n = 1}{\infty} \vjeroj{|X_n - a|>\varnothing} = \iid = \suma{n = 1}{\infty} \vjeroj{|X_1 - a|> \varepsilon}\\
+            \implies \vjeroj{|X_1 - a| > \varepsilon} = 0, \quad \varepsilon > 0.
+        \end{gathered}
+    \end{equation*}
+\end{proof}
+
+\begin{zad} \label{zad:11.11}
+    Neka je $\niz{X_n}{n \in \nat}$ $\iid$ niz.
+    Doka\v zite:
+    \begin{equation*}
+        \vjeroj{\limsup\limits_{n \to \infty} X_n  = +\infty} = 1 \iff \vjeroj{X_1 < c} < 1,
+    \end{equation*}
+    za svaki $0 < c < +\infty$.
+\end{zad}
