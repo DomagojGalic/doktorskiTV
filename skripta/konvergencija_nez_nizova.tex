@@ -1,3 +1,92 @@
 % poglavlje 11 - konvergencija nezavisnih nizova
 
 \chapter{Konvergencija nezavisnih nizova}
+
+U ovom poglavlju koristit \' cemo stalne oznake: $\vjerojatnosniProstor$, \' ce ozna\v cavati vjerojatnosni prostor, a $\niz{X_n}{n \in \nat}$, niz slu\v cajnih varijabli na $\Omega$.
+
+Uo\v cimo da je skup $\conv{(X_n)} := \{ \lim\limits_{n} X_n \in \real \} = \skup{\omega \in \Omega}{\lim\limits_{n \in \infty} X_n (\omega) \in \real}$\\
+$ = \presjek{k = 1}{\infty} \unija{n = 1}{\infty} \presjek{i = 1}{\infty} \skup{\omega}{|X_{n + i} (\omega) - X_n (\omega)| < \frac{1}{k}}$ uvijek doga\dj aj, te da je $X:= \limsup\limits_{n \to \infty} X_n$ pro\v sirena slu\v cajna varijabla.
+Stoga
+\begin{equation}    \label{jed:11.1}
+    \vjeroj{\conv{(X_n)}} = 1 \implies \vjeroj{X = \lim\limits_n X_n \in \real} = 1
+\end{equation}
+i u tom slu\v caju ka\v zemo da $(X_n)$ \emph{konvergira gotovo sigurno}.
+Ako je $Y$ slu\v cajna varijabla i postoji $D \in \famF$ takav da je $\vjeroj{D} = 0$ i za svaki $\omega \in D^c$ je $Y(\omega) = \lim\limits_{n \to \infty} X_n (\omega)$, tada ka\v zemo da $(X_n)$ \emph{konvergira gotovo sigurno prema} $Y$ i pi\v semo $X \xrightarrow[n \to \infty]{g.s.} Y$ ili $Y = (g.s.) \; \lim\limits_{n \to \infty} X_n$.
+O\v cito vrijedi
+\begin{equation}    \label{jed:11.2}
+    (\exists Y) \; X_n \xrightarrow[n \to \infty]{g.s.} Y \iff \vjeroj{\conv{(X_n)} = 1}
+\end{equation}
+i u tom slu\v caju $X_n \xrightarrow[n \to \infty]{g.s.} X$ i $X = Y \; (g.s.)$.
+Nadalje o\v cito vrijedi:
+\begin{equation}    \label{jed:11.3}
+    X_n \xrightarrow[n \to \infty]{g.s.} Y \iff X_n - Y \xrightarrow[n \to \infty]{g.s.} 0,
+\end{equation}
+i
+\begin{equation}    \label{jed:11.4}
+    (X_n) \textnormal{ konvergira } g.s.
+    \iff
+    \begin{matrix}
+        \niz{X_n(\omega)}{n \in \nat} \textnormal{ Cauchyjev}\\
+        \textnormal{za gotovo sve } \omega \in \Omega.
+    \end{matrix}
+\end{equation}
+
+\begin{nap} \label{nap:11.4-1}
+    Prisjetimo se, neka je $\niz{A_n}{n \in \nat}$ niz skupova, tada su limes superior i limes inferior definirani sa:
+    \begin{enumerate}[label=(\roman*)]
+        \item $\liminf\limits_{n \to \infty} A_n := \unija{n = 1}{\infty} \Bigg( \presjek{k = n}{\infty} A_k \Bigg)$
+        \item $\limsup\limits_{n \to \infty} A_n := \presjek{n = 1}{\infty} \Bigg( \unija{k = n}{\infty} A_k \Bigg)$
+    \end{enumerate}
+\end{nap}
+
+Va\v znu ulogu u opisu ovog pojma imaju skupovi $A_k^n := \skup{\omega \in \Omega}{|X_n(\omega) - X(\omega)| > \frac{1}{k}}$, $A_k := \limsup\limits_{n \to \infty} A_k^n$ i $D := \unija{k = 1}{\infty} A_k$.
+Uo\v cimo $l \leq k \implies A_l \subseteq A_k$ i dobivamo
+\begin{equation*}
+    \begin{aligned}
+        D &= \skup{\omega \in \Omega}{X_n(\omega) \cancel{\xrightarrow{}}X(\omega)}\\
+        \implies  \vjeroj{D} &= \lim\limits_{k \to \infty} \vjeroj{A_k}\\
+        \vjeroj{D} = 0 &\iff \vjeroj{A_k} = 0, \; \forall k \in \nat.
+    \end{aligned}
+\end{equation*}
+Sada vrijedi
+\begin{equation}    \label{jed:11.5}
+    \begin{aligned}
+        &X_n \xrightarrow[n \to \infty]{g.s.} X\\
+        \iff &\vjeroj{D} = 0\\
+        \iff &\lim\limits_{m \to \infty} \masP \Bigg( \unija{l = m}{\infty} A_k^l \Bigg) = 0, \quad \forall k \in \nat\\
+        \iff &\lim\limits_{m \to \infty} \masP \Bigg( \unija{l = m}{\infty} \{ |X_l - X| > \varepsilon \} \Bigg) = 0, \quad \forall \varepsilon > 0.
+    \end{aligned}
+\end{equation}
+
+Iz \eqref{jed:11.4} i \eqref{jed:11.5} direktno dobijemo:
+
+\begin{lm}  \label{lm:11.6}
+    Niz $\niz{X_n}{n \in \nat}$ je konvergentan $g.s.$ ako i samo ako vrijedi
+    \begin{equation*}
+        \lim\limits \masP \Bigg( \unija{l = m}{\infty} \{ |X_l - X| > \varepsilon \} \Bigg) = 0, \quad \forall \varepsilon > 0
+    \end{equation*}
+\end{lm}
+
+Pretpostavimo sada da su $(X_n)$ nezavisne slu\v cajne varijable.
+Uo\v cimo da je $\conv{(X_n)}$ repni doga\dj aj, pa prema Kolmogorovljevom zakonu 0-1 mora biti
+\begin{equation}    \label{jed:11.7}
+    \vjeroj{\conv{(X_n)}} \in \{ 0, \; 1 \}.
+\end{equation}
+Nadalje, $\liminf\limits_{n \to \infty} X_n$ i $\limsup\limits_{n \to \infty} X_n$ su repne funkcije, pa postoje $- \infty \leq a \leq A \leq +\infty$ takvi da vrijedi:
+\begin{equation}
+    \begin{aligned}
+        \liminf\limits_{n \to \infty} X_n &= a \quad (g.s.)\\
+        \limsup\limits_{n \to \infty} X_n &= A \quad (g.s.)
+    \end{aligned}
+\end{equation}
+
+\begin{tm}  \label{tm:11.9}
+    Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih slu\v cajnih varijabli.
+    Sljede\' ce tvrdnje su ekvivalentne:
+    \begin{enumerate}[label=(\roman*)]
+        \item $(X_n)$ je konvergentan $g.s.$;
+        \item $-\infty < a = A < +\infty$;
+        \item $a \in \real$ i $X_n \xrightarrow[n \to \infty]{g.s.} a$;
+        \item $\suma{n = 1}{\infty} \vjeroj{|X_n - a| > \varepsilon} < +\infty, \quad \forall \varepsilon > 0$.
+    \end{enumerate}
+\end{tm}
