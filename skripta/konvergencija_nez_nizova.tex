@@ -133,3 +133,179 @@ Slu\v caj $\iid$ je jo\v s posebniji i nema potrebe za daljnjim prou\v cavanjem.
     \end{equation*}
     za svaki $0 < c < +\infty$.
 \end{zad}
+
+\begin{nap} \label{nap:11.12}
+    Time smo uglavnom opisali \v sto se mo\v ze desti s $n \mapsto X_n(\omega)$ za velike $n$.
+    Intuitivno mo\v zemo re\' ci da \' cemo za nezavisne $(X_n)$ "rjetko" imati konvergenciju.
+    U $\iid$ slu\v caju samo degenerirana razdioba daje konvergenciju.
+    Na primjer ako je $X_1 \sim \begin{pmatrix} 0 & 1\\ q & p \end{pmatrix}$ i $0 < p < 1$, trajektorija $n \mapsto X_n(\omega)$ \' ce za gotovo sve $\omega$ oscilirati "bez pravila" od nule do jedinice $a = 0$ $A = 1$.
+    Dakle o samom nizu $(X_n (\omega))$ u nezavisnom slu\v caju nemamo ni\v sta osobito za dodati.
+    \v Sto se mo\v ze re\' ci o $\suma{n = 1}{\infty} X_n (\omega)$?
+    Ili duga\v cije pitanje, postoji li nizovi konstanati $(a_n)$, $(b_n)$, takvi da $\frac{S_n(\omega) - b_n}{a_n}$ konvergira?
+    Tipi\v cno $a_n \nearrow +\infty$, a $S_n := X_1 + \ldots + X_n$.
+    U ovom slu\v caju teorija je bogatija i takve rezultate nazivamo jakim zakonima velikih brojeva.
+\end{nap}
+
+Osim "konvergencije po to\v ckama" $(g.s.)$ teorija vjerojatnosti bavi se i drugim tipovima konvergencije.
+
+\begin{pr}  \label{pr:11.13}
+    Neka je $\vjerojatnosniProstor = (\segment{0}{1}, \; \borel{\segment{0}{1}}, \; \lambda)$ i
+    \begin{equation*}
+        Z_{n, m} (\omega) :=
+        \begin{cases}
+            1, &\frac{m-1}{n} < \omega \leq \frac{m}{n}\\
+            0, &\textnormal{ina\v ce}
+        \end{cases}
+        \quad
+        \begin{matrix}
+            n \in \nat,\\
+            m \in \{ 1, \ldots, n \}.
+        \end{matrix}
+    \end{equation*}
+    Poredamo $(Z_{n, m})$ u niz $(X_n)$ kao $(Z_{1,1}, \; Z_{2,1}, \; Z_{2, 2}, \; Z_{3,1}, \; Z_{3,2}, \; Z_{3,3}, \ldots)$.
+    Uo\v cimo da za $\omega \in \lijInt{0}{1}$ $(X_k (\omega))$ ima beskona\v cno nula i beskona\v cno jedinica, pa niz $\niz{X_k (\omega)}{k \in \nat}$ ne konvergira.
+    Posebno $X_k \cancel{\xrightarrow[n \to \infty]{g.s.}} 0$.
+    S druge strane niz je "po vjerojatnosti" sve bli\v ze nuli, jer za svaki $\varepsilon > 0$ je $\vjeroj{|Z_{n, m}| > \varepsilon} = \frac{1}{n} \xrightarrow[n \to \infty]{} 0$. 
+\end{pr}
+
+\begin{defn}    \label{defn:11.13-1}
+    Re\' ci \' cemo da niz $\niz{X_n}{n \in \nat}$ \emph{konvergira po vjerojatnosti} prema slu\v cajnoj varijabli $Y$, ako za svaki $\varepsilon > 0$ vrijedi
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \vjeroj{|X_n - y| > \varepsilon} = 0.
+    \end{equation*}
+    To ozna\v cavamo sa $X_n \xrightarrow[n \to \infty]{\masP} Y$, ili $(\masP) \lim\limits_{n \to \infty} X_n = Y$. 
+\end{defn}
+
+\begin{zad} \label{zad:11.14}
+    Ako je $X_n \xrightarrow[n \to \infty]{\masP} Y$ i $X_n \xrightarrow[n \to \infty]{\masP} Z$, tada $Y =  Z \; (g.s.)$
+\end{zad}
+
+Uo\v cimo da je
+\begin{equation}    \label{jed:11.15}
+    X_n \xrightarrow[n \to \infty]{\masP} Y \iff \vjeroj{|X_n - Y| > \frac{1}{k}} \to 0, \quad \forall k \in \nat.
+\end{equation}
+Koriste\' ci \eqref{jed:11.5} direktno dobivamo:
+
+\begin{lm}  \label{lm:11.16}
+    Sljede\' ce tvrdnje su ekvivalentne:
+    \begin{enumerate}[label=(\roman*)]
+        \item $X_n \xrightarrow[n \to \infty]{g.s.} Y$;
+        \item $(\forall \varepsilon > 0)(\exists \delta > 0) (\exists N \urePar{\varepsilon}{\delta} \in \nat)\\
+        (n \in \nat, \; n \geq N \urePar{\varepsilon}{\delta} \implies \masP \big( \presjek{j = n}{\infty} \{ |X_j - Y| \leq \varepsilon \} \big) \geq 1 - \delta)$;
+        \item   \label{lm:11.16.3}
+        $\sup\limits_{j \geq n} |X_j - Y| \xrightarrow[n  \to \infty]{\masP} 0$.
+    \end{enumerate}
+\end{lm}
+ Iz leme \ref{lm:11.16} \ref{lm:11.16.3} direktno slijedi:
+
+\begin{kor}    \label{kor:11.17}
+    Konvergencija gotovo sigurno povla\v ci konvergenciju po vjerojatnosti k istom limesu, odnosno:
+    \begin{equation*}
+        X_n \xrightarrow[n \to \infty]{g.s.} Y \implies X_n \xrightarrow[n \to \infty]{\masP} Y.
+    \end{equation*}
+\end{kor}
+
+Obrat op\' cenito ne vrijedi (vidi primjer \ref{pr:11.13}).
+Ipak, veza izme\dj u ovih konvergencija je direktna.
+ 
+\begin{lm} \label{lm:11.18}
+    Niz $\niz{X_n}{n \in \nat}$ konvergira po vjerojatnosti prema nekoj slu\v cajnoj varijabli ako i samo ako za svaki $\varepsilon > 0$ vrijedi
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \Bigg( \sup\limits_{
+            \begin{smallmatrix}
+               m \in \nat\\
+               m > n
+            \end{smallmatrix}
+        }  \vjeroj{ |X_m - X_n| > \varepsilon }\Bigg) = 0.
+    \end{equation*}
+\end{lm}
+
+\begin{proof}
+    Nu\v znost se lako vidi, poka\v zimo dovoljnost.
+    \begin{equation*}
+        (\forall k \in \nat)(\exists m_k \in \nat)\Big(n > m \geq m_k \implies \masP \Big( |X_n - X_m|>\frac{1}{2^k} \Big) < \frac{1}{2^k} \Big).
+    \end{equation*}
+    Formirajmo podniz: $n_1 := m_1$, $n_{i + 1} := \max \urePar{n_i + 1}{m_{i + 1}}$, te $X_k' := X_{n_k}$.
+    Tada je $\suma{k = 1}{\infty} \masP \Big( |X_{k + 1}' - X_k'| > \frac{1}{2^k} \big) \leq \suma{k = 1}{\infty} \frac{1}{2^k}$, pa prema Borel-Cantellijevoj lemi $(\exists A \in \famF) (\vjeroj{A} = 0)$ za $\omega \in A^c$ $(\exists k_0 (\omega) \in \nat) \Big(k \geq k_0 \implies |X_{k + 1}'(\omega) - X_k' (\omega)| \leq \frac{1}{2^k} \Big)$, to jest za svaki $\omega \in A^c$ vrijedi $\sup\limits_{m > n} |X_m' - X_n'| \leq \suma{k = n}{\infty} |X_{k + 1}' - X_k'| \leq \suma{k = n}{\infty} \frac{1}{2^k} = \frac{1}{2^{n - 1}} \xrightarrow[n \to \infty]{} 0$.
+    Posebno za $\omega \in A^c$ je $(X_n' (\omega))$ Cauchyjev niz.
+    Po jednad\v zbi \eqref{jed:11.4} postoji slu\v cajna varijabla $Y$ takva da $X_k' \xrightarrow[n \to \infty]{g.s.} Y$.
+    Prema korolaru \ref{kor:11.17} vrijedi $X_{n_k} \xrightarrow[n \to \infty]{\masP} Y$.
+    Budu\' ci je $\vjeroj{|X_n - Y| > \varepsilon} \leq \masP \Big(  |X_n - X_{n_k}| > \frac{\varepsilon}{2} \Big) + \masP \Big( |X_{n_k} - Y| > \frac{\varepsilon}{2} \Big)$, tvrdnja slijedi. 
+\end{proof}
+
+\begin{tm} \label{tm:11.19}
+    Niz $(X_n)$ konvergira po vjerojatnosti prema $Y$ ako i samo ako za svaki podniz od $(X_n)$ postoji podniz podniza koji konvergira gotovo sigurno prema $Y$.
+\end{tm}
+
+\begin{proof}
+    $X_n \xrightarrow[n \to \infty]{\masP} Y \implies Y_k = X_{n_k} \xrightarrow[n \to \infty]{\masP} Y$.
+    U dokazu leme \ref{lm:11.18} konstruiran je podniz $Y_k'$ niza $(Y_k)$ koji konvergira gotovo sigurno prema nekoj $Z$.
+    Zbog $Y_k' \xrightarrow[n \to \infty]{\masP} Y$ slijedi $Y=Z \; (g.s.)$.
+    Obratno, kada $X_n \cancel{\xrightarrow[n \to \infty]{\masP}} Y$ postojao bi podniz $(X_{n_k})$ te $\varepsilon > 0$ i $\delta > 0$ takvi da je $\vjeroj{|X_{n_k} - Y| > \varepsilon} > \delta > 0$.
+    Tada niti jedan podniz od $(X_{n_k})$ ne mo\v ze konvergirati prema $Y$ po vjerojatnosti, pa onda niti gotovo sigurno.
+\end{proof}
+
+\begin{zad} \label{zad:11.20}
+    Niz $(X_n)$ je gotovo sigurno konvergentan ako i samo ako vrijedi
+    \begin{equation*}
+        \sup\limits_{
+            \begin{smallmatrix}
+                m \in \nat\\
+                m > n
+            \end{smallmatrix}
+        } |X_m - X_n| \xrightarrow[n \to \infty]{\masP} 0.
+    \end{equation*}
+\end{zad}
+
+\v Sto mo\v zemo re\' ci o nezavisnim nizovima?
+
+\begin{kor} \label{kor:11.21}
+    Neka je $(X_n)$ niz nezavisnih slu\v cajnih varijabli.
+    Ako $X_n \xrightarrow[n \to \infty]{\masP} Y$, tada je $Y$ degenerirana.
+\end{kor}
+
+\begin{proof}
+    Ako je $X_n \xrightarrow[n \to \infty]{\masP} Y$, tada po toeremu \ref{tm:11.19} postoji podniz $(X_{n_k})$ takav da $X_{n_k} \xrightarrow[n \to \infty]{g.s.} Y$.
+    Uo\v cimo da je i $(X_{n_k})$ niz nezavisnih slu\v cajnih varijabli, pa je po teoremu \ref{tm:11.9} $Y$ degenerirana.
+\end{proof}
+
+\begin{nap} \label{nap:11.22}
+    Zna\v ce li korolar \ref{kor:11.21} i teorem \ref{tm:11.9} da za niz nezavisnih slu\v cajnih varijabli $(X_n)$ vrijedi
+    \begin{equation*}
+        X_n \xrightarrow[n \to \infty]{g.s.} Y \iff X_n \xrightarrow[n \to \infty]{\masP} Y?
+    \end{equation*}
+    Odgovor je ne, kao \v sto pokazuje sljede\' ci primjer.
+    Vrijedi li barem u slu\v caju $X_n \xrightarrow[n \to \infty]{\masP} b \in \real$, mora li biti $a = b$ ili $A = b$?
+    Ponovo ne. U sljede\' cem primjeru $b = 0$, dok je $a = -\infty$, $A = +\infty$.
+\end{nap}
+
+\begin{pr}  \label{pr:11.23}
+    Neka je $Z \sim N \urePar{0}{1}$. Za svaki $0<t<1$ postoji to\v cno jedan $\eta_t > 0$ takav da je $\vjeroj{|Z| > \eta_t} = t$.
+    Uo\v cimo $t \searrow 0 \implies \eta_t \nearrow +\infty$.
+    Za $n \in \nat$ definiramo $c_n := \frac{1}{\eta_\frac{1}{n}}\implies c_n > c_{n + 1} \searrow 0$.
+    Neka je $(Z_n)$ $\iid$ niz takav da je $Z_n \distJed Z$ (u poglavlju \ref{zakoni_01} smo vidjeli da takav uvijek mo\v zemo konstruirati).
+    Tada je $(X_n)$, pri \v cemu je $X_n := c_n \: Z_n$, niz slu\v cajnih varijabli.
+    Budu\' ci da je
+    \begin{equation*}
+        \suma{n = 1}{\infty} \vjeroj{|X_n| > 1} = \suma{n = 1}{\infty} \masP \Big( |Z| > \frac{1}{\eta_\frac{1}{n}} \Big) = \suma{n = 1}{\infty} \frac{1}{n} = +\infty,
+    \end{equation*}
+    po teoremu \ref{tm:11.9} \ref{tm:11.9.4} slijedi $X_n \cancel{\xrightarrow[n \to \infty]{g.s.}} 0$.
+    S druge strane, za $\varepsilon > 0$,
+    \begin{equation*}
+        \vjeroj{|X_n| > \varepsilon} = \masP \Big( |Z| > \varepsilon \: \eta_\frac{1}{n} \Big) \xrightarrow[n \to \infty]{} 0, \quad \eta_\frac{1}{n} \nearrow +\infty.
+    \end{equation*}
+    Stoga $X_n \xrightarrow[n \to \infty]{\masP} 0$.
+\end{pr}
+
+U $\iid$ slu\v caju pona\v sanje je isto kao i kod gotovo sigurne konvergencije.
+
+\begin{kor} \label{kor:11.24}
+    Ako je $(X_n) \; \iid$ niz tada $(X_n)$ konvergira po vjerojatnosti prema nekoj slu\v cajnoj varijabli ako i samo ako postoji $a \in \real$ takav da je $X_n = a \; (g.s.)$ $\forall n \in \nat$.
+\end{kor}
+
+\begin{proof}
+    Dovoljnost je o\v cita, a nu\v znost slijedi iz teorema \ref{tm:11.19} i korolar \ref{kor:11.10}
+\end{proof}
+
+Pitanja iz napomene \ref{nap:11.12} postavljamo i za $(\masP)$-konvergenciju.
+Teoremi o $(\masP)$-konvergenciju $\frac{S_n - b_n}{a_n}$ zovu se \emph{slabi zakoni velikih brojeva}.
