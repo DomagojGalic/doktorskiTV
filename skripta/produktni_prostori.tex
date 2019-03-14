@@ -6,14 +6,14 @@ Neka je $T \neq \varnothing$ skup indeksa i $\indFamilija{\Omega_t}{t \in T}$ fa
 Skup svih funkcija $f: T \to \unija{t \in T}{} \Omega_t$, takvih da je $f(t) \in \Omega_t, \; \forall t \in T$, ozna\v cavamo sa $\produkt{t \in T}{} \Omega_t$.
 Aksiom izbora garantira da je $\produkt{t \in T}{} \Omega_t$ neprazan (jer su svi $\Omega_t \neq \varnothing$).
 
-Definicija se mo\v ze pro\v siriti na proizvoljne $\Omega_t$ i tada dobivamo da je $\produkt{t \in T}{} \Omega_t$ \v ci je barem jedan $\Omega_t$ prazan.
-Uz \emph{kartezijev produkt} $\produkt{t \in T}{} \Omega_t$, prirodno su vezane \emph{koordinaten projekcije $pi_t$}, $t \in T$, pri \v cemu je $\pi_{t_0}: \produkt{t \in T}{} \to \Omega_{t_0}$ definiramo sa
+Definicija se mo\v ze pro\v siriti na proizvoljne $\Omega_t$ i tada dobivamo da je $\produkt{t \in T}{} \Omega_t$ prazan  \v cim je barem jedan $\Omega_t$ prazan.
+Uz \emph{kartezijev produkt} $\produkt{t \in T}{} \Omega_t$, prirodno su vezane \emph{koordinaten projekcije $\pi_t$}, $t \in T$, pri \v cemu je $\pi_{t_0}: \produkt{t \in T}{} \to \Omega_{t_0}$ definiramo sa
 \begin{equation*}
     \pi_{t_0} (f) := f(t_0).
 \end{equation*}
 
-Podsjetimo se da su $(X_t, \: \famU_t), \; t \in T$, topolo\v ski prostori, tada se na $\produkt{t \in T}{} X_t$ definira \emph{produktna (ili Tihonovljeva) topologija} $\dirProd{t \in T}{} \famU_t$, kao najmanja topologija u odnosu na koju su sve $\pi_t$ neprekidne.
-Ako su svi $X_t$ kompaktni,tada je i $\produkt{t \in T}{} X_t$ kompaktan u produktnoj topologiji.
+Podsjetimo se da ako su $(X_t, \: \famU_t), \; t \in T$, topolo\v ski prostori, tada se na $\produkt{t \in T}{} X_t$ definira \emph{produktna (ili Tihonovljeva) topologija} $\dirProd{t \in T}{} \famU_t$, kao najmanja topologija u odnosu na koju su sve $\pi_t$ neprekidne.
+Ako su svi $X_t$ kompaktni, tada je i $\produkt{t \in T}{} X_t$ kompaktan u produktnoj topologiji.
 Analogno postupamo u izmjerivoj situaciji.
 
 Neka su $(\Omega_t, \: \famF_t), \; t \in T$ izmjerivi prostori.
@@ -21,7 +21,7 @@ Produktna $\sigma$-algebra $\dirProd{t \in T}{} \famF_t$ na $\produkt{t \in T}{}
 \begin{equation}    \label{jed:4.1}
     \dirProd{t \in T}{} \famF_t := \indSigAlg{\pi_t}{t \in T}.
 \end{equation} 
-Element $\produkt{t \in T}{} A_t \in \partitive{\produkt{t \in T}{}} \Omega_t$, takav da postoji kona\v can $J \subseteq T$ sa svojstvima:
+Element $\produkt{t \in T}{} A_t \in \partitive{\produkt{t \in T}{} \Omega_t}$, takav da postoji kona\v can $J \subseteq T$ sa svojstvima:
 \begin{itemize}[label=]
     \item $t \in J \implies A_t \in \famF_t$
     \item $ t \in T \setminus J \implies A_t = \Omega_t $
@@ -31,7 +31,7 @@ Lako se vidi da svi takvi skupovi tvore poluprsten skupova $\prsten{\produkt{t \
 \begin{equation}    \label{jed:4.2}
     \sigAlg{\prsten{\produkt{t \in T}{} \Omega_t}} = \dirProd{t \in T}{} \famF_t.
 \end{equation}
-Uo\v cimo da se za topolo\v ske prostore javlja pitanje veze $\borel{\produkt{t \in T}{} \Omega_t}$ (\v sto je $= \sigAlg{\dirProd{t \in T}{} \famU_t}$) i $\dirProd{t \in T}{} \borel{X_t}$.
+Uo\v cimo da se za topolo\v ske prostore javlja pitanje veze $\borel{\produkt{t \in T}{} X_t}$ ($= \sigAlg{\dirProd{t \in T}{} \famU_t}$) i $\dirProd{t \in T}{} \borel{X_t}$.
 Lako se vidi da za topolo\v ske prostore $(X_t, \: \famU_t), \; t \in T$, vrijedi:
 \begin{equation}    \label{jed:4.3}
     \dirProd{t \in T}{} \borel{X_t} \subseteq \borel{\produkt{t \in T}{} X_t},
@@ -47,10 +47,12 @@ a nije osobito te\v sko konstruirati kontraprimjere koji pokazuju da u \eqref{je
 \end{zad}
 
 \begin{zad} \label{zad:4.6}
-    Za svaki skup $A \in \dirProd{t \in T}{} \famT_t$, postoji prebrojiv skup indeksa $J = J(A) \subseteq T$, takav da je $A \in \indSigAlg{\pi_t}{t \in J}$. 
+    Za svaki skup $A \in \dirProd{t \in T}{} \famF_t$, postoji prebrojiv skup indeksa $J = J(A) \subseteq T$, takav da je $A \in \indSigAlg{\pi_t}{t \in J}$. 
 \end{zad}
 
-Ako je $I \subseteq T, \; I \neq \varnothing$, onda za svaki $A \subseteq \produkt{t \in T}{} \Omega_t$ i $x \in \produkt{t \in T}{} \Omega_t$ mogu\' ce promarati \emph{prerez od $A$ po $x$}; to jest skup $A_x := \skup{y \in \produkt{t \in T \setminus J}{} \Omega_t}{(x, \: y) \in A \; (\subseteq \produkt{t \in T}{} \Omega_t)}$.
+\begin{defn}    \label{defn:4.6-1}
+    Ako je $I \subseteq T, \; I \neq \varnothing$, onda za svaki $A \subseteq \produkt{t \in T}{} \Omega_t$ i $x \in \produkt{t \in T}{} \Omega_t$ mogu\' ce promarati \emph{prerez od $A$ po $x$}; to jest skup $A_x := \skup{y \in \produkt{t \in T \setminus J}{} \Omega_t}{(x, \: y) \in A \; (\subseteq \produkt{t \in T}{} \Omega_t)}$.
+\end{defn}
 Uo\v cimo da je prerez (po $x$) svakog izmjerivog cilindri\v cnog pravokutnika ponovo ili $\varnothing$ ili izmjerivi cilindri\v cni pravokutnik u $\prsten{\produkt{t \in T \setminus I}{} \Omega_t}$, pa slijedi:
 \begin{equation}    \label{jed:4.7}
     A \in \dirProd{t \in T}{} \famF_t \implies A_x \in \dirProd{t \in T \setminus I}{} \famF_t.
@@ -64,8 +66,23 @@ Neka je $\izmjerivProstor$ izmjeriv prostor, $T \neq \varnothing$ skup indeksa i
 Iz \eqref{jed:4.1} i \eqref{jed:4.2} i napomnene \ref{nap:3.11} direktno slijedi:
 
 \begin{prop} \label{prop:4.9}
-    Preslikavanje $X : \to \produkt{t \in T}{} E_t$ je $(\famF, \: \dirProd{t \in T}{} \famE_t)$-izmjerivo ako i samo ako je za svaki $t \in T$ preslikavanje $\pi_t \circ X$, $(\famF, \: \famE_t)$-izmjerivo.
+    Preslikavanje $X : \Omega \to \produkt{t \in T}{} E_t$ je $(\famF, \: \dirProd{t \in T}{} \famE_t)$-izmjerivo ako i samo ako je za svaki $t \in T$ preslikavanje $\pi_t \circ X$, $(\famF, \: \famE_t)$-izmjerivo.
 \end{prop}
+
+Primjetimo, zapravo tvrdimo da sljede\' ci dijagram komutira, te da su sve rezultiraju\' ce funkcije izmjerive.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \matrix (m) [matrix of math nodes,row sep=5em,column sep=8em,minimum width=3em]
+        {
+        \urePar{\Omega}{\famF} & \\
+        \urePar{\produkt{t \in T}{} E_t}{\dirProd{t \in T}{} \famE_t} & \urePar{E_{t_0}}{\famE_{t_0}} \\};
+        \path[-stealth]
+        (m-1-1) edge node [left] {$X$} (m-2-1)
+        (m-2-1) edge node [below] {$\pi_{t_0}$} (m-2-2)
+        (m-1-1) edge node [right] {$X_{t_0}$} (m-2-2);
+    \end{tikzpicture}
+\end{figure}
 
 \begin{nap} \label{nap:4.10}
     \begin{enumerate}[label=(\alph*)]
@@ -79,24 +96,24 @@ Iz \eqref{jed:4.1} i \eqref{jed:4.2} i napomnene \ref{nap:3.11} direktno slijedi
 \end{nap}
 
 Neka je $d \in \nat$ i $(\Omega_i, \: \famF_i, \: \mu_i), \; i = 1, \dots, d$ prostori $\sigma$-kona\v cnih mjera.
-Za $A = A_1 \times \dots \times A_d \in \prsten(\Omega_1 \times \dots \times \Omega_d)$ definiramo
+Za $A = A_1 \times \ldots \times A_d \in \prsten{\Omega_1 \times \ldots \times \Omega_d}$ definiramo
 \begin{equation}    \label{jed:4.11}
-    \nu (A) := \mu_1 (A_1) \cdot \dots \cdot \mu_d (A_d),
+    \nu (A) := \mu_1 (A_1) \cdot \ldots \cdot \mu_d (A_d),
 \end{equation}
 te se mo\v ze pokazati da je $\nu$ $\sigma$-kona\v cna funkcija.
 Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
 
 \begin{tm}  \label{tm:4.12}
-    Postoji i jedinstveno je pr\v sirenje funkcije $\nu$ na mjeru na $\famF_1 \otimes \dots \otimes \famF_d$.
-    To pro\v sirenje je $\sigma$-kona\v cna mjera koju nazivamo \emph{produktnom mjerom} i ozna\v cavamo sa $\mu_1 \otimes \dots \otimes \mu_d$.
+    Postoji i jedinstveno je pr\v sirenje funkcije $\nu$ na mjeru na $\famF_1 \otimes \ldots \otimes \famF_d$.
+    To pro\v sirenje je $\sigma$-kona\v cna mjera koju nazivamo \emph{produktnom mjerom} i ozna\v cavamo sa $\mu_1 \otimes \ldots \otimes \mu_d$.
     Bez smanjenja op\' cenitosti niti jedna od mjera $\mu_i$ nije trivijalna (to jest vrijedi $\mu_i (\Omega_i) \neq 0 \; i=1, \dots, d$).
-    Tada je $\mu_1 \otimes \dots \otimes \mu_d$ kona\v cana ako i samo ako su $\mu_1, \dots, \mu_d$ kona\v cne.
-    Ako su $\mu_1, \dots, \mu_d$ vjerojatnosne, tada je i $\mu_1 \otimes \dots \otimes \mu_d$ vjerojatnost. 
+    Tada je $\mu_1 \otimes \ldots \otimes \mu_d$ kona\v cana ako i samo ako su $\mu_1, \ldots, \mu_d$ kona\v cne.
+    Ako su $\mu_1, \ldots, \mu_d$ vjerojatnosne, tada je i $\mu_1 \otimes \ldots \otimes \mu_d$ vjerojatnost. 
 \end{tm}
 
 \begin{pr}  \label{pr:4.13}
-    Neka je $\mu_1 = \dots = \mu_d = \lambda$ (Lebesgueova mjera).
-    Tada je $\mu_q \otimes \dots \mu_d$ $\sigma$-kona\v cna mjera na $\urePar{\real^d}{\borel{\real^d}}$, koju ozna\v cavamo $\lambda^d$ i zovemo \emph{$d$-dimenzionalana Lebesgueova mjera}.
+    Neka je $\mu_1 = \ldots = \mu_d = \lambda$ (Lebesgueova mjera).
+    Tada je $\mu_q \otimes \ldots \otimes \mu_d$ $\sigma$-kona\v cna mjera na $\urePar{\real^d}{\borel{\real^d}}$, koju ozna\v cavamo $\lambda^d$ i zovemo \emph{$d$-dimenzionalana Lebesgueova mjera}.
 \end{pr}
 
 \begin{zad} \label{zad:4.15}
@@ -159,7 +176,7 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
     \begin{enumerate}[label=(\alph*)]
         \item $(\forall \omega \in \Omega_1 ) \; \famF_2 \ni A \mapsto k(\omega, \: A)$ je mjera,
         \item $(\forall A \in \famF_2 ) \; \Omega_1 \ni \omega \mapsto k(\omega, \: A)$ je $\famF_1$-izmjeriva,
-        \item $(\exists B_n \in \famF)(\exists c_n > 0)$ takvi da $\Omega_2 = \unija{n = 1}{\infty} B_n$ i $(\forall n \in \nat)(\forall \omega \in \Omega_1)$ $k(\omega, \: B_n) \leq c_n$.\\
+        \item $(\exists B_n \in \famF)(\exists c_n > 0) $ td. $ \Omega_2 = \unija{n = 1}{\infty} B_n$ i $(\forall n \in \nat)(\forall \omega \in \Omega_1)$ $k(\omega, \: B_n) \leq c_n$.\\
         Ako je $c_n = c$, $\forall n \in \nat$, $B_n = \Omega_2$, $\forall n \in \nat$, ka\v zemo da je $k$ \emph{uniformno kona\v cna jezgra}. Ako je $k(\omega, \: B) \leq 1$, $\forall \omega \in \Omega_1$, $\forall B \in \famF_2$ ka\v zemo da je $k$ \emph{subvjerojatnosna jezgra}. Ako je $k(\omega, \: \Omega_1) = 1$, $\forall \omega \in \Omega_1$, ka\v zemo da je $k$ \emph{vjerojatnosna jezgra}.
     \end{enumerate}
 \end{defn}
@@ -181,17 +198,17 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
 \end{zad}
 
 \v Sto mo\v zemo re\' ci o beskona\v cnom produktu?
-Prvo gledamo slu\v aj $T = \nat$. Neka su $\urePar{\Omega_n}{\famF_n}$, $n \in \nat$, izmjerivi prostori. Po \eqref{jed:4.2}, znamo da je $\prsten{\produkt{n \in \nat}{} \Omega_n}$ generiraju\' ci poluprsten za $\dirProd{n \in \nat}{} \famF$, pa bi bilo dovoljno mjere zadati na $\prsten{\produkt{n \in \nat}{} \Omega_n}$.
-Ako na svakom $\urePar{\Omega_n}{\famF_n}$ imamo $\sigma$-kona\v cnu mjeru $\mu_n$, prirodno bi se moglo o\v cekivati da na $A_1 \times \dots \times A_n \times \Omega_{n + 1} \times \dots$ zadamo mjeru pomo\' cu $\mu_1(A), \; mu_1(A) \times \mu_2(\Omega_2), \: mu_1(A) \times \mu_2(\Omega_2) \times \mu_3 (\Omega_3)$, i tako dalje.
+Prvo gledamo slu\v caj $T = \nat$. Neka su $\urePar{\Omega_n}{\famF_n}$, $n \in \nat$, izmjerivi prostori. Po \eqref{jed:4.2}, znamo da je $\prsten{\produkt{n \in \nat}{} \Omega_n}$ generiraju\' ci poluprsten za $\dirProd{n \in \nat}{} \famF$, pa bi bilo dovoljno mjere zadati na $\prsten{\produkt{n \in \nat}{} \Omega_n}$.
+Ako na svakom $\urePar{\Omega_n}{\famF_n}$ imamo $\sigma$-kona\v cnu mjeru $\mu_n$, prirodno bi se moglo o\v cekivati da na $A_1 \times \ldots \times A_n \times \Omega_{n + 1} \times \ldots$ zadamo mjeru pomo\' cu $\mu_1(A), \; \mu_1(A) \cdot \mu_2(\Omega_2), \: \mu_1(A) \cdot \mu_2(\Omega_2) \cdot \mu_3 (\Omega_3)$, i tako dalje.
 U pravilu one \' ce biti jednake, jedino ako su to vjerojatnosne mjere.
 No mo\v zemo postupati druga\' cije.
-Neka je, za svaki $n \in \nat$, $\famG_n := \sigAlg{\pi_1, \dots, \pi_n}$, pa je $\famG_1 \subseteq \famG_2 \subseteq \dots$, tvore uzlazni niz $\sigma$-algebri takav da je $\famG_{\infty} := \unija{n = 1}{\infty} \famG_n$ algebra, ali ne nu\v zno i $\sigma$-algebra, i $\sigAlg{\famG_{\infty}} = \dirProd{n \in \nat}{} \famF_n$.
+Neka je, za svaki $n \in \nat$, $\famG_n := \sigAlg{\pi_1, \ldots, \pi_n}$, pa je $\famG_1 \subseteq \famG_2 \subseteq \ldots$, tvore uzlazni niz $\sigma$-algebri takav da je $\famG_{\infty} := \unija{n = 1}{\infty} \famG_n$ algebra, ali ne nu\v zno i $\sigma$-algebra, i $\sigAlg{\famG_{\infty}} = \dirProd{n \in \nat}{} \famF_n$.
 % nisam siguran što je ovaj G točno :/
-Sada bi se na $\famG$ mogli promatrati nizovi $\niz{(\mu_1 \otimes \dots \otimes \mu_2)(G)}{n \in \nat}$ i u slu\v caju da postoje limesi $\lim\limits_{n \to \infty} (\mu_1 \otimes \dots \otimes \mu_2)(G)$, taj bi se limes mogao uzeti za $\nu (G)$.
+Sada bi se na $\famG$ mogli promatrati nizovi $\niz{(\mu_1 \otimes \ldots \otimes \mu_2)(G)}{n \in \nat}$ i u slu\v caju da postoje limesi $\lim\limits_{n \to \infty} (\mu_1 \otimes \ldots \otimes \mu_2)(G)$, taj bi se limes mogao uzeti za $\nu (G)$.
 Ali i taj put vodi na probleme, ilustrirajmo jedan od njih.
 
 \begin{pr}  \label{pr:4.20}
-    Neka je $(\Omega_n, \: \famF_n, \: \mu_n) = (\{0, \: 1\}, \: \partitive{\Omega_n}, \: \mu_n(\{0\}) = \mu_n (\{1\}) = 1)$.
+    Neka je $(\Omega_n, \: \famF_n, \: \mu_n) = (\{0, \: 1\}, \: \partitive{\{0, \: 1\}}, \: \mu_n(\{0\}) = \mu_n (\{1\}) = 1)$.
     Uzmemo li bilo koju to\v cku $a \in \{ 0, \: 1 \}^{\nat}$, postoji $\lim\limits_{n \to \infty} (\mu_1 (\{ a_1 \}) \cdot \mu_2 (\{ a_2 \}) \cdot \dots \mu_n (\{ a_n \}) ) = 1$ pa bi "mjera" na $\{ 0, \: 1 \}^{\infty}$ koja bi bila kandidat za $\dirProd{n \in \nat}{} \mu_n$ imala neprebrojivo jedno\v clanih skupova mjere $1$, to jest nikako ni bi mogla biti $\sigma$-kona\v cna. 
 \end{pr}
 
