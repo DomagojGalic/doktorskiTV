@@ -404,14 +404,24 @@ Iz leme \ref{lm:3.17} i iz korolara \ref{kor:3.14} slijedi:
     Tada je $X$ $(\sigAlg{Y}, \: \borel{\real})$-izmjeriva ako i samo ako postoji funckija $f: E \to \real$ $(\famE, \: \borel{\real})$-izmjeriva takva da je $X = f \circ Y$.
 \end{zad}
 
-%
-% rješi i dodaj ovdje.
-%
-
 \begin{rj}[\ref{zad:3.20}]
     Dokazujemo obje implikacije.
     \begin{itemize}
         \item[$\implies$]
+        Dokazujemo da postoji $f$ takva da sljede\' ci dijagram komutira, te da su sve rezultiraju\' ce funkcije izmjerive.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \matrix (m) [matrix of math nodes,row sep=5em,column sep=8em,minimum width=3em]
+                {
+                \urePar{\Omega}{\sigAlg{Y}} & \urePar{E}{\famE} \\
+                & \urePar{\real}{\borel{\real}} \\};
+                \path[-stealth]
+                (m-1-1) edge node [above] {$Y$} (m-1-2)
+                (m-1-2) edge node [right] {$f$} (m-2-2)
+                (m-1-1) edge node [below] {$X$} (m-2-2);
+            \end{tikzpicture}
+        \end{figure}
         Neka je $X$ $\urePar{\sigAlg{Y}}{\borel{\real}}$-izmjeriva.
         Dokaz provodimo Lebesgueovom indukcijom po $X$.
         \begin{enumerate}[label=(\arabic*. korak)]
