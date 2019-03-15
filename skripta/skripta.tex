@@ -12,9 +12,12 @@
 \usepackage[pdftex]{graphicx}
 \usepackage{enumitem}
 
+\usepackage{graphicx}
+\usepackage{subcaption}
 \usepackage{float}
 \usepackage{tikz}
 \usetikzlibrary{matrix}
+\usetikzlibrary{patterns}
 
 \usepackage{fourier}
 \usepackage{heuristica}
@@ -28,6 +31,17 @@
 
 \input{definicije.tex}
 
+
+% renderiranje tikz pattern-a
+\pgfdeclarepatternformonly{south west lines}{\pgfqpoint{-0pt}{-0pt}}{\pgfqpoint{3pt}{3pt}}{\pgfqpoint{3pt}{3pt}}{
+        \pgfsetlinewidth{0.4pt}
+        \pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+        \pgfpathlineto{\pgfqpoint{3pt}{3pt}}
+        \pgfpathmoveto{\pgfqpoint{2.8pt}{-.2pt}}
+        \pgfpathlineto{\pgfqpoint{3.2pt}{.2pt}}
+        \pgfpathmoveto{\pgfqpoint{-.2pt}{2.8pt}}
+        \pgfpathlineto{\pgfqpoint{.2pt}{3.2pt}}
+        \pgfusepath{stroke}}
 
 % i.o. -> infinately often
 \begin{document}

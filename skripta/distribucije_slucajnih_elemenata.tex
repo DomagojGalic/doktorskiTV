@@ -4,10 +4,10 @@
 
 \begin{pr}  \label{pr:5.1}
     Promatrajmo vjerojatnosni prostor $\vjerojatnosniProstor = (\segment{0}{1}, \: \borel{\segment{0}{1}}, \: \restr{\lambda}{\borel{\segment{0}{1}}})$ i dvije slu\v cajne varijable $X (\omega) := \omega$, $Y (\omega) := 1 - X (\omega)$.
-    O\' cito $X(\omega) = Y(\omega)$, za svaki $\omega \in \Omega \setminus \{ \frac{1}{2} \}$, to jest kao funkcije u skupovnom smislu $X$ i $Y$ su "potpuno" razli\v cite.
+    O\' cito $X(\omega) \neq Y(\omega)$, za svaki $\omega \in \Omega \setminus \{ \frac{1}{2} \}$, to jest kao funkcije u skupovnom smislu $X$ i $Y$ su "potpuno" razli\v cite.
     \v Sto mo\v zemo re\' ci o "vjerojatnosnim informacijama" koje mo\v zemo saznati o $X$ i $Y$?
-    Za proizvoljan $A \in \famF = \borel{\segment{0}{1}}$ imamo $1-A = 1 + (-A) \in \borel{\segment{0}{1}}$ i $\lambda (1 - A) = \lambda (A) \implies \vjeroj{X \in A} = \vjeroj{Y \in A}, \; forall A \in \famF$.
-    Dakle iako su $X$ i $Y$ vlo razli\v cite slu\v cajne varijable, njihove "vjerojatnosne distribucije" su jednake.
+    Za proizvoljan $A \in \famF = \borel{\segment{0}{1}}$ imamo $1-A = 1 + (-A) \in \borel{\segment{0}{1}}$ i $\lambda (1 - A) = \lambda (A) \implies \vjeroj{X \in A} = \vjeroj{Y \in A}, \; \forall A \in \famF$.
+    Dakle iako su $X$ i $Y$ vrlo razli\v cite slu\v cajne varijable, njihove "vjerojatnosne distribucije" su jednake.
 \end{pr}
 
 \begin{defn}    \label{defn:5.2}
@@ -28,8 +28,8 @@ Uo\v cimo $\masP_X$ je poseban slu\v caj tako zvane mjere inducirane izmjerivim 
         \item Preciznije, mi fiksiramo "vjerojatnosni prostor" i "slu\v cajni element", to jest uzmemo $\tilde{\Omega} := E$, $\tilde{\famF} := \famE$, $\tilde{X} := id : E \to E$ i dr\v zimo uvijek fiksirano, a slu\v cajni element "realiziramo" postavljanjem odgovaraju\' ce vjerojatnosne mjere $\masP_X$ na taj prostor.
         Tada $X$ (uz $\masP$) i $\tilde{X}$ (uz $\masP_X$) imaju istu distribuciju (i to je $\masP_X$).
         \item Time se uvodi nova ideja o pojmu jednakosti u vjerojatnosti.
-        vidjeli smo da za slu\v cajne elemente (definirane na istom prostoru s vjerojatnostima u istom prostoru) mo\v zemo promatrati obi\v cnu skupovnu jednakost $X = Y$, jednakost gotovo sigurno $(g.s.)$, a sada i jednakost po distribuciji.
-        Preciznije, ako su $X$ i $Y$ slu\v cajni elementi s vjerojatnostima u $\urePar{E}{\famE}$, definirani na vjerojatnosnim prostorima $(\Omega_1, \: \famF_1, \: \masP)$ i $(\Omega_1, \: \famF_2, \: \masO)$, re\' ci \' cemo da su \emph{jednaki po distribuciji}, i pisati $X \distJed Y$, ako je $\masP_X = \masO_Y$.
+        Vidjeli smo da za slu\v cajne elemente (definirane na istom prostoru s vjerojatnostima u istom prostoru) mo\v zemo promatrati obi\v cnu skupovnu jednakost $X = Y$, jednakost gotovo sigurno $(g.s.)$, a sada i jednakost po distribuciji.
+        Preciznije, ako su $X$ i $Y$ slu\v cajni elementi s vrijednostima u $\urePar{E}{\famE}$, definirani na vjerojatnosnim prostorima $(\Omega_1, \: \famF_1, \: \masP)$ i $(\Omega_1, \: \famF_2, \: \masO)$, re\' ci \' cemo da su \emph{jednaki po distribuciji}, i pisati $X \distJed Y$, ako je $\masP_X = \masO_Y$.
         Lako se vidi (primjer \ref{pr:5.1})
         \begin{equation*}
             X = Y
@@ -53,7 +53,7 @@ U slu\v caju $\urePar{E}{\famE} = \urePar{\extReal}{\borel{\extReal}}$ informaci
     Neka je $X$ pro\v sirena slu\v cajna varijabla na $\vjerojatnosniProstor$.
     Funkcija $F_X : \extReal \to \segment{0}{1}$, definiran sa
     \begin{equation*}
-        F_X (a) := \masP (X \leq a) = \masP (\skup{\omega \in \Omega}{X(\omega) \leq a}) = \masP_X (\segment{-\infty}{a}), \; a \in \real
+        F_X (a) := \masP (X \leq a) = \masP (\skup{\omega \in \Omega}{X(\omega) \leq a}) = \masP_X (\segment{-\infty}{a}), \quad a \in \real
     \end{equation*}
     nazivamo \emph{vjerojatnosnom funkcijom distribucije} slu\v cajnog elementa $X$.
 \end{defn}
@@ -93,7 +93,7 @@ Odgovor je: Da!
         \masP_F (\lijInt{a}{b}) := F (b) - F(a)
     \end{equation}
     i nije prete\v sko pokazati da je $\masP_F$ $\sigma$-aditivna na $\famI$.
-    Po korolaru \ref{kor:2.8} i po teoremu \ref{tm:2.11} postoji jeedinstveno pre\v sirenje $\masP_F$ koje je vjerojatnost na $\borel{\real}$.
+    Po korolaru \ref{kor:2.8} i po teoremu \ref{tm:2.11} postoji jedinstveno pre\v sirenje $\masP_F$ koje je vjerojatnost na $\borel{\real}$.
     Dakle, $X$ je slu\v cajna varijabla na $(\Omega, \: \famF, \: \masP_F)$ i $(\masP_F)_X = \masP_F$, pa je $F_X = F$.
 \end{proof}
 
@@ -107,16 +107,16 @@ Dakle vrijedi
         \item   \label{nap:5.8a}
         Za slu\v cajnu varijablu $X$ postoji $1-1$ korespondencija izme\dj u $\masP_X$ i $F_X$, posebno, sav "vjerojatnosni sadr\v zaj" o $X$ sadr\v zan je i u $F_X$.
         \item Teorem \ref{tm:5.6} opravdava \v cesto kori\v stenje funkcija distribucija u praksi.
-        Istra\v ziva\v cima u raznim podru\v cjima mo\v ze biti va\v zno samo pron\' ci "distribuciju" i oni se dalje bave vjerojatnostima bez da se bave pitanjem egzistencije istih.
+        Istra\v ziva\v cima u raznim podru\v cjima mo\v ze biti va\v zno samo prona\' ci "distribuciju" i oni se dalje bave vjerojatnostima bez da se bave pitanjem egzistencije istih.
         \item Usporedi \eqref{jed:5.7} sa \eqref{jed:2.14}.
         \item Radi se u stvari o istoj konstrukciji samo je u \eqref{jed:5.7} na\v sa $F$ "normirana" na poseban na\v cin, to jest $F(+\infty)$ je stavljeno da bude $1$.
-        Jasno, za svaki $c \in \real$, $F + c$ bi dala isto vjerojatnost $\masP_{F + c}$, kao i $\masP_F$.
+        Jasno, za svaki $c \in \real$, $F + c$ bi dala istu vjerojatnost $\masP_{F + c}$, kao i $\masP_F$.
         Op\' cenito, ako je $F: \real \to \real$ neopadaju\' ca i neprekidna zdesna, tada \eqref{jed:2.14} i isti dokaz kao u teoremu \ref{tm:5.6} (samo koristimo zadatak \ref{zad:2.9}) daje tvrdnju o egzistenciji i jedinstvenosti $\sigma$-kona\v cne mjere $\mu$ na $\urePar{\real}{\borel{\real}}$ takve da vrijedi \eqref{jed:2.14}. Svaku funkciju $F : \real \to \real$, koja je neopadaju\' ca i neprekidna zdesna zvat \' cemo \emph{d. f.}.
         Dakle \eqref{jed:2.14} daje $1-1$ korespondenciju izme\dj u
         \begin{equation}    \label{jed:5.9}
             \begin{matrix}
                 &\skup{F + c}{c \in \real}\\
-                &F \; \textnormal{d. f.}
+                &F \; \textnormal{ d.f.}
             \end{matrix}
             \longleftrightarrow
             \begin{matrix}
@@ -124,12 +124,17 @@ Dakle vrijedi
                 &\textnormal{na } \; \urePar{\real}{\borel{\real}}
             \end{matrix}
         \end{equation}
-        Za d. f. $F$ postoje (u $\extReal$) limesi $F(-\infty) = \lim\limits_{a searrow -\infty} F(a)$ i $F(+\infty) = \lim\limits_{a nearrow \infty} F(a)$ i $\mu_F(\real) = F(+\infty) - F(-\infty)$.
+        Za d.f. $F$ postoje (u $\extReal$) limesi:
+        \begin{enumerate}[label=]
+            \item $F(-\infty) = \lim\limits_{a \searrow -\infty} F(a)$
+            \item $F(+\infty) = \lim\limits_{a \nearrow \infty} F(a)$
+            \item $\mu_F(\real) = F(+\infty) - F(-\infty)$.
+        \end{enumerate}
     \end{enumerate}
 \end{nap}
 
 \begin{zad} \label{zad:5.10}
-    Opi\v site koresponednciju kao u \eqref{jed:5.9} na $\urePar{\real}{\borel{\real}}$i poka\v zite da je koresponedencija u \eqref{jed:5.9} poseban slu\v caj koresponedencije na $\extReal$.
+    Opi\v site korespondenciju kao u \eqref{jed:5.9} na $\urePar{\real}{\borel{\real}}$i poka\v zite da je korespondencija u \eqref{jed:5.9} poseban slu\v caj koresponedencije na $\extReal$.
 \end{zad}
 
 \begin{zad} \label{zad:5.11}
@@ -150,16 +155,46 @@ Dakle vrijedi
     \end{enumerate}
 \end{zad}
 
-Dobro su nam poznati primjeri brojnih raznih distribucija na $\real^d$, osobito za $d = 1$.
+Dobro su nam poznati primjeri brojnih razli\v citih distribucija na $\real^d$, osobito za $d = 1$.
 Korisna je i sljede\' ca klasifikacija, gledamo $d = 1$ zbog jednostavnosti zapisa.
-Slu\v cajna varijabla je $X$ \emph{diskretna} ako postoji prebrojiv skup $S$ takva da je $X \in S \; (g.s.)$, dok je p.d.F. $G$ \emph{diskretna} ako postoji prebrojiv skup $\skup{\urePar{x_j}{p_j}}{j \in J} \subseteq \real \times \segment{0}{1}$, takav da je $G(x) = \suma{\begin{smallmatrix} j \in y\\ x_j \leq x \end{smallmatrix}}{} p_j$.
+
+\begin{defn}    \label{defn:5.11-1}
+    Slu\v cajna varijabla je $X$ \emph{diskretna} ako postoji prebrojiv skup $S$ takva da je
+    \begin{equation*}
+        X \in S \; (g.s.),
+    \end{equation*}
+    dok je p.d.F. $G$ \emph{diskretna} ako postoji prebrojiv skup $\skup{\urePar{x_j}{p_j}}{j \in J} \subseteq \real \times \segment{0}{1}$, takav da je
+    \begin{equation*}
+        G(x) = \suma{
+            \begin{smallmatrix}
+                j \in J\\
+                x_j \leq x
+            \end{smallmatrix}
+            }{} p_j = \suma{j \in J}{} p_j \: \karaktFja_{\desInt{x_j}{+\infty}} (x).
+    \end{equation*}
+\end{defn}
+
 Lako se vidi da je $X$ diskretna ako i samo ako je $F_X$ diskretna.
 Ako jo\v s imamo i $(j_1 \neq j_2 \implies x_{j_1} \neq x_{j_2})$ tada je $p_j = \vjeroj{X = x_j}, \; \forall j \in J$.
 Uo\v cimo da skup $\skup{\urePar{x_j}{p_j}}{j \in J}$ u potpunosti opisuje $F_X$.
 
-Sli\v cno, ka\v zemo da je p.d.F. $G$ \emph{apsolutno neprekidna} ako postoji izmjeriva funkcija $g : \real \to \desInt{0}{+\infty}$, takva da je $G(x) = \int\limits_{-\infty}^{x} g(t) \: d \lambda (t)$.
+\begin{defn}    \label{defn:5.11-2}
+Ka\v zemo da je p.d.F. $G$ \emph{apsolutno neprekidna} ako postoji izmjeriva funkcija $g : \real \to \desInt{0}{+\infty}$, takva da vrijedi
+\begin{equation*}
+    G(x) = \int\limits_{-\infty}^{x} g(t) \: d \lambda (t).
+\end{equation*}
 Ka\v zemo da je slu\v cajna varijabla $X$ \emph{apsolutno neprekidna} ako je $F_X$ aposlutno neprekidna.
-Po Radon-Nykondimovom teoremu znamo da je $X$ apsolutno neprekidna ako i samo ako je $\masP_X << \lambda$, te da tada postoji i $\lambda-(g.s.)$ jedinstvena Radon-Nykondimovom derivacija $\frac{d \masP_X}{d \lambda}$ koja igra ulogu funkcije $g$ odeozgo.
+\end{defn}
+
+\begin{nap} \label{nap:5.11-2}
+    Prisjetimo se, neka su $\mu$, $\nu$ dvije mjere na $\izmjerivProstor$. Ka\v zemo da je $\nu$ \emph{apsolutno neprekidna} u odnosu na $\mu$ ako vrijedi:
+    \begin{equation*}
+        A \in \famF, \; \mu(A) = 0 \implies \nu (A) = 0.
+    \end{equation*}
+    Tada pi\v semo $\nu \ll \mu$.
+\end{nap}
+
+Po Radon-Nykondimovom teoremu znamo da je $X$ apsolutno neprekidna ako i samo ako je $\masP_X \ll \lambda$, te da tada postoji i $\lambda-(g.s.)$ jedinstvena Radon-Nykondimova derivacija $\frac{d \masP_X}{d \lambda}$ koja igra ulogu funkcije $g$ odozgo.
 U ovom slu\v caju nazivamo je funkcijom gusto\' ce i ozna\v cavamo sa $f_X$.
 Postoji jako puno funkcija gusto\' ce jer je $f: \real \to \desInt{0}{+\infty}$ funkcija gusto\' ce neke slu\v cajne varijable $X$ ako i samo ako je $f$ izmjeriva i vrijedi $\int\limits_{\real} f(t) \: d \lambda (t) = 1$.
 
@@ -174,15 +209,34 @@ Posebno, ako je $X$ slu\v cajni element na $\vjerojatnosniProstor$ s vrijednosti
 \end{equation*}
 i vrijedi:
 \begin{equation*}
-    \int_{\Omega} (f \circ X) (\omega) \: d \masP (\omega) = \int_E f(x) \: d \masP_X (x) = \int_{-\infty}^{\infty} u \: d F_{f \circ X} (u).
+    \int_{\Omega} (f \circ X) (\omega) \: d \masP (\omega)
+    = \int_E f(x) \: d \masP_X (x)
+    = \int_\real \id (t) \: d \masP_{f \circ X} (t)
+    = \int_{-\infty}^{\infty} u \: d F_{f \circ X} (u).
 \end{equation*}
 % u tikz-u dodaj dijagram
-U tom slu\v caju ka\v zemo da pstoji o\v cekivanje od $f \circ X$ i bilo koje od gornjih integrala ozna\v cavamo sa $\ocek{f \circ X}$
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \matrix (m) [matrix of math nodes,row sep=5em,column sep=8em,minimum width=3em]
+        {
+        \vjerojatnosniProstor & (E, \: \famE, \: \masP_X) \\
+        & (\real, \: \borel{\real}, \: \masP_{f \circ X})\\
+        & (\real, \: \borel{\real})\\};
+        \path[-stealth]
+        (m-1-1) edge node [above] {$X$} (m-1-2)
+        (m-1-2) edge node [right] {$f$} (m-2-2)
+        (m-1-1) edge node [below, xshift=-9pt] {$f \circ X$} (m-2-2)
+        (m-2-2) edge node [right] {$\id$} (m-3-2)
+        (m-1-1) edge node [below, xshift=-9pt] {$f \circ X$} (m-3-2);
+    \end{tikzpicture}
+\end{figure}
+U tom slu\v caju ka\v zemo da postoji o\v cekivanje od $f \circ X$ i bilo koje od gornjih integrala ozna\v cavamo sa $\ocek{f \circ X}$
 (uo\v cimo da $f \circ X \in L^1 \vjerojatnosniProstor$ zna\v ci da je $\ocek{|f \circ X|} < +\infty$).
 
 Za slu\v cajnu varijablu $X$ na $\vjerojatnosniProstor$ zanimaju nas neki posebni slu\v cajevi ovih integrala.
 Ako je $p > 0$, tada $\ocek{|X|^p} \in \segment{0}{+\infty}$ i zovemo ga \emph{$p$-ti apsolutni moment} od $X$.
-Ako je $\ocek{|X|^p} < +\infty$, tada je $X \in L^p := L^p \vjerojatnosniProstor$ i $\norma{X}_p = [\ocek{|X|^p}]^{\frac{1}{p}}$ te postoji i $\ocek{X^p}$ \v sto nazivamo \emph{$p$-ti moment} od $X$.
+Ako je $\ocek{|X|^p} < +\infty$, tada je $X \in L^p := L^p \vjerojatnosniProstor$ i $\norma{X}_p = (\masE [|X|^p])^{\frac{1}{p}}$ te postoji i $\ocek{X^p}$ \v sto nazivamo \emph{$p$-ti moment} od $X$.
 Ako je $p \leq q$, tada je $L^q \subseteq L^p$ (i $\norma{X}_p \leq \norma{X}_q$), pa postojanje $q$-tog momenta implicira postojanje $p$-tog momenta.
 Ako je $X \geq 0$ i $p > 0$ jednostavnim ra\v cunom daje
 \begin{align}   \label{jed:5.12}
@@ -198,7 +252,7 @@ Ako je $X = (X_1, \ldots, X_d)$ $d$-dimenzionalni slu\v cajni vektor i $X_k \in 
 \begin{zad} \label{zad:5.13}
     Neka je $X$ $d$-dimenzionalni slu\v cajni vektor koji ima o\v cekivanje i $f: \real^d \to \real$ konveksna funkcija, to jest funkcija za koju vrijedi:
     \begin{equation*}
-        (\forall x, \: y \in \real^d)(\forall \lambda \in \segment{0}{1}) \quad f (\lambda y + (1 - \lambda) y) \leq \lambda f(x) + (1 - \lambda) f(y).
+        (\forall x, \: y \in \real^d)(\forall \lambda \in \segment{0}{1}) \quad f (\lambda x + (1 - \lambda) y) \leq \lambda f(x) + (1 - \lambda) f(y).
     \end{equation*}
     Ako  postoji (u \v sirem smislu) $\masE [ f(X) ]$, tada je
     \begin{equation*}
@@ -207,7 +261,7 @@ Ako je $X = (X_1, \ldots, X_d)$ $d$-dimenzionalni slu\v cajni vektor i $X_k \in 
     To nazivamo \emph{Jensenovom nejednaskosti}.
 \end{zad}
 
-Osim prvog momenta slu\v cajen varijable, kojeg jo\v nazivamo i o\v cekivanjem, va\v zan je i drugi moment to jest \emph{drugi centrali moment} $\masE [ (X - \masE X)^2 ]$, kojeg nazivamo \emph{varijancom}.
+Osim prvog momenta slu\v cajen varijable, kojeg jo\v s nazivamo i o\v cekivanjem, va\v zan je i drugi moment to jest \emph{drugi centrali moment} $\masE [ (X - \masE X)^2 ]$, kojeg nazivamo \emph{varijancom}.
 Uo\v cimo da varijanca postoji ako i samo ako postoji drugi moment od $X$ i tada je
 \begin{equation*}
     Var \: X := \masE [ (X - \masE X)^2 ] = \masE [ X^2 ] - (\masE X)^2.
