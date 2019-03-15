@@ -4,20 +4,20 @@
 
 \begin{pr}[majmun za pisa\' cim strojem]  \label{pr:9.1}
     Zamislimo majmuna koji nasumica tipka po pisa\' cem stroju sa $M$ tipki.
-    Mo\v zemo zamisliti da je to niz nezavisnih pokusa (nasumice) u kojima majmun poga\dj a pojedinu tipku sa vjerojatno\v s\' cu $\frac{1}{M}$.
+    Mo\v zemo zamisliti da je to niz nezavisnih pokusa u kojima majmun (nasumice) poga\dj a pojedinu tipku sa vjerojatno\v s\' cu $\frac{1}{M}$.
     Zamislimo li da majmu tipka unedogled, koja je vjerojatnost da \' ce majmun u nekom "intervalu" natipkati "Dundo Maroje"?
-    Uo\v cimo li da je "D.M." specifi\v can niz simbola duljine $T$, pa mo\v zemo niz pokusa promatrati kao niz simbolja duljine $T$.
+    Uo\v cimo li da je "D.M." specifi\v can niz simbola duljine $T$, pa mo\v zemo niz pokusa promatrati kao niz simbola duljine $T$.
     Po korolaru \ref{kor:7.9} to su opet nezavisni slu\v cajni elementi i vjerojatnsot da u jednoj sekvenci majmun pogodi "D.M." je $p = \frac{1}{M^T}$.
     Iako je $p$ izrazito mali, va\v zno je da je $p > 0$.
     Ozna\v cimo li sekvencu sa $X_n$ dobivamo
     \begin{equation*}
         \begin{aligned}
             \vjeroj{\textnormal{bar jedna sekvenca "D.M."}}
-            &= \vjeroj{\unija{n \in \nat}{} (X_n = \textnormal{D.M.})}\\
-            &= \vjeroj{\unija{n \in \nat}{} (X_1 \neq \textnormal{D.M.}), \ldots, X_{n-1} \neq \textnormal{D.M.}, \: X_n = \textnormal{D.M.})}\\
+            &= \vjeroj{\unija{n \in \nat}{} \{X_n = \textnormal{D.M.}\}}\\
+            &= \vjeroj{\unija{n \in \nat}{} \{X_1 \neq \textnormal{D.M.}, \ldots, X_{n-1} \neq \textnormal{D.M.}, \: X_n = \textnormal{D.M.}\}}\\
             &= \textnormal{(disjunktna)}\\
-            &= \suma{n \in \nat}{} (1 - p)^{n - 1} = p + (1 - p) \: p + (1 - p)^2 \: p + \ldots\\
-            &= \Big( \suma{n = 1}{\infty} \Big) \cdot p = \frac{1}{1 - (1 - p)} \cdot p\\
+            &= \suma{n \in \nat}{} (1 - p)^{n - 1} \cdot p = p + (1 - p) \: p + (1 - p)^2 \: p + \ldots\\
+            &= \Big( \suma{n = 1}{\infty} (1 - p)^{n - 1} \Big) \cdot p = \frac{1}{1 - (1 - p)} \cdot p\\
             &= 1.
         \end{aligned}
     \end{equation*}
@@ -29,8 +29,16 @@
 \end{lm}
 
 \begin{proof}
-    Po teoremu o monotonoj konvergenciji
-    $+\infty > \suma{n = 1}{\infty} \vjeroj{A_n} = \suma{n = 1}{\infty} \masE [ \karaktFja_{A_n} ] = \masE [\suma{n = 1}{\infty} \karaktFja_{A_n}] \implies (\exists C \in \famF)$ takav da je $\vjeroj{C} = 1$ i da je $\suma{n = 1}{\infty} \karaktFja_{A_n}(\omega) < +\infty$, $\forall \omega \in C$
+    Pretpostavimo da vrijedi
+    $\suma{n = 1}{\infty} \vjeroj{A_n} < +\infty$.
+    \begin{equation*}
+        \begin{aligned}
+            \suma{n = 1}{\infty} \masE [ \karaktFja_{A_n} ] &= \suma{n = 1}{\infty} \vjeroj{A_n}\\
+            &= (\textnormal{prema LTMK-u})\\
+            &= \masE [\suma{n = 1}{\infty} \karaktFja_{A_n}] < +\infty.
+        \end{aligned}
+    \end{equation*}
+    Tada $(\exists C \in \famF)$ takav da je $\vjeroj{C} = 1$ i da je $\suma{n = 1}{\infty} \karaktFja_{A_n}(\omega) < +\infty$, $\forall \omega \in C$
     \begin{equation*}
         \implies \vjeroj{A_n \; i.o.} \leq \vjeroj{C^c} = 0. 
     \end{equation*}
@@ -48,9 +56,30 @@
 \end{tm}
 
 \begin{proof}
-    Po lemi \ref{lm:9.2} dovoljno je dokazati ($\Sigma = + \infty \implies \vjeroj{\cdot} = 1$).
-    Koristimo $1 - x \leq e^{-x}$ (deriviraj $h(x) = e^{-x} + x - 1$).
-    $\vjeroj{\unija{k \geq n}{} A_k} = 1 - \vjeroj{\presjek{k \geq n}{} A_k^c} = $ zadatak \ref{zad:6.14} $= \produkt{k \geq n}{} (1 - \vjeroj{A_k}) \geq 1 - \produkt{k \geq n}{} e^{-\suma{k \geq n}{} \vjeroj{A_k}} = 1 \implies \vjeroj{A_n \; i.o.} = \vjeroj{\presjek{n \in \nat}{} \unija{k \geq n}{} A_k} = \lim\limits_{n \to \infty} \vjeroj{\unija{k \geq n}{} A_k} = 1$.
+    Prema lemi \ref{lm:9.2} dovoljno je pokazati tvrdnju
+    \begin{equation*}
+        \suma{n = 1}{\infty} \vjeroj{A_n} = \infty \implies \vjeroj{A_n \; \io} = 1.
+    \end{equation*}
+    Diskusijom toka funkcije $h(x) = e^{-x} + x - 1$ mo\v ze se pokazati nejednakost
+    \begin{equation*}
+        1 - x \leq e^{-x}.
+    \end{equation*}
+    Sada imamo:
+    \begin{equation*}
+        \begin{aligned}
+            \vjeroj{\unija{k \geq n}{} A_k} &= 1 - \vjeroj{\presjek{k \geq n}{} A_k^c} = (\textnormal{prema zadatku \ref{zad:6.14}})\\
+            &= 1 - \produkt{k \geq n}{} (1 - \vjeroj{A_k})\\
+            &\geq 1 - e^{- \suma{k \geq n}{} \vjeroj{A_k}}\\
+            &= 1
+        \end{aligned}
+    \end{equation*}
+    To povla\v ci:
+    \begin{equation*}
+        \begin{aligned}
+            \vjeroj{A_n \; \io} &= \vjeroj{\presjek{n \in \nat}{} \unija{k \geq n}{} A_k} = \lim\limits_{n \to \infty} \vjeroj{\unija{k \geq n}{} A_k}\\
+            &= 1.
+        \end{aligned}
+    \end{equation*}
 \end{proof}
 
 \begin{nap} \label{nap:9.4}
@@ -111,12 +140,27 @@ Dodavanje ili oduzimanje proizvoljnog broja trivijalnih $\sigma$-algebri ne\' ce
 Usporedimo li primjer \ref{pr:9.8} s teoremom \ref{tm:9.9}, jasno je da \' ce teorem \ref{tm:9.9} igrati va\v znu ulogu u analizi grani\v cnog pona\v sanja nezavisnih slu\v cajnih nizova.
 Time \' cemo se detaljno bavit kasnije, a sad obratimo pa\v znju na jo\v s jedan klasi\v cni 0-1 zakon.
 
-Pod kona\v cnom permutacijom na $\nat$ podrazumjevamo bijekciju $p: \nat \to \nat$ takvu da postoji $m \in \nat$ sa svojstvom ($n \geq m \implies p_n := p(n) = n$).
+\begin{defn}    \label{defn:9.9-1}
+    Neka je $p: \nat \to \nat$ bijekcija takva da postoji $m \in \nat$ sa svojstvom:
+    \begin{equation*}
+        n \geq m \implies p_n := p(n) = n.
+    \end{equation*}
+    Tada ka\v zemo da je $p$ \emph{kona\v cna permutacija} na $\nat$.
+\end{defn}
+
 Ako je $S$ neprazan skup i $p$ kona\v cna permutacija na $\nat$, tada $p$ inducira permutaciju $f_p$ na $S^\infty$ definiranu s
 \begin{equation*}
     f_p (s_1, \; s_2, \ldots) = (s_{p_1}, \; s_{p_2}, \ldots).
 \end{equation*}
-Skup $A \subseteq S^\infty$ je \emph{simetri\v can u odnosu na kona\v cne permutacije} ak je $f_p^{-1} (A) = A$, za svaku kona\v cnu permutaciju $p$ na $\nat$.
+
+\begin{defn}    \label{defn:9.9-2}
+    Skup $A \subseteq S^\infty$ je \emph{simetri\v can u odnosu na kona\v cne permutacije} ako vrijedi:
+    \begin{equation*}
+        f_p^{-1} (A) = A,
+    \end{equation*}
+    za svaku kona\v cnu permutaciju $p$ na $\nat$.
+\end{defn}
+
 Uo\v cimo da na izmjerivom prostoru $\urePar{S}{\famS}$ simetri\v cni skupovi tvore $\sigma$-algebru, ozna\v cenu s $\famS_{\simetr}^\infty$, koja je sadr\v zana u $\sigma$-algebri $\famS^\infty$.
 % dokaži tu tvrdnju!
 Tu $\sigma$-algebru $\famS_{\simetr}^{\infty}$ obi\v cno zovemo \emph{permutacijski invarijantnom} na $S^\infty$.
@@ -165,18 +209,15 @@ $X: \urePar{\Omega}{\famF} \to \urePar{E^\infty}{\famE^\infty}$.
 \end{proof}
 
 \begin{nap} \label{nap:9.12}
-    Slu\v cajna varijabla numeri\v cke ishode nekog slu\v cajnog pokusa.
+    Slu\v cajna varijabla modelira numeri\v cke ishode nekog slu\v cajnog pokusa.
     Kona\v cno ponavljanje pokusa modeliramo slu\v cajnim vektorima.
     U oba slu\v caja je vjerojatnosna informacija sadr\v zana u funkciji distribucije koja je $F: \real^d \to \segment{0}{1}$ i za koju imamo razvijen analiti\v cki (ili kombinatorni) aparat.
-    Vrlo \v cesto nam je (i s teoriskog i s primjenjenog stajali\v sta) va\v zno, barem konceptalno, razmi\v sljati o beskona\v cnom ponavaljanju pokusa.
+    Vrlo \v cesto nam je (i s teorijskog i s primjenjenog stajali\v sta) va\v zno, barem konceptualno, razmi\v sljati o beskona\v cnom ponavaljanju pokusa.
     Prva najjednostavnija prepostavka je da se ti pokusi provode \emph{nezavisno}.
-    Stoga osnovni objekti na\v se teorije postaje niz nezavisnih slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ na vjerojatnosnom prostoru $\vjerojatnosniProstor$.
+    Stoga osnovni objekt na\v se teorije postaje niz nezavisnih slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ na vjerojatnosnom prostoru $\vjerojatnosniProstor$.
     Uo\v cimo da rezultati iz poglavlja \ref{poglavlje3} pokazuju da se takav niz uvijek mo\v ze realizirati (i to \v cak na $\segment{0}{1}$).
     Dakle, za svaki izbor p.d.F. $F_1, \; F_2, \ldots$ postoji niz nezavisnih slu\v cajnih varijabli, na istom vjerojatnosnom prostoru, koje imaju to\v cno one zadane distribucije.
     Jedno od najva\v znijih pitanja postoje asimptotsko pona\v sanje niza $(X_n)$.
     Osobito je va\v zan poseban slu\v caj u kojem postoji p.d.F. $F$ takav da je $F_{X_n} = F$, za svaki $n \in \nat$.
-    To je slu\v caj niza \emph{nezavisnih i jednako distribuiranih slu\v cajnih varijabli}, koji \' cemo kra\' ce ozna\v cavati s
-    \begin{equation*}
-        \iid
-    \end{equation*}
+    To je slu\v caj niza \emph{nezavisnih i jednako distribuiranih slu\v cajnih varijabli}, koji \' cemo kra\' ce ozna\v cavati s $\iid$
 \end{nap}

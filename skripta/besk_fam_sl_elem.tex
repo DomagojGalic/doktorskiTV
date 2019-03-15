@@ -8,14 +8,14 @@ Podsjetimo se na oznaku u napomeni \ref{nap:4.10}.
     Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, $\urePar{E}{\famE}$ izmjeriv prostor, $T \neq \varnothing$ skup indeksa.
     \emph{$E$-zna\v cni stohasti\v cki} (ili \emph{slu\v cajni}) \emph{proces} je svako preslikavanje $X : \Omega \to E^T$ koje je $\urePar{\famF}{\famE^T}$-izmjerivo.
     Ako je $T$ beskona\v can i prebrojiv, obi\v cno ka\v zemo da je $X$ \emph{$E$-zna\v cni slu\v cajni niz}, a ako je $T$ kona\v can, ka\v zemo da je $X$ \emph{$E$-zna\v cni slu\v cajni vektor}.
-    Ako je $E = \extReal$, $\famE = \borel{\extReal}$, umjesto rje\v ci "$E$-zna\v cni" koristimo rje\v c "pro\v sireni", a ako jo\v s postoji $A \in \famF, \; \vjeroj{A} = 0$, takav da je $\unija{t \in T}{} \{ |\pi_t \circ X| = \infty \} \subseteq A$, tada se rje\v c "$E$-zna\v cni" u gornjoj definicij izbacuje.
+    Ako je $E = \extReal$, $\famE = \borel{\extReal}$, umjesto rije\v ci "$E$-zna\v cni" koristimo rije\v c "pro\v sireni", a ako jo\v s postoji $A \in \famF, \; \vjeroj{A} = 0$, takav da je $\unija{t \in T}{} \{ |\pi_t \circ X| = \infty \} \subseteq A$, tada se rije\v c "$E$-zna\v cni" u gornjoj definicij izbacuje.
 \end{defn}
 
 \begin{nap} \label{nap:8.2}
     \begin{enumerate}[label=(\alph*)]
         \item Umjesto $\pi_t \circ X$ naj\v ce\v s\' ce koristimo oznaku $X_t$ i stohasti\v cki proces promatramo kao familiju $E$-zna\v cnih funkcija $\niz{X_t}{t \in T}$.
         Po propoziciji \ref{prop:4.9} $X$ je $E$-zna\v cni stohasti\v cki proces ako i samo ako su sve $X_t$ $E$-zna\v cni slu\v cajni elementi.
-        \item Mo\v ze se desiti da i $\urePar{T}{\famT}$ ima strukturu izmjerivog prostora
+        \item Mo\v ze se dogoditi da $\urePar{T}{\famT}$ ima strukturu izmjerivog prostora.
         Tada je mogu\' ca jo\v s jedna interpretacija stohasti\v ckog procesa $\niz{X_t}{t \in T}$.
         Ponovo se (neprecizno!) koristi slovo $X$ za preslikavanje $X : T \times \Omega \to E$, definirano sa $X \urePar{t}{\omega} := X_t (\omega)$.
         Re\' ci \' cemo da je stohasti\v cki proces \emph{izmjeriv} ako je ovako definirani $X$ $\urePar{\famT \otimes \famF}{\famE}$-izmjeriv.
@@ -23,14 +23,18 @@ Podsjetimo se na oznaku u napomeni \ref{nap:4.10}.
         Obrat op\' cenito ne vrijedi.
         \item Ako je $T \subseteq \overline{\Z}$ ili $T \subseteq \extReal$, obi\v cno $t \in T$ interpretiramo kao vrijeme.
         Za svaki $\omega \in \Omega$ promatramo preslikavanje $T \ni t \mapsto X_t (\omega) \in E$ koje nazivamo \emph{trajektorijom} ("sample path") procesa $X$.
-        Ako $X$ ima i topolo\v sku strukturu obi\v cno se promatraju i neka "analiti\v cka" svojstva trajektorije (neprekidnost, neprekidnost slijeva, neprekidnost zdesna, limesi i sli\v cno).
-        Naj\v ces\v s\' ci slu\v cajevi kada je $T = \nat_0$ - \emph{diskretni vremenski parametar} (trajektorije su nizovi u $E$) i $T = \desInt{0}{+\infty}$ - \emph{neprekidni vremenski parametar} (trajektorije su funkcije realne varijable).
-        U oba slu\v caja Ozna\v cavamo trenutak po\v cetka  (promatranja) slu\v cajnog procesa.
+        Ako $E$ ima i topolo\v sku strukturu obi\v cno se promatraju i neka "analiti\v cka" svojstva trajektorije (neprekidnost, neprekidnost slijeva, neprekidnost zdesna, limesi i sli\v cno).
+        Naj\v ces\v s\' ci su slu\v cajevi
+        \begin{itemize}
+            \item $T = \nat_0$ - \emph{diskretni vremenski parametar} (trajektorije su nizovi u $E$);
+            \item $T = \desInt{0}{+\infty}$ - \emph{neprekidni vremenski parametar} (trajektorije su funkcije realne varijable).
+        \end{itemize}
+        U oba slu\v caja $0$ ozna\v cava trenutak po\v cetka  (promatranja) slu\v cajnog procesa.
         \item Razni su nivoi jednakosti kod slu\v cajnih procesa.
-        Ako su $\niz{X_t}{t \in T}$ i $\niz{Y_t}{t \in T}$ $E$-zna\v cni stohasti\v cki procesi na $\vjerojatnosniProstor$, imamo dvije vrste $(g.s.)$ jednakosti.
+        Ako su $\niz{X_t}{t \in T}$, $\niz{Y_t}{t \in T}$ $E$-zna\v cni stohasti\v cki procesi na $\vjerojatnosniProstor$, imamo dvije vrste $(g.s.)$ jednakosti.
         Re\' ci \' cemo da su $X$ i $Y$ \emph{nerazlu\v civi} ako postoje $A \in \famF, \; \vjeroj{A} = 0$, takvi da je
         \begin{equation*}
-            \skup{\omega \in \Omega}{(\exists t \in T) \quad X_t (\omega) \neq Y_t (\omega)} \subseteq A.
+            \skup{\omega \in \Omega}{(\exists t \in T) \; X_t (\omega) \neq Y_t (\omega)} \subseteq A.
         \end{equation*}
         Re\' ci \' cemo da su $X$ i $Y$ \emph{modifikacije} (jedan drugoga) ako je za svaki $t \in T$ $X_t = Y_t \; (g.s.)$.
         Nerazlu\v civost uvijek povla\' ci modificiranost, ali obrat op\' cenito ne vrijedi.
@@ -38,7 +42,7 @@ Podsjetimo se na oznaku u napomeni \ref{nap:4.10}.
     \end{enumerate}
 \end{nap}
 
-U skladu s poglavljem \ref{dist_sl_elem}, $E$-zna\v cni stohasti\v c ki procesi $X$ i $Y$ (ne nu\v zno definirani na istom vjerojatnosnom prostoru) imaju istu distribuciju ($X \distJed Y$) ako je $\masP_X = \masP_Y$.
+U skladu s poglavljem \ref{dist_sl_elem}, $E$-zna\v cni stohasti\v cki procesi $X$ i $Y$ (ne nu\v zno definirani na istom vjerojatnosnom prostoru) imaju istu distribuciju ($X \distJed Y$) ako je $\masP_X = \masP_Y$.
 Op\' cenito vrijedi
 \begin{equation*}
     \textnormal{nerazlu\v civost}
@@ -63,9 +67,13 @@ Slijedi da je
     \restr{\masP_X}{\prsten{E^T}} = \restr{\masP_Y}{\prsten{E^T}}.
 \end{equation}
 
-Relacija \ref{jed:8.3} sugerira da se mo\v zemo ograni\v citi na kona\v cne koordinate kako bismo postigli jedakost po distribuciji.
+Relacija \eqref{jed:8.3} sugerira da se mo\v zemo ograni\v citi na kona\v cne koordinate kako bismo postigli jedakost po distribuciji.
 Preciznije, neka je $J \subseteq T$, $J$ kona\v can i neprazan.
-Ozna\v cimo sa $\famE^{T, \: \pi_J}$ $\sigma$-algebru (na $E^T$) $\indSigAlg{\pi_t}{t \in J}$ i sa $\masP_{X, \: J}$ restrikciju od $\masP$ na $\famE^{T, \: \pi_J}$.
+
+\begin{defn}
+    Ozna\v cimo sa $\famE^{T, \: \pi_J} = \indSigAlg{\pi_t}{t \in J}$ $\sigma$-algebru (na $E^T$) i sa $\masP_{X, \: J} = \restr{\masP}{\famE^{T, \: \pi_J}}$ restrikciju od $\masP$ na $\famE^{T, \: \pi_J}$.
+\end{defn}
+
 Uo\v cimo da je jednostavno direktno poistovjetiti mjeru $\masP_{X, \: J}$ sa mjerom na kona\v cnom produktu $\urePar{E^J}{\famE^J}$.
 Zato ka\v zemo da je
 \begin{equation}    \label{jed:8.4}
@@ -87,7 +95,7 @@ Promatramo li $\masP_{X, \: J}$ kao mjeru na $\urePar{E^J}{\famE^J}$ mo\v zemo i
 \end{kor}
 
 \v Sto re\' ci o egzistenciji procesa uz zadane distribucije?
-Ako su za svaki $\varnothing \neq J \subseteq T$, $J$ kona\v can, zadane vjerojatnosti $\masP_J$ na $\famE^{T, \: \pi_J}$, potrebna nam je barem \emph{konzistentnost}, to jest na $\varnothing \neq J \subseteq  I \subseteq T$, $J,$, $I$ kona\v cni,
+Ako su za svaki $\varnothing \neq J \subseteq T$, $J$ kona\v can, zadane vjerojatnosti $\masP_J$ na $\famE^{T, \: \pi_J}$, potrebna nam je barem \emph{konzistentnost}, to jest na $\varnothing \neq J \subseteq  I \subseteq T$, te su $J$, $I$ kona\v cni,
 \begin{equation}    \label{jed:8.7}
     \restr{\masP_I}{\famE^{T, \: \pi_J}} = \masP_J.
 \end{equation}
@@ -99,7 +107,7 @@ zadane, (to jest dobro definirana) kona\v cno aditivna funkcija
 \begin{equation*}
     \nu : \prsten{E^T} \to \segment{0}{1}.
 \end{equation*}
-Uspijemo li pokazati da je $\nu$ $\sigma$-aditivna, onda Carateodoriyjeva konstrukcija daje mjeru na $\famE^T$.
+Uspijemo li pokazati da je $\nu$ $\sigma$-aditivna, onda Caratheodoryjeva konstrukcija daje mjeru na $\famE^T$.
 Pokazuje se da za $\sigma$-aditivnost trebamo neku vrstu kompaktnosti i regularnosti.
 Na primjer:
 
@@ -118,21 +126,21 @@ Iz leme \ref{lm:8.6} i prethodne diskusije slijedi:
 
 \begin{tm}[Kolmogorov]    \label{tm:8.9}
     Za svaku konzistentnu familiju vjerojatnosti\\
-    $\niz{\masP_J}{J \subseteq T, \; J \neq \varnothing, \; \card{J} < \infty}$ na $\urePar{E^T}{\famE^T}$ pri \v cemu je $E$ potpun separabilan metri\v cki prostor i $\famE = \borel{E}$, postoji i jedinstvena je vjerojatnost $\masP$ na $\urePar{E^T}{\famE^T}$ takva da je za svaki $\varnothing \neq J \subseteq T$, $J$ kona\v can, $\restr{\masP}{\famE^{\famE^T, \: \pi_J}} = \masP_J$.
+    $\niz{\masP_J}{J \subseteq T, \; J \neq \varnothing, \; \card{J} < \infty}$ na $\urePar{E^T}{\famE^T}$ pri \v cemu je $E$ potpun separabilan metri\v cki prostor i $\famE = \borel{E}$, postoji i jedinstvena je vjerojatnost $\masP$ na $\urePar{E^T}{\famE^T}$ takva da je za svaki $\varnothing \neq J \subseteq T$, $J$ kona\v can, $\restr{\masP}{\famE^{T, \: \pi_J}} = \masP_J$.
 \end{tm}
 
 \begin{nap} \label{nap:8.10}
     \begin{enumerate}[label=(\alph*)]
-        \item Teorem \ref{tm:8.9} garantira da za svaku zadanu distribuciju stohasti\v cki proces na $E$ postoji realizacija tog procesa na kanonskom prostru $\urePar{E^T}{\famE^T}$ uz $X_t = \pi_t$.
+        \item Teorem \ref{tm:8.9} garantira da za svaku zadanu distribuciju stohasti\v ckog procesa na $E$ postoji realizacija tog procesa na kanonskom prostru $\urePar{E^T}{\famE^T}$ uz $X_t = \pi_t$.
         \item U nezavisnom slu\v caju teorem \ref{tm:8.9} garantira da za svaku familiju jednodimenzionalnih distribucija na $\urePar{E}{\borel{E}}$ postojih stohasti\v cki proces $(X_t)$ s takvim distribucijama i familija $(X_t)$ je nezavisna.
         Naime, produktne mjere \' ce sigurno biti konzistentne.
-        Ovaj zadnji rezultat se mo\v ze u slu\v caju prebrojivog $T$ i direktnom vjerojatnosnom konstrukcijom.
+        Ovaj zadnji rezultat se mo\v ze u slu\v caju prebrojivog $T$ dobiti i direktnom vjerojatnosnom konstrukcijom.
     \end{enumerate}
 \end{nap}
 
 \begin{tm}  \label{tm:8.11}
     Neka je $\niz{\masP_n}{n \in \nat}$ niz vjerojatnosnih mjera na $\urePar{E}{\borel{E}}$, pri \v cemu je $E$ potpun, separabilan metri\v cki prostor.
-    Tada na vjerojatnosnom prostoru $(\segment{0}{1}, \; \borel{\segment{0}{1}}, \; \restr{\lambda}{\borel{\segment{0}{1}}})$ postoji $E$-zna\v cni stohasti\v cki proces $\niz{X_n}{n \in \nat}$, takav da je familija $\indFamilija{X_n}{n \in \nat}$ nezavisna i $\masP_{X_n} = \masP_n$, za svaki $n \in \nat$.
+    Tada na vjerojatnosnom prostoru $(\segment{0}{1}, \; \borel{\segment{0}{1}}, \; \restr{\lambda}{\borel{\segment{0}{1}}})$ postoji $E$-zna\v cni stohasti\v cki proces $\niz{X_n}{n \in \nat}$, takav da je familija $\indFamilija{X_n}{n \in \nat}$ nezavisna i vrijedi $\masP_{X_n} = \masP_n$, za svaki $n \in \nat$.
 \end{tm}
 
 \begin{proof}
