@@ -11,7 +11,49 @@ Doga\dj aji $A, \; B \in \famF$ su nezavisni ako vrijedi:
 \begin{pr}  \label{pr:6.1}
     Iako se nezavisnost jako \v cesto primjenjuje, zapravo se "rijetko" doga\dj a
     % slika
-    $\implies (\vjeroj{A \cap B} = \vjeroj{A} \cdot \vjeroj{B} \iff x \in a b^2)$.
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+            \begin{tikzpicture}
+                \draw (0, 0) rectangle (6, 4);
+                \draw (0.5, 1) rectangle (2.5, 3);
+                \draw (3.25, 0.75) rectangle (5.75, 3.25);
+                \node at (0.5, 2) [label=left:$a$, xshift=5pt] {};
+                \node at (1.5, 1) [label=below:$a$, yshift=5pt] {};
+                \node at (4.5, 0.75) [label=below:$b$, yshift=5pt] {};
+                \node at (3.25, 2) [label=left:$b$, xshift=5pt] {};
+                \node at (1.5, 2) [label=center:$A$] {};
+                \node at (4.5, 2) [label=center:$B$] {};
+            \end{tikzpicture}
+        \end{subfigure}
+        %%%%%%%
+        \begin{subfigure}[b]{0.45\textwidth}
+            \begin{tikzpicture}
+                \draw (0, 0) rectangle  (6, 4);
+                \draw (1.25, 1) rectangle (3.25, 3);
+                \draw (2.75, 0.75) rectangle (5.25, 3.25);
+                \fill[pattern=south west lines] (2.75, 1) rectangle (3.25, 3);
+                \node at (1.25, 2) [label=left:$a$, xshift=5pt] {};
+                \node at (2.25, 1) [label=below:$a$, yshift=5pt] {};
+                \node at (4, 0.75) [label=below:$b$, yshift=5pt] {};
+                \node at (5.25, 2) [label=right:$b$, xshift=-5pt] {};
+                \node at (2.25, 2) [label=center:$A$] {};
+                \node at (4, 2) [label=center:$B$] {};
+                \node at (3, 1) [label=above:$x$, yshift=-5pt] {};
+            \end{tikzpicture}
+        \end{subfigure}
+    \end{figure}
+    \begin{equation*}
+        \begin{aligned}
+            \vjeroj{A} &= a^2\\
+            \vjeroj{B} &= b^2\\
+            \vjeroj{A \cap B} &= a \cdot x
+        \end{aligned}
+    \end{equation*}
+    Odakle vidimo da slijedi:
+    \begin{equation*}
+        \vjeroj{A \cap B} = \vjeroj{A} \cdot \vjeroj{B} \iff x = a b^2.
+    \end{equation*}
 \end{pr}
 
 Lako se vidi:\\
@@ -23,10 +65,7 @@ Lako se vidi:\\
             \textnormal{sa samim sobom}
         \end{matrix}
         &\iff
-        \begin{matrix}
-            \vjeroj{A} &= 0 \textnormal{ ili}\\
-            \vjeroj{A} &= 1
-        \end{matrix} \\
+        \vjeroj{A} \in \{0, \; 1\}\\
         &\iff
         \begin{matrix}
             \textnormal{$A$ i $B$ su nezavisni}\\
@@ -35,7 +74,7 @@ Lako se vidi:\\
     \end{split}
 \end{align}
 
-Laki ra\v cu tipa
+Laki ra\v cun tipa
 \begin{align*}
     \vjeroj{A \cap B^c} &= 1 - \vjeroj{A^c \cup B} = 1 - \vjeroj{A^c \cup (A \cap B)}\\
     &= 1 - \vjeroj{A^c} - \vjeroj{A \cap B} = (\textnormal{nezavisnost})\\
@@ -53,7 +92,7 @@ daje:
 
 \v Sto ako imamo 3 ili vi\v se doga\dj aja?
 Treba biti oprezan.
-Doga\dj aji $A_1, \ldots, A_n \in \famF$ su nezavisni ako za svaki $k \in \{1, \ldots, n\}$ i svaki izbor me\dj usobno razli\v citih $i_1, \ldots, i_k \in \{1, \ldots, n\}$ vrijedi $\vjeroj{A_{i_1} \cap \ldots \vjeroj{A_{i_k}}} = \vjeroj{A_{i_1}} \cdot \ldots \cdot \vjeroj{A_{i_k}}$.
+Doga\dj aji $A_1, \ldots, A_n \in \famF$ su nezavisni ako za svaki $k \in \{1, \ldots, n\}$ i svaki izbor me\dj usobno razli\v citih $i_1, \ldots, i_k \in \{1, \ldots, n\}$ vrijedi $\vjeroj{A_{i_1} \cap \ldots  \cap A_{i_k}} = \vjeroj{A_{i_1}} \cdot \ldots \cdot \vjeroj{A_{i_k}}$.
 
 \begin{zad} \label{zad:6.4}
     Na\dj ite primjere tri doga\dj aja $A, \: B, \: C \in \famF$ koji nisu nezavisni, ali za njih vrijedi:
@@ -97,7 +136,7 @@ Uo\v cimo da \eqref{jed:6.3} i \eqref{jed:6.7} navode na to da su nezavisnosti d
     Neka je $\Lambda \neq \varnothing$ i $\indFamilija{\famG_\lambda}{\lambda \in \Lambda}$ indeksirani skup familija doga\dj aja, to jest $\famG_\lambda \subseteq \famF, \; \forall \lambda \in \Lambda$.
     Tada je $\indFamilija{\famG_\lambda}{\lambda \in \Lambda}$ \emph{nezavisna} (ili nepreciznije, \emph{familije} $\famG_\lambda$ \emph{su me\dj usobno nezavisne}), ako, za svaki $n \in \nat \setminus \{1\}$, za svaki izbor me\dj usobno razli\v citih $\lambda_1, \ldots, \lambda_n \in \Lambda$ i za svaki izbor $A_1 \in \famG_{\lambda_1}, \ldots, A_n \in \famG_{\lambda_n}$, vrijedi:
     \begin{equation*}
-        \vjeroj{A_1 \cap \ldots \cap A_n} = \vjeroj{A_1} \: \ldots \: \vjeroj{A_n}.
+        \vjeroj{A_1 \cap \ldots \cap A_n} = \vjeroj{A_1} \cdot \ldots \cdot \vjeroj{A_n}.
     \end{equation*}
 \end{defn}
 
@@ -108,14 +147,14 @@ Uo\v cimo da \eqref{jed:6.3} i \eqref{jed:6.7} navode na to da su nezavisnosti d
         \item   \label{nap:6.9c}
         Sada se mo\v ze tretirati proizvoljna familija doga\dj aja.
         Ako je $\indFamilija{A_t}{t \in T} \subseteq \famF$, tada su $A_t, t \in T$, me\dj usuobno nezavisne ako su familije $\{A_t\}, \; t \in T$, me\dj usobno nezavisne.
-        Lako se vidi da ke tp ispunjeno ako i samo ako je svaka kona\v can podfamilija na\v se familije sastavljena od me\dj usobno nezavisnih doga\dj aja.
+        Lako se vidi da je to ispunjeno ako i samo ako je svaka kona\v can potfamilija na\v se familije sastavljena od me\dj usobno nezavisnih doga\dj aja.
         \item \label{nap:6.9d}
-        Ako (u definiciji \ref{defn:6.8}) imamo $\famH_\lambda \subseteq \famG_\lambda, \; \forall \lambda \in \Lambda$, tada nezavisnost familija $\famG_\lambda, \; \lambda \in \Lambda$, implicira nezavisnot familija $\famH_\lambda, \; \lambda \in \Lambda$ (dokaz je trivijalan).
+        Ako (u definiciji \ref{defn:6.8}) imamo $\famH_\lambda \subseteq \famG_\lambda, \; \forall \lambda \in \Lambda$, tada nezavisnost familija $\famG_\lambda, \; \lambda \in \Lambda$, implicira nezavisnost familija $\famH_\lambda, \; \lambda \in \Lambda$ (dokaz je trivijalan).
         \item Ako (u definiciji \ref{defn:6.8}) imamo $\tilde{\Lambda} \subseteq \Lambda$ i $\tilde{\Lambda} \neq \varnothing$, tada nezavisnost familija $\famG_\lambda, \; \lambda \in \Lambda$, implicira nezavisnost familija $\famG_\lambda, \; \lambda \in \tilde{\Lambda}$.
         \item \label{nap:6.9f}
         Uo\v cimo da definicija \ref{defn:6.8} uklju\v cuje i slu\v caj kada je neka od $\famG_\lambda = \varnothing$.
         Dodavanje ili oduzimanje takve familije unutar indeksiranog skupa $\{\famG_\lambda\}$ ne mjenja "status nezavisnosti" istog.
-        Ako gledamo nedklase od takvih $\famG_\lambda$, onda obi\v cno koristimo konvenciju $\sigAlg{\varnothing} = \{ \varnothing, \; \Omega\}$.
+        Ako gledamo nadklase takvih $\famG_\lambda$, onda obi\v cno koristimo konvenciju $\sigAlg{\varnothing} = \{ \varnothing, \; \Omega\}$.
     \end{enumerate}
 \end{nap}
 
@@ -164,7 +203,7 @@ O\' cito, smanjivati klase na razne na\v cine ne\' ce ugroziti nezavisnost.
 
 \begin{kor} \label{kor:6.11}
     Neka je $\Lambda \neq \varnothing, \: \famF_\lambda \subseteq \famF$ $\sigma$-algebra za svaki $\lambda \in \Lambda$ i $\indFamilija{\famF_\lambda}{\lambda \in \Lambda}$ nezavisna.
-    Akoj je $\famT$ particija skupa $\Lambda$ i za svaki $T \in \famT$,
+    Ako je $\famT$ particija skupa $\Lambda$ i za svaki $T \in \famT$,
     \begin{equation*}
         \famF_T := \indSigAlg{\famF_\lambda}{\lambda \in T},
     \end{equation*}
@@ -192,7 +231,7 @@ O\' cito, smanjivati klase na razne na\v cine ne\' ce ugroziti nezavisnost.
 \end{proof}
 
 \begin{prop}    \label{prop:6.12}
-    Neka je $\Lambda \neq \varnothing$, $\famF_lambda \subseteq \famF$ $\sigma$-algebra za svaki $\lambda \in \Lambda$.
+    Neka je $\Lambda \neq \varnothing$, $\famF_\lambda \subseteq \famF$ $\sigma$-algebra za svaki $\lambda \in \Lambda$.
     Neka je $\famT \subseteq \partitive{\Lambda}$ separiraju\' ca klasa na $\Lambda$ (to jest za svaki $\mu, \; \lambda \in \Lambda, \; \lambda \neq \mu$, postoji $T \in \famT$ takav da $\card{T \cap \{\lambda, \; \mu\}} = 1$).
     Tada je $\indFamilija{\famF_\lambda}{\lambda \in \Lambda}$, nezavisna ako i samo ako je, za svako $T \in \famT$,
     \begin{equation*}
@@ -207,11 +246,11 @@ O\' cito, smanjivati klase na razne na\v cine ne\' ce ugroziti nezavisnost.
         \item[$\impliedby$)] Uo\v cimo da je dovoljno pokazati da za svaki kona\v can skup $S \subseteq \Lambda$ vrijedi $\indFamilija{\famF_\lambda}{\lambda \in S}$ nezavisna.
         Dokaz provodimo indukcijom po $\card{S}$.
         Za $\card{S} = 1$ tvrdnja trivijalno vrijedi.
-        Pretpostavljamo da vrijedi za $\card{S} \leq n$ i u tu pretpostavku promatramo skup $V \subseteq \Lambda$, $\card{V} = n + 1$.
+        Pretpostavljamo da vrijedi za $\card{S} \leq n$ i uz tu pretpostavku promatramo skup $V \subseteq \Lambda$, $\card{V} = n + 1$.
         Posebno, $V$ sadr\v zi barem dva razli\v cita elementa iz $\Lambda$, recimo $\lambda$ i $\mu$, pa postoji $T \in \famT$ koji ih razlikuje.
         Posebno $V \cap T$ i $V \setminus T$ su neprazni skupovi.
-        Po pretpostavci su $\indSigAlg{\famF_t}{t \in T}$ i $\indSigAlg{\famT}{t \in T^c}$ nezavisne, pa po napomeni \ref{nap:6.9}  \ref{nap:6.9d} su $\indSigAlg{\famF_t}{t \in V \cap T}$ i $\indSigAlg{\famF_t}{t \in V \setminus T}$ nezavisne.
-        Tada je $\presjek{\lambda \in V}{} A_\lambda = B \cap C$, pri \v cemu je $B = \presjek{\lambda \in V \cap T}{} A_\lambda$, $C = \presjek{\lambda \in V \setminus T}{A_\lambda}$.
+        Po pretpostavci su $\indSigAlg{\famF_t}{t \in T}$ i $\indSigAlg{\famT}{t \in T^c}$ nezavisne, pa prema napomeni \ref{nap:6.9}  \ref{nap:6.9d} su $\indSigAlg{\famF_t}{t \in V \cap T}$ i $\indSigAlg{\famF_t}{t \in V \setminus T}$ nezavisne.
+        Tada je $\presjek{\lambda \in V}{} A_\lambda = B \cap C$, pri \v cemu je $B = \presjek{\lambda \in V \cap T}{} A_\lambda$, $C = \presjek{\lambda \in V \setminus T}{} A_\lambda$.
         Tada je $\vjeroj{B \cap C} = \vjeroj{B} \: \vjeroj{C}$, a $\card{V \cap T} \leq n$ i $\card{V \setminus T} \leq n$.
         Po pretpostavci indukcije dobivamo
         \begin{equation*}
