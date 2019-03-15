@@ -28,7 +28,7 @@ Nadalje, definicija \ref{defn:7.1} (odnosno \eqref{jed:7.2}) ekvivalentno je sa:
 Tada postaje jasno da je vrlo korisno imati operativnu i preciznu karakterizaciju nezavisnosti kona\v cne familije slu\v cajnih elemenata.
 
 \begin{tm}  \label{tm:7.4}
-    Neka je $n \in \nat$, $\urePar{E_1}{\famE_1}, \ldots, \urePar{E_n}{\famE_n}$ izmjerivi prostori i $X_1 : \Omega \to E_1, \ldots, X_n \to E_n$, slu\v cajni elementi.
+    Neka je $n \in \nat$, $\urePar{E_1}{\famE_1}, \ldots, \urePar{E_n}{\famE_n}$ izmjerivi prostori i $X_1 : \Omega \to E_1, \ldots, X_n : \Omega \to E_n$, slu\v cajni elementi.
     Tada su $X_1, \ldots, X_n$ nezavisni ako i samo ako je
     \begin{equation*}
         \masP_{\nvektor{X}} = \masP_{X_1} \otimes \ldots \otimes \masP_{X_n}.
@@ -36,7 +36,7 @@ Tada postaje jasno da je vrlo korisno imati operativnu i preciznu karakterizacij
 \end{tm}
 
 \begin{proof}
-    Uo\v cimo da tvrdnja ima smisla, jer po propoziciji \ref{prop:4.9} slijedi da je $\nvektor{X}$ slu\v cajni element na $E_1 \times \ldots \times E_n$, to jest obje vjerojatnosti su definirane na $\famE_1 \otimes \ldots \otimes \famE_n$ koje su generirane $\pi$-sistemom cilindrova oblika $A_1 \times \ldots \times A_n$, $A_1 \in \famE_1, \ldots, A_n \in \famE_n$.
+    Uo\v cimo da tvrdnja ima smisla, jer po propoziciji \ref{prop:4.9} slijedi da je $\nvektor{X}$ slu\v cajni element na $E_1 \times \ldots \times E_n$, to jest obje vjerojatnosti su definirane na $\famE_1 \otimes \ldots \otimes \famE_n$ koje su generirane $\pi$-sistemom cilindara oblika $A_1 \times \ldots \times A_n$, $A_1 \in \famE_1, \ldots, A_n \in \famE_n$.
     Stoga su navedene vjerojatnosti jednake ako i samo ako su jednake na cilindrima.
     Budu\' ci da je
     \begin{equation*}
@@ -85,7 +85,7 @@ Podsjetimo se da za $X, \; Y \in L^1$, $X \cdot Y$ ne mora biti u $L^1$. Ako su 
         &= \int_{\real^2} |x| \cdot |y| \: d \masP_Z \urePar{x}{y} = \int_\real |x| \: d \masP_X (x) \cdot \int_{\real} |y| \: d \masP_Y (y)\\
         &= \masE [|X|] \cdot \masE [|Y|] < +\infty \implies X \cdot Y \in L^1.
     \end{align*}
-    Sada na slu\v can na\v cin Fubinije teorem (zadatak \ref{zad:4.16}) daje
+    Sada na sli\v can na\v cin Fubinijev teorem (zadatak \ref{zad:4.16}) daje
     \begin{equation*}
         \masE [X \cdot Y] = \masE X \cdot \masE Y.
     \end{equation*}
@@ -109,8 +109,11 @@ Uo\v cimo da sada direktno iz korolara \ref{kor:6.11} direktno dobivamo:
 %% koriste\' ci dokaz sli\v can onome iz \ref{tm:7.7} rje\v site.
 \begin{zad} \label{zad:7.10}
     Neka su $X : \Omega \to \urePar{E}{\famE}$ i $Y : \Omega \to \urePar{H}{\famH}$ nezavisni slu\v cajni elementi.
-    Neka je $f : \urePar{E \times H}{\famE \otimes \famH} \to \urePar{\real}{\borel{\real}}$ izmjeriva za koju vrijedi:
-    ili je $f \geq 0$ ili je $\masE [|f \urePar{X}{Y}|] < +\infty$.
+    Neka je $f : \urePar{E \times H}{\famE \otimes \famH} \to \urePar{\real}{\borel{\real}}$ izmjeriva za koju vrijedi jedan od sljede\' cih uvijeta:
+    \begin{itemize}
+        \item $f \geq 0$
+        \item $\masE [|f \urePar{X}{Y}|] < +\infty$.
+    \end{itemize}
     Tada je
     \begin{align*}
         \masE [ f \urePar{X}{Y} ]
@@ -158,9 +161,9 @@ Po zadatku \ref{zad:4.15} dobijemo da je za svaki $H \in \famG$
         \end{equation*}
         \item Ako je $\lambda$ iz \ref{nap:7.14c} jo\v s i \emph{invarijantna} u odnosu na sve lijeve translacije (to jest za svaki $g \in G$ i za svaki $C \in \famG$ je $\lambda (g^{-1} C) = \lambda (C)$), tada je
         \begin{equation*}
-            (\mu * nu) (H) = \int_H \Big( \int_G f(a) \: g (a^{-1} b) \: d \lambda (a) \Big) \: d \lambda (b),
+            (\mu * \nu) (H) = \int_H \Big( \int_G f(a) \: g (a^{-1} b) \: d \lambda (a) \Big) \: d \lambda (b),
         \end{equation*}
-        to jest $\mu * \nu << \lambda$ i postoji gusto\' ca
+        to jest $\mu * \nu \ll \lambda$ i postoji gusto\' ca
         \begin{equation*}
             \frac{d (\mu * \nu)}{d \lambda} (b) = \int_G f(a) \: g (a^{-1} b) \: d \lambda (a)
         \end{equation*}
@@ -175,7 +178,7 @@ Po zadatku \ref{zad:4.15} dobijemo da je za svaki $H \in \famG$
 \begin{proof}
     Uo\v cimo da je $Z:= \urePar{X}{Y}$, su\v cajni element s vrijednostima u $G \times G$ i da je $\masP_Z = \masP_X \otimes \masP_Y$.
     Budu\' ci da je $\cdot$ izmjerivo, slijedi da je $X \cdot Y$ slu\v cajni element s vrijednostima u $G$ i $\masP_{X \cdot Y}$ je vjerojatnost inducirana s $\cdot$ u odnosu na $\masP_Z$.
-    To je po definiciji to\v cno $\masP_X * \masP_Y$.
+    To je po definiciji upravo $\masP_X * \masP_Y$.
 \end{proof}
 
 \begin{zad} \label{zad:7.16}
@@ -221,15 +224,17 @@ U klasi\v cnoj situaciji, kada su $X_i$ slu\v cajne varijable, ovaj zahtjev mo\v
 
 \begin{nap} \label{nap:7.19}
     Lako je posti\' ci uvijete iz propozicije \ref{prop:7.18}.
-    Neka je $\Omega := \segment{0}{1}^n$, $\famF := \borel{\Omega}$, $\masP := \restr{\lambda^n}{\famF}$ i $U_i : \pi_i : \Omega \to \segment{0}{1}, \; i = 1, \ldots, n$.
+    Neka je $\Omega := \segment{0}{1}^n$, $\famF := \borel{\segment{0}{1}^n}$, $\masP := \restr{\lambda^n}{\famF}$, te neka je $U_i : \pi_i : \Omega \to \segment{0}{1}, \; i = 1, \ldots, n$.
 \end{nap}
 
 \begin{zad} \label{zad:7.20}
     Uzmimo $n = 1$ u napomeni \ref{nap:7.19}. Napi\v simo svaki $U(x) = x \in \obInt{0}{1}$ u binarnom prikazi i ozna\v cimo $n$-tu znamenku s $h_n$, $n \in \nat$.
     Doka\v zi da su $\niz{h_n}{n \in \nat}$ nezavisne i jednako distribuirane slu\v cajne varijable i vrijedi
-    $h_n \sim
-    \begin{pmatrix}
-        0& 1\\
-        \frac{1}{2}& \frac{1}{2}    
-    \end{pmatrix}$.
+    \begin{equation*}
+        h_n \sim
+        \begin{pmatrix}
+            0& 1\\
+            \frac{1}{2}& \frac{1}{2}    
+        \end{pmatrix}.
+    \end{equation*}
 \end{zad}
