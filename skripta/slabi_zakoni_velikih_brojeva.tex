@@ -1,3 +1,208 @@
 % p12 - slabi zakoni velikih brojeva
 
 \chapter{Slabi zakoni velikih brojeva}
+
+U ovom poglavlju $\niz{X_n}{n \in \nat}$ je niz slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$ i $S_n := X_1 + \ldots + X_n$, za svaki $n \in \nat$.
+
+Prvo promatramo \v sto se doga\dj aako postoje drugi momenti (vidi poglavlje \ref{dist_sl_elem}).
+Osnovna tehnika u tom slu\v caju je poznata \emph{\v Cebi\v sevljeva nejednakost}:
+
+\begin{prop}    \label{prop:12.1}
+    \begin{enumerate}[label=(\roman*)]
+        \item   \label{prop:12.1.1}
+        Ako je $X \geq 0$ slu\v cajna varijabla takva da je $0 < \masE X < +\infty$, tada, za svaki $r > 0$ vrijedi
+        \begin{equation*}
+            \vjeroj{X > r \: \masE X} \leq \frac{1}{r}.
+        \end{equation*}
+        \item   \label{prop:12.1.2}
+        Ako je $X$ slu\v cajna varijabla i $\masE [X^2] < +\infty$, tada, za svaki $\varepsilon > 0$ vrijedi:
+        \begin{equation*}
+            \vjeroj{|X - \masE X| > \varepsilon} \leq \frac{\Var X}{\varepsilon^2}.
+        \end{equation*}
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+        \item Bez smanjenja op\' cenitosti mo\v zemo pretpostaviti da je $\masE X = 1$.
+        Uo\v cimo da je $r \cdot \karaktFja_{\{X > r\}} \leq X$.
+        \item Iz \ref{prop:12.1.1} za $Y:= |X - \masE X|^2$ i za $r:= \frac{\varepsilon^2}{\Var X}$, jer vrijedi:
+        \begin{equation*}
+            \begin{aligned}
+                \vjeroj{|X - \masE X| > \varepsilon} &= \vjeroj{Y > \varepsilon^2} = \vjeroj{Y > r \: \masE Y}\\
+                & \leq \frac{1}{r} = \frac{\Var X}{\varepsilon^2}.
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+Podsjetimo se da ako $X$, $Y$ imaju kona\v cne druge momente, tada imamo sljede\' cu defninciju.
+
+\begin{defn}    \label{defn:12.1-1}
+    Neka su $X, \; Y \in L^2(\masP)$ slu\v cajne varijable, tada definiramo \emph{kovarijancu} od $X$ i $Y$ kao:
+    \begin{equation}    \label{jed:12.2}
+        \Cov \urePar{X}{Y} := \frac{\masE [X \cdot Y] - \masE X \cdot \masE Y}{\sqrt{\Var X} \cdot \sqrt{\Var Y}}.
+    \end{equation}
+    Ako je $\Cov \urePar{X}{Y} = 0$, ka\v zemo da su $X$ i $Y$ \emph{nekorelirane}.
+\end{defn}
+
+\begin{zad} \label{zad:12.3}
+    Doka\v zi da vrijedi:
+    \begin{equation*}
+        X, \; Y \in L^2(\masP), \textnormal{ nezavisne} \implies \Cov \urePar{X}{Y} = 0.
+    \end{equation*}
+    Poka\v zi da obrat op\' cenito ne vrijedi.
+\end{zad}
+
+\begin{zad} \label{zad:12.4}
+    Neka su $X_1, \ldots, X_n \in L^2(\masP)$ i neka vrijedi $\Cov \urePar{X_i}{X_j} = 0$, za svaki $i \neq j$, tada vrijedi:
+    \begin{equation*}
+        \Var (X_1 + \ldots + X_n) = \suma{k = 1}{n} \Var X_k.
+    \end{equation*}
+\end{zad}
+
+\begin{tm}  \label{tm:12.5}
+    Ako je $X_n \in L^2 (\masP)$, za svaki $n \in \nat$, i ako vrijedi $\Cov \urePar{X_n}{X_m} = 0$, za svaki $m, \; n \in \nat$, te ako postoji $0 < c < + \infty$ takva da je $\Var (X_n) \leq c$, za svaki $n \in \nat$, tada
+    \begin{equation*}
+        \frac{S_n - \masE S_n}{n} \xrightarrow[n \to \infty]{\masP} 0.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Neka je $Z_n := \frac{S_n}{n}$.
+    Tada je $\frac{S_n - \masE S_n}{n} = Z_n - \masE Z_n$ i vrijedi $\Var Z_n = \frac{1}{n^2} \suma{k = 1}{n} \Var X_k \leq \frac{n \: c}{n^2} = \frac{C}{n}$.
+    Prema propoziciji \ref{prop:12.1} \ref{prop:12.1.2} imamo
+    \begin{equation*}
+        \begin{aligned}
+            \vjeroj{|Z_n - \masE Z_n| > \varepsilon} & \leq \frac{\Var Z_n}{\varepsilon^2} \leq \frac{c}{\varepsilon^2} \cdot \frac{1}{n}\\
+            & \xrightarrow[n \to \infty]{} 0.
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+\begin{zad} \label{zad:12.6}
+    Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih slu\v cajnih varijabli i $X_n \in L^2(\masP)$, za svaki $n \in \nat$.
+    \begin{enumerate}[label=(\alph*)]
+        \item Ako je $\lim\limits_{n \to \infty} \suma{k = 1}{n} \Var X_k = 0$, tada vrijedi
+        \begin{equation*}
+            \frac{S_n - \masE S_n}{n} \xrightarrow[n \to \infty]{\masP} 0.
+        \end{equation*}
+        \item Ako je $\masE X_n = \mu$ i ako je $\Var X_n = \sigma^2$, za svaki $n \in \nat$, tada je
+        \begin{equation*}
+            \frac{S_n}{n} \xrightarrow[n \to \infty]{\masP} \mu.
+        \end{equation*}
+        \item Ako je $Y_n \sim B \urePar{n}{p}$, za svaki $n \in \nat$, tada je
+        \begin{equation*}
+            \frac{Y_n}{n} \xrightarrow[n \to \infty]{\masP} p.
+        \end{equation*}
+    \end{enumerate}
+\end{zad}
+
+Vidimo da iz teorema \ref{tm:12.5} slijedi:
+
+\begin{kor}[\v Cebi\v sevljev slabi zakon] \label{kor:12.6}
+    Ako su $\niz{X_n}{n \in \nat}$ nezavisne slu\v cajne varijable u $L^2(\masP)$ i ako postoji $0 < c < +\infty$, takav da je $\Var X_n \leq c$, za svaki $n qin \nat$, tada je
+    \begin{equation*}
+        \frac{1}{n} (S_n - \masE S_n) \xrightarrow[n \to \infty]{\masP} 0.
+    \end{equation*}
+\end{kor}
+
+Mo\v zemo li u nezavisnom slu\v caju ispustiti pretpostavku o postojanju 2. momenta?
+Pogledat \' cemo $\iid$ slu\v caj, ali nam prvo trebaju neki pomo\' cni rezultati.
+Biti \' ce nam korisna sljede\' ca definicija.
+
+\begin{defn}    \label{defn:12.6-1}
+    Neka su $(a_n)$, $(b_n)$ nizovi realnih brojeva, ka\v zemo da je niz $a_n$ \emph{malo o} od niza $b_n$, u oznaci $a_n = o(b_n)$, ako vrijedi
+    \begin{equation}    \label{jed:12.7}
+        \lim\limits_{n \to \infty} \frac{a_n}{b_n} = 0.
+    \end{equation}
+\end{defn}
+
+Posebno, vidimo da je
+\begin{equation*}
+    a_n = o(1) \iff \lim\limits_{n \to \infty} a_n = 0.
+\end{equation*}
+
+\begin{defn}    \label{defn:12.7-1}
+    Za slu\v cajnu varijablu $X$ realni broj $m(X)$ zovemo \emph{medijanom} ako vrijedi
+    \begin{equation*}
+        \vjeroj{X \leq m(X)} \geq \frac{1}{2} \quad \textnormal{i} \quad \vjeroj{X \geq m(X)} \geq \frac{1}{2}.
+    \end{equation*}
+\end{defn}
+
+\begin{lm}[L\' evyjeva nejednakost]  \label{lm:12.8}
+    Ako su $\niz{X_n}{n \in \nat}$ nezavisne slu\v cajne varijable, tada, za svaki $\varepsilon > 0$ vrijedi:
+    \begin{equation*}
+        \begin{gathered}
+            \vjeroj{\max\limits_{1 \leq j \leq n} [S_j - m(S_j - S_n)] \geq \varepsilon } \leq 2 \: \vjeroj{S_n \geq \varepsilon}\\
+            \vjeroj{\max\limits_{1 \leq j \leq n} |S_j - m(S_j - S_n)| \geq \varepsilon } \leq 2 \: \vjeroj{|S_n| \geq \varepsilon}.
+        \end{gathered}
+    \end{equation*}
+\end{lm}
+
+\begin{proof}
+    Koriste\' ci prvu nejednakost na $(X_n)$ i na $(-X_n)$, te koriste\' ci $m(-X) = -m(X)$, dobivamo drugu nejednakost.
+    Doka\v zimo prvu nejednakost.
+    Stavimo
+    \begin{equation*}
+        T:= \min ( \skup{j \in \{1, \ldots, n\}}{S_j - m(S_j - S_n) \geq \varepsilon} ),
+    \end{equation*}
+    ako takav minimum postoji, odnosno $T:= n + 1$, ako ne postoji.
+    Nadalje, stavimo
+    \begin{equation*}
+        B_j := \{ m(S_j - S_n) \geq S_j - S_n \}, \quad 1 \leq j \leq n.
+    \end{equation*}
+    Stoga je $\vjeroj{B_j} \geq \frac{1}{2}$, za svaki $1 \leq j \leq n$.
+    Uo\v cimo da je $\{ T = j \} \in \sigAlg{X_1, \ldots X_j}$, te $B_j \in \sigAlg{X_{j + 1}, \ldots, X_n}$, \v sto daje da su $\{T = j\}$ i $B_j$ nezavisni.
+    Budu\' ci da su $\{T = j\}$ disjunktni, iz $\{ S_n \geq \varepsilon \} \supseteq \unija{j = 1}{n} (B_j \cap \{ T = j \})$, dobivamo
+    \begin{equation*}
+        \begin{aligned}
+            \vjeroj{S_n \geq \varepsilon} &\geq \suma{j = 1}{n} \vjeroj{B_j \cap \{ T = j \}} = \suma{j = 1}{n} \vjeroj{B_j} \cdot \vjeroj{T = j}\\
+            &\geq \frac{1}{2} \suma{j = 1}{n} \vjeroj{T = j} = \frac{1}{2} \vjeroj{1 \leq T \leq n}.
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
+
+\begin{tm}[W. Feller]   \label{tm:12.9}
+    Neka je $\niz{X_n}{n \in \nat}$ $\iid$ niz.
+    Tada postoji niz brojeva $\niz{b_n}{n \in \nat}$, takav da vrijedi
+    \begin{equation*}
+        \frac{S_n}{n} - b_n \xrightarrow[n \to \infty]{\masP} 0 \iff \lim\limits_{n \to \infty} n \: \vjeroj{|X_1| > n} = 0.
+    \end{equation*}
+    U tom slu\v caju je
+    \begin{equation*}
+        \lim\limits_{n \to \infty} (b_n - \masE [ X_1 \cdot \karaktFja_{\{ |X_1| \leq n \}}]) = 0.
+    \end{equation*}
+\end{tm}
+
+\begin{zad} \label{zad:12.10}
+    Ako za slu\v cajne varijable $\niz{Z_n}{n \in \nat}$ postoji niz brojeva $0 < b_n \nearrow + \infty$ takav da vrijedi
+    \begin{equation*}
+        \frac{Z_n}{b_n} \xrightarrow[n \to \infty]{\masP} 0,
+    \end{equation*}
+    tada vrijedi
+    \begin{equation*}
+        \max\limits_{1 \leq j \leq n} |m(Z_j - Z_n)| = o(b_n).
+    \end{equation*}
+\end{zad}
+
+\begin{proof}{(teorema \ref{tm:12.9})}
+    \begin{itemize}
+        \item[$\implies$] Pretpostavimo da postoji niz $(c_n)$ takav da vrijedi $\frac{S_n - c_n}{n} \xrightarrow[n \to \infty]{\masP} 0$.
+        Stavimo $c_0 = 0$ i stavimo $d_n := c_n - c_{n - 1}, \; n \in \nat$.
+        Tada je
+        \begin{equation*}
+            \frac{X_n -d_n}{n} = \frac{S_n - c_n}{n} - \frac{n - 1}{n} \cdot \Big( \frac{S_{n - 1} - c_{n - 1}}{n - 1} \Big) \xrightarrow[n \to \infty]{\masP} 0,
+        \end{equation*}
+        pa je zbog $\iid$
+        \begin{equation*}
+            \frac{X_1 - d_n}{n} \xrightarrow[n \to \infty]{\masP} 0 \implies d_n = o(n).
+        \end{equation*}
+        Po L\' evyjevoj nejednakosti (lema \ref{lm:12.8}) slijedi da za svaki $\varepsilon > 0$
+        \begin{equation*}
+            \masP \Big( \max\limits_{1 \leq j \leq n} | S_j - c_j -m( S_j - c_j - S_n + c_n) | \geq \frac{n \: \varepsilon}{2}  \Big)\leq 2 \: \masP \Big( |S_n - c_n| \geq \frac{n \: \varepsilon}{2} \Big) \xrightarrow[n \to \infty]{} 0.
+        \end{equation*}
+    \end{itemize}
+\end{proof}
