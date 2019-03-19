@@ -179,6 +179,38 @@ a nije osobito te\v sko konstruirati kontraprimjere koji pokazuju da u \eqref{je
     Za svaki skup $A \in \dirProd{t \in T}{} \famF_t$, postoji prebrojiv skup indeksa $J = J(A) \subseteq T$, takav da je $A \in \indSigAlg{\pi_t}{t \in J}$. 
 \end{zad}
 
+\begin{rj}
+    Promatrajmo skup
+    \begin{equation*}
+        \famG := \unija{
+            \begin{smallmatrix}
+                J \subseteq T\\
+                \card{J} \leq \aleph_0
+            \end{smallmatrix}
+        }{} \indSigAlg{\pi_t}{t \in J},
+    \end{equation*}
+    i ozna\v cimo
+    \begin{equation*}
+        \famF := \dirProd{t \in T}{} \famF_t.
+    \end{equation*}
+    Primjetimo da je $\sigma$-algebra $\famF$ generirana izmjerivim cilindri\v cnim pravokutnicima (prema \eqref{jed:4.2}), stoga vrijedi
+    \begin{equation*}
+        \prsten{\produkt{t \in T}{} \Omega_t} \subseteq \famG \subseteq \famF.
+    \end{equation*}
+    Ako doka\v zemo da je $\famG$ $\sigma$-algebra, tada \' ce vrijediti i $\famF \subseteq \famG$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Uzmemo neki $t_0 \in T$, tada nu\v zno vrijedi
+        \begin{equation*}
+            \varnothing \in \sigAlg{\pi_{t_0}} \implies \varnothing \in \unija{
+                \begin{smallmatrix}
+                    J \subseteq T\\
+                    \card{J} \leq \aleph_0
+                \end{smallmatrix}
+            }{} \indSigAlg{\pi_t}{t \in J} = \famG.
+        \end{equation*}
+    \end{enumerate}
+\end{rj}
+
 \begin{defn}    \label{defn:4.6-1}
     Ako je $I \subseteq T, \; I \neq \varnothing$, onda za svaki $A \subseteq \produkt{t \in T}{} \Omega_t$ i $x \in \produkt{t \in T}{} \Omega_t$ mogu\' ce promarati \emph{prerez od $A$ po $x$}; to jest skup $A_x := \skup{y \in \produkt{t \in T \setminus J}{} \Omega_t}{(x, \: y) \in A \; (\subseteq \produkt{t \in T}{} \Omega_t)}$.
 \end{defn}
