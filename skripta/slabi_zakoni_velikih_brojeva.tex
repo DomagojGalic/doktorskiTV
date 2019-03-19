@@ -204,5 +204,186 @@ Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
         \begin{equation*}
             \masP \Big( \max\limits_{1 \leq j \leq n} | S_j - c_j -m( S_j - c_j - S_n + c_n) | \geq \frac{n \: \varepsilon}{2}  \Big)\leq 2 \: \masP \Big( |S_n - c_n| \geq \frac{n \: \varepsilon}{2} \Big) \xrightarrow[n \to \infty]{} 0.
         \end{equation*}
+        U zadatku \ref{zad:12.10} stavimo $Z_j := S_j - c_j$, odakle slijedi
+        \begin{equation*}
+            \begin{gathered}
+                \max\limits_{1 \leq j \leq n} | m(S_j - c_j - S_n + c_n) | = o(n) \implies\\
+                (\forall \varepsilon > 0) \quad \lim\limits_{n \to \infty} \masP \Big( \max\limits_{1 \leq j \leq n} |S_j - c_j | < n \varepsilon \Big) = 1.
+            \end{gathered}
+        \end{equation*}
+        Kako je $d_n = o(n)$, za dovoljno velike $n$ je $\max\limits_{1 \leq j \leq n} |d_n| < n \: \varepsilon$, pa imamo:
+        \begin{equation*}
+            \begin{gathered}
+                \begin{aligned}
+                    \masP \Big( \max\limits_{1 \leq j \leq n}  |S_j - c_j| < n \: \varepsilon \Big) &\leq \masP \Big( \max\limits_{1 \leq j \leq n} |X_j - c_j| < 2 n \varepsilon \Big)\\
+                    &\leq \masP \Big( \max\limits_{1 \leq j \leq n} |X_j| < 3 n \varepsilon \Big)\\
+                    &= \vjeroj{|X_1| < 3 n \varepsilon, \; |X_2| < 3 n \varepsilon, \ldots, |X_n| < 3 n \varepsilon}\\
+                    &= (\iid) = \big[ \vjeroj{|X_1| < 3 n \varepsilon} \big]^n \implies                    
+                \end{aligned}\\
+                    (\forall \varepsilon > 0) \quad \lim\limits_{n \to \infty} \big[ \vjeroj{|X_1| < 3 n \varepsilon} \big]^n = 1 \implies\\
+                    \lim\limits_{n \to \infty} n \: \ln ( 1 - \vjeroj{|X_1| \geq 3 n \varepsilon} ) = 0.
+            \end{gathered}
+        \end{equation*}
+        Za mali $x$ je $\ln (1 - x) \approx x$, pa za svaki $\varepsilon > 0$ vrijedi
+        \begin{equation*}
+            \lim\limits_{n \to \infty} n \: \vjeroj{|X_1| \geq 3 n \varepsilon} = 0.
+        \end{equation*}
+        \item[$\impliedby$] Pretpostavimo da je $\lim\limits_{n \to \infty} n \: \vjeroj{|X_1| > n} = 0$.
+        Rezanjem dobivamo
+        \begin{equation*}
+            \begin{gathered}
+                X_{n, k} := X_k \karaktFja_{\{ |X_k| \leq n \}}\\
+                S_n' := X_{n, 1} + \ldots + X_{n, n}.
+            \end{gathered}
+        \end{equation*}
+        Sada imamo
+        \begin{equation*}
+            \masP \Big( \Big| \frac{S_n}{n} - \equalto{b_n}{\frac{c_n}{n}} \Big| > \varepsilon \Big) \leq \masP \Big( \Big| \frac{S_n'}{n} - \frac{c_n}{n} \Big| > \varepsilon \Big) + \vjeroj{S_n \neq S_n'}.
+        \end{equation*}
+        Uo\v cimo nadalje da za $t \in \real$ vrijedi $t \: \vjeroj{|X_1| > t} \xrightarrow[t \to \infty]{} 0$, stoga imamo:
+        \begin{equation*}
+            \begin{aligned}
+                \vjeroj{S_n \neq S_n'} &\leq \masP \Big( \unija{k = 1}{n} \{ X_k \neq X_{n, k} \} \Big) \leq \suma{k = 1}{n} \vjeroj{X_k \neq X_{n, k}}\\
+                &= (\iid) = n \: \vjeroj{X_1 \neq X_{n, 1}}\\
+                &= n \: \vjeroj{|X_1| > n} \xrightarrow[n \to \infty]{} 0.
+            \end{aligned}
+        \end{equation*}
+        Uzmemo li sada $b_n := \masE [X_1 - \karaktFja_{\{ |X_1| \leq n \}}] $.
+        \v Cebi\v sevljev zakon primjenjen na odrezane varijable, uz $b_n = \masE \Big[ \frac{S_n'}{n} \Big]$, daje
+        \begin{equation*}
+            \begin{aligned}
+                \masP \Big( \Big| \frac{S_n'}{n} - b_n \Big| > \varepsilon \Big) &\leq \frac{1}{\varepsilon^2} \: \frac{1}{n^2} \Var (S_n') = (\textnormal{nezavisnost})\\
+                &= \frac{1}{n^2 \: \varepsilon^2} n \Var (X_{n, 1})\\
+                &\leq \frac{\masE [ X_{n, 1}^2 ]}{n \: \varepsilon^2} \int\limits_0^{\infty} 2 t \: \vjeroj{|X_{n, 1}| > t} \: dt\\
+                &= \frac{2}{n \: \varepsilon^2} \int\limits_0^n t \: \vjeroj{|X_1| > t} \: dt.
+            \end{aligned}
+        \end{equation*}
+
+        %ovdje nisam siguran za ove t_0
+        Za $\delta > 0$ postoji $t_0$ takav da $\vjeroj{|X_1| > t_0} \leq \delta$, pa za $t > t_0$ i za dovoljno veliki $n$ imamo
+        \begin{equation*}
+            \begin{gathered}
+                \begin{aligned}
+                    \frac{1}{n} \int\limits_0^n t \: \vjeroj{|X_1| > t} \: dt &= \frac{1}{n} \int\limits_0^{t_0} t \: \vjeroj{|X_1| > t} \: dt + \frac{1}{n} \int\limits_{t_0}^n t \: \vjeroj{|X_1| > t} \: dt\\
+                    &\leq \frac{1}{n} \cdot \textnormal{ fiksni broj } + \frac{1}{n} \cdot \delta \implies
+                    \begin{smallmatrix}
+                        \textnormal{za dovoljno veliki } n\\
+                        \textnormal{je to manje od } 2 \delta
+                    \end{smallmatrix}
+                \end{aligned}\\
+                \implies \quad \lim\limits_{n \to \infty} \frac{1}{n} \int\limits_0^n t \: \vjeroj{|X_1| > t} \: dt = 0\\
+                \implies \quad \lim\limits_{n \to \infty} \masP \Big( \Big| \frac{S_n'}{n} -b_n \Big| > \varepsilon \Big) = 0, \quad \forall \varepsilon > 0.
+            \end{gathered}
+        \end{equation*}
+        Sada vidimo,
+        \begin{equation*}
+            \begin{aligned}
+                \frac{S_n}{n} - \widetilde{b_n} \xrightarrow[n \to \infty]{\masP} 0 &\implies n \: \vjeroj{|X_1| > n} \xrightarrow[n \to \infty]{} 0\\
+                &\implies \frac{S_n}{n} - b_n \xrightarrow[n \to \infty]{\masP} 0\\
+                &\implies b_n - \widetilde{b_n} \xrightarrow[n \to \infty]{} 0.
+            \end{aligned}
+        \end{equation*}
     \end{itemize}
+\end{proof}
+
+\begin{pr}  \label{pr:12.11}
+    Cauchyjeva razdioba ne zadovoljava uvijete teorema \ref{tm:12.9}.
+    Neka je $f_X (t) = \frac{1}{\pi \: (1 + t^2)}$.
+    Tada je
+    \begin{equation*}
+        \begin{gathered}
+            \begin{aligned}
+                \vjeroj{|X| > x} &= 2 \int\limits_x^{+\infty} \frac{dt}{\pi \: (1 + t^2)} \sim \frac{2}{\pi} \int\limits_x^{+\infty} \frac{dt}{t^2}\\
+                &= \frac{2}{\pi \: x}
+            \end{aligned}\\
+            \implies \quad \lim\limits_{x \to \infty} x \: \vjeroj{|X| > x} = \frac{2}{\pi} > 0.
+        \end{gathered}
+    \end{equation*}
+\end{pr}
+
+\begin{zad} \label{zad:12.12}
+    Ako je $X \in L^1(\masP)$, tada je
+    \begin{equation*}
+        \lim\limits_{n \to \infty} x \: \vjeroj{|X| > x} = 0.
+    \end{equation*}
+\end{zad}
+
+\begin{zad} \label{zad:12.13}
+    Ako je $X$ slu\v cajna varijabla za koju vrijedi
+    \begin{equation*}
+        \lim\limits_{x \to \infty} x \: \vjeroj{|X| > x} = 0,
+    \end{equation*}
+    tada je, za svaki $0 < \varepsilon < 1$,
+    \begin{equation*}
+        \masE [ |X|^{1 - \varepsilon} ] < +\infty.
+    \end{equation*}
+\end{zad}
+
+\begin{kor}[A. J. Hin\v cin] \label{kor:12.14}
+    Ako je $\niz{X_n}{n \in \nat}$ $\iid$ niz takav da je $X_1 \in L^1(\masP)$ i $\masE X_1 = \mu$, tada vrijedi
+    \begin{equation*}
+        \frac{S_n}{n} \xrightarrow[n \to \infty]{\masP} \mu.
+    \end{equation*}
+\end{kor}
+
+\begin{proof}
+    Budu\' ci je $X_1 \in L^1(\masP)$, po teoremu o dominiranoj konvergenciji slijedi
+    \begin{equation*}
+        \masE \big[ X_1 \cdot \karaktFja_{\{ |X_1| \leq n \}} \big] \xrightarrow[n \to \infty]{} \masE X_1 = \mu.
+    \end{equation*}
+    Tvrdnja sada slijedi iz zadatka \ref{zad:12.12} primjenom teorema \ref{tm:12.9}.
+\end{proof}
+
+"Rezanjem" iz navedenih tehnika lako dobijemo i druge rezultate.
+
+\begin{tm}  \label{tm:12.15}
+    Neka je $\niz{X_{n, k}}{n \in \nat, \; 1 \leq k \leq n}$ "trokutasta" familija slu\v cajnih varijabli na $\vjerojatnosniProstor$ i $S_n := X_{n, 1} + \ldots + X_{n, n}$, za svaki $n \in \nat$.
+    Neka je $X_{n, k} \sim F_{n, k}$.
+    Ako su, za svaki $n \in \nat$ slu\v cajne varijable $X_{n, 1}, \ldots, X_{n, n}$ nezavisne i postoji niz $(b_n)$, takav da $0 < b_n \nearrow +\infty$, te vrijedi
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{tm:12.15.1}
+        \begin{equation*}
+            \suma{k = 1}{n} \vjeroj{|X_{n, k}| > b_n} \xrightarrow[n \to \infty]{} 0,
+        \end{equation*}
+        \item \label{tm:12.15.2}
+        \begin{equation*}
+            \frac{1}{b_n^2} \suma{k = 1}{n} \int\limits_{|t| < b_n} t^2 \: dF_{n, k}(t) \xrightarrow[n \to \infty]{} 0.
+        \end{equation*}
+    \end{enumerate}
+    Ozna\v cimo li sa
+    \begin{equation*}
+        a_n = \suma{k = 1}{n} \int\limits_{|t| \leq b_n} t \: dF_{n, k} (t).
+    \end{equation*}
+    tada vrijedi:
+    \begin{equation*}
+        \frac{S_n - a_n}{b_n} \xrightarrow[n \to \infty]{\masP} 0.
+    \end{equation*}    
+\end{tm}
+
+\begin{proof}
+    "Rezanje"
+    \begin{equation*}
+        \begin{aligned}
+            X_{n, k}' &:= X_{n, k} \cdot \karaktFja_{\{ |X_{n, k}| \leq b_n \}}\\
+            S_n' & := X_{n, 1}' + \ldots + X_{n, n}' 
+        \end{aligned}
+    \end{equation*}
+    Uo\v cimo da je
+    \begin{equation*}
+        \vjeroj{S_n \neq S_n'} \leq \suma{k = 1}{n} \vjeroj{| X_{n, k} | > b_n} \xrightarrow[n \to \infty] 0,
+    \end{equation*}
+    po \ref{tm:12.15.1}.
+    Budu\' ci da vrijedi
+    \begin{equation*}
+        \masP \Big( \Big| \frac{S_n - a_n}{b_n} \Big| > \varepsilon \Big) \leq \masP \Big( \Big| \frac{S_n' - a_n}{b_n} \Big| Y \varepsilon \Big) + \vjeroj{S_n \neq S_n'},
+    \end{equation*}
+    dovoljno je dokazati da za svaki $\varepsilon > 0$ vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            \masP \Big( \Big| \frac{S_n' - a_n}{b_n} \Big| > \varepsilon \Big) &= \masP \Big( \Big| \suma{k = 1}{n} X_{n, k} \cdot \karaktFja_{\{ |X_{n, k}| \leq b_n \}} - \masE \Big[ \suma{k = 1}{n} X_{n, k} \cdot \karaktFja_{\{ |X_{n, k}| \leq b_n \}} \Big] \Big| > \varepsilon \: b_n \Big)\\
+            &\leq (\textnormal{\v Cebi\v sevljev}) \leq \frac{1}{\varepsilon^2 \: b_n^2} \Var \Big( \suma{k = 1}{n} X_{n, k}' \Big) = (\textnormal{nezavisnost})\\
+            &= \frac{1}{\varepsilon^2 \: b_n^2} \suma{k = 1}{n} \Var (X_{n, k}') \leq \frac{1}{\varepsilon^2 \: b_n^2} \suma{k = 1}{n} \int\limits_{|t| \leq b_n} t^2 \: dF_{n, k} (t) \xrightarrow[n \to \infty]{} 0,
+        \end{aligned}
+    \end{equation*}
+    \v sto vrijedi po \ref{tm:12.15.2}.
 \end{proof}
