@@ -12,9 +12,86 @@ Uz \emph{kartezijev produkt} $\produkt{t \in T}{} \Omega_t$, prirodno su vezane 
     \pi_{t_0} (f) := f(t_0).
 \end{equation*}
 
-\begin{defn}    \label{defn:4.0-0}
+\begin{defn}    \label{defn:4.0-1}
     Neka su $(X_t, \: \famU_t), \; t \in T$, topolo\v ski prostori, tada se na $\produkt{t \in T}{} X_t$ definira \emph{produktna (ili Tihonovljeva) topologija} $\dirProd{t \in T}{} \famU_t$, kao najmanja topologija u odnosu na koju su sve $\pi_t$ neprekidne.
 \end{defn}
+
+\begin{tm}[Karakterizacija produktne topologije]  \label{tm:4.0-2}
+    Neka su $\indFamilija{\urePar{X_t}{\famU_t}}{t \in T}$ topolo\v ski prostori, tada je $U \subseteq \produkt{t \in T}{} X_t$ otvoren u produktnoj topologiji $\dirProd{t \in T}{} \famU_t$ ako i samo ako postoje skupovi $U_t \in \famU_t$ takvi da
+    \begin{equation*}
+        U = \produkt{t \in T}{} U_t,
+    \end{equation*}
+    te je skup
+    \begin{equation*}
+        \skup{t \in T}{U_t \neq X_t}
+    \end{equation*}
+    kona\v can.
+\end{tm}
+
+\begin{proof}
+    Ozna\v cimo gore opisanu familiju sa $\famU$, tvrdimo
+    \begin{equation*}
+        \famU = \dirProd{t \in T}{} \famU_t.
+    \end{equation*}
+    Najprije doka\v zimo da je $\famU$ topologija.
+    \begin{enumerate}[label=(\roman*)]
+        \item Uzmemo $t_0 \in T$, sada je nu\v zno $\varnothing \in \famU_{t_0}$, pa vrijedi $\produkt{t \in T \setminus \{t_0\}}{} X_t \times \varnothing = \varnothing$ pa slijedi $\varnothing \in \famU$.
+        Tako\dj er vidimo da je $\produkt{t \in T}{} X_t \in \famU$, jer je skup indeksa prazan, time trivijalno kona\v can.
+        \item Neka su $\niz{U_i}{i \in I} \subseteq \famU$, tada za svaki $i \in I$, postoji kona\v can skup $J_i$ takav da vrijedi
+        \begin{equation*}
+            \pi_t (U_i) = X_t, \quad t \in T \setminus J_i.
+        \end{equation*}
+        Sada je vrijedi
+        \begin{equation*}
+            \pi_t (\unija{i \in I}{} U_i) = X_t, \quad t \in T \setminus \presjek{i \in I}{} J_i.
+        \end{equation*}
+        A kako je $\presjek{i \in I}{} J_i$ presjek kona\v cnih skupova, vrijedi $\unija{i \in I}{} U_i \in \famU$
+        \item Neka su $\niz{U_k}{k = 1, \ldots, n} \subseteq \famU$, sada je
+        \begin{equation*}
+            \skup{t \in T}{\pi_t(\presjek{k = 1}{n} U_k) \neq X_t} = \unija{k = 1}{n} J_k,
+        \end{equation*}
+        \v sto je kona\v cna unija kona\v cnih skupova, pa je $\presjek{k = 1}{n} U_k \in \famU$.
+    \end{enumerate}
+    Dakle $\famU$ je topologija.
+
+    Doka\v zimo sada da su te topologije jednake
+    \begin{enumerate}
+        \item[$\subseteq$] Neka je $U \in \famU$, tada postoji $n \in \nat$ i skup $J \subseteq T$ takav da je $\card{J} = n$ te vrijedi
+        \begin{equation*}
+            \skup{t \in T}{\pi_t(U) \neq X_t} = J.
+        \end{equation*}
+        Sada primjetimo da vrijedi
+        \begin{equation*}
+            U = \presjek{t \in J}{} \praslika{\pi_t} (\pi_t (U)),
+        \end{equation*}
+        pa je $U \in \famU$.
+        \item[$\supseteq$]
+        Neka je $t_0 \in T$, promatrajmo $\pi_t : \urePar{\produkt{t \in T}{} X_t}{\famU} \to \urePar{X_{t_0}}{\famU_{t_0}}$.
+        Neka je $U_{t_0} \in \famU_{t_0}$, sada primjetimo da je
+        \begin{equation*}
+            \praslika{\pi_{t_0}} (U_{t_0}) \in \famU.
+        \end{equation*}
+        Dakle $\famU$ je topologija i izmjeriva sve projekcije su neprekidne u njoj, dakle ona mora sadr\v zavati produktnu topologiju kao najmanju topologiju u kojoj su sve projekcije neprekidne.
+
+        Dakle $\dirProd{t \in T}{} \famU_t \subseteq \famU$.
+    \end{enumerate}
+\end{proof}
+
+\begin{tm}  \label{tm:4.0-3}
+    Neka je $\urePar{X}{\famU}$ topolo\v ski prostor i neka je $\famV$ neka njegova prebrojiva baza.
+    Tada vrijedi:
+    \begin{equation*}
+        \sigAlg{\famV} = \sigAlg{\famU}.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    \begin{enumerate}
+        \item[$\subseteq$] Budu\' ci je $\famV$ baza vrijedi da je $\famV \subseteq \famU$, stoga je i $\sigAlg{\famV} \subseteq \sigAlg{\famU}$.
+        \item[$\supseteq$] Neka je $U \in \famU$, tada postoji niz $\niz{U_n}{n \in \nat} \subseteq \famV$ takav da je $U = \unija{n \in \nat}{} U_n$, ali tada vrijedi i $\niz{U_n}{n \in \nat} \subseteq \sigAlg{\famV}$, pa onda i $U = \unija{n \in \nat}{} U_n \in \sigAlg{\famU}$ pa je $\famU \subseteq \sigAlg{\famV}$ pa je i $\sigAlg{\famU} \subseteq \sigAlg{\famV}$.  
+    \end{enumerate}
+\end{proof}
+
 Ako su svi $X_t$ kompaktni, tada je i $\produkt{t \in T}{} X_t$ kompaktan u produktnoj topologiji.
 Analogno postupamo u izmjerivoj situaciji.
 
@@ -47,6 +124,56 @@ a nije osobito te\v sko konstruirati kontraprimjere koji pokazuju da u \eqref{je
         \borel{\real^d} = \borel{\real} \otimes \ldots \otimes \borel{\real}.
     \end{equation}
 \end{zad}
+
+\begin{rj}[\ref{zad:4.4}]
+    Pokazujemo da vrijedi
+    \begin{equation*}
+        \dirProd{t \in T}{} \borel{X_t} = \borel{\produkt{t \in T}{} X_t}.
+    \end{equation*}
+    Primjetimo, jedna inkluzija vrijedi bez ograni\v cenja na $X_t$, poka\v zimo prvo nju.
+    \begin{enumerate}
+        \item[$\subseteq$]
+        Sjetimo se, po definiciji, $\dirProd{t \in T}{} \borel{X_t}$ je najmanja $\sigma$-algebra u kojoj su sve projekcije $\pi_t$, $t \in T$ izmjerive.
+        Promotrimo sljede\' ci dijagram.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \matrix (m) [matrix of math nodes,row sep=5em,column sep=8em,minimum width=3em]
+                {
+                \urePar{\produkt{t \in T}{} X_t}{\borel{\produkt{t \in T}{} X_t}} & \urePar{\produkt{t \in T}{} X_t}{\dirProd{t \in T}{} \borel{X_t}} \\
+                & \urePar{X_{t_0}}{\borel{X_{t_0}}} \\};
+                \path[-stealth]
+                (m-1-1) edge node [above] {$\id$} (m-1-2)
+                (m-1-2) edge node [right] {$\pi_{t_0}$} (m-2-2)
+                (m-1-1) edge node [below, xshift=-9pt] {$\pi_{t_0} \circ \id$} (m-2-2);
+            \end{tikzpicture}
+        \end{figure}
+        Po propoziciji \ref{prop:4.9} znamo da je identita
+        \begin{equation*}
+            \id : \urePar{\produkt{t \in T}{} X_t}{\borel{\produkt{t \in T}{} X_t}} \to \urePar{\produkt{t \in T}{} X_t}{\dirProd{t \in T}{} \borel{X_t}}
+        \end{equation*}
+        neprekidan ako i samo ako joj je svaka od koordinatnih projekcija naprekidna.
+        Primjetimo da je $\borel{\produkt{t \in T}{} X_t} = \sigAlg{\dirProd{t \in T}{} U_t}$, stoga nas zanima neprekidnost u odnosu na topologiju $\dirProd{t \in T}{} U_t$, a ona je definirana kao najmanja topologija u kojoj su sve koordinatne projekcije neprekidne, stoga je neprekidna po definiciji, stoga je i identiteta neprekidna, a posljedi\v cno i borelova preka korolaru \ref{kor:3.5}.
+        \item[$\supseteq$]
+        Budu\' ci su $X_t$ separabilni metri\v cki prostori i $T$ je prebrojiv skup, slijedi da je i $\produkt{t \in T}{} X_t$ separabilan metri\v cki prostor pa ima prebrojivu bazu topologije. Ozna\v cimo sa
+        \begin{equation*}
+            \famU := \dirProd{t \in T}{} \famU_t,
+        \end{equation*}
+        produktnu topologiju.
+        Ozna\v cimo li s $\famV$ bazu topologije, koristimo tri tvrdnje:
+        \begin{enumerate}[label=(\arabic*)]
+            \item Skup svih otvorenih cilindri\v cnih pravokutnika je baza topologije $\famU$.
+            Vrijedi prema teoremu \ref{tm:4.0-2}.
+            \item Ako je baza $\famV$ prebrojiva, tada je $\sigAlg{\famV} = \sigAlg{\famU}$.
+            Vrijedi prema teoremu \ref{tm:4.0-3}.
+            \item Otvoreni cilindri\v cni pravokutnici se nalaze u produktnoj $\sigma$-algebri.
+            Vrijedi prema \eqref{jed:4.2}.
+            \begin{equation*}
+                \prsten{\produkt{t \in T}{} \Omega_t} \subseteq \dirProd{t \in T}{} \borel{X_t}.
+            \end{equation*}
+        \end{enumerate}
+    \end{enumerate}
+\end{rj}
 
 \begin{zad} \label{zad:4.6}
     Za svaki skup $A \in \dirProd{t \in T}{} \famF_t$, postoji prebrojiv skup indeksa $J = J(A) \subseteq T$, takav da je $A \in \indSigAlg{\pi_t}{t \in J}$. 
@@ -82,7 +209,7 @@ Primjetimo, zapravo tvrdimo da sljede\' ci dijagram komutira, te da su sve rezul
         \path[-stealth]
         (m-1-1) edge node [left] {$X$} (m-2-1)
         (m-2-1) edge node [below] {$\pi_{t_0}$} (m-2-2)
-        (m-1-1) edge node [right] {$X_{t_0}$} (m-2-2);
+        (m-1-1) edge node [above] {$X_{t_0}$} (m-2-2);
     \end{tikzpicture}
 \end{figure}
 
