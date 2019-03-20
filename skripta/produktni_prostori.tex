@@ -208,7 +208,25 @@ a nije osobito te\v sko konstruirati kontraprimjere koji pokazuju da u \eqref{je
                 \end{smallmatrix}
             }{} \indSigAlg{\pi_t}{t \in J} = \famG.
         \end{equation*}
+        \item Neka je $A \in \famG$, dakle postoji $J \subseteq T$ najvi\v se prebrojiv takav vrijedi
+        \begin{equation*}
+            A \in \indSigAlg{\pi_t}{t \in J} \implies A^c \in \indSigAlg{\pi_t}{t \in J}.
+        \end{equation*}
+        Dakle vrijedi $A^c \in \famG$.
+        \item Neka je niz $\niz{A_n}{n \in \nat} \subseteq \famG$.
+        Tada za svaki $n \in \nat$ postoji najvi\v se prebrojiv skup $J_n \subseteq T$, takav da je $A_n \in \indSigAlg{\pi_t}{t \in J_n}$.
+        Primjetimo skup $J = \unija{n \in \nat}{} J_n$ je, kao prebrojiva unija najvi\v se prebrojivih skupova, ponovo najvi\v se prebrojiv skup.
+        Sada za svaki $n \in \nat$ vrijedi $A_n \in \indSigAlg{\pi_t}{t \in J}$.
+        Sada nu\v zno vrijedi
+        \begin{equation*}
+            \unija{n \in \nat}{} A_n \in \indSigAlg{\pi_t}{t \in J},
+        \end{equation*}
+        pa samim time vrijedi i $\unija{n \in \nat}{} A_n \in \famG$.
     \end{enumerate}
+    Pa je $\famF \subseteq \famG$, dakle vrijedi
+    \begin{equation*}
+        \famF = \famG.
+    \end{equation*}
 \end{rj}
 
 \begin{defn}    \label{defn:4.6-1}
