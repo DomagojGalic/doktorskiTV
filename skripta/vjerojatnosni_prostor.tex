@@ -132,9 +132,25 @@ Primjetimo da se ovaj pristup direktno prenosi i na prebrojive $\Omega$ ako doda
                 &= \vjeroj{A} + \vjeroj{B}
             \end{align*}
         \item Neka je $\niz{A_n}{n \in \N} \subseteq \F$ niz disjunktnih doga\dj aja.
-        Definiramo $B_n := \unija{k = n}{\infty} A_k$, te primjetimo da je $B_1 \supseteq B_2 \supseteq \dots$, tako\dj er primjetimo da je $\presjek{n = 1}{\infty} B_n = \varnothing$.
-        Naime prepostavimo da je $x \in \presjek{k = n_0}{\infty} B_n$, tada je $x \in B_n \; \forall n \in \N$, to jest, $ \forall n \in \N \; x \in \unija{k = n}{\infty} A_k$.
-        Odabreimo neki $n_0 \in \N$, sada $x \in \unija{k = n_0}{\infty} A_k \implies \exists ! \: k_0 \geq n_0$ takav da $x \in A_{k_0}$, jer je $\niz{A_n}{n \in \N}$ familija disjunktnih doga\dj aja, ali tada $x \in A_k$, za $k > k_0 \implies x  \in \unija{k = n_1}{\infty} A_k, \; n_1 > k_0$ stoga $x \in B_n$ za $n > k_0$, \v sto je kontradikcija pa je $\presjek{n = 1}{\infty} B_n = \varnothing$.\\
+        Definiramo niz $\niz{B_n}{n \in \nat}$ sa
+        \begin{equation*}
+            B_n := \unija{k = n}{\infty} A_k.
+        \end{equation*}
+        Primjetimo da je $B_n \supseteq B_{n + 1}$, dakle $(B_n)$ je rastu\' ci niz doga\dj aja.
+        \v Zelimo pokazati da vrijedi
+        \begin{equation*}
+            \presjek{n = 1}{\infty} B_n = \varnothing.
+        \end{equation*}
+        Prepostavimo da je $x \in \presjek{k = n_0}{\infty} B_n$, tada vrijedi
+        \begin{equation*}
+            x \in B_n \; \forall n \in \nat \iff x \in \unija{k = n}{\infty} A_k \; \forall n \in \nat.
+        \end{equation*}
+        Odaberimo proizvoljni $n_0 \in \N$.
+        Sada, budu\' ci je $\niz{A_n}{n \in \N}$ familija disjunktnih doga\dj aja, vrijedi
+        \begin{equation*}
+            x \in \unija{k = n_0}{\infty} A_k \implies \exists ! \: k_0 \geq n_0 \; \td \; x \in A_{k_0}.
+        \end{equation*}
+        Ali tada $x \notin A_k$, za $k > k_0$, \v sto je kontradikcija s $x \in B_n \; \forall n \in \nat$, pa je $\presjek{n = 1}{\infty} B_n = \varnothing$.\\
         Sada imamo
         \begin{align*}
             \vjeroj{\unija{k = 1}{\infty} A_k}
@@ -147,7 +163,7 @@ Primjetimo da se ovaj pristup direktno prenosi i na prebrojive $\Omega$ ako doda
         \begin{align*}
             \lim_n \vjeroj{\unija{k = n + 1}{\infty} A_k}
             \overset{\eqref{jed:1.13}}{=}& \lim_n
-            \vjeroj{\presjek{n + 1}{\infty}( \unija{k = n + 1}{\infty} A_k)}\\
+            \vjeroj{\presjek{n + 1}{\infty}\unija{k = n + 1}{\infty} A_k}\\
             =& 0.
             \end{align*}
         I prelaskom na limes dobijemo tra\v zenu tvrdnju.
@@ -250,11 +266,15 @@ Priroda problema je takva da nemo\v zemo odustati niti od jednog od zahtjeva \eq
         Ako je $\mjera{\Omega} < +\infty$, tada ka\v zemo da je $\mu$ kona\v cna (pozitivna) mjera.
         Dakle Kolmogorov je definirao vjerojatnosni prostor kao poseban slu\v caj prostora kona\v cne mjere.
         \item Za vjerojatnosnu mjeru nije potrebno zahtjevati $\vjeroj{\varnothing} = 0$.
-        Minimalni zahtjevi da bi na izmjerivom prostoru $\izmjerivProstor$ funkcija $\masP: \famF \to \real$ bila vjerojatnost su:
+        Minimalni zahtjevi da bi na izmjerivom prostoru $\izmjerivProstor$ funkcija
+        \begin{equation*}
+            \masP: \famF \to \real
+        \end{equation*}
+        bila vjerojatnost su:
         \begin{enumerate}[label=(\roman*)]
             \item $\vjeroj{A} \geq 0, \quad \forall A \in \famF$
             \item $\vjeroj{\Omega} = 1$
-            \item $\niz{A_n}{n \in \nat}$ niz disjunktnih doga\dj aja,
+            \item $\niz{A_n}{n \in \nat}$ niz disjunktnih doga\dj aja, tada:
             \begin{equation*}
                 \vjeroj{\unija{n \in \nat}{} A_n} = \suma{n \in \nat}{} \vjeroj{A_n}.
             \end{equation*}
@@ -343,32 +363,63 @@ Priroda problema je takva da nemo\v zemo odustati niti od jednog od zahtjeva \eq
                 \unija{n \in \N}{} B_n} = \suma{n=1}{\infty} \mjera{B_n}
                 = \lim\limits_{n} \suma{k=1}{n} \mjera{B_k} = \lim\limits_{n}
                 \mjera{\unija{k=1}{n} B_k} = \lim\limits_{n} \mjera{A_n}$.
-        \item Definirajmo niz $(B_n)_{n \in \N}$ sa $B_n := A_{n_0} \setminus
-            A_{n_0 + n}$, tvrdimo da vrijedi $B_1 \subseteq B_2 \subseteq \dots$ te
-            $\unija{n=1}{\infty} B_n = A_{n_0} \setminus \presjek{n=1}{\infty} A_n$.
-            Neka je $x \in B_m = A_{n_0} \setminus A_{n_0+m} \implies x \in A_{n_0}
-            \land x \notin A_{n_0+m} \implies x \in A_{n_0} \land x \in (A_{n_0+m})^c$.
-            Budu\' ci je $A_{n_0+m} \supseteq A_{n_0+m+k} \implies (A_{n_0+m})^c
-            \subseteq (A_{n_0+m+k})^c$.
-            Dakle $x \in A_{n_0} \land x \in (A_{n_0+m})^c \implies x \in A_{n_0}
-            \land x \in (A_{n_0+m+k})^c \implies x \in A_{n_0} \setminus A_{n_0+(m+k)}
-            = B_{m+k}$.
-            Posebno za $k=1$ tvrdnja slijedi to jest $B_n \subseteq B_{n+1},
-            \forall n \in \N$, pa vrijedi $B_1 \subseteq B_2 \subseteq \dots$.
-            Nadalje vrijedi $\unija{n=1}{\infty}
-            B_n = A_{n_0} \setminus \presjek{n=1}{\infty} A_{n_0+n}$.
-            Budu\' ci je $(A_n)_{n \in \N}$ padaju\' ci niz, onda vrijedi
-            $\presjek{n=1}{\infty} A_n = \presjek{n=1}{\infty} A_{n_0+n}$, stoga je
-            $\unija{n=1}{\infty} B_n = A_{n_0} \setminus \presjek{n=1}{\infty} A_n$.
-            Sada iz tvrdnje \ref{tm:1.24-1.3} vrijedi $\mjera{A_{n_0} \setminus
+        \item Definirajmo niz $\niz{B_n}{n \in \nat}$ sa
+        \begin{equation*}
+            B_n := A_{n_0} \setminus A_{n_0 + n},
+        \end{equation*}
+        tvrdimo da je  $(B_n)$ rastu\' ci niz.
+        Vidimo da vrijedi
+        \begin{equation*}
+            \begin{gathered}
+                \begin{aligned}
+                    A_{n_0} \setminus \presjek{n=1}{\infty} A_n &= A_{n_0} \cap \Big( \presjek{n=1}{\infty} A_n \Big)^c = A_{n_0} \cap \Big( \unija{n = 1}{\infty} A_n^c \Big) = \unija{n = 1}{\infty} (A_{n_0} \cap A_n^c)\\
+                    &= \unija{n = 1}{\infty} A_{n_0} \setminus A_n \implies
+                \end{aligned}\\
+                \unija{n=1}{\infty} B_n = A_{n_0} \setminus \presjek{n=1}{\infty} A_n.
+            \end{gathered}
+        \end{equation*}
+            Neka je $x \in B_m$, dakle
+            \begin{equation*}
+                    x \in A_{n_0} \setminus A_{n_0+m} \implies x \in A_{n_0}
+                    \land x \notin A_{n_0+m} \implies x \in A_{n_0} \land x \in (A_{n_0+m})^c.
+            \end{equation*}
+            Budu\' ci vrijedi
+            \begin{equation*}
+                A_{n_0+m} \supseteq A_{n_0+m+k} \implies (A_{n_0+m})^c
+            \subseteq (A_{n_0+m+k})^c,
+            \end{equation*}
+            onda je
+            \begin{equation*}
+                \begin{gathered}
+                    x \in A_{n_0} \land x \in (A_{n_0+m})^c \implies x \in A_{n_0} \land x \in (A_{n_0+m+k})^c \implies\\
+                    x \in A_{n_0} \setminus A_{n_0+(m+k)} = B_{m+k}.
+                \end{gathered}
+            \end{equation*}
+            Posebno za $k=1$ tvrdnja slijedi to jest $B_n \subseteq B_{n+1}$.
+            Nadalje vrijedi
+            \begin{equation*}
+                \unija{n=1}{\infty}
+            B_n = A_{n_0} \setminus \presjek{n=1}{\infty} A_{n_0+n}.
+            \end{equation*}
+            Budu\' ci je $(A_n)$ padaju\' ci niz, onda vrijedi
+            \begin{equation*}
+                \presjek{n=1}{\infty} A_n = \presjek{n=1}{\infty} A_{n_0+n} \implies \unija{n=1}{\infty} B_n = A_{n_0} \setminus \presjek{n=1}{\infty} A_n.
+            \end{equation*}
+            Sada iz tvrdnje \ref{tm:1.24-1.3} vrijedi
+            \begin{equation*}
+                \mjera{A_{n_0} \setminus
             \presjek{n=1}{\infty} A_n} = \mjera{\unija{n=1}{\infty} B_n}
             = \lim\limits_{n} \mjera{B_n} = \lim\limits_{n} \mjera{A_{n_0} \setminus
-            A_{n_0+n}}$.
-            Sada, zbog $\mjera{A_{n_0}} < \infty$, vrijedi $\mjera{A_{n_0}}
-            - \mjera{\presjek{n=1}{\infty} A_n} = \lim\limits_{n}
-            (\mjera{A_{n_0}} - \mjera{A_{n_0+n}}) = \mjera{A_{n_0}}
-            - \lim\limits_{n} \mjera{A_{n_0+n}} = \mjera{A_{n_0}} - \lim\limits_{n}
-            \mjera{A_n}$, dakle vrijedi
+            A_{n_0+n}}.
+            \end{equation*}
+            Sada, zbog $\mjera{A_{n_0}} < \infty$, vrijedi
+            \begin{equation*}
+                \begin{aligned}
+                    \mjera{A_{n_0}} - \mjera{\presjek{n=1}{\infty} A_n} &= \lim\limits_{n} (\mjera{A_{n_0}} - \mjera{A_{n_0+n}}) = \mjera{A_{n_0}} - \lim\limits_{n} \mjera{A_{n_0+n}}\\
+                    &= \mjera{A_{n_0}} - \lim\limits_{n} \mjera{A_n},
+                \end{aligned}
+            \end{equation*}
+            dakle vrijedi
             \begin{equation*}
                 \mjera{\presjek{n=1}{\infty} A_n} = \lim\limits_{n} \mjera{A_n}.
             \end{equation*}

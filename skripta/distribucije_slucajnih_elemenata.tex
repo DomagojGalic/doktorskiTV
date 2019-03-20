@@ -3,7 +3,11 @@
 \chapter{Distribucije slu\v cajnih elemenata} \label{dist_sl_elem}
 
 \begin{pr}  \label{pr:5.1}
-    Promatrajmo vjerojatnosni prostor $\vjerojatnosniProstor = (\segment{0}{1}, \: \borel{\segment{0}{1}}, \: \restr{\lambda}{\borel{\segment{0}{1}}})$ i dvije slu\v cajne varijable $X (\omega) := \omega$, $Y (\omega) := 1 - X (\omega)$.
+    Promatrajmo vjerojatnosni prostor
+    \begin{equation*}
+        \vjerojatnosniProstor = \Big(\segment{0}{1}, \: \borel{\segment{0}{1}}, \: \restr{\lambda}{\borel{\segment{0}{1}}}\Big)
+    \end{equation*}
+    i dvije slu\v cajne varijable $X (\omega) := \omega$, $Y (\omega) := 1 - X (\omega)$.
     O\' cito $X(\omega) \neq Y(\omega)$, za svaki $\omega \in \Omega \setminus \{ \frac{1}{2} \}$, to jest kao funkcije u skupovnom smislu $X$ i $Y$ su "potpuno" razli\v cite.
     \v Sto mo\v zemo re\' ci o "vjerojatnosnim informacijama" koje mo\v zemo saznati o $X$ i $Y$?
     Za proizvoljan $A \in \famF = \borel{\segment{0}{1}}$ imamo $1-A = 1 + (-A) \in \borel{\segment{0}{1}}$ i $\lambda (1 - A) = \lambda (A) \implies \vjeroj{X \in A} = \vjeroj{Y \in A}, \; \forall A \in \famF$.
@@ -15,7 +19,7 @@
     \emph{Vjerojatnosna distribucija} slu\v cajnog elementa $X$ je vjerojatnosna mjera $\masP_X$, definirana na $\urePar{E}{\famE}$
     sa:
     \begin{equation*}
-        \masP_X (A) := \masP(X \in A), \; A \in \famE.
+        \masP_X (A) := \masP(X \in A), \quad \forall A \in \famE.
     \end{equation*}
 \end{defn}
 
@@ -25,8 +29,8 @@ Uo\v cimo $\masP_X$ je poseban slu\v caj tako zvane mjere inducirane izmjerivim 
     \begin{enumerate}[label=(\alph*)]
         \item Uo\v cimo da je u $\masP$ sadr\v zana "sva vjerojatnosna informacija" o $X$.
         \item Bavljenje slu\v cajnim elementima s vjerojatnostima u $\urePar{E}{\famE}$ (bez obzira na kojem vjerojatnosnom prostoru bili definirani) mo\v ze se svesti na tako zvani \emph{kanonski slu\v caj}.
-        \item Preciznije, mi fiksiramo "vjerojatnosni prostor" i "slu\v cajni element", to jest uzmemo $\tilde{\Omega} := E$, $\tilde{\famF} := \famE$, $\tilde{X} := id : E \to E$ i dr\v zimo uvijek fiksirano, a slu\v cajni element "realiziramo" postavljanjem odgovaraju\' ce vjerojatnosne mjere $\masP_X$ na taj prostor.
-        Tada $X$ (uz $\masP$) i $\tilde{X}$ (uz $\masP_X$) imaju istu distribuciju (i to je $\masP_X$).
+        \item Preciznije, mi fiksiramo "vjerojatnosni prostor" i "slu\v cajni element", to jest uzmemo $\widetilde{\Omega} := E$, $\widetilde{\famF} := \famE$, $\widetilde{X} := id : E \to E$ i dr\v zimo uvijek fiksirano, a slu\v cajni element "realiziramo" postavljanjem odgovaraju\' ce vjerojatnosne mjere $\masP_X$ na taj prostor.
+        Tada $X$ (uz $\masP$) i $\widetilde{X}$ (uz $\masP_X$) imaju istu distribuciju (i to je $\masP_X$).
         \item Time se uvodi nova ideja o pojmu jednakosti u vjerojatnosti.
         Vidjeli smo da za slu\v cajne elemente (definirane na istom prostoru s vjerojatnostima u istom prostoru) mo\v zemo promatrati obi\v cnu skupovnu jednakost $X = Y$, jednakost gotovo sigurno $(g.s.)$, a sada i jednakost po distribuciji.
         Preciznije, ako su $X$ i $Y$ slu\v cajni elementi s vrijednostima u $\urePar{E}{\famE}$, definirani na vjerojatnosnim prostorima $(\Omega_1, \: \famF_1, \: \masP)$ i $(\Omega_1, \: \famF_2, \: \masO)$, re\' ci \' cemo da su \emph{jednaki po distribuciji}, i pisati $X \distJed Y$, ako je $\masP_X = \masO_Y$.
@@ -93,7 +97,7 @@ Odgovor je: Da!
         \masP_F (\lijInt{a}{b}) := F (b) - F(a)
     \end{equation}
     i nije prete\v sko pokazati da je $\masP_F$ $\sigma$-aditivna na $\famI$.
-    Po korolaru \ref{kor:2.8} i po teoremu \ref{tm:2.11} postoji jedinstveno pre\v sirenje $\masP_F$ koje je vjerojatnost na $\borel{\real}$.
+    Po korolaru \ref{kor:2.8} i po teoremu \ref{tm:2.11} postoji jedinstveno pro\v sirenje $\masP_F$ koje je vjerojatnost na $\borel{\real}$.
     Dakle, $X$ je slu\v cajna varijabla na $(\Omega, \: \famF, \: \masP_F)$ i $(\masP_F)_X = \masP_F$, pa je $F_X = F$.
 \end{proof}
 
@@ -101,6 +105,7 @@ Dakle vrijedi
 \begin{equation*}
     X \distJed Y \iff F_X = F_Y.
 \end{equation*}
+%zar ne fali tu neki uvijet tipa ako su F_X i F_Y jednake u svim točkama neprekidnosti?
 
 \begin{nap} \label{nap:5.8}
     \begin{enumerate}[label=(\alph*)]
@@ -111,7 +116,7 @@ Dakle vrijedi
         \item Usporedi \eqref{jed:5.7} sa \eqref{jed:2.14}.
         \item Radi se u stvari o istoj konstrukciji samo je u \eqref{jed:5.7} na\v sa $F$ "normirana" na poseban na\v cin, to jest $F(+\infty)$ je stavljeno da bude $1$.
         Jasno, za svaki $c \in \real$, $F + c$ bi dala istu vjerojatnost $\masP_{F + c}$, kao i $\masP_F$.
-        Op\' cenito, ako je $F: \real \to \real$ neopadaju\' ca i neprekidna zdesna, tada \eqref{jed:2.14} i isti dokaz kao u teoremu \ref{tm:5.6} (samo koristimo zadatak \ref{zad:2.9}) daje tvrdnju o egzistenciji i jedinstvenosti $\sigma$-kona\v cne mjere $\mu$ na $\urePar{\real}{\borel{\real}}$ takve da vrijedi \eqref{jed:2.14}. Svaku funkciju $F : \real \to \real$, koja je neopadaju\' ca i neprekidna zdesna zvat \' cemo \emph{d. f.}.
+        Op\' cenito, ako je $F: \real \to \real$ neopadaju\' ca i neprekidna zdesna, tada \eqref{jed:2.14} i isti dokaz kao u teoremu \ref{tm:5.6} (samo koristimo zadatak \ref{zad:2.9}) daje tvrdnju o egzistenciji i jedinstvenosti $\sigma$-kona\v cne mjere $\mu$ na $\urePar{\real}{\borel{\real}}$ takve da vrijedi \eqref{jed:2.14}. Svaku funkciju $F : \real \to \real$, koja je neopadaju\' ca i neprekidna zdesna zvat \' cemo \emph{d.f.}.
         Dakle \eqref{jed:2.14} daje $1-1$ korespondenciju izme\dj u
         \begin{equation}    \label{jed:5.9}
             \begin{matrix}
@@ -134,7 +139,7 @@ Dakle vrijedi
 \end{nap}
 
 \begin{zad} \label{zad:5.10}
-    Opi\v site korespondenciju kao u \eqref{jed:5.9} na $\urePar{\real}{\borel{\real}}$i poka\v zite da je korespondencija u \eqref{jed:5.9} poseban slu\v caj koresponedencije na $\extReal$.
+    Opi\v site korespondenciju kao u \eqref{jed:5.9} na $\urePar{\real}{\borel{\real}}$i poka\v zite da je korespondencija u \eqref{jed:5.9} poseban slu\v caj korespondencije na $\extReal$.
 \end{zad}
 
 \begin{zad} \label{zad:5.11}
@@ -159,7 +164,7 @@ Dobro su nam poznati primjeri brojnih razli\v citih distribucija na $\real^d$, o
 Korisna je i sljede\' ca klasifikacija, gledamo $d = 1$ zbog jednostavnosti zapisa.
 
 \begin{defn}    \label{defn:5.11-1}
-    Slu\v cajna varijabla je $X$ \emph{diskretna} ako postoji prebrojiv skup $S$ takva da je
+    Slu\v cajna varijabla $X$ je \emph{diskretna} ako postoji prebrojiv skup $S$ takav da je
     \begin{equation*}
         X \in S \; (g.s.),
     \end{equation*}
@@ -214,7 +219,7 @@ i vrijedi:
     = \int_\real \id (t) \: d \masP_{f \circ X} (t)
     = \int_{-\infty}^{\infty} u \: d F_{f \circ X} (u).
 \end{equation*}
-% u tikz-u dodaj dijagram
+
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -234,9 +239,30 @@ i vrijedi:
 U tom slu\v caju ka\v zemo da postoji o\v cekivanje od $f \circ X$ i bilo koje od gornjih integrala ozna\v cavamo sa $\ocek{f \circ X}$
 (uo\v cimo da $f \circ X \in L^1 \vjerojatnosniProstor$ zna\v ci da je $\ocek{|f \circ X|} < +\infty$).
 
-Za slu\v cajnu varijablu $X$ na $\vjerojatnosniProstor$ zanimaju nas neki posebni slu\v cajevi ovih integrala.
-Ako je $p > 0$, tada $\ocek{|X|^p} \in \segment{0}{+\infty}$ i zovemo ga \emph{$p$-ti apsolutni moment} od $X$.
-Ako je $\ocek{|X|^p} < +\infty$, tada je $X \in L^p := L^p \vjerojatnosniProstor$ i $\norma{X}_p = (\masE [|X|^p])^{\frac{1}{p}}$ te postoji i $\ocek{X^p}$ \v sto nazivamo \emph{$p$-ti moment} od $X$.
+Zanimaju nas neki posebni slu\v cajevi gornjih integrala.
+
+\begin{defn}    \label{defn:5.11-1}
+    Neka je $X$ slu\v cajna varijabla  na $\vjerojatnosniProstor$ te neka je $p > 0$, tada $\ocek{|X|^p} \in \segment{0}{+\infty}$ i zovemo ga \emph{$p$-ti apsolutni moment} od $X$.
+    
+    Ako je $\ocek{|X|^p} < +\infty$, tada je $X \in L^p := L^p \vjerojatnosniProstor$, \v sto je normirani prostor s normom $\norma{X}_p = (\masE [|X|^p])^{\frac{1}{p}}$ te postoji i $\ocek{X^p}$ \v sto nazivamo \emph{$p$-ti moment} od $X$.
+\end{defn}
+
+\begin{nap} \label{nap:5.11-2}
+    Tehni\v cki $L^p \vjerojatnosniProstor$ je kvocjentni prostor svih slu\v cajnih varijabli (op\' cenito izmjerivih funkcija) \v ciji je $p$-ti apsolutni moment kona\v can kvocjenitano po relaciji ekvivalencije $\sim$ definirane sa
+    \begin{equation*}
+        f \sim g \iff f = g \; (g.s.),
+    \end{equation*}
+    to nam je potrebno kako bi dobili jedno od definicijskih svojstava norme
+    \begin{equation*}
+        \norma{X}_p = 0 \implies X = 0,
+    \end{equation*}
+    budu\' ci vrijedi
+    \begin{equation*}
+        \masE [|X|^p] = 0 \implies X = 0 \; (g.s.)
+    \end{equation*}
+    Pa onda zaklju\v cujemo da je na $L^p \vjerojatnosniProstor$ $X = 0 \; (g.s.)$.
+\end{nap}
+
 Ako je $p \leq q$, tada je $L^q \subseteq L^p$ (i $\norma{X}_p \leq \norma{X}_q$), pa postojanje $q$-tog momenta implicira postojanje $p$-tog momenta.
 Ako je $X \geq 0$ i $p > 0$ jednostavnim ra\v cunom daje
 \begin{align}   \label{jed:5.12}
@@ -258,10 +284,10 @@ Ako je $X = (X_1, \ldots, X_d)$ $d$-dimenzionalni slu\v cajni vektor i $X_k \in 
     \begin{equation*}
         f (\masE X) \leq \masE [ f(X) ].
     \end{equation*}
-    To nazivamo \emph{Jensenovom nejednaskosti}.
+    To nazivamo \emph{Jensenovom nejednakosti}.
 \end{zad}
 
-Osim prvog momenta slu\v cajen varijable, kojeg jo\v s nazivamo i o\v cekivanjem, va\v zan je i drugi moment to jest \emph{drugi centrali moment} $\masE [ (X - \masE X)^2 ]$, kojeg nazivamo \emph{varijancom}.
+Osim prvog momenta slu\v cajne varijable, kojeg jo\v s nazivamo i o\v cekivanjem, va\v zan je i drugi moment to jest \emph{drugi centrali moment} $\masE [ (X - \masE X)^2 ]$, kojeg nazivamo \emph{varijancom}.
 Uo\v cimo da varijanca postoji ako i samo ako postoji drugi moment od $X$ i tada je
 \begin{equation*}
     Var \: X := \masE [ (X - \masE X)^2 ] = \masE [ X^2 ] - (\masE X)^2.

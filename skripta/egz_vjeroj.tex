@@ -25,21 +25,26 @@ te tako\dj er $\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
 
 \begin{zad} \label{zad:2.2}
     Neka je $\famE = \indFamilija{\{ \omega \}}{\omega \in \Omega}$.
-    Tada je $\sigAlg{\famE} =\{ A \subseteq \Omega \: |$ $A$ ili $A^c$ prebrojiv $\}$. Tada je $\sigAlg{\famE} = \partitive{\Omega}$ ako i samo ako je $\Omega$ kona\v can ili prebrojiv.
+    Tada je
+    \begin{equation*}
+        \sigAlg{\famE} =\skup{A \subseteq \Omega}{A \textnormal{ ili } A^c \textnormal{ prebrojiv}}.
+    \end{equation*}
+    Te je $\sigAlg{\famE} = \partitive{\Omega}$ ako i samo ako je $\Omega$ kona\v can ili prebrojiv.
 \end{zad}
 
 \begin{rj}[\ref{zad:2.2}]
-    Zadatak se zapravo sastoji od dvije tvrdnje:
+    Ozna\v cimo sa $\famF := \skup{A \subseteq \Omega}{\card{A} \land \card{A^c} \leq \aleph_0}$,
+    zadatak se zapravo sastoji od dvije tvrdnje:
     \begin{enumerate}[label=(\arabic*)]
         \item \label{rj:2.2a}
-        $\sigAlg{\famE} = \skup{A \subseteq \Omega}{\card{A} \land \card{A^c} \leq \aleph_0}$, odnosno $A$ ili $A^c$ moraju biti najvi\v se prebrojivi. Budu\' ci da je u tom slu\v caju
+        $\sigAlg{\famE} = \famG$, odnosno $A$ ili $A^c$ moraju biti najvi\v se prebrojivi.
         \item   \label{rj:2.2b}
         $\sigAlg{\famE} = \partitive{\Omega}$, ako i samo ako je $\Omega$ najvi\v se prebrojiv.
     \end{enumerate}
     Primjetimo da \ref{rj:2.2b} o\v cito vrijedi za kona\v cne i prebrojive $\Omega$, zato \v sto svaki podskup od $\Omega$ nu\v zno mora biti kona\v can ili prebrojiv, a kako je $\partitive{\Omega}$ $\sigma$-algebra, onda je i skup $\skup{A \subseteq \Omega}{\card{A} \land \card{A^c} \leq \aleph_0}$ $\sigma$-algebra, dakle vrijedi i \ref{rj:2.2a}.
 
     Dakle promatrajmo neprebrojiv slu\v caj.
-    Ozna\v cimo $\famF := \skup{A \subseteq \Omega}{\card{A} \land \card{A^c}}$, te doka\v zimo da je $\famF$ $\sigma$-algebra.
+    Doka\v zimo da je $\famF$ $\sigma$-algebra.
     \begin{enumerate}[label=(\roman*)]
         \item O\v cito je $\varnothing \in \famF$
         \item $A \in \famF$ ako i samo ako je $A$ najvi\v se prebrojiv ili je $A^c$ najvi\v se prebrojiv.
@@ -189,7 +194,14 @@ Iz teorije mjere poznat nam je sljede\' ci zadatak.
         \item $\Omega \in \dynk{\famE} \implies \Omega \setminus \Omega = \varnothing \in \dynk{\famE}$
         \item $A \in \dynk{\famE} \implies A^c \in \dynk{\famE}$ slijedi prema napomeni \ref{nap:2.4-2}
         \item Neka je $\niz{A_n}{n \in \nat} \subseteq \dynk{\famE}$.
-        Definirajmo niz $\niz{B_n}{n \in \nat}$ sa $B_n := \unija{k = 1}{n} A_k$, primjetimo $B_n \subseteq B_{n + 1}, \; \forall n \in \nat$. Dakle $\niz{B_n}{n \in \nat}$ je rastu\' ci niz, a kako je $\dynk{\famE}$ zatvoren na kon\v cne unije slijedi da je $B_n \in \dynk{\famE}$, stoga slijedi da je $\unija{n \in \nat}{} B_n = \unija{n \in \nat}{} A_n \in \dynk{\famE}$
+        Definirajmo niz $\niz{B_n}{n \in \nat}$ sa
+        \begin{equation*}
+            B_n := \unija{k = 1}{n} A_k,    
+        \end{equation*}
+        primjetimo $B_n \subseteq B_{n + 1}, \; \forall n \in \nat$. Dakle $\niz{B_n}{n \in \nat}$ je rastu\' ci niz, a kako je $\dynk{\famE}$ zatvoren na kon\v cne unije slijedi da je $B_n \in \dynk{\famE}$, stoga slijedi da je
+        \begin{equation*}
+            \unija{n \in \nat}{} B_n = \unija{n \in \nat}{} A_n \in \dynk{\famE}.
+        \end{equation*}
     \end{enumerate}
     Dakle $\dynk{\famE}$ je $\sigma$-algebra pa, budu\' ci da vrijedi $\dynk{\famE} \subseteq \sigAlg{\famE}$ to povla\v ci da je $\dynk{\famE} = \sigAlg{\famE}$.
 \end{rj}
@@ -242,16 +254,17 @@ Iz teorije mjere poznat nam je sljede\' ci zadatak.
     Prema teoremu \ref{tm:2.6} slijedi da su $\mu_n = \nu_n, \; \forall n \in \nat$. Sada imamo:
     \begin{equation*}
         \begin{aligned}
-            \mu (A) &= \mu (A \cap \Omega) = \mu \Big( A \cap \unija{n \in \nat}{} C_n \Big) = \mu \Big( \unija{n \in \nat}{} (A \cap C_n) \Big) \overset{\ref{tm:1.24-1} \eqref{tm:1.24-1.3}}{=}\\
-            &= \lim\limits_{n \to \infty} \mu(A \cap C_n) = \lim\limits_{n \to \infty} \mu_n (A) = \lim\limits_{n \to \infty} \nu_n (A) = \lim\limits_{n \to \infty} \nu (A \cap C_n) \overset{\ref{tm:1.24-1} \eqref{tm:1.24-1.3}}{=}\\
+            \mu (A) &= \mu (A \cap \Omega) = \mu \Big( A \cap \unija{n \in \nat}{} C_n \Big) = \mu \Big( \unija{n \in \nat}{} (A \cap C_n) \Big) \overset{\ref{tm:1.24-1} \ref{tm:1.24-1.3}}{=}\\
+            &= \lim\limits_{n \to \infty} \mu(A \cap C_n) = \lim\limits_{n \to \infty} \mu_n (A) = \lim\limits_{n \to \infty} \nu_n (A) = \lim\limits_{n \to \infty} \nu (A \cap C_n) \overset{\ref{tm:1.24-1} \ref{tm:1.24-1.3}}{=}\\
             &= \nu \Big( \unija{n \in \nat}{} (A \cap C_n) \Big) = \nu \Big( A \cap \unija{n \in \nat}{} C_n \Big) = \nu(A \cap \Omega)\\
             &= \nu(A), \; \forall A \in \famF.
         \end{aligned}
     \end{equation*}
+    Primjetimo, teorem \ref{tm:2.6} nam je potreban kako bi mogli zaklju\v citi da su $\mu_n = \nu_n$ na cijelom $\famF$, jer op\' cenito $A \cap C_n \notin \famE$.
 \end{rj}
 
 \begin{nap} \label{nap:2.10}
-    Grubo govore\' ci ovi rezultati pokazuju da je $\pi$-sistem dovoljno bogata struktura da bi se osigurala jedinstvenost mjere (a time i vjerojatnosti).
+    Grubo re\v ceno ovi rezultati pokazuju da je $\pi$-sistem dovoljno bogata struktura da bi se osigurala jedinstvenost mjere.
     To je vrlo sna\v zan rezultat, budu\' ci da velik broj klasa \v cini $\pi$-sistem, te je lako iz svake klase napraviti $\pi$-sistem; uzme se proizvoljna klasa $\famE \subseteq \partitive{\Omega}$, klasa koja se sastoji iz svih kona\v cnih presjeka elementat iz $\famE$ \v cini $pi$-sistem.
 
     Prirodno je pitanje mo\v ze li se mjera sa $\pi$-sistema pro\v siriti na pripadnu $\sigma$-algebru.
@@ -260,14 +273,15 @@ Iz teorije mjere poznat nam je sljede\' ci zadatak.
     Dakle za egzistenciju  (pro\v sirivanje) mjere trebamo ne\v sto bogatiju klasu od $\pi$-sistema.
 \end{nap}
 
-Re\' ci cemo da je $\famE \subseteq \partitive{\Omega}$ \emph{poluprsten}
-na $\Omega$ ako vrijedi:
-\begin{enumerate}[label=(\roman*)]
-    \item $\varnothing \in \famE$
-    \item $A, \; B \in \famE \implies A \cap B \in \famE$
-    \item $A, \: B \in \famE, \: A \subseteq B \implies B \setminus
-        A \in \famE$ je kona\v cna disjunktna unija elemenata iz $\famE$.
-\end{enumerate}
+\begin{defn}    \label{defn:2.10-1}
+    Re\' ci cemo da je $\famE \subseteq \partitive{\Omega}$ \emph{poluprsten} na $\Omega$ ako vrijedi:
+    \begin{enumerate}[label=(\roman*)]
+        \item $\varnothing \in \famE$
+        \item $A, \; B \in \famE \implies A \cap B \in \famE$
+        \item $A, \: B \in \famE, \: A \subseteq B \implies B \setminus A \in \famE$ je kona\v cna disjunktna unija elemenata iz $\famE$.
+    \end{enumerate}
+\end{defn}
+
 
 Osnovni teorem o pro\v sirenju mjere (Caratheodoryjeva konstrukcija) ka\v ze:
 
@@ -366,5 +380,5 @@ Uo\v cimo da je za svaki $a, \: b \in \R, \: a < b$,
 Neka je sada $F$ funkcija sa svojstvima iz zadatka \ref{zad:2.15}.
 Pomo\' cu \eqref{jed:2.14} definiramo "mjeru" $\mu$ na klasi $\mathcal{I}$ iz primjera \eqref{pr:2.3}.
 Nije te\v sko pokazati da je $\mu$ $\sigma$-aditivna na $\mathcal{I}$, pa prema teoremu \ref{tm:2.11} i zadatku \ref{zad:2.9} postoji jedinstveno pro\v sirenje od $\mu$ na $\borel{\R}$ koje daje regularnu mjeru $\mu$.
-Za funkciju $F(x) = x$ ova konstrukcija daje tako zvanu \emph{Lebesgue-ovu mjeru} $\lambda$ \v cija restrikcija na $\borel{\segment{0}{1}}$ zadovoljava primjer \ref{pr:1.18}.
+Za funkciju $F(x) = x$ ova konstrukcija daje takozvanu \emph{Lebesgue-ovu mjeru} $\lambda$ \v cija restrikcija na $\borel{\segment{0}{1}}$ zadovoljava primjer \ref{pr:1.18}.
 Uo\v cimo da funkcije s istim prirastima \eqref{jed:2.14} daju istu mjeru.

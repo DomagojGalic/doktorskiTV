@@ -4,14 +4,14 @@
 \chapter{Slu\v cajni elementi} \label{poglavlje3}
 
 Neka su $D$, $K$ neprazni podskupovi i $f: D \to K$ preslikavanje.
-Postoji bitna razlika izme\dj u slika i inverznih slika kada govorimo o skupovnim operacijama. Ako je $*$ bilo koja od operacija $\cup, \: \cap, \: \setminus$, a $B_1, \: B_2 \subseteq K$, tada je
+Postoji bitna razlika izme\dj u slika i inverznih slika kada govorimo o skupovnim operacijama. Ako je $*$ bilo koja od operacija $\cup, \: \cap, \: \setminus \:$ te ako su $B_1, \: B_2 \subseteq K$, tada je
 \begin{equation} \label{jed:3.1}
     \praslika{f} (B_1 * B_2) = \praslika{f}(B_1) * \praslika{f}(B_2),
 \end{equation}
 ali ako su $A_1, \: A_2 \subseteq D$, tada je
 \begin{align*}
-    f(A_1 \cap A_2) \subsetneq& f(A_1) \cap f(A_2) \\
-    f(A_1 \setminus A_2) \supsetneq& f(A_1) \setminus f(A_2). 
+    f(A_1 \cap A_2) \subsetneqq& f(A_1) \cap f(A_2) \\
+    f(A_1 \setminus A_2) \supsetneqq& f(A_1) \setminus f(A_2). 
 \end{align*}
 Posebno to zna\v ci da ako je $\famD \subseteq \partitive{D}$ $\sigma$-algebra na $D$, $f(\famD) := \skup{f(A)}{A \in \famD}$ nije nu\v zno $\sigma$-algebra na $K$.
 S druge strane iz \eqref{jed:3.1} (i sli\v cnih relacija za prebrojive operacije) direktno slijedi:
@@ -27,7 +27,7 @@ tako\dj er "struktura", kao i ako je $\famD \subseteq \partitive{D}$, tada je i
 \end{equation}
 tako\dj er "struktura"; pri \v cemu pod "struktura" mislimo $\pi$-sistem, poluprsten, prsten, Dynkinova klasa, algebra, $\sigma$-prsten ili $\sigma$-algebra.
 
-Od posebnog su interesa preslikavanja koja po\v stuju odre\dj en
+Od interesa su preslikavanja koja po\v stuju odre\dj en
 izbor $\sigma$-algebri.
 \begin{defn}    \label{defn:3.3-1}
     Ako su $(D, \: \famD)$ i $(K, \: \famK)$ izmjerivi prostori i $f: D \to K$ preslikavanje, tada ka\v zemo da je $f$ \emph{izmjerivo} (ili \emph{$(\famD, \: \famK)$-izmjerivo}) ako je
@@ -37,7 +37,7 @@ izbor $\sigma$-algebri.
 \end{defn}
 
 Uo\v cimo da iz \eqref{jed:3.2} slijedi da je $\praslika{f}(\famK)$ uvijek $\sigma$-algebra i da je to najmanja $\sigma$-algebra na $D$ u odnosu na koju je $f$ izmjeriva (u odnosu na $\famK$).
-Zato ka\v zemo da je $\praslika{f}(\famK)$ \emph{$\sigma$-algebra generirana sa $f$} i \v cesto ju ozna\v cavamo sa \emph{$\sigAlg{f}$}.
+Zato ka\v zemo da je $\praslika{f}(\famK)$ \emph{$\sigma$-algebra generirana sa $f$} i \v cesto je ozna\v cavamo sa \emph{$\sigAlg{f}$}.
 Dakle $f$ je izmjeriva ako i samo ako vrijedi:
 \begin{equation*}
     \sigAlg{f} \subseteq \famD.
@@ -55,9 +55,15 @@ Kakva je veza izme\dj u ovih pojmova?
 \end{lm}
 
 \begin{proof}
-    Po \eqref{jed:3.2} $\praslika{f}(\sigAlg{\famC})$ je $\sigma$-algebra, koja o\v cito sadr\v zi $\praslika{f}(\famC)$, \v sto povla\' ci $\sigAlg{\praslika{f}(\famC)} \subseteq \praslika{f}(\sigAlg{\famC})$.
+    Po \eqref{jed:3.2} $\praslika{f}(\sigAlg{\famC})$ je $\sigma$-algebra, koja o\v cito sadr\v zi $\praslika{f}(\famC)$, pa je
+    \begin{equation*}
+        \sigAlg{\praslika{f}(\famC)} \subseteq \praslika{f}(\sigAlg{\famC}).
+    \end{equation*}
     Sada po \eqref{jed:3.3} slijedi da je $\skup{B \in \partitive{K}} {\praslika{f}(B) \in \sigAlg{\praslika{f}(\famC)}}$ je $\sigma$-algebra, koja o\v cito sadr\v zi $\famC$, pa onda nu\v zno mora sadr\v zavati i $\sigAlg{\famC}$.
-    Slijedi da je $\praslika{f}(\sigAlg{\famC}) \subseteq \sigAlg{\praslika{f}(\famC)}$.
+    Dakle,
+    \begin{equation*}
+        \praslika{f}(\sigAlg{\famC}) \subseteq \sigAlg{\praslika{f}(\famC)}.
+    \end{equation*}
 \end{proof}
 
 Zbog $\praslika{f}(\borel{Y}) = \praslika{f}(\sigAlg{\famV}) = \sigAlg{\praslika{f}(\famV)} \subseteq \sigAlg{\famU} = \borel{X}$, slijedi:
@@ -77,14 +83,32 @@ Uo\v cimo nadalje da direktno iz definicije slijedi:
     $(\F, \: \E)$-izmjerivo.
 \end{defn}
 
-\begin{pr}  \label{pr:3.8}
-    Neka je $\vjerojatnosniProstor$ vjerojatnosti prostor i $(E, \: \E) := (\R, \: \borel{\extReal})$, pri \v cemu je $\extReal := \R \cup \{-\infty, \: +\infty\}$, s odgovaraju\' com topologijom skupovi $\desInt{-\infty}{a}$, $\lijInt{b}{+\infty}$ su otvoreni).
+\begin{nap} \label{nap:3.7-1}
+    Sjetimo se, skup
+    \begin{equation*}
+        \extReal := \real \cup \{ -\infty, \; +\infty \}
+    \end{equation*}
+    nazivamo \emph{pro\v sirenim skupom realnih brojeva}.
+    U topologiji na $\extReal$ skupovi oblika $\desInt{-\infty}{a}$, $\lijInt{b}{+\infty}$ su otvoreni.
+\end{nap}
+
+\begin{defn}  \label{defn:3.8}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosti prostor i neka je $\urePar{E}{\famE} = \urePar{\extReal}{\borel{\extReal}}$ izmjeriv prostor.
     Slu\v cajne elemente s vrijednostima u $\extReal$ nazivamo \emph{pro\v sirenim slu\v cajnim varijablama}.
-    Uo\v cimo da su $\{ -\infty \}, \; \{+\infty\} \in \borel{\extReal}$ (na primjer $\{+\infty\} = \presjek{n \in \N}{} \lijInt{n}{+\infty}$).
+
     Ako je $X$ pro\v sirena slu\v cajana varijabla i $\vjeroj{|X| = \infty} = 0$, tada ka\v zemo da je $X$ \emph{slu\v cajna varijabla}.
+\end{defn}
+
+\begin{nap} \label{nap:3.8-1}
+    Uo\v cimo da su $\{ -\infty \}, \; \{+\infty\} \in \borel{\extReal}$.
+    Na primjer
+    \begin{equation*}
+        \{+\infty\} = \presjek{n \in \N}{} \lijInt{n}{+\infty}.
+    \end{equation*}
+    
     Posebno, slu\v cajni element s vrijednostima u $\R$ je slu\v cajna varijabla.
     Na sli\v can na\v cin mo\v zemo promatraiti i slu\v cajne elemente s vrijednostima u $\R_+ := \desInt{0}{+\infty}$, ili $\extReal_+ := \segment{0}{+\infty}$. 
-\end{pr}
+\end{nap}
 
 \begin{nap} \label{nap:3.8.1}
     $\borel{\extReal}$ mo\v zemo promatrati i kao najmanju $\sigma$-algebru koja sadr\v zi sve elemente iz $\borel{\R}$, kao i skupove $\{-\infty\}$, $\{+\infty\}$.
@@ -122,7 +146,8 @@ Uo\v cimo nadalje da direktno iz definicije slijedi:
 
 
 \begin{rj}[\ref{zad:3.10}]  \label{rj:3.10}
-    Doka\v zimo prvo da je svaki vjerojatnosni prostor mogu\' ce upotpuniti. Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, tada postoji (minimalano) upotpunjenje $(\Omega, \: \overline{\famF}, \overline{\masP})$.
+    Doka\v zimo prvo da je svaki vjerojatnosni prostor mogu\' ce\\ upotpuniti.
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, tada postoji (minimalano) upotpunjenje $(\Omega, \; \overline{\famF}, \; \overline{\masP})$.
 
     Definirajmo $\famN := \skup{E \subset F}{F \in \famF \; \land \; \vjeroj{F} = 0}$ te $\overline{\famF} = \skup{A \cup E}{A \in \famF, \; E \in \famN}$ te tako\dj er $\overline{\masP} : \overline{\famF} \to \segment{0}{+\infty}$ na elementima $\overline{\famF}$ sa $\overline{\masP}(A \cup E) = \vjeroj{A}$.
     Dokazujemo sljede\' ce tvrdnje.
@@ -134,7 +159,7 @@ Uo\v cimo nadalje da direktno iz definicije slijedi:
         \item   \label{rj:3.10.3}
         $(\Omega, \: \overline{\famF}, \overline{\masP})$ je potpun vjerojatnosni prostor
         \item   \label{rj:3.10.4}
-        $(\Omega, \: \overline{\famF}, \overline{\masP})$ je minimalno potpuno pro\v sirenje of $\vjerojatnosniProstor$.
+        $(\Omega, \: \overline{\famF}, \overline{\masP})$ je minimalno potpuno pro\v sirenje od $\vjerojatnosniProstor$.
     \end{enumerate}
 
     Krenimo redom, poka\v zimo \ref{rj:3.15.1}.
@@ -217,9 +242,23 @@ Uo\v cimo nadalje da direktno iz definicije slijedi:
     Kako je $(\Omega, \: \famG, \: \masO)$ potpun, tada je $E \in \famG$, pa posljedi\v cno $A \cup E \in \famG$, stoga je $\overline{\famF} \subseteq \famG$.
     Dakle $(\Omega, \; \overline{\famF}, \; \overline{\masP})$ je minimalno upotpunjenje.
     
-    Komentirajmo jo\v drugi dio zadatka.
+    Komentirajmo jo\v s drugi dio zadatka.
     Neka je $\vjerojatnosniProstor$ i neka je $\urePar{E}{\famE}$ izmjeriv prostor te $f: \Omega \to E$ slu\v cajni element.
     Ako je $(\Omega, \; \overline{\famF}, \; \overline{\masP})$ upotpunjenje prostora $\vjerojatnosniProstor$, tada je $f$, tako\dj er slu\v cajni element na upotpunjenju.
+    Promotrimo sljede\' ci dijagram:
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \matrix (m) [matrix of math nodes,row sep=5em,column sep=8em,minimum width=3em]
+            {
+            (\Omega, \; \overline{\famF}, \; \overline{\masP}) & (\Omega, \; \famF, \; \masP) \\
+            & \urePar{E}{\famE} \\};
+            \path[-stealth]
+            (m-1-1) edge node [above] {$\id$} (m-1-2)
+            (m-1-2) edge node [right] {$f$} (m-2-2)
+            (m-1-1) edge node [below] {$f$} (m-2-2);
+        \end{tikzpicture}
+    \end{figure}
     Vrijedi:
     \begin{equation*}
         \sigAlg{f} \subseteq \famF \subseteq \overline{\famF}.
@@ -227,6 +266,20 @@ Uo\v cimo nadalje da direktno iz definicije slijedi:
 
     S druge strane, ako su $\vjerojatnosniProstor$ i $(E, \; \famE, \; \masO)$ vjerojatnosni prostori i $f: \Omega \to E$ slu\v cajni element, tada $f$ nije nu\v zno slu\v cajni element na upotpunjenju $(E, \; \overline{\famE}, \; \overline{\masO})$, vjerojatnosnog prostora $(E, \; \famE, \; \masO)$.
     Primjetimo, ako uzmemo proizvoljan vjerojatnosni prostor $\vjerojatnosniProstor$ koji nije potpun i identitetu na njemu, ona je slu\v cajni element, ali nije $\urePar{\famF}{\overline{\famF}}$-izmjeriva.
+    Naime, promotrimo:
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \matrix (m) [matrix of math nodes,row sep=5em,column sep=8em,minimum width=3em]
+            {
+            (\Omega, \; \famF, \; \masP) & (E, \; \famE, \; \masO) \\
+            & (E, \; \overline{\famE}, \; \overline{\masO}) \\};
+            \path[-stealth]
+            (m-1-1) edge node [above] {$f$} (m-1-2)
+            (m-1-2) edge node [right] {$\id$} (m-2-2)
+            (m-1-1) edge node [below] {$f$} (m-2-2);
+        \end{tikzpicture}
+    \end{figure}
     %Takav prostor mo\v zemo na\' ci, uzmemo $\Omega = \{ 1, \: 2, \:, 3, \: 4\}$, $\famF = \{\varnothing, \: \Omega,\: \{1, \: 2 \}, \: \{3, \: 4 \} \}$ te stavimo $\masP (\{1, \: 2 \}) = 0$, $\masP (\{3, \: 4\}) = 1$, upotpunjenje je $\overline{\famF} = \{ \varnothing, \: \Omega, \:  \{1\}, \: \{2\}, \: \{1, \: 2\}, \: \{3, \: 4\}, \: \{1, \: 3, \: 4 \}, \: \{ 2, \: 3, \: 4 \} \}$
 \end{rj}
 
@@ -241,7 +294,13 @@ Koriste\' ci napomenu \ref{nap:3.11} i primjer \ref{pr:2.3} dobivamo:
     Tada je $X$ pro\v sirena slu\v cajna varijabla ako i samo ako je $\praslika{X}(\famC) \subseteq \famF$.
 \end{kor}
 
-Podsjetimo se da je za $x, \; y \in \extReal$, $x \lor y := \max \{x, \: y\}$ i $x \land y := \min \{x, \: y\}$.
+Podsjetimo se da je za $x, \; y \in \extReal$
+\begin{equation*}
+    \begin{aligned}
+        x \lor y &:= \max \{x, \; y\}\\
+        x \land y &:= \min \{x, \: y\}.
+    \end{aligned}
+\end{equation*}
 Podsjetimo se i da koristimo konvencije $0 \cdot \pm \infty = 0$, te $c \cdot (\pm \infty) = \pm \infty$ za $c > 0$ i $(-1) \cdot (\pm \infty) = \mp \infty$. Koriste\' ci korolar \ref{kor:3.5} i lemu \ref{lm:3.6} dobijemo:
 
 \begin{kor} \label{kor:3.13}
@@ -267,9 +326,21 @@ Podsjetimo se i da koristimo konvencije $0 \cdot \pm \infty = 0$, te $c \cdot (\
 \end{kor}
 
 \begin{proof}
-    Po korolaru \ref{kor:3.12} i $\famC = \famK$ iz primjera \ref{pr:2.3} slijedi da je $\sup\limits_n X_n$ pro\v sirena slu\v cajna varijabla, jer $\{ \sup\limits_n X_n \leq b \} = \presjek{n \in \nat}{} \{ X_n \leq b \}$.
-    Iz korolara \ref{kor:3.13} slijedi tvrdnja za infimum, zbog $\inf\limits_n X_n = - (\sup\limits_n (- X_n))$.
-    Nadalje, $\liminf\limits_n X_n = \sup\limits_k (\inf\limits_{n \geq k}) X_n$, $\limsup\limits_n X_n = \inf\limits_k (\sup\limits_{n\geq k} X_n)$.
+    Po korolaru \ref{kor:3.12} i $\famC = \famK$ iz primjera \ref{pr:2.3} slijedi da je $\sup\limits_n X_n$ pro\v sirena slu\v cajna varijabla, jer
+    \begin{equation*}
+        \{ \sup\limits_n X_n \leq b \} = \presjek{n \in \nat}{} \{ X_n \leq b \}.
+    \end{equation*}
+    Iz korolara \ref{kor:3.13} slijedi tvrdnja za infimum, zbog
+    \begin{equation*}
+        \inf\limits_n X_n = - (\sup\limits_n (- X_n)).
+    \end{equation*}
+    Nadalje,
+    \begin{equation*}
+        \begin{gathered}
+            \liminf\limits_n X_n = \sup\limits_k (\inf\limits_{n \geq k}) X_n,\\
+            \limsup\limits_n X_n = \inf\limits_k (\sup\limits_{n\geq k} X_n).
+        \end{gathered}
+    \end{equation*}
 \end{proof}
 
 Mo\v ze se dogoditi da slu\v cajni element $f:\Omega \to E$ ima vrijednosti u nekom podskupu $A \subseteq E$ koji mo\v ze i ne mora biti u $\famE$. Koriste\' ci \eqref{jed:3.2},\eqref{jed:3.3} i lemu \ref{lm:3.4} te inkluziju $i: A \to E$, mo\v zemo jednostavno opisati takve situacije.
@@ -319,18 +390,34 @@ Mo\v ze se dogoditi da slu\v cajni element $f:\Omega \to E$ ima vrijednosti u ne
 
     Poka\v zimo sada \ref{rj:3.15.2}.
     \begin{itemize}
-        \item[$\subseteq$] Neka je $i : A \to E$ inkluzija.
+        \item[$\subseteq$] Neka je $i_A : A \to E$ inkluzija.
         To je neprekidna funckija, pa je i izmjeriva u paru Borelovih $\sigma$-algebri.
-        Dakle za $B \in \famT$ je $\praslika{i}(B)$ Borelov u $\sigma$-algebri generiranoj relativnom topologijom i vrijedi $\praslika{i}(B) = A \cap B$, pa je\\
+        Dakle za $B \in \famT$ je $\praslika{i_A}(B)$ Borelov u $\sigma$-algebri generiranoj relativnom topologijom i vrijedi $\praslika{i_A}(B) = A \cap B$, pa je\\
         $\skup{A \cap B}{A \in \sigAlg{\famT}} = A \cap \famE \subseteq \sigAlg{A \cap \famT}$.
         \item[$\supseteq$] Primjetimo $\famT \subseteq \famE$, dakle vrijedi i $A \cap \famT \subseteq \famE$ pa $A \cap \famE$ sadr\v zi sve otvorene podskupove od $A$ i prema \ref{rj:3.15.1} je $\sigma$-algebra, stoga vrijedi:\\
         $\sigAlg{A \cap \famT} \subseteq \sigAlg{A \cap \famE} = A \cap \famE$.
     \end{itemize}
     
     Promotrimo \ref{rj:3.15.3}.
-    Neka je $f: \Omega \to A \cap E$ slu\v cajni element u $\urePar{A}{A \cap \famE}$ te neka je $i : A \cap E \to E$ inkluzija.
-    Funkcija $i$ je neprekidna, pa samim time i izmjeriva, pa je
-    $X := i \circ f : \Omega \to E$ slu\v cajni element na $\urePar{E}{\famE}$ koji mo\v zemo promatrati kao pro\v sirenje slu\v cajnog elementa $f$ na $E$.
+    Neka je $f: \Omega \to A \cap E$ slu\v cajni element u $\urePar{A}{A \cap \famE}$ te neka je $i_A : A \cap E \to E$ inkluzija.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \matrix (m) [matrix of math nodes,row sep=5em,column sep=8em,minimum width=3em]
+            {
+            (\Omega, \; \famF, \; \masP) & \urePar{A}{A \cap \famE} \\
+            & \urePar{E}{\famE} \\};
+            \path[-stealth]
+            (m-1-1) edge node [above] {$f$} (m-1-2)
+            (m-1-2) edge node [right] {$i_A$} (m-2-2)
+            (m-1-1) edge node [below, xshift=-9pt] {$i_A \circ f$} (m-2-2);
+        \end{tikzpicture}
+    \end{figure}
+    Funkcija $i_A$ je neprekidna, pa samim time i izmjeriva, pa je
+    \begin{equation*}
+        X := i_A \circ f : \Omega \to E
+    \end{equation*}
+    slu\v cajni element na $\urePar{E}{\famE}$ koji mo\v zemo promatrati kao pro\v sirenje slu\v cajnog elementa $f$ na $E$.
     Na taj na\v cin mo\v zemo $f$ promatrati kao slu\v cajni element na $E$.
 
     Te na kraju promotrimo \ref{rj:3.15.4}.
@@ -341,10 +428,17 @@ Mo\v ze se dogoditi da slu\v cajni element $f:\Omega \to E$ ima vrijednosti u ne
 
 % Ovo revidiraj, primjer nije točan
 
-\begin{pr}  \label{pr:3.16}
-    Neka su $(A, \: \famA)$, $(B, \: \famB)$ izmjerivi prostori i $f: A \to B$ $(\famA, \: \famB)$-izmjerivo preslikavanje.
-    Ka\v zemo da je $f$ \emph{jednostavno} ako je $f(A)$ kona\v can skup. To o\v cito vrijedi ako i samo ako postoje $n \in \nat$, $\{ b_1, \: \dots, \: b_n \} \subseteq B$, particija $\{ A_1, \: \dots, \: A_n \} \subseteq \famA$ skupa $A$, takvi da je $\restr{f}{A_j} = b_j$, za $j = 1, \dots, n$.
+\begin{defn}    \label{defn:3.15-1}
+    Neka su $\urePar{A}{\famA}$, $\urePar{B}{\famB}$ izmjerivi prostori i neka je
+    \begin{equation*}
+        f: A \to B,    
+    \end{equation*}
+    $\urePar{\famA}{\famB}$-izmjerivo preslikavanje.
+    Ka\v zemo da je $f$ \emph{jednostavno} ako postoje $n \in \nat$, $\{ b_1, \: \dots, \: b_n \} \subseteq B$, particija $\{ A_1, \: \dots, \: A_n \} \subseteq \famA$ skupa $A$, takvi da je $\restr{f}{A_j} = b_j$, za $j = 1, \dots, n$.
+\end{defn}
     
+
+\begin{pr}  \label{pr:3.16}    
     U slu\v caju da je $(B, \: \famB) = (\extReal, \: \borel{\extReal})$ vrijedi:
     \begin{equation*}
         f = \suma{j = 1}{n} b_j \mathbb{1}_{A_j}.
@@ -389,6 +483,21 @@ Iz leme \ref{lm:3.17} i iz korolara \ref{kor:3.14} slijedi:
 
 \begin{rj}[\ref{zad:3.19}]
     Koristimo neke rezultate iz idu\' ceg poglavlja.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \matrix (m) [matrix of math nodes,row sep=5em,column sep=8em,minimum width=3em]
+            {
+            & \Omega & \\
+            E_1 & E_1 \times E_2 & E_2 \\};
+            \path[-stealth]
+            (m-1-2) edge node [left, xshift=-9pt] {$\pi_2 \circ f$} (m-2-1)
+            (m-1-2) edge node [right, xshift=9pt] {$\pi_1 \circ f$} (m-2-3)
+            (m-1-2) edge node [right] {$f$} (m-2-2)
+            (m-2-2) edge node [below] {$\pi_1$} (m-2-1)
+            (m-2-2) edge node [below] {$\pi_2$} (m-2-3);
+        \end{tikzpicture}
+    \end{figure}
     \begin{enumerate}[label=(\roman*)]
         \item O\v cito vrijedi da je $\alpha X + \beta Y \geq 0$.
         Primjetimo da su funkcije $+ : \extReal \times \extReal \to \extReal$ i $\alpha \: \cdot : \real \to \real$ neprekidna preslikavanja, pa time i Borelova.
@@ -474,7 +583,7 @@ Iz leme \ref{lm:3.17} i iz korolara \ref{kor:3.14} slijedi:
                 \lim\limits_{n \to \infty} (f_n \circ Y) = \lim\limits_{n \to \infty} X_n = X \quad (g.s.).
             \end{equation*}
             Treba pokazati da postoji $f = \lim\limits_{n \to \infty} f_n$, te da vrijedi $X = f \circ Y$.
-            Budu\' ci je $X_n$ rastu\' c niz, mo\v zemo zaklju\v citi da je i $f_n$ rasu\' c niz funkcija.
+            %Budu\' ci je $X_n$ rastu\' c niz, mo\v zemo zaklju\v citi da je i $f_n$ rasu\' c niz funkcija.
 
             Ozna\v cimo sa $R_Y$ sliku od $Y$.
             Definirajmo $\tilde{f} : R_Y \subseteq E \to \real$, neka je $\eta \in R_Y$, tada postoji $\omega \in \Omega$ takav da je $Y(\omega) = \eta$. 
@@ -484,11 +593,36 @@ Iz leme \ref{lm:3.17} i iz korolara \ref{kor:3.14} slijedi:
             \end{equation*}
             Poka\v zimo da je $f$ dobro definirana.
 
-            Neka su $\omega, \; \omega' \in \Omega$ takve da $Y(\omega) = Y(\omega')$, te vrijedi $X(\omega) \neq X(\omega')$.
-            Sada postoje disjunktni Borelovi skupovi $B, \; B' \in \borel{\real}$ takvi da $X(\omega) \in B$, $X(\omega') \in B'$.
-            Tako\dj er vrijedi $\{X \in B \cap B'\} = \underbrace{\{X \in B\}}_{\in \sigAlg{Y}} \cap \underbrace{\{X \in B'\}}_{\in \sigAlg{Y}} = \varnothing$.
-            Sada znamo da postoje $A, \, A' \in \famE$ takvi da je $\omega \in \{Y \in A\} = \{X \in B\}$, $\omega' \in \{Y \in A'\} = \{X \in B'\}$.
-            Kako je $Y(\omega) = Y (\omega')$, slijedi da je $Y(\omega) = Y(\omega') \in A \cap A'$, me\dj utim vrijedi $\{Y \in A\} \cup \{Y \in A'\} = \{Y \in A \cup A'\} = \varnothing$, \v sto je kontradikcija.
+            Neka su $\omega, \; \omega' \in \Omega$ takve da
+            \begin{equation*}
+                \begin{aligned}
+                    Y(\omega) &= Y(\omega')\\
+                    X(\omega) &\neq X(\omega').
+                \end{aligned}
+            \end{equation*}
+            Sada postoje disjunktni Borelovi skupovi $B, \; B' \in \borel{\real}$ takvi da
+            \begin{equation*}
+                \begin{aligned}
+                    X(\omega) &\in B\\
+                    X(\omega') &\in B'.
+                \end{aligned}
+            \end{equation*}
+            Tako\dj er vrijedi
+            \begin{equation*}
+                \{X \in B \cap B'\} = \underbrace{\{X \in B\}}_{\in \sigAlg{Y}} \cap \underbrace{\{X \in B'\}}_{\in \sigAlg{Y}} = \varnothing.
+            \end{equation*}
+            Sada znamo da postoje $A, \, A' \in \famE$ takvi da je
+            \begin{equation*}
+                \begin{aligned}
+                    \omega &\in \{Y \in A\} = \{X \in B\}\\
+                    \omega' &\in \{Y \in A'\} = \{X \in B'\}.
+                \end{aligned}
+            \end{equation*}
+            Kako je $Y(\omega) = Y (\omega')$, slijedi da je $Y(\omega) = Y(\omega') \in A \cap A'$, me\dj utim vrijedi
+            \begin{equation*}
+                \{Y \in A\} \cup \{Y \in A'\} = \{Y \in A \cup A'\} = \varnothing,
+            \end{equation*}
+            \v sto je kontradikcija.
             Dakle $\tilde{f}$ je dobro definirana na $R_Y$, sada definiramo $f : E \to \real$ sa:
             \begin{equation*}
                 f(\omega) :=
@@ -521,7 +655,7 @@ Iz leme \ref{lm:3.17} i iz korolara \ref{kor:3.14} slijedi:
         \end{enumerate}
         
         \item[$\impliedby$]
-        Neka je $X = f \circ Y$. Neka je $A \in \sigAlg{X}$, tada postoji $B \in \borel{\real}$ takav da $A = \{ X \in B\}$, sada vrijedi $\{  X \in B \} = \{ f \circ Y \in B \} = \{ Y \in \{ f \in B \} \}$, budu\' ci je $f$ izmjeriva slijdi da je $\{f \in B\} \in \famE$, pa je $\{Y \in \{ f \in B \}\} \in \sigAlg{Y}$, odnosno $\sigAlg{X} \subseteq \sigAlg{Y}$.
+        Neka je $X = f \circ Y$. Neka je $A \in \sigAlg{X}$, tada postoji $B \in \borel{\real}$ takav da $A = \{ X \in B\}$, sada vrijedi $\{  X \in B \} = \{ f \circ Y \in B \} = \{ Y \in \{ f \in B \} \}$, budu\' ci je $f$ izmjeriva slijedi da je $\{f \in B\} \in \famE$, pa je $\{Y \in \{ f \in B \}\} \in \sigAlg{Y}$, odnosno $\sigAlg{X} \subseteq \sigAlg{Y}$.
         Dakle $X$ je $\urePar{\sigAlg{Y}}{\borel{\real}}$-izmjeriva.
     \end{itemize}
 \end{rj}
