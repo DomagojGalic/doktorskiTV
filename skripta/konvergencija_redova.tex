@@ -1,3 +1,176 @@
 % poglavlje 13 - konvergencija redova
 
 \chapter{Konvergencija redova}
+
+U ovom poglavlju $\niz{X_n}{n \in \nat}$ je niz nezavisnih slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$ i
+\begin{equation*}
+    S_n := X_1 + \ldots + X_n, \quad n \in \nat.
+\end{equation*}
+\v Sto mo\v zemo re\' ci o konvergenciji reda $\suma{n \in \nat}{} X_n \; (g.s.)$ i po vjerojatnosti?
+Iz Kolmogorovljevog zakona 0-1 slijedi (teorem \ref{tm:9.9}):
+\begin{equation}    \label{jed:13.1}
+    \suma{n = 1}{\infty} X_n \quad \textnormal{ konvergira } (g.s.) \textnormal{ ili divergira } (g.s.)
+\end{equation}
+Nas zanima slu\v caj konvergencije.
+Ako $\suma{n = 1}{\infty} X_n$ konvergira $(g.s.)$, tada $X_n \xrightarrow[n \to \infty]{g.s.} 0$, pa zbog nezavisnosti i po teoremu \ref{tm:11.9} slijedi:
+\begin{equation}    \label{jed:13.2}
+    \suma{n = 1}{\infty} X_n \; \textnormal{ konvergira } (g.s.) \implies \suma{n = 1}{\infty} \vjeroj{|X_n| > 1} < +\infty.
+\end{equation}
+
+Odavde slijedi da $\iid$ slu\v caj nije previ\v se zanimljiv.
+Preciznije:
+\begin{equation}    \label{jed:13.3}
+    (X_n) \; \iid \quad \suma{n = 1}{\infty} X_n \; \textnormal{ konvergira } (g.s.) \implies X_n = 0 \; (g.s.), \quad \forall n \in \nat. 
+\end{equation}
+
+\begin{nap} \label{nap:13.4}
+    Ako izbacimo jednaku distribuiranost, a zadr\v imo nezavisnost, mo\v zemo dobiti bilo kakav limes reda.
+    Na primjer, neka je $X_1 = Y$, pri \v cemu je $Y$ proizvoljna, zadana slu\v cajna varijabla i $X_n \equiv 0$, za $n \geq 2$.
+    Tada je $\niz{X_n}{n \in \nat}$ nezavisan niz i
+    \begin{equation*}
+        \suma{n = 1}{\infty} X_n = Y.
+    \end{equation*}
+\end{nap}
+
+\begin{nap} \label{nap:13.5}
+    Ideja "rezanja" slu\v cajnih varijabli mo\v ze pomo\' ci da se ostvari nu\v zan uvijet konvergencije iz \eqref{jed:13.2}.
+    Uz to je vezan va\v zan pojam ekvivalentnih nizova.
+\end{nap}
+
+\begin{defn}    \label{defn:13.6}
+    Ka\v zemo da su nizovi slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ i $\niz{Y_n}{n \in \nat}$ na vjerojatnosnom prostoru $\vjerojatnosniProstor$ su \emph{ekvivalentni} ako vrijedi:
+    \begin{equation*}
+        \suma{n = 1}{\infty} \vjeroj{X_n \neq Y_n} < +\infty.
+    \end{equation*}
+\end{defn}
+
+Ako su nizovi ekvivalentni, onda iz Borel-Cantellijeve leme (lema \ref{lm:9.2}) slijedi
+\begin{equation*}
+    \vjeroj{X_n \neq Y_n, \; \io} < +\infty,
+\end{equation*}
+\v sto daje da za ekvivalentne nizove $(X_n)$ i $(Y_n)$ vrijedi:
+\begin{equation}    \label{jed:13.7}
+    \suma{n = 1}{\infty} X_n \quad \textnormal{ konvergira } (g.s.) \quad \iff \quad \suma{n = 1}{\infty} Y_n \quad \textnormal{ konvergira } (g.s).
+\end{equation}
+
+Nadalje, uo\v cimo da vrijedi:
+\begin{equation}    \label{jed:13.8}
+    \begin{matrix}
+        (X_n) \textnormal{ i } \big(X_n \cdot \karaktFja_{\{ |X_n| \leq 1 \}}\big)\\
+        \textnormal{su ekvivalentni}
+    \end{matrix}
+    \quad \iff \quad
+    \suma{n = 1}{\infty} \vjeroj{|X_n|>1} < +\infty.
+\end{equation}
+Dakle, za konvergenciju $(g.s.)$ osnovno pitanje postaje koji su nu\v zni i dovoljni uvijeti da $\suma{n = 1}{\infty} X_n$ konvergira $(g.s.)$?
+\v Sto mo\v zemo re\' ci o konvergenciji po vjerojatnosti?
+Sljede\' ci teorem pokazuje da su kod redova nezavisnih slu\v cajnih varijabli ove konvergencije jednake.
+
+\begin{tm}[P. L\' evy]  \label{tm:13.9}
+    Red $\suma{n = 1}{\infty} X_n$ konvergira gotovo sigurno ako i samo ako konverigra po vjerojatnosti.
+\end{tm}
+
+\begin{proof}
+    O\v cito je dovoljno dokazati da ako $(S_n)$ konvergira po vjerojatnosti, tada konvergira i gotovo sigurno.
+    Uvedimo oznaku
+    \begin{equation*}
+        S_{h, n} := S_n - S_h, \quad \forall h, n \in \nat.
+    \end{equation*}
+    Koriste\' ci lemu \ref{lm:11.18} dobivamo da za svaki $0 < \varepsilon < \frac{1}{4}$, postoji $h_0 \in \nat$, takav da vrijedi
+    \begin{equation*}
+        n, h \in \nat, \quad n > h \geq h_0 \implies \vjeroj{|S_{h, n}| Y \varepsilon} < \varepsilon.
+    \end{equation*}
+    Odavde slijedi $|m(S_{h, n})| \leq \varepsilon$, pa koriste\' ci L\' evyjeve nejednakosti (lema \ref{lm:12.8}) i nezavisnost od $(X_n)$ dobivamo
+    \begin{equation*}
+        % možda je m(S_{h, k})
+        \begin{aligned}
+            \masP \Big( \max\limits_{h < n \leq k} |S_{h, n}| > 2 \varepsilon \Big) &= \masP \Big( \max\limits_{h < n \leq k} |S_{h, n}| > 2 \varepsilon, \; \max\limits_{h < n \leq k} |m(S_{k, h})| \leq \varepsilon \Big)\\
+            &\leq \masP \Big( \max\limits_{h < n \leq k} |S_{h, n} - m(|S_{h, n} - S_{h, k}|)| > \varepsilon \Big)\\
+            &\leq 2 \: \vjeroj{|S_{h, n}| > 2 \varepsilon}\\
+            &< 2 \: \varepsilon. 
+        \end{aligned}
+    \end{equation*}
+    Neka je $h_0$ fiksan i neka $h \nearrow +\infty$.
+    Sada dobivamo
+    \begin{equation*}
+        \masP \Big( \sup\limits_{n > h} |S_{h, n}| > 2 \: \varepsilon \Big) \leq 2 \: \varepsilon.
+    \end{equation*}
+    Pa tvrdnja slijedi iz zadatka \ref{zad:11.20}.
+\end{proof}
+
+Sljede\' ci tehni\v cki rezultat je izrazito koristan.
+
+\begin{lm}[Abelova lema]    \label{lm:13.10}
+    Neka su $\niz{a_n}{n \in \nat}$ i $\niz{b_n}{n \in \nat}$ nizovi realnih brojeva.
+    Za $n \in \nat_0$, neka su
+    \begin{equation*}
+        \begin{aligned}
+            A_n &:= \suma{j = 0}{n} a_j \quad (n + 1) \textnormal{-va parcijana suma}\\
+            A_n^* &:= \suma{j = n + 1}{\infty} a_j \quad \textnormal{ostatak reda, ako red konvergira}.
+        \end{aligned}
+    \end{equation*}
+    Tada vrijedi:
+    \begin{enumerate}[label=(\roman*)]
+        \item Za svaki $n \in \nat$, vrijedi
+        \begin{equation*}
+            \suma{j = 1}{n} a_j b_j = A_n b_n - A_0 b_1 - \suma{j = 1}{n - 1} A_j (B_{j + 1} - b_j).
+        \end{equation*}
+        \item ako $\suma{n}{} a_n$ konvergira, tada za svaki $n \in \nat$ vrijedi:
+        \begin{equation*}
+            \suma{j = 1}{n} a_j b_j = A_0^* b_j - A_n^* b_n + \suma{j = 1}{n - 1} A_j^* (b_{j + 1} - b_j). 
+        \end{equation*}
+    \end{enumerate}
+\end{lm}
+
+\begin{proof}
+    \begin{equation*}
+        \begin{aligned}
+            \suma{j = 1}{n} a_j b_j &= \suma{j = 1}{n} (A_j - A_{j - 1}) b_j = \suma{j = 1}{n} A_j b_j - \suma{k = 1}{n - 1} A_k b_{k + 1}\\
+            &= A_n b_n - A_0 b_1 - \suma{j = 1}{n - 1} (b_{j + 1} - b_j).
+        \end{aligned}
+    \end{equation*}
+    Ako je $\suma{j = 0}{\infty} a_j = A \in \real$, tada je za svaki $n \in \nat$ $A = A_n + A_n^*$. Slijedi:
+    \begin{equation*}
+        \begin{aligned}
+            \suma{j = 1}{n} a_j b_j &= (A - A_n^*)b_n - (A - A_0^*) b_1 - \suma{j = 1}{n - 1} (A - A_j^*) (b_{j + 1} - b_j)\\
+            &= A_0^* b_1 - A_n^* b_n + \suma{j = 1}{n - 1} A_j^* (b_{j + 1} - b_j) + A b_n - A b_1 - A \cdot \underbrace{\suma{j = 1}{n - 1} (b_{j + 1} - b_j)}_{= b_n - b_1}.
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+\begin{lm}[Kroneckerova lema]  \label{lm:13.10-1}
+    Ako je $\suma{j = 0}{\infty} a_j = A \in \real$ i $0 < b_n \nearrow +\infty$, tada je
+    \begin{equation*}
+        \suma{j = 1}{n} a_j b_j = o(b_n).
+    \end{equation*}
+\end{lm}
+
+\begin{zad} \label{zad:13.11}
+    Doka\v zi lemu \ref{lm:13.10-1}.
+\end{zad}
+
+Po\v cnimo s pretpostavkom o drugim momentima.
+
+\begin{tm}  \label{tm:13.12}
+    Ako je $X_n \in L^2 (\masP)$, za svaki $n \in \nat$ i $\suma{n = 1}{\infty} \Var (X_n) < +\infty$, tada
+    \begin{equation*}
+        \suma{n = 1}{\infty} (X_n - \masE X_n) \quad \textnormal{ konvergira } (g.s.).
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Bez smanjenja op\' cenitosti mo\v zemo pretpostaviti da je $\masE X_n = 0$, $\forall n \in \nat$, ina\' ce gledamo varijable $Y_n = X_n - \masE X_n$.
+    Po teoremu \ref{tm:13.9} dovoljno je dokazati da $(S_n)$ konvergira po vjerojatnosti.
+    Ponovo korsitimo lemu \ref{lm:11.18}.
+    Po \v Cebi\v sevljevoj nejednakosti slijedi
+    \begin{equation*}
+        \begin{aligned}
+            \vjeroj{|S_m - S_n| > \varepsilon} &\leq \frac{1}{\varepsilon^2} \Var (S_m - S_n) = \frac{1}{\varepsilon^2} \Var \Big( \suma{j = n + 1}{m} X_j \Big) = (\textnormal{nezavisnost})\\
+            &= \frac{1}{\varepsilon^2} \suma{j = n + 1}{m} \Var (X_j) \leq \frac{1}{\varepsilon^2} \suma{j = n + 1}{\infty} \Var (X_j).
+        \end{aligned}
+    \end{equation*}
+    A sada zbog $\suma{n = 1}{\infty} X_n < +\infty$ slijedi:
+    \begin{equation*}
+        \sup\limits_{m > n} \vjeroj{|S_m - S_n| > \varepsilon} \leq \frac{1}{\varepsilon^2} \suma{j = n + 1}{\infty} \Var (X_j) \xrightarrow[n \to \infty]{} 0.
+    \end{equation*}
+\end{proof}
