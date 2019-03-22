@@ -1,0 +1,358 @@
+% poglavlje 13 - konvergencija redova
+
+\chapter{Konvergencija redova}
+
+U ovom poglavlju $\niz{X_n}{n \in \nat}$ je niz nezavisnih slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$ i
+\begin{equation*}
+    S_n := X_1 + \ldots + X_n, \quad n \in \nat.
+\end{equation*}
+\v Sto mo\v zemo re\' ci o konvergenciji reda $\suma{n \in \nat}{} X_n \; (g.s.)$ i po vjerojatnosti?
+Iz Kolmogorovljevog zakona 0-1 slijedi (teorem \ref{tm:9.9}):
+\begin{equation}    \label{jed:13.1}
+    \suma{n = 1}{\infty} X_n \quad \textnormal{ konvergira } (g.s.) \textnormal{ ili divergira } (g.s.)
+\end{equation}
+Nas zanima slu\v caj konvergencije.
+Ako $\suma{n = 1}{\infty} X_n$ konvergira $(g.s.)$, tada $X_n \xrightarrow[n \to \infty]{g.s.} 0$, pa zbog nezavisnosti i po teoremu \ref{tm:11.9} slijedi:
+\begin{equation}    \label{jed:13.2}
+    \suma{n = 1}{\infty} X_n \; \textnormal{ konvergira } (g.s.) \implies \suma{n = 1}{\infty} \vjeroj{|X_n| > 1} < +\infty.
+\end{equation}
+
+Odavde slijedi da $\iid$ slu\v caj nije previ\v se zanimljiv.
+Preciznije:
+\begin{equation}    \label{jed:13.3}
+    (X_n) \; \iid \quad \suma{n = 1}{\infty} X_n \; \textnormal{ konvergira } (g.s.) \implies X_n = 0 \; (g.s.), \quad \forall n \in \nat. 
+\end{equation}
+
+\begin{nap} \label{nap:13.4}
+    Ako izbacimo jednaku distribuiranost, a zadr\v imo nezavisnost, mo\v zemo dobiti bilo kakav limes reda.
+    Na primjer, neka je $X_1 = Y$, pri \v cemu je $Y$ proizvoljna, zadana slu\v cajna varijabla i $X_n \equiv 0$, za $n \geq 2$.
+    Tada je $\niz{X_n}{n \in \nat}$ nezavisan niz i
+    \begin{equation*}
+        \suma{n = 1}{\infty} X_n = Y.
+    \end{equation*}
+\end{nap}
+
+\begin{nap} \label{nap:13.5}
+    Ideja "rezanja" slu\v cajnih varijabli mo\v ze pomo\' ci da se ostvari nu\v zan uvijet konvergencije iz \eqref{jed:13.2}.
+    Uz to je vezan va\v zan pojam ekvivalentnih nizova.
+\end{nap}
+
+\begin{defn}    \label{defn:13.6}
+    Ka\v zemo da su nizovi slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ i $\niz{Y_n}{n \in \nat}$ na vjerojatnosnom prostoru $\vjerojatnosniProstor$ su \emph{ekvivalentni} ako vrijedi:
+    \begin{equation*}
+        \suma{n = 1}{\infty} \vjeroj{X_n \neq Y_n} < +\infty.
+    \end{equation*}
+\end{defn}
+
+Ako su nizovi ekvivalentni, onda iz Borel-Cantellijeve leme (lema \ref{lm:9.2}) slijedi
+\begin{equation*}
+    \vjeroj{X_n \neq Y_n, \; \io} < +\infty,
+\end{equation*}
+\v sto daje da za ekvivalentne nizove $(X_n)$ i $(Y_n)$ vrijedi:
+\begin{equation}    \label{jed:13.7}
+    \suma{n = 1}{\infty} X_n \quad \textnormal{ konvergira } (g.s.) \quad \iff \quad \suma{n = 1}{\infty} Y_n \quad \textnormal{ konvergira } (g.s).
+\end{equation}
+
+Nadalje, uo\v cimo da vrijedi:
+\begin{equation}    \label{jed:13.8}
+    \begin{matrix}
+        (X_n) \textnormal{ i } \big(X_n \cdot \karaktFja_{\{ |X_n| \leq 1 \}}\big)\\
+        \textnormal{su ekvivalentni}
+    \end{matrix}
+    \quad \iff \quad
+    \suma{n = 1}{\infty} \vjeroj{|X_n|>1} < +\infty.
+\end{equation}
+Dakle, za konvergenciju $(g.s.)$ osnovno pitanje postaje koji su nu\v zni i dovoljni uvijeti da $\suma{n = 1}{\infty} X_n$ konvergira $(g.s.)$?
+\v Sto mo\v zemo re\' ci o konvergenciji po vjerojatnosti?
+Sljede\' ci teorem pokazuje da su kod redova nezavisnih slu\v cajnih varijabli ove konvergencije jednake.
+
+\begin{tm}[P. L\' evy]  \label{tm:13.9}
+    Red $\suma{n = 1}{\infty} X_n$ konvergira gotovo sigurno ako i samo ako konverigra po vjerojatnosti.
+\end{tm}
+
+\begin{proof}
+    O\v cito je dovoljno dokazati da ako $(S_n)$ konvergira po vjerojatnosti, tada konvergira i gotovo sigurno.
+    Uvedimo oznaku
+    \begin{equation*}
+        S_{h, n} := S_n - S_h, \quad \forall h, n \in \nat.
+    \end{equation*}
+    Koriste\' ci lemu \ref{lm:11.18} dobivamo da za svaki $0 < \varepsilon < \frac{1}{4}$, postoji $h_0 \in \nat$, takav da vrijedi
+    \begin{equation*}
+        n, h \in \nat, \quad n > h \geq h_0 \implies \vjeroj{|S_{h, n}| Y \varepsilon} < \varepsilon.
+    \end{equation*}
+    Odavde slijedi $|m(S_{h, n})| \leq \varepsilon$, pa koriste\' ci L\' evyjeve nejednakosti (lema \ref{lm:12.8}) i nezavisnost od $(X_n)$ dobivamo
+    \begin{equation*}
+        % možda je m(S_{h, k})
+        \begin{aligned}
+            \masP \Big( \max\limits_{h < n \leq k} |S_{h, n}| > 2 \varepsilon \Big) &= \masP \Big( \max\limits_{h < n \leq k} |S_{h, n}| > 2 \varepsilon, \; \max\limits_{h < n \leq k} |m(S_{k, h})| \leq \varepsilon \Big)\\
+            &\leq \masP \Big( \max\limits_{h < n \leq k} |S_{h, n} - m(|S_{h, n} - S_{h, k}|)| > \varepsilon \Big)\\
+            &\leq 2 \: \vjeroj{|S_{h, n}| > 2 \varepsilon}\\
+            &< 2 \: \varepsilon. 
+        \end{aligned}
+    \end{equation*}
+    Neka je $h_0$ fiksan i neka $h \nearrow +\infty$.
+    Sada dobivamo
+    \begin{equation*}
+        \masP \Big( \sup\limits_{n > h} |S_{h, n}| > 2 \: \varepsilon \Big) \leq 2 \: \varepsilon.
+    \end{equation*}
+    Pa tvrdnja slijedi iz zadatka \ref{zad:11.20}.
+\end{proof}
+
+Sljede\' ci tehni\v cki rezultat je izrazito koristan.
+
+\begin{lm}[Abelova lema]    \label{lm:13.10}
+    Neka su $\niz{a_n}{n \in \nat}$ i $\niz{b_n}{n \in \nat}$ nizovi realnih brojeva.
+    Za $n \in \nat_0$, neka su
+    \begin{equation*}
+        \begin{aligned}
+            A_n &:= \suma{j = 0}{n} a_j \quad (n + 1) \textnormal{-va parcijana suma}\\
+            A_n^* &:= \suma{j = n + 1}{\infty} a_j \quad \textnormal{ostatak reda, ako red konvergira}.
+        \end{aligned}
+    \end{equation*}
+    Tada vrijedi:
+    \begin{enumerate}[label=(\roman*)]
+        \item Za svaki $n \in \nat$, vrijedi
+        \begin{equation*}
+            \suma{j = 1}{n} a_j b_j = A_n b_n - A_0 b_1 - \suma{j = 1}{n - 1} A_j (B_{j + 1} - b_j).
+        \end{equation*}
+        \item ako $\suma{n}{} a_n$ konvergira, tada za svaki $n \in \nat$ vrijedi:
+        \begin{equation*}
+            \suma{j = 1}{n} a_j b_j = A_0^* b_j - A_n^* b_n + \suma{j = 1}{n - 1} A_j^* (b_{j + 1} - b_j). 
+        \end{equation*}
+    \end{enumerate}
+\end{lm}
+
+\begin{proof}
+    \begin{equation*}
+        \begin{aligned}
+            \suma{j = 1}{n} a_j b_j &= \suma{j = 1}{n} (A_j - A_{j - 1}) b_j = \suma{j = 1}{n} A_j b_j - \suma{k = 1}{n - 1} A_k b_{k + 1}\\
+            &= A_n b_n - A_0 b_1 - \suma{j = 1}{n - 1} (b_{j + 1} - b_j).
+        \end{aligned}
+    \end{equation*}
+    Ako je $\suma{j = 0}{\infty} a_j = A \in \real$, tada je za svaki $n \in \nat$ $A = A_n + A_n^*$. Slijedi:
+    \begin{equation*}
+        \begin{aligned}
+            \suma{j = 1}{n} a_j b_j &= (A - A_n^*)b_n - (A - A_0^*) b_1 - \suma{j = 1}{n - 1} (A - A_j^*) (b_{j + 1} - b_j)\\
+            &= A_0^* b_1 - A_n^* b_n + \suma{j = 1}{n - 1} A_j^* (b_{j + 1} - b_j) + A b_n - A b_1 - A \cdot \underbrace{\suma{j = 1}{n - 1} (b_{j + 1} - b_j)}_{= b_n - b_1}.
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+\begin{lm}[Kroneckerova lema]  \label{lm:13.10-1}
+    Ako je $\suma{j = 0}{\infty} a_j = A \in \real$ i $0 < b_n \nearrow +\infty$, tada je
+    \begin{equation*}
+        \suma{j = 1}{n} a_j b_j = o(b_n).
+    \end{equation*}
+\end{lm}
+
+\begin{zad} \label{zad:13.11}
+    Doka\v zi lemu \ref{lm:13.10-1}.
+\end{zad}
+
+Po\v cnimo s pretpostavkom o drugim momentima.
+
+\begin{tm}  \label{tm:13.12}
+    Ako je $X_n \in L^2 (\masP)$, za svaki $n \in \nat$ i $\suma{n = 1}{\infty} \Var (X_n) < +\infty$, tada
+    \begin{equation*}
+        \suma{n = 1}{\infty} (X_n - \masE X_n) \quad \textnormal{ konvergira } (g.s.).
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Bez smanjenja op\' cenitosti mo\v zemo pretpostaviti da je $\masE X_n = 0$, $\forall n \in \nat$, ina\' ce gledamo varijable $Y_n = X_n - \masE X_n$.
+    Po teoremu \ref{tm:13.9} dovoljno je dokazati da $(S_n)$ konvergira po vjerojatnosti.
+    Ponovo korsitimo lemu \ref{lm:11.18}.
+    Po \v Cebi\v sevljevoj nejednakosti slijedi
+    \begin{equation*}
+        \begin{aligned}
+            \vjeroj{|S_m - S_n| > \varepsilon} &\leq \frac{1}{\varepsilon^2} \Var (S_m - S_n) = \frac{1}{\varepsilon^2} \Var \Big( \suma{j = n + 1}{m} X_j \Big) = (\textnormal{nezavisnost})\\
+            &= \frac{1}{\varepsilon^2} \suma{j = n + 1}{m} \Var (X_j) \leq \frac{1}{\varepsilon^2} \suma{j = n + 1}{\infty} \Var (X_j).
+        \end{aligned}
+    \end{equation*}
+    A sada zbog $\suma{n = 1}{\infty} X_n < +\infty$ slijedi:
+    \begin{equation*}
+        \sup\limits_{m > n} \vjeroj{|S_m - S_n| > \varepsilon} \leq \frac{1}{\varepsilon^2} \suma{j = n + 1}{\infty} \Var (X_j) \xrightarrow[n \to \infty]{} 0.
+    \end{equation*}
+\end{proof}
+
+\begin{prop}    \label{prop:13.13}
+    Ako je $\masE (\sup\limits_{n \in \nat} X_n^2) < + \infty$ (posebno to zna\v ci da je $X_n \in L^2 (\masP), \; \forall n$) i $\masE X_n = 0$, za svaki $n \in \nat$ i $\vjeroj{\sup\limits_{n \in \nat} |S_n| < + \infty} > 0$, tada
+    \begin{equation*}
+        \begin{aligned}
+            & \suma{n = 1}{\infty} X_n \quad \textnormal{ konvergira } (g.s.)\\
+            & \suma{n = 1}{\infty} \masE [ X_n^2 ] < + \infty
+        \end{aligned}
+    \end{equation*}
+\end{prop}
+
+\begin{proof}
+    Prema teoremu \ref{tm:13.12} dovoljno je pokazati da je $\suma{n = 1}{\infty} \masE [ X_n^2 ] < +\infty$.
+    Stavimo
+    \begin{equation*}
+        V := \sup\limits_{n \in \nat} X_n^2.
+    \end{equation*}
+    Vidimo da je $V \geq 0$ pro\v sirena slu\v cajna varijabla i prema pretpostavci je $\masE V < +\infty$, pa je $V$ slu\v cajna varijabla.
+    Zbog neprekidnosti vjerojatnosti s obzirom na rastu\' ce nizove doga\dj aja, slijedi da postoji $K > 0$ dovoljno velik, takav da vrijedi $\masP ( \sup\limits_{n \in \nat} |S_n| < K) > 0$.
+    Definiramo
+    \begin{equation*}
+        \begin{gathered}
+            T: \Omega \to \nat_0 \cup \{+\infty\}\\
+            T:= \inf \skup{n}{|S_n| \geq K}.
+        \end{gathered}
+    \end{equation*}
+    Dakle $T$ je pro\v sirena slu\v cajna varijabla.
+    Iz izbora $K$ slijedi $\masP (T = +\infty) > 0$.
+    Nadalje, primjetimo da je
+    \begin{equation*}
+        \{T \geq n\} = \{ |S_1| < K \} \cap \ldots \cap \{|S_{n-1}| < K\} \in \sigAlg{X_1, \ldots, X_{n-1}}.
+    \end{equation*}
+    Dakle $X_n$ i $\karaktFja_{\{T \geq n\}}$ su nezavisne slu\v cajne varijable.
+    Stavimo
+    \begin{equation*}
+        U_n := \suma{j = 1}{n} X_j \karaktFja_{\{T \geq j\}}.
+    \end{equation*}
+    Vidimo da je $U_n$ $\sigAlg{X_1, \ldots, X_n}$-izmjeriva slu\v cajna varijabla i vrijedi
+    \begin{equation*}
+        U_n = S_{\min (T, n)} \quad (g.s.).
+    \end{equation*}
+    Odavde slijedi
+    \begin{equation*}
+        \begin{aligned}
+            U_n^2 &= \big| S_{\min (T - 1, n - 1)} + X_{\min (T, n)} \big|^2\\
+            &\leq 2 (K^2 + V) \implies\\
+            \masE (U_n^2) &\leq 2 (K^2 + \masE V) < +\infty.
+        \end{aligned}
+    \end{equation*}
+    Stavimo li $U_0 := 0$, dobivamo da za svaki $j \in \nat$ vrijedi
+    \begin{equation*}
+        U_j^2 = U_{j - 1}^2 + 2 U_{j - 1} X_j \karaktFja_{\{ T \geq j \}} + X_j^2 \karaktFja_{\{ T \geq j \}}.
+    \end{equation*}
+    Uo\v cimo da je $\masE [ U_{j - 1}^2 ] < + \infty$, stoga se smije oduzeti,
+    \begin{equation*}
+        \begin{aligned}
+            \masE [U_j^2] - \masE [U_{j - 1}^2] &= (\textnormal{nezavisnost})\\
+            &= \masE [2 U_{j - 1} \karaktFja_{\{ T \geq j \}}] \cdot \underbrace{\masE X_j}_{= 0} + \masE [X_j^2] \masP (T \geq j)\\
+            &= \masE [X_j^2] \masP (T \geq j).
+        \end{aligned}
+    \end{equation*}
+    Dakle za svaki $n \in \nat$
+    \begin{equation*}
+        \begin{gathered}
+            \begin{aligned}
+                \underbrace{\masP ( T = +\infty )}_{> 0} \cdot \suma{j = 1}{n} \masE [X_j^2] &\leq \suma{j = 1}{n} \masP (T \geq j) \masE [X_j^2] = \suma{j = 1}{n} (\masE [U_j^2] - \masE [U_{j - 1}^2]) = \masE [U_n^2]\\
+                &\leq 2(K^2 + \masE V ) < +\infty \implies 
+            \end{aligned}\\
+            (\forall n \in \nat) \quad \suma{j = 1}{n} \masE [X_j^2] \leq \frac{2 (K^2 + \masE V)}{\masP (T = +\infty)} < + \infty \implies\\
+            \suma{j = 1}{\infty} \masE [X_j^2] < +\infty.
+        \end{gathered}
+    \end{equation*}
+\end{proof}
+
+\begin{prop}    \label{prop:13.14}
+    Ako je $\masE (\sum\limits_{n \in \nat} |X_n|) < +\infty$ i $\suma{n = 1}{\infty} X_n$ konvergira $(g.s.)$, tada i $\suma{n = 1}{\infty} \masE X_n$ konvergira.
+\end{prop}
+
+\begin{proof}
+    Budu\' ci da je $\masE [\sup\limits_{n \in \nat} |X_n|] < +\infty$, vrijedi $X_n \in L^1 (\masP)$, to jest $\masE X_n \in \real$, $n \in \nat$.
+    Budu\' ci da $(S_n)$ konvergira $(g.s.)$ ispunjen je uvjet
+    \begin{equation*}
+        \masP (\sup\limits_{n \in \nat} |S_n| < +\infty) > 0
+    \end{equation*}
+    iz propozicije \ref{prop:13.13}.
+    Provedemo li to\v cno postupke dokaza iz propozicije \ref{prop:13.13}, te na isti na\v cin definiramo sve slu\v cajne varijable; $K, t, U_n, \; n \in \nat$, tada za svaki $n \in \nat$ imamo
+    \begin{equation*}
+        |U_n| = |S_{\min (T - 1, n - 1)} + X_{\min (T, n)}| \leq K + \sup\limits_{n \in \nat} |X_n| =: H,
+    \end{equation*}
+    \v sto daje $H \geq 0$, slu\v cajna varijabla i $\masE H < + \infty$.
+    Dakle niz $(U_n)$ je dominiran funkcijom $H \in L^1 (\masP)$.
+
+    Sada definiramo
+    \begin{equation*}
+        \begin{aligned}
+            S_{\infty} &:=\lim\limits_{n \to \infty} S_n = \suma{n = 1}{\infty} X_n\\
+            S_T (\omega) &:= S_{T (\omega)} (\omega),
+        \end{aligned}
+    \end{equation*}
+    uo\v cimo na $\{T = +\infty\}$ imamo $S_T = S_\infty$.
+    Sada za gotovo svaki $\omega \in \Omega$ vrijedi
+    \begin{equation*}
+        U_n (\omega) = S_{\min (T(\omega), n)} (\omega) \xrightarrow[n \to \infty]{} S_T (\omega).
+    \end{equation*}
+    Po teoremu o dominiranoj konvergenciji vrijedi:
+    \begin{equation*}
+        \masE [U_n] \xrightarrow[n \to \infty]{} \masE [S_T],
+    \end{equation*}
+    odakle slijedi
+    \begin{equation*}
+        | \masE [S_T]| \leq \masE H < +\infty.
+    \end{equation*}
+    Kao i u propoziciji \ref{prop:13.13} dobijemo
+    \begin{equation*}
+        \masE [U_n] = \suma{j = 1}{n} \vjeroj{T \geq j} \masE [X_j].
+    \end{equation*}
+    Primjetimo da ovdje $\masE [X_j]$ nisu nu\v zno pozitivni, stoga ne mo\v zemo iskoristiti "trik" djeljenja sa $\vjeroj{T = +\infty}$.
+    Me\dj utim budu\' ci vrijedi
+    \begin{equation*}
+        \masP (T \geq n) \geq \vjeroj{T = \infty} > 0,
+    \end{equation*}
+    pa za svaki $n \in \nat$ dobijemo
+    \begin{equation*}
+        \masE [ X_n ] = \frac{\masE [ U_n ] - \masE [U_{n - 1}]}{\vjeroj{T \geq n}}.
+    \end{equation*}
+    Definiramo nizove $\niz{a_n}{n \in \nat}$ te $\niz{b_n}{n \in \nat}$ sa
+    \begin{equation*}
+        \begin{gathered}
+            a_0 := 0, \; a_j := \masE [U_j] - \masE [U_{j - 1}], \quad j \in \nat\\
+            b_j := \frac{1}{\vjeroj{T \geq j}}, \quad j \in \nat.
+        \end{gathered}
+    \end{equation*}
+    Uo\v cimo da je $b_{j + 1} \geq b_{j} > 0$ te $b_j \to \frac{1}{\vjeroj{T = \infty}}$, dok $\suma{j = 0}{\infty}$ konverigra prema $\masE [S_T]$.
+    Po Abelovoj lemi (lema \ref{lm:13.10})
+    \begin{equation*}
+        \begin{aligned}
+            \suma{j = 1}{\infty} \masE [X_j] &= \suma{j = 1}{n} a_j b_j = \frac{\masE [U_n]}{\vjeroj{T \geq n}} - \suma{j = 1}{n - 1} \Big( \frac{1}{\vjeroj{T > 1}} - \frac{1}{\vjeroj{T \geq j}} \Big) \cdot \masE [U_j] \to \suma{j = 1}{\infty} a_j b_j\\
+            &= A_0^* b_1 + \suma{j = 1}{\infty} A_j^* (b_{j + 1} - b_j)
+        \end{aligned}
+    \end{equation*}
+    \v sto je kona\v cno.
+\end{proof}
+
+Direktno iz propozicije \ref{prop:13.13} i propozicije \ref{prop:13.14} slijedi.
+
+\begin{kor} \label{kor:13.15}
+    Ako $\suma{n = 1}{\infty} X_n$ konvergiraju $(g.s.)$ i postoji $0 < c < +\infty$ takav da je
+    \begin{equation*}
+        \vjeroj{|X_n| \leq c, \; \forall n \in \nat} = 1,
+    \end{equation*}
+    tada obje sume $\suma{n = 1}{\infty} \masE X_n$ te $\suma{n = 1}{\infty} \Var (X_n)$ konvergiraju.
+\end{kor}
+
+% sredi pretpostavke - vjerojatno nezavisni, ne nužno jednako distribuirani
+\begin{tm}[Kolmogorovljev teorem o tri reda]    \label{tm:13.16}
+    \begin{equation*}
+        \suma{n = 1}{\infty} X_n \textnormal{ konvergira } (g.s.)
+        \iff
+        \begin{aligned}
+            &\suma{n = 1}{\infty} \masP (|X_n| > 1) < +\infty\\
+            &\suma{n = 1}{\infty} \masE [X_n \cdot \karaktFja_{\{ |X_n| \leq 1 \}}] < +\infty\\
+            &\suma{n = 1}{\infty} \Var (X_n \cdot \karaktFja_{\{ |X_n| \leq 1 \}}) < + \infty.
+        \end{aligned}
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Definirajmo niz $\niz{Y_n}{n \in \nat}$ sa
+    \begin{equation*}
+        Y_n := X_n \cdot \karaktFja_{\{ |X_n| \leq 1 \}}, \quad \forall n \in \nat.
+    \end{equation*}
+    Tada je $(Y_n)$ niz slu\v cajnih varijabli i vrijedi $|Y_n| \leq 1$, $\forall n \in \nat$. Posebno postoje $\masE Y_n$ i $\Var Y_n$.
+    \begin{itemize}
+        \item[$\implies$]
+        Konvergencija reda $\suma{n = 1}{\infty} X_n$ gotovo sigurno povla\v ci konvergenciju prvog reda prema relaciji \eqref{jed:13.2}.
+        Tada prema relaciji \eqref{jed:13.8} su nizovi $(X_n)$ i $(Y_n)$ ekvivalentni.
+        Po relaciji \eqref{jed:13.7} znamo da red $\suma{n = 1}{\infty} Y_n$ konvergira gotovo sigurno, pa konvergencija drugog i tre\' ceg reda slijedi iz korolara \ref{kor:13.15}
+        \item[$\impliedby$]
+        Zbog tre\' ceg reda i teorema \ref{tm:13.12} red $\suma{n = 1}{\infty} (Y_n - \masE Y_n)$ konvergira gotovo sigurno.
+        Zbog drugog reda $\suma{n = 1}{\infty} Y_n$ konvergira gotovo sigurno. Zbog prvog reda $(X_n)$ i $(Y_n)$ su ekvivalentni, pa po \eqref{jed:13.7} slijedi tvrdnja. 
+    \end{itemize}
+\end{proof}
