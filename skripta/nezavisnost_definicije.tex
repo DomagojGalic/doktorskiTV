@@ -9,7 +9,7 @@ Doga\dj aji $A, \; B \in \famF$ su nezavisni ako vrijedi:
 \end{equation*}
 
 \begin{pr}  \label{pr:6.1}
-    Iako se nezavisnost jako \v cesto primjenjuje, zapravo se "rijetko" doga\dj a
+    Iako se nezavisnost jako \v cesto koristi, zapravo se "rijetko" doga\dj a
     % slika
     \begin{figure}[H]
         \centering
@@ -92,13 +92,19 @@ daje:
 
 \v Sto ako imamo 3 ili vi\v se doga\dj aja?
 Treba biti oprezan.
-Doga\dj aji $A_1, \ldots, A_n \in \famF$ su nezavisni ako za svaki $k \in \{1, \ldots, n\}$ i svaki izbor me\dj usobno razli\v citih $i_1, \ldots, i_k \in \{1, \ldots, n\}$ vrijedi $\vjeroj{A_{i_1} \cap \ldots  \cap A_{i_k}} = \vjeroj{A_{i_1}} \cdot \ldots \cdot \vjeroj{A_{i_k}}$.
+
+\begin{defn}    \label{defn:6.3-1}
+    Doga\dj aji $A_1, \ldots, A_n \in \famF$ su nezavisni ako za svaki $k \in \{1, \ldots, n\}$ i svaki izbor me\dj usobno razli\v citih $i_1, \ldots, i_k \in \{1, \ldots, n\}$ vrijedi
+    \begin{equation*}
+        \vjeroj{A_{i_1} \cap \ldots  \cap A_{i_k}} = \vjeroj{A_{i_1}} \cdot \ldots \cdot \vjeroj{A_{i_k}}.
+    \end{equation*}    
+\end{defn}
 
 \begin{zad} \label{zad:6.4}
     Na\dj ite primjere tri doga\dj aja $A, \: B, \: C \in \famF$ koji nisu nezavisni, ali za njih vrijedi:
     \begin{enumerate}[label=(\roman*)]
         \item U praovima su nezavisni
-        \item $\vjeroj{A \cap B \cap C} = \vjeroj{A} \: \vjeroj{B} \: \vjeroj{C}$.
+        \item $\vjeroj{A \cap B \cap C} = \vjeroj{A} \cdot \vjeroj{B} \cdot \vjeroj{C}$.
     \end{enumerate}
 \end{zad}
 
@@ -110,7 +116,12 @@ Je li uvijek jednostavno "intuitivno" prepoznati nezavisnost?
 
 \begin{pr}  \label{pr:6.6}
     Promatramo obitelj s troje djece i pretpostavljamo da su svih 8 mogu\' cnosti (\v z\v z\v z, \v z\v zm, ..., mmm) jednako vjerojatne.
-    Lako se vidi da su $A =$ "postoje oba spola" i $B = $ "postoji najvi\v se jedno \v zensko djete" nezavisni ($\vjeroj{A} = \frac{6}{8}, \; \vjeroj{B} = \frac{4}{8}, \; \vjeroj{A \cap B} = \frac{3}{8}$).
+    Lako se vidi da su
+    \begin{itemize}
+        \item[] $A =$ "postoje oba spola"
+        \item[] $B = $ "postoji najvi\v se jedno \v zensko djete"
+    \end{itemize}
+    nezavisni ($\vjeroj{A} = \frac{6}{8}, \; \vjeroj{B} = \frac{4}{8}, \; \vjeroj{A \cap B} = \frac{3}{8}$).
     \v Sto ako iste doga\dj aje promatramo za obitelji s 4 djece? Tada vi\v se nisu.
 \end{pr}
 
@@ -142,8 +153,14 @@ Uo\v cimo da \eqref{jed:6.3} i \eqref{jed:6.7} navode na to da su nezavisnosti d
 
 \begin{nap} \label{nap:6.9}
     \begin{enumerate}[label=(\alph*)]
-        \item Od posebnog interesa je slu\v caj kada su sve $\famG_{\lambda_n}$ $\sigma$-algebre.
-        \item $A, \; B$ su nezavisni $\iff$ $\{A\}, \; \{B\}$ nezavisne $\iff$ $\sigma$-algebre $\{ \varnothing, \: A, \: A^c, \: \Omega \}$, $\{ \varnothing, \: B, \: B^c, \: \Omega \}$ nezavisne.
+        \item Od posebnog interesa je slu\v caj kada su sve $\famG_{\lambda}$ $\sigma$-algebre.
+        \item
+        \begin{equation*}
+            \begin{aligned}
+                A, \; B \textnormal{ su nezavisni} &\iff \{A\}, \; \{B\} \textnormal{ su nezavisne}\\
+                &\iff \sigma \textnormal{-algebre } \{ \varnothing, \: A, \: A^c, \: \Omega \}, \; \{ \varnothing, \: B, \: B^c, \: \Omega \} \textnormal{ su nezavisne}.
+            \end{aligned}
+        \end{equation*}
         \item   \label{nap:6.9c}
         Sada se mo\v ze tretirati proizvoljna familija doga\dj aja.
         Ako je $\indFamilija{A_t}{t \in T} \subseteq \famF$, tada su $A_t, t \in T$, me\dj usuobno nezavisne ako su familije $\{A_t\}, \; t \in T$, me\dj usobno nezavisne.
@@ -167,7 +184,7 @@ O\' cito, smanjivati klase na razne na\v cine ne\' ce ugroziti nezavisnost.
 \end{tm}
 
 \begin{proof}
-    Bez smanjenja op\' cenitosti, vidi napomenu \ref{nap:6.9} \ref{nap:6.9f}, uzmimo $\famG_\lambda \neq \varnothing$, za svaki $\lambda \in \Lambda$.
+    Bez smanjenja op\' cenitosti (vidi napomenu \ref{nap:6.9} \ref{nap:6.9f}), uzmimo $\famG_\lambda \neq \varnothing$, za svaki $\lambda \in \Lambda$.
     Neka je $n \geq 2$, $\lambda_1, \ldots, \lambda_n \in \Lambda$, me\dj usobno razli\v citi i fiksirajmo izbor $A_1 \in \famG_{\lambda_1}, \ldots, A_n \in \famG_{\lambda_n}$.
     Promatramo familiju:
     \begin{equation*}
@@ -224,10 +241,13 @@ O\' cito, smanjivati klase na razne na\v cine ne\' ce ugroziti nezavisnost.
     \end{equation*}
     Budu\' ci da su $\famF_\lambda$ $\sigma$-algebre, slijedi
     \begin{align*}
-        \famG_T := \{B_1 \cap \ldots \cap B_n \: | \: &n \in \nat, \; n \leq \card{T}, \; \lambda_1, \ldots, \lambda_n \in T \textnormal{ me\dj usobno razli\v citih},\\ &B_1 \in \famF_{\lambda_1},\ldots, B_n \in \famF_{\lambda_n}\},
+        \famG_T := \Big\{B_1 \cap \ldots \cap B_n \: \Big| \: &n \in \nat, \; n \leq \card{T}, \; \lambda_1, \ldots, \lambda_n \in T \textnormal{ me\dj usobno razli\v citih},\\ &B_1 \in \famF_{\lambda_1},\ldots, B_n \in \famF_{\lambda_n} \Big\},
     \end{align*}
     \v sto daje da su $\indFamilija{\famG_T}{T \in \famT}$ nezavisne.
-    Sada tvrdnja slijedi iz teorema \ref{tm:6.10} i $\sigAlg{\famG_T} = \famF_T$.
+    Sada tvrdnja slijedi iz teorema \ref{tm:6.10} i
+    \begin{equation*}
+        \sigAlg{\famG_T} = \famF_T.
+    \end{equation*}
 \end{proof}
 
 \begin{prop}    \label{prop:6.12}
@@ -244,14 +264,25 @@ O\' cito, smanjivati klase na razne na\v cine ne\' ce ugroziti nezavisnost.
     \begin{enumerate}
         \item[$\implies$] Prema korolaru \ref{kor:6.11}.
         \item[$\impliedby$] Uo\v cimo da je dovoljno pokazati da za svaki kona\v can skup $S \subseteq \Lambda$ vrijedi $\indFamilija{\famF_\lambda}{\lambda \in S}$ nezavisna.
+        
         Dokaz provodimo indukcijom po $\card{S}$.
         Za $\card{S} = 1$ tvrdnja trivijalno vrijedi.
         Pretpostavljamo da vrijedi za $\card{S} \leq n$ i uz tu pretpostavku promatramo skup $V \subseteq \Lambda$, $\card{V} = n + 1$.
         Posebno, $V$ sadr\v zi barem dva razli\v cita elementa iz $\Lambda$, recimo $\lambda$ i $\mu$, pa postoji $T \in \famT$ koji ih razlikuje.
         Posebno $V \cap T$ i $V \setminus T$ su neprazni skupovi.
         Po pretpostavci su $\indSigAlg{\famF_t}{t \in T}$ i $\indSigAlg{\famT}{t \in T^c}$ nezavisne, pa prema napomeni \ref{nap:6.9}  \ref{nap:6.9d} su $\indSigAlg{\famF_t}{t \in V \cap T}$ i $\indSigAlg{\famF_t}{t \in V \setminus T}$ nezavisne.
-        Tada je $\presjek{\lambda \in V}{} A_\lambda = B \cap C$, pri \v cemu je $B = \presjek{\lambda \in V \cap T}{} A_\lambda$, $C = \presjek{\lambda \in V \setminus T}{} A_\lambda$.
-        Tada je $\vjeroj{B \cap C} = \vjeroj{B} \: \vjeroj{C}$, a $\card{V \cap T} \leq n$ i $\card{V \setminus T} \leq n$.
+        Tada je
+        \begin{equation*}
+            \presjek{\lambda \in V}{} A_\lambda = B \cap C,
+        \end{equation*}
+        pri \v cemu su
+        \begin{equation*}
+            \begin{aligned}
+                B &= \presjek{\lambda \in V \cap T}{} A_\lambda,\\
+                C &= \presjek{\lambda \in V \setminus T}{} A_\lambda.
+            \end{aligned}
+        \end{equation*}
+        Tada je $\vjeroj{B \cap C} = \vjeroj{B} \cdot \vjeroj{C}$, a $\card{V \cap T} \leq n$ i $\card{V \setminus T} \leq n$.
         Po pretpostavci indukcije dobivamo
         \begin{equation*}
             \vjeroj{\presjek{\lambda \in V}{} A_\lambda} = \produkt{\lambda \in V}{} \vjeroj{A_\lambda}.
