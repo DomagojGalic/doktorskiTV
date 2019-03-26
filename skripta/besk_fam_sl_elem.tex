@@ -2,27 +2,46 @@
 
 \chapter{Beskona\v cne familije slu\v cajnih elemenata}
 
-Podsjetimo se na oznaku u napomeni \ref{nap:4.10}.
+Podsjetimo se na oznake u napomeni \ref{nap:4.10}.
 
 \begin{defn}    \label{defn:8.1}
     Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, $\urePar{E}{\famE}$ izmjeriv prostor, $T \neq \varnothing$ skup indeksa.
-    \emph{$E$-zna\v cni stohasti\v cki} (ili \emph{slu\v cajni}) \emph{proces} je svako preslikavanje $X : \Omega \to E^T$ koje je $\urePar{\famF}{\famE^T}$-izmjerivo.
+    \emph{$E$-zna\v cni stohasti\v cki} (ili \emph{slu\v cajni}) \emph{proces} je svako preslikavanje
+    \begin{equation*}
+        X : \Omega \to E^T
+    \end{equation*}
+    koje je $\urePar{\famF}{\famE^T}$-izmjerivo.
     Ako je $T$ beskona\v can i prebrojiv, obi\v cno ka\v zemo da je $X$ \emph{$E$-zna\v cni slu\v cajni niz}, a ako je $T$ kona\v can, ka\v zemo da je $X$ \emph{$E$-zna\v cni slu\v cajni vektor}.
-    Ako je $E = \extReal$, $\famE = \borel{\extReal}$, umjesto rije\v ci "$E$-zna\v cni" koristimo rije\v c "pro\v sireni", a ako jo\v s postoji $A \in \famF, \; \vjeroj{A} = 0$, takav da je $\unija{t \in T}{} \{ |\pi_t \circ X| = \infty \} \subseteq A$, tada se rije\v c "$E$-zna\v cni" u gornjoj definicij izbacuje.
+    Ako je $E = \extReal$, $\famE = \borel{\extReal}$, umjesto rije\v ci "$E$-zna\v cni" koristimo rije\v c "pro\v sireni", a ako jo\v s postoji $A \in \famF, \; \vjeroj{A} = 0$, takav da je
+    \begin{equation*}
+        \unija{t \in T}{} \{ |\pi_t \circ X| = \infty \} \subseteq A,
+    \end{equation*}
+    tada se rije\v c "$E$-zna\v cni" u gornjoj definicij izbacuje.
 \end{defn}
 
 \begin{nap} \label{nap:8.2}
     \begin{enumerate}[label=(\alph*)]
         \item Umjesto $\pi_t \circ X$ naj\v ce\v s\' ce koristimo oznaku $X_t$ i stohasti\v cki proces promatramo kao familiju $E$-zna\v cnih funkcija $\niz{X_t}{t \in T}$.
-        Po propoziciji \ref{prop:4.9} $X$ je $E$-zna\v cni stohasti\v cki proces ako i samo ako su sve $X_t$ $E$-zna\v cni slu\v cajni elementi.
+        Po propoziciji \ref{prop:4.9}, $X$ je $E$-zna\v cni stohasti\v cki proces ako i samo ako su sve $X_t$ $E$-zna\v cni slu\v cajni elementi.
         \item Mo\v ze se dogoditi da $\urePar{T}{\famT}$ ima strukturu izmjerivog prostora.
         Tada je mogu\' ca jo\v s jedna interpretacija stohasti\v ckog procesa $\niz{X_t}{t \in T}$.
-        Ponovo se (neprecizno!) koristi slovo $X$ za preslikavanje $X : T \times \Omega \to E$, definirano sa $X \urePar{t}{\omega} := X_t (\omega)$.
-        Re\' ci \' cemo da je stohasti\v cki proces \emph{izmjeriv} ako je ovako definirani $X$ $\urePar{\famT \otimes \famF}{\famE}$-izmjeriv.
+        Ponovo se (neprecizno!) koristi slovo $X$ za preslikavanje
+        \begin{equation*}
+            X : T \times \Omega \to E,
+        \end{equation*}
+        definirano sa
+        \begin{equation*}
+            X \urePar{t}{\omega} := X_t (\omega).
+        \end{equation*}
+        Re\' ci \' cemo da je stohasti\v cki proces $\niz{X_t}{t \in T}$ \emph{izmjeriv} ako je ovako definirani $X$ $\urePar{\famT \otimes \famF}{\famE}$-izmjeriv.
         Uo\v cimo (po \eqref{jed:4.7}) da za svako $\urePar{\famT \otimes \famF}{\famE}$-preslikavanje $X$ vrijedi da su sve $X_t$ slu\v cajni elementi u $E$ to jest $\niz{X_t}{t \in T}$ je $E$-zna\v cni stohasti\v cki proces.
         Obrat op\' cenito ne vrijedi.
         \item Ako je $T \subseteq \overline{\Z}$ ili $T \subseteq \extReal$, obi\v cno $t \in T$ interpretiramo kao vrijeme.
-        Za svaki $\omega \in \Omega$ promatramo preslikavanje $T \ni t \mapsto X_t (\omega) \in E$ koje nazivamo \emph{trajektorijom} ("sample path") procesa $X$.
+        Za svaki $\omega \in \Omega$ promatramo preslikavanje
+        \begin{equation*}
+            T \ni t \mapsto X_t (\omega) \in E,
+        \end{equation*}
+        koje nazivamo \emph{trajektorijom} ("sample path") procesa $X$.
         Ako $E$ ima i topolo\v sku strukturu obi\v cno se promatraju i neka "analiti\v cka" svojstva trajektorije (neprekidnost, neprekidnost slijeva, neprekidnost zdesna, limesi i sli\v cno).
         Naj\v ces\v s\' ci su slu\v cajevi
         \begin{itemize}
@@ -55,7 +74,7 @@ Op\' cenito vrijedi
         \implies\\
         \notimpliedby
     \end{smallmatrix}
-    \textnormal{ista distribucija}
+    \textnormal{jednaka distribuiranost}
 \end{equation*}
 Za\v sto vrijedi ova zadnja implikacija?
 Kada su $\masP_X$ i $\masP_Y$ jednaki?
@@ -71,7 +90,7 @@ Relacija \eqref{jed:8.3} sugerira da se mo\v zemo ograni\v citi na kona\v cne ko
 Preciznije, neka je $J \subseteq T$, $J$ kona\v can i neprazan.
 
 \begin{defn}
-    Ozna\v cimo sa $\famE^{T, \: \pi_J} = \indSigAlg{\pi_t}{t \in J}$ $\sigma$-algebru (na $E^T$) i sa $\masP_{X, \: J} = \restr{\masP}{\famE^{T, \: \pi_J}}$ restrikciju od $\masP$ na $\famE^{T, \: \pi_J}$.
+    Ozna\v cimo sa $\famE^{T, \: \pi_J} = \indSigAlg{\pi_t}{t \in J}$ $\sigma$-algebru (na $E^T$) i sa $\masP_{X, \: J} = \restr{\masP_X}{\famE^{T, \: \pi_J}}$ restrikciju od $\masP_X$ na $\famE^{T, \: \pi_J}$.
 \end{defn}
 
 Uo\v cimo da je jednostavno direktno poistovjetiti mjeru $\masP_{X, \: J}$ sa mjerom na kona\v cnom produktu $\urePar{E^J}{\famE^J}$.
@@ -86,7 +105,7 @@ Iz \eqref{jed:8.3} direktno slijedi:
     $E$-zna\v cni stohasti\v cki procesi $X$ i $Y$ su jednaki po distribuciji ako i samo ako su im sve kona\v cno-dimenzionalne distribucije jednake.
 \end{tm}
 
-Promatramo li $\masP_{X, \: J}$ kao mjeru na $\urePar{E^J}{\famE^J}$ mo\v zemo iskoristiti teorem \ref{tm:7.4} i teorem \ref{tm:8.5} kako bismo opisali jednakost po distribuciji u nezavisnom slu\v caju (za jedno\v clane $J = \{j\}$ uvodimo oznaku $\masP_{X, \: J} = \masP_{X, \: j}$ i uo\v cimo da se $\masP_{X, \: J}$ mo\v ze poistovjetiti sa $\masP_{X_j}$).
+Promatramo li $\masP_{X, \: J}$ kao mjeru na $\urePar{E^J}{\famE^J}$ mo\v zemo iskoristiti teorem \ref{tm:7.4} i teorem \ref{tm:8.5} kako bismo opisali jednakost po distribuciji u nezavisnom slu\v caju (za jedno\v clane $J = \{j\}$ uvodimo oznaku $\masP_{X, \: J} = \masP_{X, \: j}$ i uo\v cimo da se $\masP_{X, \: j}$ mo\v ze poistovjetiti sa $\masP_{X_j}$).
 
 \begin{kor} \label{kor:8.6}
     Neka je $\niz{X_t}{t \in T}$ $E$-zna\v cni stohasti\v cki proces i nezavisna familija slu\v cajnih elemenata.
@@ -95,10 +114,15 @@ Promatramo li $\masP_{X, \: J}$ kao mjeru na $\urePar{E^J}{\famE^J}$ mo\v zemo i
 \end{kor}
 
 \v Sto re\' ci o egzistenciji procesa uz zadane distribucije?
-Ako su za svaki $\varnothing \neq J \subseteq T$, $J$ kona\v can, zadane vjerojatnosti $\masP_J$ na $\famE^{T, \: \pi_J}$, potrebna nam je barem \emph{konzistentnost}, to jest na $\varnothing \neq J \subseteq  I \subseteq T$, te su $J$, $I$ kona\v cni,
-\begin{equation}    \label{jed:8.7}
-    \restr{\masP_I}{\famE^{T, \: \pi_J}} = \masP_J.
-\end{equation}
+Ako su za svaki $\varnothing \neq J \subseteq T$, $J$ kona\v can, zadane vjerojatnosti $\masP_J$ na $\famE^{T, \: \pi_J}$, potrebna nam je barem konzistentnost.
+
+\begin{defn}    \label{defn:8.6-1}
+    Neka je $\niz{\masP_J}{J \subseteq T, \; J \neq \varnothing, \; \card{J} < \infty}$ familija vjerojatnosti, ka\v zemo da je ona \emph{konzistentna} ako za svake $I$, $J$ vrijedi $\varnothing \neq J \subseteq  I \subseteq T$, te su $J$, $I$ kona\v cni,
+    \begin{equation}    \label{jed:8.7}
+        \restr{\masP_I}{\famE^{T, \: \pi_J}} = \masP_J.
+    \end{equation}
+\end{defn}
+ 
 Zaista, ako vrijedi \eqref{jed:8.7} nije te\v sko vidjeti da je sa
 \begin{equation*}
     \nu (A) := \masP_J (A), \quad A \in \prsten{E^T} \cap \famE^{T, \: \pi_j},
@@ -117,7 +141,7 @@ Na primjer:
 
 \begin{proof}{(Skica)}
     Zbog kona\v cne aditivnosti dovoljno je dokazati da za svaki niz $\niz{A_n}{n \in \nat} \subseteq \prsten{E^T}$, takav da je
-    $A_1 \supseteq A_2 \supseteq \ldots$ i $\presjek{n}{} A_n \neq \varnothing$ vrijedi $\lim\limits_{n \to +\infty} \nu (A_n) = 0$.
+    $A_1 \supseteq A_2 \supseteq \ldots$ i $\presjek{n}{} A_n = \varnothing$ vrijedi $\lim\limits_{n \to +\infty} \nu (A_n) = 0$.
     U suprotnom postojao bi $\varepsilon \geq 0$ i $\nu (A_n) \geq \varepsilon, \; \forall n \in \nat$.
     Tada se $A_n$ mogu dovoljno dobro aproksimirati odozdo kompaktima $C_n$ (po $\masP_J$, a time i po $\nu$) i dijagonalni postupak (kompaktnost je va\v zna!) po koordinatama daje to\v cku "u presjeku" $C_n$-ova, a time u $\presjek{n}{} A_n$.
 \end{proof}
@@ -125,8 +149,11 @@ Na primjer:
 Iz leme \ref{lm:8.6} i prethodne diskusije slijedi:
 
 \begin{tm}[Kolmogorov]    \label{tm:8.9}
-    Za svaku konzistentnu familiju vjerojatnosti\\
-    $\niz{\masP_J}{J \subseteq T, \; J \neq \varnothing, \; \card{J} < \infty}$ na $\urePar{E^T}{\famE^T}$ pri \v cemu je $E$ potpun separabilan metri\v cki prostor i $\famE = \borel{E}$, postoji i jedinstvena je vjerojatnost $\masP$ na $\urePar{E^T}{\famE^T}$ takva da je za svaki $\varnothing \neq J \subseteq T$, $J$ kona\v can, $\restr{\masP}{\famE^{T, \: \pi_J}} = \masP_J$.
+    Za svaku konzistentnu familiju vjerojatnosti
+    \begin{equation*}
+        \bigNiz{\masP_J}{J \subseteq T, \; J \neq \varnothing, \; \card{J} < \infty}
+    \end{equation*}
+    na $\urePar{E^T}{\famE^T}$ pri \v cemu je $E$ potpun separabilan metri\v cki prostor i $\famE = \borel{E}$, postoji i jedinstvena je vjerojatnost $\masP$ na $\urePar{E^T}{\famE^T}$ takva da je za svaki $\varnothing \neq J \subseteq T$, $J$ kona\v can, $\restr{\masP}{\famE^{T, \: \pi_J}} = \masP_J$.
 \end{tm}
 
 \begin{nap} \label{nap:8.10}
@@ -145,8 +172,7 @@ Iz leme \ref{lm:8.6} i prethodne diskusije slijedi:
 
 \begin{proof}
     Podsjetimo se da za $E$ postoji Borelov skup $A \subseteq \segment{0}{1}$ i bijekcija $f : E \to A$ takav da su $f$ i $f^{-1}$ izmjerive u paru $\sigma$-algebri $\famE =  \borel{E}$ i $\borel{A}$.
-    Dakle, bez smanjenja op\' cenitosti uzmemo $E \subseteq \segment{0}{1}$. Neka je $h(x) = x$, $h: \segment{0}{1} \to \segment{0}{1}$.
-    To je onda uniformno distribuirana slu\v cajna varijabla i po zadatku \ref{zad:7.20} njene binarne znamenke tvore niz $\niz{h_n}{n \in \nat}$ nezavisnih jednako distribuiranih Bernoullijevih slu\v cajnih varijabli.
+    Dakle, bez smanjenja op\' cenitosti uzmemo $E \subseteq \segment{0}{1}$. Neka je $h: \segment{0}{1} \to \segment{0}{1}$, $h(x) = x$, to je uniformno distribuirana slu\v cajna varijabla i po zadatku \ref{zad:7.20} njene binarne znamenke tvore niz $\niz{h_n}{n \in \nat}$ nezavisnih jednako distribuiranih Bernoullijevih slu\v cajnih varijabli.
     Preuredimo niz $(h_n)$ u beskona\v cnu matricu $\niz{h_{ij}}{i, \; j \in \nat}$ (kao na primjer u bijekciji izme\dj u $\nat$ i $\nat \times \nat$).
     Za svaki $i \in \nat$ je $\niz{h_{ij}}{n \in \nat}$ niz nezavisnih Bernoulijevih slu\v cajnih varijabli.
     Definiramo
@@ -154,7 +180,7 @@ Iz leme \ref{lm:8.6} i prethodne diskusije slijedi:
         g_i := \suma{j \in \nat}{} 2^{-j} h_{ij}.
     \end{equation*}
     Po korolaru \ref{kor:8.6} slijedi da je $g_i \distJed h$, to jest svaka $g_i$ je uniformno distribuirana na $\segment{0}{1}$.
-    Po korolaru \ref{kor:7.9} $\indFamilija{g_i}{i \in \nat}$ tvore nezavisnu familiju slu\v cajnih varijabli.
+    Po korolaru \ref{kor:7.9} $\indFamilija{g_i}{i \in \nat}$ \v cine nezavisnu familiju slu\v cajnih varijabli.
     Za svaki $i \in \nat$, $\masP$ odre\dj uje p.d.F. $F_i$, pa kao u propoziciji \ref{prop:7.18} stavimo
     \begin{equation*}
         f_i (x) := \sup \skup{r \in \real}{F_i (r) < x}

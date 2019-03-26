@@ -2,8 +2,8 @@
 
 \chapter{Bernoullijeva razdioba i primjene}
 
-Najjednostavnija slu\v cajna varijavla je degenerirana.
-Budu\' ci je suma degeneriranih ponovo degenerirana, lako je opisati \v sto se doga\dj a s degeneriranim slu\v cajem.
+Najjednostavnija slu\v cajna varijabla je degenerirana.
+Budu\' ci je suma degeneriranih slu\v cajnih varijabli ponovo degenerirana slu\v cajna varijabla, lako je opisati \v sto se doga\dj a s degeneriranim slu\v cajem.
 Prvi slu\v caj u kojem se javalja "prava slu\v cajnost" je razdijoba s dvije mogu\' ce vjerojatnosti
 
 \begin{equation*}
@@ -19,7 +19,22 @@ Prvi slu\v caj u kojem se javalja "prava slu\v cajnost" je razdijoba s dvije mog
 \end{equation*}
 Budu\' ci je lako $a$ i $b$ transformirati u neke druge vrijednosti $c$, $d$, promatrati \' cemo slu\v caj kada je $a = 0$, $b = 1$ ili $a = -1$, $b = 1$.
 Takva distribucija naziva se Bernoullijeva (\v svicarska matemati\v cka obitelj s preko deset matemati\v cara, nije uvijek jasno tko je \v sto radio); uglavnom u \v cast Jakoba Bernoullija (1654 - 1705).
-Podsjetimo se da, ako su $X_1, \ldots, X_n$ nezavisne i za svaki $1 \leq i \leq n$, $X_i \sim \begin{pmatrix} 0 & 1\\ q & p \end{pmatrix}$, tada je $S_n := X_1 + \ldots + X_n$, binomna slu\v cajna varijabla, to jest $S_n \sim B \urePar{n}{p}$ i za $k \in \{0, \; 1, \ldots, n \}$ $\vjeroj{S_n = k} = {n \choose k} p^k q^{n - k}$.
+Podsjetimo se da, ako su $X_1, \ldots, X_n$ nezavisne i za svaki $1 \leq i \leq n$,
+\begin{equation*}
+    X_i \sim
+    \begin{pmatrix}
+        0 & 1\\
+        q & p
+    \end{pmatrix},   
+\end{equation*}
+tada je
+\begin{equation*}
+    S_n := X_1 + \ldots + X_n \quad \sim B \urePar{n}{p}
+\end{equation*}
+binomna slu\v cajna varijabla i za $k \in \{0, \; 1, \ldots, n \}$
+\begin{equation*}
+    \vjeroj{S_n = k} = {n \choose k} p^k q^{n - k}.
+\end{equation*}
 Za ovakve ra\v cune \v cesto koristimo Stirlingovu formulu.
 
 \begin{zad} \label{zad:10.1}
@@ -29,22 +44,36 @@ Za ovakve ra\v cune \v cesto koristimo Stirlingovu formulu.
         n! = \sqrt{2 \pi} \: n^{n + \frac{1}{2}} e^{-n + \varepsilon_n}
     \end{equation*}
     pri \v cemu je $\frac{1}{12 n + 1} < \varepsilon_n < \frac{1}{12 n}$.
-    Zato za aproksimaciju uzmemo:
+\end{zad}
+
+Zato za aproksimaciju uzmemo:
     \begin{equation*}
         n! \approx \sqrt{2 \pi} \: n^{n + \frac{1}{2}} e^{-n}
     \end{equation*}
-    i kako je $n$ ve\' ci, aproksimacija je sve bolje (na primjer za $n = 10$, gre\v ska je $0.8\%$, a za $n = 100$ iznosi $0.08\%$).
-\end{zad}
+i kako je $n$ ve\' ci, aproksimacija je sve bolje (na primjer za $n = 10$, gre\v ska je $0.8\%$, a za $n = 100$ iznosi $0.08\%$).
 
 \begin{pr}  \label{pr:10.2}
-    Pozivi pristi\v zu u telefonski centralu na slu\v cajan na\v cin (ili automobili kroz kontrolnu to\v cku na autoputu, ili kupci u du\' can; op\' cenito "klijenti" nekog "servisa").
+    Pozivi pristi\v zu u telefonsku centralu na slu\v cajan na\v cin (ili automobili kroz kontrolnu to\v cku na autoputu, ili kupci u du\' can; op\' cenito "klijenti" nekog "servisa").
     Razumno je pretpostaviti da nema "dogovora" me\dj u korisnicima, to jest da se radi o \emph{nezavisnim} slu\v cajnim pojavama.
     Obi\v cno imamo ve\' ci broj podataka, pa se mo\v ze odrediti "vjerojatnost pojave barem jednog klijenta u jedinici vremena" $= p \in \obInt{0}{1}$.
     Sli\v cno, mo\v zemo izmjeriti "prosje\v cno vrijeme koje protekne izme\dj u pojave dva uzastopna klijenta" $= \mu \in \obInt{0}{+\infty}$.
     Uo\v cimo da $\lambda := \frac{1}{\mu}$ mo\v zemo interpretirati kao frekvenciju $=$ "prosje\v can broj dospjelih poziva u jedinici vremena".
-    Promatramo vremenski interval u jedini\v cne duljine i stavimo $I_0^1 = 1$ (uspjeh) ako se u intervalu javi bar jedan korisnik, a $I_0^1 = 0$ (neuspjeh), u suprotnom $\implies I_0^1 \sim \begin{pmatrix} 0 & 1\\ q & p \end{pmatrix}$, sa $q:= 1 - p$.
-    Promatrajmo sada vremensku skalu $t \in \lijInt{0}{+\infty}$, tako da za svaki interval jedini\v cne duljine oblika $\lijInt{n - 1}{n}$ imamo slu\v cajnu varijablu $I_0^n$ koj amjeri uspjeh ili neuspjeh ovisno o tome je li u $\lijInt{n - 1}{n}$ do\v slo do barem jednog poziva ili ne.
-    Tada $\niz{I_0^n}{n \in \nat}$ tovre niz nezavisnih, jednako distribuiranih slu\v cajnih varijabli $I_0^n \sim \begin{pmatrix}0 & 1\\ q & p \end{pmatrix}$.
+    Promatramo vremenski interval jedini\v cne duljine i stavimo $I_0^1 = 1$ (uspjeh) ako se u intervalu javi bar jedan korisnik, a $I_0^1 = 0$ (neuspjeh), u suprotnom, dakle:
+    \begin{equation*}
+    I_0^1 \sim
+    \begin{pmatrix} 0 & 1\\
+        q & p \end{pmatrix},
+    \end{equation*}
+    sa $q:= 1 - p$.
+    Promatrajmo sada vremensku skalu $t \in \lijInt{0}{+\infty}$, tako da za svaki interval jedini\v cne duljine oblika $\lijInt{n - 1}{n}$ imamo slu\v cajnu varijablu $I_0^n$ koja mjeri uspjeh ili neuspjeh ovisno o tome je li u $\lijInt{n - 1}{n}$ do\v slo do barem jednog poziva ili ne.
+    Tada $\niz{I_0^n}{n \in \nat}$ tvore niz nezavisnih, jednako distribuiranih slu\v cajnih varijabli
+    \begin{equation*}
+        I_0^n \sim
+        \begin{pmatrix}
+            0 & 1\\
+            q & p
+        \end{pmatrix}.
+    \end{equation*}
     Ozna\v cimo li s $T_0^n =$ "vrijeme (interval) $n$-tog poziva", intuitivno je prihvatljivo da su $\niz{T_0^n}{n \in \nat}$ nezavisne i jednako distribuirane.
     Dakle $T_0^1 \distJed T_0^n$ i vrijedi
     \begin{equation*}
@@ -54,10 +83,19 @@ Za ovakve ra\v cune \v cesto koristimo Stirlingovu formulu.
         \end{aligned} 
     \end{equation*}
     Ovakva razdioba naziva se \emph{geometrijskom}.
+
     Vr\v simo sada induktivno korake "profinjenja" tako da u svakom koraku podjelimo postoje\' ce intervale na pola.
-    Dakle, u $l$-tom koraku dobijemo intervale duljine $\frac{1}{2^l}$ te varijable $\niz{I_l^n}{n \in \nat}$ koje su nezavisne i jednako distribuirane $I_l^n \sim \begin{pmatrix} 0 & 1 \\ q_l & p_l \end{pmatrix}$ (uspjeh ili neuspjeh u $\lijInt{\frac{n - 1}{2^l}}{\frac{n}{2^l}}$) i $\niz{T_l^n}{n \in \nat}$ vremena $n$-tog poziva u "mre\v zi fino\' ce $\frac{1}{2^l}$".
+    Dakle, u $l$-tom koraku dobijemo intervale duljine $\frac{1}{2^l}$ te varijable $\niz{I_l^n}{n \in \nat}$ koje su nezavisne i jednako distribuirane
+    \begin{equation*}
+        I_l^n \sim
+        \begin{pmatrix}
+            0 & 1 \\
+            q_l & p_l
+        \end{pmatrix}
+    \end{equation*}
+    (uspjeh ili neuspjeh u $\lijInt{\frac{n - 1}{2^l}}{\frac{n}{2^l}}$) i $\niz{T_l^n}{n \in \nat}$ vremena $n$-tog poziva u "mre\v zi fino\' ce $\frac{1}{2^l}$".
     Dakle, $\vjeroj{T_l^n = m} = p_l \: q_l^{m - 1}$, a stvarno vrijeme $n$-tog poziva je $\frac{m}{2^l}$.
-    Koja je veza $p_l$ i $p$?
+    Koja je veza izme\dj u $p_l$ i $p$?
     Uo\v cimo
     \begin{equation*}
         \begin{aligned}
@@ -84,34 +122,65 @@ Za ovakve ra\v cune \v cesto koristimo Stirlingovu formulu.
             p =& 1 - e^{-\lambda}.
         \end{aligned}
     \end{equation*}
-    Potpuno analogno mogli bi gledati svako vrieme $t>0$ i dobili bismo
+    Potpuno analogno mogli bi gledati svako vrijeme $t>0$ i dobili bismo
     \begin{equation*}
         p(t) = \vjeroj{T^1 \leq t} = 1 - e^{- \lambda \: t},
     \end{equation*}
-    to jest svaka $T^n \sim Exp(\lambda)$.
+    to jest, svaka $T^n \sim Exp(\lambda)$.
 
     Promatramo li broj poziva ostvarenih do momenta $t = 1$ i ozna\v cimo sa $N_1$, slijedi da je za $k \in \nat_0$
     \begin{equation*}
         \begin{aligned}
-            \vjeroj{N_1 = k} &= \lim\limits_{l \to \infty} \vjeroj{\suma{m = 1}{2^l} I_l^m = k } = \lim\limits_{l \to \infty} {2^l \choose k} p_l^k \: q_l^{2^l - k}\\
+            \vjeroj{N_1 = k} &= \lim\limits_{l \to \infty} \masP \Big(\suma{m = 1}{2^l} I_l^m = k \Big) = \lim\limits_{l \to \infty} {2^l \choose k} p_l^k \: q_l^{2^l - k}\\
             &= \lim\limits_{l \to \infty} \frac{1}{k!} \cdot (q_l)^{2^l} \cdot (2^l) \: (2^l - 1) \ldots (2^l - k + 1) \cdot \big( \frac{p_l}{q_l} \big)^k\\
-            &= \frac{e^{-\lambda}}{k!} \cdot 1^k \cdot \big[ \lim\limits_{l \to \infty} \frac{p_l \: 2^l}{q_l} \big]^k\\
+            &= \frac{e^{-\lambda}}{k!} \cdot 1^k \cdot \Big[ \lim\limits_{l \to \infty} \frac{p_l \: 2^l}{q_l} \Big]^k\\
             &= \frac{e^{-\lambda}}{k!} \: \lambda^k.
         \end{aligned}
     \end{equation*}
-    Sli\v cno za $t > 0$ dobivamo $\vjeroj{N_t = k} = \frac{(\lambda \: t)^k}{k!} \: e^{-\lambda}$.
-    Dakle geometrijska $\leadsto$ eksponencijalna, binomna $\leadsto$ Poissonova.
-    Informacija o $T^n$ se mo\v ze \v citati iz $N_t$ i obratno jer $\big\{ \suma{k = 1}{n} T^k \leq t \big\} = \{ N_t \geq n \}$.
+    Sli\v cno za $t > 0$ dobivamo
+    \begin{equation*}
+        \vjeroj{N_t = k} = \frac{(\lambda \: t)^k}{k!} \: e^{-\lambda}.
+    \end{equation*}
+    Dakle imamo:
+    \begin{equation*}
+        \textnormal{geometrijska} \leadsto \textnormal{eksponencijalna, binomna} \leadsto \textnormal{Poissonova}.
+    \end{equation*}
+    Informacija o $T^n$ se mo\v ze \v citati iz $N_t$ i obratno jer 
+    \begin{equation*}
+        \Big\{ \suma{k = 1}{n} T^k \leq t \Big\} = \{ N_t \geq n \}.
+    \end{equation*}
     Stohasti\v cki proces $\niz{N_t}{t \geq 0}$ je \emph{Poissonov proces s parametrom $\lambda > 0$}.
 \end{pr}
 
-U primjeru \ref{pr:10.2} promatrali smo Bernoullijeve slu\v cajne varijable kod kojih se vjerojatnost uspjeha mjenja na svakom nivoz i bila je uskla\dj ena s veli\v cinom $l$ tako da $\frac{p_l}{\frac{q}{2^l}} \xrightarrow[l \to \infty]{} \lambda$.
-Pogledajmo tipi\v cni slu\v ca primjer u koje se $p$ ne mjenja.
+U primjeru \ref{pr:10.2} promatrali smo Bernoullijeve slu\v cajne varijable kod kojih se vjerojatnost uspjeha mjenja na svakom nivou i bila je uskla\dj ena s veli\v cinom $l$ tako da
+\begin{equation*}
+    \frac{p_l}{\frac{1}{2^l}} \xrightarrow[l \to \infty]{} \lambda.
+\end{equation*}
+Pogledajmo tipi\v can slu\v caj primjera u koje se $p$ ne mjenja.
 
 \begin{pr}
-    Neka je $\niz{X_n}{n \in \nat} \; \iid$ za koji vrijedi $X_n \sim \begin{pmatrix} -1 & 1\\ q & p \end{pmatrix}$, $0 < p < 1$ i $q = 1 - p$. Vidjeli smo u poglavlju \ref{zakoni_01} da se takav niz uvijek mo\v ze realizirati (i to \v cak na $\segment{0}{1}$).
-    Ovaj niz je model "beskona\v cne igre" u \v cijem svakom koraku dobijemo ili izgubimo nav\v canu jedinicu (primjene ovog modela su puno \v sire od "hazardnih igara").
-    Neka je $S_n =$ "na\v se dokumentirano bogatstvo u trenutku $n$", to jest bez smanjenja op\' cenitosti uzimamo $S_0 = 0$, a za $n \in \nat$, $S_n = X_1 + \ldots + X_n$; uo\v cimo da je lako promatrati neku drugu po\v cetnu razdiobu $Y$ - samo uzmemo $V_n = Y + S_n$.
+    Neka je $\niz{X_n}{n \in \nat} \; \iid$ za koji vrijedi
+    \begin{equation*}
+        X_n \sim
+        \begin{pmatrix}
+            -1 & 1\\
+            q & p
+        \end{pmatrix},
+    \end{equation*}
+    $0 < p < 1$ i $q = 1 - p$. Vidjeli smo u poglavlju \ref{zakoni_01} da se takav niz uvijek mo\v ze realizirati (i to \v cak na $\segment{0}{1}$).
+    Ovaj niz je model "beskona\v cne igre" u kojoj u svakom koraku dobijemo ili izgubimo nov\v canu jedinicu (primjene ovog modela su puno \v sire od "hazardnih igara").
+    Neka je
+    \begin{equation*}
+        S_n = \textnormal{"na\v se dokumentirano bogatstvo u trenutku $n$"},
+    \end{equation*}
+    to jest bez smanjenja op\' cenitosti uzimamo
+    \begin{equation*}
+        \begin{aligned}
+            S_0 &= 0,\\
+            S_n &= X_1 + \ldots + X_n, \quad n \in \nat;
+        \end{aligned}
+    \end{equation*}
+    uo\v cimo da je lako promatrati neku drugu po\v cetnu razdiobu $Y$ - samo uzmemo $V_n = Y + S_n$.
     O\v cito, ako je $n$ paran, $S_n$ mo\v ze posti\' ci samo parne vrijednosti izme\dj u $-n$ i $n$, te za $k = 0, \: 1, \ldots, n$ imamo
     \begin{equation*}
         \vjeroj{S_n = -n + 2K} = {n \choose k} p^k \: q^{n - k},
@@ -121,35 +190,73 @@ Pogledajmo tipi\v cni slu\v ca primjer u koje se $p$ ne mjenja.
     Uo\v cimo da je funkcija $f(\omega) := \limsup\limits_{n \to \infty} S_n(\omega)$ pro\v sirena slu\v cajna varijabla.
     Promatrajmo $\overline{\real}^{\infty}$ i skup $A_c \subseteq \overline{\real}^\infty$, za $c \in \real$, definiran sa
     \begin{equation*}
-        A_c := \skup{(r_n) \in \overline{\real}^\infty}{\limsup\limits_{n \to \infty} r_n \leq c}.
+        A_c := \bigSkup{(r_n) \in \overline{\real}^\infty}{\limsup\limits_{n \to \infty} r_n \leq c}.
     \end{equation*}
     Ako je $p$ kona\v cna permutacija od $\nat$, tada poredak prvih kona\v cno brojeva ne\' ce utjecati na limes superior, pa je $\praslika{f} (A_c) = A_c$, to jest $A_c \in (\borel{\real}^\infty)_\simetr$.
-    Budu\' ci su $(X_n) \; \iid$ po Hewitt-Savageovom zakon slijedi da je $\{f \leq c\} \in \praslika{X} (\borel{\real}^\infty)_\simetr$.
-    To jest $f$ je izmjeriva s obzirom na trivijalnu $\sigma$-algebru.
-    Po lemi \ref{lm:9.6} postoji to\v cno jedan $b \in \extReal$, takav da je $\limsup\limits_{n \to \infty} S_n = b \; (g.s.)$.
-    Na isti na\v cin dobijemo $\liminf\limits_{n \to \infty} S_n = a \; (g.s.)$ i vrijedi $a, \; b \in \extReal$, $a \leq b$.
-    Sli\v cno zaklju\v cujemo i slu\v caj skupa $A_B := \skup{(r_n) \in \extReal^\infty}{(r_n) \textnormal{ u $B$ beskona\v cno puta}}$, pri\v cemu je $B \in \borel{\extReal}$. Opet po Hewitt-Savage-ovom zakonu vrijedi:
+    Budu\' ci su $(X_n) \; \iid$ po Hewitt-Savageovom zakon slijedi da je
     \begin{equation*}
-        \vjeroj{S_n \in B \; \io} \in \{0, \; 1\},
+        \{f \leq c\} \in \praslika{X} (\borel{\real}^\infty)_\simetr.
     \end{equation*}
-    gdje $\io$ ozna\v cava "beskona\v cno mnogo puta" (eng. infinitely often).
+    To jest $f$ je izmjeriva s obzirom na trivijalnu $\sigma$-algebru.
+    Po lemi \ref{lm:9.6} postoji to\v cno jedan $b \in \extReal$, takav da je
+    \begin{equation*}
+        \limsup\limits_{n \to \infty} S_n = b \; (g.s.).
+    \end{equation*}
+    Na isti na\v cin dobijemo
+    \begin{equation*}
+        \liminf\limits_{n \to \infty} S_n = a \; (g.s.),
+    \end{equation*}
+    i vrijedi $a, \; b \in \extReal$, $a \leq b$.
+    Sli\v cno zaklju\v cujemo u slu\v caju skupa
+    \begin{equation*}
+        A_B := \bigSkup{(r_n) \in \extReal^\infty}{(r_n) \textnormal{ u $B$ beskona\v cno puta}},
+    \end{equation*}
+    pri \v cemu je $B \in \borel{\extReal}$.
+    Opet po Hewitt-Savage-ovom zakonu vrijedi:
+    \begin{equation*}
+        \vjeroj{S_n \in B \; \io} \in \{0, \; 1\}.
+    \end{equation*}
+    % \limsup\limits_{n \to \infty} \{ S_n \in B\} ?= S_n \in B \; \io
 
     Mo\v ze li biti $b \in \real$?
-    Uo\v cimo prvo da zbog nezavisnosti i jednake distribuiranosti $(X_1, \; X_2, \ldots) = \distJed (X_2, \; X_3, \ldots)$ \v sto daje $\limsup\limits_{n \to \infty} (S_{n + 1} - X_1) = b (g.s.)$.
+
+    Uo\v cimo prvo da zbog nezavisnosti i jednake distribuiranosti $(X_1, \; X_2, \ldots) \distJed (X_2, \; X_3, \ldots)$ \v sto daje 
+    \begin{equation*}
+        \limsup\limits_{n \to \infty} (S_{n + 1} - X_1) = b \; (g.s.).
+    \end{equation*}
     Stoga dobivamo:
     \begin{equation*}
-        \begin{aligned}
-            b &= \limsup\limits_{n \to \infty} S_{n + 1} = \limsup\limits_{n \to \infty} \big[ (S_{n + 1} - X_1) + X_1 \big]\\
-            &= b + X_1 \; (g.s.)\\
-            \implies X_1 &= 0 \; (g.s.),
-        \end{aligned}
+        \begin{gathered}
+            \begin{aligned}
+                b &= \limsup\limits_{n \to \infty} S_{n + 1}\\
+                &= \limsup\limits_{n \to \infty} \big[ (S_{n + 1} - X_1) + X_1 \big]\\
+                &= b + X_1 \; (g.s.)
+            \end{aligned}\\
+            \implies X_1 = 0 \; (g.s.),
+        \end{gathered}
     \end{equation*}
     \v sto je kontradikcija.
-    Dakle, $b \in \{-\infty, \; +\infty\}$.
-    Posebno, ako je $b = -\infty$, ttada je $\lim\limits_{n  \to \infty} S_n = -\infty \; (g.s.)$ i ako je $a = + \infty$, tada $\lim\limits_{n \to \infty} S_n = +\infty \; (g.s.)$.
-    Ako je $a = -\infty$, $b = +\infty$, tada $(g.s.)$ trajektorije osciliraju sve vi\v se i vi\v se.
+    Dakle, $a, b \in \{-\infty, \; +\infty\}$.
 
-    Ako je $p = q = \frac{1}{2}$, tada je $(-X_1, \; -X_2, \ldots) = \distJed (X_1, \; X_2, \ldots)$, pa je $\limsup\limits_{n \to \infty} (-S_n) = \limsup\limits_{n \to \infty} S_n = b$, a s druge strane je $\limsup\limits_{n \to \infty} (-S_n) = - \liminf\limits_{n \to \infty} S_n = -a$, a kako ne mo\v ze biti $b = -a$ i $b = a$ istovremeno, mora biti $a = -\infty$, $b = +\infty$.
+    Posebno, ako je $b = -\infty$ i $a = + \infty$, tada
+    \begin{equation*}
+        \begin{aligned}
+            \lim\limits_{n  \to \infty} S_n &= -\infty \; (g.s.)\\
+            \lim\limits_{n \to \infty} S_n &= +\infty \; (g.s.).
+        \end{aligned}
+    \end{equation*}
+    Ako je $a = -\infty$, $b = +\infty$, tada gotovo sigurno trajektorije osciliraju sve vi\v se i vi\v se.
+
+    Ako je $p = q = \frac{1}{2}$, tada je $(-X_1, \; -X_2, \ldots) \distJed (X_1, \; X_2, \ldots)$, pa je
+    \begin{equation*}
+        \limsup\limits_{n \to \infty} (-S_n) = \limsup\limits_{n \to \infty} S_n = b,
+    \end{equation*}
+    a s druge strane je
+    \begin{equation*}
+        \limsup\limits_{n \to \infty} (-S_n) = - \liminf\limits_{n \to \infty} S_n = -a,
+    \end{equation*}
+    a kako ne mo\v ze biti $b = -a$ i $b = a$ istovremeno, mora biti $a = -\infty$, $b = +\infty$.
+    %istraži malo ove limsup i liminf
 
     Ako je $p \neq q$, onda promatramo $\varepsilon > 0$ i vrijedi
     \begin{equation*}
@@ -177,11 +284,17 @@ Vidjet \' cemo uskoro da mo\v zemo dobiti i preciznije odgovore.
 Uo\v cimo da u nekim od ovih dokaza nije bila va\v zna precizna distribucija; to \' cemo precizirati u sljede\' cem zadatku.
 
 \begin{zad} \label{zad:10.4}
-    Neka je $(X_n) \; \iid$ niz, $S_0 = 0$, $S_n = X_1 + \ldots + S_n$.
+    Neka je $(X_n) \; \iid$ niz, $S_0 = 0$, $S_n = X_1 + \ldots + X_n$.
     Doka\v zi:
     \begin{enumerate}[label=(\alph*)]
         \item $(\exists c \in \extReal)\; \limsup\limits_{n \to \infty} S_n = c \; (g.s.)$
         \item Ako $X_n$ nije degeneriran u $0$, tada je $c \in \{-\infty, \; +\infty\}$.
-        \item Ako $X_n$ nije degeneriran u $0$ i simetri\v can je (tj. $X_n \distJed - X_n$), tada je $\liminf\limits_{n \to \infty} S_n = - \infty \; (g.s.)$ i $\limsup\limits_{n \to \infty} S_n = +\infty \; (g.s.)$
+        \item Ako $X_n$ nije degeneriran u $0$ i simetri\v can je (tj. $X_n \distJed - X_n$), tada vrijedi
+        \begin{equation*}
+            \begin{aligned}
+                \liminf\limits_{n \to \infty} S_n &= - \infty \; (g.s.)\\
+                \limsup\limits_{n \to \infty} S_n &= +\infty \; (g.s.)
+            \end{aligned}
+        \end{equation*}
     \end{enumerate}
 \end{zad}
