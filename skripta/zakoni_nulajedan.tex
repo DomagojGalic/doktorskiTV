@@ -1,6 +1,6 @@
 % zakoni 0 - 1
 
-\chapter{Zakoni 0 - 1}  \label{zakoni_01}
+\chapter{Zakoni 0-1}  \label{zakoni_01}
 
 \begin{pr}[majmun za pisa\' cim strojem]  \label{pr:9.1}
     Zamislimo majmuna koji nasumica tipka po pisa\' cem stroju sa $M$ tipki.
@@ -23,9 +23,42 @@
     \end{equation*}
 \end{pr}
 
+\begin{nap} \label{nap:9.1-1}
+    Prisjetimo se, neka je $\niz{A_n}{n \in \nat}$ niz skupova, tada su limes superior i limes inferior definirani sa:
+    \begin{enumerate}[label=(\roman*)]
+        \item $\liminf\limits_{n \to \infty} A_n := \unija{n = 1}{\infty} \Bigg( \presjek{k = n}{\infty} A_k \Bigg)$
+        \item $\limsup\limits_{n \to \infty} A_n := \presjek{n = 1}{\infty} \Bigg( \unija{k = n}{\infty} A_k \Bigg)$
+    \end{enumerate}
+\end{nap}
+
+Korisna je sljede\' ca karakterizacija limesa inferior i limesa superior
+
+\begin{prop}    \label{prop:9.1-2}
+    Neka je $\niz{A_n}{n \in \nat}$ niz podskupova od $\Omega$.
+    Neka je za svaki $\omega \in \Omega$:
+    \begin{equation*}
+        K_\omega := \skup{n \in \nat}{\omega \in A_n},
+    \end{equation*}
+    tada vrijedi:
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\omega \in \limsup\limits_{n \to \infty} A_n \iff \card{K_\omega} = \infty$,
+        \item $\omega \in \liminf\limits_{n \to \infty} A_n \iff \card{\nat \setminus K_\omega} < +\infty$.
+    \end{enumerate}
+\end{prop}
+
+Odnosno elementarni doga\dj aj se nalazi u limes superioru niza ako se nalazi u beskona\v cno mnogo doga\dj aja tog niza, dok se elementarni doga\dj aj nalazi u limes inferioru niza ako se nalazi u svima, osim eventualno kona\v cno mnogo elemenata tog niza.
+
+Is tog razloga koristimo kraticu $\io$ (eng. infinitely often) za limes superior niza.
+
 \begin{lm}[Borel - Cantelli]  \label{lm:9.2}
-    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor i $\niz{A_n}{n \in \nat} \subseteq \famF$ niz doga\dj aja za koje vrijedi $\suma{n = 1}{\infty} \vjeroj{A_n} < +\infty$.
-    Tada je $\vjeroj{A_n \; i.o.} = \vjeroj{\limsup\limits_{n \to +\infty} A_n} = 0$.
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor i neka je $\niz{A_n}{n \in \nat} \subseteq \famF$ niz doga\dj aja za koje vrijedi
+    \begin{equation*}
+        \suma{n = 1}{\infty} \vjeroj{A_n} < +\infty.
+    \end{equation*}
+    Tada je
+    \begin{equation*}
+        \vjeroj{A_n \; i.o.} := \vjeroj{\limsup\limits_{n \to +\infty} A_n} = 0.
+    \end{equation*}
 \end{lm}
 
 \begin{proof}
@@ -35,7 +68,7 @@
         \begin{aligned}
             \suma{n = 1}{\infty} \masE [ \karaktFja_{A_n} ] &= \suma{n = 1}{\infty} \vjeroj{A_n}\\
             &= (\textnormal{prema LTMK-u})\\
-            &= \masE [\suma{n = 1}{\infty} \karaktFja_{A_n}] < +\infty.
+            &= \masE \Big[ \suma{n = 1}{\infty} \karaktFja_{A_n} \Big] < +\infty.
         \end{aligned}
     \end{equation*}
     Tada $(\exists C \in \famF)$ takav da je $\vjeroj{C} = 1$ i da je $\suma{n = 1}{\infty} \karaktFja_{A_n}(\omega) < +\infty$, $\forall \omega \in C$
@@ -58,7 +91,7 @@
 \begin{proof}
     Prema lemi \ref{lm:9.2} dovoljno je pokazati tvrdnju
     \begin{equation*}
-        \suma{n = 1}{\infty} \vjeroj{A_n} = \infty \implies \vjeroj{A_n \; \io} = 1.
+        \suma{n = 1}{\infty} \vjeroj{A_n} = + \infty \implies \vjeroj{A_n \; \io} = 1.
     \end{equation*}
     Diskusijom toka funkcije $h(x) = e^{-x} + x - 1$ mo\v ze se pokazati nejednakost
     \begin{equation*}
@@ -67,7 +100,7 @@
     Sada imamo:
     \begin{equation*}
         \begin{aligned}
-            \vjeroj{\unija{k \geq n}{} A_k} &= 1 - \vjeroj{\presjek{k \geq n}{} A_k^c} = (\textnormal{prema zadatku \ref{zad:6.14}})\\
+            \masP \Big(\unija{k \geq n}{} A_k \Big) &= 1 - \masP \Big( \presjek{k \geq n}{} A_k^c \Big) = (\textnormal{prema zadatku \ref{zad:6.14}})\\
             &= 1 - \produkt{k \geq n}{} (1 - \vjeroj{A_k})\\
             &\geq 1 - e^{- \suma{k \geq n}{} \vjeroj{A_k}}\\
             &= 1
@@ -76,7 +109,7 @@
     To povla\v ci:
     \begin{equation*}
         \begin{aligned}
-            \vjeroj{A_n \; \io} &= \vjeroj{\presjek{n \in \nat}{} \unija{k \geq n}{} A_k} = \lim\limits_{n \to \infty} \vjeroj{\unija{k \geq n}{} A_k}\\
+            \masP ( A_n \; \io ) &= \masP \Big( \presjek{n \in \nat}{} \unija{k \geq n}{} A_k \Big) = \lim\limits_{n \to \infty} \masP \Big( \unija{k \geq n}{} A_k \Big)\\
             &= 1.
         \end{aligned}
     \end{equation*}
@@ -103,10 +136,26 @@ Dodavanje ili oduzimanje proizvoljnog broja trivijalnih $\sigma$-algebri ne\' ce
 \end{lm}
 
 \begin{proof}
-    Za svaki $n \in \nat$, $E = \unija{j \in \nat}{} B_j^n$, pri \v cemu je ovo disjunktna unija Borelovih skupova i $\diam{B_j^n} < \frac{1}{n}$, za svaki $j \in \nat$.
+    Za svaki $n \in \nat$, $E$ mo\v zemo prikazati kao
+    \begin{equation*}
+        E = \unija{j \in \nat}{} B_j^n,
+    \end{equation*}
+    pri \v cemu je ovo disjunktna unija Borelovih skupova i za svaki $j \in \nat$ vrijedi
+    \begin{equation*}
+        \diam{B_j^n} < \frac{1}{n}.
+    \end{equation*}
     Tada su $\{ X \in B_j^n \}$ u $\sigma$-algebri $\famG$, pa su im vjerojatnosti $0$ ili $1$.
-    $1 = \vjeroj{\Omega} = \suma{j \in \nat}{} = \vjeroj{X \in B_{j(n)^n}} = 1 \implies \vjeroj{X \in \presjek{n \in \nat}{} B_{j(n)}^n} = 1 \implies \presjek{n \in \nat}{} B_{j(n)}^n \neq \varnothing$.
-    S druge strane $\diam{\presjek{n \in \nat}{}B_{j(n)}^n} = 0 \implies (\exists x \in E) \; \presjek{n \in \nat}{} B_{j(n)}^n = \{ x \}$.
+    \begin{equation*}
+        \begin{aligned}
+            1 &= \vjeroj{\Omega} = \suma{j \in \nat}{} \vjeroj{X \in B_{j(n)}^n} \implies\\
+            \masP \Big( X \in \presjek{n \in \nat}{} B_{j(n)}^n \Big) &= 1 \implies\\
+            \presjek{n \in \nat}{} B_{j(n)}^n &\neq \varnothing
+        \end{aligned}
+    \end{equation*}
+    S druge strane
+    \begin{equation*}
+        \diam{\presjek{n \in \nat}{}B_{j(n)}^n} = 0 \implies (\exists x \in E) \; \presjek{n \in \nat}{} B_{j(n)}^n = \{ x \}.
+    \end{equation*}
 \end{proof}
 
 \begin{defn}    \label{defn:9.7}
