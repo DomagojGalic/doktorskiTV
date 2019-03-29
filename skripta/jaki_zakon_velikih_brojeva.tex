@@ -1,0 +1,348 @@
+% jaki zakon velikih brojeva poglavlje 14
+
+\chapter{Jaki zakoni velikih brojeva}
+
+U ovom poglavlju $\niz{X_n}{n \in \nat}$ je niz nezavisnih jednako distribuiranih slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$ i neka je
+\begin{equation*}
+    S_n := X_1 + \ldots + X_n, \quad n \in \nat.
+\end{equation*}
+Nadalje za $0 < p < 2$ i za $n \in \nat$, ozna\v cavamo
+\begin{equation*}
+    Y_{n, p} := n^{-\frac{1}{p}} X_n \cdot \karaktFja_{\Big\{|X_n| \leq n^\frac{1}{p} \Big\}}.
+\end{equation*}
+To zna\v ci da je za svaki $0 < p < 2$, $\niz{Y_{n, p}}{n \in \nat}$ niz nezavisnih slu\v cajnih varijabli.
+Nadalje, budu\' ci da su $Y_{n, p}$ ome\dj ene slu\v cajne varijable, one posjeduju momente svakog reda.
+
+\begin{tm}  \label{tm:14.1}
+    Ako postoji $0 < p < 2$ takav da je $\masE \Big[ |X_1|^p \Big] < +\infty$, tada
+    \begin{equation*}
+        \suma{n = 1}{\infty} \Big( \frac{X_n}{n^\frac{1}{p}} - \masE Y_{n, p} \Big)
+    \end{equation*}
+    konvergira gotovo sigurno.
+    
+    Ako uz to vrijedi da je $0 < p < 1$ (ili $1 < p <2$ i $\masE X_1 = 0$), tada
+    \begin{equation*}
+        \suma{n = 1}{\infty} \frac{X_n}{n^\frac{1}{p}}
+    \end{equation*}
+    konvergira gotovo sigurno.
+\end{tm}
+
+\begin{proof}
+    Neka je $\alpha \in \{1, 2\}$, te neka je $p < \alpha$.
+    Za $j \in \nat$,
+    \begin{equation*}
+        A_j := \bigSkup{\omega \in \Omega}{(j - 1)^\frac{1}{p} < |X_1 (\omega)| \leq j^\frac{1}{p}}.
+    \end{equation*}
+    Tada je
+    \begin{equation*}
+        \begin{aligned}
+            \suma{n = 1}{\infty} \masE \Big[ |Y_{n, p}|^\alpha \Big] &= \suma{n = 1}{\infty} \suma{j = 1}{n} \frac{1}{n^\frac{\alpha}{p}} \int_{A_j} |X_1|^\alpha \: d \masP =
+            \begin{smallmatrix}
+                \textnormal{Fubini za}\\
+                \textnormal{sume } \geq 0
+            \end{smallmatrix}
+            = \suma{j = 1}{\infty} \suma{n = j}{\infty} n^{- \frac{\alpha}{p}} \int_{A_j} |X_1|^\alpha \: d \masP\\
+            &= \suma{j = 1}{\infty} \int_{A_j} |X_1|^\alpha \Big( \suma{n = j}{\infty} n^{-\frac{\alpha}{p}} \Big) \: d \masP \leq
+            \begin{smallmatrix}
+                \textnormal{integralni}\\
+                \textnormal{test za redove}
+            \end{smallmatrix}\\
+            &\leq \suma{j = 1}{\infty} \int_{A_j} |X_1|^\alpha \: d \masP \Big( \frac{1}{j^\frac{\alpha}{p}} + \int_j^\infty \frac{du}{u^\frac{\alpha}{p}}\Big) = \suma{j = 1}{\infty} \int_{A_j} |X_1|^\alpha \: d \masP \cdot \Big( \frac{1}{j^\frac{\alpha}{p}} + \frac{1}{j^{\frac{\alpha}{p} - 1}} \cdot \frac{p}{\alpha - p} \Big)\\
+            &= \suma{j = 1}{\infty} \int_{A_j} \Bigg[ \frac{|X_j|}{ \underbrace{j^\frac{1}{p}}_{\leq 1}} \Bigg]^{\alpha - p} \cdot |X_1|^p \: d \masP \cdot \Big( \underbrace{\frac{1}{j}}_{\leq 1} + \frac{p}{\alpha - p} \Big) \leq \suma{j = 1}{\infty} \int_{A_j} |X_1|^p \: d \masP \cdot \frac{\alpha}{\alpha - p}\\
+            &= \frac{\alpha}{\alpha - p} \cdot \masE \big[ |X_1|^p \big] < +\infty.
+        \end{aligned}
+    \end{equation*}
+    Uzmemo prvo $\alpha = 2$ i po teoremu \ref{tm:13.12} primjenjenom na $\niz{Y_{n, p}}{n \in \nat}$ dobivamo
+    \begin{equation*}
+        \suma{n = 1}{\infty} (Y_{n, p} - \masE Y_{n, p})
+    \end{equation*}
+    konvergira gotovo sigurno.
+    Uo\v cimo
+    \begin{equation*}
+        \suma{n = 1}{\infty} \masP \Big( \frac{X_n}{n^\frac{1}{p}} \neq Y_{n, p} \Big) = \suma{n = 1}{\infty} \masP (|X_1| > n^\frac{1}{p}) \neq \masE [ |X_1|^p ] < +\infty,
+    \end{equation*}
+    dakle nizovi $\bigNiz{\frac{X_n}{n^\frac{1}{p}}}{n \in \nat}$ i $\niz{Y_{n, p}}{n \in \nat}$ su ekvivalentni.
+    Stoga
+    \begin{equation*}
+        \suma{n = 1}{\infty} \Big( \frac{X_n}{n^\frac{1}{p}} - \masE Y_{n, p} \Big)
+    \end{equation*}
+    konvergira gotovo sigurno.
+
+    Neka je sada $1 < p < 2$ i $\masE X_1 = 0$.
+    Dobivamo
+    \begin{equation*}
+        \begin{aligned}
+            \suma{n = 1}{\infty} |\masE Y_{n, p}| &\overset{\textnormal{jer } \masE X_n = 0}{\leq}
+            \suma{n = 1}{\infty} n^{-\frac{1}{p}}
+            \int_{\Big\{ |X_n| > n^\frac{1}{p} \Big\}} |X_n| \: d \masP =
+            \begin{smallmatrix}
+                \textnormal{isti izvod kao gore}\\
+                \textnormal{uz } X_1 \distJed X_n
+            \end{smallmatrix}\\
+            &= \suma{n = 1}{\infty} \suma{i = n + 1}{\infty} n^\frac{1}{p} \int_{A_j} |X_1| \: d \masP = \suma{j = 2}{\infty} \suma{n = 1}{j - 1} n^{-\frac{1}{p}} \int_{A_j} |X_1| \: d \masP\\
+            &\leq \suma{j = 2}{\infty} \int_{A_j} |X_1| \: d \masP \Big( \underbrace{\int_0^{j-1} \frac{du}{u^\frac{1}{p}} }_{\frac{p}{p - 1} (j - 1)\frac{p - 1}{p}} \Big) =
+            \begin{smallmatrix}
+                \textnormal{dodamo } j = 1 \textnormal{, jer}\\
+                \textnormal{je } j - 1 = 0
+            \end{smallmatrix}\\
+            &= \frac{p}{p - 1} \suma{j = 1}{\infty} (j - 1)^\frac{p - 1}{p} \int_{A_j} |X_1| \: d \masP \leq
+            \begin{smallmatrix}
+                \textnormal{kao u gornjem}\\
+                \textnormal{izvodu}
+            \end{smallmatrix}
+            \leq \frac{p}{p - 1} \suma{j = 1}{\infty} \int_{A_j} |X_1| \: d \masP\\
+            &= \frac{p}{p - 1} \masE [ |X_1|^p ] < + \infty.
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+\begin{tm}[Marcinkiewicz-Zygmundov jaki zakon]  \label{tm:14.2}
+    Postoji konstanta $c \in \real$, takva da
+    \begin{equation*}
+        \frac{S_n - nc}{n^\frac{1}{p}} \xrightarrow[n \to \infty]{g.s.} 0,
+    \end{equation*}
+    ako i samo ako je
+    \begin{equation*}
+        \masE [ |X_1|^p ] < + \infty.
+    \end{equation*}
+    Ako je jo\v s uz to $1 \leq p < 2$, tada je $c = \masE X_1$.
+    Ako je uz gornju tvrdnju jo\v s $0 < p <1$, tvrdnja vrijedi za svaki $c \in \real$ (posebno i za $c = 0$).
+\end{tm}
+
+\begin{proof}
+    Ako za neki $c \in \real$, vrijedi
+    \begin{equation*}
+        \frac{S_n - nc}{n^\frac{1}{p}} \xrightarrow[n \to \infty]{g.s.} 0,
+    \end{equation*}
+    tada je
+    \begin{equation*}
+        \frac{X_n}{n^\frac{1}{p}} = \frac{S_n - nc}{n^\frac{1}{p}} - \Big( \frac{n - 1}{n} \Big)^\frac{1}{p} \cdot \frac{S_{n - 1} - nc}{(n - 1)^\frac{1}{p}} \xrightarrow[n \to \infty]{g.s.} 0.
+    \end{equation*}
+    Dobivamo
+    \begin{equation*}
+        \masP \Big( \Big| \frac{X_n}{n^\frac{1}{p}} \Big| \geq 1 \; \io \Big) = 0.
+    \end{equation*}
+    Po Borelovom zakonu 0-1 imamo
+    \begin{equation*}
+        \begin{gathered}
+            \suma{n = 1}{\infty} \masP ( |X_1|^p \geq n ) \overset{\iid}{=} \suma{n = 1}{\infty} \masP (|X_1| \geq n^\frac{1}{p}) < +\infty\\
+            \implies \quad \masE [ |X_1|^p ] < +\infty.
+        \end{gathered}
+    \end{equation*}
+    Ako je $1 < p <2$ i $\masE |X_1|^p < +\infty$, onda po teoremu \ref{tm:14.1} red
+    \begin{equation*}
+        \suma{n = 1}{\infty} \frac{X_n - \masE X_n}{n^\frac{1}{p}}
+    \end{equation*}
+    konvergira gotovo sigurno.
+
+    Ako je $p = 1$ i $\masE |X_1|^p < +\infty$, sada po teoremu \ref{tm:14.1} dobivamo da red
+    \begin{equation*}
+        \suma{n = 1}{\infty} \frac{X_n - \masE \Big[ X_n \cdot \karaktFja_{\{ |X_n| \leq n \}} \Big]}{n}
+    \end{equation*}
+    konverigra gotovo sigurno, dakle za $0 < p <1$ i $\masE |X_1|^p < \infty$ dobivamo konvergenciju gotovo sigurno
+    \begin{equation*}
+        \suma{n = 1}{\infty} \frac{X_n}{n^\frac{1}{p}}.
+    \end{equation*}
+    
+    Za $p \neq 1$ rezultat slijedi direktno iz Kroneckerove leme (lema \ref{lm:13.10-1}) za $c = 0$ ili $c = \masE X_1$.
+
+    Za $p = 1$, zbog $\iid$ imamo
+    \begin{equation*}
+        \masE \Big[ X_n \karaktFja_{\{ |X_n| \leq n \}} \Big] = \masE \Big[ X_1 \karaktFja_{\{ |X_1| \leq n \}} \Big] \xrightarrow[n \to \infty]{} \masE X_1. 
+    \end{equation*}
+    Po Kronekerovoj lemi (\ref{lm:13.10-1})
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \frac{1}{n} \Big( S_n - \suma{j = 1}{n} \masE \big[ X_j \karaktFja_{\{ |X_j| \leq j \}} \big] \Big) = 0 \; (g.s.)
+    \end{equation*}
+    Uo\v cimo da za $0 < p < 1$ i za $c \in \real$ imamo
+    \begin{equation*}
+        \frac{n \cdot c}{n^\frac{1}{p}} \xrightarrow[n \to \infty]{} 0,
+    \end{equation*}
+    pa smo u potpunosti dokazali teorem.
+\end{proof}
+
+Primjenimo li gornji teorem na slu\v caj $p = 1$ dobivamo:
+
+\begin{kor}[Kolmogorovljev jaki zakon] \label{kor:14.3}
+    \begin{equation*}
+        \frac{S_n}{n} \; \textnormal{ konvergira } (g.s.) \quad \iff \quad \masE [|X_1|] < + \infty.
+    \end{equation*}
+    U tom slu\v caju mora biti
+    \begin{equation*}
+        \frac{S_n}{n} \xrightarrow[n \to \infty]{g.s.} \masE X_1.
+    \end{equation*}
+\end{kor}
+
+\begin{nap} \label{nap:14.4}
+    Kolmogorovljev jaki zakon je fundamentalni teorem u ovom pristupu vjerojatnosti.
+    Njegova interpretacija je u skladu s na\v som intuitivnom predod\v zbom o vjerojatnosti kao "relativnoj frekvenciji".
+    Pretpostavimo da vr\v simo eksperiment i zanima nas doga\dj aj $A$ koji \' ce se dogoditi s nekom vjerojatno\v s\' cu $\vjeroj{A} = p$.
+    Vr\v simo nezavisna ponavljanja pokusa i u $n$-tom ponavljanju stavimo $X_n := \karaktFja_A$.
+    Tada je $\niz{X_n}{n \in \nat}$ nezavisan i jednako distribuiran niz slu\v cajnih varijabli i
+    \begin{equation*}
+        \masE [|X_1|] = \masE X_1 = p < + \infty.
+    \end{equation*}
+    Po Kolmogorovljevom jakom zakonu velikih brojeva (korolar \ref{kor:14.3}) vrijedi
+    \begin{equation*}
+        \begin{matrix}
+            \textnormal{"relativna frekvencija"}\\
+            \textnormal{doga\dj aja } A
+        \end{matrix}
+        = \frac{S_n}{n} \xrightarrow[n \to \infty]{g.s.} \masE X_1 = p = \vjeroj{A}.
+    \end{equation*}
+\end{nap}
+
+\begin{nap} \label{nap:14.5}
+    Zapravo vrijedi i ja\v ci teorem, ali ne\' cemo ga dokazivati ovdje.
+    Ako su $\niz{X_n}{n \in \nat}$ jednako distribuirane slu\v cajne varijable koje su u parovima nezavisne i ako je
+    \begin{equation*}
+        \masE [ |X_1| ] < +\infty,
+    \end{equation*}
+    tada
+    \begin{equation*}
+        \frac{S_n}{n} \xrightarrow[n \to \infty]{g.s.} \masE X_1.
+    \end{equation*}
+    % za dokaz vidjeti Zeit. Warsh. Ver. Geb. (1981), 119-122
+\end{nap}
+
+Stavimo li u korolar \ref{kor:14.3} da su
+\begin{equation*}
+    X_n \sim
+    \begin{pmatrix}
+        0 & 1\\
+        \tilde{q} & \tilde{p}
+    \end{pmatrix}
+\end{equation*}
+dobivamo
+
+\begin{kor}[Borelov jaki zakon] \label{kor:14.6}
+    Ako su $\niz{Y_n}{n \in \nat}$ dobiven iz Bernoullijeve sheme i $Y_n \sim B(n, \tilde{p})$, tada
+    \begin{equation*}
+        \frac{Y_n}{n} \xrightarrow[n \to \infty]{g.s.} \tilde{p}.
+    \end{equation*}
+\end{kor}
+
+Koriste\' ci sli\v cne tehnike kao gore (Kronecker) mo\v ze dobiti sljede\' ci rezultat:
+
+\begin{tm}[Kai-Lai Chungov jaki zakon]  \label{tm:14.6-1}
+    Neka je $\niz{Z_n}{n \in \nat}$ niz nezavisnih slu\v cajnih varijabli i $\masE Z_n = 0$, za svaki $n \in \nat$.
+    Ako postoje funkcije
+    \begin{equation*}
+        \varphi_n : \real_+ \to \real_+,
+    \end{equation*}
+    takve da su
+    \begin{equation*}
+        \frac{\varphi_n (t)}{t}, \quad \frac{t^2}{\varphi_n (t)}
+    \end{equation*}
+    neopadaju\' ce funkcije i postoje brojevi $c_n \in \real \setminus \{0\}$ takvi da je
+    \begin{equation*}
+        \suma{n = 1}{\infty} \frac{\masE [ \varphi_n (|Z_n|) ]}{\varphi_n (|c_n|)} < +\infty,
+    \end{equation*}
+    tada red
+    \begin{equation*}
+        \suma{n = 1}{\infty} \frac{Z_n}{c_n}
+    \end{equation*}
+    konvergira gotovo sigurno.
+\end{tm}
+
+Uo\v cimo u prethodnom teoremu nema pretpostavke jednake distribuiransoti.
+
+\begin{zad} \label{zad:14.7}
+    Doka\v zi teorem \ref{tm:14.6-1}
+\end{zad}
+
+\begin{zad} \label{zad:14.8}
+    Neka su $\niz{Z_n}{n \in \nat}$ nezavisne slu\v cajne varijable.
+    Ako vrijedi:
+    \begin{equation*}
+        \begin{gathered}
+            \begin{gathered}
+                0 < \alpha_n < 1\\
+                1 \leq \alpha_n \leq 2, \; \masE Z_n = 0
+            \end{gathered},
+            \quad n \in \nat.
+        \end{gathered}
+    \end{equation*}
+    te ako je
+    \begin{equation*}
+        \suma{n = 1}{\infty} \frac{\masE [|Z_n|^{\alpha_n}]}{n^{\alpha_n}} < +\infty,
+    \end{equation*}
+    tada vrijedi
+    \begin{equation*}
+        \frac{1}{n} \suma{j = 1}{n} Z_j \xrightarrow[n \to \infty]{g.s.} 0.
+    \end{equation*}
+\end{zad}
+(Obrati pa\v znju na slu\v caj $\alpha_n = 2$, $\forall n \in \nat$)
+
+Promotrimo sada situaciju s nizom nezavisnih jednako distribuiranih slu\v cajnih varijabli malo detaljnije.
+Dakle, neka je $X_1 \in L^2 (\masP)$ (to jest svi $X_n$ imaju druge momente).
+Oduzimanjem $\mu := \masE X_1$ lako dolazimo do situacije u kojoj bez smanjanja op\' cenitosti pretpostaviti da je $\masE X_n = 0$, za svaki $n \in \nat$ (time je $\masE S_n = 0$).
+Ozna\v cimo $\masE (X_1^2) = \masE (X_n^2)$ sa $\sigma^2$ i bez smanjenja op\' cenitosti $0 < \sigma^2 < +\infty$.
+
+Tada iz teorema \ref{tm:14.2} slijedi da je za svaki $1 \leq p < 2$
+\begin{equation}    \label{jed:14.9}
+    \frac{S_n}{n^\frac{1}{p}} \xrightarrow[n \to \infty]{g.s.} 0.
+\end{equation}
+To zna\v ci da za gotovo sve $\omega in \Omega$, trajektorija
+\begin{equation*}
+    n \mapsto S_n (\omega),
+\end{equation*}
+za velike $n$, osciliraju manje nego
+\begin{equation*}
+    n \mapsto n^\frac{1}{p}.
+\end{equation*}
+
+%
+%   slika
+%
+
+\begin{zad} \label{zad:14.10}
+    Doka\v zi da uz navedene pretpostavke vrijedi
+    \begin{equation*}
+        \begin{gathered}
+            \limsup\limits_{n \to \infty} \frac{S_n}{\sqrt{n}} = +\infty \; (g.s.)\\
+            \liminf\limits_{n \to \infty} \frac{S_n}{\sqrt{n}} = -\infty \; (g.s.)
+        \end{gathered}
+    \end{equation*}
+\end{zad}
+
+\begin{prop}    \label{prop:14.11}
+    Uz navedene pretpostavke za svaki $\varepsilon > 0$ vrijedi
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \frac{S_n}{\sqrt{n} \cdot (\ln n)^{\frac{1}{2} + \varepsilon}} = 0 \; (g.s.)
+    \end{equation*}
+\end{prop}
+
+\begin{proof}
+    Neka je
+    \begin{equation*}
+        \begin{aligned}
+            a_1 &> 0,\\
+            a_n &= \sqrt{n} \cdot (\ln n)^{\frac{1}{2} + \varepsilon}, \quad n \geq 2.
+        \end{aligned}
+    \end{equation*}
+    Tada je
+    \begin{equation*}
+        \suma{n = 1}{\infty} \Var \Big( \frac{X_n}{a_n} \Big) = \sigma^2 \Big( \frac{1}{a_1^2} + \suma{n = 2}{\infty} \frac{1}{n \: (\ln n)^{1 + 2 \varepsilon}} \Big) < +\infty,
+    \end{equation*}
+    pa prema teoremu \ref{tm:13.12}
+    \begin{equation*}
+        \suma{n = 1}{\infty} \frac{X_n}{a_n}
+    \end{equation*}
+    konvergira gotovo sigurno, pa po Kroneckerovoj lemi (lema \ref{lm:13.10-1})
+    \begin{equation*}
+        \frac{S_n}{a_n} \xrightarrow[n \to \infty]{g.s.} 0.
+    \end{equation*}
+\end{proof}
+
+Uo\v cimo da je
+\begin{equation*}
+    \limsup\limits_{n \to \infty} \frac{|S_n|}{h_n} = \const \; (g.s.)
+\end{equation*}
+za svaki $h_n \nearrow +\infty$.
+
+Pitanje, postoji li $h_n$ tako da je $\const = 1$ je odgovoreno u "zakonu ponovljenog logaritma" uz
+\begin{equation*}
+    h_n = \sigma \cdot \sqrt{2n \: \ln (\ln n)}.
+\end{equation*}
+Pitanje postoji li neka distribucija prema kojoj "konvergira" $\frac{S_n}{h_n}$ tra\v zi detaljniji odgovor.
