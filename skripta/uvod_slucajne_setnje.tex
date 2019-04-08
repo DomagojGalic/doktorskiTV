@@ -1,3 +1,28 @@
-% poglavlje 15 - uvod u slučajne šetnje
+% poglavlje 3.5 -> predavanje 15 - uvod u slučajne šetnje
 
 \chapter{Uvod u slu\v cajne \v setnje}
+
+U ovom poglavlju uzimamo da je $\niz{X_n}{n \in \nat}$ je niz nezavisnih jednako distribuiranih slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$.
+Neka je
+\begin{equation*}
+    \begin{aligned}
+        S_0 &:= 0,\\
+        S_n &:= X_1 + \ldots + X_n, \quad n \in \nat.
+    \end{aligned}
+\end{equation*}
+
+Uo\v cimo da je $\niz{S_n}{n \in \nat}$ mo\v zemo promatrati i kao stohasti\v cki proces, koji nazivamo \emph{slu\v cajnom \v setnjom} (s vrijednostima) u $\real$.
+Parametar $n \in \nat_0$ obi\v cno interpretiramo kao vrijeme.
+Uz tu interpretaciju, zakoni velikih brojeva govore o asimptotskom pona\v sanju \v slu\v cajne \v setnje ("u beskona\v cnosti").
+Iz rezultata u poglavlju \ref{pog:2.5} (posebno primjer \ref{pr:10.3} i zadatak \ref{zad:10.4}) \v citamo da su mogu\' ca \v cetiri osnovna tipa pona\v sanja (trivijalni niz, konvergencija u jednu od beskona\v cnosti i "sve ve\' ce oscilacije").
+Preciznije, dokazali smo teorem.
+
+\begin{tm}  \label{tm:15.1}
+    Ako je $\niz{S_n}{n \in \nat}$ slu\v cajna \v setnja u $\real$, tada vrijedi to\v cno jedna od sljede\' cih mogu\v cnosti (i to je ispunjeno s vjerojatno\v scu 1):
+    \begin{enumerate}[label=(\roman*)]
+        \item $S_n \xrightarrow[n \to \infty]{} 0 \; g.s.,$
+        \item $S_n \xrightarrow[n \to \infty]{} +\infty \; g.s.,$
+        \item $S_n \xrightarrow[n \to \infty]{} -\infty \; g.s.,$
+        \item $\liminf\limits_{n \to \infty} S_n = - \infty \; g.s. \quad$ i $\quad \limsup\limits_{n \to \infty} S_n = + \infty \; g.s.$
+    \end{enumerate}
+\end{tm}
