@@ -1,0 +1,308 @@
+% poglavlje 3.5 -> predavanje 15 - uvod u slučajne šetnje
+
+\chapter{Uvod u slu\v cajne \v setnje}
+
+U ovom poglavlju uzimamo da je $\niz{X_n}{n \in \nat}$ je niz nezavisnih jednako distribuiranih slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$.
+Neka je
+\begin{equation*}
+    \begin{aligned}
+        S_0 &:= 0,\\
+        S_n &:= X_1 + \ldots + X_n, \quad n \in \nat.
+    \end{aligned}
+\end{equation*}
+
+Uo\v cimo da je $\niz{S_n}{n \in \nat}$ mo\v zemo promatrati i kao stohasti\v cki proces, koji nazivamo \emph{slu\v cajnom \v setnjom} (s vrijednostima) u $\real$.
+Parametar $n \in \nat_0$ obi\v cno interpretiramo kao vrijeme.
+Uz tu interpretaciju, zakoni velikih brojeva govore o asimptotskom pona\v sanju \v slu\v cajne \v setnje ("u beskona\v cnosti").
+Iz rezultata u poglavlju \ref{pog:2.5} (posebno primjer \ref{pr:10.3} i zadatak \ref{zad:10.4}) \v citamo da su mogu\' ca \v cetiri osnovna tipa pona\v sanja (trivijalni niz, konvergencija u jednu od beskona\v cnosti i "sve ve\' ce oscilacije").
+Preciznije, dokazali smo teorem.
+
+\begin{tm}  \label{tm:15.1}
+    Ako je $\niz{S_n}{n \in \nat}$ slu\v cajna \v setnja u $\real$, tada vrijedi to\v cno jedna od sljede\' cih mogu\v cnosti (i to je ispunjeno s vjerojatno\v scu 1):
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{tm:15.1.1}
+        $S_n \xrightarrow[n \to \infty]{g.s.} 0,$
+        \item \label{tm:15.1.2}
+        $S_n \xrightarrow[n \to \infty]{g.s.} +\infty,$
+        \item \label{tm:15.1.3}
+        $S_n \xrightarrow[n \to \infty]{g.s.} -\infty,$
+        \item \label{tm:15.1.4}
+        $\liminf\limits_{n \to \infty} S_n = - \infty \; (g.s.), \quad \limsup\limits_{n \to \infty} S_n = + \infty \; (g.s.)$
+    \end{enumerate}
+\end{tm}
+
+\begin{nap} \label{nap:15.2}
+    Poku\v sajmo re\' ci ne\v sto vi\v se o trenu kada \' ce se desiti neke od gornjih mogu\' cnosti.
+    \begin{enumerate}[label=(\alph*)]
+        \item Slu\v caj \ref{tm:15.1.1} je ekvivalentan tome da $(S_n)$ uop\' ce konvergira kona\v cnome limesu, \v sto je ekvivalentno tome da konvergira $X_n \xrightarrow[n \to \infty]{g.s.} 0$, a \v sto je ekvivalentno trivijanom slu\v caju, to jest da je $X_n = 0 \; (g.s.)$, $\forall n \in \nat$ (vidi korolar \ref{kor:11.10}).
+        Dakle slu\v caj \ref{tm:15.1.1} se mo\v ze desiti samo na potpuno trivijan na\v cin.
+        \item Slu\v caj \ref{tm:15.1.4} mo\v ze se desiti kada su $X_n$ simetri\v cne, to jest kada je $X_1 \distJed - X_1$ (vidi zadatak \ref{zad:10.4}).
+        Ali to nije jedini na\v cin kada se slu\v caj \ref{tm:15.1.4} mo\v ze desiti.
+        \item \label{nap:15.2.3}
+        Pretpostavimo da $X_n$ imaju prve momente, to jest da je $X_1 \in L^1(\masP)$.
+        Tada je $\masE X_1 \in \real$ i po Kolmogorovljevom jakom zakonu
+        \begin{equation*}
+            \frac{S_n}{n} \xrightarrow[n \to \infty]{g.s.} \masE X_1.
+        \end{equation*}
+        Posebno, ako je $\masE X_1 > 0$, tada
+        \begin{equation*}
+            S_n \xrightarrow[n \to \infty]{g.s.} +\infty,
+        \end{equation*}
+        a ako je $\masE X_1 < 0$, tada je
+        \begin{equation*}
+            S_n \xrightarrow[n \to \infty]{g.s.} - \infty.
+        \end{equation*}
+        \item Iz \ref{nap:15.2.3} slijedi da ako je $X_1 \in L^1 (\masP)$ i vrijedi slu\v caj \ref{tm:15.1.4} iz teorema \ref{tm:15.1}, tada mora biti $\masE X_1 = 0$.
+        Vrijedi li obrat?
+        Odgovor na ovo pitanje zahtjeva malo detaljniju analizu procesa $(S_n)$.
+        Va\v zan postaje koncept slu\v cajnog vremena.
+    \end{enumerate}
+\end{nap}
+
+Mo\v zemo re\' ci da je "sva informacija do trenutka $n$" koju mo\v zemo dobiti iz slu\v cajne \v setnje sadr\v zana u $\sigma$-algebri
+\begin{equation*}
+    \famF_n = \sigAlg{X_1, \ldots, X_n}.
+\end{equation*}
+
+\begin{defn}    \label{defn:15.2-1}
+    Re\' ci \' cemo da je slu\v cajna varijabla
+    \begin{equation*}
+        N : \Omega \to  \nat_0 \cup \{ +\infty \}
+    \end{equation*}
+    \emph{vrijeme zaustavljanje} ili \emph{opcionalno vrijeme} (u odnosu na slu\v cajnu \v setnju $(S_n)$) ako je za svaki $n \in \nat_0$
+    \begin{equation*}
+        \{ N = n \} \in \famF_n.
+    \end{equation*}
+\end{defn}
+
+\begin{pr}  \label{pr:15.3}
+    Neka je $A \subseteq \real$ Borelov skup.
+    Definiramo
+    \begin{equation*}
+        N := \inf \indFamilija{n \in \nat_0}{S_n \in A},
+    \end{equation*}
+    uz dogovor
+    \begin{equation*}
+        \inf \varnothing = +\infty
+    \end{equation*}
+    O\v cito je $\inf = \max$, pa je
+    \begin{equation*}
+        N: \Omega \to \nat_0 \cup \{+\infty\}.
+    \end{equation*}
+    Za $n \in \nat_0$, vrijedi
+    \begin{equation*}
+        \{ N = n \} = \{ S_0 \in A^c, \ldots, S_{n - 1} \in A^c, S_n \in A \} \; \in \; \famF_n,
+    \end{equation*}
+    pa je $N$ (tipi\v can) primjer zaustavljanja.
+\end{pr}
+
+\begin{zad} \label{zad:15.4}
+    Ako su $N_1$ i $N_2$ vremena zaustavljanja, tada su i
+    \begin{itemize}
+        \item[] $N_1 \land N_2$
+        \item[] $N_1 \lor N_2$
+        \item[] $N_1 + N_2$  
+    \end{itemize}
+    vremena zaustavljanja.
+\end{zad}
+
+\begin{defn}    \label{defn:15.4-1}
+    Neka je $N$ vrijeme zaustavljanja, definiramo
+    \begin{equation}    \label{jed:15.5}
+        \famF_N := \bigIndFamilija{A \in \famF}{A \cap \{N = n\} \in \famF, \; \forall n \in \nat_0 }.
+    \end{equation}
+\end{defn}
+
+Lako se vidi da je $\famF_N \subseteq \famF$ $\sigma$-algebra, te ako su $N_1 \leq N_2$ vremena zaustavljanja, tada je $\famF_{N_1} \subseteq \famF_{N_2}$.
+Posebno, budu\' ci da je $N \equiv n$ tako\dj er vrijeme zaustavljanja, mo\v ze se promatrati $\famF_N$ i $\famF_n$, ali su one u tom slu\v caju jednaka i pi\v semo samo $\famF_n$.
+
+\begin{defn}    \label{defn:15.5-1}
+    Ka\v zemo da je $\niz{Y_n}{n \in \nat}$ niz slu\v cajnih varijabli na $\vjerojatnosniProstor$, \emph{adaptiran u odnosu na slu\v cajnu \v setnju} ako je $Y_n$ $\famF_n$-izmjeriva, za svaki $n \in \nat$.
+\end{defn}
+
+\begin{defn}    \label{defn:15.5-2}
+    Neka je $\niz{Y_n}{n \in \nat}$ niz slu\v cajnih varijabli adaptiran u odnosu na slu\v cajnu \v setnju. Za kona\v cno vrijeme zaustavljanja $N$ definiramo funkciju
+    \begin{equation}    \label{jed:15.6}
+        Y_N (\omega) := Y_{N (\omega)} (\omega), \quad \omega \in \Omega.
+    \end{equation}
+\end{defn}
+
+Tvrdimo da je $Y_N$ slu\v cajna varijabla, koje je $\famF_N$-izmjeriva.
+Neka je $B \subseteq \real$ Borelov skup i neka je $n \in \nat_0$, imamo
+\begin{equation*}
+    \{ Y_N \in B \} = \unija{n \in \nat}{} \{ Y_n \in B \} \cap \{ N = n \},
+\end{equation*}
+a budu\' ci da je $\{ Y_n \in B \} \in \famF_n$, dobivamo
+\begin{equation*}
+    \{ Y_N \in B \} \cap \{ N = n \} = \underbrace{\{Y_n \in B\}}_{\in \famF_n} \cap \underbrace{\{N = n\}}_{\in \famF_n} \in \famF_n.
+\end{equation*}
+
+\begin{defn}    \label{defn:15.5-3}
+    Neka je sada $N$ kona\v cno vrijeme zaustavljanje i $h: \real \to \real$ Borelova funkcija.
+    Definiramo
+    \begin{equation*}
+        \begin{aligned}
+            S_{h, 0} &:= 0\\
+            S_{h, n} &:= \suma{k = 1}{n} h(X_k), \quad n \in \nat.
+        \end{aligned}
+    \end{equation*}
+    Tako\dj er za $n \in \nat_0$ definiramo
+    \begin{equation*}
+        M_{h, n} := \max\limits_{0 \leq k \leq n} S_{h, k}.
+    \end{equation*}
+\end{defn}
+
+Za slu\v caj beskona\v cnosti imamo
+\begin{equation*}
+    M_{h, \infty} := \max\limits_{k \in \nat_0} S_{h, k} = \sup\limits_{n \in \nat_0} M_{h, n}.
+\end{equation*}
+Ako je $h(x) = x$, onda u ovim oznakama ispu\v stamo $h$, te uo\v cimo da je to u skladu s prethodnim oznakama.
+Po pokazanom slijedi da su
+\begin{equation}    \label{jed:15.7}
+    S_{h, N} \; \textnormal{ i } \; M_{h, N} \quad \famF_N \textnormal{-izmjeriva slu\v cajna varijabla},
+\end{equation}
+dok je
+\begin{equation}    \label{jed:15.8}
+    M_{h, \infty} \quad \textnormal{pro\v sirena slu\v cajna varijabla}.
+\end{equation}
+Posebno, $S_N$ je $\famF_N$-izmjeriva slu\v cajna varijabla.
+
+\begin{tm}[Waldova jednakost]  \label{tm:15.9}
+    Ako je $X_1 \in L^1(\masP)$ i $N$ je vrijeme zaustavljanja takvo da je $\masE N < +\infty$, tada je
+    \begin{equation*}
+        \masE S_N = \masE X_1 \cdot \masE N.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Pretpostavimo prvo da je $X_i \geq 0$.
+    $\masE S_N \implies N < +\infty \; (g.s.) \implies$ postoji $S_N$ i vrijedi $S_N \geq 0$.
+    Dakle vrijedi:
+    \begin{equation*}
+        \begin{aligned}
+            \masE S_N & \overset{\textnormal{neneg.}}{=} \suma{n = 0}{\infty} \int_{\{ N = n \}} S_n \; d \masP \overset{S_0 = 0}{=} \suma{n = 1}{\infty} \suma{m = n}{\infty} \int_{\{ N = n \}} X_m \; d \masP\\
+            &= (\textnormal{Fubini}) = \suma{m = 1}{\infty} \suma{n = m}{\infty} \int_{\{ N = n \}} X_m \; d \masP = \suma{m = 1}{\infty} \int_{\{ N \geq m \}} X_m \; d \masP = (\textnormal{nezav.})\\
+            &= \suma{m = 1}{\infty} \masE X_m \cdot \masP (N \geq m) = \masE X_1 \cdot \suma{m = 1}{\infty} \masP (N \geq m) = \masE X_1 \cdot \masE N.
+        \end{aligned}
+    \end{equation*}
+    Za op\' ci slu\v caj imamo
+    \begin{equation*}
+        + \infty > \suma{m = 1}{\infty} \masE (| X_m |) \cdot \masP (N \geq m) = \suma{m = 1}{\infty} \suma{n = m}{\infty} \masE (|X_m|) \cdot \masP (N = n)
+    \end{equation*}
+    pa su zadovoljene pretpostavke Fubinijevog teorema i onda isti izvod kao i gore daje rezulatat.
+\end{proof}
+
+Pro\v sirimo malo ideju do $S_N$ i sli\v cno, tako da za proizvoljno vrijeme zaustavljanja definiramo odgovaraju\' ce varijable samo na skupu $\{ N < + \infty \}$ (recimo na skupu $\{ N = +\infty \}$ je sve po definicij $0$).
+
+\begin{tm} \label{tm:15.10}
+    Ako je $N$ vrijeme zaustavljanja, tada je na skupu $\{ N < +\infty \}$ niz $\niz{X_{N + n}}{n \in \nat}$ nezavisno od $\famF_N$ i jednako distribuiran kao polazni niz $\niz{X_n}{n \in \nat}$.
+\end{tm}
+
+\begin{proof}
+    Treba pokazati da za $A \in \famF_N$ i za $k \in \nat$ i $B_1, \ldots, B_k$ Borelove podskupove od $\real$ vrijedi
+    \begin{equation}    \label{jed:15.11}
+        \begin{aligned}
+            \masP (A, X_{N + 1} \in B_1, \ldots, X_{N + k} \in B_k, N < +\infty) &= \masP (A, N < +\infty) \cdot \produkt{j = 1}{k} \masP (X_j \in B_j)\\
+            &= \masP (A, N < +\infty) \cdot \produkt{j = 1}{k} \masP (X_1 \in B_j)
+        \end{aligned}
+    \end{equation}
+    Uo\v cimo da je $A \cap \{ N = n \} \in \famF_n$ i $\famF_n$ je nezavisna od $\sigAlg{X_{n + 1}, X_{n + 2}, \ldots}$.
+    Dobivamo
+    \begin{equation*}
+        \begin{aligned}
+            \masP (A, X_{N + 1} \in B_1, \ldots, X_{N + k} \in B_k, N < +\infty) &= \suma{n = 0}{\infty} \masP (A, N = n, X_{n + 1} \in B_1, \ldots, X_{n + k} \in B_k)\\
+            &= \suma{n = 0}{\infty} \masP (A, N = n) \cdot \produkt{j = 1}{k} \masP (X_1 \in B_j)\\
+            &= \masP (A, N < +\infty) \cdot \produkt{j = 1}{k} \masP (X_1 \in B_j).
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+\begin{kor} \label{kor:15.12}
+    Neka je
+    \begin{equation*}
+        N := \inf \indFamilija{n \in \nat_0}{S_n > 0}.
+    \end{equation*}
+    Sljede\' ce tvrdnje su ekvivalentne:
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{kor:15.12.1}
+        $\masP (N < + \infty) = 1;$
+        \item \label{kor:15.12.2}
+        $\limsup\limits_{n \to \infty} S_n = +\infty \; (g.s.);$
+        \item \label{kor:15.12.3}
+        $\masP (M_\infty = +\infty) = 1.$
+    \end{enumerate}
+\end{kor}
+
+\begin{proof}
+    \ref{kor:15.12.1} $\implies$ \ref{kor:15.12.2} $N < +\infty \; (g.s.)$ daje $S_N > 0 \; (g.s.)$ (i definirana je).
+    Kada bi $\masE S_N = 0$ imali bismo $S_N = 0 \; (g.s.)$ \v sto je kontradikcija.
+    Dakle $\masE S_N > 0$.
+    Po teoremu \ref{tm:15.10}, gledamo iteracije od $N$ i dobijemo niz nezavisnih jednako distribuiranih slu\v cajnih varijabli $\niz{S_{N_k} - S_{N_{k - 1}}}{k \in \nat}$.
+    Po Kolmogorovljevom jakom zakonu velikih brojeva (korolar \ref{kor:14.3}) vrijedi
+    \begin{equation*}
+        \frac{1}{k} S_{N_k} = \suma{j = 1}{k} \frac{S_{N_j} - S_{N_{j-1}}}{k} \xrightarrow[k \to \infty]{g.s.} \masE S_N > 0,
+    \end{equation*}
+    odakle imamo
+    \begin{equation*}
+        S_{N_k} \xrightarrow[k \to \infty]{g.s.} +\infty \implies \limsup\limits_{n \to \infty} S_n = +\infty \; (g.s.).
+    \end{equation*}
+
+    \ref{kor:15.12.2} $\implies$ \ref{kor:15.12.3} o\v cito, jer $\limsup\limits_{n \to \infty} S_n \leq M_{\infty}$.
+
+    \ref{kor:15.12.3} $\implies$ \ref{kor:15.12.1} o\v cito, jer ako je $M_{\infty} (\omega) < +\infty \implies N (\omega) < +\infty$.
+\end{proof}
+
+\begin{tm}  \label{tm:15.13}
+    Ako je $X_1 \in L^1 (\masP)$, $X_1$ nije degenerirana i $\masE X_1 = 0$, tada je
+    \begin{equation*}
+        \liminf\limits_{n \to \infty} S_n = -\infty \; (g.s.),
+    \end{equation*}
+    te je
+    \begin{equation*}
+        \limsup\limits_{n \to \infty} S_n = +\infty \; (g.s.).
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Bez smanjenja op\' cenitosti mo\v zemo promatrati $\limsup\limits_{n \to \infty} S_n$.
+    Pretpostavimo suprotno, to jest $\limsup\limits_{n \to \infty} S_n = -\infty$, odnosno $S_n \xrightarrow[n \to \infty]{g.s.} -\infty$.
+    To bi zna\v cilo da je $\masP (N = +\infty) = q > 0$ i $M_\infty < +\infty \; (g.s.)$.
+    Neka je
+    \begin{equation*}
+        V := \inf \indFamilija{n \in \nat_0}{S_n = M_\infty}.
+    \end{equation*}
+    Tada je
+    \begin{equation*}
+        \begin{aligned}
+            1 \geq \suma{n = 0}{\infty} \masP (V = n) &= \suma{n = 0}{\infty} \masP (S_j < S_n, 0 \leq j < n, S_k \leq S_n, k > n)\\
+            &= \suma{n = 0}{\infty} \masP \Big[ \Big\{ \suma{i = j + 1}{n} X_i > 0, 0 \leq j < n \Big\} \cap \Big\{  \suma{i = n + 1}{k} X_i \leq 0, k > n \Big\} \Big]\\
+            &= \textnormal{produkt}\\
+            &= \suma{n = 0}{\infty} \masP (X_n > 0, X_n + X_{n-1} > 0, \ldots, X_n + \ldots + X_1 > 0) \cdot \underbrace{\masP (S_j \leq 0, j \geq 0)}_{\masP (N = \infty)}.
+        \end{aligned}
+    \end{equation*}
+    Budu\' ci vrijedi
+    \begin{equation*}
+        (X_n, X_{n - 1}, \ldots, X_1) \distJed (X_1, \ldots, X_n).
+    \end{equation*}
+    Ako definiramo
+    \begin{equation*}
+        \widetilde{N} := \inf \indFamilija{n \in \nat}{S_n \leq 0}.
+    \end{equation*}
+    Sada vrijedi
+    \begin{equation*}
+        \suma{n = 0}{\infty} \masP (V = n) = \suma{n = 0}{\infty} \masP (\widetilde{N} > n) \cdot q \quad (q > 0) \infty \masE \widetilde{N} < +\infty.
+    \end{equation*}
+    Sada po teoremu \ref{tm:15.9}
+    \begin{equation*}
+        \masE S_{\widetilde{N}} = \masE \widetilde{N} \cdot \masE X_1 = 0,
+    \end{equation*}
+    a kako je $S_{\widetilde{N}} \leq 0$, slijdi
+    \begin{equation*}
+        S_{\widetilde{N}} = 0 \; (g.s.).
+    \end{equation*}
+    Sada vrijedi
+    \begin{equation*}
+        \masP (S_{\widetilde{N}} < 0) \geq \masP (X_1 < 0), 
+    \end{equation*}
+    \v sto je ve\' ce od nula jer je $\masE X_1 = 0$ i $X_1$ nije degenerirana, a to nas navodi na kontradikciju.
+\end{proof}
