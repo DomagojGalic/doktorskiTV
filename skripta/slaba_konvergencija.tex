@@ -1,3 +1,58 @@
 % poglavalje 5.1 predavanje 16 - slaba konvergencija
 
 \chapter{Slaba konvergencija}
+
+Neka je
+\begin{equation*}
+    \inc := \bigSkup{f: \real \to \real}{x \leq y \implies f (x) \leq f(y)}.
+\end{equation*}
+Ako je $F$ d.f., tada je $F \in \inc$.
+Ako je $F$ p.f.F., tada je $\restr{F}{\real} \in \inc$, pa u tom smislu kra\' ce pi\v semo da je $F \in \inc$.
+O\v cito za svaku $G \in \inc$ i za svaki $x \in \real$ vrijedi:
+\begin{equation}    \label{jed:16.1}
+    \lim\limits_{y \nearrow x} G(y) := G(x -) \leq G (x) \leq G(x +) := \lim\limits_{y \searrow x} G(y).
+\end{equation}
+Za funkciju $G \in \inc$ ozna\v cimo sa $G^R$ funkciju definiranu s $G^R (x) := G(x+)$.
+Tada je $G^R \in \inc$ te $G^R$ je neprekidna zdesna, pa je $G^R$ d.f.
+Ako je $F$ p.d.F. tada je $F^R = F$.
+
+\begin{defn}  \label{defn:16.1-1}
+    Neka je $G \in \inc$.
+    Ako za $x \in \real$ vrijedi $G(x-) = G(x) = G(x+)$, ka\v zemo da $x$ pripada skupu $C(G)$ \emph{svih to\v caka neprekidnosti} od $G$.     
+\end{defn}
+
+Uo\v cimo da je $\real \setminus C(G)$ najvi\v se prebrojiv, pa je $C(G)$ gust u $\real$.
+Nadalje, vrijedi
+\begin{equation}    \label{jed:16.2}
+    \begin{gathered}
+        G(G) \subseteq C(G^R)\\
+        \restr{G^R}{C(G)} = \restr{G}{C(G)},
+    \end{gathered}
+\end{equation}
+razmislite o jednakosti ovih skupova.
+Lako se vidi da za $G \in \inc$ sljede\' ci limesi postoje u $\extReal$:
+\begin{equation}    \label{jed:16.3}
+    \begin{aligned}
+        G(+\infty) &:= \lim\limits_{x \nearrow +\infty} G(x)\\
+        G(-\infty) &:= \lim\limits_{x \searrow -\infty} G(x)\\
+        G^R(+\infty) &= G(+\infty)\\
+        G^R(-\infty) &= G(-\infty).
+    \end{aligned}
+\end{equation}
+
+Za $0 < a < +\infty$ uvedimo oznake:
+\begin{equation*}
+        \begin{aligned}
+            \Delta G(a) &:= G(a) - G(-a),\\
+            \Delta G &:= G(+\infty) - G(-\infty),
+        \end{aligned}
+\end{equation*}
+te je $\Delta G(a) \in \real$, $\Delta G \in \extReal$, tako\dj er vrijedi:
+\begin{equation}    \label{jed:16.4}
+    0 \leq \Delta G(a) \leq \Delta G = \lim\limits_{a \nearrow +\infty} \Delta G (a) = \lim\limits_{
+        \begin{smallmatrix}
+            a \nearrow +\infty\\
+            a \in C(G)
+        \end{smallmatrix}
+    } \Delta G (a) \leq +\infty.
+\end{equation}
