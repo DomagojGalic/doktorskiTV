@@ -56,3 +56,211 @@ te je $\Delta G(a) \in \real$, $\Delta G \in \extReal$, tako\dj er vrijedi:
         \end{smallmatrix}
     } \Delta G (a) \leq +\infty.
 \end{equation}
+Uo\v cimo da ako je $\Delta G = 1$, onda je $G^R$ u su\v stini p.d.F., modulo pomak za $G(-\infty)$.
+
+\begin{defn}    \label{defn:16.5}
+    Niz $\niz{G_n}{n \in \nat} \subseteq \inc$ \emph{konvergira slabo} prema $G \in \inc$, i pis\v emo:
+    \begin{equation*}
+        G_n \xrightarrow[n \to \infty]{w} G,
+    \end{equation*}
+    ako za svaki $x \in C(G)$ vrijedi:
+    \begin{equation*}
+        \lim\limits_{n \to \infty} G_n(x) = G(x).
+    \end{equation*}
+    Ako $G_n \xrightarrow{w} G$ i ako vrijedi $G_n (\pm \infty) \xrightarrow{} G(\pm \infty)$, tada ka\v zemo da $(G_n)$ \emph{konvergira potpuno} prema $G$, i pi\v semo:
+    \begin{equation*}
+        G_n \xrightarrow[n \to \infty]{c} G.
+    \end{equation*}
+    Ako je $X$ slu\v cajna varijabla na $(\Omega_1, \famF_1, \masP_1)$ i ako je $(X_n)$ niz slu\v cajnih varijabli na $(\Omega_2, \famF_2, \masP_2)$, tada ka\v zemo da $(X_n)$ \emph{konvergira po distribuciji} prema $X$ ako vrijedi
+    \begin{equation*}
+        F_{X_n} \xrightarrow[n \to \infty]{c} F_X
+    \end{equation*}
+    i pi\v semo:
+    \begin{equation*}
+        X_n \xrightarrow[n \to \infty]{d} X.
+    \end{equation*}
+\end{defn}
+
+\begin{nap} \label{nap:16.6}
+    \begin{enumerate}[label=(\alph*)]
+        \item Neka je $(F_n)$ niz p.d.F., tada
+        \begin{equation*}
+            F_n \xrightarrow{w} G \centernot\implies F_n \xrightarrow{c} G.
+        \end{equation*}
+        Na primjer uzmimo $F_n := \karaktFja_{\desInt{n}{+\infty}}$, to jest $\masP(\{n\}) = 1$, daje $F_n \xrightarrow{w} 0$.
+        \item
+        \begin{equation*}
+            X_n \xrightarrow[n \to \infty]{g.s.} X
+            \begin{smallmatrix}
+                \implies\\
+                \notimpliedby
+            \end{smallmatrix}
+            X_n \xrightarrow[n \to \infty]{\masP} X
+            \begin{smallmatrix}
+                \implies\\
+                \notimpliedby
+            \end{smallmatrix}
+            X_n \xrightarrow[n \to \infty]{d} X.
+        \end{equation*}
+        \item   \label{nap:16.6c}
+        Ako $G_n \xrightarrow[n \to \infty]{w} G$, tada
+            \begin{equation*}
+                \limsup\limits_n G_n(-\infty) \leq G(-\infty) \leq G(+ \infty) \leq \liminf\limits_n G(+\infty).
+            \end{equation*}
+            Koriste\' ci \eqref{jed:16.4} dobijemo, za svaki $x \in C(G)$,
+            \begin{equation*}
+                \limsup\limits_n G_n (-\infty) \leq G(x) \leq \liminf\limits_n G_n (+\infty).
+            \end{equation*}
+        \item   \label{nap:16.6d}
+        Ako $G_n \xrightarrow{w} G$, tada je $\Delta G \leq \liminf\limits_n \Delta G_n$.
+        Slijedi direktno iz \ref{nap:16.6c}.
+        \item   \label{nap:16.6e}
+        Ako je $D \subseteq \real$ gust u $\real$ i za svaki $x \in D$ $G_n (x) \xrightarrow{} G (x)$, tada $G_n \xrightarrow{w} G$.
+        Aproksimirajte $x \in C(G)$ to\v ckama iz $D$ odozdo i odozgo.
+        \item Neka je $D \subseteq \real$ gust u $\real$ i neka je $(F_n)$ niz p.d.F. takav da za svaki $x \in D$ postoji limes $\lim\limits_n F_n (x)$.
+        Tada definiramo $G : D \to \segment{0}{1}$, sa 
+        \begin{equation*}
+            G(x) := \lim\limits_{n \to \infty} F_n (x).
+        \end{equation*}
+        O\v cito je $G$ neopadaju\' ca i sli\v cno kao kod $G^R$ definiramo $F:\real \to \segment{0}{1}$ pomo\' cu
+        \begin{equation*}
+            F (x) := \inf\limits_{
+                \begin{smallmatrix}
+                    u \in D\\
+                    x < u
+                \end{smallmatrix}
+            } G(u).
+        \end{equation*}
+        Tada je $F \in \inc$, te vrijedi:
+        \begin{equation*}
+            \begin{gathered}
+                F^R = F\\
+                C(G) \subseteq C(F)\\
+                F(\pm \infty) = G(\pm \infty)\\
+                \restr{F}{D \cap C(G)} = \restr{G}{C(G)},
+            \end{gathered}
+        \end{equation*}
+        te po \ref{nap:16.6e} vrijedi
+        \begin{equation*}
+            F_n \xrightarrow[n \to \infty]{w} F.
+        \end{equation*}
+        Uo\v cimo da je
+        \begin{equation*}
+            0 \leq F(-\infty) \leq F(+\infty) \leq 1.
+        \end{equation*}
+    \end{enumerate}
+\end{nap}
+
+\begin{lm}  \label{lm:16.7}
+    Ako $G_n \xrightarrow{w} G$ i $\Delta G_n < +\infty$, za svaki $n \in \nat$, tada su sljede\' ce tvrdnje ekvivalentne:
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{lm:16.7.1}
+        \begin{equation*}
+            \lim\limits_{n \to \infty} G_n (\pm \infty) = G(\pm \infty) \in \real,
+        \end{equation*}
+        \item \label{lm:16.7.2}
+        \begin{equation*}
+            \lim\limits_{n \to \infty} \Delta G_n = \Delta G < +\infty,
+        \end{equation*}
+        \item \label{lm:16.7.3}
+        \begin{equation*}
+            \lim\limits_{a \nearrow +\infty} \sup\limits_{n \in \nat} [ \Delta G_n - \Delta G_n (a) ] = o(1).
+        \end{equation*}
+    \end{enumerate}
+\end{lm}
+
+\begin{proof}
+    O\v cito $\ref{lm:16.7.1} \implies \ref{lm:16.7.2}$.
+    Doka\v zimo da $\ref{lm:16.7.2} \implies \ref{lm:16.7.1}$.
+    Uo\v cimo,
+    \begin{equation*}
+        \Delta G < +\infty \implies G (\pm \infty) \in \real.
+    \end{equation*}
+    Prema napomeni \ref{nap:16.6c} i $\Delta G_n < +\infty$ slijedi
+    \begin{equation*}
+        \begin{gathered}
+            \begin{aligned}
+                \limsup\limits_{n \to \infty} G_n (+\infty) &:= \limsup\limits_{n \to \infty} [ \Delta G_n + G_n (-\infty) ] = \Delta G + \limsup\limits_{n \to \infty} G_n (-\infty)\\
+                &\leq \Delta G + G (-\infty) = G(+\infty) \leq \liminf\limits_{n \to \infty} G_n(+\infty) 
+            \end{aligned}\\
+            \implies G_n (+\infty) \xrightarrow[n \to \infty]{} G(+\infty).
+        \end{gathered}
+    \end{equation*}
+    Sada "$-\infty$ dio" slijedi direktno.
+
+    Doka\v zimo $\ref{lm:16.7.3} \implies \ref{lm:16.7.2}$. Za svaki $\varepsilon > 0$ takav da za svaki $a \geq a_0$ imamo
+    \begin{equation*}
+        \Delta G_n - \Delta G_n (a) < \varepsilon,
+    \end{equation*}
+    za svaki $n \in \nat$
+    Promatramo samo takve $a$ za koje je $\pm a \in C(G)$, takav skup je gust.
+    Slijedi
+    \begin{equation*}
+        \limsup\limits_{n \to \infty} \Delta G_n \leq \Delta G (a) + \varepsilon < + \infty.
+    \end{equation*}
+    Prema napomeni \ref{nap:16.6d} dobivamo da je $\Delta G$ kona\v can i da za svaki $\varepsilon > 0$
+    \begin{equation*}
+        \limsup\limits_{n \to \infty} \Delta G_n \leq \Delta G + \varepsilon \implies \liminf\limits_{n \to \infty} \Delta G_n \leq \Delta G.
+    \end{equation*}
+    Tvrdnja slijedi po napomeni \ref{nap:16.6d}.
+
+    Doka\v zimo $\ref{lm:16.7.2} \implies \ref{lm:16.7.3}$.
+    Za svaki $\varepsilon > 0$ postoji $n_1 = n_1 (\varepsilon) \in \nat$, takav da
+    \begin{equation*}
+        n \in \nat, \quad n \geq n_1 \implies \Delta G_n - \Delta G < \varepsilon.
+    \end{equation*}
+    Izaberimo $a_0 > 0$, takav da je $\pm a \in C(G)$ i $\Delta G - \Delta G (a_0) < \varepsilon$.
+    Tada postoji $n_2 = n_2 (\varepsilon) \in \nat$ takav da
+    \begin{equation*}
+        n \in \nat, \quad n \geq n_2 \implies \Delta G (a_0) - \Delta G_n (a_0) < \varepsilon.
+    \end{equation*}
+    Uzmemo $n_0 := \max (n_1, n_2)$ i za $n \in \nat$, $n \geq n_0$ vrijedi
+    \begin{equation*}
+        \Delta G_n - \Delta G_n (a_0) < 3 \varepsilon.
+    \end{equation*}
+    Za $1 \leq j \leq n_0$ izaberimo $a_j$ takav da je
+    \begin{equation*}
+        \Delta G_j - \Delta G_j (a_j) < 3 \varepsilon.
+    \end{equation*}
+    Dakle, za $a \geq \max (a_0, a_1, \ldots, a_{n_0 - 1})$ vrijedi
+    \begin{equation*}
+        \sup\limits_{n \in \nat} [ \Delta G_n - \Delta G_n (a) ] < 3 \varepsilon.
+    \end{equation*}
+    \v Sto dokazuje \ref{lm:16.7.3}.
+\end{proof}
+
+\begin{tm}[1. verzija Helly-Bray-ovog teorema]  \label{tm:16.8}
+    Ako je $(F_n)$ niz p.d.F. takav da $F_n \xrightarrow[n \to \infty]{w} F \in \inc$, tada za svaki $a, b \in C(F)$, $a < b$ i za svaku neprekidnu funkciju $g : \segment{a}{b} \to \real$, vrijedi
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \int_a^b g \: d F_n = \int_a^b g \: d F.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Za $a \in C(F)$ je $\mu_F (\{ a \}) = 0$, pa je
+    \begin{equation*}
+        \int_a^b g \: dF = \int_{\lijInt{a}{b}} g(x) \: d \mu_F (x).
+    \end{equation*}
+    Budu\' ci da je $\segment{a}{b}$ kompaktan funkcija $g$ je uniformno neprekidna
+    \begin{equation*}
+        (\forall \varepsilon > 0) (\exists \delta > 0) (x, y \in \segment{a}{b}, \quad |x - y| < \delta \implies |g(x) - g(y)| < \varepsilon).
+    \end{equation*}
+    Budu\' ci da je $C(F)$ gust, mo\v zemo na\' ci $k \in \nat$ i to\v cke $a = x_1 < x_2 < \ldots < x_{k + 1} = b$ u $C(F)$ takve da je $x_{i + 1} - x_i < \delta$, $1 \leq i \leq k$.
+    Tada slijedi
+    \begin{equation*}
+        \begin{gathered}
+            \begin{aligned}
+                \int_a^b g \: d F_n - \int_a^b g \: d F &= \suma{i = 1}{k} \Big[ \int_{x_i}^{x_{i+1}} g(x) \: d F_n - \int_{x_i}^{x_{i + 1}} g(x_i) \: d F_n + \int_{x_i}^{x_{i+1}} g(x_i) \: d F_n\\
+                &\quad \quad- \int_{x_i}^{x_{i + 1}} g(x_i) \: d F + \int_{x_i}^{x_{i + 1}} g(x_i) \: d F - \int_{x_i}^{x_{i + 1}} g(x) \: d F \Big]\\
+                &= \suma{i = 1}{k} \Big[ \int_{x_i}^{x_{i + 1}} (g (x) - g(x_i)) \: d F_n + \int_{x_i}^{X_{i + 1}} (g(x_i) - g(x)) \: d F\\
+                &\quad \quad+ g(x_i) [ F_n (x_{i + 1}) - F_n (x_i) - F (x_{i + 1}) + F(x_i) ] \Big].
+            \end{aligned}\\
+            \begin{aligned}
+                \implies (\forall n \in \nat) \Big| \int_a^b g \: d F_n - \int_a^b g \: d F \Big| &\leq \varepsilon \cdot \underbrace{\masP_{F_n} (\lijInt{a}{b})}_{\leq 1} + \varepsilon \cdot \underbrace{\mu_{F} (\lijInt{a}{b})}_{\leq 1}\\
+                &\quad + \suma{i = 1}{k} | g(x_i) | \cdot \bigg[| F_n (x_{i + 1}) - F (x_{i + 1}) |\\
+                &\quad \quad \quad+ | F(x_i) - F_n (x_i) | \bigg].
+            \end{aligned}\\
+            \implies (\forall \varepsilon > 0) \quad \limsup\limits_{n \to \infty} \Big| \int_a^b g \: d F_n - \int_a^b g \: d F \Big| \leq 2 \varepsilon.
+        \end{gathered}
+    \end{equation*}
+\end{proof}
