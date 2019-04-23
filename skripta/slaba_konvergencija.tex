@@ -264,3 +264,35 @@ Uo\v cimo da ako je $\Delta G = 1$, onda je $G^R$ u su\v stini p.d.F., modulo po
         \end{gathered}
     \end{equation*}
 \end{proof}
+
+U daljenjem tekstu $(F_n) = \niz{F_n}{n \in \nat}$ uvijek ozna\v cava niz u kojem je svaka $F_n$ p.d.F.
+
+\begin{lm}  \label{lm:16.9}
+    Neka $F_n \xrightarrow[n \to \infty]{w} F \in \inc$ i neka je $g: \real \to \desInt{0}{+\infty}$ neprekidna.
+    Za svaki $n \in \nat$, $a \in C(F)$ i $x \in \extReal$, definiramo
+    \begin{equation*}
+        \begin{aligned}
+            G_n (x) &:= \int_a^x g \: d F_n\\
+            G(x) &:= \int_a^x g \: d F
+        \end{aligned}
+    \end{equation*}
+    (uo\v cimo $G_n, G : \extReal \to \segment{0}{+\infty}$, jer ili integriramo $g \geq 0$, za $x > 0$, ili $-g \leq 0$, za $a < x$).
+    Tada vrijedi:
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{lm:16.9.1}
+        \begin{equation*}
+            \restr{G_n}{\real}, \restr{G}{\real} \in \inc,
+        \end{equation*}
+        \item \label{lm:16.9.2}
+        \begin{equation*}
+            G (x) = \lim_{n \to \infty} G_n(x), \quad \forall x \in C(G),
+        \end{equation*}
+        \item \label{lm:16.9.3}
+        \begin{equation*}
+            \begin{aligned}
+                \liminf\limits_{n \to \infty} \int_a^{+\infty} g \: d F_n &\geq \int_a^{+\infty} g \: d F,\\
+                \liminf\limits_{n \to \infty} \int_{-\infty}^a g \: d F_n &\geq \int_{-\infty}^a g \: d F.
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+\end{lm}
