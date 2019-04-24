@@ -12,3 +12,89 @@ U ovom poglavlju $X$ uvijek ozna\v cava slu\v cajnu varijablu na vjerojatnostnom
     \end{equation*}
     naziva se \emph{karakteristi\v cnom funkcijom} slu\v cajne varijable $X$.
 \end{defn}
+
+Lako se vidi da je
+\begin{equation*}
+    \varphi_X (t) = \int_{-\infty}^{+\infty} e^{itX} \: d F_X (x) = \int_{-\infty}^{+ \infty} \cos (t X)  \: d F_X (x) + i \cdot \int_{-\infty}^{+\infty} \sin (t X) \: d F_X (x),
+\end{equation*}
+te da je $\varphi_X (t)$ uvijek definiran.
+Ako je $F \in \inc$, $F^R = F$ i $\Delta F < +\infty$, ista definicija daje funkciju $\varphi_F : \real \to \masC$, koja \' ce imati svojstva analogna onima od $\varphi_X$.
+
+Lako se vidi da za slu\v cajnu varijablu $Y$ i $t \in \real$ vrijedi:
+\begin{equation}    \label{jed:17.2}
+    X \distJed Y \implies \varphi_X = \varphi_Y,
+\end{equation}
+te
+\begin{equation}    \label{jed:17.3}
+    \varphi_X(-t) = \overline{\varphi_X (t)}, \quad \quad |\varphi_X (t)| \leq \varphi_X(0) = 1.
+\end{equation}
+
+Uo\v cimo da je
+\begin{equation*}
+    |\varphi_X (t+h) - \varphi_X(t)| \leq \int_{-\infty}^{+\infty} |e^{i h X} - 1| \: d F_X (x).    
+\end{equation*}
+Budu\' ci da $|e^{ihX} -1| \xrightarrow[h \to 0]{} 0$ i uniformno je ome\dj ena s $2$ (\v sto je integrabilna funkcija u odnosu na $F_X$) iz LTDK slijedi
+\begin{equation}    \label{jed:17.4}
+    \varphi_X \textnormal{ je uniformno neprekidna na } \real.
+\end{equation}
+
+Za $z \in \masC$ vrijedi
+\begin{equation*}
+    e^z = \suma{n = 0}{\infty} \frac{z^n}{n !},
+\end{equation*}
+pa \' ce svojstva $\varphi_X$ ovisiti o postojanju momenata od $X$.
+
+\begin{lm}  \label{lm:17.5}
+    Za svaki $x \in \real$ i $n \in \nat \cup \{ 0 \}$ vrijedi
+    \begin{equation*}
+        \Big| e^{ix} - \suma{j = 0}{n} \frac{(ix)^j}{j !} \Big| \leq \min \Big\{ \frac{|x|^{n + 1}}{(n + 1)!}, \frac{2 \cdot |x|^n}{n !} \Big\}.
+    \end{equation*}
+\end{lm}
+
+\begin{proof}
+    Po Taylorovom razvoju
+    \begin{equation*}
+        \begin{aligned}
+            e^{ix} - \suma{j = 0}{n} \frac{(i x)^j}{j !} &= \frac{(i x)^{n + 1}}{n !} \int_0^1 e^{i x u} (1 - u)^n \: du =
+            \begin{pmatrix}
+                \textnormal{pracijalna}\\
+                \textnormal{integracija}
+            \end{pmatrix}\\
+            &= - \frac{(ix)^n}{n !} + \frac{(i x)^n}{(n - 1) !} \int_0^1 e^{i x u} (1 - u)^{n - 1} \: d u.
+        \end{aligned}
+    \end{equation*}
+    Uo\v cimo
+    \begin{equation*}
+        \int_0^1 (1 - u)^k \: d u = \frac{(1 - u)^{k + 1}}{k + 1} (-1) \Bigg|_0^1 = \frac{1}{(k + 1)}.
+    \end{equation*}
+    Zbog
+    \begin{equation*}
+        |e^{ixu}| = 1,
+    \end{equation*}
+    prva jednakost daje prvu ocjenu, a druga jednakost drugu ocjenu.
+\end{proof}
+
+\begin{lm}  \label{lm:17.6}
+    Ako je $X \in L^n (\masP)$, za neki $n \in \nat$, tada je $\varphi$ $n$-puta diferencijabilno i
+    \begin{equation*}
+        \varphi_X^{(n)} (t) = \int_{-\infty}^{+\infty} (i x)^n e^{i t x} \: d F_X (x).
+    \end{equation*}
+\end{lm}
+
+\begin{proof}
+    Indukcijom po $n$, pri \v cemu korak ide kao i baza,
+    \begin{equation*}
+        \frac{\varphi_X (t + s) - \varphi_X (t)}{s} = \masE \Big[ e^{i t X} \cdot \frac{e^{s X} - 1}{s} \Big].
+    \end{equation*}
+    Uo\v cimo da je
+    \begin{equation*}
+        \frac{e^{i s X} - 1}{s} \xrightarrow[s \to 0]{} i X,
+    \end{equation*}
+    i ome\dj en je sa $|X|$ (po lemi \ref{lm:17.5}).
+    Primjenom LTDK slijedi
+    \begin{equation*}
+        \lim\limits_{s \to 0} \frac{\varphi_X (t + s) - \varphi_X (t)}{s} = \masE [i X \cdot e^{i t X}] = \int_{-\infty}^{+\infty} i x e^{i t x} \: d F_X (x).
+    \end{equation*}
+\end{proof}
+
+Iz leme \ref{lm:17.5} i leme \ref{lm:17.6} direktno dobijemo
