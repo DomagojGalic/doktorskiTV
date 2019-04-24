@@ -1,0 +1,365 @@
+% 5. dio poglavlje 2, 17. predavanje karakteristične funkcije
+
+\chapter{Karakteristi\v cne funkcije}
+
+Fourierova transforamcija je vrlo korisna i u vjerojatnosti.
+U ovom poglavlju $X$ uvijek ozna\v cava slu\v cajnu varijablu na vjerojatnostnom prostoru $\vjerojatnosniProstor$.
+
+\begin{defn}    \label{def:17.1}
+    Funkcija $\varphi_X :  \real \to \masC$, definirana sa
+    \begin{equation*}
+        \varphi_X (t) := \masE [e^{itX}] = \masE[\cos (tX)] + i \cdot \masE [ \sin (tX) ], \quad t \in \real,
+    \end{equation*}
+    naziva se \emph{karakteristi\v cnom funkcijom} slu\v cajne varijable $X$.
+\end{defn}
+
+Lako se vidi da je
+\begin{equation*}
+    \varphi_X (t) = \int_{-\infty}^{+\infty} e^{itX} \: d F_X (x) = \int_{-\infty}^{+ \infty} \cos (t X)  \: d F_X (x) + i \cdot \int_{-\infty}^{+\infty} \sin (t X) \: d F_X (x),
+\end{equation*}
+te da je $\varphi_X (t)$ uvijek definiran.
+Ako je $F \in \inc$, $F^R = F$ i $\Delta F < +\infty$, ista definicija daje funkciju $\varphi_F : \real \to \masC$, koja \' ce imati svojstva analogna onima od $\varphi_X$.
+
+Lako se vidi da za slu\v cajnu varijablu $Y$ i $t \in \real$ vrijedi:
+\begin{equation}    \label{jed:17.2}
+    X \distJed Y \implies \varphi_X = \varphi_Y,
+\end{equation}
+te
+\begin{equation}    \label{jed:17.3}
+    \varphi_X(-t) = \overline{\varphi_X (t)}, \quad \quad |\varphi_X (t)| \leq \varphi_X(0) = 1.
+\end{equation}
+
+Uo\v cimo da je
+\begin{equation*}
+    |\varphi_X (t+h) - \varphi_X(t)| \leq \int_{-\infty}^{+\infty} |e^{i h X} - 1| \: d F_X (x).    
+\end{equation*}
+Budu\' ci da $|e^{ihX} -1| \xrightarrow[h \to 0]{} 0$ i uniformno je ome\dj ena s $2$ (\v sto je integrabilna funkcija u odnosu na $F_X$) iz LTDK slijedi
+\begin{equation}    \label{jed:17.4}
+    \varphi_X \textnormal{ je uniformno neprekidna na } \real.
+\end{equation}
+
+Za $z \in \masC$ vrijedi
+\begin{equation*}
+    e^z = \suma{n = 0}{\infty} \frac{z^n}{n !},
+\end{equation*}
+pa \' ce svojstva $\varphi_X$ ovisiti o postojanju momenata od $X$.
+
+\begin{lm}  \label{lm:17.5}
+    Za svaki $x \in \real$ i $n \in \nat \cup \{ 0 \}$ vrijedi
+    \begin{equation*}
+        \Big| e^{ix} - \suma{j = 0}{n} \frac{(ix)^j}{j !} \Big| \leq \min \Big\{ \frac{|x|^{n + 1}}{(n + 1)!}, \frac{2 \cdot |x|^n}{n !} \Big\}.
+    \end{equation*}
+\end{lm}
+
+\begin{proof}
+    Po Taylorovom razvoju
+    \begin{equation*}
+        \begin{aligned}
+            e^{ix} - \suma{j = 0}{n} \frac{(i x)^j}{j !} &= \frac{(i x)^{n + 1}}{n !} \int_0^1 e^{i x u} (1 - u)^n \: du =
+            \begin{pmatrix}
+                \textnormal{pracijalna}\\
+                \textnormal{integracija}
+            \end{pmatrix}\\
+            &= - \frac{(ix)^n}{n !} + \frac{(i x)^n}{(n - 1) !} \int_0^1 e^{i x u} (1 - u)^{n - 1} \: d u.
+        \end{aligned}
+    \end{equation*}
+    Uo\v cimo
+    \begin{equation*}
+        \int_0^1 (1 - u)^k \: d u = \frac{(1 - u)^{k + 1}}{k + 1} (-1) \Bigg|_0^1 = \frac{1}{(k + 1)}.
+    \end{equation*}
+    Zbog
+    \begin{equation*}
+        |e^{ixu}| = 1,
+    \end{equation*}
+    prva jednakost daje prvu ocjenu, a druga jednakost drugu ocjenu.
+\end{proof}
+
+\begin{lm}  \label{lm:17.6}
+    Ako je $X \in L^n (\masP)$, za neki $n \in \nat$, tada je $\varphi$ $n$-puta diferencijabilno i
+    \begin{equation*}
+        \varphi_X^{(n)} (t) = \int_{-\infty}^{+\infty} (i x)^n e^{i t x} \: d F_X (x).
+    \end{equation*}
+\end{lm}
+
+\begin{proof}
+    Indukcijom po $n$, pri \v cemu korak ide kao i baza,
+    \begin{equation*}
+        \frac{\varphi_X (t + s) - \varphi_X (t)}{s} = \masE \Big[ e^{i t X} \cdot \frac{e^{s X} - 1}{s} \Big].
+    \end{equation*}
+    Uo\v cimo da je
+    \begin{equation*}
+        \frac{e^{i s X} - 1}{s} \xrightarrow[s \to 0]{} i X,
+    \end{equation*}
+    i ome\dj en je sa $|X|$ (po lemi \ref{lm:17.5}).
+    Primjenom LTDK slijedi
+    \begin{equation*}
+        \lim\limits_{s \to 0} \frac{\varphi_X (t + s) - \varphi_X (t)}{s} = \masE [i X \cdot e^{i t X}] = \int_{-\infty}^{+\infty} i x e^{i t x} \: d F_X (x).
+    \end{equation*}
+\end{proof}
+
+Iz leme \ref{lm:17.5} i leme \ref{lm:17.6} direktno dobijemo
+
+\begin{kor} \label{kor:17.7}
+    Neka je $n \in \nat \cup \{0\}$.
+    Tada vrijedi:
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{kor:17.7.1}
+        \begin{equation*}
+            \masE \big[ |X|^2 \big] < +\infty \implies \varphi_X^{(n)}(0) = \masE \big[ (i \cdot X)^n \big],
+        \end{equation*}
+        \item \label{kor:17.7.2}
+        \begin{equation*}
+            \begin{aligned}
+                \masE \big[|X|^{n + 1} \big] < +\infty \implies \Big| \varphi_X (t) - \suma{j = 0}{n} \frac{(it)^j}{j !} \cdot \masE \big[ X^j \big]  \Big| \leq
+                \min \Big\{ &\frac{|t|^{n+1}}{(n + 1)!} \cdot \masE \big[ |X|^{n + 1} \big],\\
+                &\frac{2 \cdot |t|^n}{n !} \cdot \masE \big[ |X|^n \big] \Big\},   
+            \end{aligned}
+        \end{equation*}
+        \item \label{kor:17.7.3}
+        \begin{equation*}
+            \begin{aligned}
+                \masE \big[ |X|^n \big] < +\infty \implies \varphi_X (t) &= \suma{j = 0}{n} \frac{(i t)^j}{j!} \cdot \masE \big[ X^j \big] + o (t^n)\\
+                &= \suma{j = 0}{n} \frac{t^j}{j!} \cdot \varphi_X^{(j) } (0) + o(t^n).
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+\end{kor}
+
+Uo\v cimo da za svaka \v cetiri kompleksna broja vrijedi
+\begin{equation}    \label{jed:17.8}
+    |\alpha_1 \alpha_2 - \beta_1 \beta_2| \leq |\alpha_1| \cdot | \alpha_2 - \beta_2| + |\beta_2| \cdot | \alpha_1 - \beta_1|.
+\end{equation}
+
+\begin{lm}  \label{lm:17.9}
+    Neka je $n \in \nat$, $z_1, \ldots, z_n \in \masC$, $w_1, \ldots, w_n \in \masC$ takvi da je
+    \begin{equation*}
+        \max \big\{ |z_1|, \ldots, |z_n|, |w_1|, \ldots, |w_n| \big\} \leq \alpha.
+    \end{equation*}
+    Tada je
+    \begin{equation*}
+        \Big| \produkt{j = 1}{n} z_j - \produkt{j = 1}{n} w_j \Big| \leq \alpha^{n - 1} \cdot \suma{j = 1}{n} |z_j - w_j|.
+    \end{equation*}
+\end{lm}
+
+\begin{proof}
+    Indukcijom po $n$.
+    Slu\v caj $n = 1$ je trivijalan.
+    
+    Koriste\' ci nejednakost \eqref{jed:17.8}, imamo
+    \begin{equation*}
+        \begin{aligned}
+            \Big| \Big( \produkt{j = 1}{n} z_j \Big) \cdot z_{n + 1} - \Big( \produkt{j = 1}{n} w_j \Big) \cdot w_{n + 1} \Big| &\leq \alpha^n | z_{n+1} - w_{n+1} | + \alpha \cdot \Big|  \produkt{j = 1}{n} z_j - \produkt{j = 1}{n} w_j \Big|\\
+            &\leq
+            \begin{pmatrix}
+                \textnormal{pretpostavka}\\
+                \textnormal{indukcije}
+            \end{pmatrix}\\
+            &\leq \alpha^n \cdot \suma{j = 1}{n + 1} |z_j - w_j|.
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+\begin{lm}  \label{lm:17.10}
+    Ako je $\niz{\widetilde{z_n}}{n \in \nat} \subseteq \masC$ i $\widetilde{z_n} \to z \in \masC$, tada je
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \Big( 1 + \frac{\widetilde{z_n}}{n} \Big)^n = e^z.
+    \end{equation*}
+\end{lm}
+
+\begin{proof}
+    U lemi \ref{lm:17.9} $w_1 = \ldots = w_n = e^\frac{\widetilde{z_n}}{n}$, $z_1 = \ldots = z_n = \Big[ \frac{\widetilde{z_n}}{n} + 1 \Big]$
+
+    Za $\gamma > |z|$ imamo $|\widetilde{z_n}| < \gamma$ i $\Big| \frac{\widetilde{z_n}}{n} \Big| \leq 1$, za $n$ dovoljno velik.
+    Slijedi
+    \begin{equation*}
+        \Big| \Big( 1 + \frac{\widetilde{z_n}}{n} \Big)^n - e^{\widetilde{z_n}} \Big| \leq \Big(1 + \frac{\gamma}{n} \Big)^{n-1} \suma{j = 1}{n} \Big| e^{\frac{\widetilde{z_n}}{n}} - \Big(1 + \frac{\widetilde{z_n}}{n}\Big) \Big|.
+    \end{equation*}
+    Po lemi \ref{lm:17.5} imamo
+    \begin{equation*}
+        \begin{gathered}
+            \Big| e^{\frac{\widetilde{z_n}}{n}} - \Big( 1 + \frac{\widetilde{z_n}}{n} \Big) \Big| \leq 2 \cdot \frac{\Big| \frac{\gamma}{n}\Big|^2}{2!} = \frac{\gamma^2}{n^2}\\
+            \implies \Big| \Big( 1 + \frac{\widetilde{z_n}}{n} \Big)^n - e^{\widetilde{z_n}} \Big| \leq \underbrace{\Big( 1 + \frac{\gamma}{n} \Big)^{n - 1}}_{\leq e^\gamma} \cdot \gamma^2 \cdot n \cdot \frac{1}{n^2} \xrightarrow[n \to \infty]{} 0.
+        \end{gathered}
+    \end{equation*}
+\end{proof}
+
+Prvo od fundamentalnih pitanja koje nas zanima je vrijedi li obrat u \eqref{jed:17.2}.
+Budu\' ci je $C(F_X) \cap C(F_Y)$ gust u $\real$, sljede\' ci teorem daje potvrdan odgovor na to pitanje.
+
+\begin{tm}[L\' eviyjev teorem inverzije]  \label{tm:17.11}
+    Za svaki $a, b \in C(F_X)$, $a < b$, vrijedi
+    \begin{equation*}
+        F_X (b) - F_X (a) = \lim\limits_{T \to \infty} \frac{1}{2 \pi} \int_{-T}^T \frac{e^{ita} - e^{itb}}{it} \cdot \varphi_X (t) \: d t.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Uo\v cimo najprije da je $\varphi_X$ neprekidna funkcije.
+    Ozna\v cimo
+    \begin{equation*}
+        I_T := \int_{-T}^T \frac{e^{ita} - e^{itb}}{it} \cdot \varphi_X (t) \: d t.
+    \end{equation*}
+    Primjetimo da vrijedi
+    \begin{equation*}
+        \Big| \frac{1}{i t} (e^{- i t a} - e^{- i t b}) \cdot e^{i t X} \Big| \leq \Big| \int_a^b e^{-ity} \: d y \Big| \leq b - a,
+    \end{equation*}
+    stoga mo\v zemo iskoristiti Fubinijev teorem:
+    \begin{equation*}
+        \begin{aligned}
+            T_T &= \frac{1}{2 \pi} \masE \Big[ \int_{-T}^T \frac{e^{it(X - a)} - e^{it(X - b)}}{it} \cdot \varphi_X (t) \: d t \Big]\\
+            &= \frac{1}{\pi} \masE \Big[ \int_0^T \frac{1}{t} \big( \sin t(X-a) - \sin t(X-b) \big) \: d t \Big]\\
+            &= \frac{1}{\pi} \masE \Big[ \int_0^{T(X-a)} \frac{\sin t}{t} \: d t - \int_0^{T (X-b)} \frac{\sin t}{t} \: d t \Big].
+        \end{aligned}
+    \end{equation*}
+    Budu\' ci je
+    \begin{equation*}
+        \lim\limits_{u \to \infty} \int_0^u \frac{\sin x}{x} \: d x = \frac{\pi}{2},
+    \end{equation*}
+    dobivamo
+    \begin{equation*}
+        \frac{1}{\pi} \int_{T (u - b)}^{T (u - a)} \frac{\sin t}{t} \: dt \xrightarrow[T \to + \infty]{}
+        \begin{cases}
+            1,    &a < u < b\\
+            \frac{1}{2}, &u \in \{a, b\}\\
+            0,    &u < a \textnormal{ ili } u > b
+        \end{cases}.
+    \end{equation*}
+    Uo\v cimo,
+    \begin{equation*}
+        \Big| \frac{1}{\pi} \int_{T (u- b)}^{T (u - a)} \frac{\sin t}{t} \: d t \Big| \leq 2,
+    \end{equation*}
+    pa prema LTDK vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            \lim\limits_{T \to \infty} I_T &= \masE \Big[ \lim\limits_{T \to \infty} \Big( \frac{1}{\pi} \int_0^{T (u - a)} \frac{\sin t}{t} \: dt - \frac{1}{\pi} \int_0^{T (u - b)} \frac{\sin t}{t} \: d t \Big) \Big]\\
+            &= \masE \Big[ \frac{1}{2} \karaktFja_{\big\{ X \in \{a, b\} \big\}} + \karaktFja_{\{a < X < b\}} \Big]\\
+            &= \frac{1}{2} (\masP (X = a) + \masP (X = b) ) + \masP (a < X < b) =
+            \begin{psmallmatrix}
+                a, b \in C(F_X)\\
+                \Downarrow\\
+                \masP_X (\{ a \}) = \masP_X (\{ b \}) = 0
+            \end{psmallmatrix}\\
+            &= \masP ( a < X \leq b) = F_X (b) - F_X (a).
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+Osnovni ra\v cun s karakteristi\v cnim funkcijama je jednostavan.
+Uo\v cimo da je
+\begin{equation*}
+    \masE \big[ e^{it (aX+b)} \big] = e^{itb} \cdot \masE \big[ e^{i (ta) X} \big],
+\end{equation*}
+pa za $a, b \in \real$, slijedi
+\begin{equation}    \label{jed:17.12}
+    \varphi_{aX+b} (t) = e^{itb} \cdot \varphi_X (a t).
+\end{equation}
+Ako su $X, Y$ nezavisne, tada su i $e^{itX}, e^{itY}$ nezavisne:
+\begin{equation}    \label{jed:17.13}
+    \begin{aligned}
+        \varphi_{X+Y} (t) &= \masE \big[ e^{it(X+Y)} \big] = \masE [e^{itX} \cdot e^{itY}] = (\textnormal{nezavisnost})\\
+        &= \masE \big[ e^{itX} \big] \cdot \masE \big[ e^{itY} \big] = \varphi_X (t) \cdot \varphi_Y (t).
+    \end{aligned}
+\end{equation}
+
+\begin{zad} \label{zad:17.14}
+    Razvijte pojam karakteristi\v cne funckcije slu\v cajnog vektora.
+    Iska\v zite i doka\v zite analogone teorema \ref{tm:17.11}, \eqref{jed:17.12} i \eqref{jed:17.13}.
+\end{zad}
+
+\begin{tm}  \label{tm:17.15}
+    Slu\v cajne varijable $X_1, \ldots, X_n$ su nezavisne ako i samo ako vrijedi, za svake $(t_1, \ldots, t_n) \in \real^n$,
+    \begin{equation*}
+        \varphi_{(X_1, \ldots, X_n)} (t_1 , \ldots, t_n) = \produkt{k = 1}{n} \varphi_{X_k} (t_k).
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    \begin{itemize}
+        \item[$\implies$]
+        Slijedi po zadatku \ref{zad:17.14} i nezavisnosti, jer
+        \begin{equation*}
+            \begin{aligned}
+                \varphi_{(X_1, \ldots, X_n)} (t_1, \ldots, t_n) &= \masE \Big[ e^{i \suma{k = 1}{n} t_k X_k} \Big] = \masE \Big[ \produkt{k = 1}{n} e^{i t_k X_k} \Big]\\
+                &= \produkt{k = 1}{n} \masE \Big[ e^{i t_k X_k} \Big] = \produkt{k = 1}{n} \varphi_{X_k} (t_k).
+            \end{aligned}
+        \end{equation*}
+        \item[$\impliedby$]
+        Neka je $\masX = (X_1, \ldots, X_n)$ i
+        \begin{equation*}
+            H (x_1, \ldots, x_n) := \produkt{k = 1}{n} F_{X_k} (x_k),
+        \end{equation*}
+        postoji vjerojatnosna mjera $\masP_H$ na $\real^n$ \v cija funkcija distribucije je $H$.
+        Po pretpostavci slijedi
+        \begin{equation*}
+            \varphi_{(X_1, \ldots, X_n)} = \Big( = \varphi_{F_\masX} \Big) = \varphi_H.
+        \end{equation*}
+        Pa po teoremu inverzije (teorem \ref{tm:17.11}) i zadatku \ref{zad:17.14} dobivamo da je $F_\masX = H$, \v sto povla\v ci nezavisnost.
+    \end{itemize}
+\end{proof}
+
+\begin{zad} \label{zad:17.16}
+    Izra\v cunajmo karakteristi\v cne funkcije osnovnih distribucija prema prilo\v zenoj tablici.
+\end{zad}
+
+\begin{nap} \label{nap:17.17}
+    Prirodno pitanje koje se javlja vezano uz karakteristi\v cne funkcije je koji su nu\v zni i dovoljni uvjeti da $\varphi : \real \to \masC$ bude karakteristi\v cna funkcija neke d.f.F.
+    Postoje teorijski rezultati koje ovdje ne\' cemo dokazivati niti dalje koristiti (vidi N. Sarapa str. 490).
+    Nu\v zan i dovoljan uvijet je da je $\varphi$ neprekidna u nuli i \emph{pozitivno semidefinitna}, to jest, da za svaki $n \in \nat$, $t_1, \ldots, t_n \in \real$, $\alpha_1, \ldots, \alpha_n \in \masC$ vrijedi
+    \begin{equation}    \label{jed:17.18}
+        \suma{j = 1}{n} \suma{k = 1}{n} \varphi(t_j - t_k) \alpha_j \overline{\alpha_k} \geq 0.
+    \end{equation} 
+\end{nap}
+
+Uo\v cimo da su Poissonova, normalna te Cauchyjeva primjeri razdioba \v cije karakteristi\v cne funkcije su eksponencijalnog tipa (posebno, nije nikad nula).
+Kako bismo mogli bolje opisati razdijobe ovakvog tipa, dobro je poznavati pojam kompleksnog logaritma.
+Op\' cenito imamo razne mogu\' cnosti za izbor logaritma, ali mi \' cemo uzeti onaj koji se naziva \emph{glavnom vrijedno\v s\' cu}.
+Preciznije, ako je $\varphi : \real \to \masC \setminus \{0\}$ neprekidna funkcija i $\varphi (0) \in \obInt{0}{+ \infty}$, tada postoji to\v cno jedna neprekidna funkcija $\alpha : \real \to \real$ takva da je $\alpha (0) = 0$ i vrijedi $\varphi (t) = | \varphi (t) | e^{i \alpha (t)}$.
+Tada definiramo
+\begin{equation}    \label{jed:17.19}
+    \ln \varphi (t) := \ln | \varphi (t) | + i \alpha (t).
+\end{equation}
+Uo\v cimo da vrijedi
+\begin{equation}    \label{jed:17.20}
+    \varphi (t) = e^{\ln \varphi (t)}, \quad \forall t \in \real.
+\end{equation}
+Koriste\' ci neprekidnost mo\v ze se pokazati da za niz karatkeristi\v cnih funkcija $(\varphi_n)$ koje nisu nula i $\varphi$ karakteristi\v cna funkcija koja nije nula vrijedi
+\begin{equation}    \label{jed:17.21}
+    \varphi_n (t) \xrightarrow[n \to \infty]{} \varphi (t), \; \forall t \in \real \iff \ln \varphi_n (t) \xrightarrow[n \to \infty]{} \ln \varphi (t), \; \forall t \in \real.
+\end{equation}
+
+\begin{defn}    \label{defn:17.22}
+    Re\' ci \' cemo da je karakteristi\v cna funkcija $\varphi$ \emph{beskona\v cno djeljiva} ako za svaki $n \in \nat$ postoji karakteristi\v cna funkcija $\varphi_n$ takva da je
+    \begin{equation*}
+        \varphi (t) = [\varphi_n (t)]^n \quad \forall t \in \real.
+    \end{equation*}
+\end{defn}
+
+\begin{zad} \label{zad:17.23}
+    Doka\v zite da su karatkeristi\v cne funkcije sljede\' cih varijabli beskona\v cno djeljive:
+    \begin{itemize}
+        \item degenerirana
+        \item Poissonova
+        \item normalna
+        \item Cauchyjeva
+        \item Gama-razdioba.
+    \end{itemize}
+\end{zad}
+
+Ako je $\varphi$ beskona\v cno djeljiva karaktersiti\v cna funkcija i $n \in \nat$, onda mo\v zemo uzeti nezavisne, jednako distribuirane slu\v cjane varijable $X_1, \ldots, X_n$, takve da je $\varphi_{X_k} = \varphi_n$, $k = 1, \ldots, n$.
+Neka je $X = X_1 + \ldots + X_n$.
+Tada je
+\begin{equation}    \label{jed:17.24}
+    \varphi = \varphi_X.
+\end{equation}
+
+Ako su $\varphi$ i $\psi$ beskona\v cno djeljive karaktersiti\v cne funkcije, onda mo\v zemo uzeti nezavisne $X$ i $Y$ takve da je $\varphi = \varphi_X$ te $\psi = \varphi_Y$.
+Neka je $Z = X + Y$.
+Tada je $\varphi \cdot \psi = \varphi_Z$, a iz \eqref{jed:17.24} se lako vidi da je $\varphi_Z$ i beskona\v cno djeljiva.
+Dakle
+\begin{equation}    \label{jed:17.25}
+    \varphi, \psi \textnormal{ beskona\v cno djeljive k.f.} \implies \varphi \cdot \psi \textnormal{ beskona\v cno djeljiva k.f.}
+\end{equation}
+
+\begin{zad} \label{zad:17.26}
+    Ako je $\varphi$ beskona\v cno djeljiva karakteristi\v cna funkcija, tada je i $|\varphi|$ beskona\v cno djeljiva karakteristi\v cna funkcija.
+\end{zad}
