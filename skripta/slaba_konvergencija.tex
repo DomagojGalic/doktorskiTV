@@ -117,7 +117,8 @@ Uo\v cimo da ako je $\Delta G = 1$, onda je $G^R$ u su\v stini p.d.F., modulo po
         \item   \label{nap:16.6e}
         Ako je $D \subseteq \real$ gust u $\real$ i za svaki $x \in D$ $G_n (x) \xrightarrow{} G (x)$, tada $G_n \xrightarrow{w} G$.
         Aproksimirajte $x \in C(G)$ to\v ckama iz $D$ odozdo i odozgo.
-        \item Neka je $D \subseteq \real$ gust u $\real$ i neka je $(F_n)$ niz p.d.F. takav da za svaki $x \in D$ postoji limes $\lim\limits_n F_n (x)$.
+        \item   \label{nap:16.6f}
+        Neka je $D \subseteq \real$ gust u $\real$ i neka je $(F_n)$ niz p.d.F. takav da za svaki $x \in D$ postoji limes $\lim\limits_n F_n (x)$.
         Tada definiramo $G : D \to \segment{0}{1}$, sa 
         \begin{equation*}
             G(x) := \lim\limits_{n \to \infty} F_n (x).
@@ -377,3 +378,43 @@ Korsite\' ci zadatak \ref{zad:16.11} mo\v zemo "prevesti" lemu \ref{lm:16.7} u:
 \begin{tm}  \label{tm:16.16}
     Svaki niz $(F_n)$ p.d.F. funkcija je slabo kompaktan.
 \end{tm}
+
+\begin{proof}
+    Uzmimo $D = \{r_j\} \subseteq \real$ prebrojiv i gust.
+    Zbog $0 \leq F_n (r_1) \leq 1$, za svaki $n \in \nat$ postoji podniz $\{ F_{n_j, 1} (r_1) \}$ koji je konvergentan.
+    Zbog $0 \leq F_{n_j, 1 } (r_2) \leq 1$ postoji podniz tog podniza $\{ F_{n_j, 2} (r_2) \}$ koji je konvergentan.
+    Induktivno nastavljamo dalje i uzmemo dijagnoalni podniz $(F_{n_j, j})$ i uo\v cimo da taj konvergira na $D$.
+    Koriste\' ci napomenu \ref{nap:16.6f} dolazimo do $F \in \inc$ za koju
+    \begin{equation*}
+        F_{n_j, j} \xrightarrow{w} F.
+    \end{equation*} 
+\end{proof}
+
+\begin{kor} \label{kor:16.17}
+    Niz $(F_n)$ je potpuno kompaktan ako i samo ako je napet.
+\end{kor}
+
+\begin{proof}
+    \begin{itemize}
+        \item[$\impliedby$]
+        Direktno iz teorema \ref{tm:16.16} i korolara \ref{kor:16.12}
+        \item[$\implies$]
+        Pretpostavimo suprotno, to jest da $1$ nije $(F_n)-\ui$.
+        Tada
+        \begin{equation*}
+            (\exists \varepsilon > 0) (\exists a_n \nearrow + \infty) (\exists \textnormal{ podniz } \{n_j\})
+        \end{equation*}
+        takvi da je
+        \begin{equation*}
+            \Delta F_{n_j} - \Delta F_{n_j} (a_j) > \varepsilon, \quad j \in \nat.
+        \end{equation*}
+        Po lemi \ref{lm:16.7} slijedi da niti jedan podniz od $(F_{n_j})$ ne mo\v ze konvergirati potpuno, \v sto je kontradikcija.
+    \end{itemize}    
+\end{proof}
+
+\begin{zad} \label{zad:16.18}
+    \begin{equation*}
+        F_n \xrightarrow{w} F \quad \quad (F_n \xrightarrow{c} F)
+    \end{equation*}
+    ako i samo ako svaki podniz od $(F_n)$ ima daljnji podniz koji konvergira slabo (potpuno) prema istoj funkciji $F$.
+\end{zad}
