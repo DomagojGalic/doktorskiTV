@@ -296,3 +296,84 @@ U daljenjem tekstu $(F_n) = \niz{F_n}{n \in \nat}$ uvijek ozna\v cava niz u koje
         \end{equation*}
     \end{enumerate}
 \end{lm}
+
+\begin{proof}
+    \ref{lm:16.9.1} $g \geq 0 \implies$ $G$ i $G_n$ su neopadaju\' ce.
+    Za $x \in \real$, $g$ je ome\dj ena na $\segment{a}{x}$ (odnosno $\segment{x}{y}$) i $\Delta F \leq 1 = \Delta F_n$ $\implies$ $G_n (x)$, $G(x) \in \real$.
+
+    \ref{lm:16.9.2} Direktno iz teorema \ref{tm:16.8} i napomene \ref{nap:16.6e}.
+
+    \ref{lm:16.9.3} Direktno iz \ref{lm:16.9.2} i napomene \ref{nap:16.6c}
+\end{proof}
+
+\begin{defn}    \label{defn:16.10}
+    Neprekidna funkcija $g: \real \to \real$ je \emph{uniformno integrabilna u odnosu na $(F_n)$} (ili kra\' ce \emph{$(F_n)-\ui$}) ako vrijedi
+    \begin{equation*}
+        \lim\limits_{a \nearrow +\infty} \sup\limits_{n \in \nat} \int_{\{|y| \geq a\}} |g (y)| \: d F_n (y) = 0.
+    \end{equation*}
+    
+    Re\' ci \' cemo da je $(F_n)$ \emph{napet} ako je konstantna funkcija $g \equiv 1$ $(F_n)-\ui$.
+\end{defn}
+
+\begin{zad} \label{zad:16.11}
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{zad:16.11.1}
+        Ako je $g$ $(F_n)-\ui$, tada je $g^+$ $(F_n)-\ui$
+        \item \label{zad:16.11.2}
+        Ako su $f, g$ $(F_n)-\ui$, te $\alpha, \beta \in \real$, tada je $\alpha f + \beta g$ tako\dj er $(F_n)-\ui$.
+        \item \label{zad:16.11.3}
+        Ako je $g$ $(F_n)-\ui$, $f$ neprekidna i $|f| \leq |g|$, tada je $f$ $(F_n)-\ui$ 
+    \end{enumerate}
+\end{zad}
+
+Korsite\' ci zadatak \ref{zad:16.11} mo\v zemo "prevesti" lemu \ref{lm:16.7} u:
+
+\begin{kor} \label{kor:16.12}
+    Ako je $F_n \xrightarrow{w} F \in \inc$, tada su sljede\' ce tvrdnje ekvivalentne:
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{kor:16.12.1}
+        \begin{equation*}
+            F_n \xrightarrow{c} F,
+        \end{equation*}
+        \item   \label{kor:16.12.2}
+        \begin{equation*}
+            (F_n) \textnormal{ je napet},
+        \end{equation*}
+        \item   \label{kor:16.12.3}
+        Svaka ome\dj ena i neprekidna funkcija je $(F_n)-\ui$
+    \end{enumerate}
+\end{kor}
+
+\begin{lm}  \label{lm:16.13}
+    Ako $F_n \xrightarrow{w} F \in \inc$ i $g: \real \to \desInt{0}{+\infty}$ je neprekidna i takva da je $\int\limits_{\real} g \: d F_n < +\infty$, za svaki $n \in \nat$, tada je $g$ $(F_n)-\ui$ ako i samo ako
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \int_\real g \: d F_n = \int_\real g \: d F < +\infty.
+    \end{equation*}
+\end{lm}
+
+\begin{proof}
+    Neka je $a \in C(F)$ i definiramo $G_n$ i $G$ kao u lemi \ref{lm:16.9}.
+    Prema lemi \ref{lm:16.9} \ref{lm:16.9.2} $G_n (x) \to G(x)$, $\forall x \in C(G)$.
+    
+    Ako je $g$ $(F_n)-\ui$, tada vrijedi lema \ref{lm:16.7} \ref{lm:16.7.3}, pa prema istoj lemi vrijedi i lema \ref{lm:16.7} \ref{lm:16.7.1}, \v sto daje tra\v zenu tvrdnju.
+
+    Ako vrijedi $\int\limits_{\real} g \: d F_n \to \int\limits_\real g \: d F < +\infty$, tada je ispunjena lema \ref{lm:16.7} \ref{lm:16.7.2}, stoga po istoj lemi vrijedi i lema \ref{lm:16.7} \ref{lm:16.7.3}, a to daje da je $g$ $(F_n)-\ui$.
+\end{proof}
+
+\begin{kor} \label{kor:16.14}
+    Neka je $g: \real \to \real$ neprekidna i $(F_n)-ui$.
+    Ako je $F_n \xrightarrow{w} f \in \inc$, tada je $\int\limits_\real |g| \: d F < +\infty$ i vrijedi
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \int_\real g \: d F_n = \int_\real g \: d F \in \real.
+    \end{equation*} 
+\end{kor}
+
+\begin{defn}    \label{defn:16.15}
+    Niz $(F_n)$ je \emph{slabo kompaktan} ako postoje podniz $(F_{n_k})$ i $F \in \inc$ takvi da $F_{n_k} \xrightarrow{w} F$.
+
+    Re\' ci \' cemo da je $(F_n)$ \emph{potpuno kompaktan} ako svaki podniz sadr\v zi podpodniz koji konvergira potpuno pream nekoj p.d.F..
+\end{defn}
+
+\begin{tm}  \label{tm:16.16}
+    Svaki niz $(F_n)$ p.d.F. funkcija je slabo kompaktan.
+\end{tm}
