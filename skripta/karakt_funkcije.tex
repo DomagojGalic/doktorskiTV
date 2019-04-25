@@ -98,3 +98,97 @@ pa \' ce svojstva $\varphi_X$ ovisiti o postojanju momenata od $X$.
 \end{proof}
 
 Iz leme \ref{lm:17.5} i leme \ref{lm:17.6} direktno dobijemo
+
+\begin{kor} \label{kor:17.7}
+    Neka je $n \in \nat \cup \{0\}$.
+    Tada vrijedi:
+    \begin{enumerate}[label=(\roman*)]
+        \item \label{kor:17.7.1}
+        \begin{equation*}
+            \masE \big[ |X|^2 \big] < +\infty \implies \varphi_X^{(n)}(0) = \masE \big[ (i \cdot X)^n \big],
+        \end{equation*}
+        \item \label{kor:17.7.2}
+        \begin{equation*}
+            \begin{aligned}
+                \masE \big[|X|^{n + 1} \big] < +\infty \implies \Big| \varphi_X (t) - \suma{j = 0}{n} \frac{(it)^j}{j !} \cdot \masE \big[ X^j \big]  \Big| \leq
+                \min \Big\{ &\frac{|t|^{n+1}}{(n + 1)!} \cdot \masE \big[ |X|^{n + 1} \big],\\
+                &\frac{2 \cdot |t|^n}{n !} \cdot \masE \big[ |X|^n \big] \Big\},   
+            \end{aligned}
+        \end{equation*}
+        \item \label{kor:17.7.3}
+        \begin{equation*}
+            \begin{aligned}
+                \masE \big[ |X|^n \big] < +\infty \implies \varphi_X (t) &= \suma{j = 0}{n} \frac{(i t)^j}{j!} \cdot \masE \big[ X^j \big] + o (t^n)\\
+                &= \suma{j = 0}{n} \frac{t^j}{j!} \cdot \varphi_X^{(j) } (0) + o(t^n).
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+\end{kor}
+
+Uo\v cimo da za svaka \v cetiri kompleksna broja vrijedi
+\begin{equation}    \label{jed:17.8}
+    |\alpha_1 \alpha_2 - \beta_1 \beta_2| \leq |\alpha_1| \cdot | \alpha_2 - \beta_2| + |\beta_2| \cdot | \alpha_1 - \beta_1|.
+\end{equation}
+
+\begin{lm}  \label{lm:17.9}
+    Neka je $n \in \nat$, $z_1, \ldots, z_n \in \masC$, $w_1, \ldots, w_n \in \masC$ takvi da je
+    \begin{equation*}
+        \max \big\{ |z_1|, \ldots, |z_n|, |w_1|, \ldots, |w_n| \big\} \leq \alpha.
+    \end{equation*}
+    Tada je
+    \begin{equation*}
+        \Big| \produkt{j = 1}{n} z_j - \produkt{j = 1}{n} w_j \Big| \leq \alpha^{n - 1} \cdot \suma{j = 1}{n} |z_j - w_j|.
+    \end{equation*}
+\end{lm}
+
+\begin{proof}
+    Indukcijom po $n$.
+    Slu\v caj $n = 1$ je trivijalan.
+    
+    Koriste\' ci nejednakost \eqref{jed:17.8}, imamo
+    \begin{equation*}
+        \begin{aligned}
+            \Big| \Big( \produkt{j = 1}{n} z_j \Big) \cdot z_{n + 1} - \Big( \produkt{j = 1}{n} w_j \Big) \cdot w_{n + 1} \Big| &\leq \alpha^n | z_{n+1} - w_{n+1} | + \alpha \cdot \Big|  \produkt{j = 1}{n} z_j - \produkt{j = 1}{n} w_j \Big|\\
+            &\leq
+            \begin{pmatrix}
+                \textnormal{pretpostavka}\\
+                \textnormal{indukcije}
+            \end{pmatrix}\\
+            &\leq \alpha^n \cdot \suma{j = 1}{n + 1} |z_j - w_j|.
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+\begin{lm}  \label{lm:17.10}
+    Ako je $\niz{\widetilde{z_n}}{n \in \nat} \subseteq \masC$ i $\widetilde{z_n} \to z \in \masC$, tada je
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \Big( 1 + \frac{\widetilde{z_n}}{n} \Big)^n = e^z.
+    \end{equation*}
+\end{lm}
+
+\begin{proof}
+    U lemi \ref{lm:17.9} $w_1 = \ldots = w_n = e^\frac{\widetilde{z_n}}{n}$, $z_1 = \ldots = z_n = \Big[ \frac{\widetilde{z_n}}{n} + 1 \Big]$
+
+    Za $\gamma > |z|$ imamo $|\widetilde{z_n}| < \gamma$ i $\Big| \frac{\widetilde{z_n}}{n} \Big| \leq 1$, za $n$ dovoljno velik.
+    Slijedi
+    \begin{equation*}
+        \Big| \Big( 1 + \frac{\widetilde{z_n}}{n} \Big)^n - e^{\widetilde{z_n}} \Big| \leq \Big(1 + \frac{\gamma}{n} \Big)^{n-1} \suma{j = 1}{n} \Big| e^{\frac{\widetilde{z_n}}{n}} - \Big(1 + \frac{\widetilde{z_n}}{n}\Big) \Big|.
+    \end{equation*}
+    Po lemi \ref{lm:17.5} imamo
+    \begin{equation*}
+        \begin{gathered}
+            \Big| e^{\frac{\widetilde{z_n}}{n}} - \Big( 1 + \frac{\widetilde{z_n}}{n} \Big) \Big| \leq 2 \cdot \frac{\Big| \frac{\gamma}{n}\Big|^2}{2!} = \frac{\gamma^2}{n^2}\\
+            \implies \Big| \Big( 1 + \frac{\widetilde{z_n}}{n} \Big)^n - e^{\widetilde{z_n}} \Big| \leq \underbrace{\Big( 1 + \frac{\gamma}{n} \Big)^{n - 1}}_{\leq e^\gamma} \cdot \gamma^2 \cdot n \cdot \frac{1}{n^2} \xrightarrow[n \to \infty]{} 0.
+        \end{gathered}
+    \end{equation*}
+\end{proof}
+
+Prvo od fundamentalnih pitanja koje nas zanima je vrijedi li obrat u \eqref{jed:17.2}.
+Budu\' ci je $C(F_X) \cap C(F_Y)$ gust u $\real$, sljede\' ci teorem daje potvrdan odgovor na to pitanje.
+
+\begin{tm}[L\' eviyjev teorem inverzije]  \label{tm:17.11}
+    Za svaki $a, b \in C(F_X)$, $a < b$, vrijedi
+    \begin{equation*}
+        F_X (b) - F_X (a) = \lim\limits_{T \to \infty} \frac{1}{2 \pi} \int_{-T}^T \frac{e^{ita} - e^{itb}}{it} \cdot \varphi_X (t) \: d t.
+    \end{equation*}
+\end{tm}
