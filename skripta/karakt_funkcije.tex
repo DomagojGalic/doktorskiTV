@@ -192,3 +192,174 @@ Budu\' ci je $C(F_X) \cap C(F_Y)$ gust u $\real$, sljede\' ci teorem daje potvrd
         F_X (b) - F_X (a) = \lim\limits_{T \to \infty} \frac{1}{2 \pi} \int_{-T}^T \frac{e^{ita} - e^{itb}}{it} \cdot \varphi_X (t) \: d t.
     \end{equation*}
 \end{tm}
+
+\begin{proof}
+    Uo\v cimo najprije da je $\varphi_X$ neprekidna funkcije.
+    Ozna\v cimo
+    \begin{equation*}
+        I_T := \int_{-T}^T \frac{e^{ita} - e^{itb}}{it} \cdot \varphi_X (t) \: d t.
+    \end{equation*}
+    Primjetimo da vrijedi
+    \begin{equation*}
+        \Big| \frac{1}{i t} (e^{- i t a} - e^{- i t b}) \cdot e^{i t X} \Big| \leq \Big| \int_a^b e^{-ity} \: d y \Big| \leq b - a,
+    \end{equation*}
+    stoga mo\v zemo iskoristiti Fubinijev teorem:
+    \begin{equation*}
+        \begin{aligned}
+            T_T &= \frac{1}{2 \pi} \masE \Big[ \int_{-T}^T \frac{e^{it(X - a)} - e^{it(X - b)}}{it} \cdot \varphi_X (t) \: d t \Big]\\
+            &= \frac{1}{\pi} \masE \Big[ \int_0^T \frac{1}{t} \big( \sin t(X-a) - \sin t(X-b) \big) \: d t \Big]\\
+            &= \frac{1}{\pi} \masE \Big[ \int_0^{T(X-a)} \frac{\sin t}{t} \: d t - \int_0^{T (X-b)} \frac{\sin t}{t} \: d t \Big].
+        \end{aligned}
+    \end{equation*}
+    Budu\' ci je
+    \begin{equation*}
+        \lim\limits_{u \to \infty} \int_0^u \frac{\sin x}{x} \: d x = \frac{\pi}{2},
+    \end{equation*}
+    dobivamo
+    \begin{equation*}
+        \frac{1}{\pi} \int_{T (u - b)}^{T (u - a)} \frac{\sin t}{t} \: dt \xrightarrow[T \to + \infty]{}
+        \begin{cases}
+            1,    &a < u < b\\
+            \frac{1}{2}, &u \in \{a, b\}\\
+            0,    &u < a \textnormal{ ili } u > b
+        \end{cases}.
+    \end{equation*}
+    Uo\v cimo,
+    \begin{equation*}
+        \Big| \frac{1}{\pi} \int_{T (u- b)}^{T (u - a)} \frac{\sin t}{t} \: d t \Big| \leq 2,
+    \end{equation*}
+    pa prema LTDK vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            \lim\limits_{T \to \infty} I_T &= \masE \Big[ \lim\limits_{T \to \infty} \Big( \frac{1}{\pi} \int_0^{T (u - a)} \frac{\sin t}{t} \: dt - \frac{1}{\pi} \int_0^{T (u - b)} \frac{\sin t}{t} \: d t \Big) \Big]\\
+            &= \masE \Big[ \frac{1}{2} \karaktFja_{\big\{ X \in \{a, b\} \big\}} + \karaktFja_{\{a < X < b\}} \Big]\\
+            &= \frac{1}{2} (\masP (X = a) + \masP (X = b) ) + \masP (a < X < b) =
+            \begin{psmallmatrix}
+                a, b \in C(F_X)\\
+                \Downarrow\\
+                \masP_X (\{ a \}) = \masP_X (\{ b \}) = 0
+            \end{psmallmatrix}\\
+            &= \masP ( a < X \leq b) = F_X (b) - F_X (a).
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+Osnovni ra\v cun s karakteristi\v cnim funkcijama je jednostavan.
+Uo\v cimo da je
+\begin{equation*}
+    \masE \big[ e^{it (aX+b)} \big] = e^{itb} \cdot \masE \big[ e^{i (ta) X} \big],
+\end{equation*}
+pa za $a, b \in \real$, slijedi
+\begin{equation}    \label{jed:17.12}
+    \varphi_{aX+b} (t) = e^{itb} \cdot \varphi_X (a t).
+\end{equation}
+Ako su $X, Y$ nezavisne, tada su i $e^{itX}, e^{itY}$ nezavisne:
+\begin{equation}    \label{jed:17.13}
+    \begin{aligned}
+        \varphi_{X+Y} (t) &= \masE \big[ e^{it(X+Y)} \big] = \masE [e^{itX} \cdot e^{itY}] = (\textnormal{nezavisnost})\\
+        &= \masE \big[ e^{itX} \big] \cdot \masE \big[ e^{itY} \big] = \varphi_X (t) \cdot \varphi_Y (t).
+    \end{aligned}
+\end{equation}
+
+\begin{zad} \label{zad:17.14}
+    Razvijte pojam karakteristi\v cne funckcije slu\v cajnog vektora.
+    Iska\v zite i doka\v zite analogone teorema \ref{tm:17.11}, \eqref{jed:17.12} i \eqref{jed:17.13}.
+\end{zad}
+
+\begin{tm}  \label{tm:17.15}
+    Slu\v cajne varijable $X_1, \ldots, X_n$ su nezavisne ako i samo ako vrijedi, za svake $(t_1, \ldots, t_n) \in \real^n$,
+    \begin{equation*}
+        \varphi_{(X_1, \ldots, X_n)} (t_1 , \ldots, t_n) = \produkt{k = 1}{n} \varphi_{X_k} (t_k).
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    \begin{itemize}
+        \item[$\implies$]
+        Slijedi po zadatku \ref{zad:17.14} i nezavisnosti, jer
+        \begin{equation*}
+            \begin{aligned}
+                \varphi_{(X_1, \ldots, X_n)} (t_1, \ldots, t_n) &= \masE \Big[ e^{i \suma{k = 1}{n} t_k X_k} \Big] = \masE \Big[ \produkt{k = 1}{n} e^{i t_k X_k} \Big]\\
+                &= \produkt{k = 1}{n} \masE \Big[ e^{i t_k X_k} \Big] = \produkt{k = 1}{n} \varphi_{X_k} (t_k).
+            \end{aligned}
+        \end{equation*}
+        \item[$\impliedby$]
+        Neka je $\masX = (X_1, \ldots, X_n)$ i
+        \begin{equation*}
+            H (x_1, \ldots, x_n) := \produkt{k = 1}{n} F_{X_k} (x_k),
+        \end{equation*}
+        postoji vjerojatnosna mjera $\masP_H$ na $\real^n$ \v cija funkcija distribucije je $H$.
+        Po pretpostavci slijedi
+        \begin{equation*}
+            \varphi_{(X_1, \ldots, X_n)} = \Big( = \varphi_{F_\masX} \Big) = \varphi_H.
+        \end{equation*}
+        Pa po teoremu inverzije (teorem \ref{tm:17.11}) i zadatku \ref{zad:17.14} dobivamo da je $F_\masX = H$, \v sto povla\v ci nezavisnost.
+    \end{itemize}
+\end{proof}
+
+\begin{zad} \label{zad:17.16}
+    Izra\v cunajmo karakteristi\v cne funkcije osnovnih distribucija prema prilo\v zenoj tablici.
+\end{zad}
+
+\begin{nap} \label{nap:17.17}
+    Prirodno pitanje koje se javlja vezano uz karakteristi\v cne funkcije je koji su nu\v zni i dovoljni uvjeti da $\varphi : \real \to \masC$ bude karakteristi\v cna funkcija neke d.f.F.
+    Postoje teorijski rezultati koje ovdje ne\' cemo dokazivati niti dalje koristiti (vidi N. Sarapa str. 490).
+    Nu\v zan i dovoljan uvijet je da je $\varphi$ neprekidna u nuli i \emph{pozitivno semidefinitna}, to jest, da za svaki $n \in \nat$, $t_1, \ldots, t_n \in \real$, $\alpha_1, \ldots, \alpha_n \in \masC$ vrijedi
+    \begin{equation}    \label{jed:17.18}
+        \suma{j = 1}{n} \suma{k = 1}{n} \varphi(t_j - t_k) \alpha_j \overline{\alpha_k} \geq 0.
+    \end{equation} 
+\end{nap}
+
+Uo\v cimo da su Poissonova, normalna te Cauchyjeva primjeri razdioba \v cije karakteristi\v cne funkcije su eksponencijalnog tipa (posebno, nije nikad nula).
+Kako bismo mogli bolje opisati razdijobe ovakvog tipa, dobro je poznavati pojam kompleksnog logaritma.
+Op\' cenito imamo razne mogu\' cnosti za izbor logaritma, ali mi \' cemo uzeti onaj koji se naziva \emph{glavnom vrijedno\v s\' cu}.
+Preciznije, ako je $\varphi : \real \to \masC \setminus \{0\}$ neprekidna funkcija i $\varphi (0) \in \obInt{0}{+ \infty}$, tada postoji to\v cno jedna neprekidna funkcija $\alpha : \real \to \real$ takva da je $\alpha (0) = 0$ i vrijedi $\varphi (t) = | \varphi (t) | e^{i \alpha (t)}$.
+Tada definiramo
+\begin{equation}    \label{jed:17.19}
+    \ln \varphi (t) := \ln | \varphi (t) | + i \alpha (t).
+\end{equation}
+Uo\v cimo da vrijedi
+\begin{equation}    \label{jed:17.20}
+    \varphi (t) = e^{\ln \varphi (t)}, \quad \forall t \in \real.
+\end{equation}
+Koriste\' ci neprekidnost mo\v ze se pokazati da za niz karatkeristi\v cnih funkcija $(\varphi_n)$ koje nisu nula i $\varphi$ karakteristi\v cna funkcija koja nije nula vrijedi
+\begin{equation}    \label{jed:17.21}
+    \varphi_n (t) \xrightarrow[n \to \infty]{} \varphi (t), \; \forall t \in \real \iff \ln \varphi_n (t) \xrightarrow[n \to \infty]{} \ln \varphi (t), \; \forall t \in \real.
+\end{equation}
+
+\begin{defn}    \label{defn:17.22}
+    Re\' ci \' cemo da je karakteristi\v cna funkcija $\varphi$ \emph{beskona\v cno djeljiva} ako za svaki $n \in \nat$ postoji karakteristi\v cna funkcija $\varphi_n$ takva da je
+    \begin{equation*}
+        \varphi (t) = [\varphi_n (t)]^n \quad \forall t \in \real.
+    \end{equation*}
+\end{defn}
+
+\begin{zad} \label{zad:17.23}
+    Doka\v zite da su karatkeristi\v cne funkcije sljede\' cih varijabli beskona\v cno djeljive:
+    \begin{itemize}
+        \item degenerirana
+        \item Poissonova
+        \item normalna
+        \item Cauchyjeva
+        \item Gama-razdioba.
+    \end{itemize}
+\end{zad}
+
+Ako je $\varphi$ beskona\v cno djeljiva karaktersiti\v cna funkcija i $n \in \nat$, onda mo\v zemo uzeti nezavisne, jednako distribuirane slu\v cjane varijable $X_1, \ldots, X_n$, takve da je $\varphi_{X_k} = \varphi_n$, $k = 1, \ldots, n$.
+Neka je $X = X_1 + \ldots + X_n$.
+Tada je
+\begin{equation}    \label{jed:17.24}
+    \varphi = \varphi_X.
+\end{equation}
+
+Ako su $\varphi$ i $\psi$ beskona\v cno djeljive karaktersiti\v cne funkcije, onda mo\v zemo uzeti nezavisne $X$ i $Y$ takve da je $\varphi = \varphi_X$ te $\psi = \varphi_Y$.
+Neka je $Z = X + Y$.
+Tada je $\varphi \cdot \psi = \varphi_Z$, a iz \eqref{jed:17.24} se lako vidi da je $\varphi_Z$ i beskona\v cno djeljiva.
+Dakle
+\begin{equation}    \label{jed:17.25}
+    \varphi, \psi \textnormal{ beskona\v cno djeljive k.f.} \implies \varphi \cdot \psi \textnormal{ beskona\v cno djeljiva k.f.}
+\end{equation}
+
+\begin{zad} \label{zad:17.26}
+    Ako je $\varphi$ beskona\v cno djeljiva karakteristi\v cna funkcija, tada je i $|\varphi|$ beskona\v cno djeljiva karakteristi\v cna funkcija.
+\end{zad}
