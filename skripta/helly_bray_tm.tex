@@ -206,3 +206,106 @@
         \end{equation*}
     \end{enumerate}
 \end{tm}
+
+\begin{proof}
+    Neka je $\varepsilon > 0$.
+    Po korolaru \ref{kor:16.12} mo\v zemo izabrati $M > 0$ dovoljno velik, tako da vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            \pm M \in C(F) \cap \presjek{n \in \nat}{} C(F_n),\\
+            F(-M) + (1 - F(M)) < \varepsilon,\\
+            F_n (-M) + (1 - F_n (M)) < \varepsilon, \quad n \in \nat.
+        \end{aligned}
+    \end{equation*}
+    Tada vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            | \varphi_n (t) - \varphi_F (t) | \leq& \Big| \underbrace{\int^{-M}_{-\infty} e^{itx} \: d F_n (x) - \int_{-\infty}^{-M} e^{itx} \: d F (x) }_{I_1} \Big|\\
+            &+ \Big| \underbrace{\int_{-M}^{M} e^{itx} \: d F_n (x) - \int_{-M}^{M} e^{itx} \: d F (x) }_{I_2} \Big|\\
+            &+ \Big| \underbrace{\int_{M}^{+\infty} e^{itx} \: d F_n (x) - \int_{M}^{+\infty} e^{itx} \: d F (x) }_{I_3} \Big|.
+        \end{aligned}
+    \end{equation*}
+    Zbog $|e^{itx}| = 1$ slijedi (uniformno za sve $t \in \real$)
+    \begin{equation*}
+        \begin{aligned}
+            |I_1| &\leq F_n (-M) + F(M) < 2 \varepsilon\\
+            |I_3| &\leq (1 - F_n(M)) + (1 - F (M)) < 2 \varepsilon.
+        \end{aligned}
+    \end{equation*}
+    Neka je $T > 0$ i uzimamo $t_0 \in \segment{-T}{T}$.
+    Koriste\' ci parcijalnu integraciju
+    \begin{equation*}
+        I_2 = \big( F_n(x) - F(x) \big) e^{itx} \Big|_{-M}^{M} - it \int_{-M}^M e^{itx} \big( F_n (x) - F(x) \big) \: dx,
+    \end{equation*}
+    \v sto daje
+    \begin{equation*}
+        \begin{aligned}
+            |I_2| &\leq |F_n(M) - F(M)| + |F_n(-M) + F(-M)| + T \int_{-M}^{M} |F_n (x) - F (x)| \: dx\\
+            &\leq 4 \varepsilon + T \int_{-M}^{M} |F_n (x) - F (x)| \: dx.
+        \end{aligned}
+    \end{equation*}
+    Uo\v cimo, $|F_n (x) - F (x)| \leq 2$, funkcija $2$ je integrabilna na $\segment{-M}{M}$, $\real \setminus C(F)$ je najvi\v se prebrojiv, dakle
+    \begin{equation*}
+        F_n (x) \xrightarrow[\lambda-g.s.]{n \to \infty} F(x).
+    \end{equation*}
+    Po LTDK sada vrijedi
+    \begin{equation*}
+        \int_{-M}^M |F_n (x) - F(x)| \: d x \to 0.
+    \end{equation*}
+    Dakle, za $n$ dovoljno velik ovaj integral je manji od $\frac{\varepsilon}{T}$.
+    Zna\v ci, za $n$ dovljno velik (i ovisan samo o $\varepsilon$ i $T$) i za svaki $t \in \segment{-T}{T}$,
+    \begin{equation*}
+        |\varphi_n (t) - \varphi_F (t)| < 9 \varepsilon.
+    \end{equation*}
+    Time je dokazana tvrdnja \ref{tm:18.6.1}.
+    Doka\v zimo \ref{tm:18.6.2}.
+
+    Po teoremu \ref{tm:16.16}
+    \begin{equation*}
+        (\exists F \in \inc) \; \textnormal{ i podniz } \; (F_{n_k}) \; \td \; F_{n_k} \xrightarrow{w} F.
+    \end{equation*}
+    Za svaki $\delta > 0$ vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            \frac{1}{2 \delta} \int_{-\delta}^\delta  \varphi_n (t) \: d t &= \frac{1}{2 \delta} \int_0^\delta \int_{-\infty}^{+\infty} \big( e^{itx} + e^{-itx} \big) \: d F_n (x) \: d t\\
+            &= \frac{1}{\delta} \int_0^\delta \int_{-\infty}^{+\infty} \cos tx \: d F_n (x) \: dt =
+            \begin{psmallmatrix}
+                \textnormal{Fubini}\\
+                |\cos tx| \leq 1
+            \end{psmallmatrix}\\
+            &= \int_{-\infty}^{+\infty} \frac{\sin \delta x}{\delta x} \: d F_n (x).
+        \end{aligned}
+    \end{equation*}
+    Uo\v cimo da je $x \mapsto \frac{\sin \delta x}{\delta x}$ neprekidno na $\real$ i i\v s\v cezava u $\pm \infty$.
+    Po Helly-Bray teoremu (teoremu \ref{tm:18.1}) primjenjenom na $(F_{n_k})$ dobivamo
+    \begin{equation*}
+        \int_{-\infty}^{\infty} \frac{\sin \delta x}{\delta x} \: d F_{n_k} (x) \xrightarrow[k \to \infty]{} \int_{-\infty}^{+\infty} \frac{\sin \delta x}{\delta x} \: d F (x).
+    \end{equation*}
+    Po LTDK (koriste\' ci ocjenu \eqref{jed:17.3}) dobijemo
+    \begin{equation*}
+        \begin{gathered}
+            \frac{1}{2 \delta} \int_{-\delta}^\delta \varphi_n (t) \: d t \to \frac{1}{2 \delta} \int_{-\delta}^{\delta} \varphi (t) \: d t\\
+            \implies \frac{1}{2 \delta} \int_{-\delta}^{\delta} \varphi (t) \: dt = \int_{-\infty}^{+\infty} \frac{\sin \delta x}{\delta x} \: d F (x).
+        \end{gathered}
+    \end{equation*}
+    Neka $\delta \to 0$.
+    Budu\' ci da je $\varphi$ neprekidna u $0$ lijeva strana te\v zi u $\varphi (0)$.
+    Budu\' ci da je $\Big| \frac{\sin n}{n} \Big| \leq 1$ i $\Delta F \leq 1$, po LTDK, desna strana te\v zi u $\Delta F$.
+    Dakle imamo
+    \begin{equation*}
+        \Delta F = \varphi (0) = 1.
+    \end{equation*}
+    Odakle slijedi da je $F$ p.d.F. i
+    \begin{equation*}
+        F_{n_k} \xrightarrow{w} F.
+    \end{equation*}
+    
+    Po \ref{tm:18.6.1} slijedi
+    \begin{equation*}
+        \varphi_{n_k} \to \varphi_F \quad \implies \quad \varphi = \varphi_F.
+    \end{equation*}
+    Neka je $(F_{n_p})$ bilo koji podniz od $(F_n)$.
+    Po teoremu \ref{tm:16.16} postoji podniz $(F_{n_{p_l}})$ i $\widetilde{F} \in \inc$ takav da $F_{n_{p_l}} \xrightarrow{w} \widetilde{F}$.
+    Isti dokaz koji smo upravo napravili pokazuje $\widetilde{F} = F$ i $F_{n_{p_l}} \xrightarrow{c} F$.
+    Po zadatku \ref{zad:16.18} tvrdnja slijedi.
+\end{proof}
