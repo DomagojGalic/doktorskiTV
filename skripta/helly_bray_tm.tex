@@ -1,0 +1,409 @@
+% poglavlje 4.3 -> predavanje 18 - Helly-Brayev teorem, teorem neprekidnosti i njihove posljedice
+
+\chapter{Helly-Brayev teorem, teorem neprekidnosti i njihove posljedice}
+
+\begin{tm}[Helly-Bray]  \label{tm:18.1}
+    Neka je $\niz{F_n}{n \in \nat} \subseteq \inc$, te neka je $g: \real \to \real$.
+    \begin{enumerate}[label=(\roman*)]
+        \item   \label{tm:18.1.1}
+        Ako $F_n \xrightarrow{c} F$ te $g$ ome\dj ena i neprekidna, tada
+        \begin{equation*}
+            \lim\limits_{n \to \real} \int_{\real} g \: d F_n = \int_{\real} g \: d F \in \real.
+        \end{equation*}
+        \item   \label{tm:18.1.2}
+        Ako $F_n \xrightarrow{w} F$ te $g$ neprekidna i vrijedi
+        \begin{equation*}
+            \lim\limits_{x \to \pm \infty} g (x) = 0,    
+        \end{equation*}
+        tada vrijedi
+        \begin{equation*}
+            \lim\limits_{n \to \infty} \int_{\real} g \: d F_n = \int_{\real} g \: d F \in \real.
+        \end{equation*}
+    \end{enumerate}
+\end{tm}
+
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+        \item
+        Uo\v cimo da postoji $0<M<+\infty$ takav da je $|g(x)| \leq M$, $\forall x \in \real$.
+        Po korolaru \ref{kor:16.12} $(F_n)$ je napet, stoga po zadatku \ref{zad:16.11} \ref{zad:16.11.3}, $g$ je $(F_n)-\ui$.
+        Rezultat slijedi po korolaru \ref{kor:16.14}.
+        \item
+        Po pretpostavkama na $g$ slijedi
+        \begin{equation*}
+            \big(\forall \varepsilon > 0\big) \big(\exists a = a (\varepsilon) \in \obInt{0}{+\infty}\big) \; \td \; \big(|x| \geq a \implies |g(x)| < \varepsilon \big).
+        \end{equation*}
+        Po definiciji \ref{defn:16.10} slijedi da je $g$ $(F_n)-\ui$.
+        Rezultat slijedi po korolaru \ref{kor:16.14}.
+    \end{enumerate}
+\end{proof}
+
+\begin{kor} \label{kor:18.2}
+    Ako $F_n \xrightarrow{w} F$ i postoji $s>0$ takav da je
+    \begin{equation*}
+        \bigNiz{\int\limits_{\real} |x|^s \: d F_n (s)}{n \in \nat}
+    \end{equation*}
+    ome\dj en niz, tada vrijedi:
+    \begin{enumerate}[label=(\roman*)]
+        \item   \label{kor:18.2.1}
+        \begin{equation*}
+            F_n \xrightarrow[n \to \infty]{c} F,  
+        \end{equation*}
+        \item   \label{kor:18.2.2}
+        za svaki $0 \leq r < s$,
+        \begin{equation*}
+            \int\limits_{\real} |x|^r \: d F_n (x) \to \int\limits_{\real} |x|^r \: d F (x),
+        \end{equation*}
+        \item   \label{kor:18.2.3}
+        za svaki $k \in \{ 1, 2, \ldots, \lfloor s \rfloor \}$, $k \neq s$,
+        \begin{equation*}
+            \int\limits_{\real} x^k \: d F_n (x) \to \int\limits_{\real} x^k \: d F (x).
+        \end{equation*}
+    \end{enumerate}
+\end{kor}
+
+\begin{proof}
+    Koristimo korolar \ref{kor:16.14} kao i u prethodnom teoremu, jer su $|x|^r$ $(F_n)-\ui$, zbog
+    \begin{equation*}
+        \int\limits_{\{ |x| \geq a \}} |x|^r \: d F_n (x) \leq \frac{1}{a^{s-r}} \int\limits_{\real} |x|^s \: d F_n (x) \leq \frac{\const}{a^{s-r}}, \quad \forall n \in \nat.
+    \end{equation*}
+\end{proof}
+
+\begin{tm}[Fr\' echet-Shohat]  \label{tm:18.3}
+    Neka je $(F_n)$ niz p.d.F. takav da za svaki $k \in \nat$ postoje
+    \begin{equation*}
+        \begin{aligned}
+            \alpha_{n, k} &:= \int\limits_\real x^k \: d F_n (x)\\
+            \alpha_k &= \lim\limits_{n \to \infty} \alpha_{n, k}  
+        \end{aligned}
+    \end{equation*}
+    i neka su $\alpha_k$ momenti jedisntveno odre\dj eni p.d.F. $F$.
+    Tada
+    \begin{equation*}
+        F_n \xrightarrow{c} F.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Po teoremu \ref{tm:16.16} za svaki podniz niza $(F_n)$ postoji pod-podniz, recimo $(F_{n_j})$ i $G \in \inc$, takvi da
+    \begin{equation*}
+        F_{n_j} \xrightarrow{w} G.
+    \end{equation*}
+    Budu\' ci da je $\niz{\alpha_{n, k}}{n \in \nat}$ konvergentan, mora biti i ome\dj en, pa po korolaru \ref{kor:18.2} slijedi
+    \begin{equation*}
+        F_{n_j} \xrightarrow[j \to \infty]{c} G \quad \textnormal{i} \quad \alpha_{n_j, k} \xrightarrow[j \to \infty]{} \int\limits_{\real} x^k \: d G (x), \quad \forall k \in \nat.
+    \end{equation*}
+    Stoga je $G$ vjerojatnosna funkcija distribucije koja ima sve momente jednake $\alpha_k$.
+    Po pretpostavci postoji samo jedna takva p.d.F, pa je $G = F$.
+    Dakle,
+    \begin{equation*}
+        F_{n_j} \xrightarrow[j \to \infty]{c} F,
+    \end{equation*}
+    pa tvrdnja slijedi iz zadatka \ref{zad:16.18}.
+\end{proof}
+
+\begin{zad}  \label{zad:18.4}
+    Neka $F_n \xrightarrow{c} F$.
+    \begin{enumerate}[label=(\roman*)]
+        \item   \label{zad:18.4.1}
+        Ako za svaki $x \notin C(F)$ vrijedi $F_n (x \pm) \to F (x \pm)$, tada $(F_n)$ konvergira uniformano na $\real$ prema $F$.
+        \item   \label{zad:18.4.2}
+        Ako je $C(F) = \real$, tada
+        \begin{equation*}
+            \sup\limits_{x \in \real} \big| F_n (x) - F(x) \big| \xrightarrow[n \to \infty]{} 0.
+        \end{equation*}
+    \end{enumerate}
+\end{zad}
+
+\begin{tm}[Glivenko-Cantelli]   \label{tm:18.5}
+    Neka je $(X_n)$ $\iid$ niz s distribucijom $F$.
+    Neka je $F^\omega_n$ \emph{empirijska funkcija distribucije}, to jest
+    \begin{equation*}
+        F^\omega_n (x) := \frac{1}{n} \suma{j = 1}{n} \karaktFja_{\{ X_j \leq x \}}(\omega), \quad n \in \nat, \omega \in \Omega, x \in \real.
+    \end{equation*}
+    Tada, za gotovo sve $\omega \in \Omega$ vrijedi,
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \Big( \sup\limits_{x \in \real} | F^\omega_n(x) - F(x) | \Big) = 0.
+    \end{equation*}
+\end{tm}
+
+\begin{nap} \label{nap:18.5-1}
+    Empirijsku funkciju distribucije tako\dj er mo\v zemo zapisati na sljede\' ce na\v cine:
+    \begin{equation*}
+        \begin{gathered}
+            F_n (x) =    \frac{1}{n} \suma{k = 1}{n} \karaktFja_{\lijInt{-\infty}{x}} \circ X_k\\
+            F^\omega_n (x) = \frac{1}{n} \suma{k = 1}{n} \karaktFja_{\desInt{X_k(\omega)}{+\infty}}(x)
+        \end{gathered}
+    \end{equation*}
+\end{nap}
+
+\begin{proof}
+    Uo\v cimo da je
+    \begin{equation*}
+        \karaktFja_{\{X_j \leq x\}} \sim
+        \begin{pmatrix}
+            0 & 1\\
+            1 - F (x) & F (x)
+        \end{pmatrix},
+    \end{equation*}
+    pa je i $\omega \mapsto F^\omega_n (x)$ slu\v cajna varijabla i vrijedi
+    \begin{equation*}
+        n \cdot F^\omega_n (x) \sim B(n, F(x)).
+    \end{equation*}
+    Zbog neprekidnosti zdesna slijedi
+    \begin{equation*}
+        \sup\limits_{x \in \real} |F^\omega_n (x) - F (x)| = \sup\limits_{q \in \masQ} |F^\omega_n (q) - F (q)|,
+    \end{equation*}
+    pa je i
+    \begin{equation*}
+        \omega \mapsto \sup\limits_{x \in \real} |F^\omega_n (x) - F (x)|, \quad n \in \nat,
+    \end{equation*}
+    niz slu\v cajnih varijabli.
+    Nadalje, za svaki $n \in \nat$ i za gotovo sve $\omega \in \Omega$ je $x \mapsto F^\omega_n (x)$ p.d.F..
+    Dakle, za gotovo svaki $\omega \in \Omega$ je $\niz{F^\omega_n}{n \in \nat}$, niz p.d.F..
+    Po jakom zakonu velikih brojeva
+    \begin{equation*}
+        F^\omega_n (x) \xrightarrow{g.s.} F(x).
+    \end{equation*}
+    Sli\v cno dobijemo i da su $\omega \mapsto F^\omega_n (x-)$ slu\v cajne varijable, te da je
+    \begin{equation*}
+        n \cdot F^\omega_n (x-) \sim B(n, F(x-))
+    \end{equation*}
+    i kona\v cno
+    \begin{equation*}
+        F^\omega_n (x-) \xrightarrow{g.s.} F(x-).
+    \end{equation*}
+    
+    Promatramo
+    \begin{equation*}
+        A := \bigIndFamilija{\omega \in \Omega}{(F^\omega_n) \textnormal{ niz p.d.F.}, \; \big(F^\omega_n (q) - F(q) \big) \to 0, \; \big( F^\omega_n (q-) - F(q-) \big) \to 0, \; q \in \masQ}.
+    \end{equation*}
+    Slijedi da je $\masP (A) = 1$.
+    Budu\' ci da je $F$ p.d.F., iz napomene \ref{nap:16.6} slijdi da za svaki $\omega \in A$ vrijedi
+    \begin{equation*}
+        F^\omega_n \xrightarrow{c} F,
+    \end{equation*}
+    te da su ispunjene pretpostavke zadatka \ref{zad:18.4} \ref{zad:18.4.1}, slijedi da za $\omega \in A$ vrijedi
+    \begin{equation*}
+        \sup\limits_{x \in \real} |F^\omega_n (x) - F(x)| \to 0.
+    \end{equation*}
+\end{proof}
+
+\begin{tm}[teorem neprekidnosti, Paul L\' evy]  \label{tm:18.6}
+    \quad \newline
+    Neka je $\niz{F_n}{n \in \nat}$ niz p.d.F. i $\varphi_n := \varphi_{F_n}$, $n \in \nat$.
+    \begin{enumerate}[label=(\roman*)]
+        \item   \label{tm:18.6.1}
+        Ako $F_n \xrightarrow{c} F$, tada za svaki $T > 0$,
+        \begin{equation*}
+            \varphi_n (t) \to \varphi_F (t)
+        \end{equation*}
+        uniformno za $t \in \segment{-T}{T}$.
+        \item   \label{tm:18.6.2}
+        Ako $\varphi_n (t) \to \varphi (t)$, za svaki $t \in \real$ i $\varphi$ je funkcija neprekidna u $0$, tada postoji $F$ koja je p.d.F. i vrijedi
+        \begin{equation*}
+            \varphi = \varphi_F \quad \textnormal{ i } \quad F_n \xrightarrow{c} F.
+        \end{equation*}
+    \end{enumerate}
+\end{tm}
+
+\begin{proof}
+    Neka je $\varepsilon > 0$.
+    Po korolaru \ref{kor:16.12} mo\v zemo izabrati $M > 0$ dovoljno velik, tako da vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            \pm M \in C(F) \cap \presjek{n \in \nat}{} C(F_n),\\
+            F(-M) + (1 - F(M)) < \varepsilon,\\
+            F_n (-M) + (1 - F_n (M)) < \varepsilon, \quad n \in \nat.
+        \end{aligned}
+    \end{equation*}
+    Tada vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            | \varphi_n (t) - \varphi_F (t) | \leq& \Big| \underbrace{\int^{-M}_{-\infty} e^{itx} \: d F_n (x) - \int_{-\infty}^{-M} e^{itx} \: d F (x) }_{I_1} \Big|\\
+            &+ \Big| \underbrace{\int_{-M}^{M} e^{itx} \: d F_n (x) - \int_{-M}^{M} e^{itx} \: d F (x) }_{I_2} \Big|\\
+            &+ \Big| \underbrace{\int_{M}^{+\infty} e^{itx} \: d F_n (x) - \int_{M}^{+\infty} e^{itx} \: d F (x) }_{I_3} \Big|.
+        \end{aligned}
+    \end{equation*}
+    Zbog $|e^{itx}| = 1$ slijedi (uniformno za sve $t \in \real$)
+    \begin{equation*}
+        \begin{aligned}
+            |I_1| &\leq F_n (-M) + F(M) < 2 \varepsilon\\
+            |I_3| &\leq (1 - F_n(M)) + (1 - F (M)) < 2 \varepsilon.
+        \end{aligned}
+    \end{equation*}
+    Neka je $T > 0$ i uzimamo $t_0 \in \segment{-T}{T}$.
+    Koriste\' ci parcijalnu integraciju
+    \begin{equation*}
+        I_2 = \big( F_n(x) - F(x) \big) e^{itx} \Big|_{-M}^{M} - it \int_{-M}^M e^{itx} \big( F_n (x) - F(x) \big) \: dx,
+    \end{equation*}
+    \v sto daje
+    \begin{equation*}
+        \begin{aligned}
+            |I_2| &\leq |F_n(M) - F(M)| + |F_n(-M) + F(-M)| + T \int_{-M}^{M} |F_n (x) - F (x)| \: dx\\
+            &\leq 4 \varepsilon + T \int_{-M}^{M} |F_n (x) - F (x)| \: dx.
+        \end{aligned}
+    \end{equation*}
+    Uo\v cimo, $|F_n (x) - F (x)| \leq 2$, funkcija $2$ je integrabilna na $\segment{-M}{M}$, $\real \setminus C(F)$ je najvi\v se prebrojiv, dakle
+    \begin{equation*}
+        F_n (x) \xrightarrow[\lambda-g.s.]{n \to \infty} F(x).
+    \end{equation*}
+    Po LTDK sada vrijedi
+    \begin{equation*}
+        \int_{-M}^M |F_n (x) - F(x)| \: d x \to 0.
+    \end{equation*}
+    Dakle, za $n$ dovoljno velik ovaj integral je manji od $\frac{\varepsilon}{T}$.
+    Zna\v ci, za $n$ dovljno velik (i ovisan samo o $\varepsilon$ i $T$) i za svaki $t \in \segment{-T}{T}$,
+    \begin{equation*}
+        |\varphi_n (t) - \varphi_F (t)| < 9 \varepsilon.
+    \end{equation*}
+    Time je dokazana tvrdnja \ref{tm:18.6.1}.
+    Doka\v zimo \ref{tm:18.6.2}.
+
+    Po teoremu \ref{tm:16.16}
+    \begin{equation*}
+        (\exists F \in \inc) \; \textnormal{ i podniz } \; (F_{n_k}) \; \td \; F_{n_k} \xrightarrow{w} F.
+    \end{equation*}
+    Za svaki $\delta > 0$ vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            \frac{1}{2 \delta} \int_{-\delta}^\delta  \varphi_n (t) \: d t &= \frac{1}{2 \delta} \int_0^\delta \int_{-\infty}^{+\infty} \big( e^{itx} + e^{-itx} \big) \: d F_n (x) \: d t\\
+            &= \frac{1}{\delta} \int_0^\delta \int_{-\infty}^{+\infty} \cos tx \: d F_n (x) \: dt =
+            \begin{psmallmatrix}
+                \textnormal{Fubini}\\
+                |\cos tx| \leq 1
+            \end{psmallmatrix}\\
+            &= \int_{-\infty}^{+\infty} \frac{\sin \delta x}{\delta x} \: d F_n (x).
+        \end{aligned}
+    \end{equation*}
+    Uo\v cimo da je $x \mapsto \frac{\sin \delta x}{\delta x}$ neprekidno na $\real$ i i\v s\v cezava u $\pm \infty$.
+    Po Helly-Bray teoremu (teoremu \ref{tm:18.1}) primjenjenom na $(F_{n_k})$ dobivamo
+    \begin{equation*}
+        \int_{-\infty}^{\infty} \frac{\sin \delta x}{\delta x} \: d F_{n_k} (x) \xrightarrow[k \to \infty]{} \int_{-\infty}^{+\infty} \frac{\sin \delta x}{\delta x} \: d F (x).
+    \end{equation*}
+    Po LTDK (koriste\' ci ocjenu \eqref{jed:17.3}) dobijemo
+    \begin{equation*}
+        \begin{gathered}
+            \frac{1}{2 \delta} \int_{-\delta}^\delta \varphi_n (t) \: d t \to \frac{1}{2 \delta} \int_{-\delta}^{\delta} \varphi (t) \: d t\\
+            \implies \frac{1}{2 \delta} \int_{-\delta}^{\delta} \varphi (t) \: dt = \int_{-\infty}^{+\infty} \frac{\sin \delta x}{\delta x} \: d F (x).
+        \end{gathered}
+    \end{equation*}
+    Neka $\delta \to 0$.
+    Budu\' ci da je $\varphi$ neprekidna u $0$ lijeva strana te\v zi u $\varphi (0)$.
+    Budu\' ci da je $\Big| \frac{\sin n}{n} \Big| \leq 1$ i $\Delta F \leq 1$, po LTDK, desna strana te\v zi u $\Delta F$.
+    Dakle imamo
+    \begin{equation*}
+        \Delta F = \varphi (0) = 1.
+    \end{equation*}
+    Odakle slijedi da je $F$ p.d.F. i
+    \begin{equation*}
+        F_{n_k} \xrightarrow{w} F.
+    \end{equation*}
+    
+    Po \ref{tm:18.6.1} slijedi
+    \begin{equation*}
+        \varphi_{n_k} \to \varphi_F \quad \implies \quad \varphi = \varphi_F.
+    \end{equation*}
+    Neka je $(F_{n_p})$ bilo koji podniz od $(F_n)$.
+    Po teoremu \ref{tm:16.16} postoji podniz $(F_{n_{p_l}})$ i $\widetilde{F} \in \inc$ takav da $F_{n_{p_l}} \xrightarrow{w} \widetilde{F}$.
+    Isti dokaz koji smo upravo napravili pokazuje $\widetilde{F} = F$ i $F_{n_{p_l}} \xrightarrow{c} F$.
+    Po zadatku \ref{zad:16.18} tvrdnja slijedi.
+\end{proof}
+
+O\v cito vrijedi:
+
+\begin{kor} \label{kor:18.7}
+    Neka je $F$ p.d.F. i $(F_n)$ niz p.d.F..
+    Neka je $\varphi := \varphi_F$ i $\varphi_n := \varphi_{F_n}$, za svaki $n \in \nat$.
+    Tada vrijedi
+    \begin{equation*}
+        F_n \xrightarrow[n \to \infty]{c} F \quad \iff \quad \varphi_n (t) \xrightarrow[n \to \infty]{} \varphi (t), \; \forall t \in \real.
+    \end{equation*}
+\end{kor}
+
+Koristimo teorem neprekidnosti i u sljede\' cim tvrdnjama o beskona\v cno dijeljivim karakteristi\v cnim funkcijama.
+Prvo pokazujemo da za beskona\v cno djeljivu $\varphi$ ima smisla govoriti o $\ln \varphi$ (i neprekidna je funkcija).
+
+\begin{prop}    \label{prop:18.8}
+    Ako je $\varphi$ beskona\v cno djeljiva karakteristi\v cna funkcija, ta da je $\varphi (t) \neq 0$, $\forall t \in \real$.
+\end{prop}
+
+\begin{proof}
+    Za $n \in \nat$ promatramo $\varphi_n$ "$n$-ti korjen od $\varphi$".
+    Zbog $|\varphi_n (t)|^2 = |\varphi (t)|^\frac{2}{n}$, slijedi da postoji
+    \begin{equation*}
+        g (t) := \lim\limits_{n \to \infty} |\varphi_n (t)|^2
+    \end{equation*}
+    te vrijedi
+    \begin{equation*}
+        \begin{gathered}
+            g (t) = 0 \quad \iff \quad \varphi (t) = 0\\
+            g (t) = 1 \quad \iff \quad \varphi (t) \neq 0. 
+        \end{gathered}
+    \end{equation*}
+    Budu\' ci je $\varphi (0) = 1$ i $\varphi$ neprekidna, znamo da postoji $\varepsilon > 0$, takav da vrijedi
+    \begin{equation*}
+        |t| < \varepsilon \implies \varphi (t) \neq 0 \implies g (t) = 1,
+    \end{equation*}
+    odakle slijedi neprekidnost od $g$ u $0$.
+    Budu\' ci da je $\varphi_n$ karakteristi\v cna funkcija, slijedi da je i $|\varphi_n|^2$ karakteristi\v cna funkcija.
+    Stoga po teoremu neprekidnosti slijedi da je $g$ karakteristi\v cna funkcija.
+    Posebno, $g$ je neprekidna na $\real$, stoga slijedi $g \equiv 1$.
+\end{proof}
+
+\begin{zad} \label{zad:18.9}
+    Doka\v zite da uniformna razdioba na segmentu $\segment{-a}{a}$, $a > 0$, nema beskona\v cno djeljivu karakteristi\v cnu funkciju.
+\end{zad}
+
+Uo\v cite da iz propozicije \ref{prop:18.8} slijedi da je "$n$-ti korjen" od beskona\v cno djeljive $\varphi$ zadan sa
+\begin{equation}    \label{jed:18.10}
+    \varphi_n = e^{\frac{1}{n} \ln \varphi}.
+\end{equation}
+
+\begin{prop}    \label{prop: 18.11}
+    Ako su $\niz{\psi_m}{m \in \nat}$ beskona\v cno djeljive karakteristi\v cne funkcije i
+    \begin{equation*}
+        \varphi = \lim\limits_{m \to \infty} \psi_m
+    \end{equation*}
+    je karakteristi\v cna funkcija, tada je $\varphi$ tako\dj er beskona\v cno djeljiva.
+\end{prop}
+
+\begin{proof}
+    Prema zadatku \ref{zad:17.26} $|\psi_m|^2$ je beskona\v cno djeljiva karakteristi\v cna funkcija, pa je i $|\psi_m|^\frac{1}{n}$ karakteristi\v cna funkcija za svaki $n \in \nat$.
+    Zbog
+    \begin{equation*}
+        |\varphi|^\frac{2}{n} = \lim\limits_{m \to \infty} |\psi_m|^\frac{2}{n}
+    \end{equation*}
+    karakteristi\v cna funkcija, za svaki $n \in \nat$.
+    Posebno, $|\varphi|^2$ je beskona\v cno djeljiva, pa je po propoziciji \ref{prop:18.8} $\varphi (t) \neq 0$, $\forall t \in \real$.
+    Slijedi da je
+    \begin{equation*}
+        \ln \varphi (t) = \lim\limits_{m \to \infty} \ln \psi_m (t).
+    \end{equation*}
+    Iz relacije \eqref{jed:18.10} dobijemo
+    \begin{equation*}
+        \begin{aligned}
+            \varphi &:= e^{\frac{1}{n} \ln \varphi} = \lim\limits_{m \to \infty} e^{\frac{1}{n} \ln \psi_m}\\
+            &= \lim_{m \to \infty} (\psi_m)_n,    %n-ti korjen \psi_m ?
+        \end{aligned}
+    \end{equation*}
+    pa je po teoremu neprekidnosti $\varphi_n$ karakteristi\v cna funkcija i o\v cito vrijedi
+    \begin{equation*}
+        (\varphi_n)^n = \varphi.
+    \end{equation*}
+\end{proof}
+
+\begin{zad} \label{zad:18.12}
+    Neka je $\varphi$ beskona\v cno djeljiva karakteristi\v cna funkcija i $\varphi_n = e^{\frac{1}{n} \ln \varphi}$.
+    Doka\v zi da tada za svaki $t \in \real$, te uniformno po ograni\v cenim intervalima vrijedi:
+    \begin{enumerate}[label=(\alph*)]
+        \item    \label{zad:18.12.1}
+        \begin{equation*}
+            \lim\limits_{n \to \infty} n (\varphi_n (t) - 1) = \ln \varphi (t),
+        \end{equation*}
+        \item   \label{zad:18.12.2}
+        \begin{equation*}
+            \lim\limits_{n \to \infty} \varphi_n (t) = 1.
+        \end{equation*}
+    \end{enumerate}
+\end{zad}
