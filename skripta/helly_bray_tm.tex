@@ -116,5 +116,93 @@
 \end{zad}
 
 \begin{tm}[Glivenko-Cantelli]   \label{tm:18.5}
+    Neka je $(X_n)$ $\iid$ niz s distribucijom $F$.
+    Neka je $F^\omega_n$ \emph{empirijska funkcija distribucije}, to jest
+    \begin{equation*}
+        F^\omega_n (x) := \frac{1}{n} \suma{j = 1}{n} \karaktFja_{\{ X_j \leq x \}}(\omega), \quad n \in \nat, \omega \in \Omega, x \in \real.
+    \end{equation*}
+    Tada, za gotovo sve $\omega \in \Omega$ vrijedi,
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \Big( \sup\limits_{x \in \real} | F^\omega_n(x) - F(x) | \Big) = 0.
+    \end{equation*}
+\end{tm}
+
+\begin{nap} \label{nap:18.5-1}
+    Empirijsku funkciju distribucije tako\dj er mo\v zemo zapisati na sljede\' ce na\v cine:
+    \begin{equation*}
+        \begin{gathered}
+            F_n (x) =    \frac{1}{n} \suma{k = 1}{n} \karaktFja_{\lijInt{-\infty}{x}} \circ X_k\\
+            F^\omega_n (x) = \frac{1}{n} \suma{k = 1}{n} \karaktFja_{\desInt{X_k(\omega)}{+\infty}}(x)
+        \end{gathered}
+    \end{equation*}
+\end{nap}
+
+\begin{proof}
+    Uo\v cimo da je
+    \begin{equation*}
+        \karaktFja_{\{X_j \leq x\}} \sim
+        \begin{pmatrix}
+            0 & 1\\
+            1 - F (x) & F (x)
+        \end{pmatrix},
+    \end{equation*}
+    pa je i $\omega \mapsto F^\omega_n (x)$ slu\v cajna varijabla i vrijedi
+    \begin{equation*}
+        n \cdot F^\omega_n (x) \sim B(n, F(x)).
+    \end{equation*}
+    Zbog neprekidnosti zdesna slijedi
+    \begin{equation*}
+        \sup\limits_{x \in \real} |F^\omega_n (x) - F (x)| = \sup\limits_{q \in \masQ} |F^\omega_n (q) - F (q)|,
+    \end{equation*}
+    pa je i
+    \begin{equation*}
+        \omega \mapsto \sup\limits_{x \in \real} |F^\omega_n (x) - F (x)|, \quad n \in \nat,
+    \end{equation*}
+    niz slu\v cajnih varijabli.
+    Nadalje, za svaki $n \in \nat$ i za gotovo sve $\omega \in \Omega$ je $x \mapsto F^\omega_n (x)$ p.d.F..
+    Dakle, za gotovo svaki $\omega \in \Omega$ je $\niz{F^\omega_n}{n \in \nat}$, niz p.d.F..
+    Po jakom zakonu velikih brojeva
+    \begin{equation*}
+        F^\omega_n (x) \xrightarrow{g.s.} F(x).
+    \end{equation*}
+    Sli\v cno dobijemo i da su $\omega \mapsto F^\omega_n (x-)$ slu\v cajne varijable, te da je
+    \begin{equation*}
+        n \cdot F^\omega_n (x-) \sim B(n, F(x-))
+    \end{equation*}
+    i kona\v cno
+    \begin{equation*}
+        F^\omega_n (x-) \xrightarrow{g.s.} F(x-).
+    \end{equation*}
     
+    Promatramo
+    \begin{equation*}
+        A := \bigIndFamilija{\omega \in \Omega}{(F^\omega_n) \textnormal{ niz p.d.F.}, \; \big(F^\omega_n (q) - F(q) \big) \to 0, \; \big( F^\omega_n (q-) - F(q-) \big) \to 0, \; q \in \masQ}.
+    \end{equation*}
+    Slijedi da je $\masP (A) = 1$.
+    Budu\' ci da je $F$ p.d.F., iz napomene \ref{nap:16.6} slijdi da za svaki $\omega \in A$ vrijedi
+    \begin{equation*}
+        F^\omega_n \xrightarrow{c} F,
+    \end{equation*}
+    te da su ispunjene pretpostavke zadatka \ref{zad:18.4} \ref{zad:18.4.1}, slijedi da za $\omega \in A$ vrijedi
+    \begin{equation*}
+        \sup\limits_{x \in \real} |F^\omega_n (x) - F(x)| \to 0.
+    \end{equation*}
+\end{proof}
+
+\begin{tm}[teorem neprekidnosti, Paul L\' evy]  \label{tm:18.6}
+    \quad \newline
+    Neka je $\niz{F_n}{n \in \nat}$ niz p.d.F. i $\varphi_n := \varphi_{F_n}$, $n \in \nat$.
+    \begin{enumerate}[label=(\roman*)]
+        \item   \label{tm:18.6.1}
+        Ako $F_n \xrightarrow{c} F$, tada za svaki $T > 0$,
+        \begin{equation*}
+            \varphi_n (t) \to \varphi_F (t)
+        \end{equation*}
+        uniformno za $t \in \segment{-T}{T}$.
+        \item   \label{tm:18.6.2}
+        Ako $\varphi_n (t) \to \varphi (t)$, za svaki $t \in \real$ i $\varphi$ je funkcija neprekidna u $0$, tada postoji $F$ koja je p.d.F. i vrijedi
+        \begin{equation*}
+            \varphi = \varphi_F \quad \textnormal{ i } \quad F_n \xrightarrow{c} F.
+        \end{equation*}
+    \end{enumerate}
 \end{tm}
