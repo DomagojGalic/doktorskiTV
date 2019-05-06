@@ -2,3 +2,20 @@
 
 \chapter{Helly-Brayev teorem, teorem neprekidnosti i njihove posljedice}
 
+\begin{tm}[Helly-Bray]
+    Neka je $\niz{F_n}{n \in \nat} \subseteq \inc$, te neka je $g: \real \to \real$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Ako $F_n \xrightarrow{c} F$ te $g$ ome\dj ena i neprekidna, tada
+        \begin{equation*}
+            \lim\limits_{n \to \real} \int_{\real} g \: d F_n = \int_{\real} g \: d F \in \real.
+        \end{equation*}
+        \item Ako $F_n \xrightarrow{w} F$ te $g$ neprekidna i vrijedi
+        \begin{equation*}
+            \lim\limits_{x \to \pm \infty} g (x) = 0,    
+        \end{equation*}
+        tada vrijedi
+        \begin{equation*}
+            \lim\limits_{n \to \infty} \int_{\real} g \: d F_n = \int_{\real} g \: d F \in \real.
+        \end{equation*}
+    \end{enumerate}
+\end{tm}
