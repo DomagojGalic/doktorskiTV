@@ -2,14 +2,16 @@
 
 \chapter{Helly-Brayev teorem, teorem neprekidnosti i njihove posljedice}
 
-\begin{tm}[Helly-Bray]
+\begin{tm}[Helly-Bray]  \label{tm:18.1}
     Neka je $\niz{F_n}{n \in \nat} \subseteq \inc$, te neka je $g: \real \to \real$.
     \begin{enumerate}[label=(\roman*)]
-        \item Ako $F_n \xrightarrow{c} F$ te $g$ ome\dj ena i neprekidna, tada
+        \item   \label{tm:18.1.1}
+        Ako $F_n \xrightarrow{c} F$ te $g$ ome\dj ena i neprekidna, tada
         \begin{equation*}
             \lim\limits_{n \to \real} \int_{\real} g \: d F_n = \int_{\real} g \: d F \in \real.
         \end{equation*}
-        \item Ako $F_n \xrightarrow{w} F$ te $g$ neprekidna i vrijedi
+        \item   \label{tm:18.1.2}
+        Ako $F_n \xrightarrow{w} F$ te $g$ neprekidna i vrijedi
         \begin{equation*}
             \lim\limits_{x \to \pm \infty} g (x) = 0,    
         \end{equation*}
@@ -18,4 +20,101 @@
             \lim\limits_{n \to \infty} \int_{\real} g \: d F_n = \int_{\real} g \: d F \in \real.
         \end{equation*}
     \end{enumerate}
+\end{tm}
+
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+        \item
+        Uo\v cimo da postoji $0<M<+\infty$ takav da je $|g(x)| \leq M$, $\forall x \in \real$.
+        Po korolaru \ref{kor:16.12} $(F_n)$ je napet, stoga po zadatku \ref{zad:16.11} \ref{zad:16.11.3}, $g$ je $(F_n)-\ui$.
+        Rezultat slijedi po korolaru \ref{kor:16.14}.
+        \item
+        Po pretpostavkama na $g$ slijedi
+        \begin{equation*}
+            \big(\forall \varepsilon > 0\big) \big(\exists a = a (\varepsilon) \in \obInt{0}{+\infty}\big) \; \td \; \big(|x| \geq a \implies |g(x)| < \varepsilon \big).
+        \end{equation*}
+        Po definiciji \ref{defn:16.10} slijedi da je $g$ $(F_n)-\ui$.
+        Rezultat slijedi po korolaru \ref{kor:16.14}.
+    \end{enumerate}
+\end{proof}
+
+\begin{kor} \label{kor:18.2}
+    Ako $F_n \xrightarrow{w} F$ i postoji $s>0$ takav da je
+    \begin{equation*}
+        \bigNiz{\int\limits_{\real} |x|^s \: d F_n (s)}{n \in \nat}
+    \end{equation*}
+    ome\dj en niz, tada vrijedi:
+    \begin{enumerate}[label=(\roman*)]
+        \item   \label{kor:18.2.1}
+        \begin{equation*}
+            F_n \xrightarrow[n \to \infty]{c} F,  
+        \end{equation*}
+        \item   \label{kor:18.2.2}
+        za svaki $0 \leq r < s$,
+        \begin{equation*}
+            \int\limits_{\real} |x|^r \: d F_n (x) \to \int\limits_{\real} |x|^r \: d F (x),
+        \end{equation*}
+        \item   \label{kor:18.2.3}
+        za svaki $k \in \{ 1, 2, \ldots, \lfloor s \rfloor \}$, $k \neq s$,
+        \begin{equation*}
+            \int\limits_{\real} x^k \: d F_n (x) \to \int\limits_{\real} x^k \: d F (x).
+        \end{equation*}
+    \end{enumerate}
+\end{kor}
+
+\begin{proof}
+    Koristimo korolar \ref{kor:16.14} kao i u prethodnom teoremu, jer su $|x|^r$ $(F_n)-\ui$, zbog
+    \begin{equation*}
+        \int\limits_{\{ |x| \geq a \}} |x|^r \: d F_n (x) \leq \frac{1}{a^{s-r}} \int\limits_{\real} |x|^s \: d F_n (x) \leq \frac{\const}{a^{s-r}}, \quad \forall n \in \nat.
+    \end{equation*}
+\end{proof}
+
+\begin{tm}[Fr\' echet-Shohat]  \label{tm:18.3}
+    Neka je $(F_n)$ niz p.d.F. takav da za svaki $k \in \nat$ postoje
+    \begin{equation*}
+        \begin{aligned}
+            \alpha_{n, k} &:= \int\limits_\real x^k \: d F_n (x)\\
+            \alpha_k &= \lim\limits_{n \to \infty} \alpha_{n, k}  
+        \end{aligned}
+    \end{equation*}
+    i neka su $\alpha_k$ momenti jedisntveno odre\dj eni p.d.F. $F$.
+    Tada
+    \begin{equation*}
+        F_n \xrightarrow{c} F.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Po teoremu \ref{tm:16.16} za svaki podniz niza $(F_n)$ postoji pod-podniz, recimo $(F_{n_j})$ i $G \in \inc$, takvi da
+    \begin{equation*}
+        F_{n_j} \xrightarrow{w} G.
+    \end{equation*}
+    Budu\' ci da je $\niz{\alpha_{n, k}}{n \in \nat}$ konvergentan, mora biti i ome\dj en, pa po korolaru \ref{kor:18.2} slijedi
+    \begin{equation*}
+        F_{n_j} \xrightarrow[j \to \infty]{c} G \quad \textnormal{i} \quad \alpha_{n_j, k} \xrightarrow[j \to \infty]{} \int\limits_{\real} x^k \: d G (x), \quad \forall k \in \nat.
+    \end{equation*}
+    Stoga je $G$ vjerojatnosna funkcija distribucije koja ima sve momente jednake $\alpha_k$.
+    Po pretpostavci postoji samo jedna takva p.d.F, pa je $G = F$.
+    Dakle,
+    \begin{equation*}
+        F_{n_j} \xrightarrow[j \to \infty]{c} F,
+    \end{equation*}
+    pa tvrdnja slijedi iz zadatka \ref{zad:16.18}.
+\end{proof}
+
+\begin{zad}  \label{zad:18.4}
+    Neka $F_n \xrightarrow{c} F$.
+    \begin{enumerate}[label=(\roman*)]
+        \item   \label{zad:18.4.1}
+        Ako za svaki $x \notin C(F)$ vrijedi $F_n (x \pm) \to F (x \pm)$, tada $(F_n)$ konvergira uniformano na $\real$ prema $F$.
+        \item   \label{zad:18.4.2}
+        Ako je $C(F) = \real$, tada
+        \begin{equation*}
+            \sup\limits_{x \in \real} \big| F_n (x) - F(x) \big| \xrightarrow[n \to \infty]{} 0.
+        \end{equation*}
+    \end{enumerate}
+\end{zad}
+
+\begin{tm}[Glivenko-Cantelli]   \label{tm:18.5}
+    
 \end{tm}
