@@ -309,3 +309,101 @@
     Isti dokaz koji smo upravo napravili pokazuje $\widetilde{F} = F$ i $F_{n_{p_l}} \xrightarrow{c} F$.
     Po zadatku \ref{zad:16.18} tvrdnja slijedi.
 \end{proof}
+
+O\v cito vrijedi:
+
+\begin{kor} \label{kor:18.7}
+    Neka je $F$ p.d.F. i $(F_n)$ niz p.d.F..
+    Neka je $\varphi := \varphi_F$ i $\varphi_n := \varphi_{F_n}$, za svaki $n \in \nat$.
+    Tada vrijedi
+    \begin{equation*}
+        F_n \xrightarrow[n \to \infty]{c} F \quad \iff \quad \varphi_n (t) \xrightarrow[n \to \infty]{} \varphi (t), \; \forall t \in \real.
+    \end{equation*}
+\end{kor}
+
+Koristimo teorem neprekidnosti i u sljede\' cim tvrdnjama o beskona\v cno dijeljivim karakteristi\v cnim funkcijama.
+Prvo pokazujemo da za beskona\v cno djeljivu $\varphi$ ima smisla govoriti o $\ln \varphi$ (i neprekidna je funkcija).
+
+\begin{prop}    \label{prop:18.8}
+    Ako je $\varphi$ beskona\v cno djeljiva karakteristi\v cna funkcija, ta da je $\varphi (t) \neq 0$, $\forall t \in \real$.
+\end{prop}
+
+\begin{proof}
+    Za $n \in \nat$ promatramo $\varphi_n$ "$n$-ti korjen od $\varphi$".
+    Zbog $|\varphi_n (t)|^2 = |\varphi (t)|^\frac{2}{n}$, slijedi da postoji
+    \begin{equation*}
+        g (t) := \lim\limits_{n \to \infty} |\varphi_n (t)|^2
+    \end{equation*}
+    te vrijedi
+    \begin{equation*}
+        \begin{gathered}
+            g (t) = 0 \quad \iff \quad \varphi (t) = 0\\
+            g (t) = 1 \quad \iff \quad \varphi (t) \neq 0. 
+        \end{gathered}
+    \end{equation*}
+    Budu\' ci je $\varphi (0) = 1$ i $\varphi$ neprekidna, znamo da postoji $\varepsilon > 0$, takav da vrijedi
+    \begin{equation*}
+        |t| < \varepsilon \implies \varphi (t) \neq 0 \implies g (t) = 1,
+    \end{equation*}
+    odakle slijedi neprekidnost od $g$ u $0$.
+    Budu\' ci da je $\varphi_n$ karakteristi\v cna funkcija, slijedi da je i $|\varphi_n|^2$ karakteristi\v cna funkcija.
+    Stoga po teoremu neprekidnosti slijedi da je $g$ karakteristi\v cna funkcija.
+    Posebno, $g$ je neprekidna na $\real$, stoga slijedi $g \equiv 1$.
+\end{proof}
+
+\begin{zad} \label{zad:18.9}
+    Doka\v zite da uniformna razdioba na segmentu $\segment{-a}{a}$, $a > 0$, nema beskona\v cno djeljivu karakteristi\v cnu funkciju.
+\end{zad}
+
+Uo\v cite da iz propozicije \ref{prop:18.8} slijedi da je "$n$-ti korjen" od beskona\v cno djeljive $\varphi$ zadan sa
+\begin{equation}    \label{jed:18.10}
+    \varphi_n = e^{\frac{1}{n} \ln \varphi}.
+\end{equation}
+
+\begin{prop}    \label{prop: 18.11}
+    Ako su $\niz{\psi_m}{m \in \nat}$ beskona\v cno djeljive karakteristi\v cne funkcije i
+    \begin{equation*}
+        \varphi = \lim\limits_{m \to \infty} \psi_m
+    \end{equation*}
+    je karakteristi\v cna funkcija, tada je $\varphi$ tako\dj er beskona\v cno djeljiva.
+\end{prop}
+
+\begin{proof}
+    Prema zadatku \ref{zad:17.26} $|\psi_m|^2$ je beskona\v cno djeljiva karakteristi\v cna funkcija, pa je i $|\psi_m|^\frac{1}{n}$ karakteristi\v cna funkcija za svaki $n \in \nat$.
+    Zbog
+    \begin{equation*}
+        |\varphi|^\frac{2}{n} = \lim\limits_{m \to \infty} |\psi_m|^\frac{2}{n}
+    \end{equation*}
+    karakteristi\v cna funkcija, za svaki $n \in \nat$.
+    Posebno, $|\varphi|^2$ je beskona\v cno djeljiva, pa je po propoziciji \ref{prop:18.8} $\varphi (t) \neq 0$, $\forall t \in \real$.
+    Slijedi da je
+    \begin{equation*}
+        \ln \varphi (t) = \lim\limits_{m \to \infty} \ln \psi_m (t).
+    \end{equation*}
+    Iz relacije \eqref{jed:18.10} dobijemo
+    \begin{equation*}
+        \begin{aligned}
+            \varphi &:= e^{\frac{1}{n} \ln \varphi} = \lim\limits_{m \to \infty} e^{\frac{1}{n} \ln \psi_m}\\
+            &= \lim_{m \to \infty} (\psi_m)_n,    %n-ti korjen \psi_m ?
+        \end{aligned}
+    \end{equation*}
+    pa je po teoremu neprekidnosti $\varphi_n$ karakteristi\v cna funkcija i o\v cito vrijedi
+    \begin{equation*}
+        (\varphi_n)^n = \varphi.
+    \end{equation*}
+\end{proof}
+
+\begin{zad} \label{zad:18.12}
+    Neka je $\varphi$ beskona\v cno djeljiva karakteristi\v cna funkcija i $\varphi_n = e^{\frac{1}{n} \ln \varphi}$.
+    Doka\v zi da tada za svaki $t \in \real$, te uniformno po ograni\v cenim intervalima vrijedi:
+    \begin{enumerate}[label=(\alph*)]
+        \item    \label{zad:18.12.1}
+        \begin{equation*}
+            \lim\limits_{n \to \infty} n (\varphi_n (t) - 1) = \ln \varphi (t),
+        \end{equation*}
+        \item   \label{zad:18.12.2}
+        \begin{equation*}
+            \lim\limits_{n \to \infty} \varphi_n (t) = 1.
+        \end{equation*}
+    \end{enumerate}
+\end{zad}
