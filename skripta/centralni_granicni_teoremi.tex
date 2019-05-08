@@ -1,0 +1,368 @@
+% poglavlje 5.4 - centralni granicni teoremi -> predavanje 19
+
+\chapter{Centralni greni\v cni teoremi}
+
+Po\v cnimo od najja\v cih pretpostavki.
+Vidjeli smo u djelu \ref{dio:3} da je rubna vrijednost "brzine konvergencije" $\sqrt{n}$.
+Prvo fundamentalno pitanje je: "Ako je $\niz{X:n}{n \in \nat}$ niz nezavisnih jednako distribuiranih slu\v cajnih varijabli i $X_1$ ima sve momente, \v sto se doga\dj a sa $\frac{S_n}{\sqrt{n}}$?"
+
+Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih jednako distribuiranih slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$.
+Neka je $S_n = X_1 + \ldots + X_n$.
+Pretpostavimo da $X_1$ imam momente svakog reda i ozna\v cimo sa $m:= \masE X_1$, te sa $\sigma^2 = \Var X_1$.
+Uo\v cimo da u slu\v caju kada je $\Var X_1 = 0$ vrijedi $X_n \equiv m \; g.s.$, pa tada $\frac{S_n}{n} \equiv m$ i taj je slu\v caj trivijalno rje\v sen.
+Stoga bez smanjenja op\' cenitosti mo\v zemo promatrati $0 < \sigma^2 < +\infty$.
+Zbog nezavisnosti vrijedi
+\begin{equation*}
+    \varphi_{\frac{S_n - m n}{\sigma \sqrt{n}}} (t) = \produkt{j = 1}{n} \varphi_{\frac{X_j - m}{\sigma}} \Big( \frac{t}{\sqrt{n}} \Big) \overset{\iid}{=} \Big[ \varphi_{\frac{X_1 - m}{\sigma}} \Big( \frac{t}{\sqrt{n}} \Big) \Big]^n
+\end{equation*}
+Zbog postojanja drugog momenta, po korolaru \ref{kor:17.7} \ref{kor:17.7.3}, slijedi
+\begin{equation*}
+    \varphi_{\frac{X_1 - m}{\sigma}} \Big( \frac{t}{\sqrt{n}} \Big) = 1 - \frac{t^2}{2 n} + o \Big( \frac{t^2}{n} \Big), \quad \forall t \in \real.
+\end{equation*}
+Koriste\' ci lemu \ref{lm:17.10} dobivamo
+\begin{equation*}
+    \varphi_{\frac{S_n - n m}{\sigma \sqrt{n}}} (t) \xrightarrow[n \to \infty]{} e^{-\frac{t^2}{2}} = \varphi_{N(0,1)} (t).
+\end{equation*}
+Uo\v cimo da je sve spremno za primjenu teorema neprekidnosti, te da smo u izvodu koristili samo drugi moment.
+To zna\v ci da smo pokazali sljede\' ci teorem.
+
+\begin{tm}[CLT, $\iid$, $2^{\textnormal{nd}}$ mom.; Paul L\' evy]  \label{tm:19.1}
+    \quad \newline
+    Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih jednako distribuiranih slu\v cajnih varijabli i neka je $X_1 \in L^2 (\masP)$.
+    Neka je $0 < \sigma^2 < +\infty$.
+    Tada
+    \begin{equation*}
+        \frac{S_n - n m}{\sigma \sqrt{n}} \xrightarrow[n \to \infty]{d} N (0, 1).
+    \end{equation*}    
+\end{tm}
+
+Ako su na primjer
+\begin{equation*}
+    X_n \sim
+    \begin{pmatrix}
+        0 & 1\\
+        1 - p & p
+    \end{pmatrix},
+    \quad p \in \obInt{0}{1},
+\end{equation*}
+tada je $S_n \sim B (n, p)$, a u konvergenciji "$\xrightarrow{d}$" samo razdioba je va\v zna.
+Stoga direktno dobijemo "majstariji CLT".
+
+\begin{kor}[de Moivre-Laplace]  \label{kor:19.2}
+    Neka je $0 < p < 1$ i $Z_n \sim B (0, 1)$, za svaki $n \in \nat$.
+    Tada
+    \begin{equation*}
+        \frac{Z_n - n p}{\sqrt{n p (1 - p)}} \xrightarrow[n \to \infty]{d} N (0, 1).
+    \end{equation*}
+\end{kor}
+
+\begin{nap} \label{nap:19.3}
+    Nekoliko prirodnih puteva se sada name\' ce.
+    \v Sto se doga\dj a ako $(X_n)$ nisu jednakno distribuirane?
+    Mo\v ze li se dogoditi konvergencija prema nekom drugom limesu?
+    Kada se de\v sava konvergencija ba\v s prema $N(0, 1)$?
+\end{nap}
+
+U prvom koraku oslabit \' cemo pretpostavke, tako da sa\' cuvamo samo nezavisnost, to jest, mi\v cemo zahtjev jednake distribuiranosti.
+
+Neka je $\niz{X_n}{n \in \nat} \subseteq L^2 (\masP)$ niz \emph{nezavisnih} slu\v cajnih varijabli na $\vjerojatnosniProstor$.
+Za $n \in \nat$ uvodimo oznake
+\begin{equation*}
+    \begin{aligned}
+        m_n &:= \masE X_n,\\
+        \sigma^2_n &:= \Var X_n,\\
+        \varphi_n &:= \varphi_{X_n},\\
+        s^2_n &:= \Var (S_n) = \suma{k = 1}{n} \Var X_k = \suma{k = 1}{n} \sigma^2_k,
+    \end{aligned}
+\end{equation*}
+te pretpostavljamo da je $s_1 > 0$.
+Drugo fundamentalno pitanje je: "Koji su nu\v zni i dovoljni uvjeti
+da $\frac{S_n - \masE S_n}{s_n} \xrightarrow[n \to \infty]{d} N(0, 1)$?"
+Sljede\' ci teorem je va\v zan u odgovoru na to pitanje.
+
+\begin{tm}  \label{tm:19.4}
+    Neka je $\indFamilija{X_{n, m}}{n \in \nat, \; q \leq m \leq n} \subseteq L^2 (\masP)$ familija slu\v cajnih varijabli na vjerojatnosnom prostru $\vjerojatnosniProstor$, takvih da je $\masE X_{n, m} = 0$, za sve $n$ i $m$, te da je za svaki $n \in \nat$, familija $\niz{X_{n, m}}{ 1 \leq m \leq n}$ nezavisna.
+    Neka je $S_n := X_{n, 1} + \leq X_{n, m}$, $n \in \nat$.
+    Ako vrijedi
+    \begin{enumerate}[label=(\alph*)]
+        \item \label{tm:19.4.1}
+        \begin{equation*}
+            \suma{m = 1}{n} \masE \big( X_{n, m}^2 \big) \xrightarrow[n \to \infty]{} \sigma^2, \quad 0 < \sigma^2 < +\infty,
+        \end{equation*}
+        \item \label{tm:19.4.2}
+        \begin{equation*}
+            (\forall \varepsilon > 0) \quad \lim\limits_{n \to \infty} \suma{m = 1}{n} \masE \Big( |X_{n, m}|^2 \cdot \karaktFja_{\{ |X_{n, m}| > \varepsilon \}} \Big) = 0,
+        \end{equation*}
+    \end{enumerate}
+    tada
+    \begin{equation*}
+        S_n \xrightarrow[n \to \infty]{d}  N (0, \sigma^2).
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Neka je $\varphi_{n, m} := \varphi_{X_{n, m}}$ i neka je $\sigma^2_{n, m} := \masE [X_{n, m}^2] = \Var (X_{n, m}^2)$.
+    Po teoremu o neprekidnosti, dovoljno je dokazati
+    \begin{equation*}
+        \produkt{m = 1}{n} \varphi_{n, m} (t) \xrightarrow[n \to \infty]{} e^{-\frac{t^2 \sigma^2}{2}}.
+    \end{equation*}
+    Ozna\v cimo, za $t \in \real$, te $m$ i $n$,
+    \begin{equation*}
+        \begin{aligned}
+            z_{n, m} &:= \varphi_{n, m} (t),\\
+            w_{n, m} &:= 1 - \frac{t^2 \sigma_{n, m}^2}{2}.
+        \end{aligned}
+    \end{equation*}
+    Prema korolaru \ref{kor:17.7} slijedi
+    \begin{equation*}
+        \begin{aligned}
+            |z_{n, m} - w_{n, m}| &= \Big| \masE (e^{i t X_{n, m}}) - \Big( 1 + \frac{\masE [ (i t X_{n, m})^2 ]}{2} \Big) \Big| \leq \masE \Big[ \frac{|t X_{n, m}|^3}{3!} \land \frac{2 |t X_{n, m}|^2}{2!} \Big]\\
+            &\leq \masE \Big[ \frac{|t X_{n, m}|^3}{6} \karaktFja_{\{ |X_{n, m}| \leq \varepsilon \}} \Big] + \masE \Big[ |t X_{n, m}|^2 \karaktFja_{\{ |X_{n, m}| > \varepsilon \}} \Big]\\
+            &\leq \frac{\varepsilon t^3}{6} \masE \Big[ |X_{n, m}|^2 \karaktFja_{\{ |X_{n, m}| \leq \varepsilon  \}} \Big] + t^2 \cdot \masE \Big[ |X_{n, m}|^2 \karaktFja_{\{ |X_{n, m}| > \varepsilon \}} \Big], \quad \varepsilon > 0.
+        \end{aligned}
+    \end{equation*}
+    Stoga, $\forall \varepsilon > 0$ imamo
+    \begin{equation*}
+        \begin{aligned}
+            \limsup\limits_{n \to \infty} \suma{m = 1}{n} |z_{n, m} - w_{n, m}| &\leq \frac{\varepsilon t^3}{6} \limsup\limits_{n \to \infty} \suma{m = 1}{n} \masE \Big[ |X_{n, m}|^2 \karaktFja_{\{ |X_{n, m}| \leq \varepsilon \}} \Big]\\
+            &\quad \quad + t^2 \cdot \underbrace{\limsup\limits_{n \to \infty} \suma{m = 1}{n} \masE \Big[ |X_{n, m}|^2 \karaktFja_{\{|X_{n, m}| > \varepsilon \}} \Big]  }_{\overset{\ref{tm:19.4.2}}{=} 0}\\
+            &\leq \frac{\varepsilon t^3}{6} \limsup\limits_{n \to \infty} \suma{m = 1}{n} \masE \Big[ |X_{n, m}|^2 \Big] \overset{\ref{tm:19.4.1}}{=} \frac{1}{6} \varepsilon t^3 \sigma^2.
+        \end{aligned}
+    \end{equation*}
+    Zbog proizvoljnosti $\varepsilon > 0$ dobivamo
+    \begin{equation}    \label{jed:19.5}
+        \limsup\limits_{n \to \infty} \suma{m = 1}{n} |z_{n, m} - w_{n, m}| = 0.
+    \end{equation}
+
+    Uo\v cimo da je $|z_{n, m}| = |\varphi_{n, m} (t)| \leq 1$.
+    Zbog
+    \begin{equation*}
+        \sigma_{n, m}^2 \leq \varepsilon^2 + \masE \Big[ |X_{n, m}|^2 \karaktFja_{\{ |X_{n, m}| > \varepsilon \}} \Big],    
+    \end{equation*}
+    pa koriste\' ci \ref{tm:19.4.2} dobivamo
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \big( \sup\limits_{1 \leq m \leq n} \sigma_{n, m}^2 \big) = 0.
+    \end{equation*}
+    Dakle za $n$ dovoljno velik, $|w_{n, m}| \leq 1$, $1 \leq m \leq n$.
+    Za dovoljno velik $n$ primjenimo lemu \ref{lm:17.9} uz $\alpha = 1$ te dobijemo
+    \begin{equation*}
+        \Big| \produkt{m = 1}{n} \varphi_{n, m} (t) - \produkt{m = 1}{n} \Big( 1 - \frac{t^2 \sigma_{n, m}^2}{2} \Big) \Big| \leq \suma{m = 1}{n} |z_{n, m} - w_{n, m}| \xrightarrow[n \to \infty]{} 0,
+    \end{equation*}
+    gdje konvergencija slijedi zbog \eqref{jed:19.5}.
+    Sada koriste\' ci \ref{tm:19.4.1} jo\v s jednom, dobivamo
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \suma{m = 1}{n} \frac{t^2 \sigma_{n, m}^2}{2} = \frac{t^2 \sigma^2}{2},
+    \end{equation*}
+    te budu\' ci da ve\' c imamo
+    \begin{equation*}
+        \sup\limits_{1 \leq m \leq n} \sigma_{n, m}^2 \xrightarrow[n \to \infty]{} 0,    
+    \end{equation*}
+    koriste\' ci sli\v can argument kao u lemi \ref{lm:17.10} dobijemo
+    \begin{equation*}
+        \produkt{m = 1}{n} \Big( 1 - \frac{t^2 \sigma_{n, m}^2}{2} \Big) \xrightarrow[n \to \infty]{} e^{- \frac{t^2 \sigma^2}{2}}.
+    \end{equation*}
+\end{proof}
+
+\begin{kor}[dovoljan uvjet, J. Lindeberg 1922]  \label{kor:19.6}
+    \quad \newline
+    Ako za svaki $\varepsilon > 0$,
+    \begin{equation}    \label{jed:19.7}
+        \lim\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int_{\{|X_k - m_k| \geq \varepsilon s_n\}} (x - m_k)^2 \: d F_{X_k} (x) = 0,
+    \end{equation}
+    tada
+    \begin{equation*}
+        \frac{S_n - \masE S_n}{s_n} \xrightarrow[n \to \infty]{d} N(0,1).
+    \end{equation*}
+\end{kor}
+
+\begin{proof}
+    Za $n \in \nat$ te $1 \leq m \leq n$ stavimo
+    \begin{equation*}
+        X_{n, m} := \frac{X_m - m_m}{s_n}.
+    \end{equation*}
+    Sada imamo
+    \begin{equation*}
+        \suma{m = 1}{n} \masE [X_{n, m}^2] = \frac{1}{s_n^2} \suma{m = 1}{n} \Var X_m = 1,
+    \end{equation*}
+    pa je uvjet teorema \ref{tm:19.4} \ref{tm:19.4.1} ispunjen uz $\sigma = 1$.
+    Primjetimo da je
+    \begin{equation*}
+        \suma{k = 1}{n} \int_{\{|X_k - m_k| \geq \varepsilon s_n\}} (x - m_k)^2 \: d F_{X_k} (x) = \suma{m = 1}{n} \masE \Big[ |X_{n, m}|^2 \cdot \karaktFja_{\{ |X_{n, m}| > \varepsilon \}} \Big].
+    \end{equation*}
+    Stoga je ispunjen i zahtjev \ref{tm:19.4.2} teorema \ref{tm:19.4}.
+    Sada po teoremu \ref{tm:19.4} slijedi
+    \begin{equation*}
+        \frac{S_n - \masE S_n}{s_n} = X_{n, 1} + \ldots + X_{n, k} \xrightarrow[n \to \infty]{d} N(0, 1).
+    \end{equation*}
+\end{proof}
+
+Vrijedi li obrat ovog teorema?
+Ako da, to bi bio odgovor na na\v se fundamentalno pitanje.
+Na odgovor se \v cekalo vi\v se od 10 godina.
+Odgovor je pozitivan uz uvijet da je zadovoljeno jedno svojstvo koje je posljedica Lindebergovog uvjeta \eqref{jed:19.7}.
+
+\begin{lm}  \label{lm:19.8}
+    Ako $\niz{X_n}{n \in \nat}$ zadovoljava Lindebergov uvijet \eqref{jed:19.7} i $m_n = 0$, za svaki $n \in \nat$ i $s_n \nearrow +\infty$, tada
+    \begin{equation}    \label{jed:19.9}
+        \lim\limits_{n \to \infty} \max\limits_{1 \leq k \leq n} \frac{\sigma_k^2}{s_n^2} = 0.
+    \end{equation}
+\end{lm}
+
+\begin{proof}
+    Primjetimo
+    \begin{equation*}
+        \begin{aligned}
+            \max\limits_{1 \leq k \leq n} \frac{\sigma_k^2}{s_n^2} &= \max\limits_{1 \leq k \leq n} \frac{1}{s_n^2} \Big[ \int_{\{ |X_k|\leq \varepsilon s_n \}} x^2 \: d F_k (x) + \int_{\{ |x| > \varepsilon s_n \}} x^2 \: d F_k (x) \Big]\\
+            &\leq \max\limits_{1 \leq k \leq n} \frac{1}{s_n^2} \Big[ \varepsilon^2 s_n^2 + \int_{\{ |x| > \varepsilon s_n \}} x^2 \: d F_k (x) \Big]\\
+            &\leq \varepsilon^2 + \frac{1}{s_n^2} \suma{k = 1}{n} \int_{\{ |x| > \varepsilon s_n \}} x^2 \: d F_k (x), \quad \forall \varepsilon > 0,
+        \end{aligned}
+    \end{equation*}
+    sada \eqref{jed:19.7} daje \eqref{jed:19.9}.
+\end{proof}
+
+Uo\v cimo da u slu\v caju da $s_n \nearrow +\infty$, tada je \eqref{jed:19.9} ekvivalentno s
+\begin{equation}    \label{jed:19.10}
+    \lim\limits_{n \to \infty} \frac{\sigma_n}{s_n} = 0.
+\end{equation}
+Nadalje, podsjetimo se da za $|z| \leq 1$ (uz konvenciju $\ln 0 = 0$) imamo
+\begin{equation}    \label{jed:19.11}
+    | \ln z - (z - 1) | \leq |z - 1|^2,
+\end{equation}
+\v sto slijedi iz
+\begin{equation*}
+    \ln z = \suma{k = 1}{\infty} (-1)^{k-1} \frac{(z - 1)^2}{k}, \quad z \neq 0
+\end{equation*}
+i direktno za $z = 0$.
+
+\begin{tm}[nu\v zan uvjet, W. Feller 1935]  \label{tm:19.12}
+    Ako
+    \begin{equation*}
+        \begin{gathered}
+            s_n \nearrow +\infty\\
+            \lim\limits_{n \to \infty} \frac{\sigma_n}{s_n} = 0\\
+            \frac{S_n - \masE S_n}{s_n} \xrightarrow[n \to \infty]{d} N(0,1),
+        \end{gathered}
+    \end{equation*}
+    tada $(X_n)$ zadovoljava Lindebergov uvjet \eqref{jed:19.7}.
+\end{tm}
+
+\begin{proof}
+    Bez smanjenja op\' cenitosti mo\v zemo gledati slu\' caj $m_k = 0$, $\forall k$.
+    Koriste\' ci \eqref{jed:19.9}, \eqref{jed:19.10} , \eqref{jed:19.11} i korolar \ref{kor:17.7} dobivamo
+    \begin{equation*}
+        \begin{aligned}
+            \suma{k = 1}{n} \Big| \ln \varphi_k \Big( \frac{t}{s_n} \Big) - \Big( \varphi_k \Big( \frac{t}{s_n} \Big) - 1  \Big) \Big| &\leq \suma{k = 1}{n} \Big| \varphi_k \Big( \frac{t}{s_n} \Big) - 1 \Big|\\
+            &\leq \max_{1 \leq k \leq n} \Big| \varphi_k \Big( \frac{t}{s_k} \Big) - 1 \Big| \cdot \suma{k = 1}{n} \Big| \varphi_k \Big( \frac{t}{s_n} \Big) -1 \Big|\\
+            &\leq \max\limits_{1 \leq k \leq n} \Big| \varphi_k \Big( \frac{t}{s_n} \Big) - 1 \Big| \cdot \frac{t^2}{2} \underbrace{\suma{k = 1}{n} \frac{\sigma_k^2}{s_n^2} }_{= 1} = o(1).    
+        \end{aligned}
+    \end{equation*}
+    Po teoremu neprekidnosti i na\v si pretpostavkama
+    \begin{equation*}
+        \begin{gathered}
+            \lim\limits_{n \to \infty} \produkt{k = 1}{n} \varphi_k \Big( \frac{t}{s_n} \Big) = e^{-\frac{t^2}{2}} \implies \suma{k = 1}{n} \ln \varphi_k \Big( \frac{t}{s_n} \Big) \xrightarrow[n \to \infty] -\frac{t^2}{2}\\
+            \implies \quad -\frac{t^2}{2} = \suma{k = 1}{n} \Big( \varphi_k \Big( \frac{t}{s_n} \Big) -1 \Big) + o(1)
+        \end{gathered}
+    \end{equation*}
+    \v sto daje
+    \begin{equation*}
+        \frac{t^2}{2} - \suma{k = 1}{n} \int_{\{ |X_k| \leq \varepsilon s_n \}} \Big( 1 - \cos \frac{tx}{s_n} \Big) \: d F_k (x) = \suma{k = 1}{n} \int_{\{ |X_k| > \varepsilon s_n \}} \Big( 1 - \cos \frac{tx}{s_n} \Big) \: d F_k (x) + o(1).
+    \end{equation*}
+    Na desnoj strani imamo ocjenu
+    \begin{equation*}
+        \Big( 1 - \cos \frac{tx}{s_n} \Big) \leq 2 = 2 \cdot 1 \leq  \frac{2x^2}{\varepsilon^2 s_n^2},
+    \end{equation*}
+    dok na lijevoj strani imamo ocjenu
+    \begin{equation*}
+        \Big( 1 - \cos \frac{tx}{s_n} \Big) \leq \frac{t^2 x^2}{2 s_n^2}.
+    \end{equation*}
+    Odakle slijedi
+    \begin{equation*}
+        \begin{aligned}
+            \frac{t^2}{2} - \frac{t^2}{2 s_n^2} \suma{k = 1}{n} \int_{\{ |X_k| \leq \varepsilon s_n \}} x^2 \: d F_k (x) &\leq \suma{k = 1}{n} \int_{\{ |X_k| > \varepsilon s_n \}} \frac{2 x^2}{\varepsilon^2 s_n^2} \: d F_k (x) + o(1)\\
+            &\leq \frac{2}{\varepsilon^2 s_n^2} \suma{k = 1}{n} \sigma_k^2 + o (1) \quad \Big/ \cdot \frac{2}{t^2},
+        \end{aligned}
+    \end{equation*}
+    \v sto ima za posljedicu
+    \begin{equation*}
+        1 - \frac{1}{s_n^2} \suma{k = 1}{n} \int_{\{ |X_k| \leq \varepsilon s_n \}} x^2 \: d F_k (x) \leq \frac{4}{t^2 \varepsilon^2} + o(1) \quad \quad n \to \infty.
+    \end{equation*}
+    Sada, za svaki $t$ i za svaki $\varepsilon > 0$ vrijedi
+    \begin{equation*}
+        1 - \frac{4}{t^2 \varepsilon^2} \leq \liminf_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int_{\{ |X_k| \leq \varepsilon s_n \}} x^2 \: d F_k (x),
+    \end{equation*}
+    pu\v stamo $t \to +\infty$ i vidimo
+    \begin{equation*}
+        (\forall \varepsilon > 0) \quad 1 \leq \liminf\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int_{\{ |X_k| \leq \varepsilon s_n \}} x^2 \: d F_k (x) \leq \frac{1}{s_n^2} \suma{k = 1}{n} \sigma_k^2 = 1.
+    \end{equation*}
+    Kona\v cno, imamo
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int_{\{ |X_k| > \varepsilon s_n \}} x^2 \: d F_k (x) = 0.
+    \end{equation*}
+\end{proof}
+
+\begin{kor}[Lindeberg-Fellerov teorem]  \label{kor:19.13}
+    Neka je $\niz{X_n}{n \in \nat} \subseteq L^2 (\masP)$ niz nezavisnih slu\v cajnih varijabli i neka je $m_n = \masE X_n$, $\sigma_n = \Var X_n$, $S_n = X_1 + \ldots + X_n$, $S_n^2 = \Var s_n^2$.
+    Ako vrijedi $s_1 > 0$, $s_n \nearrow +\infty$ i $\frac{\sigma_n}{s_n} \to 0$, tada
+    \begin{equation*}
+        \frac{S_n - \masE S_n}{s_n} \xrightarrow[n \to \infty]{d} N(0, 1) \; \; \iff \; \; \lim\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int_{\{ |X_k - m_k| \geq \varepsilon s_n \}} (x - m_k)^2 \: d F_k (x) = 0, \; \forall \varepsilon > 0.
+    \end{equation*}
+\end{kor}
+
+Vratimo li se sada na slu\v caj nezavisnih, jednako distribuiranih slu\v cajnih varijabli, mo\v zemo poop\' citi koeficjente, na primjer $\frac{1}{a_n} (S_n - b_n)$ nas mo\v ze zanimati.
+Koriste\v ci tehnike karakteristi\v cnih funkcija, mo\v ze se pokazati
+
+\begin{zad} \label{zad:19.14}
+    Neka su $a_n > 0$, $\alpha_n > 0$ i vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            F_n (a_n x + b_n) \xrightarrow[n \to \infty]{c} F(x)\\
+            F_n (\alpha_n x + \beta_n) \xrightarrow[n \to \infty]{c} G(x),
+        \end{aligned}
+    \end{equation*}
+    te $F, G$ nisu degenerirane, tada postoje $a > 0$, $b \in \real$, takvi da vrijedi
+    \begin{equation*}
+        \begin{gathered}
+            G(x) = F(ax + b),\\
+            \frac{\alpha_n}{a_n} \to a,\\
+            \frac{\beta_n - b_n}{a_n} \to b.
+        \end{gathered}
+    \end{equation*}
+\end{zad}
+
+\begin{zad} \label{zad:19.15}
+    Ako $X$ nije degenerirana, tada je $|\varphi_X (t)| = 1$ za najvi\v se prebrojivo izoliranih to\v caka $t$.
+\end{zad}
+
+\begin{tm}  \label{tm:19.16}
+    Ako
+    \begin{equation*}
+        \frac{1}{a_n} (S_n - b_n) \xrightarrow[n \to \infty]{d} X,
+    \end{equation*}
+    pri \v cemu jer $(X_n)$ niz nezavisnih jednako distribuiranih slu\v cajnih varijabli te $X$ nije degenerirana, tada
+    \begin{equation*}
+        \begin{gathered}
+            a_n \to \infty,\\
+            \frac{a_n}{a_{n - 1}} \to 1,\\
+            \frac{b_n - b_{n - 1}}{a_n} \to 0.
+        \end{gathered}
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Po zadatku \ref{zad:19.14} dovoljno je pokazati da $a_n \to \infty$, jer tada
+    \begin{equation*}
+        \frac{X_1}{a_n} \xrightarrow[n \to \infty]{\masP} 0 \implies \frac{X_n}{a_n} \xrightarrow[n \to \infty]{\masP} 0 \implies \frac{1}{a_n} (S_{n - 1} - b_n) \xrightarrow[n \to \infty]{d} X.
+    \end{equation*}
+    Ako $a_n \centernot\to \infty$, tada postoji $a \geq 0$ i podniz $a_{n_k} \to a$.
+    Tada
+    \begin{equation*}
+        S_{n_k} - b_{n_k} \xrightarrow[n \to \infty]{d} a X.
+    \end{equation*}
+    Po teoremu neprekidnosti
+    \begin{equation*}
+        e^{i b_{n_k} t} [\varphi_{X_1} (t)]^{n_k} \to \varphi_{a X} (t) \implies \varphi_{a X} (t) = 0,
+    \end{equation*}
+    \v cim je $>|\varphi_{X_1} (t)| < 1$.
+    Po zadatku \ref{zad:19.15} $\varphi_{a X} (t) = 0$ za sve osim prebrojivo izoliranih $t$.
+    Slijedi da je $\varphi \equiv 0$, \v sto je kontradikcija.
+\end{proof}
