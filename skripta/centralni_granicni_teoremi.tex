@@ -301,5 +301,68 @@ i direktno za $z = 0$.
 \end{proof}
 
 \begin{kor}[Lindeberg-Fellerov teorem]  \label{kor:19.13}
-    
+    Neka je $\niz{X_n}{n \in \nat} \subseteq L^2 (\masP)$ niz nezavisnih slu\v cajnih varijabli i neka je $m_n = \masE X_n$, $\sigma_n = \Var X_n$, $S_n = X_1 + \ldots + X_n$, $S_n^2 = \Var s_n^2$.
+    Ako vrijedi $s_1 > 0$, $s_n \nearrow +\infty$ i $\frac{\sigma_n}{s_n} \to 0$, tada
+    \begin{equation*}
+        \frac{S_n - \masE S_n}{s_n} \xrightarrow[n \to \infty]{d} N(0, 1) \; \; \iff \; \; \lim\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int_{\{ |X_k - m_k| \geq \varepsilon s_n \}} (x - m_k)^2 \: d F_k (x) = 0, \; \forall \varepsilon > 0.
+    \end{equation*}
 \end{kor}
+
+Vratimo li se sada na slu\v caj nezavisnih, jednako distribuiranih slu\v cajnih varijabli, mo\v zemo poop\' citi koeficjente, na primjer $\frac{1}{a_n} (S_n - b_n)$ nas mo\v ze zanimati.
+Koriste\v ci tehnike karakteristi\v cnih funkcija, mo\v ze se pokazati
+
+\begin{zad} \label{zad:19.14}
+    Neka su $a_n > 0$, $\alpha_n > 0$ i vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            F_n (a_n x + b_n) \xrightarrow[n \to \infty]{c} F(x)\\
+            F_n (\alpha_n x + \beta_n) \xrightarrow[n \to \infty]{c} G(x),
+        \end{aligned}
+    \end{equation*}
+    te $F, G$ nisu degenerirane, tada postoje $a > 0$, $b \in \real$, takvi da vrijedi
+    \begin{equation*}
+        \begin{gathered}
+            G(x) = F(ax + b),\\
+            \frac{\alpha_n}{a_n} \to a,\\
+            \frac{\beta_n - b_n}{a_n} \to b.
+        \end{gathered}
+    \end{equation*}
+\end{zad}
+
+\begin{zad} \label{zad:19.15}
+    Ako $X$ nije degenerirana, tada je $|\varphi_X (t)| = 1$ za najvi\v se prebrojivo izoliranih to\v caka $t$.
+\end{zad}
+
+\begin{tm}  \label{tm:19.16}
+    Ako
+    \begin{equation*}
+        \frac{1}{a_n} (S_n - b_n) \xrightarrow[n \to \infty]{d} X,
+    \end{equation*}
+    pri \v cemu jer $(X_n)$ niz nezavisnih jednako distribuiranih slu\v cajnih varijabli te $X$ nije degenerirana, tada
+    \begin{equation*}
+        \begin{gathered}
+            a_n \to \infty,\\
+            \frac{a_n}{a_{n - 1}} \to 1,\\
+            \frac{b_n - b_{n - 1}}{a_n} \to 0.
+        \end{gathered}
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Po zadatku \ref{zad:19.14} dovoljno je pokazati da $a_n \to \infty$, jer tada
+    \begin{equation*}
+        \frac{X_1}{a_n} \xrightarrow[n \to \infty]{\masP} 0 \implies \frac{X_n}{a_n} \xrightarrow[n \to \infty]{\masP} 0 \implies \frac{1}{a_n} (S_{n - 1} - b_n) \xrightarrow[n \to \infty]{d} X.
+    \end{equation*}
+    Ako $a_n \centernot\to \infty$, tada postoji $a \geq 0$ i podniz $a_{n_k} \to a$.
+    Tada
+    \begin{equation*}
+        S_{n_k} - b_{n_k} \xrightarrow[n \to \infty]{d} a X.
+    \end{equation*}
+    Po teoremu neprekidnosti
+    \begin{equation*}
+        e^{i b_{n_k} t} [\varphi_{X_1} (t)]^{n_k} \to \varphi_{a X} (t) \implies \varphi_{a X} (t) = 0,
+    \end{equation*}
+    \v cim je $>|\varphi_{X_1} (t)| < 1$.
+    Po zadatku \ref{zad:19.15} $\varphi_{a X} (t) = 0$ za sve osim prebrojivo izoliranih $t$.
+    Slijedi da je $\varphi \equiv 0$, \v sto je kontradikcija.
+\end{proof}
