@@ -1,3 +1,81 @@
 % poglavlje 5.4 - centralni granicni teoremi -> predavanje 19
 
 \chapter{Centralni greni\v cni teoremi}
+
+Po\v cnimo od najja\v cih pretpostavki.
+Vidjeli smo u djelu \ref{dio:3} da je rubna vrijednost "brzine konvergencije" $\sqrt{n}$.
+Prvo fundamentalno pitanje je: "Ako je $\niz{X:n}{n \in \nat}$ niz nezavisnih jednako distribuiranih slu\v cajnih varijabli i $X_1$ ima sve momente, \v sto se doga\dj a sa $\frac{S_n}{\sqrt{n}}$?"
+
+Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih jednako distribuiranih slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$.
+Neka je $S_n = X_1 + \ldots + X_n$.
+Pretpostavimo da $X_1$ imam momente svakog reda i ozna\v cimo sa $m:= \masE X_1$, te sa $\sigma^2 = \Var X_1$.
+Uo\v cimo da u slu\v caju kada je $\Var X_1 = 0$ vrijedi $X_n \equiv m \; g.s.$, pa tada $\frac{S_n}{n} \equiv m$ i taj je slu\v caj trivijalno rje\v sen.
+Stoga bez smanjenja op\' cenitosti mo\v zemo promatrati $0 < \sigma^2 < +\infty$.
+Zbog nezavisnosti vrijedi
+\begin{equation*}
+    \varphi_{\frac{S_n - m n}{\sigma \sqrt{n}}} (t) = \produkt{j = 1}{n} \varphi_{\frac{X_j - m}{\sigma}} \Big( \frac{t}{\sqrt{n}} \Big) \overset{\iid}{=} \Big[ \varphi_{\frac{X_1 - m}{\sigma}} \Big( \frac{t}{\sqrt{n}} \Big) \Big]^n
+\end{equation*}
+Zbog postojanja drugog momenta, po korolaru \ref{kor:17.7} \ref{kor:17.7.3}, slijedi
+\begin{equation*}
+    \varphi_{\frac{X_1 - m}{\sigma}} \Big( \frac{t}{\sqrt{n}} \Big) = 1 - \frac{t^2}{2 n} + o \Big( \frac{t^2}{n} \Big), \quad \forall t \in \real.
+\end{equation*}
+Koriste\' ci lemu \ref{lm:17.10} dobivamo
+\begin{equation*}
+    \varphi_{\frac{S_n - n m}{\sigma \sqrt{n}}} (t) \xrightarrow[n \to \infty]{} e^{-\frac{t^2}{2}} = \varphi_{N(0,1)} (t).
+\end{equation*}
+Uo\v cimo da je sve spremno za primjenu teorema neprekidnosti, te da smo u izvodu koristili samo drugi moment.
+To zna\v ci da smo pokazali sljede\' ci teorem.
+
+\begin{tm}[CLT, $\iid$, $2^{\textnormal{nd}}$ mom.; Paul L\' evy]  \label{tm:19.1}
+    \quad \newline
+    Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih jednako distribuiranih slu\v cajnih varijabli i neka je $X_1 \in L^2 (\masP)$.
+    Neka je $0 < \sigma^2 < +\infty$.
+    Tada
+    \begin{equation*}
+        \frac{S_n - n m}{\sigma \sqrt{n}} \xrightarrow[n \to \infty]{d} N (0, 1).
+    \end{equation*}    
+\end{tm}
+
+Ako su na primjer
+\begin{equation*}
+    X_n \sim
+    \begin{pmatrix}
+        0 & 1\\
+        1 - p & p
+    \end{pmatrix},
+    \quad p \in \obInt{0}{1},
+\end{equation*}
+tada je $S_n \sim B (n, p)$, a u konvergenciji "$\xrightarrow{d}$" samo razdioba je va\v zna.
+Stoga direktno dobijemo "majstariji CLT".
+
+\begin{kor}[de Moivre-Laplace]  \label{kor:19.2}
+    Neka je $0 < p < 1$ i $Z_n \sim B (0, 1)$, za svaki $n \in \nat$.
+    Tada
+    \begin{equation*}
+        \frac{Z_n - n p}{\sqrt{n p (1 - p)}} \xrightarrow[n \to \infty]{d} N (0, 1).
+    \end{equation*}
+\end{kor}
+
+\begin{nap} \label{nap:19.3}
+    Nekoliko prirodnih puteva se sada name\' ce.
+    \v Sto se doga\dj a ako $(X_n)$ nisu jednakno distribuirane?
+    Mo\v ze li se dogoditi konvergencija prema nekom drugom limesu?
+    Kada se de\v sava konvergencija ba\v s prema $N(0, 1)$?
+\end{nap}
+
+U prvom koraku oslabit \' cemo pretpostavke, tako da sa\' cuvamo samo nezavisnost, to jest, mi\v cemo zahtjev jednake distribuiranosti.
+
+Neka je $\niz{X_n}{n \in \nat} \subseteq L^2 (\masP)$ niz \emph{nezavisnih} slu\v cajnih varijabli na $\vjerojatnosniProstor$.
+Za $n \in \nat$ uvodimo oznake
+\begin{equation*}
+    \begin{aligned}
+        m_n &:= \masE X_n,\\
+        \sigma^2_n &:= \Var X_n,\\
+        \varphi_n &:= \varphi_{X_n},\\
+        s^2_n &:= \Var (S_n) = \suma{k = 1}{n} \Var X_k = \suma{k = 1}{n} \sigma^2_k,
+    \end{aligned}
+\end{equation*}
+te pretpostavljamo da je $s_1 > 0$.
+Drugo fundamentalno pitanje je: "Koji su nu\v zni i dovoljni uvjeti
+da $\frac{S_n - \masE S_n}{s_n} \xrightarrow[n \to \infty]{d} N(0, 1)$?"
+Sljede\' ci teorem je va\v zan u odgovoru na to pitanje.
