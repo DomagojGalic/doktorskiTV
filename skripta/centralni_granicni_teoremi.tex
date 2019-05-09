@@ -199,5 +199,107 @@ Sljede\' ci teorem je va\v zan u odgovoru na to pitanje.
 Vrijedi li obrat ovog teorema?
 Ako da, to bi bio odgovor na na\v se fundamentalno pitanje.
 Na odgovor se \v cekalo vi\v se od 10 godina.
-Odgovor je pozitivan uz uvijet da je zadovoljneo jedno svojstvo koje je posljedica Lindebergovog uvjeta \eqref{jed:19.7}.
+Odgovor je pozitivan uz uvijet da je zadovoljeno jedno svojstvo koje je posljedica Lindebergovog uvjeta \eqref{jed:19.7}.
 
+\begin{lm}  \label{lm:19.8}
+    Ako $\niz{X_n}{n \in \nat}$ zadovoljava Lindebergov uvijet \eqref{jed:19.7} i $m_n = 0$, za svaki $n \in \nat$ i $s_n \nearrow +\infty$, tada
+    \begin{equation}    \label{jed:19.9}
+        \lim\limits_{n \to \infty} \max\limits_{1 \leq k \leq n} \frac{\sigma_k^2}{s_n^2} = 0.
+    \end{equation}
+\end{lm}
+
+\begin{proof}
+    Primjetimo
+    \begin{equation*}
+        \begin{aligned}
+            \max\limits_{1 \leq k \leq n} \frac{\sigma_k^2}{s_n^2} &= \max\limits_{1 \leq k \leq n} \frac{1}{s_n^2} \Big[ \int_{\{ |X_k|\leq \varepsilon s_n \}} x^2 \: d F_k (x) + \int_{\{ |x| > \varepsilon s_n \}} x^2 \: d F_k (x) \Big]\\
+            &\leq \max\limits_{1 \leq k \leq n} \frac{1}{s_n^2} \Big[ \varepsilon^2 s_n^2 + \int_{\{ |x| > \varepsilon s_n \}} x^2 \: d F_k (x) \Big]\\
+            &\leq \varepsilon^2 + \frac{1}{s_n^2} \suma{k = 1}{n} \int_{\{ |x| > \varepsilon s_n \}} x^2 \: d F_k (x), \quad \forall \varepsilon > 0,
+        \end{aligned}
+    \end{equation*}
+    sada \eqref{jed:19.7} daje \eqref{jed:19.9}.
+\end{proof}
+
+Uo\v cimo da u slu\v caju da $s_n \nearrow +\infty$, tada je \eqref{jed:19.9} ekvivalentno s
+\begin{equation}    \label{jed:19.10}
+    \lim\limits_{n \to \infty} \frac{\sigma_n}{s_n} = 0.
+\end{equation}
+Nadalje, podsjetimo se da za $|z| \leq 1$ (uz konvenciju $\ln 0 = 0$) imamo
+\begin{equation}    \label{jed:19.11}
+    | \ln z - (z - 1) | \leq |z - 1|^2,
+\end{equation}
+\v sto slijedi iz
+\begin{equation*}
+    \ln z = \suma{k = 1}{\infty} (-1)^{k-1} \frac{(z - 1)^2}{k}, \quad z \neq 0
+\end{equation*}
+i direktno za $z = 0$.
+
+\begin{tm}[nu\v zan uvjet, W. Feller 1935]  \label{tm:19.12}
+    Ako
+    \begin{equation*}
+        \begin{gathered}
+            s_n \nearrow +\infty\\
+            \lim\limits_{n \to \infty} \frac{\sigma_n}{s_n} = 0\\
+            \frac{S_n - \masE S_n}{s_n} \xrightarrow[n \to \infty]{d} N(0,1),
+        \end{gathered}
+    \end{equation*}
+    tada $(X_n)$ zadovoljava Lindebergov uvjet \eqref{jed:19.7}.
+\end{tm}
+
+\begin{proof}
+    Bez smanjenja op\' cenitosti mo\v zemo gledati slu\' caj $m_k = 0$, $\forall k$.
+    Koriste\' ci \eqref{jed:19.9}, \eqref{jed:19.10} , \eqref{jed:19.11} i korolar \ref{kor:17.7} dobivamo
+    \begin{equation*}
+        \begin{aligned}
+            \suma{k = 1}{n} \Big| \ln \varphi_k \Big( \frac{t}{s_n} \Big) - \Big( \varphi_k \Big( \frac{t}{s_n} \Big) - 1  \Big) \Big| &\leq \suma{k = 1}{n} \Big| \varphi_k \Big( \frac{t}{s_n} \Big) - 1 \Big|\\
+            &\leq \max_{1 \leq k \leq n} \Big| \varphi_k \Big( \frac{t}{s_k} \Big) - 1 \Big| \cdot \suma{k = 1}{n} \Big| \varphi_k \Big( \frac{t}{s_n} \Big) -1 \Big|\\
+            &\leq \max\limits_{1 \leq k \leq n} \Big| \varphi_k \Big( \frac{t}{s_n} \Big) - 1 \Big| \cdot \frac{t^2}{2} \underbrace{\suma{k = 1}{n} \frac{\sigma_k^2}{s_n^2} }_{= 1} = o(1).    
+        \end{aligned}
+    \end{equation*}
+    Po teoremu neprekidnosti i na\v si pretpostavkama
+    \begin{equation*}
+        \begin{gathered}
+            \lim\limits_{n \to \infty} \produkt{k = 1}{n} \varphi_k \Big( \frac{t}{s_n} \Big) = e^{-\frac{t^2}{2}} \implies \suma{k = 1}{n} \ln \varphi_k \Big( \frac{t}{s_n} \Big) \xrightarrow[n \to \infty] -\frac{t^2}{2}\\
+            \implies \quad -\frac{t^2}{2} = \suma{k = 1}{n} \Big( \varphi_k \Big( \frac{t}{s_n} \Big) -1 \Big) + o(1)
+        \end{gathered}
+    \end{equation*}
+    \v sto daje
+    \begin{equation*}
+        \frac{t^2}{2} - \suma{k = 1}{n} \int_{\{ |X_k| \leq \varepsilon s_n \}} \Big( 1 - \cos \frac{tx}{s_n} \Big) \: d F_k (x) = \suma{k = 1}{n} \int_{\{ |X_k| > \varepsilon s_n \}} \Big( 1 - \cos \frac{tx}{s_n} \Big) \: d F_k (x) + o(1).
+    \end{equation*}
+    Na desnoj strani imamo ocjenu
+    \begin{equation*}
+        \Big( 1 - \cos \frac{tx}{s_n} \Big) \leq 2 = 2 \cdot 1 \leq  \frac{2x^2}{\varepsilon^2 s_n^2},
+    \end{equation*}
+    dok na lijevoj strani imamo ocjenu
+    \begin{equation*}
+        \Big( 1 - \cos \frac{tx}{s_n} \Big) \leq \frac{t^2 x^2}{2 s_n^2}.
+    \end{equation*}
+    Odakle slijedi
+    \begin{equation*}
+        \begin{aligned}
+            \frac{t^2}{2} - \frac{t^2}{2 s_n^2} \suma{k = 1}{n} \int_{\{ |X_k| \leq \varepsilon s_n \}} x^2 \: d F_k (x) &\leq \suma{k = 1}{n} \int_{\{ |X_k| > \varepsilon s_n \}} \frac{2 x^2}{\varepsilon^2 s_n^2} \: d F_k (x) + o(1)\\
+            &\leq \frac{2}{\varepsilon^2 s_n^2} \suma{k = 1}{n} \sigma_k^2 + o (1) \quad \Big/ \cdot \frac{2}{t^2},
+        \end{aligned}
+    \end{equation*}
+    \v sto ima za posljedicu
+    \begin{equation*}
+        1 - \frac{1}{s_n^2} \suma{k = 1}{n} \int_{\{ |X_k| \leq \varepsilon s_n \}} x^2 \: d F_k (x) \leq \frac{4}{t^2 \varepsilon^2} + o(1) \quad \quad n \to \infty.
+    \end{equation*}
+    Sada, za svaki $t$ i za svaki $\varepsilon > 0$ vrijedi
+    \begin{equation*}
+        1 - \frac{4}{t^2 \varepsilon^2} \leq \liminf_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int_{\{ |X_k| \leq \varepsilon s_n \}} x^2 \: d F_k (x),
+    \end{equation*}
+    pu\v stamo $t \to +\infty$ i vidimo
+    \begin{equation*}
+        (\forall \varepsilon > 0) \quad 1 \leq \liminf\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int_{\{ |X_k| \leq \varepsilon s_n \}} x^2 \: d F_k (x) \leq \frac{1}{s_n^2} \suma{k = 1}{n} \sigma_k^2 = 1.
+    \end{equation*}
+    Kona\v cno, imamo
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int_{\{ |X_k| > \varepsilon s_n \}} x^2 \: d F_k (x) = 0.
+    \end{equation*}
+\end{proof}
+
+\begin{kor}[Lindeberg-Fellerov teorem]  \label{kor:19.13}
+    
+\end{kor}
