@@ -1,3 +1,46 @@
 % poglavlje 4.5 -> predavanje 20 - Levy-Hinčinova reprezentacija
 
 \chapter{L\' evy-Hin\v cinova reprezentacija}
+
+Tre\' ce fundamentalno pitanje glasi: ako je $\niz{X_n}{n \in \nat}$ niz jednako distribuiranoh slu\v cajnih varijabli i vrijedi
+\begin{equation*}
+    \frac{S_n - b_n}{a_n} \xrightarrow[n \to \infty]{d} X,
+\end{equation*}
+\v sto sve mo\v ze biti limes $X$.
+O\v cito $X$ mo\v ze biti degenerirana slu\v cajna varijabla i mo\v ze vrijediti $X \sim N(\mu, \sigma^2)$.
+Postoje li druge mogu\' cnosti?
+Promotrimo slu\v caj $a_n > 0$ te $b_n \in \real$, $\forall n \in \nat$.
+Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$ i neka vrijedi
+\begin{equation*}
+    \frac{1}{a_n} \big( S_n - b_n \big) \xrightarrow{d} X.
+\end{equation*} 
+Pretpostavimo da $X$ nije degenerirana.
+Prema teoremu \ref{tm:19.16} mora vrijediti $a_n \to \infty$, te tako\dj er $\frac{a_n}{a_{n - 1}} \to 1$.
+Neka su $0 < c_1 < c_2 < +\infty$ konstante.
+Neka je
+\begin{equation*}
+    m_n := \min \bigSkup{m > n}{\frac{a_m}{a_n} > \frac{c_2}{c_1}},
+\end{equation*}
+on postoji jer $a_n \xrightarrow[n \to \infty]{} \infty$.
+Tada slijedi
+\begin{equation*}
+    \lim\limits_{n \to \infty} \frac{a_{m_n}}{a_n} = \frac{c_2}{c_1}.
+\end{equation*}
+Neka su $\widetilde{b_1}$, $\widetilde{b_2} \in \real$.
+Postoje $B_{m, n}$ takvi da
+\begin{equation*}
+    \Big[c_1 \Big( \frac{1}{a_n} \suma{i = 1}{n} X_i - \frac{b_n}{a_n} \Big) - \widetilde{b_1} c_1 \Big]
+    + \Big[ c_1 \frac{a_{m_n}}{a_n} \Big( \frac{1}{a_{m_n}} \suma{i = n + 1}{n + m_n} X_i - \frac{b_{m_n}}{a_{m_n}} \Big) - \widetilde{b_2} c_2 \Big]
+    = \frac{c_1}{a_n} \suma{i = 1}{n + m_n} X_i - B_{m, n}.
+\end{equation*}
+Tada lijeva, pa onda i desna strana konvergiraju po distribuciji prema $G$ takvoj da je
+\begin{equation*}
+    \varphi_G = \varphi_{H_1} \cdot \varphi_{H_2},
+\end{equation*}
+gdje su
+\begin{equation*}
+    \begin{aligned}
+        H_1 (x) &:= F_X \Big( \frac{x}{c_1} + \widetilde{b_1} \Big)\\
+        H_2 (x) &:= F_X \Big( \frac{x}{c_2} + \widetilde{b_2} \Big).
+    \end{aligned}
+\end{equation*}
