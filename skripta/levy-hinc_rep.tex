@@ -1,0 +1,313 @@
+% poglavlje 4.5 -> predavanje 20 - Levy-Hinčinova reprezentacija
+
+\chapter{L\' evy-Hin\v cinova reprezentacija}
+
+Tre\' ce fundamentalno pitanje glasi: ako je $\niz{X_n}{n \in \nat}$ niz jednako distribuiranoh slu\v cajnih varijabli i vrijedi
+\begin{equation*}
+    \frac{S_n - b_n}{a_n} \xrightarrow[n \to \infty]{d} X,
+\end{equation*}
+\v sto sve mo\v ze biti limes $X$.
+O\v cito $X$ mo\v ze biti degenerirana slu\v cajna varijabla i mo\v ze vrijediti $X \sim N(\mu, \sigma^2)$.
+Postoje li druge mogu\' cnosti?
+Promotrimo slu\v caj $a_n > 0$ te $b_n \in \real$, $\forall n \in \nat$.
+Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$ i neka vrijedi
+\begin{equation*}
+    \frac{1}{a_n} \big( S_n - b_n \big) \xrightarrow{d} X.
+\end{equation*} 
+Pretpostavimo da $X$ nije degenerirana.
+Prema teoremu \ref{tm:19.16} mora vrijediti $a_n \to \infty$, te tako\dj er $\frac{a_n}{a_{n - 1}} \to 1$.
+Neka su $0 < c_1 < c_2 < +\infty$ konstante.
+Neka je
+\begin{equation*}
+    m_n := \min \bigSkup{m > n}{\frac{a_m}{a_n} > \frac{c_2}{c_1}},
+\end{equation*}
+on postoji jer $a_n \xrightarrow[n \to \infty]{} \infty$.
+Tada slijedi
+\begin{equation*}
+    \lim\limits_{n \to \infty} \frac{a_{m_n}}{a_n} = \frac{c_2}{c_1}.
+\end{equation*}
+Neka su $\widetilde{b_1}$, $\widetilde{b_2} \in \real$.
+Postoje $B_{m, n}$ takvi da
+\begin{equation*}
+    \Big[c_1 \Big( \frac{1}{a_n} \suma{i = 1}{n} X_i - \frac{b_n}{a_n} \Big) - \widetilde{b_1} c_1 \Big]
+    + \Big[ c_1 \frac{a_{m_n}}{a_n} \Big( \frac{1}{a_{m_n}} \suma{i = n + 1}{n + m_n} X_i - \frac{b_{m_n}}{a_{m_n}} \Big) - \widetilde{b_2} c_2 \Big]
+    = \frac{c_1}{a_n} \suma{i = 1}{n + m_n} X_i - B_{m, n}.
+\end{equation*}
+Tada lijeva, pa onda i desna strana konvergiraju po distribuciji prema $G$ takvoj da je
+\begin{equation*}
+    \varphi_G = \varphi_{H_1} \cdot \varphi_{H_2},
+\end{equation*}
+gdje su
+\begin{equation*}
+    \begin{aligned}
+        H_1 (x) &:= F_X \Big( \frac{x}{c_1} + \widetilde{b_1} \Big)\\
+        H_2 (x) &:= F_X \Big( \frac{x}{c_2} + \widetilde{b_2} \Big).
+    \end{aligned}
+\end{equation*}
+S druge strane
+\begin{equation*}
+    \frac{1}{a_{m_n + n}} (S_{m_n + n} - b_{m_n + n}) \xrightarrow[n \to \infty]{d} X.
+\end{equation*}
+Prema zadatku \ref{zad:19.14} postoje $a > 0$, $b \in \real$, takvi da je $G(x) = F_X (ax + b)$.
+Dakle gornji limes postoji, razdioba od $F_X$ pripada sljede\' coj klasi.
+
+\begin{defn}    \label{defn:20.1}
+    Slu\v cajna varijabla $X$ je \emph{stabilna} ako pripadna karakteristi\v cna funkcija $\varphi$ zadovoljava sljede\' ca svojstva:
+    \begin{equation}    \label{jed:20.2}
+        \begin{gathered}
+            (\forall a_1, a_2 > 0) (\exists a > 0, b \in \real)\\
+            \varphi (a_1 \: t) \cdot \varphi (a_2 \: t) = e^{i b t} \varphi (a \: t), \quad t \in \real.
+        \end{gathered} 
+    \end{equation}
+\end{defn}
+
+\begin{pr}  \label{pr:20.3}
+    Neka je $\alpha > 0$ i $\varphi (t) = e^{-|x|^\alpha}$.
+    Budu\' ci da za svaki $a_1, a_2 > 0$ postoji (jedinstveno odre\dj en) $a > 0$ takav da je $a^\alpha = a_1^\alpha + a_2^\alpha$, funkcija $\varphi$ zadovoljava \eqref{jed:20.2}.
+    Da li je takva $\varphi$ karakteristi\v cna funkcija?
+    Ne uvijek.
+    Mo\v ze se pokazati da je $\varphi$ karakteristi\v cna funkcija samo za $0< \alpha \leq 2$.
+    Budu\' ci da moment razdiobe implicira diferencijabilnost, jedina razdioba koja ima drugi moment je za slu\v caj $\alpha = 2$, \v sto daje normalnu razdiobu. 
+\end{pr}
+
+\begin{zad}[*]  \label{zad:20.4}
+    Neka je $\niz{X_n}{n \in \nat} \subseteq L^2 (\masP)$, niz nezavisnih jednako distribuiranih slu\v cajnih varijabli, te neka su $(a_n) \subseteq \obInt{0}{+\infty}$, $(b_n) \subseteq \real$, takvi da
+    \begin{equation*}
+        \frac{S_n - b_n}{a_n} \xrightarrow[n \to \infty]{d} X.
+    \end{equation*}
+    Tada je $X$ ili degenerirana ili ima normalnu razdiobu.
+\end{zad}
+
+Mogu\' ca je i ne\v sto druga\v cija karakterizacija stabilnih distribucija.
+
+\begin{zad}[*]  \label{zad:20.5}
+    Karakteristi\v cna funkcija $\varphi$ pripada stabilnoj distribuciji ako i samo ako vrijedi
+    \begin{equation*}
+        \begin{gathered}
+            (\forall n \in \nat) (\exists a_n > 0, b_n \in \real)\\
+            [\varphi (t)]^n = e^{ib_n t} \varphi (a_n \: t).
+        \end{gathered}
+    \end{equation*}
+\end{zad}
+
+\begin{tm}  \label{tm:20.6}
+    Za slu\v cajnu varijabu $X$ postoji niz nezavisnih, jednako distribuiranih slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ i nizovi $(a_n) \subseteq \obInt{0}{+\infty}$, $(b_n) \subseteq \real$ takvi da
+    \begin{equation*}
+        \frac{S_n - b_n}{a_n} \xrightarrow[n \to \infty]{d} X
+    \end{equation*}
+    ako i samo ako je $X$ stabilna.
+\end{tm}
+
+\begin{proof}
+    \begin{enumerate}
+        \item[$\implies$]
+        je dokazano na po\v cetku paragrafa.
+        \item[$\impliedby$]
+        Neka je $(X_n)$ niz nezavisnih kopija varijable $X$ i neka su $(a_n)$, $(b_n)$ iz zadatka \ref{zad:20.5}.
+        Tada vrijedi
+        \begin{equation*}
+            \begin{aligned}
+                \varphi_{\frac{S_n - b_n}{a_n}} (t) &= e^{-i\frac{t}{a_n} b_n} \varphi_{S_n} \Big( \frac{t}{a_n} \Big) \overset{\iid}{=} e^{-i \frac{t}{a_n} b_n} \Big[ \varphi_X \Big( \frac{t}{a_n} \Big)  \Big]^n = \varphi \Big( a_n \cdot \frac{x}{a_n} \Big)\\
+                &= \varphi_X (t).
+            \end{aligned}
+        \end{equation*}
+        Dakle
+        \begin{equation*}
+            \frac{S_n - b_n}{a_n} \distJed X, \quad \forall n \in \nat,    
+        \end{equation*}
+        stoga vrijedi
+        \begin{equation*}
+            \frac{S_n - b_n}{a_n} \xrightarrow[n \to \infty]{d} X.
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+\begin{kor} \label{kor:20.7}
+    Ako je $\varphi$ karakteristi\v cna funkcija stabilne distribucije, tada je $\varphi$ beskona\v cno djeljiva.
+\end{kor}
+
+\begin{proof}
+    U dokazu teorema \ref{tm:20.6} stavimo
+    \begin{equation*}
+        Y_k^n := \frac{X_k - \frac{b_n}{n}}{a_n}.
+    \end{equation*}
+    Slu\v cajne varijable $(Y_k^n)$ su nezavisne i jednako distribuirane i vrijedi
+    \begin{equation*}
+        \suma{k = 1}{n} Y_k^n = \frac{S_n - b_n}{a_n},
+    \end{equation*}
+    stoga je
+    \begin{equation*}
+        [ \varphi_{Y_1^n} ]^n = \varphi.
+    \end{equation*}
+\end{proof}
+
+\begin{nap} \label{nap:20.8}
+    Karakterizacija karakteristi\v cnih funkcija stabilnih distribucija je poznata.
+    Ne\' cemo ovdje dokazivati tu tvrdnju.
+    Uo\v cimo da korolar \ref{kor:20.7} pokazuje da uvijek postoji $\ln \varphi$ za stabilne distribucije.
+    Mo\v ze se pokazati da je distribucija stabilna ako i samo ako $\ln \varphi$ ima oblik:
+    \begin{equation}    \label{jed:20.9}
+        \ln \varphi (t) = itb - \beta |t|^\alpha \Big[ 1 + i \theta \frac{t}{|t|} \tg \frac{\pi}{2} \alpha \Big],
+    \end{equation}
+    pri \v cemu je $b \in \real$, $\beta \geq 0$, $|\theta| \leq 1$, $\alpha \in \obInt{0}{1} \cup \lijInt{1}{2}$, ili
+    \begin{equation}    \label{jed:20.10}
+        \ln \varphi (t) = i t b - \beta |t| \Big[ 1 + i \theta \frac{t}{|t|} \ln |t| \Big],
+    \end{equation}
+    pri \v cemu je $b \in \real$, $\beta \geq 0$, $|\theta| \leq 1$.
+    Uzimamo $\frac{t}{|t|} = 0$, za $t = 0$.
+
+    Razdioba je simetri\v cna ako i samo ako je $\varphi$ realna funkcija.
+    Stoga slijedi da je razdioba \emph{simetri\v cna stabilna} ako i samo ako je
+    \begin{equation}    \label{jed:20.11}
+        \varphi (t) = e^{-\beta |t|^\alpha}, \quad \beta \geq 0, \; 0 < \alpha \leq 2.
+    \end{equation}
+
+    O\v cito za $\beta = 0$ je pripadna razdioba degenerirana u nuli.
+    Za $\beta = \frac{1}{2}$ i $\alpha = 2$ to je $N(0,1)$, za $\beta > 0$ i $\alpha = 1$, to je Cauchyjeva s parametrom $\beta$.
+\end{nap}
+
+Preostaje vidjeti \v sto se mo\v ze desiti u op\' cem stanju.
+
+\v Cetvrto fundamentalno pitanje glasi: "\v Sto sve mo\v ze biti limes po distribuciji "velikog broja" "malih" nezavisnih doprinosa?"
+Precizirajmo to.
+Neka je $\niz{X_{n, k}}{n \in \nat, \; 1 \leq k \leq k_n}$ dvostrani niz slu\v cajnih varijabli za koji vrijedi: $k_n \nearrow +\infty$ i
+\begin{equation*}
+    X_{n1}, \ldots, X_{n k_n},
+\end{equation*}
+su nezavisne slu\v cajne varijable.
+Pretpostavljamo nadalje da je $(X_{n, k})$ \emph{infinitezimalni sustav} to jest da za svaki $\varepsilon > 0$ vrijedi
+\begin{equation}    \label{jed:20.12}
+    \lim\limits_{n \to \infty} \max\limits_{1 \leq k \leq k_n} \masP (|X_{n, k}| \geq \varepsilon) = 0.
+\end{equation}
+Pitamo se, dakle, \v sto sve mogu biti limesi $X$ centriranog infinitezimalnog sustava to jest za razdiobe od $X$ vrijedi
+\begin{equation}    \label{jed:20.13}
+    \suma{k = 1}{k_n} X_{n, k} - c_n \xrightarrow[n \to \infty]{d} X?
+\end{equation}
+Lako je uo\v citi da su kandidati za odgovor na ovo pitanje beskona\v cno djeljive distribucije.
+Zaista, neka je $X$ (dakle $\varphi_X$) beskona\v cno djeljiva.
+Tada, za svaki $n \in \nat$, postoji karakteristi\v cna funkcija $\varphi_n$ takva da je $[\varphi_n]^n = \varphi_X$.
+Po velikom Kolmogorovljevom teoremu je konstantni vjerojatnosni prostor $\vjerojatnosniProstor$ i familiju nezavisnih slu\v cajnih varijabli $\niz{X_{n, k}}{n \in \nat, \; 1 \leq k \leq n}$ takvih da je za svaki $n \in \nat$, $F_{X_{n, k}} = F_{\varphi_n}$, $1 \leq k \leq n$.
+O\v cito je takav sustav onda i nezavisan po recima.
+Po zadatku \ref{zad:18.12} \ref{zad:18.12.2} (vidi dokaz propozicije \ref{prop:18.8}) slijedi da
+\begin{equation*}
+    |\varphi_n (t) - 1| \xrightarrow[n \to \infty]{} 0,
+\end{equation*}
+uniformno po $t$ na ograni\v cenim intervalima.
+
+\begin{zad} \label{zad:20.14}
+    Ako za sustav $(X_{n, k})$ vrijedi
+    \begin{equation}
+        \lim\limits_{n \to \infty} \max\limits_{1 \leq k \leq k_n} |\varphi_{X_{n, k}}(t) - 1| = 0,
+    \end{equation}
+    uniformno po $t$ na svakom ograni\v cenom intervalu, tada je taj sustav infinitezimalan.
+\end{zad}
+
+Dakle, sustav koji smo gore konstruirali je infinitezimalan.
+Uzmimo $c_n = 0$ i onda slijedi
+\begin{equation*}
+    \varphi_{\suma{k = 1}{n} X_{n, k}} = \produkt{k = 1}{n} \varphi_{X_{n, k}} = [\varphi_n]^n = \varphi,
+\end{equation*}
+\v sto po teoremu neprekidnosti daje
+\begin{equation}    \label{jed:20.15}
+    \suma{k = 1}{n} X_{n, k} \xrightarrow[n \to \infty]{d} X.
+\end{equation}
+
+Vrijedi li i neka vrsta obrata?
+Za to je prvo potrebno to\v cno opisati beskona\v cno djeljive distribucije.
+
+\begin{tm}[L\' evy-Hin\v cin]   \label{tm:20.16}
+    \quad \\
+    Funkcija $\varphi$ je beskona\v cno djeljiva karakteristi\v cna funkcija ako i samo ako postoje $\gamma \in \real$ i $G \in \inc$, $G^R = G$, $\Delta G < +\infty$, takvi da je
+    \begin{equation*}
+        \varphi (t) = e^{  i \gamma t + \int_{-\infty}^{+\infty} \big(e^{itx} - 1 - \frac{itx}{1 + t^2} \big) \frac{1 + x^2}{x^2}  \: d G(x)}, \quad t \in \real.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}{(skica)}
+    \begin{enumerate}
+        \item[$\implies$]
+        Neka je $\varphi_n$ karakteristi\v cna funkcija, takva da je $[\varphi_n]^n = \varphi$.
+        Po zadatku \ref{zad:18.12} \ref{zad:18.12.1}
+        \begin{equation*}
+            \ln \varphi (t) = \lim\limits_{n \to \infty} n \int\limits_{-\infty}^{+\infty} (e^{itx} - 1) \: d F_{\varphi_n} (x),
+        \end{equation*}
+        uniformno po $t$ na ograni\v cenim intervalima.
+        Definirajmo
+        \begin{equation*}
+            G_n (x) := n \int\limits_{-\infty}^x \frac{y^2}{1 + y^2} \: d F_{\varphi_n} (y) \implies G(-\infty) = 0,
+        \end{equation*}
+        odakle slijedi $G_n(-\infty) = 0$, $G_n \in \inc$, $G_n^R = G_n$, $\Delta G_n = G_n (+\infty)$ je uniformno ograničena.
+        Po teoremu \ref{tm:16.16} (isti dokaz kao i za vjerojatnosne d.f.) postoji $G \in \inc$, $G^R = G$ i $\Delta G < +\infty$, takva da
+        \begin{equation*}
+            G_{n_k} \xrightarrow[n \to \infty]{w} G.
+        \end{equation*}
+        Stavimo
+        \begin{equation*}
+            L(x, t) :=
+            \begin{cases}
+                \big( e^{itx} - 1 - \frac{itx}{1 + x^2} \big) \frac{1 + x^2}{x^2}, &x \neq 0\\
+                -\frac{t^2}{2}, &x = 0
+            \end{cases}.
+        \end{equation*}
+        Vidimo da je $x \mapsto F(x, t)$ neprekidna i ograni\v cena za svaki $t$.
+        Stoga po Helly-Bray teoremu (teorem \ref{tm:18.1}) vrijedi
+        \begin{equation*}
+            \lim\limits_{k \to \infty} \int\limits_{-\infty}^{+\infty} L(x, t) \: d G_{n_k} (x) = \int\limits_{-\infty}^{+\infty} L(x, t) \: d G(x).
+        \end{equation*}
+        Neka je
+        \begin{equation*}
+            I_n(t) := \int\limits_{-\infty}^{+\infty} (e^{itx} - 1) \frac{1 + x^2}{x^2} \: d G_n (x).
+        \end{equation*}
+        Sada vrijedi
+        \begin{equation*}
+            I_n (t) = n \int\limits_{-\infty}^{+\infty} (e^{itx} - 1) \: d F_{\varphi_n} (x),
+        \end{equation*}
+        odakle slijedi
+        \begin{equation*}
+            I_n (t) \to \ln \varphi (t).
+        \end{equation*}
+
+        Stavimo
+        \begin{equation*}
+            \gamma_n := n \int\limits_{-\infty}^{+ \infty} \frac{x}{1 + x^2} \: d F_{\varphi_n} (x),
+        \end{equation*}
+        pa vrijedi
+        \begin{equation*}
+            I_{n_k} (t) = i \gamma_{n_k} t + \int\limits_{-\infty}^{+\infty} L(x, t) \: d G_{n_k} (x)
+        \end{equation*}
+        odakle vidimo
+        \begin{equation*}
+            \gamma_{n_k} \to \gamma,
+        \end{equation*}
+        te vrijedi
+        \begin{equation*}
+            \ln \varphi (t) = i \gamma t + \int\limits_{-\infty}^{+\infty} L(x, t) \: d G (x).
+        \end{equation*}
+    \end{enumerate}
+\end{proof}
+
+Postoji i drugi zapis
+\begin{equation}    \label{jed:20.17}
+    \varphi (t) = e^{ i \gamma t - \sigma^2 \frac{t^2}{2} + \int\limits_{ \real \setminus \{0\}} \big( e^{itx} - 1 - \frac{itx}{1 + x^2} \big) \: d \nu (x) },
+\end{equation}
+pri \v cemu je $\gamma \in \real$, $\sigma^2 \geq 0$ i $\nu$ (L\' evyjeva) mjera na $\real \setminus \{0\}$ takva da je
+\begin{equation*}
+    \int\limits_{\obInt{-1}{1} \setminus \{0\}} x^2 \: d \nu (x) < +\infty.
+\end{equation*}
+
+\begin{tm}[Op\' ci centralni grani\v cni teorem]    \label{tm:20.18}
+    \quad\\
+    Vrijedi
+    \begin{equation*}
+        \suma{k = 1}{k_n} X_{n, k} - c_n \xrightarrow[n \to \infty]{d} X \quad \iff \quad \varphi_x \; \textnormal{ beskona\v cno djeljiva}.
+    \end{equation*}
+    To je ispunjeno ako i samo ako $\gamma_n \to \gamma$ te $G_n \xrightarrow{c} G$, pri \v cemu su
+    \begin{equation*}   %interval po kojem području?
+        \begin{aligned}
+            \gamma_n &:= -c_n + \suma{k = 1}{k_n} \Big( c_{n, k} + \int \frac{x}{1 + x^2} \: d \widetilde{F}_{n, k} (x) \Big),\\
+            G_n (x) &:= \suma{k = 1}{k_n} \int\limits_{-\infty}^x \frac{y^2}{1 + y^2} \: d \widetilde{F}_{n, k}(y),\\
+            c_{n, k} &:= \int_{|x| < 1} x \: d F_{x_{n, k}},\\
+            \widetilde{F}_{n, k} (x) &:= F_{X_{n, k}} (x + c_{n, k}).
+        \end{aligned}
+    \end{equation*}
+\end{tm}
