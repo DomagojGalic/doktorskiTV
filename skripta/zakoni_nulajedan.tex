@@ -236,8 +236,163 @@ Tu $\sigma$-algebru $\famS_{\simetr}^{\infty}$ obi\v cno zovemo \emph{permutacij
 
 \begin{zad} \label{zad:9.10}
     Neka su $\famF_1 \subseteq \famF_2 \subseteq \ldots \subseteq \famF$ $\sigma$-algebre na vjerojatnosnom prostoru $\vjerojatnosniProstor$.
-    Za svaki $A \in \indSigAlg{\famF_n}{n \in \nat}$ postoji niz $\niz{A_n}{n \in \nat} \subseteq \unija{n \in \nat}{} \famF_n$, takav da je $\lim\limits_{n \to \infty} \vjeroj{A_n \triangle A} = 0$.
+    Za svaki $A \in \indSigAlg{\famF_n}{n \in \nat}$ postoji niz $\niz{A_n}{n \in \nat} \subseteq \unija{n \in \nat}{} \famF_n$, takav da je
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \vjeroj{A_n \triangle A} = 0.
+    \end{equation*}
 \end{zad}
+
+\begin{rj}[\ref{zad:9.10}]
+    U dokazu \' cemo koristiti dvije leme.
+
+    \begin{lm}  \label{lm:9.10-1}
+        Neka su $\niz{A_n}{n \in \nat}$ i $\niz{B_n}{n \in \nat}$ nizovi skupova, te neka je $m \in \nat$, tada vrijedi
+        \begin{equation*}
+            \Big( \unija{n = 1}{\infty} A_n \Big) \triangle \Big( \unija{n = 1}{m} B_n \Big) \subseteq \unija{n = 1}{m} (A_n \triangle B_n) \cup \unija{n = m + 1}{\infty} A_n.
+        \end{equation*}
+    \end{lm}
+
+    \begin{proof}
+        Neka je
+        \begin{equation*}
+            x \in \Big( \unija{n = 1}{\infty} A_n \Big) \triangle \Big( \unija{n = 1}{m} B_n \Big),
+        \end{equation*}
+        \v sto je ekvivalentno sa
+        \begin{equation*}
+            x \in \Big[ \Big( \unija{n = 1}{\infty} A_n \Big) \setminus \Big( \unija{n = 1}{m} B_n \Big) \Big] \cup \Big[ \Big( \unija{n = 1}{m} B_n \Big) \setminus \Big( \unija{n = 1}{\infty} A_n \Big) \Big].
+        \end{equation*}
+        Promatrajmo dva slu\v caja.
+        \begin{enumerate}[label=(\roman*)]
+            \item
+            \begin{equation*}
+                x \in \Big( \unija{n = 1}{\infty} A_n \Big) \setminus \Big( \unija{n = 1}{m} B_n \Big),
+            \end{equation*}
+            dakle postoji $n_0 \in \nat$ takav da vrijedi
+            \begin{equation*}
+                x \in A_{n_0} \land x \notin \unija{n = 1}{m} B_n.
+            \end{equation*}
+            Ponovo promatramo dva slu\v caja, ovisno o tome je li $n_0 \leq m$ ili $n_0 > m$.
+            \begin{enumerate}[label=(\alph*)]
+                \item $n_0 \leq m$
+                \begin{equation*}
+                    \begin{aligned}
+                        x \in A_{n_0} \land x \notin B_{n_0} &\implies x \in A_{n_0} \setminus B_{n_0} \implies x \in A_{n_0} \triangle B_{n_0}\\
+                        &\implies x \in \unija{n = 1}{m} (A_n \triangle B_n) \cup \unija{n = m + 1}{\infty} A_n. 
+                    \end{aligned}
+                \end{equation*}
+                \item $n_0 > m$
+                \begin{equation*}
+                    x \in \unija{n = m + 1}{\infty} A_n \implies x \in \unija{n = 1}{m} (A_n \triangle B_n) \cup \unija{n = m + 1}{\infty} A_n.
+                \end{equation*}
+            \end{enumerate}
+            \item
+            Neka je sada 
+            \begin{equation*}
+                \Big( \unija{n = 1}{m} B_n \Big) \setminus \Big( \unija{n = 1}{\infty} A_n \Big),
+            \end{equation*}
+            primjetimo da sada postoji $n_0 \leq m$ takav da vrijedi
+            \begin{equation*}
+                \begin{aligned}
+                    x \in B_{n_0} \land x \notin \unija{n = 1}{\infty} A_n &\implies x \in B_{n_0} \setminus A_{n_0} \implies x \in A_{n_0} \triangle B_{n_0}\\
+                    &\implies x \in \unija{n = 1}{m} (A_n \triangle B_n) \cup \unija{n = m + 1}{\infty} A_n.
+                \end{aligned}
+            \end{equation*}
+        \end{enumerate}
+        Dakle tvrdnja vrijedi.
+    \end{proof}
+
+    \begin{lm}  \label{lm:9.10-2}
+        Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor te neka je $\famA$ algebra na $\Omega$ takva da je $\sigAlg{\famA} = \famF$, tada za svaki $A \in \famF$ te za svaki $\varepsilon > 0$ postoji $B \in \famA$ takav da vrijedi
+        \begin{equation*}
+            \masP (A \triangle B) < \varepsilon.
+        \end{equation*}
+    \end{lm}
+
+    \begin{proof}
+        Definirajmo familiju
+        \begin{equation*}
+            \famH := \bigIndFamilija{A \in \famF}{\forall \varepsilon > 0, \; \exists B \in \famA, \; \td \; \masP (A \triangle B) < \varepsilon},
+        \end{equation*}
+        tvrdimo da je $\famH$ $\sigma$-algebra.
+        \begin{enumerate}[label=(\roman*)]
+            \item
+            Primjetimo da je $\famA \subseteq \famH$, odakle slijedi da je $\Omega \in \famH$.
+            \item
+            Neka je $A \in \famH$ te neka je $\varepsilon > 0$, tada postoji $B \in \famA$ takav da je $\masP (A \triangle B) < \varepsilon$.
+            Primjetimo
+            \begin{equation*}
+                \begin{aligned}
+                    A^c \triangle B^c &= (A^c \cup B^c) \cap (A^c \cap B^c)^c = (A \cap B)^c \cap \big( (A \cup B)^c \big)^c\\
+                    &= (A \cup B) \cap (A \cap B)^c\\
+                    &= A \triangle B.
+                \end{aligned}
+            \end{equation*}
+            Budu\' ci je $\famA$ algebra i $B \in \famA$, tada je i $B^c \in \famA$, te imamo
+            \begin{equation*}
+                \masP (A^c \triangle B^c) = \masP (A \triangle B) < \varepsilon,
+            \end{equation*}
+            stoga je $A^c \in \famH$.
+
+            \item
+            Prvo pokazujemo da je $\famH$ zatvorena na kona\v cne unije, to jest da je $\famH$ algebra.
+            Neka su $A_1, A_2 \in \famH$ i neka je $\varepsilon > 0$, postoje $B_1, B_2 \in \famA$ takvi da
+            \begin{equation*}
+                \begin{aligned}
+                    \masP (A_1 \triangle B_1) &< \frac{\varepsilon}{2},\\
+                    \masP (A_2 \triangle B_2) &< \frac{\varepsilon}{2}.
+                \end{aligned}
+            \end{equation*}
+            Iz leme \ref{lm:9.10-1} vidimo da vrijedi
+            \begin{equation*}
+                (A_1 \cup A_2) \triangle (B_1 \cup B_2) \subseteq (A_1 \triangle B_1) \cup (A_2 \triangle B_2). 
+            \end{equation*}
+            Sada imamo
+            \begin{equation*}
+                \begin{aligned}
+                    \masP ((A_1 \cup A_2) \triangle (B_1 \cup B_2)) &\leq \masP (A_1 \triangle B_1) + \masP (A_2 \triangle B_2)\\
+                    &< \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+                \end{aligned}
+            \end{equation*}
+            Budu\' ci je $\famA$ algebra, slijedi da je $B_1 \cup B_2 \in \famA$, dakle $A_1 \cup A_2 \in \famH$, pa je $\famH$ algebra.
+
+            Kako bi pokazali da je $\famH$ zatvorena na prebrojive unije, dovoljno je pokazati da je zatvorena na prebrojive unije disjunktnih doga\dj aja.
+            Neka je $\niz{A_n}{n \in \nat}$ niz disjuntnih doga\dj aja u $\famH$, neka je $\varepsilon > 0$, tada postoji niz $\niz{B_n}{n \in \nat} \subseteq \famA$ takav da vrijedi
+            \begin{equation*}
+                \masP (A_n \triangle B_n) < \frac{\varepsilon}{2^{n + 1}}.
+            \end{equation*}
+            Primjetimo $A := \unija{n = 1}{\infty} A_n \in \famF$, te vrijedi
+            \begin{equation*}
+                \masP \Big( \unija{n = 1}{\infty} A_n \Big) = \suma{n = 1}{\infty} \masP (A_n).
+            \end{equation*}
+            Kako $n$-ti ostatak konvergentonog reda mora te\v ziti u $0$, postoji $m_0 \in \nat$ takav da vrijedi
+            \begin{equation*}
+                \masP \Big( \unija{n = m_0 + 1}{\infty} A_n \Big) = \suma{n = m_0 + 1}{\infty} \masP (A_n) < \frac{\varepsilon}{2}.
+            \end{equation*}
+            Sada, koriste\' ci lemu \ref{lm:9.10-1}, imamo
+            \begin{equation*}
+                \begin{aligned}
+                    \masP \Big( \Big( \unija{n = 1}{\infty} A_n \Big) \triangle \Big( \unija{n = 1}{m_0} B_n \Big) \Big) &\leq \masP \Big( \unija{n = 1}{m_0} (A_n \triangle B_n) \cup \unija{n = m_0 + 1}{\infty} A_n \Big)\\
+                    &\leq \suma{n = 1}{m_0} \masP (A_n \triangle B_n) + \masP \Big( \unija{n = m_0 + 1}{\infty} A_n \Big) < \suma{n = 1}{m_0} \frac{\varepsilon}{2^{n + 1}} + \frac{\varepsilon}{2}\\
+                    &< \varepsilon.
+                \end{aligned}
+            \end{equation*}
+            Dakle $\unija{n = 1}{\infty} A_n \in \famH$, dakle $\famH$ je $\sigma$-algebra.
+        \end{enumerate}
+        Primjetimo sada $\famA \subseteq \famH \subseteq \sigAlg{\famA} = \famF$, dakle, budu\' ci je $\famH$ $\sigma$-algebra koja sadr\v zi $\famA$ mora vrijediti $\famH = \famF$, zbog minimalnosti od $\famF$.
+    \end{proof}
+
+    Preostaje primjetiti da je $\unija{n = 1}{\infty} \famF_n$ algebra.
+    Prva dva svojstva se jednostavno vide, dok tre\' ce slijedi iz monotonosti niza $\sigma$-algebri $\famF_n$.
+
+    Sada su zadovoljeni uvijeti iz leme \ref{lm:9.10-2} te za $A \in \bigSigAlg{\unija{n = 1}{\infty} \famF_n} = \indSigAlg{\famF_n}{n \in \nat}$ mo\v zemo konstruirati niz $\niz{A_n}{n \in \nat} \subseteq \unija{n = 1}{\infty} \famF$, sa svojstvom
+    \begin{equation*}
+        \masP (A \triangle A_n) < \frac{1}{n}.
+    \end{equation*}
+    Odavde vidimo da za niz $\niz{A_n}{n \in \nat}$ vrijedi
+    \begin{equation*}
+        \lim\limits_{n \to \infty} \masP (A \triangle A_n) = 0.
+    \end{equation*}
+\end{rj}
 
 Podsjetimo se da za niz $E$-zna\v cnih slu\v cajnih elemenata $(X_n)$, mo\v zemo promatrati $X:=(X_1, \; X_2, \ldots)$ kao preslikavanje
 \begin{equation*}
