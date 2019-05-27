@@ -301,12 +301,133 @@ Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
     \end{equation*}
 \end{pr}
 
+\begin{tm}  \label{tm:12.11-1}
+    Neka su $(\real, \borel{\real}, \nu)$, te $ (\Omega, \famF, \mu) $ prostori s mjerom i neka je $f : \Omega \to \real$ nenegativna, borelova funkcija, tada vrijedi
+    \begin{equation*}
+        \int\limits_\Omega \nu (\desInt{0}{f(\omega)}) \: d \mu (\omega) = \int\limits_{0}^{+\infty} \mu (f>t) \: d \nu (t).
+    \end{equation*}
+    Ako uzmemo $\nu$ kao apsolutno neprekidnu s obzirom na Lebesgue-ovu mjeru $\lambda$ s gusto\' com $t \mapsto p \: t^{p-1}$, za $p>0$, tada imamo
+    \begin{equation*}
+        \int\limits_\Omega f(\omega)^p \: d \mu (\omega) = p \int\limits_{0}^{+\infty} t^{p-1} \mu (f > t) \: d \lambda (t).
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Doka\v zimo najprije da je funkcija
+    \begin{equation*}
+        (\omega, t) \mapsto \karaktFja_{\{ f > t \}} (\omega)
+    \end{equation*}
+    izmjeriva na $\famF \otimes \borel{\real}$.
+    Prema napomeni \ref{nap:3.20-1} dovoljno je pokazati da je za $s \in \real$
+    \begin{equation*}
+        \Big\{\karaktFja_{\{f > t\}} > s \Big\} \in \famF \otimes \borel{\real}.
+    \end{equation*}
+    Za $s \geq 1$ gornji skup je prazan, \v sto je izmjerivo, dok za $s < 0$ gornji skup je jednak $\Omega \times \real$, jer je $\karaktFja_{\{ f > t \}} \geq 0$, \v sto je ponovo izmjerivo.
+    Preostaje promotriti slu\v caj $s \in \desInt{0}{1}$.
+    Primjetimo za takve vrijednosti parametra $s$ gornji skup ne ovisi o njemu, dakle
+    \begin{equation*}
+        \begin{aligned}
+            \Big\{ \karaktFja_{\{f > t\}} > s \Big\} &= \bigSkup{(\omega, t) \in \Omega \times \real}{\karaktFja_{\{ f > t \}} (\omega) = 1}\\
+            &= \bigSkup{(\omega, t) \in \Omega \times \real}{\omega \in \{ f > t \}}\\
+            &= \skup{(\omega, t) \in \Omega \times \real}{f(\omega) > t}\\
+            &= \skup{(\omega, t) \in \Omega \times \real}{f(\omega) - t > 0}.
+        \end{aligned}
+    \end{equation*}
+    Primjetimo
+    \begin{equation*}
+        (\omega, t) \overset{g}{\mapsto} f(\omega) - t
+    \end{equation*}
+    je izmjeriva funkcija po propoziciji \ref{prop:4.9}.
+    Tako\dj er primjetimo da je
+    \begin{equation*}
+        \skup{(\omega, t) \in \Omega \times \real}{f(\omega) - t > 0} = \{ g > 0 \},
+    \end{equation*}
+    \v sto je izmjerivo.
+    Dakle funkcija
+    \begin{equation*}
+        (\omega, t) \mapsto \karaktFja_{\{ f > t \}} (\omega)
+    \end{equation*}
+    je izmjeriva.
+
+    Primjetimo, po Fubinijevom teoremu imamo
+    \begin{equation*}
+        \begin{aligned}
+            \int\limits_{0}^{+\infty} \int\limits_\Omega \karaktFja_{\{  f > t \}} (\omega)\: d \mu (\omega) \: d \nu (t) &= \int\limits_{0}^{+\infty} \Big( \int\limits_\Omega \karaktFja_{\{  f > t \}} (\omega) \: d \mu (\omega) \Big) \: d \nu (t) = \int\limits_{0}^{+\infty} \mu (f > t) \: d \nu (t)\\
+            &= \int\limits_\Omega \Big( \int\limits_{0}^{+\infty} \karaktFja_{\{ f > t \}} (\omega) \: d \nu (t) \Big) \: d \mu (t) = \int\limits_\Omega \Big( \int\limits_{0}^{+\infty} \karaktFja_{\{ t < f \}} \Big) \: d \nu (t)\\
+            &= \int\limits_\Omega \Big( \int\limits_{0}^{+\infty} \karaktFja_{\desInt{0}{f(\omega)}} (t) \Big) \: d \nu (t) = \int\limits_\Omega \nu (\desInt{0}{f (\omega)}) \: d \mu (\omega).
+        \end{aligned}
+    \end{equation*}
+    Dakle vrijedi
+    \begin{equation*}
+        \int\limits_\Omega \nu (\desInt{0}{f(\omega)}) \: d \mu (\omega) = \int\limits_{0}^{+\infty} \mu (f>t) \: d \nu (t).
+    \end{equation*}
+
+    Uzmimo da je
+    \begin{equation*}
+            \nu (A) = \int\limits_A p t^{p-1} \: d \lambda (t) ,
+    \end{equation*}
+    sada imamo
+    \begin{equation*}
+        \nu (\desInt{0}{f(\omega)}) = \int\limits_{0}^{f(\omega)} p t^{p-1} \: d \lambda (t) = f^p (\omega).
+    \end{equation*}
+    Odakle vidimo da slijedi
+    \begin{equation*}
+        \int\limits_\Omega f(\omega)^p \: d \mu (\omega) = p \int\limits_{0}^{+\infty} t^{p-1} \mu (f > t) \: d \lambda (t).
+    \end{equation*}
+\end{proof}
+
+\begin{nap} \label{nap:12.11-2}
+    Za nenegativnu slu\v cajnu varijablu $X$ iz teorema \ref{tm:12.11-1} slijedi
+    \begin{equation*}
+        \masE [X^\alpha] = \alpha \int\limits_{0}^{+\infty} x^{\alpha - 1} \masP (X > x) \: d \lambda (x), \quad \alpha > 0,
+    \end{equation*}
+    te posebno za $\alpha = 1$
+    \begin{equation*}
+        \masE [X] = \int\limits_{0}^{+\infty} \masP (X > x) \: d \lambda (x).
+    \end{equation*}
+\end{nap}
+
 \begin{zad} \label{zad:12.12}
     Ako je $X \in L^1(\masP)$, tada je
     \begin{equation*}
-        \lim\limits_{n \to \infty} x \: \vjeroj{|X| > x} = 0.
+        \lim\limits_{x \to \infty} x \: \vjeroj{|X| > x} = 0.
     \end{equation*}
 \end{zad}
+
+\begin{rj}[\ref{zad:12.12}]
+    Pretpostavimo suprotno, to jest, da vrijedi
+    \begin{equation*}
+        (\exists \varepsilon > 0)(\forall M \geq 0) \quad  (x \geq M ) \land (x \: \masP (|X| > x)).
+    \end{equation*}
+
+    Prema teoremu \ref{tm:12.11-1} imamo
+    \begin{equation*}
+        \begin{aligned}
+            \masE [|X|] &= \int\limits_{0}^{+\infty} \masP (|X| > x) \: d \lambda (x)\\
+            &= \int\limits_{0}^{1} \masP (|X| > x) \: d \lambda (x) + \int\limits_{1}^{+\infty} \masP (|X| > x) \: d \lambda (x),
+        \end{aligned}
+    \end{equation*}
+    odakle vidimo da vrijedi
+    \begin{equation*}
+        \masE [|X|] \geq \int\limits_{1}^{+\infty} \masP (|X| > x) \: d \lambda (x).
+    \end{equation*}
+    Uzmimo $M = 1$, sada za $x \geq M$ imamo
+    \begin{equation*}
+        \masP (|X| > x) \geq \frac{\varepsilon}{x}.
+    \end{equation*}
+    Odavde slijedi
+    \begin{equation*}
+        \int\limits_{1}^{+\infty} \masP (|X| > x) \: d \lambda (x) \geq \varepsilon \int\limits_{1}^{+\infty} \frac{1}{x} \: d \lambda (x) = \varepsilon \ln x \Big|_{1}^{+\infty} = +\infty.
+    \end{equation*}
+    Sada imamo
+    \begin{equation*}
+        \masE [|X|] \geq \int\limits_{1}^{+\infty} \masP (|X| > x) \: d \lambda (x) \geq +\infty,
+    \end{equation*}
+    \v sto je kontradikcija s pretpostavkom $X \in L^1(\masP)$, dakle mora biti
+    \begin{equation*}
+        x \: \masP (|X| > x) \xrightarrow[n \to \infty]{} 0
+    \end{equation*}
+\end{rj}
 
 \begin{zad} \label{zad:12.13}
     Ako je $X$ slu\v cajna varijabla za koju vrijedi
@@ -318,6 +439,53 @@ Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
         \masE [ |X|^{1 - \varepsilon} ] < +\infty.
     \end{equation*}
 \end{zad}
+
+\begin{rj}[\ref{zad:12.13}]
+    Iz teorema \ref{tm:12.11-1} vidimo
+    \begin{equation*}
+            \masE [|X|^{1-\varepsilon}] = (1 - \varepsilon) \int\limits_{0}^{+\infty} x^{-\varepsilon} \: \masP (|X| > x) \: d \lambda (x)
+    \end{equation*}
+    Iz pretpostavke vidimo
+    \begin{equation*}
+        (\forall \delta > 0) (\exists M > 0) \quad x \geq M \implies x \: \masP (|X| > x) < \delta.
+    \end{equation*}
+    Fiskirajmo $\varepsilon$ i $\delta$, sada za $x \geq M$ imamo
+    \begin{equation*}
+        x^{-\varepsilon} \: \masP (|X| > x) < \frac{\delta}{x^{1 + \varepsilon}}.
+    \end{equation*}
+    Odavde slijedi
+    \begin{equation*}
+        \begin{aligned}
+            \int\limits_{M}^{+\infty} x^{-\varepsilon} \: \masP (|X| > x) \: d \lambda (x) &< \delta \int\limits_{M}^{+\infty} x^{-(1 + \varepsilon)} \: d \lambda (x)\\
+            &= -\frac{\delta}{\varepsilon} \Big( \frac{1}{x} \Big)^{\varepsilon} \Big|_{M}^{+\infty} = - \frac{\delta}{\varepsilon} \Big(0 - \Big( \frac{1}{M} \Big)^\varepsilon \Big)\\
+            &= \frac{\delta}{\varepsilon} \cdot \frac{1}{M^\varepsilon} < +\infty.
+        \end{aligned} 
+    \end{equation*}
+    S druge strane, imamo
+    \begin{equation*}
+        \begin{aligned}
+            \int\limits_{0}^{M} x^{-\varepsilon} \: \masP (|X| > x) \: d \lambda (x) &\leq \int\limits_{0}^{M} x^{-\varepsilon} \: d \lambda (x) = \frac{1}{1 - \varepsilon} \cdot x^{1 - \varepsilon} \Big|_0^M\\
+            &= \frac{M^{1 - \varepsilon}}{1 - \varepsilon} < +\infty.
+        \end{aligned}
+    \end{equation*}
+    Iz \v cega slijedi
+    \begin{equation*}
+        \masE [|X|^{1 - \varepsilon}] < +\infty.
+    \end{equation*}
+\end{rj}
+
+\begin{nap} \label{nap:12.13-1}
+    Vrijede i generalizacije zadataka \ref{zad:12.12} i \ref{zad:12.13}.
+
+    Za $p > 0$ vrijedi
+    \begin{equation*}
+        X  \in L^p (\masP) \quad \implies \quad \lim\limits_{x \to \infty} x^p \: \masP (|X| > x) = 0,
+    \end{equation*}
+    tako\dj er,
+    \begin{equation*}
+        \lim\limits_{x \to \infty} x^p \: \masP (|X| > x) = 0 \quad \implies \quad \masE [ |X|^{p-\varepsilon} ] < +\infty, \quad 0 < \varepsilon < p.
+    \end{equation*}
+\end{nap}
 
 \begin{kor}[A. J. Hin\v cin] \label{kor:12.14}
     Ako je $\niz{X_n}{n \in \nat}$ $\iid$ niz takav da je $X_1 \in L^1(\masP)$ i $\masE X_1 = \mu$, tada vrijedi
