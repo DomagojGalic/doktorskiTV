@@ -301,12 +301,70 @@ Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
     \end{equation*}
 \end{pr}
 
+\begin{lm}  \label{lm:12.11-1}
+    Neka je $X \geq 0$ slu\v cajna varijabla, tada vrijedi
+    \begin{equation*}
+        \masE [X] = \int\limits_{0}^{+\infty} \masP (X > x) \: d \lambda (x).
+    \end{equation*}
+\end{lm}
+
+\begin{lm}  \label{lm:12.11-2}
+    Neka je $X \geq 0$ slu\v cajna varijabla i neka je $\alpha > 0$, tada vrijedi
+    \begin{equation*}
+        \masE [X^\alpha] = \alpha \int\limits_{0}^{+\infty} x^{\alpha - 1} \masP (X > x) \: d \lambda (x).
+    \end{equation*}
+\end{lm}
+
+\begin{tm}  \label{tm:12.11-1}
+    Neka je $\nu$ mjera na borelovoj $\sigma$-algebri podskupova realnog pravca $\desInt{0}{+\infty}$, za koju je za svaki $t > 0$
+    \begin{equation*}
+        \nu (\desInt{0}{t}) < +\infty.
+    \end{equation*}
+    Neka je $(\Omega, \famF, \mu)$ prostor mjere te neka je $f: \Omega \to \real$ nenegativna izmjeriva funkcija, tada vrijedi
+
+\end{tm}
+
 \begin{zad} \label{zad:12.12}
     Ako je $X \in L^1(\masP)$, tada je
     \begin{equation*}
-        \lim\limits_{n \to \infty} x \: \vjeroj{|X| > x} = 0.
+        \lim\limits_{x \to \infty} x \: \vjeroj{|X| > x} = 0.
     \end{equation*}
 \end{zad}
+
+\begin{rj}[\ref{zad:12.12}]
+    Pretpostavimo suprotno, to jest, da vrijedi
+    \begin{equation*}
+        (\exists \varepsilon > 0)(\forall M \geq 0) \quad  (x \geq M ) \land (x \: \masP (|X| > x)).
+    \end{equation*}
+
+    Prema lemi \ref{lm:12.11-1} imamo
+    \begin{equation*}
+        \begin{aligned}
+            \masE [|X|] &= \int\limits_{0}^{+\infty} \masP (|X| > x) \: d \lambda (x)\\
+            &= \int\limits_{0}^{1} \masP (|X| > x) \: d \lambda (x) + \int\limits_{1}^{+\infty} \masP (|X| > x) \: d \lambda (x),
+        \end{aligned}
+    \end{equation*}
+    odakle vidimo da vrijedi
+    \begin{equation*}
+        \masE [|X|] \geq \int\limits_{1}^{+\infty} \masP (|X| > x) \: d \lambda (x).
+    \end{equation*}
+    Uzmimo $M = 1$, sada za $x \geq M$ imamo
+    \begin{equation*}
+        \masP (|X| > x) \geq \frac{\varepsilon}{x}.
+    \end{equation*}
+    Odavde slijedi
+    \begin{equation*}
+        \int\limits_{1}^{+\infty} \masP (|X| > x) \: d \lambda (x) \geq \varepsilon \int\limits_{1}^{+\infty} \frac{1}{x} \: d \lambda (x) = \varepsilon \ln x \Big|_{1}^{+\infty} = +\infty.
+    \end{equation*}
+    Sada imamo
+    \begin{equation*}
+        \masE [|X|] \geq \int\limits_{1}^{+\infty} \masP (|X| > x) \: d \lambda (x) \geq +\infty,
+    \end{equation*}
+    \v sto je kontradikcija s pretpostavkom $X \in L^1(\masP)$, dakle mora biti
+    \begin{equation*}
+        x \: \masP (|X| > x) \xrightarrow[n \to \infty]{} 0
+    \end{equation*}
+\end{rj}
 
 \begin{zad} \label{zad:12.13}
     Ako je $X$ slu\v cajna varijabla za koju vrijedi
@@ -318,6 +376,40 @@ Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
         \masE [ |X|^{1 - \varepsilon} ] < +\infty.
     \end{equation*}
 \end{zad}
+
+\begin{rj}[\ref{zad:12.13}]
+    Iz leme \ref{lm:12.11-2} vidimo
+    \begin{equation*}
+            \masE [|X|^{1-\varepsilon}] = (1 - \varepsilon) \int\limits_{0}^{+\infty} x^{-\varepsilon} \: \masP (|X| > x) \: d \lambda (x)
+    \end{equation*}
+    Iz pretpostavke vidimo
+    \begin{equation*}
+        (\forall \delta > 0) (\exists M > 0) \quad x \geq M \implies x \: \masP (|X| > x) < \delta.
+    \end{equation*}
+    Fiskirajmo $\varepsilon$ i $\delta$, sada za $x \geq M$ imamo
+    \begin{equation*}
+        x^{-\varepsilon} \: \masP (|X| > x) < \frac{\delta}{x^{1 + \varepsilon}}.
+    \end{equation*}
+    Odavde slijedi
+    \begin{equation*}
+        \begin{aligned}
+            \int\limits_{M}^{+\infty} x^{-\varepsilon} \: \masP (|X| > x) \: d \lambda (x) &< \delta \int\limits_{M}^{+\infty} x^{-(1 + \varepsilon)} \: d \lambda (x)\\
+            &= -\frac{\delta}{\varepsilon} \Big( \frac{1}{x} \Big)^{\varepsilon} \Big|_{M}^{+\infty} = - \frac{\delta}{\varepsilon} \Big(0 - \Big( \frac{1}{M} \Big)^\varepsilon \Big)\\
+            &= \frac{\delta}{\varepsilon} \cdot \frac{1}{M^\varepsilon} < +\infty.
+        \end{aligned} 
+    \end{equation*}
+    S druge strane, imamo
+    \begin{equation*}
+        \begin{aligned}
+            \int\limits_{0}^{M} x^{-\varepsilon} \: \masP (|X| > x) \: d \lambda (x) &\leq \int\limits_{0}^{M} x^{-\varepsilon} \: d \lambda (x) = \frac{1}{1 - \varepsilon} \cdot x^{1 - \varepsilon} \Big|_0^M\\
+            &= \frac{M^{1 - \varepsilon}}{1 - \varepsilon} < +\infty.
+        \end{aligned}
+    \end{equation*}
+    Iz \v cega slijedi
+    \begin{equation*}
+        \masE [|X|^{1 - \varepsilon}] < +\infty.
+    \end{equation*}
+\end{rj}
 
 \begin{kor}[A. J. Hin\v cin] \label{kor:12.14}
     Ako je $\niz{X_n}{n \in \nat}$ $\iid$ niz takav da je $X_1 \in L^1(\masP)$ i $\masE X_1 = \mu$, tada vrijedi
