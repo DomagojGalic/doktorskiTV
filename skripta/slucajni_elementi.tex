@@ -18,12 +18,12 @@ S druge strane iz \eqref{jed:3.1} (i sli\v cnih relacija za prebrojive operacije
 
 Ako je $\famK \subseteq \partitive{K}$ "struktura", tada je i
 \begin{equation} \label{jed:3.2}
-    \praslika{f}(\famK) := \skup{\praslika{f}(B)}{B \in
+    \praslika{f}(\famK) := \bigSkup{\praslika{f}(B)}{B \in
         \famK}
 \end{equation}
 tako\dj er "struktura", kao i ako je $\famD \subseteq \partitive{D}$, tada je i
 \begin{equation} \label{jed:3.3}
-    \skup{B \in \partitive{K}}{\praslika{f}(B) \in \famD},
+    \bigSkup{B \in \partitive{K}}{\praslika{f}(B) \in \famD},
 \end{equation}
 tako\dj er "struktura"; pri \v cemu pod "struktura" mislimo $\pi$-sistem, poluprsten, prsten, Dynkinova klasa, algebra, $\sigma$-prsten ili $\sigma$-algebra.
 
@@ -43,8 +43,14 @@ Dakle $f$ je izmjeriva ako i samo ako vrijedi:
     \sigAlg{f} \subseteq \famD.
 \end{equation*}
 Ovaj pojam se lako poop\' ci.
-Neka je $\indFamilija{(K_t, \: \famK_t)} {t \in T}$ proizvoljna indeksirana familija izmjerivih prostora i neka za svaki $t \in T$ imamo preslikavanje $f_t : D \to K_t$.
-Tada je  $\indSigAlg{f_t}{t \in T} := \sigAlg{\unija{t \in T}{} \sigAlg{f_t}}$ \emph{$\sigma$-algebra generirana familijom $\indFamilija{f_t}{t \in T}$} i to je najmanja $\sigma$-algebra na $D$ u odnosu na koju su sva preslikavanja $f_t$ izmjeriva.
+\begin{defn}    \label{defn:3.3-1}
+    Neka je $\indFamilija{(K_t, \: \famK_t)} {t \in T}$ proizvoljna indeksirana familija izmjerivih prostora i neka za svaki $t \in T$ imamo preslikavanje $f_t : D \to K_t$.
+    Tada je
+    \begin{equation*}
+        \indSigAlg{f_t}{t \in T} := \bigSigAlg{\unija{t \in T}{} \sigAlg{f_t}}
+    \end{equation*}
+    \emph{$\sigma$-algebra generirana familijom $\indFamilija{f_t}{t \in T}$} i to je najmanja $\sigma$-algebra na $D$ u odnosu na koju su sva preslikavanja $f_t$ izmjeriva.
+\end{defn}
 
 Ako su $(X, \: \famU)$ i $(Y, \: \famV)$ topolo\v ski prostori, onda $(\borel{X}, \: \borel{Y})$-izmjerivo preslikavanje $f: X \to Y$ nazivamo \emph{Borelovim preslikavanjem}.
 Podsjetimo se da je $f: X \to Y$ neprekidno ako je $\praslika{f}(\famV) \subseteq \famU$.
@@ -149,7 +155,21 @@ Uo\v cimo nadalje da direktno iz definicije slijedi:
     Doka\v zimo prvo da je svaki vjerojatnosni prostor mogu\' ce\\ upotpuniti.
     Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, tada postoji (minimalano) upotpunjenje $(\Omega, \; \overline{\famF}, \; \overline{\masP})$.
 
-    Definirajmo $\famN := \skup{E \subset F}{F \in \famF \; \land \; \vjeroj{F} = 0}$ te $\overline{\famF} = \skup{A \cup E}{A \in \famF, \; E \in \famN}$ te tako\dj er $\overline{\masP} : \overline{\famF} \to \segment{0}{+\infty}$ na elementima $\overline{\famF}$ sa $\overline{\masP}(A \cup E) = \vjeroj{A}$.
+    Definirajmo
+    \begin{equation*}
+        \begin{aligned}
+            \famN &:= \skup{E \subset F}{F \in \famF \; \land \; \vjeroj{F} = 0},\\
+            \overline{\famF} &:= \skup{A \cup E}{A \in \famF, \; E \in \famN}
+        \end{aligned}
+    \end{equation*}
+    te tako\dj er
+    \begin{equation*}
+        \overline{\masP} : \overline{\famF} \to \segment{0}{+\infty}
+    \end{equation*}
+    na elementima $\sigma$-algebre $\overline{\famF}$ sa
+    \begin{equation*}
+        \overline{\masP}(A \cup E) = \vjeroj{A}.
+    \end{equation*}
     Dokazujemo sljede\' ce tvrdnje.
     \begin{enumerate}[label=(\arabic*)]
         \item   \label{rj:3.10.1}
@@ -199,12 +219,22 @@ Uo\v cimo nadalje da direktno iz definicije slijedi:
             \vjeroj{A'} \leq \vjeroj{A' \cup F \cup F'} = \vjeroj{A \cup F \cup F'} \leq \vjeroj{A} + \vjeroj{F \cup F'} = \vjeroj{A} + 0 = \vjeroj{A}.
         \end{aligned}
     \end{equation*}
-    Odakle vidimo da nu\v zno vrijedi $\vjeroj{A} = \vjeroj{A'}$, samim time mora vrijediti i $\overline{\masP} (A \cup E) = \overline{\masP} (A' \cup E')$, pa je $\overline{\masP}$ dobro definirana.
+    Odakle vidimo da nu\v zno vrijedi $\vjeroj{A} = \vjeroj{A'}$, samim time mora vrijediti i
+    \begin{equation*}
+        \overline{\masP} (A \cup E) = \overline{\masP} (A' \cup E'),  
+    \end{equation*}
+    pa je $\overline{\masP}$ dobro definirana.
     Da je $\overline{\masP}$ ekstenzija od $\masP$ vidimo tako da za svaki $A \in \famF$ vrijedi $A = A \cup \varnothing$, pa prema tome $\vjeroj{A} = \overline{\masP} (A)$.
     Poka\v zimo da je $\overline{\masP}$ vjerojatnost.
     \begin{enumerate}[label=(\roman*)]
-        \item $\overline{\masP} (A \cup E) = \vjeroj{A} \geq 0, \quad \forall (A \cup E) \in \overline{\famF}$
-        \item $\overline{\masP} (\Omega) = \vjeroj{\Omega} = 1$
+        \item
+        \begin{equation*}
+            \overline{\masP} (A \cup E) = \vjeroj{A} \geq 0, \quad \forall (A \cup E) \in \overline{\famF}
+        \end{equation*}
+        \item
+        \begin{equation*}
+            \overline{\masP} (\Omega) = \vjeroj{\Omega} = 1
+        \end{equation*}
         \item Neka je $\niz{A_n \cup E_n}{n \in \nat} \subseteq \overline{\famF}$ tada vrijedi $A_n \in \famF$ i za svaki $E_n$, postoji $F_n \in \famF$ takav da vrijedi $E_n \subseteq F_n, \; \vjeroj{F_n} = 0$. Sada imamo
         \begin{equation}    \label{jed:3.10-1}
             \begin{aligned}
@@ -317,10 +347,10 @@ Podsjetimo se i da koristimo konvencije $0 \cdot \pm \infty = 0$, te $c \cdot (\
 \begin{kor} \label{kor:3.14}
     Ako je $\niz{X_n}{n \in \nat}$ niz pro\v sirenih slu\v cajnih varijabli, tada su:
     \begin{itemize}[label=]
-        \item $\sup\limits_{n} X_n$,
-        \item $\inf\limits_{n} X_n$,
-        \item $\limsup\limits_{n} X_n$,
-        \item $\liminf\limits_{n} X_n$,
+        \item $\sup\limits_{n \in \nat} X_n$,
+        \item $\inf\limits_{n \in \nat} X_n$,
+        \item $\limsup\limits_{n \to \infty} X_n$,
+        \item $\liminf\limits_{n \to \infty} X_n$,
     \end{itemize}
     pro\v sirena slu\v cajne varijable.
 \end{kor}
@@ -328,17 +358,17 @@ Podsjetimo se i da koristimo konvencije $0 \cdot \pm \infty = 0$, te $c \cdot (\
 \begin{proof}
     Po korolaru \ref{kor:3.12} i $\famC = \famK$ iz primjera \ref{pr:2.3} slijedi da je $\sup\limits_n X_n$ pro\v sirena slu\v cajna varijabla, jer
     \begin{equation*}
-        \{ \sup\limits_n X_n \leq b \} = \presjek{n \in \nat}{} \{ X_n \leq b \}.
+        \Big\{ \sup\limits_{n \in \nat} X_n \leq b \} = \presjek{n \in \nat}{} \{ X_n \leq b \}.
     \end{equation*}
     Iz korolara \ref{kor:3.13} slijedi tvrdnja za infimum, zbog
     \begin{equation*}
-        \inf\limits_n X_n = - (\sup\limits_n (- X_n)).
+        \inf\limits_{n \in \nat} X_n = - \Big(\sup\limits_{n \in \nat} (- X_n) \Big).
     \end{equation*}
     Nadalje,
     \begin{equation*}
         \begin{gathered}
-            \liminf\limits_n X_n = \sup\limits_k (\inf\limits_{n \geq k}) X_n,\\
-            \limsup\limits_n X_n = \inf\limits_k (\sup\limits_{n\geq k} X_n).
+            \liminf\limits_{n \in \nat} X_n = \sup\limits_{k \in \nat} \Big(\inf\limits_{n \geq k} X_n \Big),\\
+            \limsup\limits_{n \in \nat} X_n = \inf\limits_{k \in \nat} \Big( \sup\limits_{n\geq k} X_n \Big).
         \end{gathered}
     \end{equation*}
 \end{proof}
@@ -372,11 +402,11 @@ Mo\v ze se dogoditi da slu\v cajni element $f:\Omega \to E$ ima vrijednosti u ne
         \item \label{rj:3.15.1}
         Treba pokazati da je $ A \cap \famE$ $\sigma$-algebra.
         \item \label{rj:3.15.2}
-        Vrijedi li $A \cap \famE = \sigAlg{A \cap \famT}$?
+        Vrijedi $A \cap \famE = \sigAlg{A \cap \famT}$.
         \item \label{rj:3.15.3}
-        Ako je $f$ slu\v cajni element u $\urePar{A}{A \cap \famE}$, je li onda i slu\v cajni element u $E$?
+        Ako je $f$ slu\v cajan element u $\urePar{A}{A \cap \famE}$, onda je i slu\v cajan element u $E$.
         \item \label{rj:3.15.4}
-        Ako je $f$ slu\v cajni element u $E$ i $f \in A \; (g.s.)$, je li $f$ i slu\v cajni element u $\urePar{A}{A \cap \famE}$?
+        Ako je $f$ slu\v cajan element u $E$ i $f \in A \; (g.s.)$, tada je $f$ i slu\v cajan element u $\urePar{A}{A \cap \famE}$.
     \end{enumerate}
     Idemo redom.
     Poka\v zimo prvo \ref{rj:3.15.1}.
