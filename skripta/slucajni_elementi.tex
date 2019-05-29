@@ -659,3 +659,27 @@ Iz leme \ref{lm:3.17} i iz korolara \ref{kor:3.14} slijedi:
         Dakle $X$ je $\urePar{\sigAlg{Y}}{\borel{\real}}$-izmjeriva.
     \end{itemize}
 \end{rj}
+
+\begin{nap} \label{nap:3.20-1}
+    Neka je $(\Omega, \famF)$ izmjeriv prostor i $f: \Omega \to \real$ funkcija.
+    Neka je $\famE$ neka od familija iz primjera \ref{pr:2.3}.
+    Da bi pokazali da je $f$ borelova dovoljno je pokazati da je
+    \begin{equation}
+        \praslika{f} (\famE) \subseteq \famF.
+    \end{equation}
+    Iz leme \ref{lm:3.4} vidimo da je
+    \begin{equation*}
+        \sigAlg{\praslika{f}(\famE)} = \praslika{f} (\sigAlg{\famE}).
+    \end{equation*}
+    Primjetimo, ako je
+    \begin{equation*}
+        \praslika{f} (\famE) \subseteq \famF,
+    \end{equation*}
+    onda imamo
+    \begin{equation}
+        \begin{aligned}
+            \praslika{f} (\borel{\real})  &= \praslika{f} (\sigAlg{\famE}) = \sigAlg{\praslika{f} (\famE)}\\
+            &\subseteq \sigAlg{\famF} = \famF
+        \end{aligned}
+    \end{equation}
+\end{nap}
