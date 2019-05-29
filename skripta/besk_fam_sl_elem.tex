@@ -14,7 +14,7 @@ Podsjetimo se na oznake u napomeni \ref{nap:4.10}.
     Ako je $T$ beskona\v can i prebrojiv, obi\v cno ka\v zemo da je $X$ \emph{$E$-zna\v cni slu\v cajni niz}, a ako je $T$ kona\v can, ka\v zemo da je $X$ \emph{$E$-zna\v cni slu\v cajni vektor}.
     Ako je $E = \extReal$, $\famE = \borel{\extReal}$, umjesto rije\v ci "$E$-zna\v cni" koristimo rije\v c "pro\v sireni", a ako jo\v s postoji $A \in \famF, \; \vjeroj{A} = 0$, takav da je
     \begin{equation*}
-        \unija{t \in T}{} \{ |\pi_t \circ X| = \infty \} \subseteq A,
+        \unija{t \in T}{} \Big\{ |\pi_t \circ X| = \infty \Big\} \subseteq A,
     \end{equation*}
     tada se rije\v c "$E$-zna\v cni" u gornjoj definicij izbacuje.
 \end{defn}
@@ -53,7 +53,7 @@ Podsjetimo se na oznake u napomeni \ref{nap:4.10}.
         Ako su $\niz{X_t}{t \in T}$, $\niz{Y_t}{t \in T}$ $E$-zna\v cni stohasti\v cki procesi na $\vjerojatnosniProstor$, imamo dvije vrste $(g.s.)$ jednakosti.
         Re\' ci \' cemo da su $X$ i $Y$ \emph{nerazlu\v civi} ako postoje $A \in \famF, \; \vjeroj{A} = 0$, takvi da je
         \begin{equation*}
-            \skup{\omega \in \Omega}{(\exists t \in T) \; X_t (\omega) \neq Y_t (\omega)} \subseteq A.
+            \bigSkup{\omega \in \Omega}{(\exists t \in T) \; \; X_t (\omega) \neq Y_t (\omega)} \subseteq A.
         \end{equation*}
         Re\' ci \' cemo da su $X$ i $Y$ \emph{modifikacije} (jedan drugoga) ako je za svaki $t \in T$ $X_t = Y_t \; (g.s.)$.
         Nerazlu\v civost uvijek povla\' ci modificiranost, ali obrat op\' cenito ne vrijedi.
@@ -96,7 +96,7 @@ Preciznije, neka je $J \subseteq T$, $J$ kona\v can i neprazan.
 Uo\v cimo da je jednostavno direktno poistovjetiti mjeru $\masP_{X, \: J}$ sa mjerom na kona\v cnom produktu $\urePar{E^J}{\famE^J}$.
 Zato ka\v zemo da je
 \begin{equation}    \label{jed:8.4}
-    \skup{\masP_{X, \: J}}{J \subseteq T, \; J \neq \varnothing, \; \card{J} < \infty},
+    \bigSkup{\masP_{X, \: J}}{J \subseteq T, \; J \neq \varnothing, \; \card{J} < \infty},
 \end{equation}
 familija \emph{kona\v cno dimenzionalnih distribucija stohasti\v ckog procesa $X$}.
 Iz \eqref{jed:8.3} direktno slijedi:
@@ -117,7 +117,7 @@ Promatramo li $\masP_{X, \: J}$ kao mjeru na $\urePar{E^J}{\famE^J}$ mo\v zemo i
 Ako su za svaki $\varnothing \neq J \subseteq T$, $J$ kona\v can, zadane vjerojatnosti $\masP_J$ na $\famE^{T, \: \pi_J}$, potrebna nam je barem konzistentnost.
 
 \begin{defn}    \label{defn:8.6-1}
-    Neka je $\niz{\masP_J}{J \subseteq T, \; J \neq \varnothing, \; \card{J} < \infty}$ familija vjerojatnosti, ka\v zemo da je ona \emph{konzistentna} ako za svake $I$, $J$ vrijedi $\varnothing \neq J \subseteq  I \subseteq T$, te su $J$, $I$ kona\v cni,
+    Neka je $\bigNiz{\masP_J}{J \subseteq T, \; J \neq \varnothing, \; \card{J} < \infty}$ familija vjerojatnosti, ka\v zemo da je ona \emph{konzistentna} ako za svake $I$, $J$ vrijedi $\varnothing \neq J \subseteq  I \subseteq T$, te su $J$, $I$ kona\v cni,
     \begin{equation}    \label{jed:8.7}
         \restr{\masP_I}{\famE^{T, \: \pi_J}} = \masP_J.
     \end{equation}
@@ -141,9 +141,15 @@ Na primjer:
 
 \begin{proof}{(Skica)}
     Zbog kona\v cne aditivnosti dovoljno je dokazati da za svaki niz $\niz{A_n}{n \in \nat} \subseteq \prsten{E^T}$, takav da je
-    $A_1 \supseteq A_2 \supseteq \ldots$ i $\presjek{n}{} A_n = \varnothing$ vrijedi $\lim\limits_{n \to +\infty} \nu (A_n) = 0$.
+    \begin{equation*}
+        A_1 \supseteq A_2 \supseteq \ldots, \quad \presjek{n \in \nat}{} A_n = \varnothing
+    \end{equation*}
+    vrijedi
+    \begin{equation*}
+        \lim\limits_{n \to +\infty} \nu (A_n) = 0.
+    \end{equation*}
     U suprotnom postojao bi $\varepsilon \geq 0$ i $\nu (A_n) \geq \varepsilon, \; \forall n \in \nat$.
-    Tada se $A_n$ mogu dovoljno dobro aproksimirati odozdo kompaktima $C_n$ (po $\masP_J$, a time i po $\nu$) i dijagonalni postupak (kompaktnost je va\v zna!) po koordinatama daje to\v cku "u presjeku" $C_n$-ova, a time u $\presjek{n}{} A_n$.
+    Tada se $A_n$ mogu dovoljno dobro aproksimirati odozdo kompaktima $C_n$ (po $\masP_J$, a time i po $\nu$) i dijagonalni postupak (kompaktnost je va\v zna!) po koordinatama daje to\v cku "u presjeku" $C_n$-ova, a time u $\presjek{n \in \nat}{} A_n$.
 \end{proof}
 
 Iz leme \ref{lm:8.6} i prethodne diskusije slijedi:
@@ -153,7 +159,10 @@ Iz leme \ref{lm:8.6} i prethodne diskusije slijedi:
     \begin{equation*}
         \bigNiz{\masP_J}{J \subseteq T, \; J \neq \varnothing, \; \card{J} < \infty}
     \end{equation*}
-    na $\urePar{E^T}{\famE^T}$ pri \v cemu je $E$ potpun separabilan metri\v cki prostor i $\famE = \borel{E}$, postoji i jedinstvena je vjerojatnost $\masP$ na $\urePar{E^T}{\famE^T}$ takva da je za svaki $\varnothing \neq J \subseteq T$, $J$ kona\v can, $\restr{\masP}{\famE^{T, \: \pi_J}} = \masP_J$.
+    na $\urePar{E^T}{\famE^T}$ pri \v cemu je $E$ potpun separabilan metri\v cki prostor i $\famE = \borel{E}$, postoji i jedinstvena je vjerojatnost $\masP$ na $\urePar{E^T}{\famE^T}$ takva da je za svaki $\varnothing \neq J \subseteq T$, $J$ kona\v can,
+    \begin{equation*}
+        \restr{\masP}{\famE^{T, \: \pi_J}} = \masP_J.
+    \end{equation*}
 \end{tm}
 
 \begin{nap} \label{nap:8.10}
