@@ -26,9 +26,10 @@
 Uo\v cimo $\masP_X$ je poseban slu\v caj tako zvane mjere inducirane izmjerivim preslikavanjem.
 
 \begin{nap} \label{nap:5.3}
+    \quad
     \begin{enumerate}[label=(\alph*)]
         \item Uo\v cimo da je u $\masP$ sadr\v zana "sva vjerojatnosna informacija" o $X$.
-        \item Bavljenje slu\v cajnim elementima s vjerojatnostima u $\urePar{E}{\famE}$ (bez obzira na kojem vjerojatnosnom prostoru bili definirani) mo\v ze se svesti na tako zvani \emph{kanonski slu\v caj}.
+        \item Rad sa slu\v cajnim elementima s vjerojatnostima u $\urePar{E}{\famE}$ (bez obzira na kojem vjerojatnosnom prostoru bili definirani) mo\v ze se svesti na tako zvani \emph{kanonski slu\v caj}.
         \item Preciznije, mi fiksiramo "vjerojatnosni prostor" i "slu\v cajni element", to jest uzmemo $\widetilde{\Omega} := E$, $\widetilde{\famF} := \famE$, $\widetilde{X} := id : E \to E$ i dr\v zimo uvijek fiksirano, a slu\v cajni element "realiziramo" postavljanjem odgovaraju\' ce vjerojatnosne mjere $\masP_X$ na taj prostor.
         Tada $X$ (uz $\masP$) i $\widetilde{X}$ (uz $\masP_X$) imaju istu distribuciju (i to je $\masP_X$).
         \item Time se uvodi nova ideja o pojmu jednakosti u vjerojatnosti.
@@ -199,9 +200,12 @@ Ka\v zemo da je slu\v cajna varijabla $X$ \emph{apsolutno neprekidna} ako je $F_
     Tada pi\v semo $\nu \ll \mu$.
 \end{nap}
 
-Po Radon-Nykondimovom teoremu znamo da je $X$ apsolutno neprekidna ako i samo ako je $\masP_X \ll \lambda$, te da tada postoji i $\lambda-(g.s.)$ jedinstvena Radon-Nykondimova derivacija $\frac{d \masP_X}{d \lambda}$ koja igra ulogu funkcije $g$ odozgo.
+Po Radon-Nykondimovom teoremu znamo da je $X$ apsolutno neprekidna ako i samo ako je $\masP_X \ll \lambda$, te da tada postoji i $\lambda$ gotovo sigurno jedinstvena Radon-Nykondimova derivacija $\frac{d \masP_X}{d \lambda}$ koja igra ulogu funkcije $g$ odozgo.
 U ovom slu\v caju nazivamo je funkcijom gusto\' ce i ozna\v cavamo sa $f_X$.
-Postoji jako puno funkcija gusto\' ce jer je $f: \real \to \desInt{0}{+\infty}$ funkcija gusto\' ce neke slu\v cajne varijable $X$ ako i samo ako je $f$ izmjeriva i vrijedi $\int\limits_{\real} f(t) \: d \lambda (t) = 1$.
+Postoji jako puno funkcija gusto\' ce jer je $f: \real \to \desInt{0}{+\infty}$ funkcija gusto\' ce neke slu\v cajne varijable $X$ ako i samo ako je $f$ izmjeriva i vrijedi
+\begin{equation*}
+    \int\limits_{\real} f(t) \: d \lambda (t) = 1.
+\end{equation*}
 
 Uo\v cimo nadalje da se za $\sigma$-kona\v cne mjere $\mu$ na $\urePar{\real}{\borel{\real}}$ i d.f. $F_{\mu}$ pripadni integrali potpuno podudaraju, to jest:
 \begin{equation*}
@@ -218,6 +222,10 @@ i vrijedi:
     = \int_E f(x) \: d \masP_X (x)
     = \int_\real \id (t) \: d \masP_{f \circ X} (t)
     = \int_{-\infty}^{\infty} u \: d F_{f \circ X} (u).
+\end{equation*}
+Tako\dj er za $F \in \famE$ vrijedi
+\begin{equation*}
+    \int\limits_{\{ X \in F\}} (f \circ X) (\omega) \: d \masP (\omega) = \int\limits_F f (x) \: d \masP_X (x)
 \end{equation*}
 
 \begin{figure}[H]
