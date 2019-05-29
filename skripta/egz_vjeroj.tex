@@ -41,7 +41,11 @@ te tako\dj er $\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
         \item   \label{rj:2.2b}
         $\sigAlg{\famE} = \partitive{\Omega}$, ako i samo ako je $\Omega$ najvi\v se prebrojiv.
     \end{enumerate}
-    Primjetimo da \ref{rj:2.2b} o\v cito vrijedi za kona\v cne i prebrojive $\Omega$, zato \v sto svaki podskup od $\Omega$ nu\v zno mora biti kona\v can ili prebrojiv, a kako je $\partitive{\Omega}$ $\sigma$-algebra, onda je i skup $\skup{A \subseteq \Omega}{\card{A} \land \card{A^c} \leq \aleph_0}$ $\sigma$-algebra, dakle vrijedi i \ref{rj:2.2a}.
+    Primjetimo da \ref{rj:2.2b} o\v cito vrijedi za kona\v cne i prebrojive $\Omega$, zato \v sto svaki podskup od $\Omega$ nu\v zno mora biti kona\v can ili prebrojiv, a kako je $\partitive{\Omega}$ $\sigma$-algebra, onda je i skup
+    \begin{equation*}
+        \skup{A \subseteq \Omega}{\card{A} \land \card{A^c} \leq \aleph_0}
+    \end{equation*}
+    $\sigma$-algebra, stoga vrijedi i \ref{rj:2.2a}.
 
     Dakle promatrajmo neprebrojiv slu\v caj.
     Doka\v zimo da je $\famF$ $\sigma$-algebra.
@@ -93,7 +97,10 @@ te tako\dj er $\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
 
 
 \begin{defn}
-    Ako je $\topProstor$ topolo\v ski prostor s topologijom $\famT$, tada $\sigAlg{\famT}$ ozna\v cavamo s $\borel{X}$ i nazivamo $\sigma$-algebrom \emph{Borelovih skupova}.        
+    Ako je $\topProstor$ topolo\v ski prostor s topologijom $\famT$, tada definiramo $\sigma$-algebru \emph{Borelovih skupova}
+    \begin{equation*}
+        \borel{X} := \sigAlg{\famT}.
+    \end{equation*}       
 \end{defn}
 
 \begin{pr}  \label{pr:2.3}
@@ -152,7 +159,7 @@ Iz teorije mjere poznat nam je sljede\' ci zadatak.
 
     Definiramo familiju
     \begin{equation*}
-        \famD_1 := \skup{A \subseteq \dynk{\famE}}{A \cap B \in \dynk{\famE}, \; \forall B \in \dynk{\famE}}.
+        \famD_1 := \bigSkup{A \subseteq \dynk{\famE}}{ \big(\forall B \in \dynk{\famE} \big) \; A \cap B \in \dynk{\famE} }.
     \end{equation*}
     \v Zelimo pokazati da je $\dynk{\famE} = \famD_1$.
     Vidimo da vrijedi $\famD_1 \subseteq \dynk{\famE}$, ako poka\v zemo da je $\famD_1$ Dynkinova klasa koja sadr\v zi $\famE$, tada \' ce nu\v zno vrijediti da je $\dynk{\famE} \subseteq \famD_1$, jer je $\dynk{\famE}$ najmanja Dynkinova klasa koja sadr\v zi $\famE$.
@@ -212,8 +219,21 @@ Iz teorije mjere poznat nam je sljede\' ci zadatak.
 
 
 \begin{tm}  \label{tm:2.6}
-    Neka je $\izmjerivProstor$ izmjeriv prostor i $\famE$ $\pi$-sistem na $\Omega$ sa svojstvom $\F = \sigAlg{\famE}$.
-    Ako su $\mu$ i $\nu$ kona\v cne pozitivne mjere na $\izmjerivProstor$ takve da je $\mjera{\Omega} = \nu(\Omega)$ i $\restr{\mu}{\famE} = \restr{\nu}{\famE}$, tada je $\mu = \nu$.   
+    Neka je $\izmjerivProstor$ izmjeriv prostor i $\famE$ $\pi$-sistem na $\Omega$ takav da je
+    \begin{equation*}
+        \famF = \sigAlg{\famE}.
+    \end{equation*}
+    Neka su $\mu$ i $\nu$ kona\v cne pozitivne mjere na $\izmjerivProstor$ za koje vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            \mjera{\Omega} &= \nu(\Omega)\\
+            \restr{\mu}{\famE} &= \restr{\nu}{\famE},
+        \end{aligned}
+    \end{equation*}
+    tada je
+    \begin{equation*}
+        \mu = \nu.
+    \end{equation*}   
 \end{tm}
 
 \begin{proof}
@@ -237,9 +257,25 @@ Iz teorije mjere poznat nam je sljede\' ci zadatak.
 \end{kor}
 
 \begin{zad} \label{zad:2.9}
-    Neka je $\izmjerivProstor$ izmjeriv prostor i $\famE$ $\pi$-sistem na $\Omega$ sa svojstvom $\famF = \sigAlg{\famE}$.
-    Ako su $\mu$ i $\nu$ dvije mjere na $\izmjerivProstor$ takve da je $\restr{\mu}{\famE} = \restr{\nu}{\famE}$ i postoji rastu\' ci niz skupova $\niz{C_n}{n \in \N} \subseteq \famE$ takav da je $\unija{n}{}C_n = \Omega$ i $\mjera{C_n} = \nu(C_n) < +\infty, \;
-    \forall n \in \N$, tada je $\mu = \nu$.
+    Neka je $\izmjerivProstor$ izmjeriv prostor i $\famE$ $\pi$-sistem na $\Omega$ sa svojstvom
+    \begin{equation*}
+        \famF = \sigAlg{\famE}.
+    \end{equation*}
+    Ako su $\mu$ i $\nu$ dvije mjere na $\izmjerivProstor$ takve da je
+    \begin{equation*}
+        \restr{\mu}{\famE} = \restr{\nu}{\famE}
+    \end{equation*}
+    i postoji rastu\' ci niz skupova $\niz{C_n}{n \in \N} \subseteq \famE$ takav da je
+    \begin{equation*}
+        \begin{aligned}
+            \unija{n}{}C_n &= \Omega\\
+            \mjera{C_n} &= \nu(C_n) < +\infty, \quad \forall n \in \nat,
+        \end{aligned}
+    \end{equation*}
+    tada je
+    \begin{equation*}
+        \mu = \nu.
+    \end{equation*}
 \end{zad}
 
 % dodaj teorem o osnovnim svojstvima mjere i referenciraj se na njega ovdje za neprekidnost mjere (vjerojatnosti) odozdo.
@@ -257,7 +293,7 @@ Iz teorije mjere poznat nam je sljede\' ci zadatak.
             \mu (A) &= \mu (A \cap \Omega) = \mu \Big( A \cap \unija{n \in \nat}{} C_n \Big) = \mu \Big( \unija{n \in \nat}{} (A \cap C_n) \Big) \overset{\ref{tm:1.24-1} \ref{tm:1.24-1.3}}{=}\\
             &= \lim\limits_{n \to \infty} \mu(A \cap C_n) = \lim\limits_{n \to \infty} \mu_n (A) = \lim\limits_{n \to \infty} \nu_n (A) = \lim\limits_{n \to \infty} \nu (A \cap C_n) \overset{\ref{tm:1.24-1} \ref{tm:1.24-1.3}}{=}\\
             &= \nu \Big( \unija{n \in \nat}{} (A \cap C_n) \Big) = \nu \Big( A \cap \unija{n \in \nat}{} C_n \Big) = \nu(A \cap \Omega)\\
-            &= \nu(A), \; \forall A \in \famF.
+            &= \nu(A), \quad \forall A \in \famF.
         \end{aligned}
     \end{equation*}
     Primjetimo, teorem \ref{tm:2.6} nam je potreban kako bi mogli zaklju\v citi da su $\mu_n = \nu_n$ na cijelom $\famF$, jer op\' cenito $A \cap C_n \notin \famE$.
@@ -347,6 +383,7 @@ Uo\v cimo da je za svaki $a, \: b \in \R, \: a < b$,
 \end{zad}
 
 \begin{rj}[\ref{zad:2.15}]  \label{rj:2.15}
+    \quad
     \begin{enumerate}[label=\arabic*.]
         \item $F_{\mu}$ je neopadaju\' ca:\\
         Neka su $a, \; b \in \real, \; a < b$, iz \eqref{jed:2.13} slijedi,

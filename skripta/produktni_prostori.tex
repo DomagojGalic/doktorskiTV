@@ -27,7 +27,10 @@ Aksiom izbora garantira da je $\produkt{t \in T}{} \Omega_t$ neprazan (jer su sv
 Definicija se mo\v ze pro\v siriti na proizvoljne $\Omega_t$ i tada dobivamo da je $\produkt{t \in T}{} \Omega_t$ prazan  \v cim je barem jedan $\Omega_t$ prazan.
 
 \begin{defn}    \label{defn:4.0-1}
-    Neka su $(X_t, \: \famU_t), \; t \in T$, topolo\v ski prostori, tada se na $\produkt{t \in T}{} X_t$ definira \emph{produktna (ili Tihonovljeva) topologija} $\dirProd{t \in T}{} \famU_t$, kao najmanja topologija u odnosu na koju su sve $\pi_t$ neprekidne.
+    Neka su $(X_t, \: \famU_t), \; t \in T$, topolo\v ski prostori, tada se na $\produkt{t \in T}{} X_t$ definira \emph{produktna (ili Tihonovljeva) topologija}, kao najmanja topologija u odnosu na koju su sve $\pi_t$ neprekidne.
+    \begin{equation*}
+        \dirProd{t \in T}{} \famU_t := \indSigAlg{\pi_t}{t \in T}
+    \end{equation*}
 \end{defn}
 
 \begin{tm}[Karakterizacija produktne topologije]  \label{tm:4.0-2}
@@ -57,12 +60,12 @@ Definicija se mo\v ze pro\v siriti na proizvoljne $\Omega_t$ i tada dobivamo da 
         \end{equation*}
         Sada je vrijedi
         \begin{equation*}
-            \pi_t (\unija{i \in I}{} U_i) = X_t, \quad t \in T \setminus \presjek{i \in I}{} J_i.
+            \pi_t \Big(\unija{i \in I}{} U_i \Big) = X_t, \quad t \in T \setminus \presjek{i \in I}{} J_i.
         \end{equation*}
         A kako je $\presjek{i \in I}{} J_i$ presjek kona\v cnih skupova, vrijedi $\unija{i \in I}{} U_i \in \famU$
         \item Neka su $\niz{U_k}{k = 1, \ldots, n} \subseteq \famU$, sada je
         \begin{equation*}
-            \skup{t \in T}{\pi_t(\presjek{k = 1}{n} U_k) \neq X_t} = \unija{k = 1}{n} J_k,
+            \bigSkup{t \in T}{\pi_t \Big( \presjek{k = 1}{n} U_k \Big) \neq X_t} = \unija{k = 1}{n} J_k,
         \end{equation*}
         \v sto je kona\v cna unija kona\v cnih skupova, pa je $\presjek{k = 1}{n} U_k \in \famU$.
     \end{enumerate}
@@ -80,7 +83,7 @@ Definicija se mo\v ze pro\v siriti na proizvoljne $\Omega_t$ i tada dobivamo da 
         \end{equation*}
         pa je $U \in \famU$.
         \item[$\supseteq$]
-        Neka je $t_0 \in T$, promatrajmo $\pi_t : \urePar{\produkt{t \in T}{} X_t}{\famU} \to \urePar{X_{t_0}}{\famU_{t_0}}$.
+        Neka je $t_0 \in T$, promatrajmo $\pi_t : \Big( \produkt{t \in T}{} X_t, \famU \Big) \to \urePar{X_{t_0}}{\famU_{t_0}}$.
         Neka je $U_{t_0} \in \famU_{t_0}$, sada primjetimo da je
         \begin{equation*}
             \praslika{\pi_{t_0}} (U_{t_0}) \in \famU.
@@ -100,6 +103,7 @@ Definicija se mo\v ze pro\v siriti na proizvoljne $\Omega_t$ i tada dobivamo da 
 \end{tm}
 
 \begin{proof}
+    \quad
     \begin{enumerate}
         \item[$\subseteq$] Budu\' ci je $\famV$ baza vrijedi da je $\famV \subseteq \famU$, stoga je i $\sigAlg{\famV} \subseteq \sigAlg{\famU}$.
         \item[$\supseteq$] Neka je $U \in \famU$, tada postoji niz $\niz{U_n}{n \in \nat} \subseteq \famV$ takav da je $U = \unija{n \in \nat}{} U_n$, ali tada vrijedi i $\niz{U_n}{n \in \nat} \subseteq \sigAlg{\famV}$, pa onda i $U = \unija{n \in \nat}{} U_n \in \sigAlg{\famU}$ pa je $\famU \subseteq \sigAlg{\famV}$ pa je i $\sigAlg{\famU} \subseteq \sigAlg{\famV}$.  
@@ -170,7 +174,7 @@ a nije osobito te\v sko konstruirati kontraprimjere koji pokazuju da u \eqref{je
         \end{figure}
         Po propoziciji \ref{prop:4.9} znamo da je identita
         \begin{equation*}
-            \id : \urePar{\produkt{t \in T}{} X_t}{\borel{\produkt{t \in T}{} X_t}} \to \urePar{\produkt{t \in T}{} X_t}{\dirProd{t \in T}{} \borel{X_t}}
+            \id : \Big( \produkt{t \in T}{} X_t, \borel{\produkt{t \in T}{} X_t} \Big) \to \Big( \produkt{t \in T}{} X_t,  \dirProd{t \in T}{} \borel{X_t} \Big)
         \end{equation*}
         neprekidan ako i samo ako joj je svaka od koordinatnih projekcija naprekidna.
         Primjetimo da je $\borel{\produkt{t \in T}{} X_t} = \sigAlg{\dirProd{t \in T}{} U_t}$, stoga nas zanima neprekidnost u odnosu na topologiju $\dirProd{t \in T}{} U_t$, a ona je definirana kao najmanja topologija u kojoj su sve koordinatne projekcije neprekidne, stoga je neprekidna po definiciji, stoga je i identiteta neprekidna, a posljedi\v cno i borelova preka korolaru \ref{kor:3.5}.
@@ -189,7 +193,7 @@ a nije osobito te\v sko konstruirati kontraprimjere koji pokazuju da u \eqref{je
             \item Otvoreni cilindri\v cni pravokutnici se nalaze u produktnoj $\sigma$-algebri.
             Vrijedi prema \eqref{jed:4.2}.
             \begin{equation*}
-                \prsten{\produkt{t \in T}{} \Omega_t} \subseteq \dirProd{t \in T}{} \borel{X_t}.
+                \famR \Big( \produkt{t \in T}{} \Omega_t \Big) \subseteq \dirProd{t \in T}{} \borel{X_t}.
             \end{equation*}
         \end{enumerate}
     \end{enumerate}
@@ -215,7 +219,7 @@ a nije osobito te\v sko konstruirati kontraprimjere koji pokazuju da u \eqref{je
     \end{equation*}
     Primjetimo da je $\sigma$-algebra $\famF$ generirana izmjerivim cilindri\v cnim pravokutnicima (prema \eqref{jed:4.2}), stoga vrijedi
     \begin{equation*}
-        \prsten{\produkt{t \in T}{} \Omega_t} \subseteq \famG \subseteq \famF.
+        \famR \Big( \produkt{t \in T}{} \Omega_t \Big) \subseteq \famG \subseteq \famF.
     \end{equation*}
     Ako doka\v zemo da je $\famG$ $\sigma$-algebra, tada \' ce vrijediti i $\famF \subseteq \famG$.
     \begin{enumerate}[label=(\roman*)]
@@ -228,7 +232,7 @@ a nije osobito te\v sko konstruirati kontraprimjere koji pokazuju da u \eqref{je
                 \end{smallmatrix}
             }{} \indSigAlg{\pi_t}{t \in J} = \famG.
         \end{equation*}
-        \item Neka je $A \in \famG$, dakle postoji $J \subseteq T$ najvi\v se prebrojiv takav vrijedi
+        \item Neka je $A \in \famG$, dakle postoji $J \subseteq T$ najvi\v se prebrojiv, tada vrijedi
         \begin{equation*}
             A \in \indSigAlg{\pi_t}{t \in J} \implies A^c \in \indSigAlg{\pi_t}{t \in J}.
         \end{equation*}
@@ -252,10 +256,10 @@ a nije osobito te\v sko konstruirati kontraprimjere koji pokazuju da u \eqref{je
 \begin{defn}    \label{defn:4.6-1}
     Ako je $I \subseteq T, \; I \neq \varnothing$, onda za svaki $A \subseteq \produkt{t \in T}{} \Omega_t$ i $x \in \produkt{t \in I}{} \Omega_t$ mogu\' ce promarati \emph{prerez od $A$ po $x$}; to jest skup
     \begin{equation*}
-        A_x := \skup{y \in \produkt{t \in T \setminus I}{} \Omega_t}{(x, \: y) \in A \; (\subseteq \produkt{t \in T}{} \Omega_t)}.
+        A_x := \bigSkup{y \in \produkt{t \in T \setminus I}{} \Omega_t}{(x, \: y) \in A \; \Big(\subseteq \produkt{t \in T}{} \Omega_t \Big)}.
     \end{equation*}
 \end{defn}
-Uo\v cimo da je prerez (po $x$) svakog izmjerivog cilindri\v cnog pravokutnika ponovo ili $\varnothing$ ili izmjerivi cilindri\v cni pravokutnik u $\prsten{\produkt{t \in T \setminus I}{} \Omega_t}$, pa slijedi:
+Uo\v cimo da je prerez (po $x$) svakog izmjerivog cilindri\v cnog pravokutnika ponovo ili $\varnothing$ ili izmjerivi cilindri\v cni pravokutnik u $\famR \Big( \produkt{t \in T \setminus I}{} \Omega_t \Big)$, pa slijedi:
 \begin{equation}    \label{jed:4.7}
     A \in \dirProd{t \in T}{} \famF_t \implies A_x \in \dirProd{t \in T \setminus I}{} \famF_t.
 \end{equation}
@@ -348,7 +352,7 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
 
 \begin{pr}  \label{pr:4.13}
     Neka je $\mu_1 = \ldots = \mu_d = \lambda$ (Lebesgueova mjera).
-    Tada je $\mu_q \otimes \ldots \otimes \mu_d$ $\sigma$-kona\v cna mjera na $\urePar{\real^d}{\borel{\real^d}}$, koju ozna\v cavamo $\lambda^d$ i zovemo \emph{$d$-dimenzionalana Lebesgueova mjera}.
+    Tada je $\mu_1 \otimes \ldots \otimes \mu_d$ $\sigma$-kona\v cna mjera na $\urePar{\real^d}{\borel{\real^d}}$, koju ozna\v cavamo $\lambda^d$ i zovemo \emph{$d$-dimenzionalana Lebesgueova mjera}.
 \end{pr}
 
 \begin{zad} \label{zad:4.15}
@@ -417,14 +421,19 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
 \end{defn}
 
 \begin{zad} \label{zad:4.18}
-    Ako je $\mu$ $\sigma$-kona\v cna mjera na $\urePar{\Omega_1}{\famF_1}$ i $k$ uniformno kona\v cna jezgra na $\Omega_1 \times \famF_2$, tada postoji i jedinstvena je $\sigma$-kona\v cna mjera $nu$ na $\urePar{\Omega_1 \times \Omega_2}{\famF_1 \otimes \famF_2}$ takva da je
+    Ako je $\mu$ $\sigma$-kona\v cna mjera na $\urePar{\Omega_1}{\famF_1}$ i $k$ uniformno kona\v cna jezgra na skupu $\Omega_1 \times \famF_2$.
+    Tada postoji i jedinstvena je $\sigma$-kona\v cna mjera $\nu$ na $\urePar{\Omega_1 \times \Omega_2}{\famF_1 \otimes \famF_2}$ takva da je
     \begin{equation*}
-        \nu (A \times B) = \int_A k(\omega, \: B) \: d \mu (\omega),
+        \nu (A \times B) = \int\limits_A k(\omega, \: B) \: d \mu (\omega),
     \end{equation*}
     za svaki $A \times B \in \prsten{\Omega_1 \times \Omega_2}$.
-    Ako je funkcija $f:\Omega_1 \times \Omega_2 \to \segment{0}{+\infty}$ $\urePar{\famF_1 \otimes \famF_2}{\borel{\segment{0}{+\infty}}}$-izmjeriva, tada je
+    Ako je funkcija
     \begin{equation*}
-        \int_{\Omega_1 \times \Omega_2} f(\omega_1, \: \omega_2) \: d \nu (\omega_1, \: \omega_2) = \int_{\Omega_1} \Big( \int_{\Omega_2} f(\omega_1, \: \omega_2) \: k(\omega_1, \: d \omega_2) \Big) \: d \mu (\omega_1).
+        f:\Omega_1 \times \Omega_2 \to \segment{0}{+\infty}
+    \end{equation*}
+    $\urePar{\famF_1 \otimes \famF_2}{\borel{\segment{0}{+\infty}}}$-izmjeriva, tada je
+    \begin{equation*}
+        \int\limits_{\Omega_1 \times \Omega_2} f(\omega_1, \: \omega_2) \: d \nu (\omega_1, \: \omega_2) = \int\limits_{\Omega_1} \Big( \int\limits_{\Omega_2} f(\omega_1, \: \omega_2) \: k(\omega_1, \: d \omega_2) \Big) \: d \mu (\omega_1).
     \end{equation*}
 \end{zad}
 
@@ -453,7 +462,7 @@ U vjerojatnosnom slu\v caju sve je u redu.
 
 \begin{tm}  \label{tm:4.21}
     Neka je $(\Omega_n, \: \famF_n, \: \Pp_n), \; n \in \nat$, niz vjerojatnosnih prostora.
-    Postoji i jedinstvena je vjerojatnosna mjera $\masP$ na $\urePar{\produkt{n \in \nat}{} \Omega_n}{\dirProd{n \in \nat}{} \famF_n}$ takva da je za svaki $n \in \nat$, za svaki izbor $A_1 \in \famF_1, \dots, A_n \in \famF_n$,
+    Postoji i jedinstvena je vjerojatnosna mjera $\masP$ na $\Big( \produkt{n \in \nat}{} \Omega_n, \dirProd{n \in \nat}{} \famF_n \Big)$ takva da je za svaki $n \in \nat$, za svaki izbor $A_1 \in \famF_1, \dots, A_n \in \famF_n$,
     \begin{equation*}
         %\masP (\praslika{\pi_1}(A_1) \cap \dots \cap \praslika{\pi_n}(A_n))
         \masP(\pi_1 \in A_1, \: \dots, \pi_n \in A_n)

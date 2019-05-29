@@ -128,7 +128,7 @@ Primjetimo da se ovaj pristup direktno prenosi i na prebrojive $\Omega$ ako doda
             \end{equation*}
             Odakle je lako vidjeti:
             \begin{align*}
-                \vjeroj{A \cup B \cup \unija{n = 3}{\infty} \varnothing} &= \vjeroj{A \cup B} \\
+                \masP \Big( A \cup B \cup \unija{n = 3}{\infty} \varnothing \Big) &= \vjeroj{A \cup B} \\
                 &= \vjeroj{A} + \vjeroj{B}
             \end{align*}
         \item Neka je $\niz{A_n}{n \in \N} \subseteq \F$ niz disjunktnih doga\dj aja.
@@ -153,17 +153,17 @@ Primjetimo da se ovaj pristup direktno prenosi i na prebrojive $\Omega$ ako doda
         Ali tada $x \notin A_k$, za $k > k_0$, \v sto je kontradikcija s $x \in B_n \; \forall n \in \nat$, pa je $\presjek{n = 1}{\infty} B_n = \varnothing$.\\
         Sada imamo
         \begin{align*}
-            \vjeroj{\unija{k = 1}{\infty} A_k}
-            &= \vjeroj{\unija{k = 1}{n} A_k}
-            + \vjeroj{\unija{k = n + 1}{\infty} A_k} \\
+            \masP \Big(\unija{k = 1}{\infty} A_k \Big)
+            &= \masP \Big( \unija{k = 1}{n} A_k \Big)
+            + \masP \Big( \unija{k = n + 1}{\infty} A_k \Big) \\
             &= \suma{k = 1}{n} \vjeroj{A_k}
-            + \vjeroj{\unija{k = n + 1}{\infty} A_k}. 
+            + \masP \Big( \unija{k = n + 1}{\infty} A_k \Big). 
         \end{align*}
         Pu\v stanjem limesa dobijemo:
         \begin{align*}
-            \lim_n \vjeroj{\unija{k = n + 1}{\infty} A_k}
-            \overset{\eqref{jed:1.13}}{=}& \lim_n
-            \vjeroj{\presjek{n + 1}{\infty}\unija{k = n + 1}{\infty} A_k}\\
+            \lim\limits_{n \to \infty} \masP \Big( \unija{k = n + 1}{\infty} A_k \Big)
+            \overset{\eqref{jed:1.13}}{=}& \lim\limits_{n \to \infty}
+            \masP \Big( \presjek{n + 1}{\infty}\unija{k = n + 1}{\infty} A_k \Big)\\
             =& 0.
             \end{align*}
         I prelaskom na limes dobijemo tra\v zenu tvrdnju.
@@ -276,7 +276,7 @@ Priroda problema je takva da nemo\v zemo odustati niti od jednog od zahtjeva \eq
             \item $\vjeroj{\Omega} = 1$
             \item $\niz{A_n}{n \in \nat}$ niz disjunktnih doga\dj aja, tada:
             \begin{equation*}
-                \vjeroj{\unija{n \in \nat}{} A_n} = \suma{n \in \nat}{} \vjeroj{A_n}.
+                \masP \Big( \unija{n \in \nat}{} A_n \Big) = \suma{n \in \nat}{} \vjeroj{A_n}.
             \end{equation*}
         \end{enumerate}
     \end{enumerate}
@@ -320,9 +320,9 @@ Priroda problema je takva da nemo\v zemo odustati niti od jednog od zahtjeva \eq
                 \item[(B)] $A_1 = B_1$.
                 \item[(P)] Neka je $n \in \N$, pretpostavimo da vrijedi $\unija{k=1}{n} A_k
                 = \unija{k=1}{n} B_k$.
-                \item[(K)] $\unija{k=1}{n+1} B_k = (\unija{k=1}{n} B_k) \cup B_{n+1}
-                    = (\unija{k=1}{n} A_k) \cup \underbrace{(A_n \setminus
-                    \unija{k=1}{n} A_k)}_{\textnormal{po definiciji}}
+                \item[(K)] $\unija{k=1}{n+1} B_k = \Big(\unija{k=1}{n} B_k \Big) \cup B_{n+1}
+                    = \Big(\unija{k=1}{n} A_k \Big) \cup \underbrace{\Big( A_n \setminus
+                    \unija{k=1}{n} A_k \Big)}_{\textnormal{po definiciji}}
                     = \unija{k=1}{n+1} A_k$.
             \end{enumerate}
             Po principu matemati\v cke indukcije tvrdnja vrijedi za svaki $n \in \N$.
@@ -333,7 +333,7 @@ Priroda problema je takva da nemo\v zemo odustati niti od jednog od zahtjeva \eq
             cno.
             Po pretpostavci je $A \subset \unija{n \in \N}{} A_n = \unija{n \in \N}{} B_n$,
             sada po \ref{tm:1.24-1.1} vrijedi $\mjera{A} \leq
-            \mjera{\unija{n \in \N}{} B_n} = \suma{n=1}{\infty} B_n$. Tako\dj er budu\' ci
+            \mu \Big( \unija{n \in \N}{} B_n \Big) = \suma{n=1}{\infty} B_n$. Tako\dj er budu\' ci
             vrijedi $B_k \subseteq A_k$, vrijedi i $\mjera{B_k} \leq \mjera{A_k}$, stoga
             imamo $\suma{n=1}{\infty} \mjera{B_n} \leq \suma{n=1}{\infty} \mjera{A_n}$.
             Odavde vidimo da vrijedi:
@@ -352,17 +352,16 @@ Priroda problema je takva da nemo\v zemo odustati niti od jednog od zahtjeva \eq
                 \item[(B)] $B_1 = A_1$.
                 \item[(P)] Neka je $n \in \N$, tada vrijedi $\unija{k=1}{n} A_k
                     = \unija{k=1}{n} B_k$.
-                \item[(K)] $\unija{k=1}{n+1} B_k = (\unija{k=1}{n} A_k) \cup B_{n+1}
-                    = (\unija{k=1}{n} A_k) \cap (A_{n+1} \setminus A_n)
+                \item[(K)] $\unija{k=1}{n+1} B_k = \Big( \unija{k=1}{n} A_k \Big) \cup B_{n+1}
+                    = \Big(\unija{k=1}{n} A_k \Big) \cap (A_{n+1} \setminus A_n )
                     = \unija{k=1}{n+1} A_k$.
             \end{enumerate}
             Po Principu matemati\v cke indukcije tvrdnja vrijedi za svaki $n \in \N$.
             Vrijedi $A_n = \unija{k=1}{n} A_k$, jer je rije\v c o rastu\' cim nizu,
             dakle vrijedi $\unija{k=1}{n} A_k = \unija{k = 1}{n} B_k = A_n$.
-            Sada imamo $\mjera{A} = \mjera{\unija{n \in \N}{} A_n} = \mjera{
-                \unija{n \in \N}{} B_n} = \suma{n=1}{\infty} \mjera{B_n}
-                = \lim\limits_{n} \suma{k=1}{n} \mjera{B_k} = \lim\limits_{n}
-                \mjera{\unija{k=1}{n} B_k} = \lim\limits_{n} \mjera{A_n}$.
+            Sada imamo $\mjera{A} = \mu \Big( \unija{n \in \N}{} A_n \Big) = \mu \Big( \unija{n \in \N}{} B_n \Big) = \suma{n=1}{\infty} \mjera{B_n}
+                = \lim\limits_{n \to \infty} \suma{k=1}{n} \mjera{B_k} = \lim\limits_{n \to \infty}
+                \mu \Big( \unija{k=1}{n} B_k \Big) = \lim\limits_{n \to \infty} \mjera{A_n}$.
         \item Definirajmo niz $\niz{B_n}{n \in \nat}$ sa
         \begin{equation*}
             B_n := A_{n_0} \setminus A_{n_0 + n},
@@ -407,21 +406,21 @@ Priroda problema je takva da nemo\v zemo odustati niti od jednog od zahtjeva \eq
             \end{equation*}
             Sada iz tvrdnje \ref{tm:1.24-1.3} vrijedi
             \begin{equation*}
-                \mjera{A_{n_0} \setminus
-            \presjek{n=1}{\infty} A_n} = \mjera{\unija{n=1}{\infty} B_n}
-            = \lim\limits_{n} \mjera{B_n} = \lim\limits_{n} \mjera{A_{n_0} \setminus
+                \mu \Big( A_{n_0} \setminus
+            \presjek{n=1}{\infty} A_n \Big) = \mu \Big( \unija{n=1}{\infty} B_n \Big)
+            = \lim\limits_{n \to \infty} \mjera{B_n} = \lim\limits_{n \to \infty} \mjera{A_{n_0} \setminus
             A_{n_0+n}}.
             \end{equation*}
             Sada, zbog $\mjera{A_{n_0}} < \infty$, vrijedi
             \begin{equation*}
                 \begin{aligned}
-                    \mjera{A_{n_0}} - \mjera{\presjek{n=1}{\infty} A_n} &= \lim\limits_{n} (\mjera{A_{n_0}} - \mjera{A_{n_0+n}}) = \mjera{A_{n_0}} - \lim\limits_{n} \mjera{A_{n_0+n}}\\
-                    &= \mjera{A_{n_0}} - \lim\limits_{n} \mjera{A_n},
+                    \mjera{A_{n_0}} - \mu \Big( \presjek{n=1}{\infty} A_n \Big) &= \lim\limits_{n \to \infty} \big( \mjera{A_{n_0}} - \mjera{A_{n_0+n}} \big) = \mjera{A_{n_0}} - \lim\limits_{n \to \infty} \mjera{A_{n_0+n}}\\
+                    &= \mjera{A_{n_0}} - \lim\limits_{n \to \infty} \mjera{A_n},
                 \end{aligned}
             \end{equation*}
             dakle vrijedi
             \begin{equation*}
-                \mjera{\presjek{n=1}{\infty} A_n} = \lim\limits_{n} \mjera{A_n}.
+                \mu \Big( \presjek{n=1}{\infty} A_n \Big) = \lim\limits_{n \to \infty} \mjera{A_n}.
             \end{equation*}
     \end{enumerate}
 \end{proof}

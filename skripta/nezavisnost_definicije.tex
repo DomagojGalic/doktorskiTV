@@ -103,7 +103,7 @@ Treba biti oprezan.
 \begin{zad} \label{zad:6.4}
     Na\dj ite primjere tri doga\dj aja $A, \: B, \: C \in \famF$ koji nisu nezavisni, ali za njih vrijedi:
     \begin{enumerate}[label=(\roman*)]
-        \item U praovima su nezavisni
+        \item U parovima su nezavisni
         \item $\vjeroj{A \cap B \cap C} = \vjeroj{A} \cdot \vjeroj{B} \cdot \vjeroj{C}$.
     \end{enumerate}
 \end{zad}
@@ -261,6 +261,7 @@ O\' cito, smanjivati klase na razne na\v cine ne\' ce ugroziti nezavisnost.
 \end{prop}
 
 \begin{proof}
+    \quad
     \begin{enumerate}
         \item[$\implies$] Prema korolaru \ref{kor:6.11}.
         \item[$\impliedby$] Uo\v cimo da je dovoljno pokazati da za svaki kona\v can skup $S \subseteq \Lambda$ vrijedi $\indFamilija{\famF_\lambda}{\lambda \in S}$ nezavisna.
@@ -285,7 +286,7 @@ O\' cito, smanjivati klase na razne na\v cine ne\' ce ugroziti nezavisnost.
         Tada je $\vjeroj{B \cap C} = \vjeroj{B} \cdot \vjeroj{C}$, a $\card{V \cap T} \leq n$ i $\card{V \setminus T} \leq n$.
         Po pretpostavci indukcije dobivamo
         \begin{equation*}
-            \vjeroj{\presjek{\lambda \in V}{} A_\lambda} = \produkt{\lambda \in V}{} \vjeroj{A_\lambda}.
+            \masP \Big( \presjek{\lambda \in V}{} A_\lambda \Big) = \produkt{\lambda \in V}{} \vjeroj{A_\lambda}.
         \end{equation*}
     \end{enumerate}
 \end{proof}
@@ -300,6 +301,6 @@ O\' cito, smanjivati klase na razne na\v cine ne\' ce ugroziti nezavisnost.
     Neka je $\indFamilija{A_n}{n \in \nat} \subseteq \famF$ familija nezavisnih doga\dj aja.
     Vrijedi li
     \begin{equation*}
-        \vjeroj{\presjek{n \in \nat}{} A_n} = \produkt{n \in \nat}{} \vjeroj{A_n}?
+        \masP \Big( \presjek{n \in \nat}{} A_n \Big) = \produkt{n \in \nat}{} \vjeroj{A_n}?
     \end{equation*}
 \end{zad}

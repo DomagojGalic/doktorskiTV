@@ -3,11 +3,11 @@
 \chapter{Slabi zakoni velikih brojeva}
 
 U ovom poglavlju $\niz{X_n}{n \in \nat}$ je niz slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$ i $S_n := X_1 + \ldots + X_n$, za svaki $n \in \nat$.
-
-Prvo promatramo \v sto se doga\dj aako postoje drugi momenti (vidi poglavlje \ref{dist_sl_elem}).
+Prvo promatramo \v sto se doga\dj a ako postoje drugi momenti (vidi poglavlje \ref{dist_sl_elem}).
 Osnovna tehnika u tom slu\v caju je poznata \emph{\v Cebi\v sevljeva nejednakost}:
 
 \begin{prop}    \label{prop:12.1}
+    \quad
     \begin{enumerate}[label=(\roman*)]
         \item   \label{prop:12.1.1}
         Ako je $X \geq 0$ slu\v cajna varijabla takva da je $0 < \masE X < +\infty$, tada, za svaki $r > 0$ vrijedi
@@ -23,6 +23,7 @@ Osnovna tehnika u tom slu\v caju je poznata \emph{\v Cebi\v sevljeva nejednakost
 \end{prop}
 
 \begin{proof}
+    \quad
     \begin{enumerate}[label=(\roman*)]
         \item Bez smanjenja op\' cenitosti mo\v zemo pretpostaviti da je $\masE X = 1$.
         Uo\v cimo da je $r \cdot \karaktFja_{\{X > r\}} \leq X$.
@@ -73,10 +74,7 @@ Podsjetimo se da ako $X$, $Y$ imaju kona\v cne druge momente, tada imamo sljede\
     Tada je $\frac{S_n - \masE S_n}{n} = Z_n - \masE Z_n$ i vrijedi $\Var Z_n = \frac{1}{n^2} \suma{k = 1}{n} \Var X_k \leq \frac{n \: c}{n^2} = \frac{C}{n}$.
     Prema propoziciji \ref{prop:12.1} \ref{prop:12.1.2} imamo
     \begin{equation*}
-        \begin{aligned}
-            \vjeroj{|Z_n - \masE Z_n| > \varepsilon} & \leq \frac{\Var Z_n}{\varepsilon^2} \leq \frac{c}{\varepsilon^2} \cdot \frac{1}{n}\\
-            & \xrightarrow[n \to \infty]{} 0.
-        \end{aligned}
+        \vjeroj{|Z_n - \masE Z_n| > \varepsilon} \leq \frac{\Var Z_n}{\varepsilon^2} \leq \frac{c}{\varepsilon^2} \cdot \frac{1}{n} \xrightarrow[n \to \infty]{} 0.
     \end{equation*}
 \end{proof}
 
@@ -131,6 +129,7 @@ Posebno, vidimo da je
 \end{defn}
 
 \begin{lm}[L\' evyjeva nejednakost]  \label{lm:12.8}
+    \quad \\
     Ako su $\niz{X_n}{n \in \nat}$ nezavisne slu\v cajne varijable, tada, za svaki $\varepsilon > 0$ vrijedi:
     \begin{equation*}
         \begin{gathered}
@@ -141,7 +140,11 @@ Posebno, vidimo da je
 \end{lm}
 
 \begin{proof}
-    Koriste\' ci prvu nejednakost na $(X_n)$ i na $(-X_n)$, te koriste\' ci $m(-X) = -m(X)$, dobivamo drugu nejednakost.
+    Koriste\' ci prvu nejednakost na $(X_n)$ i na $(-X_n)$, te koriste\' ci
+    \begin{equation*}
+        m(-X) = -m(X),    
+    \end{equation*}
+    dobivamo drugu nejednakost.
     Doka\v zimo prvu nejednakost.
     Stavimo
     \begin{equation*}
@@ -166,7 +169,7 @@ Posebno, vidimo da je
 Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
 
 \begin{tm}[W. Feller]   \label{tm:12.9}
-    Neka je $\niz{X_n}{n \in \nat}$ $\iid$ niz.
+    Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih, jednako distribuiranih slu\v cajnih varijabli.
     Tada postoji niz brojeva $\niz{b_n}{n \in \nat}$, takav da vrijedi
     \begin{equation*}
         \frac{S_n}{n} - b_n \xrightarrow[n \to \infty]{\masP} 0 \iff \lim\limits_{n \to \infty} n \: \vjeroj{|X_1| > n} = 0.
@@ -302,11 +305,11 @@ Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
 \end{pr}
 
 \begin{tm}  \label{tm:12.11-1}
-    Neka su $(\real, \borel{\real}, \nu)$, te $ (\Omega, \famF, \mu) $ prostori s mjerom i neka je $f : \Omega \to \real$ nenegativna, borelova funkcija, tada vrijedi
+    Neka su $(\real, \borel{\real}, \nu)$, te $ (\Omega, \famF, \mu) $ prostori sa $\sigma$-kona\v cnim mjerama i neka je $f : \Omega \to \real$ nenegativna, Borelova funkcija, tada vrijedi
     \begin{equation*}
         \int\limits_\Omega \nu (\desInt{0}{f(\omega)}) \: d \mu (\omega) = \int\limits_{0}^{+\infty} \mu (f>t) \: d \nu (t).
     \end{equation*}
-    Ako uzmemo $\nu$ kao apsolutno neprekidnu s obzirom na Lebesgue-ovu mjeru $\lambda$ s gusto\' com $t \mapsto p \: t^{p-1}$, za $p>0$, tada imamo
+    Ako uzmemo $\nu$ kao apsolutno neprekidnu s obzirom na Lebesgueovu mjeru $\lambda$ s gusto\' com $t \mapsto p \: t^{p-1}$, za $p>0$, tada imamo
     \begin{equation*}
         \int\limits_\Omega f(\omega)^p \: d \mu (\omega) = p \int\limits_{0}^{+\infty} t^{p-1} \mu (f > t) \: d \lambda (t).
     \end{equation*}
