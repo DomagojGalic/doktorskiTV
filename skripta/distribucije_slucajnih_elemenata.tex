@@ -209,7 +209,7 @@ Postoji jako puno funkcija gusto\' ce jer je $f: \real \to \desInt{0}{+\infty}$ 
 
 Uo\v cimo nadalje da se za $\sigma$-kona\v cne mjere $\mu$ na $\urePar{\real}{\borel{\real}}$ i d.f. $F_{\mu}$ pripadni integrali potpuno podudaraju, to jest:
 \begin{equation*}
-    \int_{\real} f(x) \: d \mu (x) = \int_{-\infty}^{\infty} f(x) \: d F_{\mu} (x).
+    \int\limits_{\real} f(x) \: d \mu (x) = \int\limits_{-\infty}^{\infty} f(x) \: d F_{\mu} (x).
 \end{equation*}
 
 Posebno, ako je $X$ slu\v cajni element na $\vjerojatnosniProstor$ s vrijednostima u $\urePar{E}{\famE}$ i $f:E \to \real$ izmjeriva funkcija, tada je
@@ -218,10 +218,10 @@ Posebno, ako je $X$ slu\v cajni element na $\vjerojatnosniProstor$ s vrijednosti
 \end{equation*}
 i vrijedi:
 \begin{equation*}
-    \int_{\Omega} (f \circ X) (\omega) \: d \masP (\omega)
-    = \int_E f(x) \: d \masP_X (x)
-    = \int_\real \id (t) \: d \masP_{f \circ X} (t)
-    = \int_{-\infty}^{\infty} u \: d F_{f \circ X} (u).
+    \int\limits_{\Omega} (f \circ X) (\omega) \: d \masP (\omega)
+    = \int\limits_E f(x) \: d \masP_X (x)
+    = \int\limits_\real \id (t) \: d \masP_{f \circ X} (t)
+    = \int\limits_{-\infty}^{\infty} u \: d F_{f \circ X} (u).
 \end{equation*}
 Tako\dj er za $F \in \famE$ vrijedi
 \begin{equation*}
@@ -275,9 +275,9 @@ Ako je $p \leq q$, tada je $L^q \subseteq L^p$ (i $\norma{X}_p \leq \norma{X}_q$
 Ako je $X \geq 0$ i $p > 0$ jednostavnim ra\v cunom daje
 \begin{align}   \label{jed:5.12}
     \begin{split}
-        \ocek{X^p} =& \int_0^{+\infty} t^p \: d \masP_X (t) = \int_0^{\infty} \Big( \int_0^t p \cdot u^{p - 1} \: d u \Big) \: d \masP_X(t) = (\textnormal{Fubini})\\
-        =& p \int_0^{\infty} \: du \int_u^t u ^{p-1} \: d \masP_X (t) = p \int_0^{+\infty} u^{p-1} \masP_X (\segment{u}{+\infty}) \: du \\
-        =& \int_0^{+\infty} p \cdot u^{p-1} \vjeroj{X \geq u} \: du.
+        \ocek{X^p} =& \int\limits_0^{+\infty} t^p \: d \masP_X (t) = \int\limits_0^{\infty} \Big( \int\limits_0^t p \cdot u^{p - 1} \: d u \Big) \: d \masP_X(t) = (\textnormal{Fubini})\\
+        =& p \int\limits_0^{\infty} \: du \int\limits_u^t u ^{p-1} \: d \masP_X (t) = p \int\limits_0^{+\infty} u^{p-1} \masP_X (\segment{u}{+\infty}) \: du \\
+        =& \int\limits_0^{+\infty} p \cdot u^{p-1} \vjeroj{X \geq u} \: du.
     \end{split}
 \end{align}
 
