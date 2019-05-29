@@ -87,8 +87,8 @@ Podsjetimo se da za $X, \; Y \in L^1$, $X \cdot Y$ ne mora biti u $L^1$. Ako su 
     Uo\v cimo da je $Z:=\urePar{X}{Y}$ dvodimenzionalan slu\v cajan vektor i po teoremu \ref{tm:7.4} je $\masP_Z = \masP_X \otimes \masP_Y$.
     Po zadatku \ref{zad:4.15}
     \begin{align*}
-        \int_\Omega |X(\omega)| \cdot |Y(\omega)| \: d \masP
-        &= \int_{\real^2} |x| \cdot |y| \: d \masP_Z \urePar{x}{y} = \int_\real |x| \: d \masP_X (x) \cdot \int_{\real} |y| \: d \masP_Y (y)\\
+        \int\limits_\Omega |X(\omega)| \cdot |Y(\omega)| \: d \masP
+        &= \int\limits_{\real^2} |x| \cdot |y| \: d \masP_Z \urePar{x}{y} = \int\limits_\real |x| \: d \masP_X (x) \cdot \int\limits_{\real} |y| \: d \masP_Y (y)\\
         &= \masE [|X|] \cdot \masE [|Y|] < +\infty \implies X \cdot Y \in L^1.
     \end{align*}
     Sada na sli\v can na\v cin Fubinijev teorem (zadatak \ref{zad:4.16}) daje
@@ -122,7 +122,7 @@ Uo\v cimo da sada direktno iz korolara \ref{kor:6.11} direktno dobivamo:
 %% koriste\' ci dokaz sli\v can onome iz \ref{tm:7.7} rje\v site.
 \begin{zad} \label{zad:7.10}
     Neka su $X : \Omega \to \urePar{E}{\famE}$ i $Y : \Omega \to \urePar{H}{\famH}$ nezavisni slu\v cajni elementi.
-    Neka je $f : \urePar{E \times H}{\famE \otimes \famH} \to \urePar{\real}{\borel{\real}}$ izmjeriva za koju vrijedi jedan od sljede\' cih uvijeta:
+    Neka je $f : \urePar{E \times H}{\famE \otimes \famH} \to \urePar{\real}{\borel{\real}}$ izmjeriva za koju vrijedi jedan od sljede\' cih uvjeta:
     \begin{itemize}
         \item $f \geq 0$
         \item $\masE [|f \urePar{X}{Y}|] < +\infty$.
@@ -130,8 +130,8 @@ Uo\v cimo da sada direktno iz korolara \ref{kor:6.11} direktno dobivamo:
     Tada je
     \begin{align*}
         \masE [ f \urePar{X}{Y} ]
-        &= \int_{E} \int_{H} f \urePar{x}{y} \: d \masP_Y (y) \: d \masP_X (x) \\
-        &= \int_H \int_E f \urePar{x}{y} \: d \masP_X (x) \: d \masP_Y (y).
+        &= \int\limits_{E} \int\limits_{H} f \urePar{x}{y} \: d \masP_Y (y) \: d \masP_X (x) \\
+        &= \int\limits_H \int\limits_E f \urePar{x}{y} \: d \masP_X (x) \: d \masP_Y (y).
     \end{align*}
 \end{zad}
 
@@ -168,7 +168,7 @@ Primjetimo u prethodnoj definiciji \emph{nije nu\v zno}
 
 Po zadatku \ref{zad:4.15} dobijemo da je za svaki $H \in \famG$
 \begin{equation*}   \label{jed:7.12}
-    (\mu * \nu)(H) := \int_G \nu (a^{-1} \: H) \: d \mu (a).
+    (\mu * \nu)(H) := \int\limits_G \nu (a^{-1} \: H) \: d \mu (a).
 \end{equation*}
 
 \begin{zad} \label{zad:7.13}
@@ -190,15 +190,15 @@ Po zadatku \ref{zad:4.15} dobijemo da je za svaki $H \in \famG$
         \item   \label{nap:7.14c}
         Ako na $\urePar{G}{\famG}$ postoji $\sigma$-kona\v cna mjera $\lambda$ takva da je $\mu \ll \lambda$ i $\nu \ll \lambda$, tada za $f = \frac{d \mu}{d \lambda}$ i $g = \frac{d \nu}{d \lambda}$ vrijedi
         \begin{equation*}
-            (\mu * \nu) (H) = \int_G \int_{a^{-1} H} f(a) \: g(b) \: d \lambda (b) \: d \lambda (a).
+            (\mu * \nu) (H) = \int\limits_G \int\limits_{a^{-1} H} f(a) \: g(b) \: d \lambda (b) \: d \lambda (a).
         \end{equation*}
         \item Ako je $\lambda$ iz \ref{nap:7.14c} jo\v s i \emph{invarijantna} u odnosu na sve lijeve translacije (to jest za svaki $g \in G$ i za svaki $C \in \famG$ je $\lambda (g^{-1} C) = \lambda (C)$), tada je
         \begin{equation*}
-            (\mu * \nu) (H) = \int_H \Big( \int_G f(a) \: g (a^{-1} b) \: d \lambda (a) \Big) \: d \lambda (b),
+            (\mu * \nu) (H) = \int\limits_H \Big( \int\limits_G f(a) \: g (a^{-1} b) \: d \lambda (a) \Big) \: d \lambda (b),
         \end{equation*}
         to jest $\mu * \nu \ll \lambda$ i postoji gusto\' ca
         \begin{equation*}
-            \frac{d (\mu * \nu)}{d \lambda} (b) = \int_G f(a) \: g (a^{-1} b) \: d \lambda (a)
+            \frac{d (\mu * \nu)}{d \lambda} (b) = \int\limits_G f(a) \: g (a^{-1} b) \: d \lambda (a)
         \end{equation*}
         koju ozna\v cavamo sa \emph{$f*g$}.
     \end{enumerate}
