@@ -48,7 +48,9 @@ Korisna je sljede\' ca karakterizacija limesa inferior i limesa superior
 
 Odnosno elementarni doga\dj aj se nalazi u limes superioru niza ako se nalazi u beskona\v cno mnogo doga\dj aja tog niza, dok se elementarni doga\dj aj nalazi u limes inferioru niza ako se nalazi u svima, osim eventualno kona\v cno mnogo elemenata tog niza.
 
-Is tog razloga koristimo kraticu $\io$ (eng. infinitely often) za limes superior niza.
+\begin{nap} \label{nap:9.1-3}
+    Is gore navedenog razloga koristimo kraticu $\io$ (eng. infinitely often) za limes superior niza.    
+\end{nap}
 
 \begin{lm}[Borel - Cantelli]  \label{lm:9.2}
     Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor i neka je $\niz{A_n}{n \in \nat} \subseteq \famF$ niz doga\dj aja za koje vrijedi
@@ -101,8 +103,8 @@ Is tog razloga koristimo kraticu $\io$ (eng. infinitely often) za limes superior
     \begin{equation*}
         \begin{aligned}
             \masP \Big(\unija{k \geq n}{} A_k \Big) &= 1 - \masP \Big( \presjek{k \geq n}{} A_k^c \Big) = (\textnormal{prema zadatku \ref{zad:6.14}})\\
-            &= 1 - \produkt{k \geq n}{} (1 - \vjeroj{A_k})\\
-            &\geq 1 - e^{- \suma{k \geq n}{} \vjeroj{A_k}}\\
+            &= 1 - \produkt{k \geq n}{} (1 - \vjeroj{A_k}) \geq 1 - \produkt{k \geq n}{} \Big( e^{- \masP (A_k)} \Big)\\
+            &= 1 - e^{- \suma{k \geq n}{} \vjeroj{A_k}}\\
             &= 1
         \end{aligned}
     \end{equation*}
@@ -154,7 +156,7 @@ Dodavanje ili oduzimanje proizvoljnog broja trivijalnih $\sigma$-algebri ne\' ce
     \end{equation*}
     S druge strane
     \begin{equation*}
-        \diam{\presjek{n \in \nat}{}B_{j(n)}^n} = 0 \implies (\exists x \in E) \; \presjek{n \in \nat}{} B_{j(n)}^n = \{ x \}.
+        \bigDiam{\presjek{n \in \nat}{}B_{j(n)}^n} = 0 \implies (\exists x \in E) \; \presjek{n \in \nat}{} B_{j(n)}^n = \{ x \}.
     \end{equation*}
 \end{proof}
 
@@ -185,7 +187,7 @@ Dodavanje ili oduzimanje proizvoljnog broja trivijalnih $\sigma$-algebri ne\' ce
     \end{itemize}
     dok
     \begin{itemize}
-        \item[] $\displaystyle \bigSkup{\omega}{\suma{n = 1}{\infty} X_n (\omega) = a}$
+        \item[] $\displaystyle \bigSkup{\omega \in \Omega}{\suma{n = 1}{\infty} X_n (\omega) = a}$
     \end{itemize}
     nije repni doga\dj aj.
 \end{pr}
@@ -482,7 +484,7 @@ Podsjetimo se da za niz $E$-zna\v cnih slu\v cajnih elemenata $(X_n)$, mo\v zemo
     Vrlo \v cesto nam je (i s teorijskog i s primjenjenog stajali\v sta) va\v zno, barem konceptualno, razmi\v sljati o beskona\v cnom ponavaljanju pokusa.
     Prva najjednostavnija prepostavka je da se ti pokusi provode \emph{nezavisno}.
     Stoga osnovni objekt na\v se teorije postaje niz nezavisnih slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ na vjerojatnosnom prostoru $\vjerojatnosniProstor$.
-    Uo\v cimo da rezultati iz poglavlja \ref{poglavlje3} pokazuju da se takav niz uvijek mo\v ze realizirati (i to \v cak na $\segment{0}{1}$).
+    Uo\v cimo da rezultati iz poglavlja \ref{poglavlje8} pokazuju da se takav niz uvijek mo\v ze realizirati (i to \v cak na $\segment{0}{1}$).
     Dakle, za svaki izbor p.d.F. $F_1, \; F_2, \ldots$ postoji niz nezavisnih slu\v cajnih varijabli, na istom vjerojatnosnom prostoru, koje imaju to\v cno zadane distribucije.
     Jedno od najva\v znijih pitanja postaje asimptotsko pona\v sanje niza $(X_n)$.
     Osobito je va\v zan poseban slu\v caj u kojem postoji p.d.F. $F$ takav da je $F_{X_n} = F$, za svaki $n \in \nat$.
