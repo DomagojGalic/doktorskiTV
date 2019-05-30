@@ -6,7 +6,7 @@ U ovom poglavlju $\niz{X_n}{n \in \nat}$ je niz nezavisnih slu\v cajnih varijabl
 \begin{equation*}
     S_n := X_1 + \ldots + X_n, \quad n \in \nat.
 \end{equation*}
-\v Sto mo\v zemo re\' ci o konvergenciji reda $\suma{n \in \nat}{} X_n \; (g.s.)$ i po vjerojatnosti?
+\v Sto mo\v zemo re\' ci o konvergenciji reda $\suma{n \in \nat}{} X_n$ gotovo sigurno i po vjerojatnosti?
 Iz Kolmogorovljevog zakona 0-1 slijedi (teorem \ref{tm:9.9}):
 \begin{equation}    \label{jed:13.1}
     \suma{n = 1}{\infty} X_n \quad \textnormal{ konvergira } (g.s.) \textnormal{ ili divergira } (g.s.)
@@ -24,7 +24,7 @@ Preciznije:
 \end{equation}
 
 \begin{nap} \label{nap:13.4}
-    Ako izbacimo jednaku distribuiranost, a zadr\v imo nezavisnost, mo\v zemo dobiti bilo kakav limes reda.
+    Ako izbacimo jednaku distribuiranost, a zadr\v zimo nezavisnost, mo\v zemo dobiti bilo kakav limes reda.
     Na primjer, neka je $X_1 = Y$, pri \v cemu je $Y$ proizvoljna, zadana slu\v cajna varijabla i $X_n \equiv 0$, za $n \geq 2$.
     Tada je $\niz{X_n}{n \in \nat}$ nezavisan niz i
     \begin{equation*}
@@ -38,7 +38,7 @@ Preciznije:
 \end{nap}
 
 \begin{defn}    \label{defn:13.6}
-    Ka\v zemo da su nizovi slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ i $\niz{Y_n}{n \in \nat}$ na vjerojatnosnom prostoru $\vjerojatnosniProstor$ su \emph{ekvivalentni} ako vrijedi:
+    Ka\v zemo da su nizovi slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ i $\niz{Y_n}{n \in \nat}$ na vjerojatnosnom prostoru $\vjerojatnosniProstor$ \emph{ekvivalentni} ako vrijedi:
     \begin{equation*}
         \suma{n = 1}{\infty} \vjeroj{X_n \neq Y_n} < +\infty.
     \end{equation*}
@@ -46,7 +46,7 @@ Preciznije:
 
 Ako su nizovi ekvivalentni, onda iz Borel-Cantellijeve leme (lema \ref{lm:9.2}) slijedi
 \begin{equation*}
-    \vjeroj{X_n \neq Y_n, \; \io} < +\infty,
+    \vjeroj{X_n \neq Y_n \; \io} < +\infty,
 \end{equation*}
 \v sto daje da za ekvivalentne nizove $(X_n)$ i $(Y_n)$ vrijedi:
 \begin{equation}    \label{jed:13.7}
@@ -161,7 +161,7 @@ Po\v cnimo s pretpostavkom o drugim momentima.
 \begin{proof}
     Bez smanjenja op\' cenitosti mo\v zemo pretpostaviti da je $\masE X_n = 0$, $\forall n \in \nat$, ina\' ce gledamo varijable $Y_n = X_n - \masE X_n$.
     Po teoremu \ref{tm:13.9} dovoljno je dokazati da $(S_n)$ konvergira po vjerojatnosti.
-    Ponovo korsitimo lemu \ref{lm:11.18}.
+    Ponovo koristimo lemu \ref{lm:11.18}.
     Po \v Cebi\v sevljevoj nejednakosti slijedi
     \begin{equation*}
         \begin{aligned}
@@ -176,7 +176,7 @@ Po\v cnimo s pretpostavkom o drugim momentima.
 \end{proof}
 
 \begin{prop}    \label{prop:13.13}
-    Ako je $\masE (\sup\limits_{n \in \nat} X_n^2) < + \infty$ (posebno to zna\v ci da je $X_n \in L^2 (\masP), \; \forall n$) i $\masE X_n = 0$, za svaki $n \in \nat$ i $\vjeroj{\sup\limits_{n \in \nat} |S_n| < + \infty} > 0$, tada
+    Ako je $\masE \Big[ \sup\limits_{n \in \nat} X_n^2 \Big] < + \infty$ (posebno to zna\v ci da je $X_n \in L^2 (\masP), \; \forall n$) i $\masE X_n = 0$, za svaki $n \in \nat$ i $\masP \Big( \sup\limits_{n \in \nat} |S_n| < + \infty \Big) > 0$, tada
     \begin{equation*}
         \begin{aligned}
             & \suma{n = 1}{\infty} X_n \quad \textnormal{ konvergira } (g.s.)\\
@@ -192,12 +192,12 @@ Po\v cnimo s pretpostavkom o drugim momentima.
         V := \sup\limits_{n \in \nat} X_n^2.
     \end{equation*}
     Vidimo da je $V \geq 0$ pro\v sirena slu\v cajna varijabla i prema pretpostavci je $\masE V < +\infty$, pa je $V$ slu\v cajna varijabla.
-    Zbog neprekidnosti vjerojatnosti s obzirom na rastu\' ce nizove doga\dj aja, slijedi da postoji $K > 0$ dovoljno velik, takav da vrijedi $\masP ( \sup\limits_{n \in \nat} |S_n| < K) > 0$.
+    Zbog neprekidnosti vjerojatnosti s obzirom na rastu\' ce nizove doga\dj aja, slijedi da postoji $K > 0$ dovoljno velik, takav da vrijedi $\masP \Big( \sup\limits_{n \in \nat} |S_n| < K \Big) > 0$.
     Definiramo
     \begin{equation*}
         \begin{gathered}
             T: \Omega \to \nat_0 \cup \{+\infty\}\\
-            T:= \inf \skup{n}{|S_n| \geq K}.
+            T:= \inf \bigSkup{n \in \nat}{|S_n| \geq K}.
         \end{gathered}
     \end{equation*}
     Dakle $T$ je pro\v sirena slu\v cajna varijabla.
@@ -219,9 +219,12 @@ Po\v cnimo s pretpostavkom o drugim momentima.
     \begin{equation*}
         \begin{aligned}
             U_n^2 &= \big| S_{\min (T - 1, n - 1)} + X_{\min (T, n)} \big|^2\\
-            &\leq 2 (K^2 + V) \implies\\
-            \masE (U_n^2) &\leq 2 (K^2 + \masE V) < +\infty.
+            &\leq 2 (K^2 + V),
         \end{aligned}
+    \end{equation*}
+    pa vidimo
+    \begin{equation*}
+        \masE (U_n^2) \leq 2 (K^2 + \masE V) < +\infty.
     \end{equation*}
     Stavimo li $U_0 := 0$, dobivamo da za svaki $j \in \nat$ vrijedi
     \begin{equation*}
@@ -249,14 +252,14 @@ Po\v cnimo s pretpostavkom o drugim momentima.
 \end{proof}
 
 \begin{prop}    \label{prop:13.14}
-    Ako je $\masE (\sum\limits_{n \in \nat} |X_n|) < +\infty$ i $\suma{n = 1}{\infty} X_n$ konvergira $(g.s.)$, tada i $\suma{n = 1}{\infty} \masE X_n$ konvergira.
+    Ako je $\masE \Big[ \sum\limits_{n \in \nat} |X_n| \Big] < +\infty$ i $\suma{n = 1}{\infty} X_n$ konvergira $(g.s.)$, tada i $\suma{n = 1}{\infty} \masE X_n$ konvergira.
 \end{prop}
 
 \begin{proof}
-    Budu\' ci da je $\masE [\sup\limits_{n \in \nat} |X_n|] < +\infty$, vrijedi $X_n \in L^1 (\masP)$, to jest $\masE X_n \in \real$, $n \in \nat$.
+    Budu\' ci da je $\masE \Big[\sup\limits_{n \in \nat} |X_n| \Big] < +\infty$, vrijedi $X_n \in L^1 (\masP)$, to jest $\masE X_n \in \real$, $n \in \nat$.
     Budu\' ci da $(S_n)$ konvergira $(g.s.)$ ispunjen je uvjet
     \begin{equation*}
-        \masP (\sup\limits_{n \in \nat} |S_n| < +\infty) > 0
+        \masP \Big( \sup\limits_{n \in \nat} |S_n| < +\infty \Big) > 0
     \end{equation*}
     iz propozicije \ref{prop:13.13}.
     Provedemo li to\v cno postupke dokaza iz propozicije \ref{prop:13.13}, te na isti na\v cin definiramo sve slu\v cajne varijable; $K, t, U_n, \; n \in \nat$, tada za svaki $n \in \nat$ imamo
