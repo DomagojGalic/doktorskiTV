@@ -65,7 +65,7 @@ Va\v znu ulogu u opisu ovog pojma imaju skupovi
 Uo\v cimo $l \leq k \implies A_l \subseteq A_k$ i dobivamo
 \begin{equation*}
     \begin{gathered}
-        D = \bigSkup{\omega \in \Omega}{X_n(\omega) \cancel{\xrightarrow[n \to \infty]{}}X(\omega)}\\
+        D = \bigSkup{\omega \in \Omega}{X_n(\omega) \centernot{\xrightarrow[n \to \infty]{}}X(\omega)}\\
         \implies  \vjeroj{D} = \lim\limits_{k \to \infty} \vjeroj{A_k}\\
         \vjeroj{D} = 0 \iff \vjeroj{A_k} = 0, \; \forall k \in \nat.
     \end{gathered}
@@ -113,7 +113,7 @@ Nadalje, $\liminf\limits_{n \to \infty} X_n$ i $\limsup\limits_{n \to \infty} X_
         \item   \label{tm:11.9.2}
         $-\infty < a = A < +\infty$;
         \item   \label{tm:11.9.3}
-        $a \in \real$ i $X_n \xrightarrow[n \to \infty]{g.s.} a$;
+        $X_n \xrightarrow[n \to \infty]{g.s.} a, \quad a \in \real$;
         \item   \label{tm:11.9.4}
         $\suma{n = 1}{\infty} \vjeroj{|X_n - a| > \varepsilon} < +\infty, \quad \forall \varepsilon > 0$.
     \end{enumerate}
@@ -132,15 +132,15 @@ Nadalje, $\liminf\limits_{n \to \infty} X_n$ i $\limsup\limits_{n \to \infty} X_
     \begin{equation*}
         \suma{n = 1}{\infty} \vjeroj{C_n} < +\infty \overset{\textnormal{Borel 0-1}}{\implies} \masP \Big( \limsup\limits_{n \to \infty} C_n \Big) = 0.
     \end{equation*}
-    Uo\v cimo, ako $X_n \cancel{\to} a$, tada je $\omega \in \limsup\limits_{n \to \infty} C_n$, za neki $\varepsilon = \frac{1}{k}$.
+    Uo\v cimo, ako $X_n \centernot{\to} a$, tada je $\omega \in \limsup\limits_{n \to \infty} C_n$, za neki $\varepsilon = \frac{1}{k}$.
     Dokaz slijedi direktno.
 \end{proof}
 
 Dakle, vrlo su rjetki slu\v cajevi, kad niz nezavisnih slu\v cajnih varijabli kongergira gotovo sigurno.
-Slu\v caj $\iid$ je jo\v s posebniji i nema potrebe za daljnjim prou\v cavanjem.
+Slu\v caj nezavisnih, jednako distribuiranih slu\v cajnih varijabli je jo\v s posebniji i nema potrebe za daljnjim prou\v cavanjem.
 
 \begin{kor} \label{kor:11.10}
-    Neka je $\niz{X_n}{n \in \nat} \; \iid$ niz.
+    Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih, jednako distribuiranih slu\v cajnih varijabli.
     Tada niz $(X_n)$ konverigra gotovo sigurno ako i samo ako je $X_n = a \; (g.s.)$, za svaki $n \in \nat$.
 \end{kor}
 
@@ -155,7 +155,7 @@ Slu\v caj $\iid$ je jo\v s posebniji i nema potrebe za daljnjim prou\v cavanjem.
 \end{proof}
 
 \begin{zad} \label{zad:11.11}
-    Neka je $\niz{X_n}{n \in \nat}$ $\iid$ niz.
+    Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih, jednako distribuiranih slu\v cajnih varijabli.
     Doka\v zite:
     \begin{equation*}
         \masP \Big( \limsup\limits_{n \to \infty} X_n  = +\infty \Big) = 1 \iff \vjeroj{X_1 < c} < 1,
@@ -164,9 +164,9 @@ Slu\v caj $\iid$ je jo\v s posebniji i nema potrebe za daljnjim prou\v cavanjem.
 \end{zad}
 
 \begin{nap} \label{nap:11.12}
-    Time smo uglavnom opisali \v sto se mo\v ze desti s $n \mapsto X_n(\omega)$ za velike $n$.
+    Time smo uglavnom opisali \v sto se mo\v ze dogoditi s $n \mapsto X_n(\omega)$ za velike $n$.
     Intuitivno mo\v zemo re\' ci da \' cemo za nezavisne $(X_n)$ "rjetko" imati konvergenciju.
-    U $\iid$ slu\v caju samo degenerirana razdioba daje konvergenciju.
+    U slu\v caju nezavisnih, jednako distribuiranih slu\v cajnih varijabli samo degenerirana razdioba daje konvergenciju.
     Na primjer ako je
     \begin{equation*}
         X_1 \sim
@@ -187,7 +187,7 @@ Slu\v caj $\iid$ je jo\v s posebniji i nema potrebe za daljnjim prou\v cavanjem.
     \begin{equation*}
         \frac{S_n(\omega) - b_n}{a_n}
     \end{equation*}
-    konvergira?
+    konvergira gotovo sigurno?
     Tipi\v cno $a_n \nearrow +\infty$, a $S_n := X_1 + \ldots + X_n$.
     U ovom slu\v caju teorija je bogatija i takve rezultate nazivamo jakim zakonima velikih brojeva.
 \end{nap}
@@ -221,7 +221,7 @@ Osim "konvergencije po to\v ckama" $(g.s.)$ teorija vjerojatnosti bavi se i drug
 \begin{defn}    \label{defn:11.13-1}
     Re\' ci \' cemo da niz $\niz{X_n}{n \in \nat}$ \emph{konvergira po vjerojatnosti} prema slu\v cajnoj varijabli $Y$, ako za svaki $\varepsilon > 0$ vrijedi
     \begin{equation*}
-        \lim\limits_{n \to \infty} \vjeroj{|X_n - y| > \varepsilon} = 0.
+        \lim\limits_{n \to \infty} \vjeroj{|X_n - Y| > \varepsilon} = 0.
     \end{equation*}
     To ozna\v cavamo sa
     \begin{equation*}
@@ -236,10 +236,9 @@ Osim "konvergencije po to\v ckama" $(g.s.)$ teorija vjerojatnosti bavi se i drug
 \begin{zad} \label{zad:11.14}
     Ako je $X_n \xrightarrow[n \to \infty]{\masP} Y$ i $X_n \xrightarrow[n \to \infty]{\masP} Z$, tada $Y =  Z \; (g.s.)$
 \end{zad}
-
 Uo\v cimo da je
 \begin{equation}    \label{jed:11.15}
-    X_n \xrightarrow[n \to \infty]{\masP} Y \iff \masP \Big( |X_n - Y| > \frac{1}{k} \Big) \to 0, \quad \forall k \in \nat.
+    X_n \xrightarrow[n \to \infty]{\masP} Y \iff \masP \Big( |X_n - Y| > \frac{1}{k} \Big) \xrightarrow[n \to \infty]{} 0, \quad \forall k \in \nat.
 \end{equation}
 Koriste\' ci \eqref{jed:11.5} direktno dobivamo:
 
@@ -248,7 +247,7 @@ Koriste\' ci \eqref{jed:11.5} direktno dobivamo:
     \begin{enumerate}[label=(\roman*)]
         \item $X_n \xrightarrow[n \to \infty]{g.s.} Y$;
         \item $(\forall \varepsilon > 0)(\exists \delta > 0) (\exists N \urePar{\varepsilon}{\delta} \in \nat)\\
-        (n \in \nat, \; n \geq N \urePar{\varepsilon}{\delta} \implies \masP \big( \presjek{j = n}{\infty} \{ |X_j - Y| \leq \varepsilon \} \big) \geq 1 - \delta)$;
+        (n \in \nat, \; n \geq N \urePar{\varepsilon}{\delta} \implies \masP \Big( \presjek{j = n}{\infty} \{ |X_j - Y| \leq \varepsilon \} \Big) \geq 1 - \delta)$;
         \item   \label{lm:11.16.3}
         $\sup\limits_{j \geq n} |X_j - Y| \xrightarrow[n  \to \infty]{\masP} 0$.
     \end{enumerate}
