@@ -450,8 +450,33 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
         Tako\dj er vrijedi
         \begin{equation*}
             \begin{aligned}
-                \mu_1 \otimes \mu_2 (F \setminus E) = \mu_1 \otimes \mu_2 (F) - \mu_1 \otimes \mu_2 (E)
+                \int\limits_{\Omega_1} \mu_2 ((F \setminus E)_x) \: d \mu_1 (x) &= \int\limits_{\Omega_1} \mu_2 (F_x) - \mu_2 (E_x) \: d \mu_1 (x)\\
+                &= \int\limits_{\Omega_1} \mu_2 (F_x) \: d \mu_1 (x) - \int\limits_{\Omega_1} \mu_2 (E_x) \: d \mu_1 (x)\\
+                &= \mu_1 \otimes \mu_2 (F) - \mu_1 \otimes \mu_2 (E)\\
+                &= \mu_1 \otimes \mu_2 (F \setminus E)
             \end{aligned}
+        \end{equation*}
+        Dakle
+        \begin{equation*}
+            F \setminus E \in \famH.
+        \end{equation*}
+        \item
+        Neka su $E_1 \subseteq E_2 \subseteq \ldots \in \famH$.
+        Primjetimo da je tada i niz $(E_n)_x$ tako\dj er rastu\' c niz u $\famF_2$.
+        Definiramo
+        \begin{equation*}
+            g_n (x) := \mu_2 ((E_n)_x),
+        \end{equation*}
+        sada zbog neprekidnosti mjere na rastu\' ce nizove doga\dj aja vrijedi
+        \begin{equation*}
+            \begin{aligned}
+                \lim\limits_{n \to \infty} \mu_2 ((E_n)_x) &= \mu_2 \Big( \unija{n \in \nat}{} (E_n)_x \Big)\\
+                &= \mu_2 \Big( \Big( \unija{n \in \nat}{} E_n \Big)_x \Big).
+            \end{aligned}
+        \end{equation*}
+        Odnosno
+        \begin{equation*}
+            \lim\limits_{n \to \infty} g_n (x) = g (x) = \mu_2 \Big( \Big( \unija{n \in \nat}{} E_n  \Big)_x \Big)
         \end{equation*}
     \end{enumerate}
 \end{rj}
