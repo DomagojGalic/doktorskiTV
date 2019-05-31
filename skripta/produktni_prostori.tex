@@ -359,7 +359,8 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
     Neka su $(\Omega_i, \: \famF_i, \: \mu_i), \; i = 1, \; 2$, prostori $\sigma$-kona\v cne mjere.
     Tada vrijedi:
     \begin{enumerate}[label=(\roman*)]
-        \item Za svaki $A \in \famF_1 \otimes \famF_2$, preslikavanje
+        \item   \label{zad:4.15.1}
+        Za svaki $A \in \famF_1 \otimes \famF_2$, preslikavanje
         \begin{equation*}
             \Omega_1 \ni x \mapsto \mu_2 (A_x)
         \end{equation*}
@@ -368,17 +369,92 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
             \Omega_2 \ni y \mapsto \mu_1 (A_y),
         \end{equation*}
         je $\famF_2$-izmjerivo.
-        \item Za svaki $A \in \famF_1 \otimes \famF_2$ vrijedi:
+        \item   \label{zad:4.15.2}
+        Za svaki $A \in \famF_1 \otimes \famF_2$ vrijedi:
         \begin{equation*}
             (\mu_1 \otimes \mu_2) (A) = \int_{\Omega_1} \mu_2 (A_x) \: d \mu_1(x) = \int_{\Omega_2} \mu_1 (A_y) \: d \mu_2 (y).
         \end{equation*}
-        \item Za svaki $f: \Omega_1 \times \Omega_2 \to \segment{0}{+\infty}$ koji je $\urePar{\famF_1 \otimes \famF_2}{\borel{\segment{0}{+\infty}}}$-izmjeriv
+        \item   \label{zad:4.15.3}
+        Za svaki $f: \Omega_1 \times \Omega_2 \to \segment{0}{+\infty}$ koji je $\urePar{\famF_1 \otimes \famF_2}{\borel{\segment{0}{+\infty}}}$-izmjeriv
         \begin{align*}
             \int_{\Omega_1 \times \Omega_2} f(x, \: y) \: d (\mu_1 \otimes \mu_2)(x, \:y) &= \int_{\Omega_2} \Big( \int_{\Omega_1} f(x, \: y) \: d \mu_1 (x) \Big) \: d \mu_2 (y)\\
             &= \int_{\Omega_1} \Big( \int_{\Omega_2} f(x, \: y) \: d \mu_2 (y) \Big) \: d \mu_1 (x)
         \end{align*}
     \end{enumerate} 
 \end{zad}
+
+\begin{rj}[\ref{zad:4.15}]
+    U \ref{zad:4.15.1} i \ref{zad:4.15.2} pokazat \' cemo za jednu varijablu, a druga \' ce slijediti po simetriji.
+    Dokaz prvo provodimo za kona\v cne mjere.
+    
+    Ozna\v cimo
+    \begin{equation*}
+        \famH := \bigSkup{E \in \famF_1 \otimes \famF_2}{g(x) := \mu_2 (E_x) \textnormal{ je izmjeriva }, \; \int\limits_{\Omega_2} g \: d \mu_1 = \mu_1 \otimes \mu_2 (E)}.
+    \end{equation*}
+    Pokazati \' cemo da je $\famH = \famF_1 \otimes \famF_2$.
+    Ozna\v cimo s $\famE$ skup svih pravokutnika u $\famF_1 \otimes \famF_2$, gornju jednakost pokazujemo tako da \' cemo prvo pokazati da familija $\famH$ sadr\v zi familiju $\famE$.
+    To \' ce nam dati
+    \begin{equation*}
+        \famD (\famE) \subseteq \famD (\famH).
+    \end{equation*}
+    Budu\' ci je $\famE$ $\pi$-sistem po Dynkinovoj lemi (zadatak \ref{zad:2.5}) slijedi
+    \begin{equation*}
+        \dynk{\famE} = \sigAlg{\famE} = \famF_1 \otimes \famF_2.
+    \end{equation*}
+    Ako poka\v zemo da je $\famH$ Dynkinova klasa, tada direktno dobijemo
+    \begin{equation*}
+        \famH = \famF_1 \otimes \famF_2.
+    \end{equation*}
+
+    Neka je $E \in \famE$, tada postoje $A \in \famF_1$, $B \in \famF_2$, takvi da je $E = A \times B$.
+    Primjetimo
+    \begin{equation*}
+        E_x = 
+        \begin{cases}
+            B, &x \in A\\
+            \varnothing, &x \notin A
+        \end{cases}
+    \end{equation*}
+    pa vidimo da vrijedi
+    \begin{equation*}
+        x \mapsto \mu_2 (E_x) = \mu_2 (B) \cdot \karaktFja_A (x)
+    \end{equation*}
+    \v sto je izmjeriva funkcija i vrijedi
+    \begin{equation*}
+        \int\limits_{\Omega_1} \mu_2 (B) \cdot \karaktFja_A (x) \: d \mu_1 (x) = \mu_2 (B) \cdot \mu_1 (A) = \mu_1 \otimes \mu_2 (A \times B) = \mu_1 \otimes \mu_2 (E).
+    \end{equation*}
+    Dakle vrijedi
+    \begin{equation*}
+        \famE \subseteq  \famH.
+    \end{equation*}
+
+    Poka\v zimo da je $\famH$ Dynkinova klasa
+    \begin{enumerate}[label=(\roman*)]
+        \item
+        $\Omega_1 \times \Omega_1 \in \famE \subseteq \famH \implies \Omega_1 \times \Omega_2 \in \famH$
+        \item $E, F \in \famH$, $E \subseteq F$, sada imamo
+        \begin{equation*}
+            \begin{aligned}
+                (F \setminus E)_x &= (F \cap E^c)_x = F_x \cap (E^c)_x = F_x \cap (E_x)^c\\
+                &= F_x \setminus E_x,
+            \end{aligned}
+        \end{equation*}
+        onda, budu\' ci su mjere kona\v cne, vrijedi
+        \begin{equation*}
+            \begin{aligned}
+                \mu_2 ((F \setminus E)_x) &= \mu_2 (F_x \setminus E_x)\\
+                &= \mu_2 (F_x) - \mu_2 (E_x)
+            \end{aligned}
+        \end{equation*}
+        \v sto je izmjerivo kao razlika izmjerivih preslikavanja.
+        Tako\dj er vrijedi
+        \begin{equation*}
+            \begin{aligned}
+                \mu_1 \otimes \mu_2 (F \setminus E) = \mu_1 \otimes \mu_2 (F) - \mu_1 \otimes \mu_2 (E)
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+\end{rj}
 
 \begin{zad} \label{zad:4.16}
     Neka su $(\Omega_i, \: \famF_i, \: \mu_i), \; i = 1, \: 2$, prostori $\sigma$-kona\v cne mjere i $f : \Omega_1 \times \Omega_2 \to \extReal$ $\urePar{\famF_1 \otimes \famF_2}{\borel{\extReal}}$-izmjeriva, takva da je $|f|$ $\mu_1 \otimes \mu_2$-integrabilna.
