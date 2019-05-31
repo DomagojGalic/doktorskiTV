@@ -463,7 +463,7 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
         \item
         Neka su $E_1 \subseteq E_2 \subseteq \ldots \in \famH$.
         Primjetimo da je tada i niz $(E_n)_x$ tako\dj er rastu\' c niz u $\famF_2$.
-        Definiramo
+        Definiramo rastu\' ci niz funkcija
         \begin{equation*}
             g_n (x) := \mu_2 ((E_n)_x),
         \end{equation*}
@@ -476,8 +476,20 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
         \end{equation*}
         Odnosno
         \begin{equation*}
-            \lim\limits_{n \to \infty} g_n (x) = g (x) = \mu_2 \Big( \Big( \unija{n \in \nat}{} E_n  \Big)_x \Big)
+            \lim\limits_{n \to \infty} g_n (x) = g (x) = \mu_2 \Big( \Big( \unija{n \in \nat}{} E_n  \Big)_x \Big).
         \end{equation*}
+        Iz Lebesgueovog teorema o monotonoj konvergenciji i neprekidnosti mjere s obzirom na rastu\' ce nizove doga\dj aja slijedi
+        \begin{equation*}
+            \begin{aligned}
+                \int\limits_{\Omega_1} \mu_2 \Big( \Big( \unija{n \in \nat}{} E_n \Big)_x \Big) \: d \mu_1 (x) &=  \int\limits_{\Omega_1} \mu_2 \Big( \unija{n \in \nat}{} (E_n)_x \Big) = \int\limits_{\Omega_1} g(x) \: d \mu_1 (x)\\
+                &= \int\limits_{\Omega_1} \lim\limits_{n \to \infty} g_n (x) \: d \mu_1 (x) = \lim\limits_{n \to \infty} \int\limits_{\Omega_1} g_n (x) \: d \mu_1 (x)\\
+                & = \lim\limits_{n \to \infty} \int\limits_{\Omega_1} \mu_2 ((E_n)_x) \: d \mu_1 (x) = \lim\limits_{n \to \infty} \mu_1 \otimes \mu_2 (E_n)\\
+                &= \mu_1 \otimes \mu_2 \Big( \unija{n \in \nat}{} E_n \Big).
+            \end{aligned}
+        \end{equation*}
+        Pa je $\unija{n \in \nat}{} E_n \in \famH$, stoga je $\famH$ Dynkinova klasa.
+
+        Podzadatak \ref{zad:4.15.3} dokazujemo Lebesgueovom indukcijom.
     \end{enumerate}
 \end{rj}
 
