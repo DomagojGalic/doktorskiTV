@@ -51,3 +51,66 @@ S druge strane ho\' cemo posti\' ci neku prirodnu generalizaciju niza nezavisnih
     Stoga nije ideja da su $(X_t)$ nezavisne, ve \' c pogledamo li $(Y_{\frac{m}{n}})$, trebamo zahtjevati da prirasti budu nezavisni.
 \end{nap}
 
+\begin{defn}    \label{defn:21.3}
+    Stohasti\v cki proces $\niz{X_t}{t \geq 0}$ s vrijednostima u $\real$ je \emph{L\' evijev proces} ako vrijedi:
+    \begin{enumerate}[label=(\alph*)]
+        \item   \label{defn:21.3.1}
+        Za svaki $n \in \nat$ i za svaki izbor $0 \leq t_0 < t_1 \ldots < t_n$ su slu\v cajne varijable
+        \begin{equation*}
+            X_{t_n} - X_{t_{n - 1}}, X_{t_{n - 1}} - X_{t_{n - 2}}, \ldots, X_{t_1} - X_{t_0}
+        \end{equation*}
+        nezavisne.
+        \item   \label{defn:21.3.2}
+        za svaki $h > 0$ i za svaki $t, s \geq 0$ je
+        \begin{equation*}
+            X_{t + h} - X_t \distJed X_{s + h} - X_s.
+        \end{equation*}
+        \item   \label{defn:21.3.3}
+        za gotovo sve $\omega \in \Omega$ trajektorija
+        \begin{equation*}
+            t \mapsto X_t (\omega)
+        \end{equation*}
+        je c\' adl\' ag (franc. continue \' a droite, limite \' a gauche - neprekidna zdesna, s limesom slijeva)
+        \item   \label{defn:21.3.4}
+        $X_0 \equiv 0$.
+    \end{enumerate}
+\end{defn}
+
+Zbog \ref{defn:21.3.1}, \ref{defn:21.3.2} i \ref{defn:21.3.4} slijedi da je za svaki $n \in \nat$
+\begin{equation*}
+    X_1 = (X_1 - X_{\frac{n - 1}{n}}) + (X_\frac{n - 1}{n} - X_\frac{n - 2}{n}) + \ldots + (X_\frac{1}{n} - X_0),
+\end{equation*}
+to jest $X_1$ je suma $n$ nezavisnih jednako distribuiranih slu\v cajnih varijabli.
+Dakle $\varphi_{X_1}$ je beskon\v cno djeljiva, pa je
+\begin{equation}    \label{jed:21.4}
+    \varphi_{X_1} = e^\psi,
+\end{equation}
+Pri \v cemu je $\psi$ oblika \eqref{jed:21.1}.
+Kao i ranije lako se vidi
+\begin{equation}
+    \varphi_{X_\frac{m}{n}} = e^{\frac{m}{n} \psi},
+\end{equation}
+a zbog \ref{defn:21.3.3} i teorema neprekidnosti je
+\begin{equation}    \label{jed:21.5}
+    \varphi_{X_t} = e^{t \psi},
+\end{equation}
+pa se $\varphi$ naziva \emph{karakteristi\v cnim eksponentom} L\' evyjevog procesa (uo\v cimo da je $\varphi$ odre\dj en pripadnom trojkom $(\gamma, \sigma^2, \nu)$).
+Daleko je slo\v zenije pokazati obrat (i to ovdje ne\' cemo dokazivati) koji dalje fundamentalni teorem
+
+\begin{tm}  \label{tm:21.6}
+    \begin{enumerate}[label=(\alph*)]
+        \item   \label{tm:21.6.1}
+        Ako je $\niz{X_t}{t \geq 0}$ L\' evyjev proces, tada je $\varphi_{X_t}$ beskona\v cno djeljiva, za svaki $t \geq 0$ i vrijedi \eqref{jed:21.5}.
+        \item   \label{tm:21.6.2}
+        Ako je $\varphi$ beskona\v cno djeljiva karakteristi\v cna funkcija, tada postoji L\' evyjev proces $\niz{X_t}{t \geq 0}$ takav da je $\varphi_{X_1} = \varphi$.
+    \end{enumerate}
+\end{tm}
+
+\begin{pr}  \label{pr:21.7}
+    Neka je $\psi$ zadan sa $(\gamma, 0, 0)$.
+    Tada je
+    \begin{equation*}
+        \varphi_{X_t} = e^{i \gamma t u} \quad \implies \quad X_t = \gamma t
+    \end{equation*} 
+    \v sto je deterministi\v cko gibanje po pravcu $t \mapsto \gamma t$, $t \geq 0$.
+\end{pr}
