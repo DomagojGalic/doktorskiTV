@@ -1,3 +1,53 @@
 % poglavlje 5.1 uvod u levyjeve procese -> predavanje 21
 
 \chapter{Uvod u L\' evyjeve procese}
+
+Neka je $X$ slu\v cajna varijabla s karakteristi\v cnom funkcijom $\varphi = \varphi_X$.
+Budu\' ci da vrijedi
+\begin{equation*}
+    \begin{aligned}
+        x \sim 0 \quad &\implies \quad \frac{i t x}{1 + x^2} \sim i t x,\\
+        x \sim \infty \quad &\implies \quad \frac{i t x}{1 + x^2} \sim 0.
+    \end{aligned}
+\end{equation*}
+Sada iz \eqref{jed:20.17} slijedi da je $\varphi$ beskona\v cno dijeljiva ako i samo ako postoji ure\dj ena trojka $(\gamma, \sigma^2, \nu)$, pri \v cemu je $\gamma \in \real$, $\sigma^2 \geq 0$, $\nu$ je mjera na $\real \setminus \{0\}$ za koju vrijedi
+\begin{equation*}
+    \int\limits_{\real \setminus \{0\}} (|x|^2 \land 1) \: d \nu (x) < +\infty,
+\end{equation*}
+takvi da je $\varphi = e^\psi$ i da je
+\begin{equation}    \label{jed:21.1}
+    \psi (u) = i \gamma u - \frac{\sigma^2}{2} u^2 + \int\limits_{\real \setminus \{0\}} \Big( e^{i u x }- 1 - i u x \karaktFja_{\{|x| < 1\}} \Big) \: d \nu (x).
+\end{equation}
+
+Koriste\' ci veliki Kolmogorovljev teorem, za svaki $n \in \nat$ mo\v zemo na\' ci niz slu\v cajnih varijabli $\niz{X_{m, n}}{m \in \nat}$ koje su nezavisne i jednako distribuirane i za koje vrijedi
+\begin{equation*}
+    \big[ \varphi_{X_{m, n}} \big]^n = \varphi.
+\end{equation*}
+Stavimo li
+\begin{equation*}
+    Y_{\frac{m}{n}} := \suma{k = 1}{m} X_{k, n},
+\end{equation*}
+dobijemo diskretni stohasti\v cki proces kod kojeg je
+\begin{equation*}
+    \varphi_{Y_{\frac{m}{n}}} = e^{\frac{m}{n} \psi}.
+\end{equation*}
+Posebno za $m = n$ imamo $\varphi_{Y_1} = \varphi$.
+
+Postavlja se prirodno pitanje: "Mo\v ze li se napraviti proces po neprekidnom vremenu koji \' ce biti na sli\v can na\v cin  izveden iz $X$ i \v cuvati dobra svojstva?"
+Jedno od dobrih svojstava koje o\v cekujemo je
+\begin{equation*}
+    \varphi_{Y_t} \xrightarrow[t \to t_0]{} \varphi_{Y_{t_0}},
+\end{equation*}
+to jest po teoremu o neprekidnosti o\v cekujemo bar neku vrstu konvergencije i za pripadne slu\v cajne varijable.
+S druge strane ho\' cemo posti\' ci neku prirodnu generalizaciju niza nezavisnih jednako distribuiranih slu\v cajnih varijabli.
+
+\begin{nap} \label{nap:21.2}
+    Na prvi pogled moglo bi se pomisliti da treba posti\' ci da se $\niz{X_t}{t \geq 0}$ sastoji od \emph{nezavisnih} slu\v cajnih varijabli i da, recimo, bar vrijedi
+    \begin{equation*}
+        X_{t_n} \xrightarrow[t_n \to t_0]{\masP} X_{t_0}.
+    \end{equation*}
+    Lako se vidi da je to pogre\v san pristup, jer bi iz nezavisnosti moralo slijediti da je $X_{t_0}$ gotovo sigurno jednako konstanti.
+    Budu\' ci da to vrijedi za svaki $t_0$, to bi zna\v cilo da na\v s proces jedino mo\v ze biti deterministi\v cka funkcija.
+    Stoga nije ideja da su $(X_t)$ nezavisne, ve \' c pogledamo li $(Y_{\frac{m}{n}})$, trebamo zahtjevati da prirasti budu nezavisni.
+\end{nap}
+
