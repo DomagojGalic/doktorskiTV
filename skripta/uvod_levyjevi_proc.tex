@@ -114,3 +114,39 @@ Daleko je slo\v zenije pokazati obrat (i to ovdje ne\' cemo dokazivati) koji dal
     \end{equation*} 
     \v sto je deterministi\v cko gibanje po pravcu $t \mapsto \gamma t$, $t \geq 0$.
 \end{pr}
+
+\begin{pr}  \label{pr:21.8}
+    Neka je $\psi$ zadan sa $(0,1,0)$.
+    Tada je $\niz{X_t}{t \geq 0}$ L\' evyjev proces za koji vrijedi $X_t \sim N(0, t)$.
+    Taj se proces naziva \emph{standardnim Brownovim gibanjem}.
+    Neka je $\niz{B_t}{t \geq 0}$ standardno Brownovo gibanje, neka je $\gamma \in \real$ i $\sigma > 0$.
+    Definiramo proces $X_t := \sigma B_t + \gamma t$.
+    Budu\' ci je $(B_t)$ L\' evyjev proces lako se direktno provjeri da je i $(X_t)$ L\' evyjev proces, te da je
+    \begin{equation}    \label{jed:21.9}
+        \varphi_{X_t} (u) = e^{\big( i \gamma t u - \frac{\sigma^2 t}{2} u^2 \big)}.
+    \end{equation}
+    Dakle, svaki L\' evyjev proces koji ima svojstvo $\nu \equiv 0$ se mo\v ze realizirati kao linearna translacija Brownovog gibanja.
+\end{pr}
+
+\begin{pr}  \label{pr:21.9}
+    Neka je $\lambda > 0$ i $\psi$ je zadana sa $(0,0,\lambda \delta_{\{1\}})$.
+    Tada je $\niz{X_t}{t \geq 0}$ L\' evyjev proces za koji vrijedi
+    \begin{equation*}
+        \varphi_{X_t} (u) = e^{t \lambda (e^{i u} - 1)},
+    \end{equation*}
+    to jest $X_t$ je Poissonova razdioba s parametrom $\lambda t$, pa se i ovaj proces naziva \emph{Poissonovim procesom s parametrom $\lambda$}.
+    Prema tome, za svaki $n \in \nat \cup \{0\}$ vrijedi
+    \begin{equation}    \label{jed:21.10}
+        \masP (X_t = n) = e^{- \lambda t} \frac{(\lambda t)^n}{n !}.
+    \end{equation}
+    Budu\' ci da je ovaj proces c\' adl\' ag, a mo\v ze poprimiti i njegov prirast (po \ref{defn:21.3.1}) i sam proces samo vrijednosti u $\nat \cup \{0\}$ i kretat \' ce se po cijelobrojnim skokovima.
+    Kada se desi skok?
+    \begin{equation*}
+        \masP (X_{t + h} - X_t > 0) = \masP (X_h > 0) = 1 - e^{- \lambda h},
+    \end{equation*}
+    dakle vrijeme do prvog skoka je uvijek eksponencijalno, s parametrom $\lambda$.
+    Budu\' ci da je eksponencijalna razdioba neprekidna, to zna\v ci da je vjerojatnost da se skok dogodi u nekom fiksnom trenutku nula.
+    Dakle, skokovi se doga\dj aju u nekim kontinuirano distribuiranim slu\v cajnim momentima vremena.
+    Ujedno mo\v ze se pokazati da skokovi moraju biti veli\v cine $1$.
+    Ovo sugerira da mjera $\nu$ daje va\v znu informaciju o skokovima.
+\end{pr}
