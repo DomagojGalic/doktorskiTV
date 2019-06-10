@@ -217,3 +217,24 @@ Mo\v ze se pokazati sljede\' ci teorem.
     \v sto sugerira da trajektorije Brownovog gibanja nisu diferencijabilne.
     Zaista, mo\v ze se rigorozno pokazati da su nigdje diferencijabilne.
 \end{nap}
+
+\begin{nap} \label{nap:21.16}
+    Obratimo pa\v znju na jo\v s jedan fundamentalni aspekt.
+    Vidjeli smo da se niz nezavisnih jednako distribuiranih slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ ne generalizira prirodno na nezavisnu familiju $\niz{X_t}{t \geq 0}$, ve\' c na L\' evyjeve procese.
+    Posebno,
+    nezavisne familije $(X_t)$ s velikim nivoom neprekidnosti mogu samo biti trivijelne i nisu osobito interesantne.
+    To zna\v ci da su u prirodnim situacijama $X_t$ i $X_s$ (na primjer) zavisne slu\v cajne varijable.
+    Drugim rje\v cima \emph{zavisnost} i razni oblici zavisnosti \' ce igrati fundamentalnu ulogu u prou\v cavanju stohasti\v ckih procesa.
+    \v Sto sugeriraju L\' evyjevi procesi?
+    Kako je $X_{t + h} - X_t$ nezavisno od $X_t - X_{t - \varepsilon_1}$, $X_{t - \varepsilon_1} - X_{t - \varepsilon_2}$, $\ldots$, $X_{t - \varepsilon_n} - X_0$, za sve mogu\' ce izbore rastu\' cih $\varepsilon_1, \ldots, \varepsilon_n$.
+    Iz toga direktno dobijemo da je $X_{t + h} - X_t$ nezavisan od $\sigma$-algebre $\indSigAlg{X_s}{0 \leq s \leq t} = \famF_t$.
+    Dakle kod L\' evyjevih procesa je "budu\' cnost zavisna od sada\v snjosti" ($X_{t + h}$ ovisi o $X_t$), ako je "prirast od sada\v snjosti do budu\' cnosti" nezavisno od "pro\v slosti".
+    U srednjem, taj prirast mo\v ze doprinjeti "ni\v sta novo" kao kod, na primjer, Brownovog gibanja
+    \begin{equation*}
+        \masE (X_{t + h} - X_t) = \masE (X_h) = 0,
+    \end{equation*}
+    ili mo\v ze "narasti" ili "pasti" u srednjem, na primjer, za Poissonov proces
+    \begin{equation*}
+        \masE (X_{t + h} - X_t) = \masE (X_h) = \lambda h > 0.
+    \end{equation*}
+\end{nap}
