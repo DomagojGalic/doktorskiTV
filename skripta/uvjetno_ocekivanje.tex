@@ -1,3 +1,81 @@
 % poglevlje 5.2 uvjetno očekivanje -> predavanje 22
 
 \chapter{Uvjetno o\v cekivanje}
+
+U slu\v caju kada su $A, B \in \famF$ i $\masP (A) > 0$ definira se uvjetna vjerojatnost od $B$ uz uvijet $A$ pomo\' cu
+\begin{equation}    \label{jed:22.1}
+    \masP (B | A) = \frac{\masP (B \cap A)}{\masP (A)}
+\end{equation}
+\v sto daje formulaciju
+\begin{equation}    \label{jed:22.2}
+    \masP (B \cap A) = \masP (A) \cdot \masP (B | A).
+\end{equation}
+Pro\v sirimo li to na jezik funkcija mo\v zemo gledati particiju $\{A_1, \ldots, A_n\} \subseteq \famF$ skupa $\Omega$, takva da je $\masP (A_k) > 0$, $k = 1, \ldots, n$.
+Promotrimo li funkciju $h : \Omega \to \real$ definiranu sa
+\begin{equation}    \label{jed:22.3}
+    h (\omega) := \suma{k = 1}{n} \masP (B | A_k) \cdot \karaktFja_{A_k} (\omega).
+\end{equation}
+Lako se vidi da za svaki $A \in \indSigAlg{A_k}{k = 1, \ldots, n}$ vrijedi
+\begin{equation}    \label{jed:22.4}
+    \masP (B \cap A) = \int\limits_A h (\omega) \: d \masP (\omega),
+\end{equation}
+\v sto je generalizacija formule \eqref{jed:22.2}.
+Uzmemo li u obzir da je vjerojatnosti op\' cenito mogu\' ce promatrati kao poseban slu\v caj o\v cekivanja, jer vrijedi
+\begin{equation*}
+    \masP (A) = \masE [ \karaktFja_A ],
+\end{equation*}
+name\' ce se sljede\' ca definicija.
+
+\begin{defn}    \label{defn:22.5}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, $\famG \subseteq \famF$ $\sigma$-algebra na $\Omega$, $X \in L^1 (\masP)$.
+    \emph{O\v cekivanje od $X$ uz uvijet $\famG$} je svaka funkcija
+    \begin{equation*}
+        \masE [X | \famG] : \Omega \to \real
+    \end{equation*}
+    koja je $\famG$-izmjeriva i za koju vrijedi
+    \begin{equation*}
+        \int\limits_A X \: d \masP = \int\limits_A \masE [X | \famG] \: d \masP, \quad A \in \famG.
+    \end{equation*}
+\end{defn}
+
+\begin{nap} \label{nap:22.6}
+    \begin{enumerate}[label=(\alph*)]
+        \item   \label{nap:22.6.1}
+        Zbog $X \in L^1 (\masP)$, funkcija
+        \begin{equation*}
+            A \mapsto \int\limits_A X \: d \masP
+        \end{equation*}
+        je kona\v cna realna mjera na $\famG$, koja je o\v cito apsolutno neprekidna u odnosu na $\restr{\masP}{\famG}$.
+        Stoga postoji Radon-Nikodymova derivacija te mjere u odnosu na $\restr{\masP}{\famG}$ i ta derivacija je $\masE [X | \famG]$.
+        \item   \label{nap:22.6.2}
+        Ako je $f = \masE [X | \famG]$ tada je $f$ Radon-Nikodymova derivacija, kako je navedeno u \eqref{nap:22.6.1}.
+        Dakle, uvjetno o\v cekivanje uvijek postoji i jednako je $\famG$ gotovo sigurno.
+        Stoga u svim relacijama zapravo treba pisati (ali se obi\' cno ne pi\v se) $\famG-(g.s.)$.
+        \item   \label{nap:22.6.3}
+        Ako je $\famG = \sigAlg{Y}$ za neku slu\v cajnu varijablu $Y$, onda pi\v semo $\masE [X | Y]$ umjesto $\masE [X | \famG]$
+        \item   \label{nap:22.6.4}
+        Ako je $X = \karaktFja_B$, $B \in \famF$, onda pi\v semo $ \masP (B | \famG) $ umjesto $\masE [X | \famG]$. 
+    \end{enumerate}
+\end{nap}
+
+O\v cito ako je $X \in L^1 (\masP)$ i $X$ je $\famG$-izmjeriva, tada je
+\begin{equation}    \label{jed:22.7}
+    \masE [X | \famG] = X.
+\end{equation}
+Ako je $\famG = \{ \varnothing, \Omega \}$, tada je
+\begin{equation}    \label{jed:22.8}
+    \masE [X | \famG] \equiv \masE X.
+\end{equation}
+Ako je $\famG = \indSigAlg{A_k}{k = 1, \ldots, n}$ (kao u \eqref{jed:22.3} i \eqref{jed:22.4}) tada je
+\begin{equation}    \label{jed:22.9}
+    \masP (B | \famG) = h,
+\end{equation}
+pri \v cemu je $h$ definiran kao u \eqref{jed:22.3}.
+
+\begin{zad} \label{zad:22.10}
+    Doka\v zite da je uvjetno o\v cekivanje linearno i monotono.
+    Posebno,
+    \begin{equation*}
+        \big| \masE [X | \famG] \big| \leq \masE [|X| | \famG].
+    \end{equation*}
+\end{zad}
