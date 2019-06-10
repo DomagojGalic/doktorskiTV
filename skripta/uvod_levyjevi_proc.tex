@@ -195,3 +195,25 @@ Daleko je slo\v zenije pokazati obrat (i to ovdje ne\' cemo dokazivati) koji dal
     Uo\v cimo da ovaj primjer jasno pokazuje smisao mjere $\nu$ vezano uz skokove, $\nu$ nazivamo \emph{L\' evyjevom mjerom}.
     Proces $\niz{X_t}{t \geq 0}$ zovemo \emph{slo\v zenim Poissonovim procesom}.
 \end{pr}
+
+Podsjetimo se da je proces neprekidan ako su mu gotovo sve trajektorije neprekidne funkcije.
+Mo\v ze se pokazati sljede\' ci teorem.
+
+\begin{tm}  \label{tm:21.14}
+    L\' evyjev proces $\niz{X_t}{t \geq 0}$ je neprekidan ako i samo ako je $\nu \equiv 0$.
+    Posebno, Brownovo gibanje je neprekidan proces.
+\end{tm}
+
+\begin{nap} \label{nap:21.15}
+    \v Sto mo\v zemo re\' ci o diferencijabilnosti trajektorija Brownovog gibanja?
+    Budu\' ci je $\niz{B_t}{t \geq 0}$ L\' evyjev proces, slijedi
+    \begin{equation*}
+        \frac{B_{t + h} - B_t}{h} \distJed \frac{B_h}{h}.
+    \end{equation*}
+    Uo\v cimo da je
+    \begin{equation*}
+        \Var \Big( \frac{B_h}{h} \Big) = \frac{1}{h^2} \Var B_h = \frac{h}{h^2} = \frac{1}{h} \xrightarrow[h \to 0]{} +\infty,
+    \end{equation*}
+    \v sto sugerira da trajektorije Brownovog gibanja nisu diferencijabilne.
+    Zaista, mo\v ze se rigorozno pokazati da su nigdje diferencijabilne.
+\end{nap}
