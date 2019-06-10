@@ -79,3 +79,41 @@ pri \v cemu je $h$ definiran kao u \eqref{jed:22.3}.
         \big| \masE [X | \famG] \big| \leq \masE [|X| | \famG].
     \end{equation*}
 \end{zad}
+
+Uo\v cimo da je u definiciji uvjetnog o\v cekivanja sadr\v zana i pretpostavka da $\masE [X | \famG] \in L^1 (\Omega, \famG, \restr{\masP}{\famG})$, pa ima smisla promatrati i uvjetno o\v cekivanje od $\masE [X | \famG]$.
+
+\begin{prop}    \label{prop:22.11}
+    Ako su $\famH \subseteq \famG \subseteq \famF$ $\sigma$-algebre na $\Omega$ i $X \in L^1 (\masP)$, tada vrijedi
+    \begin{equation*}
+        \masE \big[ \masE [X | \famG] \big| \famH \big] = \masE \big[ \masE [X | \famH] \big| \famG \big] = \masE [X | \famH].
+    \end{equation*}
+\end{prop}
+
+\begin{proof}
+    Uo\v cimo da je $\masE [X | \famH]$ $\famH$-izmjeriva.
+    Budu\' ci da je $\famH \subseteq \famG$, za svaki $A \in \famH$ vrijedi
+    \begin{equation*}
+        \int\limits_A \masE [X | \famH] \: d \masP = \int\limits_A X \: d \masP = \int\limits_A \masE [X | \famG] \: d \masP.
+    \end{equation*}
+    Po definiciji \ref{defn:22.5} dobivamo
+    \begin{equation*}
+        \masE [X | \famH] = \masE \big[ \masE [X | \famG] \big| \famH \big].
+    \end{equation*}
+    Budu\' ci je $\masE [X | \famH]$ ujedno i $\famG$-izmjeriva, zadnja jednakost slijedi iz \eqref{jed:22.7}.
+\end{proof}
+
+Uz $\famH = \{ \varnothing, \Omega\}$ u propoziciji \ref{prop:22.11}, iz \eqref{jed:22.8} dobijemo
+\begin{equation}    \label{jedn:22.12}
+    \masE \Big[ \masE [X | \famG] \Big] = \masE X, \quad X \in L^1 (\masP).
+\end{equation}
+
+\begin{zad} \label{zad:22.13}
+    Neka je $A$ $\masP$-atom na $\famG$, to jest $A \in \famG$, $\masP (A) > 0$ i vrijedi
+    \begin{equation*}
+        B \in \famG, \; B \subseteq A \implies \masP (B) = 0 \textnormal{ ili } \masP (A \setminus B) = 0.
+    \end{equation*}
+    Ako je $X \in L^1 (\masP)$, tada je
+    \begin{equation*}
+        \masE [X | \famG] (\omega) = \int\limits_A X \: d \masP, \quad \quad \omega \in A \; (g.s.).
+    \end{equation*}
+\end{zad}
