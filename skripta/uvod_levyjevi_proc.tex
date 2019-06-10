@@ -70,7 +70,7 @@ S druge strane ho\' cemo posti\' ci neku prirodnu generalizaciju niza nezavisnih
         \begin{equation*}
             t \mapsto X_t (\omega)
         \end{equation*}
-        je c\' adl\' ag (franc. continue \' a droite, limite \' a gauche - neprekidna zdesna, s limesom slijeva)
+        je \cadlag (franc. continue \' a droite, limite \' a gauche - neprekidna zdesna, s limesom slijeva)
         \item   \label{defn:21.3.4}
         $X_0 \equiv 0$.
     \end{enumerate}
@@ -139,7 +139,7 @@ Daleko je slo\v zenije pokazati obrat (i to ovdje ne\' cemo dokazivati) koji dal
     \begin{equation}    \label{jed:21.10}
         \masP (X_t = n) = e^{- \lambda t} \frac{(\lambda t)^n}{n !}.
     \end{equation}
-    Budu\' ci da je ovaj proces c\' adl\' ag, a mo\v ze poprimiti i njegov prirast (po \ref{defn:21.3.1}) i sam proces samo vrijednosti u $\nat \cup \{0\}$ i kretat \' ce se po cijelobrojnim skokovima.
+    Budu\' ci da je ovaj proces \cadlag, a mo\v ze poprimiti i njegov prirast (po \ref{defn:21.3.1}) i sam proces samo vrijednosti u $\nat \cup \{0\}$ i kretat \' ce se po cijelobrojnim skokovima.
     Kada se desi skok?
     \begin{equation*}
         \masP (X_{t + h} - X_t > 0) = \masP (X_h > 0) = 1 - e^{- \lambda h},
@@ -149,4 +149,49 @@ Daleko je slo\v zenije pokazati obrat (i to ovdje ne\' cemo dokazivati) koji dal
     Dakle, skokovi se doga\dj aju u nekim kontinuirano distribuiranim slu\v cajnim momentima vremena.
     Ujedno mo\v ze se pokazati da skokovi moraju biti veli\v cine $1$.
     Ovo sugerira da mjera $\nu$ daje va\v znu informaciju o skokovima.
+\end{pr}
+
+\begin{pr}  \label{pr:21.10}
+    Neka su familije $\niz{N_t}{t \geq 0}$ i $\niz{Y_n }{n \in \nat}$ nezavisne (u smislu generiraju\' cih $\sigma$-algebri) i neka je $(N_t)$ Poissonov proces s parametrom $\lambda$, a $(Y_n)$ niz nezavisnih jednako distribuiranih slu\v cajnih varijabli s pripadnom p.d.F. $F$.
+    Po velikom Kolmogorovljevom teoremu  mogu\' ce je konstruirati takve familije na istom vjerojatnosnom prostoru $\vjerojatnosniProstor$.
+    Definiranom proces $\niz{X_t}{t \geq 0}$ pomo\' cu
+    \begin{equation}    \label{jed:21.11}
+        X_t := \suma{j = 1}{N_t} Y_j, \quad t \geq 0.
+    \end{equation}
+    Za svaki $\omega$ je $N_t(\omega) \in \nat \cup \{0\}$ (za $N_t (\omega) = 0$ sumu u \eqref{jed:21.11} interpretiramo kao $0$), pa formalno ima smisla.
+    O\v cito je i $X_0 \equiv 0$.
+    Uo\v cimo da $(X_t)$ ima skokove to\v cno kada se dese skokovi za $(N_t)$, samo je veli\v cina skoka $Y_j$ umjesto $1$.
+    Posebno, sve trajektorije su \cadlag.
+    Budu\' ci da je $(N_t)$ rastu\' c, te su $(N_t)$ i $(Y_n)$ nezavisne i $(Y_n)$ niz nezavisnih slu\v cajnih varijabli, iz
+    \begin{equation*}
+        X_{t + h} - X_t = \suma{j = N_t}{N_{t+ h}} Y_j, \quad X_t - X_0 = \suma{j = 1}{N_t} Y_j,
+    \end{equation*}
+    se lako dobije nezavisnost prirasta.
+    Nadalje,
+    \begin{equation}    \label{jed:21.12}
+        \begin{aligned}
+            \varphi_{X_{t + h} - X_t} (u) &= \masE \Big[ e^{i u (X_{t + h} - X_t)} \Big] =
+            \begin{psmallmatrix}
+                N_{t + h} - N_t \sim N_h\\
+                \textnormal{i nezavisnost od } (Y_n)
+            \end{psmallmatrix} = \masE \Big[ e^{i u \suma{j = 1}{N_h} Y_j} \Big]\\
+            &= \masE \Big[ \suma{n = 0}{\infty} \karaktFja_{\{ N_h = n\}} \cdot \produkt{j = 1}{n} e^{i u Y_j} \Big] =
+            \begin{psmallmatrix}
+                \textnormal{nezavisnost}
+            \end{psmallmatrix}\\
+            &= \suma{n = 0}{\infty} \masP (N_h = n) \cdot [ \varphi_F (u) ]^n = \suma{n = 0}{\infty} \frac{()\lambda h)^n}{n!} e^{-\lambda h} [\varphi_F (u)]^n\\
+            &= e^{-\lambda h} \cdot e^{\lambda h \varphi_F (u)} = e^{\lambda h \int \big( e^{i u x} - 1 \big) \: d F (x)}.
+        \end{aligned}
+    \end{equation}
+    Odavde slijedi da je $\niz{X_t}{t \geq 0}$ L\' evyjev proces i $\psi$ je odre\dj en s
+    \begin{equation}    \label{jed:21.13}
+        \psi (u) = \int\limits_\real \lambda \big( e^{i u x - 1} \big) \: d F (x),
+    \end{equation}
+    to zna\v ci da se $\nu$ dobije tako da se oduzme $\masP_F (\{0\}) \geq 0$, pa je $\nu$ kona\v cna mjera na $\real \setminus \{0\}$ (zapravo subvjerojatnosna) i integral
+    \begin{equation*}
+        \int\limits_{\{ 0 < |x| < 1 \}} i u x \: d \nu (x) = u i \int\limits_{\{ 0 < |x| < 1 \}} x \: d \nu (x)
+    \end{equation*}
+    i on "izlazi" kao $gamma$ da bi se dobila formula \eqref{jed:21.1}.
+    Uo\v cimo da ovaj primjer jasno pokazuje smisao mjere $\nu$ vezano uz skokove, $\nu$ nazivamo \emph{L\' evyjevom mjerom}.
+    Proces $\niz{X_t}{t \geq 0}$ zovemo \emph{slo\v zenim Poissonovim procesom}.
 \end{pr}
