@@ -1,0 +1,281 @@
+% poglevlje 5.2 uvjetno očekivanje -> predavanje 22
+
+\chapter{Uvjetno o\v cekivanje}
+
+U slu\v caju kada su $A, B \in \famF$ i $\masP (A) > 0$ definira se uvjetna vjerojatnost od $B$ uz uvijet $A$ pomo\' cu
+\begin{equation}    \label{jed:22.1}
+    \masP (B | A) = \frac{\masP (B \cap A)}{\masP (A)}
+\end{equation}
+\v sto daje formulaciju
+\begin{equation}    \label{jed:22.2}
+    \masP (B \cap A) = \masP (A) \cdot \masP (B | A).
+\end{equation}
+Pro\v sirimo li to na jezik funkcija mo\v zemo gledati particiju $\{A_1, \ldots, A_n\} \subseteq \famF$ skupa $\Omega$, takva da je $\masP (A_k) > 0$, $k = 1, \ldots, n$.
+Promotrimo li funkciju $h : \Omega \to \real$ definiranu sa
+\begin{equation}    \label{jed:22.3}
+    h (\omega) := \suma{k = 1}{n} \masP (B | A_k) \cdot \karaktFja_{A_k} (\omega).
+\end{equation}
+Lako se vidi da za svaki $A \in \indSigAlg{A_k}{k = 1, \ldots, n}$ vrijedi
+\begin{equation}    \label{jed:22.4}
+    \masP (B \cap A) = \int\limits_A h (\omega) \: d \masP (\omega),
+\end{equation}
+\v sto je generalizacija formule \eqref{jed:22.2}.
+Uzmemo li u obzir da je vjerojatnosti op\' cenito mogu\' ce promatrati kao poseban slu\v caj o\v cekivanja, jer vrijedi
+\begin{equation*}
+    \masP (A) = \masE [ \karaktFja_A ],
+\end{equation*}
+name\' ce se sljede\' ca definicija.
+
+\begin{defn}    \label{defn:22.5}
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, $\famG \subseteq \famF$ $\sigma$-algebra na $\Omega$, $X \in L^1 (\masP)$.
+    \emph{O\v cekivanje od $X$ uz uvijet $\famG$} je svaka funkcija
+    \begin{equation*}
+        \masE [X | \famG] : \Omega \to \real
+    \end{equation*}
+    koja je $\famG$-izmjeriva i za koju vrijedi
+    \begin{equation*}
+        \int\limits_A X \: d \masP = \int\limits_A \masE [X | \famG] \: d \masP, \quad A \in \famG.
+    \end{equation*}
+\end{defn}
+
+\begin{nap} \label{nap:22.6}
+    \begin{enumerate}[label=(\alph*)]
+        \item   \label{nap:22.6.1}
+        Zbog $X \in L^1 (\masP)$, funkcija
+        \begin{equation*}
+            A \mapsto \int\limits_A X \: d \masP
+        \end{equation*}
+        je kona\v cna realna mjera na $\famG$, koja je o\v cito apsolutno neprekidna u odnosu na $\restr{\masP}{\famG}$.
+        Stoga postoji Radon-Nikodymova derivacija te mjere u odnosu na $\restr{\masP}{\famG}$ i ta derivacija je $\masE [X | \famG]$.
+        \item   \label{nap:22.6.2}
+        Ako je $f = \masE [X | \famG]$ tada je $f$ Radon-Nikodymova derivacija, kako je navedeno u \eqref{nap:22.6.1}.
+        Dakle, uvjetno o\v cekivanje uvijek postoji i jednako je $\famG$ gotovo sigurno.
+        Stoga u svim relacijama zapravo treba pisati (ali se obi\' cno ne pi\v se) $\famG-(g.s.)$.
+        \item   \label{nap:22.6.3}
+        Ako je $\famG = \sigAlg{Y}$ za neku slu\v cajnu varijablu $Y$, onda pi\v semo $\masE [X | Y]$ umjesto $\masE [X | \famG]$
+        \item   \label{nap:22.6.4}
+        Ako je $X = \karaktFja_B$, $B \in \famF$, onda pi\v semo $ \masP (B | \famG) $ umjesto $\masE [X | \famG]$. 
+    \end{enumerate}
+\end{nap}
+
+O\v cito ako je $X \in L^1 (\masP)$ i $X$ je $\famG$-izmjeriva, tada je
+\begin{equation}    \label{jed:22.7}
+    \masE [X | \famG] = X.
+\end{equation}
+Ako je $\famG = \{ \varnothing, \Omega \}$, tada je
+\begin{equation}    \label{jed:22.8}
+    \masE [X | \famG] \equiv \masE X.
+\end{equation}
+Ako je $\famG = \indSigAlg{A_k}{k = 1, \ldots, n}$ (kao u \eqref{jed:22.3} i \eqref{jed:22.4}) tada je
+\begin{equation}    \label{jed:22.9}
+    \masP (B | \famG) = h,
+\end{equation}
+pri \v cemu je $h$ definiran kao u \eqref{jed:22.3}.
+
+\begin{zad} \label{zad:22.10}
+    Doka\v zite da je uvjetno o\v cekivanje linearno i monotono.
+    Posebno,
+    \begin{equation*}
+        \big| \masE [X | \famG] \big| \leq \masE [|X| | \famG].
+    \end{equation*}
+\end{zad}
+
+Uo\v cimo da je u definiciji uvjetnog o\v cekivanja sadr\v zana i pretpostavka da $\masE [X | \famG] \in L^1 (\Omega, \famG, \restr{\masP}{\famG})$, pa ima smisla promatrati i uvjetno o\v cekivanje od $\masE [X | \famG]$.
+
+\begin{prop}    \label{prop:22.11}
+    Ako su $\famH \subseteq \famG \subseteq \famF$ $\sigma$-algebre na $\Omega$ i $X \in L^1 (\masP)$, tada vrijedi
+    \begin{equation*}
+        \masE \big[ \masE [X | \famG] \big| \famH \big] = \masE \big[ \masE [X | \famH] \big| \famG \big] = \masE [X | \famH].
+    \end{equation*}
+\end{prop}
+
+\begin{proof}
+    Uo\v cimo da je $\masE [X | \famH]$ $\famH$-izmjeriva.
+    Budu\' ci da je $\famH \subseteq \famG$, za svaki $A \in \famH$ vrijedi
+    \begin{equation*}
+        \int\limits_A \masE [X | \famH] \: d \masP = \int\limits_A X \: d \masP = \int\limits_A \masE [X | \famG] \: d \masP.
+    \end{equation*}
+    Po definiciji \ref{defn:22.5} dobivamo
+    \begin{equation*}
+        \masE [X | \famH] = \masE \big[ \masE [X | \famG] \big| \famH \big].
+    \end{equation*}
+    Budu\' ci je $\masE [X | \famH]$ ujedno i $\famG$-izmjeriva, zadnja jednakost slijedi iz \eqref{jed:22.7}.
+\end{proof}
+
+Uz $\famH = \{ \varnothing, \Omega\}$ u propoziciji \ref{prop:22.11}, iz \eqref{jed:22.8} dobijemo
+\begin{equation}    \label{jedn:22.12}
+    \masE \Big[ \masE [X | \famG] \Big] = \masE X, \quad X \in L^1 (\masP).
+\end{equation}
+
+\begin{zad} \label{zad:22.13}
+    Neka je $A$ $\masP$-atom na $\famG$, to jest $A \in \famG$, $\masP (A) > 0$ i vrijedi
+    \begin{equation*}
+        B \in \famG, \; B \subseteq A \implies \masP (B) = 0 \textnormal{ ili } \masP (A \setminus B) = 0.
+    \end{equation*}
+    Ako je $X \in L^1 (\masP)$, tada je
+    \begin{equation*}
+        \masE [X | \famG] (\omega) = \int\limits_A X \: d \masP, \quad \quad \omega \in A \; (g.s.).
+    \end{equation*}
+\end{zad}
+
+\begin{zad} \label{zad:22.14}
+    Teoremi konvergencije se lako i po istoj shemi prenose na slu\v caj uvjetnih o\v cekivanja.
+    Doka\v zi teorem o monotonoj knovergenciji, Beppo Levi teorem i Lebesgueov teorem o dominiranoj konvergenciji za uvjetna o\v cekivanja.
+\end{zad}
+
+\begin{prop}    \label{prop:22.15}
+    Neka su $X, Y$ slu\v cajne varijable, takve da su $X, X Y \in L^1 (\masP)$, te neka je $Y$ $\famG$-izmjeriva.
+    Tada vrijedi
+    \begin{equation*}
+        \masE [X Y | \famG] = y \cdot \masE [X | \famG].
+    \end{equation*} 
+\end{prop}
+
+\begin{proof}
+    Po pretpostavci, obje strane imaju smisla, te obje strane daju $\famG$-izmjerivu funkciju.
+    Za $A \in \famG$, u slu\v caju da je $Y = \karaktFja_B$, za $B \in \famG$,
+    \begin{equation*}
+        \int\limits_A X Y \: d \masP = \int\limits_{A \cap B} X \: d \masP = \int\limits_{A \cap B} \masE [X | \famG] \: masP = \int\limits_A Y \masE[X | \famG] \: d \masP.
+    \end{equation*}
+    Zbog linearnosti rezultat se pro\v siri na jednostavne $\famG$ izmjerive funkcije $Y$, a po zadatku \ref{zad:22.14} i na pozitivne $\famG$-izmjerive, te kona\v cno po linearnosti na sve $\famG$-izmerive funkcije. 
+\end{proof}
+
+\begin{prop}    \label{prop:22.16}
+    Ako je $X \in L^1 (\masP)$ te $\sigAlg{X}$ i $\famG$ su nezavisne, tada vrijedi
+    \begin{equation*}
+        \masE [X | \famG] = \masE X.
+    \end{equation*}
+\end{prop}
+
+\begin{proof}
+    Konstantna funkcija je o\v cito $\famG$-izmjeriva-
+    Za $A \in \famG$ su $X$ i $\karaktFja_A$ nezavisne, pa dobivamo
+    \begin{equation*}
+        \int\limits_A X \: d \masP = \int\limits_\Omega \karaktFja_A \cdot X \: \masP = \masE [\karaktFja_A \cdot X] = \masP(A) \cdot \masE = \int\limits_A \masE X \: d \masP.
+    \end{equation*}
+\end{proof}
+
+Funkcija $g : \real \to \real$ je konveksna ako za svaki $x, y \in \real$ i za svaki $\lambda \in \segment{0}{1}$ vrijedi
+\begin{equation*}
+    g (\lambda \cdot x + (1 - \lambda) \cdot y) \leq \lambda \cdot g (x) + (1 - \lambda) \cdot g (y).
+\end{equation*}
+\v Sto je ekvivalentno s
+\begin{equation*}
+    \frac{g(x) - g(y)}{x - y} \leq \frac{g(z) - g(y)}{z - y}, \quad x < z < y.
+\end{equation*}
+
+\begin{zad} \label{zad:22.17}
+    Doka\v zite da je svaka konveksna funkcija nu\v zno neprekidna.
+    Doka\v zite da za konveksnu funkciju postoje rastu\' ce funkcije $h$ takve da vrijedi
+    \begin{equation*}
+        g(x) - g(y) \geq h(y) (x - y) \quad x, y \in \real, \; x \neq y.
+    \end{equation*}
+\end{zad}
+
+\begin{prop}    \label{zad:22.18}
+    Neka je $X \in L^1 (\masP)$ i g konveksa funkcija takva da je $g(X) \in L^1 (\masP)$.
+    Tada je
+    \begin{equation*}
+        g (\masE [X | \famG]) \leq \masE [g(X) | \famG].
+    \end{equation*}
+\end{prop}
+
+\begin{proof}
+    Uo\v cimo da je $g$ neprekidna, pa je $g(\masE[X | \famG])$ $\famG$-izmjeriva.
+    Isto vrijedi i za $h$ iz zadatka \ref{zad:22.17}.
+    Po zadatku \ref{zad:22.17} vrijedi
+    \begin{equation*}
+        g(X) - g(\masE[X | \famG]) \geq h (\masE [X | \famG]) \cdot (X - \masE [X | \famG]).
+    \end{equation*}
+    Zbog monotonosti uvjetnog o\v cekivanja, te linearnosti i \eqref{jed:22.7}, vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            \masE [g(X) | \famG] - g(\masE [X | \famG]) &= \masE \big[g(X) - g(\masE [X | \famG]) \big| \famG \big]\\
+            &\geq \masE \big[h (\masE [X | \famG]) \cdot (X - \masE [X | \famG]) \big| \famG \big] =
+            \begin{psmallmatrix}
+                \textnormal{propozicija \ref{prop:22.15}}
+            \end{psmallmatrix}\\
+            &= h (\masE [X | \famG]) \cdot \underbrace{\masE \big[X - \masE [X | \famG] \big| \famG \big]}_{= 0} = 0.
+        \end{aligned}
+    \end{equation*} 
+\end{proof}
+
+Obratimo pa\v znu na poseban slu\v caj, kada je $\famG = \sigAlg{Y}$.
+Neka je $X \in L^1 (\masP)$, tada je za svaki $B \in \borel{\real}$ definirano preslikavanje
+\begin{equation*}
+    B \mapsto \int\limits_{\praslika{Y} (B)} X \: d \masP,
+\end{equation*}
+\v sto je kona\v cna realna mjera na $(\real, \borel{\real})$, koja je apsolutno neprekidna u odnosu na zakon razdiobe od $Y$, $\masP_Y$.
+Po Radon-Nikodymovom teoremu postoji Borelova funkcija $h : \real \to \real$ koja je Radon-Nikodymova derivacija.
+Uvedimo oznaku
+\begin{equation}    \label{jed:22.19}
+    \masE [X | Y = y] := h (y)
+\end{equation}
+i uo\v cimo da je ova funkcija jedinstveno odre\dj ena do na skup $\masP_Y$-mjere nula.
+Dakle, definicijska relacija za $\masE [X | Y = y]$ je da za svaki $B \in \borel{\real}$ vrijedi
+\begin{equation}    \label{jed:22.20}
+    \int\limits_B \masE [X | Y = y] \: d \masP_Y (y) = \int\limits_{\praslika{Y} (B)} X \: d \masP.
+\end{equation}
+Posebno, to zna\v ci da je
+\begin{equation}    \label{jed:22.21}
+    \masE [X | Y] = \masE [X | Y = y] \circ Y.
+\end{equation}
+
+\begin{zad} \label{zad:22.22}
+    Doka\v zite svojstva, analogna onima dokazanima za $\masE [X | Y]$ u ovom poglavlju, za funckiju $\masE [X | Y = y]$.
+\end{zad}
+
+\begin{nap} \label{nap:22.23}
+    Potpuno analogan pristup ovom pojmu je u slu\v caju kada je $Y = (Y_1, \ldots, Y_n)$ $n$-dimenzionalan slu\v cajana vektor.
+    Tada je $\masE [X | Y = y]$ Borelova funkcija sa $\real^n$ u $\real$.
+\end{nap}
+
+\begin{zad} \label{zad:22.24}
+    Neka su $X = (X_1, \ldots, X_m)$ i $Y = (Y_1, \ldots, Y_n)$ nezavisni slu\v cajni vektori i neka je
+    \begin{equation*}
+        f : \real^m \times \real^n \to \real
+    \end{equation*}
+    Borelova funkcija za koju vrijedi $f (X, Y) \in L^1 (\masP)$.
+    Definiramo $h: \real^m \to \real$, pomo\' cu
+    \begin{equation*}
+        h (x) :=
+        \begin{cases}
+            \masE [ f (x, y)] &, f (x, Y) \in L^1 (\masP)\\
+            0 &, f (x, Y) \notin L^1 (\masP)
+        \end{cases}.
+    \end{equation*}
+    Doka\v zite da  je $h$ Borelova funkcija i da je
+    \begin{equation*}
+        h (x) = \masE [f (X, Y) | X = x].
+    \end{equation*}
+\end{zad}
+
+Uo\v cimo jo\v s jedan detalj.
+Svaka od sljede\' cih realcija je ispunjena $\masP-g.s.$, ali se skup mjere nula u njima mo\v ze mjenjati:
+\begin{equation}    \label{jed:22.25}
+    0 \leq \masP (A | \famG) \leq 1, \quad \masP (\Omega | \famG) = 1, \quad \masP (\varnothing | \famG) = 0
+\end{equation}
+i $\niz{A_n}{n \in \nat} \subseteq \famG$ me\dj usobno disjunktni
+\begin{equation}    \label{jed:22.26}
+    \masP \Big( \unija{n = 1}{\infty} A_n \Big| \famG \Big) = \suma{n = 1}{\infty} \masP (A_n | \famG).
+\end{equation}
+Mo\v ze li se namjestiti verzija
+\begin{equation*}
+    (\omega, A) \mapsto \masP (A | \famG) (\omega)
+\end{equation*}
+koja \v cuva sva dobra svojstva u obje varijable?
+Ne vrijedi!
+
+\begin{defn}    \label{defn:22.27}
+    Preslikavanje $\masO : \Omega \times \famF \to \segment{0}{1}$ je \emph{regularna uvjetna vjerojatnost uz dani $\famG$} ako vrijedi:
+    \begin{enumerate}[label=(\alph*)]
+        \item   \label{defn:22.27.1}
+        Za $\masP-g.s.$ $\omega \in \Omega$, $A \mapsto \masO (\omega, A)$ je vjerojatnost,
+        \item   \label{defn:22.27.2}
+        Za svaki $A \in \famF$, $\omega \mapsto \masO (\omega, A)$ je verzija od $\masP (A | \famG)$
+    \end{enumerate}
+\end{defn}
+
+\begin{tm}  \label{tm:22.28}
+    Ako je $(\Omega, \famF) = (\real^n, \borel{\real^n})$ i $\famG \subseteq \famF$ je generirana prebrojivom familijom, tada za svaku vjerojatnos $\masP$ na $(\Omega, \famF)$ postoji regularna uvjetna vjerojatnost uz dani $\famG$.
+\end{tm}
