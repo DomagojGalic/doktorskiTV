@@ -117,3 +117,40 @@ Uz $\famH = \{ \varnothing, \Omega\}$ u propoziciji \ref{prop:22.11}, iz \eqref{
         \masE [X | \famG] (\omega) = \int\limits_A X \: d \masP, \quad \quad \omega \in A \; (g.s.).
     \end{equation*}
 \end{zad}
+
+\begin{zad} \label{zad:22.14}
+    Teoremi konvergencije se lako i po istoj shemi prenose na slu\v caj uvjetnih o\v cekivanja.
+    Doka\v zi teorem o monotonoj knovergenciji, Beppo Levi teorem i Lebesgueov teorem o dominiranoj konvergenciji za uvjetna o\v cekivanja.
+\end{zad}
+
+\begin{prop}    \label{prop:22.15}
+    Neka su $X, Y$ slu\v cajne varijable, takve da su $X, X Y \in L^1 (\masP)$, te neka je $Y$ $\famG$-izmjeriva.
+    Tada vrijedi
+    \begin{equation*}
+        \masE [X Y | \famG] = y \cdot \masE [X | \famG].
+    \end{equation*} 
+\end{prop}
+
+\begin{proof}
+    Po pretpostavci, obje strane imaju smisla, te obje strane daju $\famG$-izmjerivu funkciju.
+    Za $A \in \famG$, u slu\v caju da je $Y = \karaktFja_B$, za $B \in \famG$,
+    \begin{equation*}
+        \int\limits_A X Y \: d \masP = \int\limits_{A \cap B} X \: d \masP = \int\limits_{A \cap B} \masE [X | \famG] \: masP = \int\limits_A Y \masE[X | \famG] \: d \masP.
+    \end{equation*}
+    Zbog linearnosti rezultat se pro\v siri na jednostavne $\famG$ izmjerive funkcije $Y$, a po zadatku \ref{zad:22.14} i na pozitivne $\famG$-izmjerive, te kona\v cno po linearnosti na sve $\famG$-izmerive funkcije. 
+\end{proof}
+
+\begin{prop}    \label{prop:22.16}
+    Ako je $X \in L^1 (\masP)$ te $\sigAlg{X}$ i $\famG$ su nezavisne, tada vrijedi
+    \begin{equation*}
+        \masE [X | \famG] = \masE X.
+    \end{equation*}
+\end{prop}
+
+\begin{proof}
+    Konstantna funkcija je o\v cito $\famG$-izmjeriva-
+    Za $A \in \famG$ su $X$ i $\karaktFja_A$ nezavisne, pa dobivamo
+    \begin{equation*}
+        \int\limits_A X \: d \masP = \int\limits_\Omega \karaktFja_A \cdot X \: \masP = \masE [\karaktFja_A \cdot X] = \masP(A) \cdot \masE = \int\limits_A \masE X \: d \masP.
+    \end{equation*}
+\end{proof}
