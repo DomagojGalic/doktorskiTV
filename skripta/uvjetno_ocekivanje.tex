@@ -249,3 +249,33 @@ Posebno, to zna\v ci da je
         h (x) = \masE [f (X, Y) | X = x].
     \end{equation*}
 \end{zad}
+
+Uo\v cimo jo\v s jedan detalj.
+Svaka od sljede\' cih realcija je ispunjena $\masP-g.s.$, ali se skup mjere nula u njima mo\v ze mjenjati:
+\begin{equation}    \label{jed:22.25}
+    0 \leq \masP (A | \famG) \leq 1, \quad \masP (\Omega | \famG) = 1, \quad \masP (\varnothing | \famG) = 0
+\end{equation}
+i $\niz{A_n}{n \in \nat} \subseteq \famG$ me\dj usobno disjunktni
+\begin{equation}    \label{jed:22.26}
+    \masP \Big( \unija{n = 1}{\infty} A_n \Big| \famG \Big) = \suma{n = 1}{\infty} \masP (A_n | \famG).
+\end{equation}
+Mo\v ze li se namjestiti verzija
+\begin{equation*}
+    (\omega, A) \mapsto \masP (A | \famG) (\omega)
+\end{equation*}
+koja \v cuva sva dobra svojstva u obje varijable?
+Ne vrijedi!
+
+\begin{defn}    \label{defn:22.27}
+    Preslikavanje $\masO : \Omega \times \famF \to \segment{0}{1}$ je \emph{regularna uvjetna vjerojatnost uz dani $\famG$} ako vrijedi:
+    \begin{enumerate}[label=(\alph*)]
+        \item   \label{defn:22.27.1}
+        Za $\masP-g.s.$ $\omega \in \Omega$, $A \mapsto \masO (\omega, A)$ je vjerojatnost,
+        \item   \label{defn:22.27.2}
+        Za svaki $A \in \famF$, $\omega \mapsto \masO (\omega, A)$ je verzija od $\masP (A | \famG)$
+    \end{enumerate}
+\end{defn}
+
+\begin{tm}  \label{tm:22.28}
+    Ako je $(\Omega, \famF) = (\real^n, \borel{\real^n})$ i $\famG \subseteq \famF$ je generirana prebrojivom familijom, tada za svaku vjerojatnos $\masP$ na $(\Omega, \famF)$ postoji regularna uvjetna vjerojatnost uz dani $\famG$.
+\end{tm}
