@@ -1,3 +1,56 @@
 % cjelina 5.3 Definicija martingala -> predavanje 23
 
 \chapter{Definicija martingala}
+
+\begin{pr}  \label{pr:23.1}
+    Opi\v simo model jednostavne slu\v cajne igre koju igraju Ante (A) i Branimir (B).
+    Igra se odvija u nepreciziranom broju uzastopnih kola.
+    U svakom kolu mogu\' ca su samo dva ishoda:
+    \begin{itemize}
+        \item[] "Ante pla\' ca Branimiru $1$ kunu" (vjerojatnost je $p$)
+        \item[] "Branimir pla\' ca Anti $1$ kunu" (vjerojatnost je $q = 1 - p$) 
+    \end{itemize}
+    i vrijedi $0 < p < 1$.
+    Dakle, na primjer s pozicije igra\v ca B, imamo u svakom kolu rezdiobu Bernoulijevog tipa
+    \begin{equation*}
+        \begin{pmatrix}
+            -1& 1\\
+            q& p
+        \end{pmatrix}.
+    \end{equation*}
+    Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih slu\v cajnih varijabli s gornjom razdiobom i neka je $\niz{S_n}{n \in \nat \cup \{0\}}$ slu\v cajna \v setnja s tim da je $S_0 \equiv K \in \nat$.
+    Uo\v cimo da je $S_n$ svota novca kojom raspola\v ze $B$ u trenutku $n$, s tim da dopu\v stamo i $S_n < 0$ (u smislu da se B zadu\v zio).
+    Kada je igra po\v stena?
+    Kada favorizira igra\v ca B, a kada A?
+    Neka je $\famF_0 := \{ \varnothing, \Omega \}$ i neka je $\famF_n := \indSigAlg{X_k}{k = 1, \ldots, n}$.
+    U trenutku $n$ $\sigma$-algebra $\famF_n$ sadr\v zi svu informaciju o igri do tog trenutka.
+    Igra \' ce biti po\v stena je o\v cekivani prirast "bogatstva" za ova igra\v ca isti, uz uvjet poznavanja "pro\v slosti":
+    \begin{equation*}
+        \masE \big[ S_{n + 1} - S_n \big| \famF_n \big] = 0,
+    \end{equation*}
+    zbog \v cinjenice da je $S_n$ $\famF_n$-izmjeriva, to je ekvivalentno zahtjevu:
+    \begin{equation}    \label{jed:23.2}
+        \masE [S_{n + 1} | \famF_n] = S_n.
+    \end{equation}
+    Igra favorizira igra\v ca B (igra\v ca A) ako je u \eqref{jed:23.2} umjesto znaka jednakosti znak $\geq$ ($\leq$).
+    Uo\v cimo da je
+    \begin{equation*}
+        S_{n + 1} = X_{n + 1} + S_n
+    \end{equation*}
+    i $X_{n + 1}$ je neovisna od $\famF$, \v sto daje
+    \begin{equation*}
+        \masE [S_{n + 1} | \famF_n] = \masE [X_{n + 1}] + S_n.
+    \end{equation*}
+    O\v cito vrijedi
+    \begin{equation*}
+        \masE [X_{n + 1}] = p - q.
+    \end{equation*}
+    Dakle
+    \begin{equation}    \label{jed:23.3}
+        \begin{aligned}
+            p = q = \frac{1}{2} \quad &\iff \quad \textnormal{igra je po\v stena}\\
+            p > q \quad &\iff \quad \textnormal{igra favorizira B}\\
+            p < q \quad &\iff \quad \textnormal{igra favorizira A}.
+        \end{aligned}
+    \end{equation}
+\end{pr}
