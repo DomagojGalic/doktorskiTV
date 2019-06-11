@@ -1,0 +1,348 @@
+% cjelina 5.3 Definicija martingala -> predavanje 23
+
+\chapter{Definicija martingala}
+
+\begin{pr}  \label{pr:23.1}
+    Opi\v simo model jednostavne slu\v cajne igre koju igraju Ante (A) i Branimir (B).
+    Igra se odvija u nepreciziranom broju uzastopnih kola.
+    U svakom kolu mogu\' ca su samo dva ishoda:
+    \begin{itemize}
+        \item[] "Ante pla\' ca Branimiru $1$ kunu" (vjerojatnost je $p$)
+        \item[] "Branimir pla\' ca Anti $1$ kunu" (vjerojatnost je $q = 1 - p$) 
+    \end{itemize}
+    i vrijedi $0 < p < 1$.
+    Dakle, na primjer s pozicije igra\v ca B, imamo u svakom kolu rezdiobu Bernoulijevog tipa
+    \begin{equation*}
+        \begin{pmatrix}
+            -1& 1\\
+            q& p
+        \end{pmatrix}.
+    \end{equation*}
+    Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih slu\v cajnih varijabli s gornjom razdiobom i neka je $\niz{S_n}{n \in \nat \cup \{0\}}$ slu\v cajna \v setnja s tim da je $S_0 \equiv K \in \nat$.
+    Uo\v cimo da je $S_n$ svota novca kojom raspola\v ze $B$ u trenutku $n$, s tim da dopu\v stamo i $S_n < 0$ (u smislu da se B zadu\v zio).
+    Kada je igra po\v stena?
+    Kada favorizira igra\v ca B, a kada A?
+    Neka je $\famF_0 := \{ \varnothing, \Omega \}$ i neka je $\famF_n := \indSigAlg{X_k}{k = 1, \ldots, n}$.
+    U trenutku $n$ $\sigma$-algebra $\famF_n$ sadr\v zi svu informaciju o igri do tog trenutka.
+    Igra \' ce biti po\v stena je o\v cekivani prirast "bogatstva" za ova igra\v ca isti, uz uvjet poznavanja "pro\v slosti":
+    \begin{equation*}
+        \masE \big[ S_{n + 1} - S_n \big| \famF_n \big] = 0,
+    \end{equation*}
+    zbog \v cinjenice da je $S_n$ $\famF_n$-izmjeriva, to je ekvivalentno zahtjevu:
+    \begin{equation}    \label{jed:23.2}
+        \masE [S_{n + 1} | \famF_n] = S_n.
+    \end{equation}
+    Igra favorizira igra\v ca B (igra\v ca A) ako je u \eqref{jed:23.2} umjesto znaka jednakosti znak $\geq$ ($\leq$).
+    Uo\v cimo da je
+    \begin{equation*}
+        S_{n + 1} = X_{n + 1} + S_n
+    \end{equation*}
+    i $X_{n + 1}$ je neovisna od $\famF$, \v sto daje
+    \begin{equation*}
+        \masE [S_{n + 1} | \famF_n] = \masE [X_{n + 1}] + S_n.
+    \end{equation*}
+    O\v cito vrijedi
+    \begin{equation*}
+        \masE [X_{n + 1}] = p - q.
+    \end{equation*}
+    Dakle
+    \begin{equation}    \label{jed:23.3}
+        \begin{aligned}
+            p = q = \frac{1}{2} \quad &\iff \quad \textnormal{igra je po\v stena}\\
+            p > q \quad &\iff \quad \textnormal{igra favorizira B}\\
+            p < q \quad &\iff \quad \textnormal{igra favorizira A}.
+        \end{aligned}
+    \end{equation}
+\end{pr}
+
+\begin{defn}    \label{defn:23.4}
+    Neka je $\masT$ jedan od sljede\' cih skupova $\{ 0, \ldots, n \}$, $\nat \cup \{0\}$, $\nat \cup \{0, +\infty\}$, $\{ \ldots, -n, \ldots, -1, 0\}$, $\segment{0}{a}$, $\desInt{0}{+\infty}$, $\segment{0}{+\infty}$.
+    Neka je $\vjerojatnosniProstor$ vjerojatnsni prostor s filtracijom $\indFamilija{\famF_t}{t \in \masT}$.
+    Stohasti\v cki proces $\niz{X_t}{t \in \masT}$ je \emph{martingal} (\emph{submartingal, supermartingal}), u odnosu na $(\famF_t)$, ako vrijedi:
+    \begin{enumerate}[label=(\alph*)]
+        \item   \label{defn:23.4.1}
+        svaka $X_t$ je slu\v cajna varijabla u $L^1 (\masP)$
+        \item   \label{defn:23.4.2}
+        $(X_t)$ je $\{\famF_t\}$-adaptiran, to jest $X_t$ je $\famF_t$-izmjeriv za svaki $t \in \masT$
+        \item   \label{defn:23.4.3}
+        za svaki $s \leq t$, $s, t \in \masT$, vrijedi
+        \begin{equation*}
+            \masE [X_t | \famF_s] = (\geq, \leq ) X_s.
+        \end{equation*}
+    \end{enumerate}
+\end{defn}
+
+Uo\v cimo nekoliko svojstava koja direktno slijedi iz definicije.
+Stohasti\v cki proces je martingal ako i samo ako je supermartingal i submartingal.
+Stohasti\v cki proces $(X_t)$ je supermartingal ako i samo ako je $(-X_t)$ submartingal (stoga se rezultati za jednu klasu procesa direktno prenose na drugu).
+Koriste\' ci linearnost uvjetnog o\v cekivanja direktno dobijemo
+
+\begin{prop}    \label{prop:23.5}
+    Neka su $\niz{X_t}{t \in \masT}$ i $\niz{Y_t}{t \in \masT}$ martingali u odnosu na istu filtraciju $\indFamilija{\famF_t}{t \in \masT}$, te neka su $\alpha, \beta \in \real$, tada je i $\niz{\alpha X_t + \beta Y_t}{t \in \masT}$ martingal s obzirom na filtraciju $\indFamilija{\famF_t}{t \in \masT}$.
+\end{prop}
+
+\begin{prop}    \label{prop:23.6}
+    Neka su $\niz{X_t}{t \in \masT}$ i $\niz{Y_t}{t \in \masT}$ supermartingali u odnosu na istu filtraciju $\indFamilija{\famF_t}{t \in \masT}$, te neka su $\alpha \geq 0, \beta \geq 0$, tada je i $\niz{\alpha X_t + \beta Y_t}{t \in \masT}$ supermartingal s obzirom na filtraciju $\indFamilija{\famF_t}{t \in \masT}$.
+\end{prop}
+
+\begin{zad} \label{zad:23.7}
+    Ako su $\niz{X_t}{t \in \masT}$, $\niz{Y_t}{t \in \masT}$ supermartingali u odnosu na filtraciju $\indFamilija{\famF_t}{t \in \masT}$, tada je $\niz{X_t \land Y_t}{t \in \masT}$ supermartingal s obzirom na istu filtraciju.
+\end{zad}
+
+\begin{rj}[\ref{zad:23.7}]
+    Neka su $s, t \in \masT$ takvi da je $s \leq t$.
+    Slu\v cajna varijabla $X_t \land Y_t$ je $\famF_t$-izmjeriva, kao minimum izmjerivih funkcija, tako\dj er vrijedi
+    \begin{equation*}
+        \masE [X_t \land Y_t] \leq \masE X_t < +\infty,
+    \end{equation*}
+    dakle $X_t \land Y_t \in L^1 (\masP)$.
+
+    Primjetimo
+    \begin{equation*}
+        X_t \land Y_t \leq X_t
+    \end{equation*}
+    sada po monotonosti uvjetnog o\v cekivanja imamo
+    \begin{equation*}
+        \masE [X_t \land Y_t | \famF_s] \leq \masE [X_t | \famF_s] \leq X_s,
+    \end{equation*}
+    gdje zadnja nejednakost slijedi iz \v cinjenice da je $\niz{X_t}{t \in \masT}$ supermartingal.
+    Analogno dobijemo izraz
+    \begin{equation*}
+        \masE [X_t \land Y_t | \famF_s] \leq Y_s,
+    \end{equation*}
+    odakle zaklju\v cujemo da je
+    \begin{equation*}
+        \masE [X_t \land Y_t | \famF_s] \leq X_s \land Y_s,
+    \end{equation*}
+    \v sto je i trebalo pokazati.
+\end{rj}
+
+\begin{pr}[$1$-dimenzionalne su\v cajne \v setnje]  \label{pr:23.8}
+    \quad \\
+    Primjer \ref{pr:23.1} se da lako poop\' citi.
+    Neka su $\niz{X_n}{n \in \nat}$ nezavisne, jednako distribuirane slu\v cajne varijable, takve da je $X_n \in L^1 (\masP)$, za svaki $n \in \nat$.
+    Neka je $S_0 := 0, S_n := X_1 + \ldots + X_n$, pripadna slu\v cajna \v setnja i $\famF_n := \sigAlg{X_1, \ldots, X_n}$.
+    Tada je $\niz{S_n}{n \in \nat_0}$ stohasti\v cki proces koji je $\{\famF_n\}$-adaptiran i $S_n \in L^1 (\masP)$.
+    Zbog
+    \begin{equation*}
+        \masE [S_{n+1} | \famF_n] = \masE X_{n + 1} + \masE S_n = \masE X_1 + S_n,
+    \end{equation*}
+    slijedi
+    \begin{equation*}
+        \niz{S_n}{n \in \nat_0} \; \textnormal{ je } \quad
+        \begin{cases}
+            \textnormal{supermartingal ako je } &\masE X_1 < 0\\
+            \textnormal{martingal ako je } &\masE X_1 = 0\\
+            \textnormal{submartingal ako je } &\masE X_1 > 0
+        \end{cases}.
+    \end{equation*}
+\end{pr}
+
+\begin{pr}[L\' evyjevi procesi] \label{pr:23.9}
+    Ideje iz primjera \ref{pr:23.8} se lako prenose i na ovaj slu\v caj.
+    Neka je $\niz{X_t}{t \in \desInt{0}{+\infty}}$ L\' evyjev proces sa svojstvom $X_t \in L^1 (\masP)$, za svaki $t \geq 0$.
+    Neka je $\famF_t := \indSigAlg{X_s}{0 \leq s \leq t}$, za svaki $t \geq 0$.
+    O\v cito je $\niz{X_t}{t \geq 0}$ $\{\famF_t\}$-adaptiran.
+    Neka je $0 \leq s < t$, imamo
+    \begin{equation*}
+        \begin{aligned}
+            \masE [X_t | \famF_s] &= \masE [X_t - X_s + X_s | \famF_s] =
+            \begin{psmallmatrix}
+                \textnormal{adaptiranost}
+            \end{psmallmatrix}\\
+            &= \masE [X_t - X_s | \famF_s] + X_s =
+            \begin{psmallmatrix}
+                \textnormal{napomena \ref{nap:21.16}}\\
+                \textnormal{propozicija \ref{prop:22.16}}
+            \end{psmallmatrix}
+            = \masE [X_t - X_s] + X_s\\
+            &= \masE [X_{t - s}] + X_s.
+        \end{aligned}
+    \end{equation*}
+    Zbog propozicije \ref{prop:23.5} i korolara \ref{kor:17.7} \ref{kor:17.7.1} slijedi
+    \begin{equation*}
+        \masE [X_{t - s}] = (t - s) \cdot \masE X_1.
+    \end{equation*}
+    Dakle imamo
+    \begin{equation*}
+        \niz{X_t}{ t \geq 0} \; \textnormal{ je} \quad
+        \begin{cases}
+            \textnormal{supermartingal ako je } &\masE X_1 < 0\\
+            \textnormal{martingal ako je } &\masE X_1 = 0\\
+            \textnormal{submartingal ako je } &\masE X_1 > 0
+        \end{cases}.
+    \end{equation*}
+    Posebno, primjetimo da je Brownovo gibanje $(B_t)$ martingal, dok je Poissonov proces $(N_t)$ submartingal.
+    Ako je $\lambda > 0$ parametar Poissonovog procesa, uo\v cimo da gornji izvod pokazuje da je $\niz{N_t - \lambda \cdot t}{t \geq 0}$ martingal.
+\end{pr}
+
+Uo\v cimo da iz definicije \ref{defn:23.4} slijedi da je za martingale preslikavanje
+\begin{equation*}
+    t \mapsto \masE X_t
+\end{equation*}
+konstantna funkcija, dok je za (neprekidne) submartingale
+\begin{equation*}
+    t \mapsto \masE X_t
+\end{equation*}
+rastu\' ca funkcija.
+
+\begin{prop}    \label{prop:23.10}
+    Neka je $\niz{X_t}{t \in \masT}$ submartingal u odnosu na filtraciju $\indFamilija{\famF_t}{t \in \masT}$.
+    Tada je $(X_t)$ martingal ako i samo ako je $t \mapsto \masE X_t$ konstantna funkcija.
+\end{prop}
+
+\begin{proof}
+    O\v cito treba dokazati samo dovoljnost.
+    Neka su $s, t \in \masT$, takvi da je $s < t$.
+    Tada je
+    \begin{equation*}
+        \masE [X_t - X_s | \famF_s] \geq 0,
+    \end{equation*}
+    a po pretpostavci je
+    \begin{equation*}
+        \masE \big[ \masE [X_t - X_s | \famF_s] \big] = \masE [X_t - X_s] = 0.
+    \end{equation*}
+    Stoga je
+    \begin{equation*}
+        \masE [X_t - X_s | \famF_s] = 0 \quad \implies \quad \masE [X_t | \famF_s] = X_s.
+    \end{equation*}
+\end{proof}
+
+Koriste \' ci Jensenovu nejednakost za uvjetno o\v cekivanje, direktno dobijemo sljede\' ci rezultat.
+
+\begin{tm}  \label{tm:23.11}
+    \begin{enumerate}[label=(\alph*)]
+        \item   \label{tm:23.11.1}
+        Neka je $\niz{X_t}{t \in \masT}$ martingal u odnosu na $\indFamilija{X_t}{t \in \masT}$.
+        Ako je $g : \real \to \real$ konveksna funkcija za koju vrijedi $g (X_t) \in L^1 (\masP)$, za svaki $t \in \masT$, tada je $\niz{g (X_t)}{t \in \masT}$ submartingal u odnosu na $\{\famF_t\}$.
+        \item   \label{tm:23.11.2}
+        Ako je $\niz{X_t}{t \in \masT}$ submartingal u odnosu na $\{\famF_t\}$ i $g$ rastu\' ca konveksna funkcija za koju je $g (X_t) \in L^1 (\masP)$, za svaki $t \in \masT$, tada je $\niz{g(X_t)}{t \in \masT}$ submartingal u odnosu na $\{\famF_t\}$.
+    \end{enumerate}
+\end{tm}
+
+Va\v zni posebni slu\v cajevi su kada je $g(x) = |x|^p$, $p \geq 1$ te $g(x) = x^+$.
+Posebno, ako je $\niz{B_t}{t \geq 0}$ $1$-dimenzionalno Brownovo gibanje, tada je $\niz{B_t^2}{t \geq 0}$ submartingal.
+Taj se submartingal mo\v ze jednostavno rastaviti na sumu martingala i jedne deterministi\v cke rastu\' ce funkcije.
+
+\begin{prop}    \label{prop:23.12}
+    Stohasti\v cki proces $\niz{B_t^2 - t}{t \geq 0}$ je martingal.
+\end{prop}
+
+\begin{proof}
+    Neka je $0 \leq s < t$ i neka je $\famF_s = \indSigAlg{B_u}{u \leq s}$.
+    \begin{equation*}
+        \masE [ (B_t - B_s)^2 | \famF_s] = \masE [(B_t - B_s)^2] = \masE [B_{t - s}^2] = t - s.
+    \end{equation*}
+    Tako\dj er
+    \begin{equation*}
+        \masE [(B_t - B_s)^2 | \famF_s] = \masE [B_t^2 | \famF_s] + B_t^2 - 2 \cdot \masE [B_t B_s | \famF_s],
+    \end{equation*}
+    primjetimo li da je
+    \begin{equation*}
+        \masE [B_t B_s | \famF_s] = B_s \cdot \masE [B_t | \famF_s] = B_s^2
+    \end{equation*}
+    imamo
+    \begin{equation*}
+        \begin{gathered}
+            \begin{aligned}
+                t - s &= \masE [B_t^2 | \famF_s] - 2 \cdot \masE [B_t B_s | \famF_s] + \masE [B_s^2 | \famF_s]\\
+                &= \masE [B_t^2 | \famF_s] - 2 \cdot B_s^2 + B_s^2\\
+                &= \masE [B_t^2 | \famF_s] - B_s^2
+            \end{aligned}\\
+            \begin{aligned}
+                \masE [B_t^2 | \famF_s] - t &= B_s - s\\
+                \masE [B_t^2 - t | \famF_s] &= B_s - s.
+            \end{aligned}
+        \end{gathered}
+    \end{equation*}
+\end{proof}
+
+\begin{nap} \label{nap:23.13}
+    Prirodno se name\' ce pitanje vrijedi li i svojevrstan obrat propozicije \ref{prop:23.12}.
+    To je sadr\v zaj poznatog \emph{L\' evyjevog teorema karakterizacije}, kojeg ovdje ne\' cemo dokazivati.
+    Teorem ka\v ze da za neprekidni stohasti\v cki proces $(X_t)$ vrijedi da je Brownovo gibanje ako i samo ako su $(X_t)$ i $(X_t^2 - t)$ martingali.
+    Uo\v cimo da je neprekidnost ovdje bitan uvjet, jer za $\lambda = 1$ su
+    \begin{equation*}
+        (N_t - t), \quad \big( (N_t - t)^2 - t \big)
+    \end{equation*}
+    martingal, gdje je $(N_t)$ Poissonov proces.
+\end{nap}
+
+\begin{zad} \label{zad:23.14}
+    Neka je $\alpha \in \real$, $\niz{B_t}{t \geq 0}$ Brownovo gibanje te neka je $\famF_t = \indSigAlg{B_s}{s \leq t}$.
+    Ako je
+    \begin{equation*}
+        X_t := e^{\alpha B_t - \frac{\alpha^2}{2}t}, \quad t \geq 0,
+    \end{equation*}
+    doka\v zi da je $(X_t)$ martingal u odnosu na $\{\famF_t\}$.
+\end{zad}
+
+Uo\v cimo da su $(N_t)$ i $(B_t^2)$ submartingali koji se mogu rastaviti na sumu martingala i rastu\' ce funkcije.
+Vrijedi li to i op\' cenitije?
+U nekom smislu da, ali se ne mo\v ze o\v cekivati deterministi\v cka rastu\' ca funkcija, ve\' c nam treba rastu\' ci proces.
+
+\begin{tm}[Doobova dekompozicija]  \label{tm:23.15}
+    Neka je $\niz{X_n}{n \in \nat_0}$ submartingal u odnosu na $\indFamilija{\famF_n}{n \in \nat_0}$.
+    Tada postoji rastu\' ci proces $(A_n)$ koji je $\{\famF_n\}$-adaptiran, takav da je $(X_n - A_n)$ martingal u odnosu na $\{\famF_n\}$.
+    Mo\v ze se posti\' ci i da je $A_n$ $\famF_{n - 1}$-izmjeriv i uz taj zahtjev ovaj proces $(A_n)$ je jedinstveno odre\dj en.
+\end{tm}
+
+\begin{proof}
+    Definirajmo $A_0 := 0$ i
+    \begin{equation*}
+        \begin{aligned}
+            A_n :&= \suma{k = 1}{n} \masE [X_k - X_{k - 1} | \famF_{k - 1}] = A_{n - 1} + \masE [X_n - X_{n - 1} | \famF_{n - 1}]\\
+            &= A_{n - 1} + \big(\masE [X_n | \famF_{n - 1}] - X_{n - 1} \big).
+        \end{aligned}
+    \end{equation*}
+    Vidimo da je $A_n$ $\famF_{n - 1}$-izmjeriva, a kako je $(X_n)$ submartingal, slijedi da je
+    \begin{equation*}
+        \masE [X_n | \famF_{n - 1}] - X_{n - 1} \geq 0,
+    \end{equation*}
+    odakle vrijedi
+    \begin{equation*}
+        A_n \geq A_{n - 1}
+    \end{equation*}
+    Definiramo li
+    \begin{equation*}
+        \begin{aligned}
+            M_0 &:= X_0,\\
+            M_n &:= M_{n - 1} + (X_n - \masE [X_n | \famF_{n - 1}]), \quad n \in \nat,
+        \end{aligned}
+    \end{equation*}
+    lako se vidi da je $(M_n)$ martingal te da vrijedi
+    \begin{equation*}
+        X_n = M_n + A_n, \quad n \in \nat_0.
+    \end{equation*}
+    Naime
+    \begin{equation*}
+        \masE \big[ M_n \big| \famF_{n - 1} \big] = \masE \big[ M_{n - 1} + (X_n - \masE [X_n | \famF_{n - 1}]) \big| \famF_{n - 1} \big] = M_{n - 1},
+    \end{equation*}
+    tako\dj er
+    \begin{equation*}
+        \begin{aligned}
+            M_n &= X_n - A_n = X_n - \big( A_{n - 1} + \masE [X_n | \famF_{n - 1}] - X_{n - 1} \big)\\
+            &= X_n - \big( \masE [X_n | \famF_{n - 1}] - (X_{n - 1} - A_{n - 1}) \big)\\
+            &= X_n - \big( \masE_n [X_n | \famF_{n - 1}] - M_{n - 1} \big)\\
+            &= M_{n - 1} + \big( X_n - \masE [X_n | \famF_{n - 1}] \big).
+        \end{aligned}
+    \end{equation*}
+    Ako je $(\widetilde{A}_n)$ drugi takav proces, onda je $(A_n - \widetilde{A}_n)$ martingal i vrijedi
+    \begin{equation*}
+        A_n - \widetilde{A}_n = \masE [A_n - \widetilde{A}_n | \famF_{n - 1}] = A_{n - 1} - \widetilde{A}_{n - 1} = \ldots = A_0 - \widetilde{A}_0 = 0.
+    \end{equation*}
+\end{proof}
+
+\begin{nap} \label{nap:23.16}
+    Poop\' cenje ovog rezultata u slu\v caju $\masT = \desInt{0}{+\infty}$ vrlo je netrivijalan rezultat, poznat kao \emph{Doob-Meyerova dekompozicija}.
+    Radi se o fundamentalnom rezultatu teorije martingala koji omogu\' cuju razvoj stohasti\v cke analize.
+\end{nap}
+
+\begin{pr}  \label{pr:23.17}
+    Neka je $Y \in L^1 (\masP)$ i neka je $\indFamilija{\famF_t}{t \in \masT}$ filtracija.
+    Uo\v cimo da je
+    \begin{equation*}
+        X_t := \masE [Y | \famF_t]
+    \end{equation*}
+    primjer martingala s obzirom na filtraciju $\{ \famF_t \}$.
+\end{pr}
