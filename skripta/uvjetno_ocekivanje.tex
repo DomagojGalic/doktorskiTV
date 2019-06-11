@@ -154,3 +154,48 @@ Uz $\famH = \{ \varnothing, \Omega\}$ u propoziciji \ref{prop:22.11}, iz \eqref{
         \int\limits_A X \: d \masP = \int\limits_\Omega \karaktFja_A \cdot X \: \masP = \masE [\karaktFja_A \cdot X] = \masP(A) \cdot \masE = \int\limits_A \masE X \: d \masP.
     \end{equation*}
 \end{proof}
+
+Funkcija $g : \real \to \real$ je konveksna ako za svaki $x, y \in \real$ i za svaki $\lambda \in \segment{0}{1}$ vrijedi
+\begin{equation*}
+    g (\lambda \cdot x + (1 - \lambda) \cdot y) \leq \lambda \cdot g (x) + (1 - \lambda) \cdot g (y).
+\end{equation*}
+\v Sto je ekvivalentno s
+\begin{equation*}
+    \frac{g(x) - g(y)}{x - y} \leq \frac{g(z) - g(y)}{z - y}, \quad x < z < y.
+\end{equation*}
+
+\begin{zad} \label{zad:22.17}
+    Doka\v zite da je svaka konveksna funkcija nu\v zno neprekidna.
+    Doka\v zite da za konveksnu funkciju postoje rastu\' ce funkcije $h$ takve da vrijedi
+    \begin{equation*}
+        g(x) - g(y) \geq h(y) (x - y) \quad x, y \in \real, \; x \neq y.
+    \end{equation*}
+\end{zad}
+
+\begin{prop}    \label{zad:22.18}
+    Neka je $X \in L^1 (\masP)$ i g konveksa funkcija takva da je $g(X) \in L^1 (\masP)$.
+    Tada je
+    \begin{equation*}
+        g (\masE [X | \famG]) \leq \masE [g(X) | \famG].
+    \end{equation*}
+\end{prop}
+
+\begin{proof}
+    Uo\v cimo da je $g$ neprekidna, pa je $g(\masE[X | \famG])$ $\famG$-izmjeriva.
+    Isto vrijedi i za $h$ iz zadatka \ref{zad:22.17}.
+    Po zadatku \ref{zad:22.17} vrijedi
+    \begin{equation*}
+        g(X) - g(\masE[X | \famG]) \geq h (\masE [X | \famG]) \cdot (X - \masE [X | \famG]).
+    \end{equation*}
+    Zbog monotonosti uvjetnog o\v cekivanja, te linearnosti i \eqref{jed:22.7}, vrijedi
+    \begin{equation*}
+        \begin{aligned}
+            \masE [g(X) | \famG] - g(\masE [X | \famG]) &= \masE \Big[g(X) - g(\masE [X | \famG]) \Big| \famG \Big]\\
+            &\geq \masE \Big[h (\masE [X | \famG]) \cdot (X - \masE [X | \famG]) \Big| \famG \Big] =
+            \begin{psmallmatrix}
+                \textnormal{propozicija \ref{prop:22.15}}
+            \end{psmallmatrix}\\
+            &= h (\masE [X | \famG]) \cdot \underbrace{\masE \Big[X - \masE [X | \famG] \Big| \famG \Big]}_{= 0} = 0.
+        \end{aligned}
+    \end{equation*} 
+\end{proof}
