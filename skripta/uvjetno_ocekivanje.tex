@@ -190,12 +190,62 @@ Funkcija $g : \real \to \real$ je konveksna ako za svaki $x, y \in \real$ i za s
     Zbog monotonosti uvjetnog o\v cekivanja, te linearnosti i \eqref{jed:22.7}, vrijedi
     \begin{equation*}
         \begin{aligned}
-            \masE [g(X) | \famG] - g(\masE [X | \famG]) &= \masE \Big[g(X) - g(\masE [X | \famG]) \Big| \famG \Big]\\
-            &\geq \masE \Big[h (\masE [X | \famG]) \cdot (X - \masE [X | \famG]) \Big| \famG \Big] =
+            \masE [g(X) | \famG] - g(\masE [X | \famG]) &= \masE \big[g(X) - g(\masE [X | \famG]) \big| \famG \big]\\
+            &\geq \masE \big[h (\masE [X | \famG]) \cdot (X - \masE [X | \famG]) \big| \famG \big] =
             \begin{psmallmatrix}
                 \textnormal{propozicija \ref{prop:22.15}}
             \end{psmallmatrix}\\
-            &= h (\masE [X | \famG]) \cdot \underbrace{\masE \Big[X - \masE [X | \famG] \Big| \famG \Big]}_{= 0} = 0.
+            &= h (\masE [X | \famG]) \cdot \underbrace{\masE \big[X - \masE [X | \famG] \big| \famG \big]}_{= 0} = 0.
         \end{aligned}
     \end{equation*} 
 \end{proof}
+
+Obratimo pa\v znu na poseban slu\v caj, kada je $\famG = \sigAlg{Y}$.
+Neka je $X \in L^1 (\masP)$, tada je za svaki $B \in \borel{\real}$ definirano preslikavanje
+\begin{equation*}
+    B \mapsto \int\limits_{\praslika{Y} (B)} X \: d \masP,
+\end{equation*}
+\v sto je kona\v cna realna mjera na $(\real, \borel{\real})$, koja je apsolutno neprekidna u odnosu na zakon razdiobe od $Y$, $\masP_Y$.
+Po Radon-Nikodymovom teoremu postoji Borelova funkcija $h : \real \to \real$ koja je Radon-Nikodymova derivacija.
+Uvedimo oznaku
+\begin{equation}    \label{jed:22.19}
+    \masE [X | Y = y] := h (y)
+\end{equation}
+i uo\v cimo da je ova funkcija jedinstveno odre\dj ena do na skup $\masP_Y$-mjere nula.
+Dakle, definicijska relacija za $\masE [X | Y = y]$ je da za svaki $B \in \borel{\real}$ vrijedi
+\begin{equation}    \label{jed:22.20}
+    \int\limits_B \masE [X | Y = y] \: d \masP_Y (y) = \int\limits_{\praslika{Y} (B)} X \: d \masP.
+\end{equation}
+Posebno, to zna\v ci da je
+\begin{equation}    \label{jed:22.21}
+    \masE [X | Y] = \masE [X | Y = y] \circ Y.
+\end{equation}
+
+\begin{zad} \label{zad:22.22}
+    Doka\v zite svojstva, analogna onima dokazanima za $\masE [X | Y]$ u ovom poglavlju, za funckiju $\masE [X | Y = y]$.
+\end{zad}
+
+\begin{nap} \label{nap:22.23}
+    Potpuno analogan pristup ovom pojmu je u slu\v caju kada je $Y = (Y_1, \ldots, Y_n)$ $n$-dimenzionalan slu\v cajana vektor.
+    Tada je $\masE [X | Y = y]$ Borelova funkcija sa $\real^n$ u $\real$.
+\end{nap}
+
+\begin{zad} \label{zad:22.24}
+    Neka su $X = (X_1, \ldots, X_m)$ i $Y = (Y_1, \ldots, Y_n)$ nezavisni slu\v cajni vektori i neka je
+    \begin{equation*}
+        f : \real^m \times \real^n \to \real
+    \end{equation*}
+    Borelova funkcija za koju vrijedi $f (X, Y) \in L^1 (\masP)$.
+    Definiramo $h: \real^m \to \real$, pomo\' cu
+    \begin{equation*}
+        h (x) :=
+        \begin{cases}
+            \masE [ f (x, y)] &, f (x, Y) \in L^1 (\masP)\\
+            0 &, f (x, Y) \notin L^1 (\masP)
+        \end{cases}.
+    \end{equation*}
+    Doka\v zite da  je $h$ Borelova funkcija i da je
+    \begin{equation*}
+        h (x) = \masE [f (X, Y) | X = x].
+    \end{equation*}
+\end{zad}
