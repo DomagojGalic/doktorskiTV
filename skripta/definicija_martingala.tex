@@ -54,3 +54,124 @@
         \end{aligned}
     \end{equation}
 \end{pr}
+
+\begin{defn}    \label{defn:23.4}
+    Neka je $\masT$ jedan od sljede\' cih skupova $\{ 0, \ldots, n \}$, $\nat \cup \{0\}$, $\nat \cup \{0, +\infty\}$, $\{ \ldots, -n, \ldots, -1, 0\}$, $\segment{0}{a}$, $\desInt{0}{+\infty}$, $\segment{0}{+\infty}$.
+    Neka je $\vjerojatnosniProstor$ vjerojatnsni prostor s filtracijom $\indFamilija{\famF_t}{t \in \masT}$.
+    Stohasti\v cki proces $\niz{X_t}{t \in \masT}$ je \emph{martingal} (\emph{submartingal, supermartingal}), u odnosu na $(\famF_t)$, ako vrijedi:
+    \begin{enumerate}[label=(\alph*)]
+        \item   \label{defn:23.4.1}
+        svaka $X_t$ je slu\v cajna varijabla u $L^1 (\masP)$
+        \item   \label{defn:23.4.2}
+        $(X_t)$ je $\{\famF_t\}$-adaptiran, to jest $X_t$ je $\famF_t$-izmjeriv za svaki $t \in \masT$
+        \item   \label{defn:23.4.3}
+        za svaki $s \leq t$, $s, t \in \masT$, vrijedi
+        \begin{equation*}
+            \masE [X_t | \famF_s] = (\geq, \leq ) X_s.
+        \end{equation*}
+    \end{enumerate}
+\end{defn}
+
+Uo\v cimo nekoliko svojstava koja direktno slijedi iz definicije.
+Stohasti\v cki proces je martingal ako i samo ako je supermartingal i submartingal.
+Stohasti\v cki proces $(X_t)$ je supermartingal ako i samo ako je $(-X_t)$ submartingal (stoga se rezultati za jednu klasu procesa direktno prenose na drugu).
+Koriste\' ci linearnost uvjetnog o\v cekivanja direktno dobijemo
+
+\begin{prop}    \label{prop:23.5}
+    Neka su $\niz{X_t}{t \in \masT}$ i $\niz{Y_t}{t \in \masT}$ martingali u odnosu na istu filtraciju $\indFamilija{\famF_t}{t \in \masT}$, te neka su $\alpha, \beta \in \real$, tada je i $\niz{\alpha X_t + \beta Y_t}{t \in \masT}$ martingal s obzirom na filtraciju $\indFamilija{\famF_t}{t \in \masT}$.
+\end{prop}
+
+\begin{prop}    \label{prop:23.6}
+    Neka su $\niz{X_t}{t \in \masT}$ i $\niz{Y_t}{t \in \masT}$ supermartingali u odnosu na istu filtraciju $\indFamilija{\famF_t}{t \in \masT}$, te neka su $\alpha \geq 0, \beta \geq 0$, tada je i $\niz{\alpha X_t + \beta Y_t}{t \in \masT}$ supermartingal s obzirom na filtraciju $\indFamilija{\famF_t}{t \in \masT}$.
+\end{prop}
+
+\begin{zad} \label{zad:23.7}
+    Ako su $\niz{X_t}{t \in \masT}$, $\niz{Y_t}{t \in \masT}$ supermartingali u odnosu na filtraciju $\indFamilija{\famF_t}{t \in \masT}$, tada je $\niz{X_t \land Y_t}{t \in \masT}$ supermartingal s obzirom na istu filtraciju.
+\end{zad}
+
+\begin{rj}[\ref{zad:23.7}]
+    Neka su $s, t \in \masT$ takvi da je $s \leq t$.
+    Slu\v cajna varijabla $X_t \land Y_t$ je $\famF_t$-izmjeriva, kao minimum izmjerivih funkcija, tako\dj er vrijedi
+    \begin{equation*}
+        \masE [X_t \land Y_t] \leq \masE X_t < +\infty,
+    \end{equation*}
+    dakle $X_t \land Y_t \in L^1 (\masP)$.
+
+    Primjetimo
+    \begin{equation*}
+        X_t \land Y_t \leq X_t
+    \end{equation*}
+    sada po monotonosti uvjetnog o\v cekivanja imamo
+    \begin{equation*}
+        \masE [X_t \land Y_t | \famF_s] \leq \masE [X_t | \famF_s] \leq X_s,
+    \end{equation*}
+    gdje zadnja nejednakost slijedi iz \v cinjenice da je $\niz{X_t}{t \in \masT}$ supermartingal.
+    Analogno dobijemo izraz
+    \begin{equation*}
+        \masE [X_t \land Y_t | \famF_s] \leq Y_s,
+    \end{equation*}
+    odakle zaklju\v cujemo da je
+    \begin{equation*}
+        \masE [X_t \land Y_t | \famF_s] \leq X_s \land Y_s,
+    \end{equation*}
+    \v sto je i trebalo pokazati.
+\end{rj}
+
+\begin{pr}[$1$-dimenzionalne su\v cajne \v setnje]  \label{pr:23.8}
+    \quad \\
+    Primjer \ref{pr:23.1} se da lako poop\' citi.
+    Neka su $\niz{X_n}{n \in \nat}$ nezavisne, jednako distribuirane slu\v cajne varijable, takve da je $X_n \in L^1 (\masP)$, za svaki $n \in \nat$.
+    Neka je $S_0 := 0, S_n := X_1 + \ldots + X_n$, pripadna slu\v cajna \v setnja i $\famF_n := \sigAlg{X_1, \ldots, X_n}$.
+    Tada je $\niz{S_n}{n \in \nat_0}$ stohasti\v cki proces koji je $\{\famF_n\}$-adaptiran i $S_n \in L^1 (\masP)$.
+    Zbog
+    \begin{equation*}
+        \masE [S_{n+1} | \famF_n] = \masE X_{n + 1} + \masE S_n = \masE X_1 + S_n,
+    \end{equation*}
+    slijedi
+    \begin{equation*}
+        \niz{S_n}{n \in \nat_0} \; \textnormal{ je } \quad
+        \begin{cases}
+            \textnormal{supermartingal ako je } &\masE X_1 < 0\\
+            \textnormal{martingal ako je } &\masE X_1 = 0\\
+            \textnormal{submartingal ako je } &\masE X_1 > 0
+        \end{cases}.
+    \end{equation*}
+\end{pr}
+
+\begin{pr}[L\' evyjevi procesi] \label{pr:23.9}
+    Ideje iz primjera \ref{pr:23.8} se lako prenose i na ovaj slu\v caj.
+    Neka je $\niz{X_t}{t \in \desInt{0}{+\infty}}$ L\' evyjev proces sa svojstvom $X_t \in L^1 (\masP)$, za svaki $t \geq 0$.
+    Neka je $\famF_t := \indSigAlg{X_s}{0 \leq s \leq t}$, za svaki $t \geq 0$.
+    O\v cito je $\niz{X_t}{t \geq 0}$ $\{\famF_t\}$-adaptiran.
+    Neka je $0 \leq s < t$, imamo
+    \begin{equation*}
+        \begin{aligned}
+            \masE [X_t | \famF_s] &= \masE [X_t - X_s + X_s | \famF_s] =
+            \begin{psmallmatrix}
+                \textnormal{adaptiranost}
+            \end{psmallmatrix}\\
+            &= \masE [X_t - X_s | \famF_s] + X_s =
+            \begin{psmallmatrix}
+                \textnormal{napomena \ref{nap:21.16}}\\
+                \textnormal{propozicija \ref{prop:22.16}}
+            \end{psmallmatrix}
+            = \masE [X_t - X_s] + X_s\\
+            &= \masE [X_{t - s}] + X_s.
+        \end{aligned}
+    \end{equation*}
+    Zbog propozicije \ref{prop:23.5} i korolara \ref{kor:17.7} \ref{kor:17.7.1} slijedi
+    \begin{equation*}
+        \masE [X_{t - s}] = (t - s) \cdot \masE X_1.
+    \end{equation*}
+    Dakle imamo
+    \begin{equation*}
+        \niz{X_t}{ t \geq 0} \; \textnormal{ je} \quad
+        \begin{cases}
+            \textnormal{supermartingal ako je } &\masE X_1 < 0\\
+            \textnormal{martingal ako je } &\masE X_1 = 0\\
+            \textnormal{submartingal ako je } &\masE X_1 > 0
+        \end{cases}.
+    \end{equation*}
+    Posebno, primjetimo da je Brownovo gibanje $(B_t)$ martingal, dok je Poissonov proces $(N_t)$ submartingal.
+    Ako je $\lambda > 0$ parametar Poissonovog procesa, uo\v cimo da gornji izvod pokazuje da je $\niz{N_t - \lambda \cdot t}{t \geq 0}$ martingal.
+\end{pr}
