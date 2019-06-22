@@ -106,3 +106,98 @@ Stavimo
         \masE [U_{a b}] \leq \frac{1}{b - a} \masE [(X_n - a)^+].
     \end{equation*}
 \end{tm}
+
+\begin{proof}
+    Budu\' ci da je $\niz{(X_k - a)^+}{k = 1, \ldots, n}$ ponovo submartingal te pripadni $U_{0, b - a}$ je isti kao i $U_{a b}$ za polazni submartingal $(X_k)$, bez smanjenja op\' cenitosti mo\v zemo pretpostaviti da je $a = 0$ i $X_k \geq 0$, za svaki $k$ ura\v cunajmo samo preskoke prema gore, to jest u teoremu \ref{tm:24.1} biramo $\varepsilon_j$ tako da je $\varepsilon_j = 0$ za $j < T_1$, $\varepsilon_j = 1$, za $T_1 \leq j < T_2$, $\varepsilon_j = 0$, za $T_2 \leq j < T_3$, to jest ako je $i \in \nat$, tada
+    \begin{equation*}
+        \varepsilon_j =
+        \begin{cases}
+            1 ,& T_{2 i - 1} \leq j < T_{2 i}\\
+            0 ,& \textnormal{ina\v ce}
+        \end{cases}.
+    \end{equation*}
+    Slijedi da je
+    \begin{equation*}
+        Y_n \geq b U_{0, b},
+    \end{equation*}
+    odakle dobijemo
+    \begin{equation*}
+        \masE [U_{0, b}] \leq \frac{1}{b} \masE Y_n \leq \frac{1}{b} \masE X_n,
+    \end{equation*}
+    gdje zadnja nejednakost slijedi iz teorema \ref{tm:24.1}.
+\end{proof}
+
+Za sljede\' ci teorem uo\v cimo da za niz $\niz{x_n}{n \in \nat} \subseteq \real$ vrijedi
+\begin{equation}    \label{jed:24.3}
+    \begin{matrix}
+        (X_n) \textnormal{ ne konvergira}\\
+        \textnormal{u } \extReal
+    \end{matrix}
+    \quad \iff \quad
+    \begin{matrix}
+        \textnormal{postoje } a, b \in \masQ, \; a < b\\
+        \liminf x_n \leq a < b \leq \limsup x_n
+    \end{matrix}.
+\end{equation}
+
+\begin{tm}[O konvergenciji submartingala]   \label{tm:24.4}
+    \quad \\
+    Neka je $\niz{X_n}{n \in \nat}$ submartingal u odnosu na filtraciju $\indFamilija{\famF_n}{n \in \nat}$.
+    Ako je
+    \begin{equation*}
+        \sup \: \bigIndFamilija{\masE [ X_n^+]}{n \in \nat} < +\infty,
+    \end{equation*}
+    tada postoji $X_\infty \in L^1(\masP)$, takav da je
+    \begin{equation*}
+        \lim\limits_{n \to \infty} X_n = X_\infty \; (g.s.).
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Ako za neke $a < b$, vrijedi
+    \begin{equation*}
+        \masP \bigNiz{\omega \in \Omega}{\liminf\limits_{n \to \infty} X_n (\omega) \leq a < b \leq \limsup\limits_{n \to \infty} X_n (\omega) } > 0,
+    \end{equation*}
+    tada vrijedi $U_{a b} = +\infty$, za cijeli niz.
+    Uo\v cimo da je
+    \begin{equation*}
+        U_{a b} = \lim\limits_{n \to \infty} U_{a b ; n}.
+    \end{equation*}
+    Budu\' ci je niz $\niz{U_{a b; n}}{n \in \nat}$ rastu\' c vrijedi
+    \begin{equation*}
+        \masE [U_{a b}] = \lim\limits_{n \to \infty} \masE [U_{a b; n}].
+    \end{equation*}
+    No, imamo
+    \begin{equation*}
+        \masE [U_{a b; n}] \leq \frac{1}{b - a} \masE [(X_n - a)^+] \leq \frac{1}{b - a} \Big( \sup\limits_{n \in \nat} \: \masE [X_n^+] + a^- \Big) < +\infty,
+    \end{equation*}
+    % ovaj dio mi nije jasan :/
+    \v sto je kontradikcija.
+
+    Po \eqref{jed:24.3} postoji limes gotovo sigurno i to je $X_\infty$.
+    Uo\v cimo
+    \begin{equation*}
+        |X_n| = X_n^+ + X_n^- = 2 \cdot X_n^+ - X_n^- .
+    \end{equation*}
+    Budu\' ci je $(X_n)$ submartingal, vrijedi $\masE X_n \geq \masE X_1$, odakle imamo
+    \begin{equation*}
+        \masE [|X_n|] \leq 2 \sup\limits_{n \in \nat} \: \masE [X_n^+] - \masE X_1 < +\infty,
+    \end{equation*}
+    pa prema Fatuovoj lemi imamo
+    \begin{equation*}
+        \masE [|X_\infty|] \leq \liminf\limits_{n \to \infty} \masE [|X_n|] \leq 2 \sup\limits_{n \in \nat} \: \masE [X_n^+] - \masE X_1 < +\infty.
+    \end{equation*}
+\end{proof}
+
+\begin{zad} \label{zad:24.5}
+    \begin{enumerate}[label=(\alph*)]
+        \item \label{zad:24.5.1}
+        Formulirajte i doka\v zite teorem konvergencije za supermartingale.
+        \item \label{zad:24.5.2}
+        Formulirajte i doka\v zite teorem konvergencije za submartingale u slu\v caju
+        \begin{equation*}
+            T = \{ \ldots, -n, \ldots, -1, 0 \}.
+        \end{equation*}
+        Opi\v site posebno slu\v caj martingala.
+    \end{enumerate}
+\end{zad}
