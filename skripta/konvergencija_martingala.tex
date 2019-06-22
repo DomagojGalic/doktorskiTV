@@ -1,3 +1,108 @@
 % konvergencija martingala, cjelina 5.4 -> predavanje 24
 
 \chapter{Konvergencija martingala}
+
+Razmislimo o jednostavnoj strategiji prilikom igranja neke igre opisane submartingalom ili martingalom.
+Na\v sa strategija \'ce biti ili "propu\v stamo igru na temelju postoje\' cih informacija" ili "ulazimo u igru ne temelju postoje\' cih informacija".
+Slijede\' ci teorem ka\v ze da kako god izabrali takvu "strategiju propu\v stanja igre", ne\' cemo promijeniti prirodu igre.
+
+\begin{tm}[Halmos, "optimal skipping theorem"]  \label{tm:24.1}
+    \quad \\
+    Neka je $\niz{X_n}{n \in \nat}$ submartingal (martingal) u odnosu na filtraciju $\indFamilija{\famF_n}{n \in \nat}$.
+    Neka je $\indFamilija{B_n}{n \in \nat}$ niz Borelovih skupova, tako da je $B_n \in \borel{\real^n}$, za svaki $n \in \nat$.
+    Neka su slu\v cajne varijable $\varepsilon_1, \varepsilon_2, \ldots$ definirane sa
+    \begin{equation*}
+        \varepsilon_k :=
+        \begin{cases}
+            1 &, (X_1, \ldots, X_k) \in B_k\\
+            0 &, (X_1, \ldots, X_k) \notin B_k
+        \end{cases},
+    \end{equation*}
+    i $\niz{Y_n}{n \in \nat}$ niz slu\v cajnih varijabli definiranih sa
+    \begin{equation*}
+        \begin{gathered}
+            Y_1 := X_1,\\
+            Y_{k + 1} := Y_k + \varepsilon_k \cdot (X_{k + 1} - X_k).
+        \end{gathered}
+    \end{equation*}
+    Tada je $(Y_n)$ submartingal (martingal) u odnosu na filtraciju $\indFamilija{\famF_n}{n \in \nat}$ i vrijedi $\masE Y_n \leq \masE X_n$ ($\masE Y_n = \masE X_n$), za svaki $n \in \nat$.
+\end{tm}
+
+\begin{proof}
+    O\v cito je $\varepsilon_n$ $\famF_n$-izmjeriva, pa je $(Y_n)$ $\{\famF_n\}$-adaptiran niz iz $L^1(\masP)$.
+    Uo\v cimo da je $\masE Y_1 = \masE X_1$ i promotrimo
+    \begin{equation*}
+        \begin{gathered}
+            \masE [Y_{n + 1} | \famF_n] = Y_n + \varepsilon_n \cdot \masE [X_{n + 1} - X_n | \famF_n]\\
+            \begin{aligned}
+                \textnormal{submartingal} &\implies \masE [X_{n + 1} - X_n | \famF_n] \geq 0\\
+                \textnormal{martingal} &\implies \masE [X_{n + 1} - X_n | \famF_n] = 0.
+            \end{aligned}
+        \end{gathered}
+    \end{equation*}
+    Primjetimo
+    \begin{equation*}
+        X_{n + 1} - Y_{n + 1} = (1 - \varepsilon_n) (X_{n + 1} - X_n) + (X_n - Y_n),
+    \end{equation*}
+    slijedi
+    \begin{equation*}
+        \masE [X_{n + 1} - Y_{n + 1} | \famF]
+        \begin{smallmatrix}
+            \geq\\
+            (=)
+        \end{smallmatrix}
+        \masE [X_n - Y_n | \famF_n] = X_n - Y_n,
+    \end{equation*}
+    odakle vidimo da vrijedi
+    \begin{equation*}
+        \masE [X_{n + 1} - Y_{n + 1}]
+        \begin{smallmatrix}
+            \geq\\
+            (=)
+        \end{smallmatrix}
+        \masE [X_n - Y_n]
+    \end{equation*}
+    \v sto daje tvrdnju.
+\end{proof}
+
+Ako je $x_1, \ldots, X_n$ niz brojeva i $\obInt{a}{b}$ otvoreni interval.
+Mo\v zemo brojati koliko puta ovaj niz "presko\v ci" $\obInt{a}{b}$ prema gore.
+Stavimo
+\begin{equation*}
+    \begin{aligned}
+        T_1 &:=
+        \begin{cases}
+            \min \indFamilija{k}{1 \leq k \leq n, \; x_k \leq a}\\
+            +\infty, \quad \indFamilija{k}{1 \leq k \leq n, \; x_k \leq a} = \varnothing
+        \end{cases},\\
+        T_2 &:=
+        \begin{cases}
+            \min \indFamilija{k}{T_1 < k \leq n, \; x_k \geq b}\\
+            +\infty, \quad \indFamilija{k}{T_1 < k \leq n, \; x_k \geq b} = \varnothing
+        \end{cases}.
+    \end{aligned}
+\end{equation*}
+Neka je
+\begin{equation*}
+    N := \mathrm{card} \indFamilija{1 \leq k \leq n}{T_k < +\infty},
+\end{equation*}
+uz konvenciju $\mathrm{card} \varnothing = +\infty$.
+Stavimo
+\begin{equation*}
+    U_{a b} :=
+    \begin{cases}
+        \frac{N}{2},& N \textnormal{ paran}\\
+        \frac{N + 1}{2},& N \textnormal{ neparan}\\
+        0,& N = +\infty
+    \end{cases}
+\end{equation*}
+
+\begin{tm}[J. L. Doob, "upcrossing theorem"]    \label{tm:24.2}
+    \quad \\
+    Neka su $a, b \in \real$, $a < b$ i neka je $\niz{X_k}{k = 1, \leq, n}$ submartingal u odnosu na filtraciju $\indFamilija{\famF_k}{k = 1, \ldots, n}$.
+    Neka je $U_{a b}$ slu\v cajna varijabla definirana pomo\' cu $X_1, \ldots, X_n$.
+    Tada je
+    \begin{equation*}
+        \masE [U_{a b}] \leq \frac{1}{b - a} \masE [(X_n - a)^+].
+    \end{equation*}
+\end{tm}
