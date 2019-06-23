@@ -292,3 +292,112 @@ Koriste\' ci Fatuovu lemu, doka\v zite ovo pro\v sirenje.
     \end{equation*}
     \v sto daje tvrdnju.
 \end{proof}
+
+\begin{nap} \label{nap:24.12}
+    \begin{enumerate}[label=(\alph*)]
+        \item \label{nap:24.12.1}
+        Uo\v cimo da prelaskom na podnizove lako doka\v zemo gornju tvrdnju i za slu\v caj $Y_n \xrightarrow[n \to \infty]{\masP} Y$.
+        \item \label{nap:24.12.2}
+        U \eqref{jed:24.11} smo pokazali da svaka uniformno integrabilna familija mo\v ze biti $L^1 (\masP)$-ome\dj ena.
+        Obrat ne mora vrijediti, ali vrijedi sljede\' ci teorem.
+    \end{enumerate}
+\end{nap}
+
+\begin{tm}  \label{tm:24.13}
+    Familija $\indFamilija{Y_n}{n \in \nat}$ je uniformno integrabilna ako i samo ako je $L^1 (\masP)$-ome\dj ena i uniformno neprekidna, to jest vrijedi
+    \begin{equation*}
+        \lim\limits_{\masP (A) \to 0} \Big( \sup\limits_{n \in \nat} \: \int\limits_A |Y_n| \: d \masP \Big) = 0.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Po \v Cebi\v sevljevoj nejednakosti imamo
+    \begin{equation*}
+        \masP ( |Y_n| \geq c) \leq \frac{1}{n} \masE [|Y_n|],
+    \end{equation*}
+    iz \v cega slijedi dovoljnost.
+    Kao i u \eqref{jed:24.11} dobijemo
+    \begin{equation*}
+        \int\limits_A |Y_n| \: d \masP \leq \int\limits_{\{ |Y_n| \geq c \}} |Y_n| \: d \masP + c \cdot \masP ( A ),
+    \end{equation*}
+    \v sto daje nu\v znost.
+\end{proof}
+
+\begin{tm}  \label{tm:24.14}
+    Ako je $1 \leq p < +\infty$, $\indFamilija{|Y_n|^p}{n \in \nat}$ je uniformno integrabilna i
+    \begin{equation*}
+        Y_n \xrightarrow[n \to \infty]{g.s.} Y,
+    \end{equation*}
+    tada,
+    \begin{equation*}
+        Y_n \xrightarrow[n \to \infty]{L^p} Y.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Zbog \v cinjenice da je
+    \begin{equation*}
+        |Y_n|^p \xrightarrow[n \to \infty]{g.s.} |Y|^p,
+    \end{equation*}
+    teorem \ref{tm:24.10} daje $Y \in L^p (\masP)$.
+    No tada je $\indFamilija{|Y_n - Y|^p}{n \in \nat}$ uniformno integrabilna familija te te\v zi u $0$ gotovo sigurno.
+    Sada tvrdnja slijedi po teoremu \ref{tm:24.10}.
+\end{proof}
+
+% uputa: koristi teorem 24.13
+\begin{zad} \label{zad:24.15}
+    Poka\v zi obrat teorema \ref{tm:24.14}.
+\end{zad}
+
+\begin{zad} \label{zad:24.16}
+    Neka je $Y \in L^1 (\masP)$ i neka je $\indFamilija{\famF_n}{n \in \nat}$ filtracija.
+    Poka\v zi da je $\indFamilija{\masE [Y | \famF_n]}{n \in \nat}$ uniformno integrabilna.
+\end{zad}
+
+\begin{tm}  \label{tm:24.17}
+    Neka je $\niz{X_n}{n \in \nat}$ submartingal s obzirom na filtraciju $\indFamilija{\famF_n}{n \in \nat}$.
+    Tada je $\indFamilija{X_n}{n \in \nat}$ uniformno integrabilna ako i samo postoji $X_\infty \in L^1 (\masP)$ takva da je
+    \begin{equation*}
+        X_n \xrightarrow[n \to \infty]{L^1} X_\infty.
+    \end{equation*}
+    Ako je $\niz{X_n}{n \in \nat}$ martingal, slijedi
+    \begin{equation*}
+        X_n = \masE [X_\infty | \famF_n], \quad n \in \nat.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Ako je familija $\indFamilija{X_n}{n \in \nat}$ uniformno integrabilna, tada je $L^1 (\masP)$-ome\dj ena, toga po teoremu \ref{tm:24.4} postoji slu\v cajna varijabla $X_\infty \in L^1 (\masP)$ takva da vrijedi
+    \begin{equation*}
+        X_n \xrightarrow[n \to \infty]{g.s.} X_\infty.
+    \end{equation*}
+    Sada po teoremu \ref{tm:24.14} uz $p = 1$ imamo
+    \begin{equation*}
+        X_n \xrightarrow[n \to \infty]{L^1} X_\infty.
+    \end{equation*}
+    Obrat slijedi iz zadatka \ref{zad:24.15}.
+
+    Budu\' ci da je $X_\infty \in L^1 (\masP)$, ima smisla $\masE [X_\infty | \famF_n]$.
+    Za $A \in \famF_n$ i $m > n$ vrijedi
+    \begin{equation*}
+        \int\limits_A X_m \: d \masP = \int\limits_A X_n \: d \masP,
+    \end{equation*}
+    zato \v sto je $\niz{X_n}{n \in \nat}$ martingal.
+    No vrijedi
+    \begin{equation*}
+        \karaktFja_A \cdot X_m \xrightarrow[n \to \infty]{g.s.} \karaktFja_A \cdot X_\infty,
+    \end{equation*}
+    a prema teoremu \ref{tm:24.14} dobijemo
+    \begin{equation*}
+        \int\limits_A X_m \: d \masP \xrightarrow[n \to \infty]{} \int\limits_A X_\infty \: d \masP,
+    \end{equation*}
+    to jest
+    \begin{equation*}
+        \int\limits_A X_n \: d \masP = \int\limits_A X_\infty \: d \masP.
+    \end{equation*}
+\end{proof}
+
+\begin{nap} \label{nap:24.18}
+    Ako je $\famF_\infty = \bigSigAlg{\unija{n \in \nat}{} \famF_n}$, uo\v cimo da je $X_\infty$ $\famF_\infty$-izmjeriva, to jest
+    $\niz{X_n}{n \in \nat \cup \{+ \infty\}}$ je martingal s obzirom na filtraciju $\indFamilija{\famF_n}{n \in \nat \cup \{+ \infty\}}$.
+\end{nap}
