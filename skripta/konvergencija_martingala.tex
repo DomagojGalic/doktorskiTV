@@ -201,3 +201,94 @@ Za sljede\' ci teorem uo\v cimo da za niz $\niz{x_n}{n \in \nat} \subseteq \real
         Opi\v site posebno slu\v caj martingala.
     \end{enumerate}
 \end{zad}
+
+\begin{nap} \label{nap:24.6}
+    Uo\v cite da je u dokazu teorema \ref{tm:24.4} pokazano i da je familija $\indFamilija{X_n}{n \in \nat}$ $L^1 (\masP)$-ome\dj eno, to jest vrijedi
+    \begin{equation*}
+        \sup\limits_{n \in \nat} \: \masE [|X_n|] < +\infty.
+    \end{equation*}
+    Dakle za submartingale vrijedi
+    \begin{equation*}
+        \sup\limits_{n \in \nat} \: \masE [X_n^+] < +\infty \quad \implies \quad
+        \begin{matrix}
+            \textnormal{konvergencija i}\\
+            L^1 (\masP) \textnormal{-ome\dj enost.}
+        \end{matrix}
+    \end{equation*}
+    Submartingal mo\v ze konvergirati bez da bude $L^1 (\masP)$-ome\dj en.
+\end{nap}
+
+\begin{kor} \label{kor:24.7}
+    Ako je $\niz{X_n}{n \in \nat}$ supermartingal i $X_n \geq 0$, za svaki $n \in \nat$, tada postoji $X \in L^1 (\masP)$ takav da vrijedi
+    \begin{equation*}
+        \lim\limits_{n \to \infty} X_n = X \; (g.s.)
+    \end{equation*}
+    te je $\masE X \leq \masE X_1$.
+\end{kor}
+
+\begin{proof}
+    Stavimo
+    \begin{equation*}
+        Y_n := - X_n \leq 0,
+    \end{equation*}
+    daje submartingal za koji vrijedi
+    \begin{equation*}
+        \masE [Y_n^+] = 0,
+    \end{equation*}
+    pa iskoristimo teorem \ref{tm:24.4}.
+    Zbog $\masE X_1 \geq \masE X_n$, zadnja tvrdnja slijedi iz Fatuove leme.
+\end{proof}
+
+Podsjetimo se da, u skladu s definicijom za pripadni $F_{X_n}$, je familija slu\v cajnih varijabli $\indFamilija{Y_n}{n \in \nat}$ na vjerojatnosnom prostoru $\vjerojatnosniProstor$ \emph{uniformno integrabilna} ako je
+\begin{equation}    \label{jed:24.8}
+    \lim\limits_{c \to \infty} \Big( \sup\limits_{n \in \nat} \: \int\limits_{\{ |Y_n| > c \}} |Y_n| \: d \masP \Big) = 0.
+\end{equation}
+
+Uo\v cimo da to posebno zna\v ci da je za svaku $Y_n \in L^1 (\masP)$.
+Ako imamo kona\v cnu familiju $\indFamilija{Y_k}{k = 1, \ldots, n} \subseteq L^1 (\masP)$, lako se vidi da da je ta familija uniformno integrabilna.
+
+Koriste\' ci Fatuovu lemu, doka\v zite ovo pro\v sirenje.
+
+\begin{zad}  \label{zad:24.9}
+    Neka je $\indFamilija{Y_n}{n \in \nat}$ uniformno integrabilna familija slu\v cajnih varijabli.
+    Tada vrijedi:
+    \begin{equation*}
+        \int\limits_\Omega \Big( \liminf\limits_{n \to \infty} Y_n \Big) \: d \masP \leq \liminf\limits_{n \to \infty} \int\limits_\Omega Y_n \: d \masP \leq \limsup\limits_{n \to \infty} \int\limits_\Omega Y_n \: d \masP \leq \int\limits_\Omega \Big( \limsup\limits_{n \to \infty} Y_n \Big) \: d \masP.
+    \end{equation*}
+\end{zad}
+
+\begin{tm}  \label{tm:24.10}
+    Neka je $\indFamilija{Y_n}{n \in \nat}$ uniformno integrabilna funkcija slu\v cajnih varijabli.
+    Ako je
+    \begin{equation*}
+        Y_n \xrightarrow[n \to \infty]{g.s.} Y,
+    \end{equation*}
+    tada je $Y \in L^1 (\masP)$ i vrijedi
+    \begin{equation*}
+        \masE Y_n \xrightarrow[n \to \infty]{} \masE Y.
+    \end{equation*}
+\end{tm}
+
+\begin{proof}
+    Uo\v cimo da vrijedi
+    \begin{equation*}
+        |Y| = (g.s.) \: \lim\limits_{n \to \infty} |Y_n| = \liminf\limits_{n \to \infty} |Y_n|
+    \end{equation*}
+    pa prema zadatku \ref{zad:24.9} vrijedi
+    \begin{equation*}
+        \int\limits_\Omega |Y| \: d \masP \leq \liminf\limits_{n \to \infty} \int\limits_\Omega |Y_n| \: d \masP.
+    \end{equation*}
+    No, zbog uniformne integrabilnosti, za $\varepsilon = 1 > 0$, postoji $c$ dovoljno velik, tako da vrijedi
+    \begin{equation}    \label{jed:24.11}
+        \begin{aligned}
+            \int\limits_\Omega |Y_n| \: d \masP = \int\limits_{\{ |Y_n| > c \}} |Y_n| \: d \masP + \int\limits_{\{ |Y_n| \leq c \}} |Y_n| \: d \masP &\leq 1 + c \cdot \masP (|Y_n| \leq c)\\
+            &\leq 1 + c < +\infty.
+        \end{aligned}
+    \end{equation}
+    Odavde slijedi da je $Y \in L^1 (\masP)$.
+    Koriste\' ci zadatak \ref{zad:24.9} dobijemo
+    \begin{equation*}
+        \masE Y \leq \liminf\limits_{n \to \infty} \masE Y_n \leq \limsup\limits_{n \to \infty} \masE Y_n \leq \masE Y,
+    \end{equation*}
+    \v sto daje tvrdnju.
+\end{proof}
