@@ -22,3 +22,206 @@ Uzemo li $\varepsilon_k := \karaktFja_{\{\uptau \geq k\}}$, direktno iz teorema 
         \masE X_0 \leq \masE X_\uptau \leq \masE X_m.
     \end{equation*}
 \end{kor}
+
+\begin{proof}
+    Zbog $\uptau \leq m$ ima smisla
+    \begin{equation*}
+        X_\uptau (\omega) := X_{\uptau (\omega)} (\omega).
+    \end{equation*}
+    Po teoremu \ref{tm:25.1} $\niz{X_{\uptau \land n}}{n \in \nat_0}$ je submartingal \v sto daje
+    \begin{equation*}
+        \masE X_0 = \masE X_{\uptau \land 0} \leq \masE X_{\uptau \land m} = \masE X_\uptau.
+    \end{equation*}
+    Posebno to daje i $X_\uptau \in L^1 (\masP)$.
+    Uzemo li u teoremu \ref{tm:24.1}
+    \begin{equation*}
+        \varepsilon_k := \karaktFja_{\{ \uptau < k \}} = \karaktFja_{\{ \uptau \leq k - 1 \}}
+    \end{equation*}
+    dobijemo da je $X_n - X_{\uptau \land n}$ tako\dj er submartingal, \v sto daje
+    \begin{equation*}
+        \masE X_m - \masE X_\uptau = \masE X_m - \masE X_{\uptau \land m} \geq \masE X_0 - \masE X_{\uptau \land 0} = 0.
+    \end{equation*}
+\end{proof}
+
+Direktno iz ovoga dobijemo
+
+\begin{kor} \label{kor:25.3}
+    Ako je $\niz{X_n}{n \in \nat_0}$ submartingal, $m \in \nat$ te ako su $\uptau_1 \leq \uptau_2 \leq m$ vremena zaustavljanja, tada vrijedi
+    \begin{equation*}
+        \masE X_0 \leq \masE X_{\uptau_1} \leq \masE X_{\uptau_2} \leq \masE X_m.
+    \end{equation*}
+\end{kor}
+
+\begin{pr}  \label{pr:25.4}
+    Neka je $\niz{S_n}{n \in \nat_0}$ jednostavna simetri\v cna slu\v cajna \v setnja ($p = q = \frac{1}{2}$) to jest, $(S_n)$ je martingal.
+    Neka je
+    \begin{equation*}
+        \uptau := \min \: \indFamilija{n \in \nat}{S_n = 0}.
+    \end{equation*}
+    Krenimo od $S_0 \equiv 1$.
+    Lako se vidi da je $\uptau$ vrijeme zaustavljanja, kona\v cno je, ali nije ome\dj eno.
+    Uo\v cimo $S_\uptau = 0$, pa slijedi
+    \begin{equation*}
+        \masE S_0 = 1 > 0 = \masE S_\uptau.
+    \end{equation*}
+    O\v cito korolar \ref{kor:25.3} u ovom slu\v caju ne vrijedi.
+\end{pr}
+
+Uz koje uvjete vrijedi ja\v ca verzija korolara \ref{kor:25.3}?
+
+\begin{tm}["Optimal sampling theorem"]  \label{tm:25.5}
+    Neka je $\niz{X_n}{n \in \nat_0}$ submartingal.
+    Neka je $\uptau_0 \leq \uptau_1 \leq \ldots$ niz kona\v cnih vremena zaustavljanja.
+    Neka je $Y_n := X_{\uptau_n}$, $n \in \nat_0$.
+    Ako vrijedi
+    \begin{equation}    \label{jed:25.6}
+        \masE [|Y_n|] < +\infty, \quad \forall n \in \nat_0,
+    \end{equation}
+    te
+    \begin{equation}    \label{jed:25.7}
+        \liminf\limits_{k \to \infty} \int\limits_{\{ \uptau_n > k \}} |X_k| \: d \masP = 0, \quad \forall n \in \nat_0,
+    \end{equation}
+    tada je $\niz{Y_n}{n \in \nat}$ submartingal u odnosu na filtraciju $\indFamilija{\famF_{\tau_n}}{n \in \nat_0}$.
+    Ako je $(X_n)$ martingal, tada je i $(Y_n)$ martingal.
+\end{tm}
+
+\begin{nap} \label{nap:25.5-1}
+    Primjetimo definicija $Y_n$ ima smisla, zato \v sto su $\uptau_n$ kona\v cni.
+\end{nap}
+
+\begin{proof}
+    Za $A \in \famF_{\uptau_n}$ slijedi
+    \begin{equation*}
+        A \cap \{ \uptau_{n + 1 } \leq k \} = \unija{i = 1}{k} \big( A \cap \{ \uptau_n = i \} \big) \cap \{ \uptau_{n + 1} \leq k\}.
+    \end{equation*}
+    Budu\' ci je
+    \begin{equation*}
+        A \cap \{ \uptau_n = i \} \in \famF_i \subseteq \famF_k
+    \end{equation*}
+    i vrijedi
+    \begin{equation*}
+        \{ \uptau_{n + 1} \leq k \} \in \famF_k,
+    \end{equation*}
+    slijedi da je $A \in \famF_{\uptau_{n + 1}}$, dakle $\{\famF_{\uptau_n}\}$ je filtracija.
+
+    Kako je proces adaptiran i u $L^1 (\masP)$ po \eqref{jed:25.6}, treba pokazati jo\v s samo da za svaki $A \in \famF_{\uptau_{n}}$ vrijedi
+    \begin{equation*}
+        \int\limits_A Y_{n + 1} \: d \masP
+        \begin{smallmatrix}
+            \geq\\
+            (=)
+        \end{smallmatrix}
+        \int\limits_A Y_n \: d \masP
+    \end{equation*}
+    Budu\' ci je
+    \begin{equation*}
+        A = \unija{j \in \nat_0}{} \big( A \cap \{ \uptau_n = j \} \big),
+    \end{equation*}
+    \v sto je disjunktna unija, dovoljno je pokazati tvrdnju za
+    \begin{equation*}
+        D_j := A \cap \{ \uptau_n = j \}, \quad D_j \in \famF_j.
+    \end{equation*}
+    Uo\v cimo, za $k > j$ imamo, zbog
+    \begin{equation*}
+        \uptau_n = j \quad \implies \quad \uptau_{n + 1} \geq j
+    \end{equation*}
+
+    \begin{equation*}
+        \int\limits_{D_j} Y_{n + 1} \: d \masP = \suma{i = j}{k} \int\limits_{D_j \cap \{ \uptau_{n + 1} = i \}} Y_{n + 1} \: d \masP + \int\limits_{D_j \cap \{ \uptau_{n + 1} > k\}} Y_{n + 1} \: d \masP,
+    \end{equation*}
+    a vrijedi
+    \begin{equation*}
+        \int\limits_{D_j \cap \{ \uptau_{n + 1} > k \}} Y_{n + 1} \: d \masP = \int\limits_{D_j \cap \{ \uptau_{n + 1} > k \}} X_k \: d \masP - \int\limits_{D_j \cap \{ \uptau_{n + 1} > k \}} (X_k - Y_{n + 1}) \: d \masP,
+    \end{equation*}
+    dok
+    \begin{equation*}
+        \int\limits_{D_j \cap \{ \uptau_{n + 1} = i \}} Y_{n + 1} \: d \masP = \int\limits_{D_j \cap \{ \uptau_{n + 1} = i \}} X_i \: d \masP.
+    \end{equation*}
+    Uzmemo li $i = k$ \v clan i $\int X_k \: d \masP$ dobijemo
+    \begin{equation*}
+        \int\limits_{D_j \cap \{ \uptau_{n + 1} = k \}} X_k \: d \masP + \int\limits_{D_j \cap \{ \uptau_{n + 1} > k \}} X_k \: d \masP = \int\limits_{D_j \cap \{ \uptau_{n + 1} \geq k \}} X_k \: d \masP
+        \begin{smallmatrix}
+            \geq\\
+            (=)
+        \end{smallmatrix}
+        \int\limits_{D_j \cap \{ \uptau_{n + 1} \geq k \}} X_{k - 1} \: d \masP,
+    \end{equation*}
+    zbog
+    \begin{equation*}
+        \{ \uptau_{n + 1} \geq k \} = \{ \uptau_{n + 1} \leq k - 1 \}^c \in \famF_{k - 1} \supseteq \famF_j.
+    \end{equation*}
+    No,
+    \begin{equation*}
+        \int\limits_{D_j \cap \{ \uptau_{n + 1} \geq k \}} X_{k - 1} \: d \masP = \int\limits_{D_j \cap \{ \uptau_{n + 1} > k - 1 \}} X_{k - 1} \: d \masP,
+    \end{equation*}
+    pa ga na isti na\v cin kombiniramo sa $i = k - 1$, te dobijemo
+    \begin{equation*}
+        \int\limits_{D_j \cap \{ \uptau_{n + 1} > k - 2 \}} X_{k - 2} \: d \masP.
+    \end{equation*}
+    Induktivno nastavljamo dalje i dobivamo
+    \begin{equation*}
+        \int\limits_{D_j} Y_{n + 1} \: d \masP
+        \begin{smallmatrix}
+            \geq\\
+            (=)
+        \end{smallmatrix}
+        \int\limits_{D_j \cap \{ \uptau_{n + 1} \geq j \}} X_j \: d \masP - \int\limits_{D_j \cap \{ \uptau_{n + 1} > k \}} (X_k - Y_{n + 1}) \: d \masP.
+    \end{equation*}
+
+    Zbog \eqref{jed:25.7} postoji podniz $(k_s)$ takav da vrijedi
+    \begin{equation*}
+        \int\limits_{D_j \cap \{ \uptau_{n + 1} > k_s \}} X_{k_s} \: d \masP \xrightarrow[s \to \infty]{} 0.
+    \end{equation*}
+    Zbog
+    \begin{equation*}
+        \{ \uptau_{n + 1} > k \} \searrow \varnothing,
+    \end{equation*}
+    slijedi
+    \begin{equation*}
+        \int\limits_{D_j \cap \{ \uptau_{n + 1} > k_s \}} Y_{n + 1} \: d \masP \xrightarrow[s \to \infty]{} 0.
+    \end{equation*}
+    Budu\' ci je $D_j \subseteq \{ \uptau_n = j \}$ slijedi $D_j \cap \{ \uptau_{n + 1} \geq j \} = D_j$, te je $X_j = Y_n$ na $D_j$.
+    Pustimo li $s \to +\infty$, dobivamo
+    \begin{equation*}
+        \int\limits_{D_j} Y_{n + 1} \: d \masP
+        \begin{smallmatrix}
+            \geq\\
+            (=)
+        \end{smallmatrix}
+        \int\limits_{D_j} Y_n \: d \masP.
+    \end{equation*}
+\end{proof}
+
+\begin{zad} \label{zad:25.8}
+    Ako za svaki $n \in \nat$ postoji $m_n \in \nat$ takav da je $\uptau_n \leq m_n$ gotovo sigurno, tada su \eqref{jed:25.6} i \eqref{jed:25.7} ispunjeni.
+\end{zad}
+
+\begin{nap} \label{nap:25.9}
+    \begin{enumerate}[label=(\alph*)]
+        \item \label{nap:25.9.1}
+        Nije te\v sko pokazati da uniformna integrabilnost daje \eqref{jed:25.6} i \eqref{jed:25.7}.
+        \item \label{nap:25.9.2}
+        Ako je
+        \begin{equation*}
+            Z := \sup\limits_{n \in \nat} \: |X_n| \in L^1 (\masP),
+        \end{equation*}
+        tada se direktno vidi (ili pomo\' cu \ref{nap:25.9.1}) da su opet zadovoljeni \eqref{jed:25.6} i \eqref{jed:25.7}.
+        \item \label{25.9.3}
+        Ako imamo kona\v can $\masT$ u prethodnim slu\v cajevima, to mo\v zemo pro\v siriti sa $\masT = \{0, 1, \ldots, n\}$ na $\masT = \nat_0$, pomo\' cu
+        \begin{equation*}
+            X_m := X_n, \quad m > n.
+        \end{equation*}
+        U tom slu\v caju je opet ispunjeno \eqref{jed:25.6} i \eqref{jed:25.7}.
+    \end{enumerate}
+\end{nap}
+
+Uo\v cimo da su uvjeti sljede\' ceg teorem ispunjeni ako je $(X_n)$ uniformno integrabilan submartingal.
+
+\begin{tm}  \label{tm:25.10}
+    Neka je $\niz{X_n}{n \in \nat_0 \cup \{+ \infty\}}$ submartingal (martingal) u odnosu na filtraciju $\indFamilija{\famF_n}{n \in \nat_0 \cup \{+ \infty\}}$.
+    Ako je $\uptau_0 \leq \uptau_1 \leq \ldots$ rastu\' ci niz kona\v cnih vremena zaustavljanja, tada je
+    \begin{equation*}
+        \niz{Y_n := X_{\uptau_n}}{n \in \nat_0}
+    \end{equation*}
+    submartingal (martingal) u odnosu na $\indFamilija{\famF_{\uptau_n}}{n \in \nat_0}$.
+\end{tm}
