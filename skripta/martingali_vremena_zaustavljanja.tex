@@ -1,0 +1,24 @@
+% martingali i vremena zaustavljanja, cjelina 5.5 -> predavanje 25
+
+\chapter{Martingali i vremena zaustavljanja}
+
+Neka je $\uptau$ vrijeme zaustavljanja u odnosu na filtraciju $\indFamilija{\famF_n}{n \in \nat_0}$.
+Neka je $\famF_\infty := \indSigAlg{\famF_n}{n \in \nat}$.
+Dakle $\indFamilija{\famF_n}{n \in \nat_0 \cup \{+\infty\}}$ je filtracija.
+Neka je $\indFamilija{\famF_n}{n \in \nat_0 } \subseteq L^1 (\masP)$ i neka je $\indFamilija{\famF_n}{n \in \nat_0}$-adaptiran.
+Ove oznake vrijede u cijelom poglavlju.
+
+Uo\v cimo da je u teoremu \ref{tm:24.1} bilo bitno samo da su slu\v cajne varijable $\varepsilon_k$ $\famF_k$-izmjerive.
+Uzemo li $\varepsilon_k := \karaktFja_{\{\uptau \geq k\}}$, direktno iz teorema \ref{tm:24.1} dobivamo
+
+\begin{tm}  \label{tm:25.1}
+    Ako je $\niz{X_n}{n \in \nat_0}$ submartingal, tada je i $\niz{X_{\uptau \land n}}{n \in \nat_0}$ submartingal.
+    Ako smo krenuli od martingala, dobit \' cemo martingal.
+\end{tm}
+
+\begin{kor} \label{kor:25.2}
+    Ako je $\niz{X_n}{n \in \nat_0}$ submartingal i $\uptau \leq m$ gotovo sigurno, za svaki $m \in \nat$, tada je
+    \begin{equation*}
+        \masE X_0 \leq \masE X_\uptau \leq \masE X_m.
+    \end{equation*}
+\end{kor}
