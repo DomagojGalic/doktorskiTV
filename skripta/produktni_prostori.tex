@@ -106,7 +106,7 @@ Definicija se mo\v ze pro\v siriti na proizvoljne $\Omega_t$ i tada dobivamo da 
     \quad
     \begin{enumerate}
         \item[$\subseteq$] Budu\' ci je $\famV$ baza vrijedi da je $\famV \subseteq \famU$, stoga je i $\sigAlg{\famV} \subseteq \sigAlg{\famU}$.
-        \item[$\supseteq$] Neka je $U \in \famU$, tada postoji niz $\niz{U_n}{n \in \nat} \subseteq \famV$ takav da je $U = \unija{n \in \nat}{} U_n$, ali tada vrijedi i $\niz{U_n}{n \in \nat} \subseteq \sigAlg{\famV}$, pa onda i $U = \unija{n \in \nat}{} U_n \in \sigAlg{\famU}$ pa je $\famU \subseteq \sigAlg{\famV}$ pa je i $\sigAlg{\famU} \subseteq \sigAlg{\famV}$.  
+        \item[$\supseteq$] Neka je $U \in \famU$, tada postoji niz $\niz{U_n}{n \in \nat} \subseteq \famV$ takav da je $U = \unija{n \in \nat}{} U_n$ (zato \v sto je $\famV$ prebrojiva baza), ali tada vrijedi i $\niz{U_n}{n \in \nat} \subseteq \sigAlg{\famV}$, pa onda i $U = \unija{n \in \nat}{} U_n \in \sigAlg{\famU}$ pa je $\famU \subseteq \sigAlg{\famV}$ pa je i $\sigAlg{\famU} \subseteq \sigAlg{\famV}$.  
     \end{enumerate}
 \end{proof}
 
@@ -122,7 +122,7 @@ Analogno postupamo u izmjerivoj situaciji.
 \end{defn}
 
 \begin{defn}    \label{defn:4.0-5}
-    Element $\produkt{t \in T}{} A_t \in \partitive{\produkt{t \in T}{} \Omega_t}$, takav da postoji kona\v can $J \subseteq T$ sa svojstvima:
+    Element $\produkt{t \in T}{} A_t \in \famP \Big( \produkt{t \in T}{} \Omega_t \Big)$, takav da postoji kona\v can $J \subseteq T$ sa svojstvima:
     \begin{itemize}[label=]
         \item $t \in J \implies A_t \in \famF_t$
         \item $ t \in T \setminus J \implies A_t = \Omega_t $
@@ -130,11 +130,11 @@ Analogno postupamo u izmjerivoj situaciji.
     nazivamo \emph{izmjerivi cilindri\v cni pravokutnik}.
 \end{defn}
 
-Lako se vidi da svi takvi skupovi tvore poluprsten skupova $\prsten{\produkt{t \in T}{} \Omega_t}$ i da vrijedi:
+Lako se vidi da svi takvi skupovi tvore poluprsten skupova $\famR \Big( \produkt{t \in T}{} \Omega_t \Big)$ i da vrijedi:
 \begin{equation}    \label{jed:4.2}
-    \sigAlg{\prsten{\produkt{t \in T}{} \Omega_t}} = \dirProd{t \in T}{} \famF_t.
+    \bigSigAlg{\famR \Big( \produkt{t \in T}{} \Omega_t} \Big) = \dirProd{t \in T}{} \famF_t.
 \end{equation}
-Uo\v cimo da se za topolo\v ske prostore javlja pitanje veze $\borel{\produkt{t \in T}{} X_t}$ ($= \sigAlg{\dirProd{t \in T}{} \famU_t}$) i $\dirProd{t \in T}{} \borel{X_t}$.
+Uo\v cimo da se za topolo\v ske prostore javlja pitanje veze $\borel{\produkt{t \in T}{} X_t}$ $\Big(= \bigSigAlg{\dirProd{t \in T}{} \famU_t} \Big)$ i $\dirProd{t \in T}{} \borel{X_t}$.
 Lako se vidi da za topolo\v ske prostore $(X_t, \: \famU_t), \; t \in T$, vrijedi:
 \begin{equation}    \label{jed:4.3}
     \dirProd{t \in T}{} \borel{X_t} \subseteq \borel{\produkt{t \in T}{} X_t},
@@ -164,8 +164,8 @@ a nije osobito te\v sko konstruirati kontraprimjere koji pokazuju da u \eqref{je
             \begin{tikzpicture}
                 \matrix (m) [matrix of math nodes,row sep=5em,column sep=8em,minimum width=3em]
                 {
-                \urePar{\produkt{t \in T}{} X_t}{\borel{\produkt{t \in T}{} X_t}} & \urePar{\produkt{t \in T}{} X_t}{\dirProd{t \in T}{} \borel{X_t}} \\
-                & \urePar{X_{t_0}}{\borel{X_{t_0}}} \\};
+                \Big( \produkt{t \in T}{} X_t, \; \borel{\produkt{t \in T}{} X_t} \Big) & \Big( \produkt{t \in T}{} X_t, \; \dirProd{t \in T}{} \borel{X_t} \Big) \\
+                & \big( X_{t_0}, \; \borel{X_{t_0}} \big) \\};
                 \path[-stealth]
                 (m-1-1) edge node [above] {$\id$} (m-1-2)
                 (m-1-2) edge node [right] {$\pi_{t_0}$} (m-2-2)
@@ -176,8 +176,8 @@ a nije osobito te\v sko konstruirati kontraprimjere koji pokazuju da u \eqref{je
         \begin{equation*}
             \id : \Big( \produkt{t \in T}{} X_t, \borel{\produkt{t \in T}{} X_t} \Big) \to \Big( \produkt{t \in T}{} X_t,  \dirProd{t \in T}{} \borel{X_t} \Big)
         \end{equation*}
-        neprekidan ako i samo ako joj je svaka od koordinatnih projekcija naprekidna.
-        Primjetimo da je $\borel{\produkt{t \in T}{} X_t} = \sigAlg{\dirProd{t \in T}{} U_t}$, stoga nas zanima neprekidnost u odnosu na topologiju $\dirProd{t \in T}{} U_t$, a ona je definirana kao najmanja topologija u kojoj su sve koordinatne projekcije neprekidne, stoga je neprekidna po definiciji, stoga je i identiteta neprekidna, a posljedi\v cno i borelova preka korolaru \ref{kor:3.5}.
+        neprekidna ako i samo ako joj je svaka od koordinatnih projekcija neprekidna.
+        Primjetimo da je $\borel{\produkt{t \in T}{} X_t} = \bigSigAlg{\dirProd{t \in T}{} \famU_t}$, stoga nas zanima neprekidnost u odnosu na topologiju $\dirProd{t \in T}{} \famU_t$, a ona je definirana kao najmanja topologija u kojoj su sve koordinatne projekcije neprekidne, stoga je neprekidna po definiciji, stoga je i identiteta neprekidna, a posljedi\v cno i borelova prema korolaru \ref{kor:3.5}.
         \item[$\supseteq$]
         Budu\' ci su $X_t$ separabilni metri\v cki prostori i $T$ je prebrojiv skup, slijedi da je i $\produkt{t \in T}{} X_t$ separabilan metri\v cki prostor pa ima prebrojivu bazu topologije. Ozna\v cimo sa
         \begin{equation*}
@@ -221,7 +221,7 @@ a nije osobito te\v sko konstruirati kontraprimjere koji pokazuju da u \eqref{je
     \begin{equation*}
         \famR \Big( \produkt{t \in T}{} \Omega_t \Big) \subseteq \famG \subseteq \famF.
     \end{equation*}
-    Ako doka\v zemo da je $\famG$ $\sigma$-algebra, tada \' ce vrijediti i $\famF \subseteq \famG$.
+    Ako doka\v zemo da je $\famG$ $\sigma$-algebra, tada \' ce, zbog minimalnosti od $\famF$, vrijediti i $\famF \subseteq \famG$.
     \begin{enumerate}[label=(\roman*)]
         \item Uzmemo neki $t_0 \in T$, tada nu\v zno vrijedi
         \begin{equation*}
@@ -264,38 +264,38 @@ Uo\v cimo da je prerez (po $x$) svakog izmjerivog cilindri\v cnog pravokutnika p
     A \in \dirProd{t \in T}{} \famF_t \implies A_x \in \dirProd{t \in T \setminus I}{} \famF_t.
 \end{equation}
 
-\begin{nap} \label{nap:4.7-1}
-    Neka je $x \in \produkt{t \in I}{} \Omega_t$, defniramo funkciju
-    \begin{equation*}
-        f_x : \produkt{t \in T \setminus I}{} \Omega_t \to \produkt{t \in T}{} \Omega_t
-    \end{equation*}
-    tako da vrijedi
-    \begin{equation*}
-        (\pi_t \circ f_x) (y)
-        = \begin{cases}
-            \pi_t(x), &t \in I\\
-            \pi_t(y), &t \in T \setminus I
-        \end{cases}, \quad t \in T.
-    \end{equation*}
-    \begin{figure}[H]
-        \centering
-        \begin{tikzpicture}
-            \matrix (m) [matrix of math nodes,row sep=5em,column sep=8em,minimum width=3em]
-            {
-            \produkt{t \in T \setminus I}{} \Omega_t & \produkt{t \in T}{} \Omega_t \\
-            & \Omega_{t_0} \\};
-            \path[-stealth]
-            (m-1-1) edge node [above] {$f_x$} (m-1-2)
-            (m-1-2) edge node [right] {$\pi_{t_0}$} (m-2-2)
-            (m-1-1) edge node [below, yshift=-9pt] {$\pi_{t_0} \circ f_x$} (m-2-2);
-        \end{tikzpicture}
-    \end{figure}
-    Ona je izmjeriva po koordinatama i vrijedi
-    \begin{equation*}
-        A_x = \praslika{f_x} (A).
-    \end{equation*}
-    Stoga je prerez izmjeriv skup.
-\end{nap}
+%\begin{nap} \label{nap:4.7-1}
+%    Neka je $x \in \produkt{t \in I}{} \Omega_t$, defniramo funkciju
+%    \begin{equation*}
+%        f_x : \produkt{t \in T \setminus I}{} \Omega_t \to \produkt{t \in T}{} \Omega_t
+%    \end{equation*}
+%    tako da vrijedi
+%    \begin{equation*}
+%        (\pi_t \circ f_x) (y)
+%        = \begin{cases}
+%            \pi_t(x), &t \in I\\
+%            \pi_t(y), &t \in T \setminus I
+%        \end{cases}, \quad t \in T.
+%    \end{equation*}
+%    \begin{figure}[H]
+%        \centering
+%        \begin{tikzpicture}
+%            \matrix (m) [matrix of math nodes,row sep=5em,column sep=8em,minimum width=3em]
+%            {
+%            \produkt{t \in T \setminus I}{} \Omega_t & \produkt{t \in T}{} \Omega_t \\
+%            & \Omega_{t_0} \\};
+%            \path[-stealth]
+%            (m-1-1) edge node [above] {$f_x$} (m-1-2)
+%            (m-1-2) edge node [right] {$\pi_{t_0}$} (m-2-2)
+%            (m-1-1) edge node [below, yshift=-9pt] {$\pi_{t_0} \circ f_x$} (m-2-2);
+%        \end{tikzpicture}
+%    \end{figure}
+%    Ona je izmjeriva po koordinatama i vrijedi
+%    \begin{equation*}
+%        A_x = \praslika{f_x} (A).
+%    \end{equation*}
+%    Stoga je prerez izmjeriv skup.
+%\end{nap}
 
 \begin{zad} \label{zad:4.8}
     Opi\v site detaljno svojstva prereza u slu\v caju kada je $T = \{1, \: 2\}$.
@@ -305,7 +305,7 @@ Neka je $\izmjerivProstor$ izmjeriv prostor, $T \neq \varnothing$ skup indeksa i
 Iz \eqref{jed:4.1} i \eqref{jed:4.2} i napomnene \ref{nap:3.11} direktno slijedi:
 
 \begin{prop} \label{prop:4.9}
-    Preslikavanje $X : \Omega \to \produkt{t \in T}{} E_t$ je $(\famF, \: \dirProd{t \in T}{} \famE_t)$-izmjerivo ako i samo ako je za svaki $t \in T$ preslikavanje $\pi_t \circ X$, $(\famF, \: \famE_t)$-izmjerivo.
+    Preslikavanje $X : \Omega \to \produkt{t \in T}{} E_t$ je $\Big(\famF,  \dirProd{t \in T}{} \famE_t \Big)$-izmjerivo ako i samo ako je za svaki $t \in T$ preslikavanje $\pi_t \circ X$, $(\famF, \: \famE_t)$-izmjerivo.
 \end{prop}
 
 Primjetimo, zapravo tvrdimo da sljede\' ci dijagram komutira, te da su sve rezultiraju\' ce funkcije izmjerive.
@@ -315,7 +315,7 @@ Primjetimo, zapravo tvrdimo da sljede\' ci dijagram komutira, te da su sve rezul
         \matrix (m) [matrix of math nodes,row sep=5em,column sep=8em,minimum width=3em]
         {
         \urePar{\Omega}{\famF} & \\
-        \urePar{\produkt{t \in T}{} E_t}{\dirProd{t \in T}{} \famE_t} & \urePar{E_{t_0}}{\famE_{t_0}} \\};
+        \Big( \produkt{t \in T}{} E_t, \: \dirProd{t \in T}{} \famE_t \Big) & \urePar{E_{t_0}}{\famE_{t_0}} \\};
         \path[-stealth]
         (m-1-1) edge node [left] {$X$} (m-2-1)
         (m-2-1) edge node [below] {$\pi_{t_0}$} (m-2-2)
@@ -326,10 +326,10 @@ Primjetimo, zapravo tvrdimo da sljede\' ci dijagram komutira, te da su sve rezul
 \begin{nap} \label{nap:4.10}
     \begin{enumerate}[label=(\alph*)]
         \item U slu\v caju kada je $(E_t, \: \famE_t) = (E, \: \famE)$, za svaki $t \in T$, koristimo oznake $E^T := \produkt{t \in T}{} E_t$, $\famE^T := \dirProd{t \in T}{} \famE_t$, ako je uz to jo\v s i $\card{T} = \aleph_0$, koristimo oznake $E^\infty, \; \famE^\infty$.
-        \item Ako je $T = \{1, \: 2, \dots, \: d\}$ i $(E, \: \famE) = \urePar{\extReal}{\borel{\extReal}}$ onda je $E^d = \extReal^d$, $(\borel{\extReal})^d = \borel{\extReal^d}$.
+        \item Ako je $T = \{1, 2, \dots,  d\}$ i $(E, \: \famE) = \urePar{\extReal}{\borel{\extReal}}$ onda je $E^d = \extReal^d$, $(\borel{\extReal})^d = \borel{\extReal^d}$.
         Slu\v cajni element s vrijednostima u $\extReal^d$ nazivamo \emph{pro\v sirenim slu\v cajnim vektorom}.
         Na $\extReal^d$ imamo $d$ projekcija $\pi_1, \dots, \pi_d$ i uvodimo oznaku, za $X : \Omega \to \extReal^d$, $X_i := \pi_i \circ X, \; i = 1, \dots, d$.
-        Re\' ci cemo da je pro\v sireni slu\v cajni vektor $X$ slu\v cajni vektor ako je $X \in \real \; (g.s.)$.
+        Re\' ci cemo da je pro\v sireni slu\v cajni vektor $X$ slu\v cajni vektor ako je $X \in \real^d \; (g.s.)$.
         Iz propozicije \ref{prop:4.9} slijedi da je $X$ (pro\v sireni) slu\v cajni vektor ako i samo ako su $X_1, \dots X_d$ (pro\v sirene) slu\v cajne varijable.
     \end{enumerate}
 \end{nap}
@@ -372,13 +372,13 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
         \item   \label{zad:4.15.2}
         Za svaki $A \in \famF_1 \otimes \famF_2$ vrijedi:
         \begin{equation*}
-            (\mu_1 \otimes \mu_2) (A) = \int_{\Omega_1} \mu_2 (A_x) \: d \mu_1(x) = \int_{\Omega_2} \mu_1 (A_y) \: d \mu_2 (y).
+            (\mu_1 \otimes \mu_2) (A) = \int\limits_{\Omega_1} \mu_2 (A_x) \: d \mu_1(x) = \int\limits_{\Omega_2} \mu_1 (A_y) \: d \mu_2 (y).
         \end{equation*}
         \item   \label{zad:4.15.3}
         Za svaki $f: \Omega_1 \times \Omega_2 \to \segment{0}{+\infty}$ koji je $\urePar{\famF_1 \otimes \famF_2}{\borel{\segment{0}{+\infty}}}$-izmjeriv
         \begin{align*}
-            \int_{\Omega_1 \times \Omega_2} f(x, \: y) \: d (\mu_1 \otimes \mu_2)(x, \:y) &= \int_{\Omega_2} \Big( \int_{\Omega_1} f(x, \: y) \: d \mu_1 (x) \Big) \: d \mu_2 (y)\\
-            &= \int_{\Omega_1} \Big( \int_{\Omega_2} f(x, \: y) \: d \mu_2 (y) \Big) \: d \mu_1 (x)
+            \int\limits_{\Omega_1 \times \Omega_2} f(x, \: y) \: d (\mu_1 \otimes \mu_2)(x, \:y) &= \int\limits_{\Omega_2} \Big( \int\limits_{\Omega_1} f(x, \: y) \: d \mu_1 (x) \Big) \: d \mu_2 (y)\\
+            &= \int\limits_{\Omega_1} \Big( \int\limits_{\Omega_2} f(x, \: y) \: d \mu_2 (y) \Big) \: d \mu_1 (x)
         \end{align*}
     \end{enumerate} 
 \end{zad}
@@ -431,7 +431,7 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
     Poka\v zimo da je $\famH$ Dynkinova klasa
     \begin{enumerate}[label=(\roman*)]
         \item
-        $\Omega_1 \times \Omega_1 \in \famE \subseteq \famH \implies \Omega_1 \times \Omega_2 \in \famH$
+        $\Omega_1 \times \Omega_2 \in \famE \subseteq \famH \implies \Omega_1 \times \Omega_2 \in \famH$
         \item $E, F \in \famH$, $E \subseteq F$, sada imamo
         \begin{equation*}
             \begin{aligned}
@@ -504,7 +504,7 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
         \end{equation*}
         drugi poredak, to jest
         \begin{equation*}
-            \int\limits_{\Omega_1 \times \Omega_2} f \: d \mu_1 \otimes \mu_2 = \int\limits_{\Omega_1} \Big( \int\limits_{\Omega_2} f \: d \mu_2 \Big) \: d \mu_1
+            \int\limits_{\Omega_1 \times \Omega_2} f \: d \mu_1 \otimes \mu_2 = \int\limits_{\Omega_2} \Big( \int\limits_{\Omega_1} f \: d \mu_1 \Big) \: d \mu_2
         \end{equation*}
         tada \' ce slijediti po simetriji.
         \begin{enumerate}[label=\arabic*. korak:]
@@ -572,7 +572,7 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
         \begin{equation*}
             x \mapsto
             \begin{cases}
-                \int_{\Omega_2} f(x, \: y) \: d \mu_2 (y), &\textnormal{ako je } y \mapsto f(x, \: y) \textnormal{ integrabilna}\\
+                \int\limits_{\Omega_2} f(x, \: y) \: d \mu_2 (y), &\textnormal{ako je } y \mapsto f(x, \: y) \textnormal{ integrabilna}\\
                 0, &\textnormal{ina\' ce} 
             \end{cases}
         \end{equation*}
@@ -580,15 +580,15 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
         \begin{equation*}
             y \mapsto
             \begin{cases}
-                \int_{\Omega_1} f(x, \: y) \: d \mu_1 (x), &\textnormal{ako je } x \mapsto f(x, \: y) \textnormal{ integrabilna}\\
+                \int\limits_{\Omega_1} f(x, \: y) \: d \mu_1 (x), &\textnormal{ako je } x \mapsto f(x, \: y) \textnormal{ integrabilna}\\
                 0, &\textnormal{ina\' ce}
             \end{cases}
         \end{equation*}
         je $\mu_2$-integrabilna.
         \item
         \begin{align*}
-            \int_{\Omega_1 \times \Omega_2}  f(x, \: y) \: d (\mu_1 \otimes \mu_2)(x, \: y)  &= \int_{\Omega_2} \Big( \int_{\Omega_1} f(x, \: y) \: d \mu_1 (x) \Big) \: d \mu_2(y)\\
-            &= \int_{\Omega_1} \Big( \int_{\Omega_2} f(x, \: y) \: d \mu_2 (y) \Big) \: d \mu_1(x).
+            \int\limits_{\Omega_1 \times \Omega_2}  f(x, \: y) \: d (\mu_1 \otimes \mu_2)(x, \: y)  &= \int\limits_{\Omega_2} \Big( \int\limits_{\Omega_1} f(x, \: y) \: d \mu_1 (x) \Big) \: d \mu_2(y)\\
+            &= \int\limits_{\Omega_1} \Big( \int\limits_{\Omega_2} f(x, \: y) \: d \mu_2 (y) \Big) \: d \mu_1(x).
         \end{align*}
     \end{enumerate}
 \end{zad}
@@ -625,20 +625,20 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
 \end{zad}
 
 \v Sto mo\v zemo re\' ci o beskona\v cnom produktu?
-Prvo gledamo slu\v caj $T = \nat$. Neka su $\urePar{\Omega_n}{\famF_n}$, $n \in \nat$, izmjerivi prostori. Po \eqref{jed:4.2}, znamo da je $\prsten{\produkt{n \in \nat}{} \Omega_n}$ generiraju\' ci poluprsten za $\dirProd{n \in \nat}{} \famF$, pa bi bilo dovoljno mjere zadati na $\prsten{\produkt{n \in \nat}{} \Omega_n}$.
+Prvo gledamo slu\v caj $T = \nat$. Neka su $\urePar{\Omega_n}{\famF_n}$, $n \in \nat$, izmjerivi prostori. Po \eqref{jed:4.2}, znamo da je $\famR \Big( \produkt{n \in \nat}{} \Omega_n \Big)$ generiraju\' ci poluprsten za $\dirProd{n \in \nat}{} \famF$, pa bi bilo dovoljno mjere zadati na $\famR \Big( \produkt{n \in \nat}{} \Omega_n \Big)$.
 Ako na svakom $\urePar{\Omega_n}{\famF_n}$ imamo $\sigma$-kona\v cnu mjeru $\mu_n$, prirodno bi se moglo o\v cekivati da na $A_1 \times \ldots \times A_n \times \Omega_{n + 1} \times \ldots$ zadamo mjeru pomo\' cu $\mu_1(A_1) \cdot \ldots \cdot \mu_n(A_n)$.
 Tada se postavlja pitanje \emph{konzistentnosti}, na primjer skup $A \times \Omega_2 \times \Omega_3 \times \ldots$ mo\v ze imati pridru\v zene mjere $\mu_1(A), \; \mu_1(A) \cdot \mu_2(\Omega_2), \: \mu_1(A) \cdot \mu_2(\Omega_2) \cdot \mu_3 (\Omega_3)$, i tako dalje.
 U pravilu one \' ce biti jednake, jedino ako su to vjerojatnosne mjere.
-No mo\v zemo postupati druga\' cije.
+No mo\v zemo postupati druga\v cije.
 Neka je, za svaki $n \in \nat$, $\famG_n := \sigAlg{\pi_1, \ldots, \pi_n}$, pa je $\famG_1 \subseteq \famG_2 \subseteq \ldots$, tvore uzlazni niz $\sigma$-algebri takav da je $\famG_{\infty} := \unija{n = 1}{\infty} \famG_n$ algebra, ali ne nu\v zno i $\sigma$-algebra, i $\sigAlg{\famG_{\infty}} = \dirProd{n \in \nat}{} \famF_n$.
 % nisam siguran što je ovaj G točno :/
 % \famG =? \sigAlg{\famG_\infty}
-Sada bi se na $\famG$ mogli promatrati nizovi $\niz{(\mu_1 \otimes \ldots \otimes \mu_n)(G)}{n \in \nat}$ i u slu\v caju da postoje limesi $\lim\limits_{n \to \infty} (\mu_1 \otimes \ldots \otimes \mu_n)(G)$, taj bi se limes mogao uzeti za $\nu (G)$.
+Sada bi se na $\famG$ mogli promatrati nizovi $\bigNiz{(\mu_1 \otimes \ldots \otimes \mu_n)(G)}{n \in \nat}$ i u slu\v caju da postoje limesi $\lim\limits_{n \to \infty} (\mu_1 \otimes \ldots \otimes \mu_n)(G)$, taj bi se limes mogao uzeti za $\nu (G)$.
 Ali i taj put vodi na probleme, ilustrirajmo jedan od njih.
 
 \begin{pr}  \label{pr:4.20}
     Neka je $(\Omega_n, \: \famF_n, \: \mu_n) = (\{0, \: 1\}, \: \partitive{\{0, \: 1\}}, \: \mu_n(\{0\}) = \mu_n (\{1\}) = 1)$.
-    Uzmemo li bilo koju to\v cku $a \in \{ 0, \: 1 \}^{\nat}$, postoji $\lim\limits_{n \to \infty} (\mu_1 (\{ a_1 \}) \cdot \mu_2 (\{ a_2 \}) \cdot \dots \cdot \mu_n (\{ a_n \}) ) = 1$ pa bi "mjera" na $\{ 0, \: 1 \}^{\infty}$ koja bi bila kandidat za $\dirProd{n \in \nat}{} \mu_n$ imala neprebrojivo jedno\v clanih skupova mjere $1$, to jest nikako ni bi mogla biti $\sigma$-kona\v cna. 
+    Uzmemo li bilo koju to\v cku $a \in \{ 0, \: 1 \}^{\nat}$, postoji $\lim\limits_{n \to \infty} (\mu_1 (\{ a_1 \}) \cdot \mu_2 (\{ a_2 \}) \cdot \ldots \cdot \mu_n (\{ a_n \}) ) = 1$ pa bi "mjera" na $\{ 0, \: 1 \}^{\infty}$ koja bi bila kandidat za $\dirProd{n \in \nat}{} \mu_n$ imala neprebrojivo jedno\v clanih skupova mjere $1$, to jest nikako ni bi mogla biti $\sigma$-kona\v cna. 
 \end{pr}
 
 U vjerojatnosnom slu\v caju sve je u redu.
