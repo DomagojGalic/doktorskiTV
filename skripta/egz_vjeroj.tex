@@ -37,7 +37,7 @@ te tako\dj er $\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
     zadatak se zapravo sastoji od dvije tvrdnje:
     \begin{enumerate}[label=(\arabic*)]
         \item \label{rj:2.2a}
-        $\sigAlg{\famE} = \famG$, odnosno $A$ ili $A^c$ moraju biti najvi\v se prebrojivi.
+        $\sigAlg{\famE} = \famF$, odnosno $A$ ili $A^c$ moraju biti najvi\v se prebrojivi.
         \item   \label{rj:2.2b}
         $\sigAlg{\famE} = \partitive{\Omega}$, ako i samo ako je $\Omega$ najvi\v se prebrojiv.
     \end{enumerate}
@@ -48,12 +48,13 @@ te tako\dj er $\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
     $\sigma$-algebra, stoga vrijedi i \ref{rj:2.2a}.
 
     Dakle promatrajmo neprebrojiv slu\v caj.
+    Primjetimo, nije mogu\' ce da su $A$ i $A^c$ oba prebrojivi, jer bi tada njihova unije kao unija prebrojivih skupova, tako\dj er bila prebrojiva, a kako je njihova unije upravo $\Omega$, to nije mogu\' ce.
     Doka\v zimo da je $\famF$ $\sigma$-algebra.
     \begin{enumerate}[label=(\roman*)]
         \item O\v cito je $\varnothing \in \famF$
         \item $A \in \famF$ ako i samo ako je $A$ najvi\v se prebrojiv ili je $A^c$ najvi\v se prebrojiv.
         Vidimo da je uvijet simetri\v can s obzirom na operaciju uzimanja komplementa, stoga slijedi da je $A^c \in \famF$
-        \item Neka je $\niz{A_n}{n \in \nat}$ elemenata iz $\famF$, promatramo dvije mogu\' cnosti:
+        \item Neka je $\niz{A_n}{n \in \nat}$ niz elemenata iz $\famF$, promatramo dvije mogu\' cnosti:
         \begin{enumerate}[label=\arabic*$\degree$)]
             \item Za svaki $n \in \nat$ je $A_n$ najvi\v se prebrojiv, tada je $\unija{n \in \nat}{} A_n$ najvi\v se prebrojiva, pa je $\unija{n \in \nat}{} A_n \in \famF$.
             \item Postoji $n_0 \in \nat$ takav da je $A_{n_0}^c$ najvi\v se prebrojiv.
@@ -75,7 +76,7 @@ te tako\dj er $\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
     Neka je $\famF$ familija svih bijekcija sa nekog (proizvoljnog) $T \subseteq S$ u $T \times \{0, \; 1\}$.
     To\v cnije:
     \begin{equation*}
-        \famF = \skup{f: T \to T \times \{0, \; 1\}}{T \subseteq S, \; f \textnormal{ je bijekcija}}
+        \famF = \bigSkup{f: T \to T \times \{0, \; 1\}}{T \subseteq S, \; f \textnormal{ je bijekcija}}
     \end{equation*}
     Takva bijekcija uvijek postoji kada je $T$ prebrojiv skup.
     Uredimo te funkcije relacijom "$\subseteq$" na njihovim grafovima.
@@ -296,12 +297,12 @@ Iz teorije mjere poznat nam je sljede\' ci zadatak.
             &= \nu(A), \quad \forall A \in \famF.
         \end{aligned}
     \end{equation*}
-    Primjetimo, teorem \ref{tm:2.6} nam je potreban kako bi mogli zaklju\v citi da su $\mu_n = \nu_n$ na cijelom $\famF$, jer op\' cenito $A \cap C_n \notin \famE$.
+    Primjetimo, teorem \ref{tm:2.6} nam je potreban kako bi mogli zaklju\v citi da su $\mu_n = \nu_n$ na cijelom $\famF$, jer op\' cenito $A \cap C_n \notin \famE$, jer $C_n$ ne mora nu\v zno biti iz $\famE$.
 \end{rj}
 
 \begin{nap} \label{nap:2.10}
     Grubo re\v ceno ovi rezultati pokazuju da je $\pi$-sistem dovoljno bogata struktura da bi se osigurala jedinstvenost mjere.
-    To je vrlo sna\v zan rezultat, budu\' ci da velik broj klasa \v cini $\pi$-sistem, te je lako iz svake klase napraviti $\pi$-sistem; uzme se proizvoljna klasa $\famE \subseteq \partitive{\Omega}$, klasa koja se sastoji iz svih kona\v cnih presjeka elementat iz $\famE$ \v cini $pi$-sistem.
+    To je vrlo sna\v zan rezultat, budu\' ci da velik broj klasa \v cini $\pi$-sistem, te je lako iz svake klase napraviti $\pi$-sistem; uzme se proizvoljna klasa $\famE \subseteq \partitive{\Omega}$, klasa koja se sastoji iz svih kona\v cnih presjeka elementat iz $\famE$ \v cini $\pi$-sistem.
 
     Prirodno je pitanje mo\v ze li se mjera sa $\pi$-sistema pro\v siriti na pripadnu $\sigma$-algebru.
     Uzmemo li klasu $\famK$ iz primjera \ref{pr:2.3} i za svaki $a \in \R_+$ izabermo $\mu_a$ takav da je $\mu_a(A) = a, \; \forall A \in \famK$, takva \' ce funkcija zadovoljavati \eqref{jed:1.11} na $\famK$ (jer na $\famK$ nemamo niti dva disjunktna skupa).
@@ -351,7 +352,7 @@ Osnovni teorem o pro\v sirenju mjere (Caratheodoryjeva konstrukcija) ka\v ze:
         \end{equation*}
         Svaki $\mu_c$ je pro\v sirenje od $\nu$.
         Uo\v cimo da uvijeti iz zadatka \ref{zad:2.9} nisu ispunjeni pa nema jedinstvenosti pro\v sirenja.
-        Ako je $\Omega = \segment{a}{b}, \; \sigAlg{\E} \subsetneq \borel{\Omega}$ i pro\v sirenje sa $\E$ na $\borel{\Omega}$ ne vodi ka nekoj konkretnoj mjeri.
+        Ako je $\Omega = \segment{a}{b}$, $\sigAlg{\famE} \subsetneqq \borel{\Omega}$ i pro\v sirenje sa $\famE$ na $\borel{\Omega}$ ne vodi ka nekoj konkretnoj mjeri.
         \item Ako je $\nu(\{\omega\}) > 0, \; \forall \omega \in \Omega$ Onda postoji $\varepsilon > 0$ takav da za neprebrojivo $\omega$ iz zadanog neprebrojivog skupa imamo $\nu(\{\omega\}) \geq \varepsilon$.
         Posebno, to zna\v ci da je $\mjera{A} = +\infty$ za svaki $A$, za koji je $A^c$ prebrojiv.
         Ponovo ne osobito korisna konstrukcija.
@@ -417,5 +418,5 @@ Uo\v cimo da je za svaki $a, \: b \in \R, \: a < b$,
 Neka je sada $F$ funkcija sa svojstvima iz zadatka \ref{zad:2.15}.
 Pomo\' cu \eqref{jed:2.14} definiramo "mjeru" $\mu$ na klasi $\mathcal{I}$ iz primjera \eqref{pr:2.3}.
 Nije te\v sko pokazati da je $\mu$ $\sigma$-aditivna na $\mathcal{I}$, pa prema teoremu \ref{tm:2.11} i zadatku \ref{zad:2.9} postoji jedinstveno pro\v sirenje od $\mu$ na $\borel{\R}$ koje daje regularnu mjeru $\mu$.
-Za funkciju $F(x) = x$ ova konstrukcija daje takozvanu \emph{Lebesgue-ovu mjeru} $\lambda$ \v cija restrikcija na $\borel{\segment{0}{1}}$ zadovoljava primjer \ref{pr:1.18}.
+Za funkciju $F(x) = x$ ova konstrukcija daje takozvanu \emph{Lebesgueovu mjeru} $\lambda$ \v cija restrikcija na $\borel{\segment{0}{1}}$ zadovoljava primjer \ref{pr:1.18}.
 Uo\v cimo da funkcije s istim prirastima \eqref{jed:2.14} daju istu mjeru.
