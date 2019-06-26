@@ -2,7 +2,7 @@
 
 \chapter{Uvjetno o\v cekivanje}
 
-U slu\v caju kada su $A, B \in \famF$ i $\masP (A) > 0$ definira se uvjetna vjerojatnost od $B$ uz uvijet $A$ pomo\' cu
+U slu\v caju kada su $A, B \in \famF$ i $\masP (A) > 0$ definira se uvjetna vjerojatnost od $B$ uz uvijet $A$ sa
 \begin{equation}    \label{jed:22.1}
     \masP (B | A) = \frac{\masP (B \cap A)}{\masP (A)}
 \end{equation}
@@ -27,7 +27,7 @@ Uzmemo li u obzir da je vjerojatnosti op\' cenito mogu\' ce promatrati kao poseb
 name\' ce se sljede\' ca definicija.
 
 \begin{defn}    \label{defn:22.5}
-    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, $\famG \subseteq \famF$ $\sigma$-algebra na $\Omega$, $X \in L^1 (\masP)$.
+    Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor, $\famG \subseteq \famF$ $\sigma$-algebra na $\Omega$, i neka je $X \in L^1 (\masP)$.
     \emph{O\v cekivanje od $X$ uz uvijet $\famG$} je svaka funkcija
     \begin{equation*}
         \masE [X | \famG] : \Omega \to \real
@@ -83,7 +83,7 @@ pri \v cemu je $h$ definiran kao u \eqref{jed:22.3}.
 Uo\v cimo da je u definiciji uvjetnog o\v cekivanja sadr\v zana i pretpostavka da $\masE [X | \famG] \in L^1 (\Omega, \famG, \restr{\masP}{\famG})$, pa ima smisla promatrati i uvjetno o\v cekivanje od $\masE [X | \famG]$.
 
 \begin{prop}    \label{prop:22.11}
-    Ako su $\famH \subseteq \famG \subseteq \famF$ $\sigma$-algebre na $\Omega$ i $X \in L^1 (\masP)$, tada vrijedi
+    Ako su $\famH \subseteq \famG \subseteq \famF$ $\sigma$-algebre na $\Omega$ te $X \in L^1 (\masP)$ slu\v cajna varijabla, tada vrijedi
     \begin{equation*}
         \masE \big[ \masE [X | \famG] \big| \famH \big] = \masE \big[ \masE [X | \famH] \big| \famG \big] = \masE [X | \famH].
     \end{equation*}
@@ -93,7 +93,7 @@ Uo\v cimo da je u definiciji uvjetnog o\v cekivanja sadr\v zana i pretpostavka d
     Uo\v cimo da je $\masE [X | \famH]$ $\famH$-izmjeriva.
     Budu\' ci da je $\famH \subseteq \famG$, za svaki $A \in \famH$ vrijedi
     \begin{equation*}
-        \int\limits_A \masE [X | \famH] \: d \masP = \int\limits_A X \: d \masP = \int\limits_A \masE [X | \famG] \: d \masP.
+        \int\limits_A \masE [X | \famH] \: d \masP = \int\limits_A X \: d \masP = \masE [ \karaktFja_A \cdot X ] = \int\limits_A \masE [X | \famG] \: d \masP = \masE \big[ \karaktFja_A \cdot \masE [X | \famG] \big].
     \end{equation*}
     Po definiciji \ref{defn:22.5} dobivamo
     \begin{equation*}
@@ -114,7 +114,7 @@ Uz $\famH = \{ \varnothing, \Omega\}$ u propoziciji \ref{prop:22.11}, iz \eqref{
     \end{equation*}
     Ako je $X \in L^1 (\masP)$, tada je
     \begin{equation*}
-        \masE [X | \famG] (\omega) = \int\limits_A X \: d \masP, \quad \quad \omega \in A \; (g.s.).
+        \masE [X | \famG] (\omega) = \frac{1}{\masP (A)} \int\limits_A X \: d \masP, \quad \quad \textnormal{za } \: g.s. \; \; \omega \in A.
     \end{equation*}
 \end{zad}
 
@@ -127,15 +127,15 @@ Uz $\famH = \{ \varnothing, \Omega\}$ u propoziciji \ref{prop:22.11}, iz \eqref{
     Neka su $X, Y$ slu\v cajne varijable, takve da su $X, X Y \in L^1 (\masP)$, te neka je $Y$ $\famG$-izmjeriva.
     Tada vrijedi
     \begin{equation*}
-        \masE [X Y | \famG] = y \cdot \masE [X | \famG].
+        \masE [X Y | \famG] = Y \cdot \masE [X | \famG].
     \end{equation*} 
 \end{prop}
 
 \begin{proof}
-    Po pretpostavci, obje strane imaju smisla, te obje strane daju $\famG$-izmjerivu funkciju.
+    Po pretpostavci, obje strane imaju smisla, te obje strane imamo $\famG$-izmjerivu funkciju.
     Za $A \in \famG$, u slu\v caju da je $Y = \karaktFja_B$, za $B \in \famG$,
     \begin{equation*}
-        \int\limits_A X Y \: d \masP = \int\limits_{A \cap B} X \: d \masP = \int\limits_{A \cap B} \masE [X | \famG] \: masP = \int\limits_A Y \masE[X | \famG] \: d \masP.
+        \int\limits_A X Y \: d \masP = \int\limits_{A \cap B} X \: d \masP = \int\limits_{A \cap B} \masE [X | \famG] \: \masP = \int\limits_A Y \masE[X | \famG] \: d \masP.
     \end{equation*}
     Zbog linearnosti rezultat se pro\v siri na jednostavne $\famG$ izmjerive funkcije $Y$, a po zadatku \ref{zad:22.14} i na pozitivne $\famG$-izmjerive, te kona\v cno po linearnosti na sve $\famG$-izmerive funkcije. 
 \end{proof}
@@ -151,7 +151,7 @@ Uz $\famH = \{ \varnothing, \Omega\}$ u propoziciji \ref{prop:22.11}, iz \eqref{
     Konstantna funkcija je o\v cito $\famG$-izmjeriva-
     Za $A \in \famG$ su $X$ i $\karaktFja_A$ nezavisne, pa dobivamo
     \begin{equation*}
-        \int\limits_A X \: d \masP = \int\limits_\Omega \karaktFja_A \cdot X \: \masP = \masE [\karaktFja_A \cdot X] = \masP(A) \cdot \masE = \int\limits_A \masE X \: d \masP.
+        \int\limits_A X \: d \masP = \int\limits_\Omega \karaktFja_A \cdot X \: d \masP = \masE [\karaktFja_A \cdot X] = \masP(A) \cdot \masE X = \int\limits_A \masE X \: d \masP.
     \end{equation*}
 \end{proof}
 
@@ -203,7 +203,7 @@ Funkcija $g : \real \to \real$ je konveksna ako za svaki $x, y \in \real$ i za s
 Obratimo pa\v znu na poseban slu\v caj, kada je $\famG = \sigAlg{Y}$.
 Neka je $X \in L^1 (\masP)$, tada je za svaki $B \in \borel{\real}$ definirano preslikavanje
 \begin{equation*}
-    B \mapsto \int\limits_{\praslika{Y} (B)} X \: d \masP,
+    B \mapsto \int\limits_{\{ Y \in B \}} X \: d \masP,
 \end{equation*}
 \v sto je kona\v cna realna mjera na $(\real, \borel{\real})$, koja je apsolutno neprekidna u odnosu na zakon razdiobe od $Y$, $\masP_Y$.
 Po Radon-Nikodymovom teoremu postoji Borelova funkcija $h : \real \to \real$ koja je Radon-Nikodymova derivacija.
@@ -214,11 +214,11 @@ Uvedimo oznaku
 i uo\v cimo da je ova funkcija jedinstveno odre\dj ena do na skup $\masP_Y$-mjere nula.
 Dakle, definicijska relacija za $\masE [X | Y = y]$ je da za svaki $B \in \borel{\real}$ vrijedi
 \begin{equation}    \label{jed:22.20}
-    \int\limits_B \masE [X | Y = y] \: d \masP_Y (y) = \int\limits_{\praslika{Y} (B)} X \: d \masP.
+    \int\limits_B \masE [X | Y = y] \: d \masP_Y (y) = \int\limits_{\{ Y \in B \}} X \: d \masP.
 \end{equation}
 Posebno, to zna\v ci da je
 \begin{equation}    \label{jed:22.21}
-    \masE [X | Y] = \masE [X | Y = y] \circ Y.
+    \masE [X | Y] = h (Y) = \masE [X | Y = y] \circ Y.
 \end{equation}
 
 \begin{zad} \label{zad:22.22}

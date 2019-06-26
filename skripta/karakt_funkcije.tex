@@ -8,14 +8,14 @@ U ovom poglavlju $X$ uvijek ozna\v cava slu\v cajnu varijablu na vjerojatnostnom
 \begin{defn}    \label{def:17.1}
     Funkcija $\varphi_X :  \real \to \masC$, definirana sa
     \begin{equation*}
-        \varphi_X (t) := \masE [e^{itX}] = \masE[\cos (tX)] + i \cdot \masE [ \sin (tX) ], \quad t \in \real,
+        \varphi_X (t) := \masE \big[ e^{itX} \big] = \masE[\cos (tX)] + i \cdot \masE [ \sin (tX) ], \quad t \in \real,
     \end{equation*}
     naziva se \emph{karakteristi\v cnom funkcijom} slu\v cajne varijable $X$.
 \end{defn}
 
 Lako se vidi da je
 \begin{equation*}
-    \varphi_X (t) = \int_{-\infty}^{+\infty} e^{itX} \: d F_X (x) = \int_{-\infty}^{+ \infty} \cos (t X)  \: d F_X (x) + i \cdot \int_{-\infty}^{+\infty} \sin (t X) \: d F_X (x),
+    \varphi_X (t) = \int\limits_{-\infty}^{+\infty} e^{i t x} \: d F_X (x) = \int\limits_{-\infty}^{+ \infty} \cos (t x)  \: d F_X (x) + i \cdot \int\limits_{-\infty}^{+\infty} \sin (t x) \: d F_X (x),
 \end{equation*}
 te da je $\varphi_X (t)$ uvijek definiran.
 Ako je $F \in \inc$, $F^R = F$ i $\Delta F < +\infty$, ista definicija daje funkciju $\varphi_F : \real \to \masC$, koja \' ce imati svojstva analogna onima od $\varphi_X$.
@@ -31,9 +31,9 @@ te
 
 Uo\v cimo da je
 \begin{equation*}
-    |\varphi_X (t+h) - \varphi_X(t)| \leq \int_{-\infty}^{+\infty} |e^{i h X} - 1| \: d F_X (x).    
+    |\varphi_X (t+h) - \varphi_X(t)| \leq \int\limits_{-\infty}^{+\infty} |e^{i h x} - 1| \: d F_X (x).    
 \end{equation*}
-Budu\' ci da $|e^{ihX} -1| \xrightarrow[h \to 0]{} 0$ i uniformno je ome\dj ena s $2$ (\v sto je integrabilna funkcija u odnosu na $F_X$) iz LTDK slijedi
+Budu\' ci da $|e^{i h x} -1| \xrightarrow[h \to 0]{} 0$ i uniformno je ome\dj ena s $2$ (\v sto je integrabilna funkcija u odnosu na $F_X$) iz LTDK slijedi
 \begin{equation}    \label{jed:17.4}
     \varphi_X \textnormal{ je uniformno neprekidna na } \real.
 \end{equation}
@@ -45,7 +45,7 @@ Za $z \in \masC$ vrijedi
 pa \' ce svojstva $\varphi_X$ ovisiti o postojanju momenata od $X$.
 
 \begin{lm}  \label{lm:17.5}
-    Za svaki $x \in \real$ i $n \in \nat \cup \{ 0 \}$ vrijedi
+    Za svaki $x \in \real$ i $n \in \nat_0$ vrijedi
     \begin{equation*}
         \Big| e^{ix} - \suma{j = 0}{n} \frac{(ix)^j}{j !} \Big| \leq \min \Big\{ \frac{|x|^{n + 1}}{(n + 1)!}, \frac{2 \cdot |x|^n}{n !} \Big\}.
     \end{equation*}
@@ -55,17 +55,17 @@ pa \' ce svojstva $\varphi_X$ ovisiti o postojanju momenata od $X$.
     Po Taylorovom razvoju
     \begin{equation*}
         \begin{aligned}
-            e^{ix} - \suma{j = 0}{n} \frac{(i x)^j}{j !} &= \frac{(i x)^{n + 1}}{n !} \int_0^1 e^{i x u} (1 - u)^n \: du =
+            e^{ix} - \suma{j = 0}{n} \frac{(i x)^j}{j !} &= \frac{(i x)^{n + 1}}{n !} \int\limits_0^1 e^{i x u} (1 - u)^n \: du =
             \begin{pmatrix}
                 \textnormal{pracijalna}\\
                 \textnormal{integracija}
             \end{pmatrix}\\
-            &= - \frac{(ix)^n}{n !} + \frac{(i x)^n}{(n - 1) !} \int_0^1 e^{i x u} (1 - u)^{n - 1} \: d u.
+            &= - \frac{(ix)^n}{n !} + \frac{(i x)^n}{(n - 1) !} \int\limits_0^1 e^{i x u} (1 - u)^{n - 1} \: d u.
         \end{aligned}
     \end{equation*}
     Uo\v cimo
     \begin{equation*}
-        \int_0^1 (1 - u)^k \: d u = \frac{(1 - u)^{k + 1}}{k + 1} (-1) \Bigg|_0^1 = \frac{1}{(k + 1)}.
+        \int\limits_0^1 (1 - u)^k \: d u = \frac{(1 - u)^{k + 1}}{k + 1} (-1) \Bigg|_0^1 = \frac{1}{(k + 1)}.
     \end{equation*}
     Zbog
     \begin{equation*}
@@ -77,7 +77,7 @@ pa \' ce svojstva $\varphi_X$ ovisiti o postojanju momenata od $X$.
 \begin{lm}  \label{lm:17.6}
     Ako je $X \in L^n (\masP)$, za neki $n \in \nat$, tada je $\varphi$ $n$-puta diferencijabilno i
     \begin{equation*}
-        \varphi_X^{(n)} (t) = \int_{-\infty}^{+\infty} (i x)^n e^{i t x} \: d F_X (x).
+        \varphi_X^{(n)} (t) = \int\limits_{-\infty}^{+\infty} (i x)^n e^{i t x} \: d F_X (x).
     \end{equation*}
 \end{lm}
 
@@ -93,34 +93,39 @@ pa \' ce svojstva $\varphi_X$ ovisiti o postojanju momenata od $X$.
     i ome\dj en je sa $|X|$ (po lemi \ref{lm:17.5}).
     Primjenom LTDK slijedi
     \begin{equation*}
-        \lim\limits_{s \to 0} \frac{\varphi_X (t + s) - \varphi_X (t)}{s} = \masE [i X \cdot e^{i t X}] = \int_{-\infty}^{+\infty} i x e^{i t x} \: d F_X (x).
+        \lim\limits_{s \to 0} \frac{\varphi_X (t + s) - \varphi_X (t)}{s} = \masE \Big[ i X \cdot e^{i t X} \Big] = \int\limits_{-\infty}^{+\infty} i x e^{i t x} \: d F_X (x).
     \end{equation*}
 \end{proof}
 
 Iz leme \ref{lm:17.5} i leme \ref{lm:17.6} direktno dobijemo
 
 \begin{kor} \label{kor:17.7}
-    Neka je $n \in \nat \cup \{0\}$.
+    Neka je $n \in \nat_0$.
     Tada vrijedi:
     \begin{enumerate}[label=(\roman*)]
         \item \label{kor:17.7.1}
         \begin{equation*}
-            \masE \big[ |X|^2 \big] < +\infty \implies \varphi_X^{(n)}(0) = \masE \big[ (i \cdot X)^n \big],
+            \begin{gathered}
+                \masE \big[ |X|^n \big] < +\infty \implies\\
+                \varphi_X^{(n)}(0) = \masE \big[ (i \cdot X)^n \big],
+            \end{gathered}
         \end{equation*}
         \item \label{kor:17.7.2}
         \begin{equation*}
-            \begin{aligned}
-                \masE \big[|X|^{n + 1} \big] < +\infty \implies \Big| \varphi_X (t) - \suma{j = 0}{n} \frac{(it)^j}{j !} \cdot \masE \big[ X^j \big]  \Big| \leq
-                \min \Big\{ &\frac{|t|^{n+1}}{(n + 1)!} \cdot \masE \big[ |X|^{n + 1} \big],\\
-                &\frac{2 \cdot |t|^n}{n !} \cdot \masE \big[ |X|^n \big] \Big\},   
-            \end{aligned}
+            \begin{gathered}
+                \masE \big[|X|^{n + 1} \big] < +\infty \implies\\
+                \Big| \varphi_X (t) - \suma{j = 0}{n} \frac{(it)^j}{j !} \cdot \masE \big[ X^j \big]  \Big| \leq \min \Big\{ \frac{|t|^{n+1}}{(n + 1)!} \cdot \masE \big[ |X|^{n + 1} \big], \frac{2 \cdot |t|^n}{n !} \cdot \masE \big[ |X|^n \big] \Big\},
+            \end{gathered}
         \end{equation*}
         \item \label{kor:17.7.3}
         \begin{equation*}
-            \begin{aligned}
-                \masE \big[ |X|^n \big] < +\infty \implies \varphi_X (t) &= \suma{j = 0}{n} \frac{(i t)^j}{j!} \cdot \masE \big[ X^j \big] + o (t^n)\\
-                &= \suma{j = 0}{n} \frac{t^j}{j!} \cdot \varphi_X^{(j) } (0) + o(t^n).
-            \end{aligned}
+            \begin{gathered}
+                \masE \big[ |X|^n \big] < +\infty \implies\\
+                \begin{aligned}
+                    \varphi_X (t) &= \suma{j = 0}{n} \frac{(i t)^j}{j!} \cdot \masE \big[ X^j \big] + o (t^n)\\
+                    &= \suma{j = 0}{n} \frac{t^j}{j!} \cdot \varphi_X^{(j) } (0) + o(t^n).
+                \end{aligned}
+            \end{gathered}
         \end{equation*}
     \end{enumerate}
 \end{kor}
@@ -160,25 +165,25 @@ Uo\v cimo da za svaka \v cetiri kompleksna broja vrijedi
 \end{proof}
 
 \begin{lm}  \label{lm:17.10}
-    Ako je $\niz{\widetilde{z_n}}{n \in \nat} \subseteq \masC$ i $\widetilde{z_n} \to z \in \masC$, tada je
+    Ako je $\niz{\widetilde{z}_n}{n \in \nat} \subseteq \masC$ i $\widetilde{z}_n \to z \in \masC$, tada je
     \begin{equation*}
-        \lim\limits_{n \to \infty} \Big( 1 + \frac{\widetilde{z_n}}{n} \Big)^n = e^z.
+        \lim\limits_{n \to \infty} \Big( 1 + \frac{\widetilde{z}_n}{n} \Big)^n = e^z.
     \end{equation*}
 \end{lm}
 
 \begin{proof}
-    U lemi \ref{lm:17.9} $w_1 = \ldots = w_n = e^\frac{\widetilde{z_n}}{n}$, $z_1 = \ldots = z_n = \Big[ \frac{\widetilde{z_n}}{n} + 1 \Big]$
+    U lemi \ref{lm:17.9} $w_1 = \ldots = w_n = e^\frac{\widetilde{z}_n}{n}$, $z_1 = \ldots = z_n = \Big[ \frac{\widetilde{z}_n}{n} + 1 \Big]$
 
-    Za $\gamma > |z|$ imamo $|\widetilde{z_n}| < \gamma$ i $\Big| \frac{\widetilde{z_n}}{n} \Big| \leq 1$, za $n$ dovoljno velik.
+    Za $\gamma > |z|$ imamo $|\widetilde{z}_n| < \gamma$ i $\Big| \frac{\widetilde{z}_n}{n} \Big| \leq 1$, za $n$ dovoljno velik.
     Slijedi
     \begin{equation*}
-        \Big| \Big( 1 + \frac{\widetilde{z_n}}{n} \Big)^n - e^{\widetilde{z_n}} \Big| \leq \Big(1 + \frac{\gamma}{n} \Big)^{n-1} \suma{j = 1}{n} \Big| e^{\frac{\widetilde{z_n}}{n}} - \Big(1 + \frac{\widetilde{z_n}}{n}\Big) \Big|.
+        \Big| \Big( 1 + \frac{\widetilde{z}_n}{n} \Big)^n - e^{\widetilde{z}_n} \Big| \leq \Big(1 + \frac{\gamma}{n} \Big)^{n-1} \suma{j = 1}{n} \Big| e^{\frac{\widetilde{z}_n}{n}} - \Big(1 + \frac{\widetilde{z}_n}{n}\Big) \Big|.
     \end{equation*}
     Po lemi \ref{lm:17.5} imamo
     \begin{equation*}
         \begin{gathered}
-            \Big| e^{\frac{\widetilde{z_n}}{n}} - \Big( 1 + \frac{\widetilde{z_n}}{n} \Big) \Big| \leq 2 \cdot \frac{\Big| \frac{\gamma}{n}\Big|^2}{2!} = \frac{\gamma^2}{n^2}\\
-            \implies \Big| \Big( 1 + \frac{\widetilde{z_n}}{n} \Big)^n - e^{\widetilde{z_n}} \Big| \leq \underbrace{\Big( 1 + \frac{\gamma}{n} \Big)^{n - 1}}_{\leq e^\gamma} \cdot \gamma^2 \cdot n \cdot \frac{1}{n^2} \xrightarrow[n \to \infty]{} 0.
+            \Big| e^{\frac{\widetilde{z}_n}{n}} - \Big( 1 + \frac{\widetilde{z}_n}{n} \Big) \Big| \leq 2 \cdot \frac{\Big| \frac{\gamma}{n}\Big|^2}{2!} = \frac{\gamma^2}{n^2}\\
+            \implies \Big| \Big( 1 + \frac{\widetilde{z}_n}{n} \Big)^n - e^{\widetilde{z}_n} \Big| \leq \underbrace{\Big( 1 + \frac{\gamma}{n} \Big)^{n - 1}}_{\leq e^\gamma} \cdot \gamma^2 \cdot n \cdot \frac{1}{n^2} \xrightarrow[n \to \infty]{} 0.
         \end{gathered}
     \end{equation*}
 \end{proof}
@@ -186,10 +191,10 @@ Uo\v cimo da za svaka \v cetiri kompleksna broja vrijedi
 Prvo od fundamentalnih pitanja koje nas zanima je vrijedi li obrat u \eqref{jed:17.2}.
 Budu\' ci je $C(F_X) \cap C(F_Y)$ gust u $\real$, sljede\' ci teorem daje potvrdan odgovor na to pitanje.
 
-\begin{tm}[L\' eviyjev teorem inverzije]  \label{tm:17.11}
+\begin{tm}[L\' evyjev teorem inverzije]  \label{tm:17.11}
     Za svaki $a, b \in C(F_X)$, $a < b$, vrijedi
     \begin{equation*}
-        F_X (b) - F_X (a) = \lim\limits_{T \to \infty} \frac{1}{2 \pi} \int_{-T}^T \frac{e^{ita} - e^{itb}}{it} \cdot \varphi_X (t) \: d t.
+        F_X (b) - F_X (a) = \lim\limits_{T \to \infty} \frac{1}{2 \pi} \int\limits_{-T}^T \frac{e^{ita} - e^{itb}}{it} \cdot \varphi_X (t) \: d t.
     \end{equation*}
 \end{tm}
 
@@ -197,27 +202,27 @@ Budu\' ci je $C(F_X) \cap C(F_Y)$ gust u $\real$, sljede\' ci teorem daje potvrd
     Uo\v cimo najprije da je $\varphi_X$ neprekidna funkcije.
     Ozna\v cimo
     \begin{equation*}
-        I_T := \int_{-T}^T \frac{e^{ita} - e^{itb}}{it} \cdot \varphi_X (t) \: d t.
+        I_T := \int\limits_{-T}^T \frac{e^{ita} - e^{itb}}{it} \cdot \varphi_X (t) \: d t.
     \end{equation*}
     Primjetimo da vrijedi
     \begin{equation*}
-        \Big| \frac{1}{i t} (e^{- i t a} - e^{- i t b}) \cdot e^{i t X} \Big| \leq \Big| \int_a^b e^{-ity} \: d y \Big| \leq b - a,
+        \Big| \frac{1}{i t} (e^{- i t a} - e^{- i t b}) \cdot e^{i t X} \Big| \leq \Big| \int\limits_a^b e^{-ity} \: d y \Big| \leq b - a,
     \end{equation*}
     stoga mo\v zemo iskoristiti Fubinijev teorem:
     \begin{equation*}
         \begin{aligned}
-            T_T &= \frac{1}{2 \pi} \masE \Big[ \int_{-T}^T \frac{e^{it(X - a)} - e^{it(X - b)}}{it} \cdot \varphi_X (t) \: d t \Big]\\
-            &= \frac{1}{\pi} \masE \Big[ \int_0^T \frac{1}{t} \big( \sin t(X-a) - \sin t(X-b) \big) \: d t \Big]\\
-            &= \frac{1}{\pi} \masE \Big[ \int_0^{T(X-a)} \frac{\sin t}{t} \: d t - \int_0^{T (X-b)} \frac{\sin t}{t} \: d t \Big].
+            I_T &= \frac{1}{2 \pi} \masE \Big[ \int\limits_{-T}^T \frac{e^{it(X - a)} - e^{it(X - b)}}{it} \cdot \varphi_X (t) \: d t \Big]\\
+            &= \frac{1}{\pi} \masE \Big[ \int\limits_0^T \frac{1}{t} \big( \sin t(X-a) - \sin t(X-b) \big) \: d t \Big]\\
+            &= \frac{1}{\pi} \masE \Big[ \int\limits_0^{T(X-a)} \frac{\sin t}{t} \: d t - \int\limits_0^{T (X-b)} \frac{\sin t}{t} \: d t \Big].
         \end{aligned}
     \end{equation*}
     Budu\' ci je
     \begin{equation*}
-        \lim\limits_{u \to \infty} \int_0^u \frac{\sin x}{x} \: d x = \frac{\pi}{2},
+        \lim\limits_{u \to \infty} \int\limits_0^u \frac{\sin x}{x} \: d x = \frac{\pi}{2},
     \end{equation*}
     dobivamo
     \begin{equation*}
-        \frac{1}{\pi} \int_{T (u - b)}^{T (u - a)} \frac{\sin t}{t} \: dt \xrightarrow[T \to + \infty]{}
+        \frac{1}{\pi} \int\limits_{T (u - b)}^{T (u - a)} \frac{\sin t}{t} \: dt \xrightarrow[T \to + \infty]{}
         \begin{cases}
             1,    &a < u < b\\
             \frac{1}{2}, &u \in \{a, b\}\\
@@ -226,14 +231,14 @@ Budu\' ci je $C(F_X) \cap C(F_Y)$ gust u $\real$, sljede\' ci teorem daje potvrd
     \end{equation*}
     Uo\v cimo,
     \begin{equation*}
-        \Big| \frac{1}{\pi} \int_{T (u- b)}^{T (u - a)} \frac{\sin t}{t} \: d t \Big| \leq 2,
+        \Big| \frac{1}{\pi} \int\limits_{T (u- b)}^{T (u - a)} \frac{\sin t}{t} \: d t \Big| \leq 2,
     \end{equation*}
     pa prema LTDK vrijedi
     \begin{equation*}
         \begin{aligned}
-            \lim\limits_{T \to \infty} I_T &= \masE \Big[ \lim\limits_{T \to \infty} \Big( \frac{1}{\pi} \int_0^{T (u - a)} \frac{\sin t}{t} \: dt - \frac{1}{\pi} \int_0^{T (u - b)} \frac{\sin t}{t} \: d t \Big) \Big]\\
+            \lim\limits_{T \to \infty} I_T &= \masE \Big[ \lim\limits_{T \to \infty} \Big( \frac{1}{\pi} \int\limits_0^{T (u - a)} \frac{\sin t}{t} \: dt - \frac{1}{\pi} \int\limits_0^{T (u - b)} \frac{\sin t}{t} \: d t \Big) \Big]\\
             &= \masE \Big[ \frac{1}{2} \karaktFja_{\big\{ X \in \{a, b\} \big\}} + \karaktFja_{\{a < X < b\}} \Big]\\
-            &= \frac{1}{2} (\masP (X = a) + \masP (X = b) ) + \masP (a < X < b) =
+            &= \frac{1}{2} \big( \masP (X = a) + \masP (X = b) \big) + \masP (a < X < b) =
             \begin{psmallmatrix}
                 a, b \in C(F_X)\\
                 \Downarrow\\
@@ -274,6 +279,7 @@ Ako su $X, Y$ nezavisne, tada su i $e^{itX}, e^{itY}$ nezavisne:
 \end{tm}
 
 \begin{proof}
+    \quad \\
     \begin{itemize}
         \item[$\implies$]
         Slijedi po zadatku \ref{zad:17.14} i nezavisnosti, jer
@@ -298,7 +304,7 @@ Ako su $X, Y$ nezavisne, tada su i $e^{itX}, e^{itY}$ nezavisne:
 \end{proof}
 
 \begin{zad} \label{zad:17.16}
-    Izra\v cunajmo karakteristi\v cne funkcije osnovnih distribucija prema prilo\v zenoj tablici.
+    Izra\v cunaj karakteristi\v cne funkcije osnovnih distribucija prema prilo\v zenoj tablici.
 \end{zad}
 
 \begin{nap} \label{nap:17.17}
@@ -311,7 +317,7 @@ Ako su $X, Y$ nezavisne, tada su i $e^{itX}, e^{itY}$ nezavisne:
 \end{nap}
 
 Uo\v cimo da su Poissonova, normalna te Cauchyjeva primjeri razdioba \v cije karakteristi\v cne funkcije su eksponencijalnog tipa (posebno, nije nikad nula).
-Kako bismo mogli bolje opisati razdijobe ovakvog tipa, dobro je poznavati pojam kompleksnog logaritma.
+Kako bismo mogli bolje opisati razdiobe ovakvog tipa, dobro je poznavati pojam kompleksnog logaritma.
 Op\' cenito imamo razne mogu\' cnosti za izbor logaritma, ali mi \' cemo uzeti onaj koji se naziva \emph{glavnom vrijedno\v s\' cu}.
 Preciznije, ako je $\varphi : \real \to \masC \setminus \{0\}$ neprekidna funkcija i $\varphi (0) \in \obInt{0}{+ \infty}$, tada postoji to\v cno jedna neprekidna funkcija $\alpha : \real \to \real$ takva da je $\alpha (0) = 0$ i vrijedi $\varphi (t) = | \varphi (t) | e^{i \alpha (t)}$.
 Tada definiramo

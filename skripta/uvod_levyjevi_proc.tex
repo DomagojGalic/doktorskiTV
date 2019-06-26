@@ -42,7 +42,7 @@ to jest po teoremu o neprekidnosti o\v cekujemo bar neku vrstu konvergencije i z
 S druge strane ho\' cemo posti\' ci neku prirodnu generalizaciju niza nezavisnih jednako distribuiranih slu\v cajnih varijabli.
 
 \begin{nap} \label{nap:21.2}
-    Na prvi pogled moglo bi se pomisliti da treba posti\' ci da se $\niz{X_t}{t \geq 0}$ sastoji od \emph{nezavisnih} slu\v cajnih varijabli i da, recimo, bar vrijedi
+    Na prvi pogled moglo bi se pomisliti da treba posti\' ci da se $\niz{X_t}{t \geq 0}$ sastoji od \emph{nezavisnih} slu\v cajnih varijabli i da, recimo, vrijedi
     \begin{equation*}
         X_{t_n} \xrightarrow[t_n \to t_0]{\masP} X_{t_0}.
     \end{equation*}
@@ -52,7 +52,7 @@ S druge strane ho\' cemo posti\' ci neku prirodnu generalizaciju niza nezavisnih
 \end{nap}
 
 \begin{defn}    \label{defn:21.3}
-    Stohasti\v cki proces $\niz{X_t}{t \geq 0}$ s vrijednostima u $\real$ je \emph{L\' evijev proces} ako vrijedi:
+    Stohasti\v cki proces $\niz{X_t}{t \geq 0}$ s vrijednostima u $\real$ je \emph{L\' evyjev proces} ako vrijedi:
     \begin{enumerate}[label=(\alph*)]
         \item   \label{defn:21.3.1}
         Za svaki $n \in \nat$ i za svaki izbor $0 \leq t_0 < t_1 \ldots < t_n$ su slu\v cajne varijable
@@ -70,7 +70,7 @@ S druge strane ho\' cemo posti\' ci neku prirodnu generalizaciju niza nezavisnih
         \begin{equation*}
             t \mapsto X_t (\omega)
         \end{equation*}
-        je \cadlag (franc. continue \' a droite, limite \' a gauche - neprekidna zdesna, s limesom slijeva)
+        je \cadlag  \: (franc. continue \' a droite, limite \' a gauche - neprekidna zdesna, s limesom slijeva)
         \item   \label{defn:21.3.4}
         $X_0 \equiv 0$.
     \end{enumerate}
@@ -94,7 +94,7 @@ a zbog \ref{defn:21.3.3} i teorema neprekidnosti je
 \begin{equation}    \label{jed:21.5}
     \varphi_{X_t} = e^{t \psi},
 \end{equation}
-pa se $\varphi$ naziva \emph{karakteristi\v cnim eksponentom} L\' evyjevog procesa (uo\v cimo da je $\varphi$ odre\dj en pripadnom trojkom $(\gamma, \sigma^2, \nu)$).
+pa se $\psi$ naziva \emph{karakteristi\v cnim eksponentom} L\' evyjevog procesa (uo\v cimo da je $\psi$ odre\dj en pripadnom trojkom $(\gamma, \sigma^2, \nu)$).
 Daleko je slo\v zenije pokazati obrat (i to ovdje ne\' cemo dokazivati) koji dalje fundamentalni teorem
 
 \begin{tm}  \label{tm:21.6}
@@ -110,7 +110,7 @@ Daleko je slo\v zenije pokazati obrat (i to ovdje ne\' cemo dokazivati) koji dal
     Neka je $\psi$ zadan sa $(\gamma, 0, 0)$.
     Tada je
     \begin{equation*}
-        \varphi_{X_t} = e^{i \gamma t u} \quad \implies \quad X_t = \gamma t
+        \varphi_{X_t} (u) = e^{i \gamma t u} \quad \implies \quad X_t = \gamma t
     \end{equation*} 
     \v sto je deterministi\v cko gibanje po pravcu $t \mapsto \gamma t$, $t \geq 0$.
 \end{pr}
@@ -135,12 +135,12 @@ Daleko je slo\v zenije pokazati obrat (i to ovdje ne\' cemo dokazivati) koji dal
         \varphi_{X_t} (u) = e^{t \lambda (e^{i u} - 1)},
     \end{equation*}
     to jest $X_t$ je Poissonova razdioba s parametrom $\lambda t$, pa se i ovaj proces naziva \emph{Poissonovim procesom s parametrom $\lambda$}.
-    Prema tome, za svaki $n \in \nat \cup \{0\}$ vrijedi
+    Prema tome, za svaki $n \in \nat_0$ vrijedi
     \begin{equation}    \label{jed:21.10}
         \masP (X_t = n) = e^{- \lambda t} \frac{(\lambda t)^n}{n !}.
     \end{equation}
-    Budu\' ci da je ovaj proces \cadlag, a mo\v ze poprimiti i njegov prirast (po \ref{defn:21.3.1}) i sam proces samo vrijednosti u $\nat \cup \{0\}$ i kretat \' ce se po cijelobrojnim skokovima.
-    Kada se desi skok?
+    Budu\' ci da je ovaj proces \cadlag, a mo\v ze poprimiti i njegov prirast (po \ref{defn:21.3.1}) i sam proces samo vrijednosti u $\nat_0$ i kretat \' ce se po cijelobrojnim skokovima.
+    Kada se dogodi skok?
     \begin{equation*}
         \masP (X_{t + h} - X_t > 0) = \masP (X_h > 0) = 1 - e^{- \lambda h},
     \end{equation*}
@@ -158,9 +158,9 @@ Daleko je slo\v zenije pokazati obrat (i to ovdje ne\' cemo dokazivati) koji dal
     \begin{equation}    \label{jed:21.11}
         X_t := \suma{j = 1}{N_t} Y_j, \quad t \geq 0.
     \end{equation}
-    Za svaki $\omega$ je $N_t(\omega) \in \nat \cup \{0\}$ (za $N_t (\omega) = 0$ sumu u \eqref{jed:21.11} interpretiramo kao $0$), pa formalno ima smisla.
+    Za svaki $\omega$ je $N_t(\omega) \in \nat_0$ (za $N_t (\omega) = 0$ sumu u \eqref{jed:21.11} interpretiramo kao $0$), pa formalno ima smisla.
     O\v cito je i $X_0 \equiv 0$.
-    Uo\v cimo da $(X_t)$ ima skokove to\v cno kada se dese skokovi za $(N_t)$, samo je veli\v cina skoka $Y_j$ umjesto $1$.
+    Uo\v cimo da $(X_t)$ ima skokove to\v cno kada se dogode skokovi za $(N_t)$, samo je veli\v cina skoka $Y_j$ umjesto $1$.
     Posebno, sve trajektorije su \cadlag.
     Budu\' ci da je $(N_t)$ rastu\' c, te su $(N_t)$ i $(Y_n)$ nezavisne i $(Y_n)$ niz nezavisnih slu\v cajnih varijabli, iz
     \begin{equation*}
@@ -179,19 +179,19 @@ Daleko je slo\v zenije pokazati obrat (i to ovdje ne\' cemo dokazivati) koji dal
             \begin{psmallmatrix}
                 \textnormal{nezavisnost}
             \end{psmallmatrix}\\
-            &= \suma{n = 0}{\infty} \masP (N_h = n) \cdot [ \varphi_F (u) ]^n = \suma{n = 0}{\infty} \frac{()\lambda h)^n}{n!} e^{-\lambda h} [\varphi_F (u)]^n\\
+            &= \suma{n = 0}{\infty} \masP (N_h = n) \cdot [ \varphi_F (u) ]^n = \suma{n = 0}{\infty} \frac{(\lambda h)^n}{n!} e^{-\lambda h} [\varphi_F (u)]^n\\
             &= e^{-\lambda h} \cdot e^{\lambda h \varphi_F (u)} = e^{\lambda h \int \big( e^{i u x} - 1 \big) \: d F (x)}.
         \end{aligned}
     \end{equation}
     Odavde slijedi da je $\niz{X_t}{t \geq 0}$ L\' evyjev proces i $\psi$ je odre\dj en s
     \begin{equation}    \label{jed:21.13}
-        \psi (u) = \int\limits_\real \lambda \big( e^{i u x - 1} \big) \: d F (x),
+        \psi (u) = \int\limits_\real \lambda \cdot \big( e^{i u x} - 1 \big) \: d F (x),
     \end{equation}
     to zna\v ci da se $\nu$ dobije tako da se oduzme $\masP_F (\{0\}) \geq 0$, pa je $\nu$ kona\v cna mjera na $\real \setminus \{0\}$ (zapravo subvjerojatnosna) i integral
     \begin{equation*}
         \int\limits_{\{ 0 < |x| < 1 \}} i u x \: d \nu (x) = u i \int\limits_{\{ 0 < |x| < 1 \}} x \: d \nu (x)
     \end{equation*}
-    i on "izlazi" kao $gamma$ da bi se dobila formula \eqref{jed:21.1}.
+    i on "izlazi" kao $\gamma$ da bi se dobila formula \eqref{jed:21.1}.
     Uo\v cimo da ovaj primjer jasno pokazuje smisao mjere $\nu$ vezano uz skokove, $\nu$ nazivamo \emph{L\' evyjevom mjerom}.
     Proces $\niz{X_t}{t \geq 0}$ zovemo \emph{slo\v zenim Poissonovim procesom}.
 \end{pr}
@@ -212,14 +212,14 @@ Mo\v ze se pokazati sljede\' ci teorem.
     \end{equation*}
     Uo\v cimo da je
     \begin{equation*}
-        \Var \Big( \frac{B_h}{h} \Big) = \frac{1}{h^2} \Var B_h = \frac{h}{h^2} = \frac{1}{h} \xrightarrow[h \to 0]{} +\infty,
+        \Var \Big( \frac{B_h}{h} \Big) = \frac{1}{h^2} \Var B_h = \frac{h}{h^2} = \frac{1}{h} \xrightarrow[h \searrow 0]{} +\infty,
     \end{equation*}
     \v sto sugerira da trajektorije Brownovog gibanja nisu diferencijabilne.
-    Zaista, mo\v ze se rigorozno pokazati da su nigdje diferencijabilne.
+    Mo\v ze se rigorozno pokazati da su nigdje diferencijabilne.
 \end{nap}
 
 \begin{nap} \label{nap:21.16}
-    Obratimo pa\v znju na jo\v s jedan fundamentalni aspekt.
+    Obratimo pa\v znju na jedan fundamentalni aspekt.
     Vidjeli smo da se niz nezavisnih jednako distribuiranih slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ ne generalizira prirodno na nezavisnu familiju $\niz{X_t}{t \geq 0}$, ve\' c na L\' evyjeve procese.
     Posebno,
     nezavisne familije $(X_t)$ s velikim nivoom neprekidnosti mogu samo biti trivijelne i nisu osobito interesantne.
@@ -231,10 +231,10 @@ Mo\v ze se pokazati sljede\' ci teorem.
     Dakle kod L\' evyjevih procesa je "budu\' cnost zavisna od sada\v snjosti" ($X_{t + h}$ ovisi o $X_t$), ako je "prirast od sada\v snjosti do budu\' cnosti" nezavisno od "pro\v slosti".
     U srednjem, taj prirast mo\v ze doprinjeti "ni\v sta novo" kao kod, na primjer, Brownovog gibanja
     \begin{equation*}
-        \masE (X_{t + h} - X_t) = \masE (X_h) = 0,
+        \masE [X_{t + h} - X_t] = \masE [X_h] = 0,
     \end{equation*}
     ili mo\v ze "narasti" ili "pasti" u srednjem, na primjer, za Poissonov proces
     \begin{equation*}
-        \masE (X_{t + h} - X_t) = \masE (X_h) = \lambda h > 0.
+        \masE [X_{t + h} - X_t] = \masE [X_h] = \lambda h > 0.
     \end{equation*}
 \end{nap}

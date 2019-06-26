@@ -12,7 +12,7 @@ I u ovom poglavlju $\vjerojatnosniProstor$ uvijek ozna\v cava proizvoljan vjeroj
 O\v cito, to je ekvivalentno svojstvu:
 \begin{equation}    \label{jed:7.2}
     \begin{gathered}
-        (\forall n \in \nat) (\forall \lambda_1, \ldots, \lambda_n \in \Lambda, \; \textnormal{ me\dj usobno razli\v cite}) (\forall F_1 \in \famE_1, \ldots, F_n \in \famE_n)\\ 
+        (\forall n \in \nat) (\forall \lambda_1, \ldots, \lambda_n \in \Lambda, \; \textnormal{ me\dj usobno razli\v citi}) (\forall F_1 \in \famE_1, \ldots, F_n \in \famE_n)\\ 
         \masP \Big( \presjek{i = 1}{n} \{ X_{\lambda_i} \in F_i \} \Big) = \produkt{i = 1}{n} \vjeroj{X_{\lambda_i} \in F_i}.
     \end{gathered}
 \end{equation}
@@ -91,7 +91,7 @@ Podsjetimo se da za $X, \; Y \in L^1$, $X \cdot Y$ ne mora biti u $L^1$. Ako su 
         &= \int\limits_{\real^2} |x| \cdot |y| \: d \masP_Z \urePar{x}{y} = \int\limits_\real |x| \: d \masP_X (x) \cdot \int\limits_{\real} |y| \: d \masP_Y (y)\\
         &= \masE [|X|] \cdot \masE [|Y|] < +\infty \implies X \cdot Y \in L^1.
     \end{align*}
-    Sada na sli\v can na\v cin Fubinijev teorem (zadatak \ref{zad:4.16}) daje
+    Sada na sli\v can na\v cin Fubinijev teorem (zadatak \ref{zad:4.16} i jednad\v zba \ref{jed:5.11-3-1}) daje
     \begin{equation*}
         \masE [X \cdot Y] = \masE X \cdot \masE Y.
     \end{equation*}
@@ -103,6 +103,57 @@ Podsjetimo se da za $X, \; Y \in L^1$, $X \cdot Y$ ne mora biti u $L^1$. Ako su 
         \Var (X + Y) = \Var X + \Var Y.
     \end{equation*}
 \end{zad}
+
+\begin{rj}[\ref{zad:7.8}]
+    Doka\v zimo najprije ne\v sto generalniji rezultat.
+
+    Neka su $X_1, \ldots, X_n \in L^2$, tada vrijedi
+    \begin{equation*}
+        \Var \Big( \suma{k = 1}{n} X_k \Big) = \suma{k = 1}{n} \Var X_k + 2 \cdot \suma{i < j}{} \masE \big[ (X_i - \masE X_i) (X_j - \masE X_j) \big].
+    \end{equation*}
+
+    Dokazujemo tvrdnju indukcijom po $n$.
+    \begin{enumerate}
+        \item[(B)]
+        Dokazujemo tvrdnju za $n = 2$.
+        \begin{equation*}
+            \begin{aligned}
+                \Var (X_1 + X_2) &= \masE \big[ (X_1 - X_2)^2 \big] - \big( \masE [ X_1 + X_2 ] \big)^2\\
+                &= \masE [X_1^2] + \masE [X_2^2] + 2 \cdot \masE [X_1 \cdot X_2] - (\masE X_1)^2 - (\masE X_2)^2 - 2 \cdot \masE X_1 \cdot \masE X_2\\
+                &= \big( \masE [X_1^2] - (\masE X_1)^2 \big) + \big( \masE [ X_2^2 ] - (\masE X_2)^2 \big) + 2 \cdot \big( \masE [ X_1 \cdot X_2 ] - \masE X_1 \cdot \masE X_2 \big)\\
+                &= \Var X_1 + \Var X_2 + 2 \cdot \masE \big[ (X_1 - \masE X_1) (X_2 - \masE X_2) \big].
+            \end{aligned}
+        \end{equation*}
+        \item[(K)]
+        Primjetimo
+        \begin{equation*}
+            \Var \Big( \suma{k = 1}{n + 1} X_k \Big) = \Var \Big( \Big( \suma{k = 1}{n} X_k \Big) + X_{n + 1} \Big),
+        \end{equation*}
+        prema bazi indukcij slijedi
+        \begin{equation*}
+            \begin{aligned}
+                \Var \Big( \suma{k = 1}{n + 1} X_k \Big) &= \Var \Big( \suma{k = 1}{n} X_k \Big) + \Var X_{n + 1} + 2 \cdot \masE \Big[ \Big(  \suma{k = 1}{n} X_k - \suma{k = 1}{n} \masE X_k \Big) (X_{n + 1} - \masE X_{n + 1}) \Big]\\
+                &= \suma{k = 1}{n} \Var X_k + 2  \cdot \suma{i < j \leq n}{} \masE \big[ (X_i - \masE X_i) (X_j - \masE X_j) \big] + \Var X_{n + 1}\\
+                &\quad \quad + 2 \cdot \masE \Big[ \Big( \suma{k = 1}{n} (X_k - \masE X_k) \Big) (X_{n + 1} - \masE X_{n + 1}) \Big]\\
+                &= \suma{k = 1}{n + 1} \Var X_k + 2 \cdot \masE \Big[ \Big(  \suma{k = 1}{n} X_k - \suma{k = 1}{n} \masE X_k \Big) (X_{n + 1} - \masE X_{n + 1}) \Big]\\
+                &\quad \quad + 2 \cdot \suma{k = 1}{n} \masE \big[ (X_k - \masE X_k) (X_{n + 1} - \masE X_{n + 1}) \big]\\
+                &= \suma{k = 1}{n + 1} \Var X_k + 2 \cdot \suma{i < j \leq n + 1}{} \masE \big[ (X_i - \masE X_i) (X_j - \masE X_j) \big]
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+    Sada po teoremu \ref{tm:7.7} imamo da za nezavisne $X_1, \ldots, X_n$, te za $i \neq j$ vrijedi
+    \begin{equation*}
+        \masE \big[ (X_i - \masE X_i) (X_j - \masE X_j) \big] = \masE X_i \cdot \masE X_j - \masE X_i \cdot \masE X_j = 0.
+    \end{equation*}
+    Dakle za nezavisne slu\v cajne varijable dobivamo izraz
+    \begin{equation*}
+        \Var \big( \suma{k = 1}{n} X_k \Big) = \suma{k = 1}{n} \Var X_k,
+    \end{equation*}
+    odnosno u slu\v caju kada je $n = 2$ imamo
+    \begin{equation*}
+        \Var (X + Y) = \Var X + \Var Y.
+    \end{equation*}
+\end{rj}
 
 Uo\v cimo da sada direktno iz korolara \ref{kor:6.11} direktno dobivamo:
 
@@ -153,6 +204,95 @@ Primjetimo u prethodnoj definiciji \emph{nije nu\v zno}
     Ako su $X$ i $Y$ nezavisni slu\v cajni elementi takvi da je $X + Y$ degenerirana, tada su $X$ i $Y$ degenerirane.
 \end{zad}
 
+%   djelomićno rješenje
+\begin{rj}[\ref{zad:7.11}]
+    Zadatak \' cemo rje\v siti kroz tri leme, kroz koje dokazujemo da ako je $X$ degenerirana slu\v cajna varijabla, tada je $\sigAlg{X}$ degenerirana $\sigma$-algebra, stoga je ona nezavisan sa svakom drugom $\sigma$-algebrom.
+
+    \begin{lm}   \label{lm:7.11-1-1}
+        Neka su $A, B \in \famF$ takvi da je $\masP (B) = 1$, tada vrijedi
+        \begin{equation*}
+            \masP (A \cap B) = \masP (A).
+        \end{equation*}
+    \end{lm}
+
+    \begin{proof}{\ref{lm:7.11-1-1}}
+        Primjetimo da se skup $A$ mo\v ze prikazati kao disjunktna unija
+        \begin{equation*}
+            A = (A \cap B) \cup (A \setminus B).
+        \end{equation*}
+        Sada vidimo da vrijedi
+        \begin{equation*}
+            \masP (A) = \masP (A \cap B) + \masP (A \setminus B),
+        \end{equation*}
+        primjetimo da vrijedi
+        \begin{equation*}
+            A \ setminus B = A \cap B^c \subseteq B^c.
+        \end{equation*}
+        Sada po monotonosti vjerojatnosti, te prema vjerojatnosti suprotnog doga\dj aja imamo
+        \begin{equation*}
+            \masP (A \setminus B) \leq \masP (B^c) = 1 - \masP (B) = 0,
+        \end{equation*}
+        odakle sada slijedi
+        \begin{equation*}
+            \masP (A) = \masP (A \cap B).
+        \end{equation*}
+    \end{proof}
+
+    \begin{lm}  \label{lm:7.11-1-2}
+        Neka su $\famG, \famH \subseteq \famF$ $\sigma$-algebre za koje vrijedi
+        \begin{equation*}
+            \forall B \in \famG \quad \masP (B) \in \{0, 1 \},
+        \end{equation*}
+        tada su $\famG$ i $\famH$ nezavisne.
+    \end{lm}
+
+    \begin{proof}{\ref{lm:7.11-1-2}}
+        Neka su $A \in \famH$, $B \in \famG$ proizvoljne.
+        Budu\' ci je $B \in \famG$ imamo dva slu\' caja
+        \begin{enumerate}[label=($\arabic*^\circ$)]
+            \item Pretpostavimo da vrijedi $\masP (B) = 1$, sada prema lemi \ref{lm:7.11-1-1} imamo
+            \begin{equation*}
+                \masP (A \cap B) = \masP (A) = 1 \cdot \masP (A) = \masP (A) \cdot \masP (B).
+            \end{equation*}
+            \item Pretpostavimo da je $\masP (B) = 0$, sada zbog $A \cap B \subseteq B$ imamo
+            \begin{equation*}
+                \masP (A \cap B) \leq \masP (B) = 0 = \masP (A) \cdot 0 = \masP (A) \cdot \masP (B).
+            \end{equation*}
+        \end{enumerate}
+        Budu\' ci su $A, B$ bili proizvoljni, $\famG$ i $\famH$ su nezavisne.
+    \end{proof}
+
+    \begin{lm}  \label{lm:7.11-3}
+        Ako je slu\v cajna varijabla $Y$ degenerirana, tada je $\sigAlg{Y}$ degenerirana $\sigma$-algebra.
+    \end{lm}
+
+    \begin{proof}{\ref{lm:7.11-3}}
+        Promatrajmo $A \in \sigAlg{Y}$, tada postoji $B \in \famE$ takav da vrijedi
+        \begin{equation*}
+            \{Y \in B\} = A.
+        \end{equation*}
+        Promatrajmo dva slu\v caja
+        \begin{enumerate}[label=$(\arabic*^\circ)$]
+            \item Neka je $a \in B$, sada imamo
+            \begin{equation*}
+                \{Y = a\} \subseteq \{Y \in B\} = A \quad \implies \quad \masP (A) = 1.
+            \end{equation*}
+            \item Alternativno, neka je $a \notin B$, sada imamo
+            \begin{equation*}
+                A = \{ Y \in B\} \subseteq \big\{ Y \in \{a\}^c \big\} = \{ Y \neq a \},
+            \end{equation*}
+            odakle imamo
+            \begin{equation*}
+                \masP (A) \leq \masP (Y \neq a) = 1 - \masP (Y = a) = 0.
+            \end{equation*}
+        \end{enumerate}
+    \end{proof}
+
+    Sada primjetimo da, prema lemi \ref{lm:7.11-3}, $\sigAlg{X}$ je trivijalna $\sigma$-algebra.
+    Prema lemi \ref{lm:7.11-1-2} slijedi da su $\sigAlg{X}$ te $\sigAlg{Y}$ nezavisne,
+    za proizvoljan $Y$, stoga su $X$ i $Y$ nezavisne kao slu\v cajne varijable.
+\end{rj}
+
 \begin{defn}    \label{defn:7.11-1}
     Grupa $\urePar{G}{\cdot}$ sa $\sigma$-algebrom $\famG$ je \emph{izmjeriva grupa} ako je grupovna operacija $\cdot : G \times G \to G$ izmjeriva u paru $\urePar{\famG \otimes \famG}{\famG}$.
 \end{defn}
@@ -171,9 +311,80 @@ Po zadatku \ref{zad:4.15} dobijemo da je za svaki $H \in \famG$
     (\mu * \nu)(H) := \int\limits_G \nu (a^{-1} \: H) \: d \mu (a).
 \end{equation*}
 
+\begin{nap} \label{nap:7.12-1}
+    Definirajmo funkciju $f : G^2 \to G$, sa
+    \begin{equation*}
+        (a, b) \xmapsto{f} a \cdot b
+    \end{equation*}
+    i neka je $H \in \famG$.
+
+    Primjetimo
+    \begin{equation*}
+        \begin{aligned}
+            \praslika{f} (H) = \{f \in H \} &= \indFamilija{(a, b) \in G^2}{a \cdot b \in H}\\
+            &= \indFamilija{(a, b) \in G^2}{b \in a^{-1} H}.
+        \end{aligned}
+    \end{equation*}
+    Dakle vrijedi
+    \begin{equation*}
+        (a, b) \in \praslika{f} (H) \quad \iff \quad b \in a^{-1} H,
+    \end{equation*}
+    odnosno
+    \begin{equation}    \label{jed:7.12-2}
+        \karaktFja_{ \{ f \in H \} } (a, b) = \karaktFja_{a^{-1} H} (b).
+    \end{equation}
+    Sada imamo
+    \begin{equation*}
+        \begin{aligned}
+            (\mu * \nu) (H) :&= (\mu \otimes \nu) (\{ f \in H \})\\
+            &= \int\limits_{G^2} \karaktFja_{\{ f \in H \}} (a, b) \: d (\mu \otimes \nu) (a, b)\\
+            &= \int\limits_{G^2} \karaktFja_{ a^{-1} H } (b) \: d (\mu \otimes \nu) (a, b)\\
+            &= \int\limits_G \Big( \int\limits_G \karaktFja_{a^{-1} H} (b) \: d \nu (b) \Big) \: d \mu (a)\\
+            &= \int\limits_G \nu (a^{-1} H) \: d \mu (a). 
+        \end{aligned}
+    \end{equation*}
+\end{nap}
+
 \begin{zad} \label{zad:7.13}
     Ako je $\urePar{G}{\cdot}$ Abelova grupa, tada je konvolucija komutativana operacija.
 \end{zad}
+
+\begin{rj}[\ref{zad:7.13}]
+    Budu\' ci je $G$ Abelova vrijedi
+    \begin{equation*}
+        \forall a, b \in G \quad \quad a \cdot b = b \cdot a.
+    \end{equation*}
+    Sada, za $H \subseteq G$, imamo
+    \begin{equation*}
+        \begin{aligned}
+            \bigSkup{(a, b) \in G^2}{b \in a^{-1} H} &= \bigSkup{(a, b) \in G^2}{a \cdot b \in H} = \bigSkup{(a, b) \in G^2}{b \cdot a \in H}\\
+            &= \bigSkup{(a, b) \in G^2}{a \in b^{-1} H}.
+        \end{aligned}
+    \end{equation*}
+    Odnosno vrijedi
+    \begin{equation}    \label{jed:7.13-1}
+        \karaktFja_{a^{-1} H} (b) = \karaktFja_{b^{-1} H} (a).
+    \end{equation}
+    Dakle, za $H \subseteq G$ imamo
+    \begin{equation*}
+        \begin{aligned}
+            (\mu * \nu) (H) &= \int\limits_G \nu (a^-1 H) \: d \mu (a) = \int\limits_G \Big( \int\limits_G \karaktFja_{a^{-1} H} (b) \: d \nu (b) \Big) \: d \mu (a) =
+                \begin{psmallmatrix}
+                    \textnormal{Fubini}
+                \end{psmallmatrix}\\
+            &= \int\limits_{G^2} \karaktFja_{a^-1} (b) \: d ( \mu \otimes \nu ) (a, b) =
+                \begin{psmallmatrix}
+                    \ref{jed:7.13-1}
+                \end{psmallmatrix}
+            = \int\limits_{G^2} \karaktFja_{b^{-1} H} (a) \: d (\mu \otimes \nu) (a, b) =
+                \begin{psmallmatrix}
+                    \textnormal{Fubini}
+                \end{psmallmatrix}\\
+            &= \int\limits_G \Big( \int\limits_G \karaktFja_{b^{-1} H} (a) \: d \mu (a) \Big) \: d \nu (b) = \int\limits_G \mu (b^{-1} H) \: d \nu (b)\\
+            &= (\nu * \mu) (H).
+        \end{aligned}
+    \end{equation*}
+\end{rj}
 
 \begin{nap} \label{nap:7.14}
     \begin{enumerate}[label=(\alph*)]
@@ -222,6 +433,50 @@ Po zadatku \ref{zad:4.15} dobijemo da je za svaki $H \in \famG$
     Primjenite ove rezultate na Abelovu grupu $\urePar{\real^d}{+}$ i posebno obratite pa\v znju na slu\v caj $d = 1$.
     Za slu\v caj $d = 1$izvedite pravila za konvluciju d.f.
 \end{zad}
+
+\begin{rj}[\ref{zad:7.16}]
+    Neka su $F$ i $G$ d.f. na $\real$.
+    Pomo\' cu njih definiramo mjere sa
+    \begin{equation*}
+        \begin{aligned}
+            \mu (\lijInt{a}{b}) &:= F(b) - F(a)\\
+            \nu (\lijInt{a}{b}) &:= G(b) - G(a).
+        \end{aligned}
+    \end{equation*}
+    Sada imamo
+    \begin{equation*}
+        \begin{aligned}
+            (\mu * \nu) (\lijInt{a}{b}) = \int\limits_\real \nu (\lijInt{a}{b} - x) \: d \mu(x) = \int\limits_\real \nu (\lijInt{a - x}{b - x}) \: d  \mu (x)\\
+            &= \int\limits_\real \big( G(b - x) - G(a - x) \big) \: d F (x).
+        \end{aligned}
+    \end{equation*}
+    Ako je $\mu \ll \lambda$ te $\nu \ll \lambda$, tada stavimo
+    \begin{equation*}
+        \begin{aligned}
+            \frac{d \mu}{d \lambda} &= f\\
+            \frac{d \nu}{d \lambda} &= g.
+        \end{aligned}
+    \end{equation*}
+    Sada vrijedi
+    \begin{equation*}
+        (\mu * \nu) (\lijInt{a}{b}) = \int\limits_a^b \Big( \int\limits_\real f(x) \cdot g (y - x) \: d \lambda (x) \Big) \: d \lambda (y),
+    \end{equation*}
+    odnosno
+    \begin{equation*}
+        (f * g) (y) = \int\limits_\real f(t) \cdot g(y - t) \: d \lambda (t).
+    \end{equation*}
+    Tako\dj er, ako imamo
+    \begin{equation*}
+        \begin{aligned}
+            F (x) &= \masP (X \leq x)\\
+            G (y) &= \masP (Y \leq y),
+        \end{aligned}
+    \end{equation*}
+    tada vrijedi
+    \begin{equation*}
+        (F * G) (z) = \masP (X + Y \leq z) = \int\limits_\real F(z - y) \: d G(y).
+    \end{equation*}
+\end{rj}
 
 Promotrimo sada nezavisne familije slu\v cajnih elemenata.
 Po\v cnimo od kona\v cnog slu\v caja.

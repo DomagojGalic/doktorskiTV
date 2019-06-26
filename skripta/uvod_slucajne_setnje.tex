@@ -18,7 +18,7 @@ Iz rezultata u poglavlju \ref{pog:2.5} (posebno primjer \ref{pr:10.3} i zadatak 
 Preciznije, dokazali smo teorem.
 
 \begin{tm}  \label{tm:15.1}
-    Ako je $\niz{S_n}{n \in \nat}$ slu\v cajna \v setnja u $\real$, tada vrijedi to\v cno jedna od sljede\' cih mogu\v cnosti (i to je ispunjeno s vjerojatno\v scu 1):
+    Ako je $\niz{S_n}{n \in \nat}$ slu\v cajna \v setnja u $\real$, tada vrijedi to\v cno jedna od sljede\' cih mogu\v cnosti (i to je ispunjeno s vjerojatno\v s\' cu 1):
     \begin{enumerate}[label=(\roman*)]
         \item \label{tm:15.1.1}
         $S_n \xrightarrow[n \to \infty]{g.s.} 0,$
@@ -32,12 +32,12 @@ Preciznije, dokazali smo teorem.
 \end{tm}
 
 \begin{nap} \label{nap:15.2}
-    Poku\v sajmo re\' ci ne\v sto vi\v se o trenu kada \' ce se desiti neke od gornjih mogu\' cnosti.
+    Poku\v sajmo re\' ci ne\v sto vi\v se o situaciji kada \' ce se dogoditi neke od gornjih mogu\' cnosti.
     \begin{enumerate}[label=(\alph*)]
         \item Slu\v caj \ref{tm:15.1.1} je ekvivalentan tome da $(S_n)$ uop\' ce konvergira kona\v cnome limesu, \v sto je ekvivalentno tome da konvergira $X_n \xrightarrow[n \to \infty]{g.s.} 0$, a \v sto je ekvivalentno trivijanom slu\v caju, to jest da je $X_n = 0 \; (g.s.)$, $\forall n \in \nat$ (vidi korolar \ref{kor:11.10}).
-        Dakle slu\v caj \ref{tm:15.1.1} se mo\v ze desiti samo na potpuno trivijan na\v cin.
-        \item Slu\v caj \ref{tm:15.1.4} mo\v ze se desiti kada su $X_n$ simetri\v cne, to jest kada je $X_1 \distJed - X_1$ (vidi zadatak \ref{zad:10.4}).
-        Ali to nije jedini na\v cin kada se slu\v caj \ref{tm:15.1.4} mo\v ze desiti.
+        Dakle slu\v caj \ref{tm:15.1.1} se mo\v ze dogoditi samo na potpuno trivijan na\v cin.
+        \item Slu\v caj \ref{tm:15.1.4} mo\v ze se dogoditi kada su $X_n$ simetri\v cne, to jest kada je $X_1 \distJed - X_1$ (vidi zadatak \ref{zad:10.4}).
+        Ali to nije jedini na\v cin kada se slu\v caj \ref{tm:15.1.4} mo\v ze dogoditi.
         \item \label{nap:15.2.3}
         Pretpostavimo da $X_n$ imaju prve momente, to jest da je $X_1 \in L^1(\masP)$.
         Tada je $\masE X_1 \in \real$ i po Kolmogorovljevom jakom zakonu
@@ -93,7 +93,7 @@ Mo\v zemo re\' ci da je "sva informacija do trenutka $n$" koju mo\v zemo dobiti 
     \begin{equation*}
         \{ N = n \} = \{ S_0 \in A^c, \ldots, S_{n - 1} \in A^c, S_n \in A \} \; \in \; \famF_n,
     \end{equation*}
-    pa je $N$ (tipi\v can) primjer zaustavljanja.
+    pa je $N$ (tipi\v can) primjer vremena zaustavljanja.
 \end{pr}
 
 \begin{zad} \label{zad:15.4}
@@ -130,7 +130,7 @@ Posebno, budu\' ci da je $N \equiv n$ tako\dj er vrijeme zaustavljanja, mo\v ze 
 Tvrdimo da je $Y_N$ slu\v cajna varijabla, koje je $\famF_N$-izmjeriva.
 Neka je $B \subseteq \real$ Borelov skup i neka je $n \in \nat_0$, imamo
 \begin{equation*}
-    \{ Y_N \in B \} = \unija{n \in \nat}{} \{ Y_n \in B \} \cap \{ N = n \},
+    \{ Y_N \in B \} = \unija{n \in \nat}{} \big( \{ Y_n \in B \} \cap \{ N = n \} \big),
 \end{equation*}
 a budu\' ci da je $\{ Y_n \in B \} \in \famF_n$, dobivamo
 \begin{equation*}
@@ -180,14 +180,29 @@ Posebno, $S_N$ je $\famF_N$-izmjeriva slu\v cajna varijabla.
     Dakle vrijedi:
     \begin{equation*}
         \begin{aligned}
-            \masE S_N & \overset{\textnormal{neneg.}}{=} \suma{n = 0}{\infty} \int_{\{ N = n \}} S_n \; d \masP \overset{S_0 = 0}{=} \suma{n = 1}{\infty} \suma{m = n}{\infty} \int_{\{ N = n \}} X_m \; d \masP\\
-            &= (\textnormal{Fubini}) = \suma{m = 1}{\infty} \suma{n = m}{\infty} \int_{\{ N = n \}} X_m \; d \masP = \suma{m = 1}{\infty} \int_{\{ N \geq m \}} X_m \; d \masP = (\textnormal{nezav.})\\
+            \masE S_N &=
+            \begin{psmallmatrix}
+                \textnormal{neneg.}
+            \end{psmallmatrix}
+            = \suma{n = 0}{\infty} \int\limits_{\{ N = n \}} S_n \; d \masP =
+            \begin{psmallmatrix}
+                S_0 = 0
+            \end{psmallmatrix}
+            = \suma{n = 1}{\infty} \suma{m = n}{\infty} \int\limits_{\{ N = n \}} X_m \; d \masP\\
+            &=
+            \begin{psmallmatrix}
+                \textnormal{Fubini}
+            \end{psmallmatrix}
+            = \suma{m = 1}{\infty} \suma{n = m}{\infty} \int\limits_{\{ N = n \}} X_m \; d \masP = \suma{m = 1}{\infty} \int\limits_{\{ N \geq m \}} X_m \; d \masP =
+            \begin{psmallmatrix}
+                \textnormal{nezav.}
+            \end{psmallmatrix}\\
             &= \suma{m = 1}{\infty} \masE X_m \cdot \masP (N \geq m) = \masE X_1 \cdot \suma{m = 1}{\infty} \masP (N \geq m) = \masE X_1 \cdot \masE N.
         \end{aligned}
     \end{equation*}
     Za op\' ci slu\v caj imamo
     \begin{equation*}
-        + \infty > \suma{m = 1}{\infty} \masE (| X_m |) \cdot \masP (N \geq m) = \suma{m = 1}{\infty} \suma{n = m}{\infty} \masE (|X_m|) \cdot \masP (N = n)
+        + \infty > \suma{m = 1}{\infty} \masE [| X_m |] \cdot \masP (N \geq m) = \suma{m = 1}{\infty} \suma{n = m}{\infty} \masE [|X_m|] \cdot \masP (N = n)
     \end{equation*}
     pa su zadovoljene pretpostavke Fubinijevog teorema i onda isti izvod kao i gore daje rezulatat.
 \end{proof}
@@ -290,7 +305,7 @@ Pro\v sirimo malo ideju do $S_N$ i sli\v cno, tako da za proizvoljno vrijeme zau
     \end{equation*}
     Sada vrijedi
     \begin{equation*}
-        \suma{n = 0}{\infty} \masP (V = n) = \suma{n = 0}{\infty} \masP (\widetilde{N} > n) \cdot q \quad (q > 0) \infty \masE \widetilde{N} < +\infty.
+        \suma{n = 0}{\infty} \masP (V = n) = \suma{n = 0}{\infty} \masP (\widetilde{N} > n) \cdot q \quad (q > 0) \implies \masE \widetilde{N} < +\infty.
     \end{equation*}
     Sada po teoremu \ref{tm:15.9}
     \begin{equation*}
