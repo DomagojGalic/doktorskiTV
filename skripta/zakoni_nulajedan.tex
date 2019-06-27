@@ -13,8 +13,8 @@
     \begin{equation*}
         \begin{aligned}
             \vjeroj{\textnormal{bar jedna sekvenca "D.M."}}
-            &= \vjeroj{\unija{n \in \nat}{} \{X_n = \textnormal{D.M.}\}}\\
-            &= \vjeroj{\unija{n \in \nat}{} \{X_1 \neq \textnormal{D.M.}, \ldots, X_{n-1} \neq \textnormal{D.M.}, \: X_n = \textnormal{D.M.}\}}\\
+            &= \masP \Big( \unija{n \in \nat}{} \{X_n = \textnormal{D.M.}\} \Big)\\
+            &= \masP \Big( \unija{n \in \nat}{} \big\{X_1 \neq \textnormal{D.M.}, \ldots, X_{n-1} \neq \textnormal{D.M.}, \: X_n = \textnormal{D.M.} \big\} \Big)\\
             &= \textnormal{(disjunktna)}\\
             &= \suma{n \in \nat}{} (1 - p)^{n - 1} \cdot p = p + (1 - p) \: p + (1 - p)^2 \: p + \ldots\\
             &= \Big( \suma{n = 1}{\infty} (1 - p)^{n - 1} \Big) \cdot p = \frac{1}{1 - (1 - p)} \cdot p\\
@@ -59,7 +59,7 @@ Odnosno elementarni doga\dj aj se nalazi u limes superioru niza ako se nalazi u 
     \end{equation*}
     Tada je
     \begin{equation*}
-        \vjeroj{A_n \; i.o.} := \vjeroj{\limsup\limits_{n \to +\infty} A_n} = 0.
+        \vjeroj{A_n \; i.o.} := \masP \Big( \limsup\limits_{n \to +\infty} A_n \Big) = 0.
     \end{equation*}
 \end{lm}
 
@@ -77,7 +77,52 @@ Odnosno elementarni doga\dj aj se nalazi u limes superioru niza ako se nalazi u 
     \begin{equation*}
         \implies \vjeroj{A_n \; i.o.} \leq \vjeroj{C^c} = 0. 
     \end{equation*}
+    Ovdje koristimo tvrdnju
+    \begin{equation*}
+        \masE [|X|] < +\infty \quad \iff \quad \masP (|X| = \infty) = 0.
+    \end{equation*}
 \end{proof}
+
+\begin{nap} \label{nap:9.2-1}
+    Lema \ref{lm:9.2} se mo\v ze dokazati i na druga\v ciji na\v cin.
+    \begin{equation*}
+        \begin{aligned}
+            \masP \Big( \limsup\limits_{n \to \infty} A_n \Big) &= \masP \Big( \presjek{n = 1}{\infty} \unija{k = n}{\infty} A_k \Big) =
+            \begin{psmallmatrix}
+                \textnormal{neprekidnost na padaju\' ce}\\
+                \textnormal{nizove doga\dj aja}
+            \end{psmallmatrix}\\
+            &= \lim\limits_{n \to \infty} \masP \Big( \unija{k = n}{\infty} A_k \Big) \leq \lim\limits_{n \to \infty} \suma{k = n}{\infty} \masP (A_k)\\
+            &= 0,
+        \end{aligned}
+    \end{equation*}
+    gdje zadnja jedakost slijedi kao $n$-ti ostatak konvergentnog reda.
+\end{nap}
+
+\begin{nap} \label{nap:9.2-2}
+    Obrat Borel-Cantellijeve leme ne vrijedi.
+
+    Uzmimo prostor $\vjerojatnosniProstor = \big( \segment{0}{1}, \borel{\segment{0}{1}}, \lambda \big)$, te uzmimo niz doga\dj aja
+    \begin{equation*}
+        A_n := \Big[0, \frac{1}{n} \Big],
+    \end{equation*}
+    sada vidimo da vrijedi
+    \begin{equation*}
+        \masP (A_n) = \frac{1}{n},
+    \end{equation*}
+    te o\v cito vrijedi
+    \begin{equation*}
+        \suma{n = 1}{\infty} \masP (A_n) = \suma{n = 1}{\infty} \frac{1}{n} = +\infty.
+    \end{equation*}
+    S druge strane, primjetimo
+    \begin{equation*}
+        \limsup\limits_{n \to \infty} A_n = \presjek{n = 1}{ \infty}  \underbrace{ \Big( \unija{k = n}{\infty} A_k \Big) }_{= A_n} = \presjek{n = 1}{\infty} A_n = \{ 0 \}.
+    \end{equation*}
+    Odavde vidimo
+    \begin{equation*}
+        \masP \Big( \limsup\limits_{n \to \infty} A_n \Big) = \masP (\{ 0 \}) = 0.
+    \end{equation*}
+\end{nap}
 
 \begin{tm}[Borelov zakon 0 - 1]   \label{tm:9.3}
     Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor i neka je $\niz{A_n}{n \in \nat} \subseteq \famF$ niz nezavisnih doga\dj aja.
@@ -108,14 +153,18 @@ Odnosno elementarni doga\dj aj se nalazi u limes superioru niza ako se nalazi u 
             &= 1
         \end{aligned}
     \end{equation*}
-    To povla\v ci:
+    To, zbog neprekidnosti vjerojatnosti u odnosu na padaju\' ce nizove doga\dj aja, povla\v ci:
     \begin{equation*}
         \begin{aligned}
-            \masP ( A_n \; \io ) &= \masP \Big( \presjek{n \in \nat}{} \unija{k \geq n}{} A_k \Big) = \lim\limits_{n \to \infty} \masP \Big( \unija{k \geq n}{} A_k \Big)\\
+            \masP ( A_n \; \io ) &= \masP \Big( \presjek{n = 1}{\infty} \unija{k = n}{\infty} A_k \Big) = \lim\limits_{n \to \infty} \masP \Big( \unija{k = n}{\infty} A_k \Big)\\
             &= 1.
         \end{aligned}
     \end{equation*}
 \end{proof}
+
+\begin{nap} \label{nap:9.3-1}
+    U Borelovom zakonu 0-1 tra\v zimo nezavisnost, dok u Borel-Cantallijevoj lemi ne.
+\end{nap}
 
 \begin{nap} \label{nap:9.4}
     U primjeru \ref{pr:9.1}. $A_n = \{ X_n = \textnormal{D.M.} \}$ su nezavisni i $\vjeroj{A_n} = p = \frac{1}{M^T} > 0 \implies \sum \vjeroj{A_n} = +\infty \implies \vjeroj{A_n \; i.o.} = 1$ (!).
