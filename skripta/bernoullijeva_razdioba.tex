@@ -106,7 +106,11 @@ i kako je $n$ ve\' ci, aproksimacija je sve bolje (na primjer za $n = 10$, gre\v
     \begin{equation*}
         \begin{aligned}
             \masE (V_l) &= \masE \Big(\frac{T_l^1}{2^l} \Big) = \frac{p_l}{2^l} \suma{m = 1}{\infty} m \: q_l^{m - 1} = \frac{p_l}{2^l} \cdot \frac{1}{q_l} \: \suma{m = 1}{\infty} m \: q_l^m\\
-            &= \frac{p_l}{2^l \: q_l} \cdot \suma{m = 1}{\infty} \big( \suma{k = 1}{m} 1 \cdot q_l^m \big) \overset{Fubini}{=} \frac{p_l}{2^l \: q_l} \suma{k = 1}{\infty} \: \suma{m = k}{\infty} q_l^m\\
+            &= \frac{p_l}{2^l \: q_l} \cdot \suma{m = 1}{\infty} \big( \suma{k = 1}{m} 1 \cdot q_l^m \big)=
+            \begin{psmallmatrix}
+                \textnormal{Fubini}
+            \end{psmallmatrix}
+            = \frac{p_l}{2^l \: q_l} \suma{k = 1}{\infty} \: \suma{m = k}{\infty} q_l^m\\
             &= \frac{p_l}{2^l \: q_l} \suma{k = 1}{\infty} q_l^k \: \underbrace{\suma{m = k}{\infty} q_l^{m - k}}_{= \frac{1}{1-q_l} = \frac{1}{p_l}} = \frac{1}{2^l \: q_l} \cdot \suma{k = 1}{\infty} q_l^k = \frac{1}{2^l \: \cancel{q_l}} \cdot \frac{\cancel{q_l}}{1 - q_l}\\
             &= \frac{1}{p_l \: 2^l}.
         \end{aligned}
@@ -114,12 +118,18 @@ i kako je $n$ ve\' ci, aproksimacija je sve bolje (na primjer za $n = 10$, gre\v
     Neka su sada $\niz{T_n}{n \in \nat}$ vremena $n$-tog poziva u kontinuiranoj skali.
     Tada je $\mu = \masE (T^n) = \masE (T^1)$ i ima smisla
     \begin{equation*}
+        \lim\limits_{l \to \infty} \masE (V_l) = \masE (T^1),
+    \end{equation*}
+    pa imamo
+    \begin{equation*}
         \begin{aligned}
-            & \lim\limits_{l \to \infty} \masE (V_l) = \masE (T^1) \implies \\
-            \lambda = & \lim\limits_{l \to \infty} p_l \: 2^l = \lim\limits_{l \to \infty} \: (-1) \cdot \frac{(1-p)^{\frac{1}{2^l}}}{\frac{1}{2^l}}\\
-            = & - \ln (1 - p) \implies\\
-            p =& 1 - e^{-\lambda}.
+            \lambda &= \lim\limits_{l \to \infty} p_l \: 2^l = \lim\limits_{l \to \infty} \: (-1) \cdot \frac{(1-p)^{\frac{1}{2^l}}}{\frac{1}{2^l}}\\
+            &= - \ln (1 - p) \implies,
         \end{aligned}
+    \end{equation*}
+    odakle slijedi
+    \begin{equation*}
+            p = 1 - e^{-\lambda}.
     \end{equation*}
     Potpuno analogno mogli bi gledati svako vrijeme $t>0$ i dobili bismo
     \begin{equation*}
@@ -182,7 +192,7 @@ Pogledajmo tipi\v can slu\v caj primjera u koje se $p$ ne mjenja.
     uo\v cimo da je lako promatrati neku drugu po\v cetnu razdiobu $Y$ - samo uzmemo $V_n = Y + S_n$.
     O\v cito, ako je $n$ paran, $S_n$ mo\v ze posti\' ci samo parne vrijednosti izme\dj u $-n$ i $n$, te za $k = 0, \: 1, \ldots, n$ imamo
     \begin{equation*}
-        \vjeroj{S_n = -n + 2K} = {n \choose k} p^k \: q^{n - k},
+        \vjeroj{S_n = -n + 2k} = {n \choose k} p^k \: q^{n - k},
     \end{equation*}
     i sli\v cno dobijemo za neparne $n$.
     \v Sto se doga\dj a s trajektorijama $n \mapsto S_n(\omega)$ za velike $n$?
@@ -245,12 +255,13 @@ Pogledajmo tipi\v can slu\v caj primjera u koje se $p$ ne mjenja.
     \v sto je kontradikcija.
     Dakle, $a, b \in \{-\infty, \; +\infty\}$.
 
-    Posebno, ako je $b = -\infty$ i $a = + \infty$, tada
+    Posebno, ako je $b = -\infty$, tada
     \begin{equation*}
-        \begin{aligned}
-            \lim\limits_{n  \to \infty} S_n &= -\infty \; (g.s.)\\
-            \lim\limits_{n \to \infty} S_n &= +\infty \; (g.s.).
-        \end{aligned}
+        \lim\limits_{n  \to \infty} S_n = -\infty \; (g.s.)
+    \end{equation*}
+    i ako je $a = + \infty$,
+    \begin{equation*}
+        \lim\limits_{n \to \infty} S_n = +\infty \; (g.s.).
     \end{equation*}
     Ako je $a = -\infty$, $b = +\infty$, tada gotovo sigurno trajektorije osciliraju sve vi\v se i vi\v se.
 
@@ -288,7 +299,7 @@ Pogledajmo tipi\v can slu\v caj primjera u koje se $p$ ne mjenja.
 \end{pr}
 
 Vidjet \' cemo uskoro da mo\v zemo dobiti i preciznije odgovore.
-Uo\v cimo da u nekim od ovih dokaza nije bila va\v zna precizna distribucija; to \' cemo precizirati u sljede\' cem zadatku.
+Uo\v cimo da u nekim od ovih dokaza nije bila va\v zna konkretna distribucija; to \' cemo precizirati u sljede\' cem zadatku.
 
 \begin{zad} \label{zad:10.4}
     Neka je $(X_n) \; \iid$ niz, $S_0 = 0$, $S_n = X_1 + \ldots + X_n$.
