@@ -30,7 +30,7 @@ Uo\v cimo $\masP_X$ je poseban slu\v caj tako zvane mjere inducirane izmjerivim 
     \begin{enumerate}[label=(\alph*)]
         \item Uo\v cimo da je u $\masP$ sadr\v zana "sva vjerojatnosna informacija" o $X$.
         \item Rad sa slu\v cajnim elementima s vjerojatnostima u $\urePar{E}{\famE}$ (bez obzira na kojem vjerojatnosnom prostoru bili definirani) mo\v ze se svesti na tako zvani \emph{kanonski slu\v caj}.
-        \item Preciznije, mi fiksiramo "vjerojatnosni prostor" i "slu\v cajni element", to jest uzmemo $\widetilde{\Omega} := E$, $\widetilde{\famF} := \famE$, $\widetilde{X} := id : E \to E$ i dr\v zimo uvijek fiksirano, a slu\v cajni element "realiziramo" postavljanjem odgovaraju\' ce vjerojatnosne mjere $\masP_X$ na taj prostor.
+        \item Preciznije, fiksiramo "vjerojatnosni prostor" i "slu\v cajni element", to jest uzmemo $\widetilde{\Omega} := E$, $\widetilde{\famF} := \famE$, $\widetilde{X} := id : E \to E$ i dr\v zimo uvijek fiksirano, a slu\v cajni element "realiziramo" postavljanjem odgovaraju\' ce vjerojatnosne mjere $\masP_X$ na taj prostor.
         Tada $X$ (uz $\masP$) i $\widetilde{X}$ (uz $\masP_X$) imaju istu distribuciju (i to je $\masP_X$).
         \item Time se uvodi nova ideja o pojmu jednakosti u vjerojatnosti.
         Vidjeli smo da za slu\v cajne elemente (definirane na istom prostoru s vjerojatnostima u istom prostoru) mo\v zemo promatrati obi\v cnu skupovnu jednakost $X = Y$, jednakost gotovo sigurno $(g.s.)$, a sada i jednakost po distribuciji.
@@ -71,7 +71,7 @@ Uo\v cimo da je $F_X (-\infty) \geq 0$ i da je
 a zbog neprekidnosti zdesna je $F_X (-\infty) = \lim\limits_{a \ \searrow -\infty} F_X (a)$.
 S druge strane postoji i $\lim\limits_{a \nearrow +\infty} F_X (a) \leq F_X(+\infty) = 1$, te je
 \begin{equation*}
-    F_X(+\infty) = \lim\limits_{a \nearrow +\infty} F_X (a) \iff \masP (X = +\infty) = 1.
+    F_X(+\infty) = \lim\limits_{a \nearrow +\infty} F_X (a) \iff \masP (X = +\infty) = 0.
 \end{equation*}
 
 Posebno, $X$ je slu\v cajna varijabla ako i samo ako vrijedi:
@@ -200,7 +200,7 @@ Ka\v zemo da je slu\v cajna varijabla $X$ \emph{apsolutno neprekidna} ako je $F_
     Tada pi\v semo $\nu \ll \mu$.
 \end{nap}
 
-Po Radon-Nykondimovom teoremu znamo da je $X$ apsolutno neprekidna ako i samo ako je $\masP_X \ll \lambda$, te da tada postoji i $\lambda$ gotovo sigurno jedinstvena Radon-Nykondimova derivacija $\frac{d \masP_X}{d \lambda}$ koja igra ulogu funkcije $g$ odozgo.
+Po Radon-Nikondymovom teoremu znamo da je $X$ apsolutno neprekidna ako i samo ako je $\masP_X \ll \lambda$, te da tada postoji i $\lambda$ gotovo sigurno jedinstvena Radon-Nikondymova derivacija $\frac{d \masP_X}{d \lambda}$ koja igra ulogu funkcije $g$ odozgo.
 U ovom slu\v caju nazivamo je funkcijom gusto\' ce i ozna\v cavamo sa $f_X$.
 Postoji jako puno funkcija gusto\' ce jer je $f: \real \to \desInt{0}{+\infty}$ funkcija gusto\' ce neke slu\v cajne varijable $X$ ako i samo ako je $f$ izmjeriva i vrijedi
 \begin{equation*}
@@ -244,19 +244,19 @@ Tako\dj er za $F \in \famE$ vrijedi
         (m-1-1) edge node [below, xshift=-9pt] {$f \circ X$} (m-3-2);
     \end{tikzpicture}
 \end{figure}
-U tom slu\v caju ka\v zemo da postoji o\v cekivanje od $f \circ X$ i bilo koje od gornjih integrala ozna\v cavamo sa $\ocek{f \circ X}$
-(uo\v cimo da $f \circ X \in L^1 \vjerojatnosniProstor$ zna\v ci da je $\ocek{|f \circ X|} < +\infty$).
+U tom slu\v caju ka\v zemo da postoji o\v cekivanje od $f \circ X$ i bilo koje od gornjih integrala ozna\v cavamo sa $\masE [f \circ X]$
+(uo\v cimo da $f \circ X \in L^1 \vjerojatnosniProstor$ \v sto zna\v ci da je $\masE [|f \circ X|] < +\infty$).
 
 Zanimaju nas neki posebni slu\v cajevi gornjih integrala.
 
 \begin{defn}    \label{defn:5.11-4}
-    Neka je $X$ slu\v cajna varijabla  na $\vjerojatnosniProstor$ te neka je $p > 0$, tada $\ocek{|X|^p} \in \segment{0}{+\infty}$ i zovemo ga \emph{$p$-ti apsolutni moment} od $X$.
+    Neka je $X$ slu\v cajna varijabla  na $\vjerojatnosniProstor$ te neka je $p > 0$, tada $\masE [ |X|^p ] \in \segment{0}{+\infty}$ i zovemo ga \emph{$p$-ti apsolutni moment} od $X$.
     
-    Ako je $\ocek{|X|^p} < +\infty$, tada je $X \in L^p := L^p \vjerojatnosniProstor$, \v sto je normirani prostor s normom $\norma{X}_p = (\masE [|X|^p])^{\frac{1}{p}}$ te postoji i $\ocek{X^p}$ \v sto nazivamo \emph{$p$-ti moment} od $X$.
+    Ako je $\masE [ |X|^p ] < +\infty$, tada je $X \in L^p := L^p \vjerojatnosniProstor$, \v sto je normirani prostor s normom $\norma{X}_p = (\masE [|X|^p])^{\frac{1}{p}}$ te postoji i $\masE [ X^p ]$ \v sto nazivamo \emph{$p$-ti moment} od $X$.
 \end{defn}
 
 \begin{nap} \label{nap:5.11-5}
-    Tehni\v cki $L^p \vjerojatnosniProstor$ je kvocjentni prostor svih slu\v cajnih varijabli (op\' cenito izmjerivih funkcija) \v ciji je $p$-ti apsolutni moment kona\v can kvocjenitano po relaciji ekvivalencije $\sim$ definirane sa
+    Tehni\v cki $L^p \vjerojatnosniProstor$ je kvocjentni prostor svih slu\v cajnih varijabli (op\' cenito izmjerivih funkcija) \v ciji je $p$-ti apsolutni moment kona\v can, kvocjenitano po relaciji ekvivalencije $\sim$ definirane sa
     \begin{equation*}
         f \sim g \iff f = g \; (g.s.),
     \end{equation*}
@@ -275,7 +275,7 @@ Ako je $p \leq q$, tada je $L^q \subseteq L^p$ (i $\norma{X}_p \leq \norma{X}_q$
 Ako je $X \geq 0$ i $p > 0$ jednostavnim ra\v cunom daje
 \begin{align}   \label{jed:5.12}
     \begin{split}
-        \ocek{X^p} =& \int\limits_0^{+\infty} t^p \: d \masP_X (t) = \int\limits_0^{\infty} \Big( \int\limits_0^t p \cdot u^{p - 1} \: d u \Big) \: d \masP_X(t) = (\textnormal{Fubini})\\
+        \masE [ X^p ] =& \int\limits_0^{+\infty} t^p \: d \masP_X (t) = \int\limits_0^{\infty} \Big( \int\limits_0^t p \cdot u^{p - 1} \: d u \Big) \: d \masP_X(t) = (\textnormal{Fubini})\\
         =& p \int\limits_0^{\infty} \: du \int\limits_u^t u ^{p-1} \: d \masP_X (t) = p \int\limits_0^{+\infty} u^{p-1} \masP_X (\segment{u}{+\infty}) \: du \\
         =& \int\limits_0^{+\infty} p \cdot u^{p-1} \vjeroj{X \geq u} \: du.
     \end{split}
@@ -300,3 +300,131 @@ Uo\v cimo da varijanca postoji ako i samo ako postoji drugi moment od $X$ i tada
 \begin{equation*}
     Var \: X := \masE [ (X - \masE X)^2 ] = \masE [ X^2 ] - (\masE X)^2.
 \end{equation*}
+
+\begin{zad}[Probability integral transform] \label{zad:5.13-1}
+    \quad \\
+    Neka je $X$ slu\v cajna varijabla i neka je $F_X$ njena funkcija distribucije.
+    Funkciju
+    \begin{equation*}
+        F_X^{-1} (s) := \inf \: \indFamilija{z \in \real}{F_X (z) \geq s}
+    \end{equation*}
+    nazivamo \emph{generaliziranim inverzom} funkcije $F_X$.
+    
+    Neka je $U$ uniformno distribuirana slu\v cajna varijabla (na segementu $\segment{0}{1}$), poka\v zite da vrijedi
+    \begin{equation*}
+        \masP (F_X^{-1} (U) \leq y ) = F_X (y)
+    \end{equation*}
+\end{zad}
+
+\begin{rj}[\ref{zad:5.13-1}]
+    Dokazujemo tri tvrdnje
+    \begin{enumerate}[label=(\arabic*)]
+        \item \label{zad:5.13-1.1}
+        \begin{equation*}
+            u \leq F_X ( F_X^{-1} ( u )), \quad u \in \obInt{0}{1}.
+        \end{equation*}
+        Budu\' ci je $F_X^{-1} (u)$ infimum skupa $\indFamilija{z \in \real}{F_X (z) \geq u}$, tada za svaki $\varepsilon > 0$, postoji neki $z$ iz danog skupa, takav da vrijedi
+        \begin{equation*}
+            F_X^{-1} (u) + \varepsilon \geq z,
+        \end{equation*}
+        kako je $F_X$ rastu\' ca funkcija, imamo
+        \begin{equation*}
+            F_X (F_X^{-1} (u) + \varepsilon) \geq F(z) \geq u,
+        \end{equation*}
+        gdje zadnja nejednakost vrijedi iz definicijskog svojstva promatranog skupa.
+        Sada jo\v s preostaje primjetiti kako je $F_X$ neprekidna zdesna pa vrijedi
+        \begin{equation*}
+            \lim\limits_{\varepsilon \searrow 0} F_X ( F_X^{-1} (u) + \varepsilon) = F_X (F_X^{-1} (u)) \geq u. 
+        \end{equation*}
+
+        \item   \label{zad:5.13-1.2}
+        \begin{equation*}
+            F_X^{-1} (F_X (y)) \leq y, \quad y \in \real.
+        \end{equation*}
+        Po definiciji imamo
+        \begin{equation*}
+            F_X^{-1} (F(y)) = \inf \: \indFamilija{z \in \real}{F(z) \geq F(y)},
+        \end{equation*}
+        No kako vrijedi $F_X (y) \geq F_X (y)$, vidimo da se $y$ nalazi u gornjem skupu, pa mora biti ve\' ci ili jednak infimumu tog skupa.
+        Stoga imamo tvrdnju.
+
+        \item   \label{zad:5.13-1.3}
+        \begin{equation*}
+            x \leq y \implies F_X^{-1} (x) \leq F_X^{-1} (y).
+        \end{equation*}
+        Neka je $x \geq y$, imamo
+        \begin{equation*}
+            z \in \{ F_X \geq y \} \iff F_X (z) \geq y,
+        \end{equation*}
+        budu\' ci je $x \leq y$ imamo
+        \begin{equation*}
+            F_X(z) \geq x \implies z \in \{ F_X \geq x \},
+        \end{equation*}
+        dakle
+        \begin{equation*}
+            \{ F \geq y \} \subseteq \{ F \geq x \},
+        \end{equation*}
+        stoga imamo
+        \begin{equation*}
+            F_X^{-1} (y) = \inf \: \{ F \geq y \} \geq  \inf \: \{ F \geq x \} = F_X^{-1} (x),
+        \end{equation*}
+        odnosno
+        \begin{equation*}
+            x \leq y \implies F_X^{-1} (x) \leq F_X^{-1} (y).
+        \end{equation*}
+    \end{enumerate}
+
+    Primjetimo, vrijedi ekvivalencija
+    \begin{equation*}
+        \masP (F_X^{-1} (U) \leq y) = F_X (y) \quad \iff \quad \masP (F_X^{-1} (U) \leq y) = \masP ( U \leq F_X (y) ),
+    \end{equation*}
+    dakle dovoljno je pokazati
+    \begin{equation*}
+        \{ F_X^{-1} (U) \leq y \} = \{ U \leq F_X(y) \}.
+    \end{equation*}
+    \begin{itemize}
+        \item[$\subseteq$]
+        \quad \\ 
+        Neka je $\omega \in \{ F_X^{-1} (U) \leq y \}$, tada
+        \begin{equation*}
+            F_X^{-1} (U(\omega)) \leq y,
+        \end{equation*} 
+        sada vidimo
+        \begin{equation*}
+            U(\omega) \leq F_X(F_X^{-1} (U(\omega))) \leq F_X(y),
+        \end{equation*}
+        gdje prva nejednakost slijedi iz \ref{zad:5.13-1.1}, a druga zbog \v cinjenice da je $F_X$ rastu\' ca.
+        Dakle
+        \begin{equation*}
+            \omega \in \{ U \leq F_X(y) \}.
+        \end{equation*}
+
+        \item[$\supseteq$]
+        \quad \\
+        Neka je $\omega \in \{ U \leq F_X(y) \}$, odnosno
+        \begin{equation*}
+            U (\omega) \leq F(y),
+        \end{equation*} 
+        sada po \ref{zad:5.13-1.3} imamo
+        \begin{equation*}
+            F_X^{-1} (U(\omega)) \leq F_X^{-1} (F(y)) \leq y,
+        \end{equation*}
+        gdje zadanja nejednakost slijedi iz \ref{zad:5.13-1.2}.
+        Odavde izlazi
+        \begin{equation*}
+            F_X^{-1} (U(\omega)) \leq y,
+        \end{equation*}
+        odnosno
+        \begin{equation*}
+            \omega \in \{ F_X^{-1} (U) \leq y \}.
+        \end{equation*}
+    \end{itemize}
+    Stoga tvrdnja vrijedi.
+\end{rj}
+
+\begin{nap} \label{nap:5.13-2}
+    Zadatak \ref{zad:5.13-1} zapravo govori
+    \begin{equation*}
+        F_X^{-1} (U) \sim X.
+    \end{equation*}
+\end{nap}
