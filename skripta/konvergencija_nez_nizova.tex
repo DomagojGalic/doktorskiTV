@@ -7,7 +7,7 @@ U ovom poglavlju koristit \' cemo stalne oznake: $\vjerojatnosniProstor$, \' ce 
 Uo\v cimo da je skup
 \begin{equation*}
     \begin{aligned}
-        \conv{(X_n)} &:= \Big\{ \lim\limits_{n} X_n \in \real \Big\} = \bigSkup{\omega \in \Omega}{\lim\limits_{n \to \infty} X_n (\omega) \in \real}\\
+        \conv{(X_n)} &:= \Big\{ \lim\limits_{n \to \infty} X_n \in \real \Big\} = \bigSkup{\omega \in \Omega}{\lim\limits_{n \to \infty} X_n (\omega) \in \real}\\
         &= \presjek{k = 1}{\infty} \unija{n = 1}{\infty} \presjek{i = 1}{\infty} \bigSkup{\omega \in \Omega}{|X_{n + i} (\omega) - X_n (\omega)| < \frac{1}{k}}
     \end{aligned}
 \end{equation*}
@@ -16,9 +16,60 @@ uvijek doga\dj aj, te da je
     X:= \limsup\limits_{n \to \infty} X_n
 \end{equation*}
 pro\v sirena slu\v cajna varijabla.
+
+\begin{nap} \label{nap:11.0-1}
+    Primjetimo da gornji skupovi zaista jesu jednaki, to jest, zaista vrijedi
+    \begin{equation*}
+        \bigSkup{\omega \in \Omega}{\lim\limits_{n \to \infty} X_n (\omega) \in \real}
+        = \presjek{k = 1}{\infty} \unija{n = 1}{\infty} \presjek{i = 1}{\infty} \bigSkup{\omega \in \Omega}{|X_{n + i} (\omega) - X_n (\omega)| < \frac{1}{k}}.
+    \end{equation*}
+    \begin{enumerate}
+        \item[$\subseteq$]
+        Neka je $\omega \in \Omega$ takav da vrijedi $\lim\limits_{n \to \infty} X_n (\omega) \in \real$, dakle niz $\niz{X_n (\omega) }{n \in \nat}$ je Cauchyjev.
+        Ali tada za svaki $k \in \nat$ postoji $n_0 \in \nat$, takav da, za svake $m, n \in \nat$, $m, n \geq n_0$ vrijedi
+        \begin{equation*}
+            | X_m (\omega) - X_n (\omega) | \leq \frac{1}{k},
+        \end{equation*}
+        ali tada za svaki $n \geq n_0$ te za svaki $i \in \nat$ vrijedi
+        \begin{equation*}
+            | X_{n + i} (\omega) - X_n | \leq \frac{1}{k}.
+        \end{equation*}
+        Ali to je to\v cno definicijski uvijet drugog skupa, dakle vrijedi
+        \begin{equation*}
+            \omega \in \presjek{k = 1}{\infty} \unija{n = 1}{\infty} \presjek{i = 1}{\infty} \bigSkup{\omega \in \Omega}{|X_{n + i} (\omega) - X_n (\omega)| < \frac{1}{k}}.
+        \end{equation*}
+
+        \item[$\supseteq$]
+        Neka je $\varepsilon > 0$ i neka je
+        \begin{equation*}
+            \omega \in \presjek{k = 1}{\infty} \unija{n = 1}{\infty} \presjek{i = 1}{\infty} \bigSkup{\omega \in \Omega}{|X_{n + i} (\omega) - X_n (\omega)| < \frac{1}{k}},
+        \end{equation*}
+        uzmimo $k \in \nat$, takav da vrijedi $ \frac{1}{k} < \frac{\varepsilon}{2}$.
+        Primjetimo da sada postoji $n_0 \in \nat$ takav da za svaki $i \in \nat$ vrijedi
+        \begin{equation*}
+            |X_{n_0 + i} (\omega) - X_{n_0} (\omega) | < \frac{1}{k}.
+        \end{equation*}
+        Neka su $n, m \in \nat$, $n, m > n_0$, imamo
+        \begin{equation*}
+            \begin{aligned}
+                |X_m (\omega) - X_n (\omega) | &= |X_m (\omega) - X_{n_0} + X_{n_0} (\omega) - X_n (\omega) |\\
+                &\leq | X_{n} (\omega) - X_{n_0} (\omega) | + | X_m (\omega) - X_{n_0} (\omega) |\\
+                &= | X_{n_0 + (n - n_0) } (\omega) - X_{n_0} (\omega) | + | X_{n_0 + ( m - n_0 ) } (\omega) - X_{n_0} (\omega) | < \frac{2}{k}\\
+                &< \varepsilon.
+            \end{aligned}
+        \end{equation*}
+        Dakle niz $\niz{X_n (\omega)}{n \in \nat}$ je Cauchyjev (na $\real$) stoga je konvergentan.
+        Odnosno vrijedi
+        \begin{equation*}
+            \omega \in \bigSkup{\omega \in \Omega}{\lim\limits_{n \to \infty} X_n (\omega) \in \real}.
+        \end{equation*}
+    \end{enumerate}
+    Pa vrijedi jednakost.
+\end{nap}
+
 Stoga
 \begin{equation}    \label{jed:11.1}
-    \vjeroj{\conv{(X_n)}} = 1 \implies \masP \Big( X = \lim\limits_n X_n \in \real \Big) = 1
+    \vjeroj{\conv{(X_n)}} = 1 \implies \masP \Big( X = \lim\limits_{n \to \infty} X_n \in \real \Big) = 1
 \end{equation}
 i u tom slu\v caju ka\v zemo da $(X_n)$ \emph{konvergira gotovo sigurno}.
 Ako je $Y$ slu\v cajna varijabla i postoji $D \in \famF$ takav da je $\vjeroj{D} = 0$ i za svaki $\omega \in D^c$ je
@@ -87,7 +138,7 @@ Iz \eqref{jed:11.4} i \eqref{jed:11.5} direktno dobijemo:
 \begin{lm}  \label{lm:11.6}
     Niz $\niz{X_n}{n \in \nat}$ je konvergentan $g.s.$ ako i samo ako vrijedi
     \begin{equation*}
-        \lim\limits \masP \Bigg( \unija{l = m}{\infty} \{ |X_l - X| > \varepsilon \} \Bigg) = 0, \quad \forall \varepsilon > 0
+        \lim\limits_{m \to \infty} \masP \Bigg( \unija{l = m}{\infty} \{ |X_l - X| > \varepsilon \} \Bigg) = 0, \quad \forall \varepsilon > 0
     \end{equation*}
 \end{lm}
 
@@ -124,7 +175,14 @@ Nadalje, $\liminf\limits_{n \to \infty} X_n$ i $\limsup\limits_{n \to \infty} X_
 
     Doka\v zimo \ref{tm:11.9.3} $\implies$ \ref{tm:11.9.4}.
     Ozna\v cimo sa $C_n := \{ |X_n - a| > \varepsilon\}$, za zadani $\varepsilon > 0$.
-    Po pretpostavci $\niz{C_n}{n \in \nat}$ su nezavisni doga\dj aji, a zbog $X_n \xrightarrow[n \to \infty]{g.s.} a$ dobivamo $\vjeroj{\limsup\limits_{n \to \infty} C_n} = 0$.
+    Po pretpostavci $\niz{C_n}{n \in \nat}$ su nezavisni doga\dj aji, a zbog
+    \begin{equation*}
+        X_n \xrightarrow[n \to \infty]{g.s.} a
+    \end{equation*}
+    dobivamo
+    \begin{equation*}
+        \masP \Big( \limsup\limits_{n \to \infty} C_n \Big) = 0.
+    \end{equation*}
     Po Borelovom zakonu 0-1 $\suma{n = 1}{\infty} \vjeroj{C_n} < +\infty$.
 
     Doka\v zimo \ref{tm:11.9.4} $\implies$ \ref{tm:11.9.3}.
@@ -219,7 +277,7 @@ Osim "konvergencije po to\v ckama" $(g.s.)$ teorija vjerojatnosti bavi se i drug
 \end{pr}
 
 \begin{defn}    \label{defn:11.13-1}
-    Re\' ci \' cemo da niz $\niz{X_n}{n \in \nat}$ \emph{konvergira po vjerojatnosti} prema slu\v cajnoj varijabli $Y$, ako za svaki $\varepsilon > 0$ vrijedi
+    Re\' ci \' cemo da niz slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ \emph{konvergira po vjerojatnosti} prema slu\v cajnoj varijabli $Y$, ako za svaki $\varepsilon > 0$ vrijedi
     \begin{equation*}
         \lim\limits_{n \to \infty} \vjeroj{|X_n - Y| > \varepsilon} = 0.
     \end{equation*}
@@ -245,9 +303,9 @@ Koriste\' ci \eqref{jed:11.5} direktno dobivamo:
 \begin{lm}  \label{lm:11.16}
     Sljede\' ce tvrdnje su ekvivalentne:
     \begin{enumerate}[label=(\roman*)]
-        \item $X_n \xrightarrow[n \to \infty]{g.s.} Y$;
-        \item $(\forall \varepsilon > 0)(\exists \delta > 0) (\exists N \urePar{\varepsilon}{\delta} \in \nat)\\
-        (n \in \nat, \; n \geq N \urePar{\varepsilon}{\delta} \implies \masP \Big( \presjek{j = n}{\infty} \{ |X_j - Y| \leq \varepsilon \} \Big) \geq 1 - \delta)$;
+        \item $X_n \xrightarrow[n \to \infty]{g.s.} Y$,
+        \item $(\forall \varepsilon > 0) (\exists \delta > 0 ) \big(\exists N \urePar{\varepsilon}{\delta} \in \nat \big)\\
+        \Big(n \in \nat, \; n \geq N \urePar{\varepsilon}{\delta} \implies \masP \Big( \presjek{j = n}{\infty} \{ |X_j - Y| \leq \varepsilon \} \Big) \geq 1 - \delta \Big)$;
         \item   \label{lm:11.16.3}
         $\sup\limits_{j \geq n} |X_j - Y| \xrightarrow[n  \to \infty]{\masP} 0$.
     \end{enumerate}
@@ -284,9 +342,9 @@ Ipak, veza izme\dj u ovih konvergencija je direktna.
     Formirajmo podniz: $n_1 := m_1$, $n_{i + 1} := \max \urePar{n_i + 1}{m_{i + 1}}$, te $X_k' := X_{n_k}$.
     Tada je
     \begin{equation*}
-        \suma{k = 1}{\infty} \masP \Big( |X_{k + 1}' - X_k'| > \frac{1}{2^k} \big) \leq \suma{k = 1}{\infty} \frac{1}{2^k},    
+        \suma{k = 1}{\infty} \masP \Big( |X_{k + 1}' - X_k'| > \frac{1}{2^k} \Big) \leq \suma{k = 1}{\infty} \frac{1}{2^k},    
     \end{equation*}
-    pa prema Borel-Cantellijevoj lemi $(\exists A \in \famF) (\vjeroj{A} = 0)$ za $\omega \in A^c$
+    pa prema Borel-Cantellijevoj lemi $(\exists A \in \famF) \big(\vjeroj{A} = 0 \big)$ za $\omega \in A^c$
     \begin{equation*}
         (\exists k_0 (\omega) \in \nat) \Big(k \geq k_0 \implies |X_{k + 1}'(\omega) - X_k' (\omega)| \leq \frac{1}{2^k} \Big),
     \end{equation*}
