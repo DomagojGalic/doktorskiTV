@@ -133,8 +133,8 @@ Posebno, vidimo da je
     Ako su $\niz{X_n}{n \in \nat}$ nezavisne slu\v cajne varijable, tada, za svaki $\varepsilon > 0$ vrijedi:
     \begin{equation*}
         \begin{gathered}
-            \vjeroj{\max\limits_{1 \leq j \leq n} [S_j - m(S_j - S_n)] \geq \varepsilon } \leq 2 \: \vjeroj{S_n \geq \varepsilon}\\
-            \vjeroj{\max\limits_{1 \leq j \leq n} |S_j - m(S_j - S_n)| \geq \varepsilon } \leq 2 \: \vjeroj{|S_n| \geq \varepsilon}.
+            \masP \Big( \max\limits_{1 \leq j \leq n} [S_j - m(S_j - S_n)] \geq \varepsilon \Big) \leq 2 \: \masP ( S_n \geq \varepsilon )\\
+            \Big( \max\limits_{1 \leq j \leq n} |S_j - m(S_j - S_n)| \geq \varepsilon \Big) \leq 2 \: \vjeroj{|S_n| \geq \varepsilon}.
         \end{gathered}
     \end{equation*}
 \end{lm}
@@ -148,12 +148,12 @@ Posebno, vidimo da je
     Doka\v zimo prvu nejednakost.
     Stavimo
     \begin{equation*}
-        T:= \min ( \skup{j \in \{1, \ldots, n\}}{S_j - m(S_j - S_n) \geq \varepsilon} ),
+        T:= \min \: \bigSkup{j \in \{1, \ldots, n\}}{S_j - m(S_j - S_n) \geq \varepsilon} ,
     \end{equation*}
     ako takav minimum postoji, odnosno $T:= n + 1$, ako ne postoji.
     Nadalje, stavimo
     \begin{equation*}
-        B_j := \{ m(S_j - S_n) \geq S_j - S_n \}, \quad 1 \leq j \leq n.
+        B_j := \Big\{ m(S_j - S_n) \geq S_j - S_n \Big\}, \quad 1 \leq j \leq n.
     \end{equation*}
     Stoga je $\vjeroj{B_j} \geq \frac{1}{2}$, za svaki $1 \leq j \leq n$.
     Uo\v cimo da je $\{ T = j \} \in \sigAlg{X_1, \ldots X_j}$, te $B_j \in \sigAlg{X_{j + 1}, \ldots, X_n}$, \v sto daje da su $\{T = j\}$ i $B_j$ nezavisni.
@@ -281,9 +281,9 @@ Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
         Sada vidimo,
         \begin{equation*}
             \begin{aligned}
-                \frac{S_n}{n} - \widetilde{b_n} \xrightarrow[n \to \infty]{\masP} 0 &\implies n \: \vjeroj{|X_1| > n} \xrightarrow[n \to \infty]{} 0\\
+                \frac{S_n}{n} - \widetilde{b}_n \xrightarrow[n \to \infty]{\masP} 0 &\implies n \: \vjeroj{|X_1| > n} \xrightarrow[n \to \infty]{} 0\\
                 &\implies \frac{S_n}{n} - b_n \xrightarrow[n \to \infty]{\masP} 0\\
-                &\implies b_n - \widetilde{b_n} \xrightarrow[n \to \infty]{} 0.
+                &\implies b_n - \widetilde{b}_n \xrightarrow[n \to \infty]{} 0.
             \end{aligned}
         \end{equation*}
     \end{itemize}
@@ -299,7 +299,7 @@ Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
                 \vjeroj{|X| > x} &= 2 \int\limits_x^{+\infty} \frac{dt}{\pi \: (1 + t^2)} \sim \frac{2}{\pi} \int\limits_x^{+\infty} \frac{dt}{t^2}\\
                 &= \frac{2}{\pi \: x}
             \end{aligned}\\
-            \implies \quad \lim\limits_{x \to \infty} x \: \vjeroj{|X| > x} = \frac{2}{\pi} > 0.
+            \implies \quad \lim\limits_{x \to \infty} x \: \vjeroj{|X| > x} = x \cdot \frac{2}{x \pi} = \frac{2}{\pi} > 0.
         \end{gathered}
     \end{equation*}
 \end{pr}
@@ -340,7 +340,11 @@ Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
     \begin{equation*}
         (\omega, t) \overset{g}{\mapsto} f(\omega) - t
     \end{equation*}
-    je izmjeriva funkcija po propoziciji \ref{prop:4.9}.
+    je izmjeriva funkcija kao kompozicija izmjerivih funkcija, primjetimo, $f$ i $\id$ su izmjerive funkcije, te je $(s, t) \mapsto s - t$ tako\dj er izmjeriva funkcija, stoga je
+    \begin{equation}
+        (\omega, t) \mapsto f(\omega) - t,
+    \end{equation}
+    izmjeriva funkcija.
     Tako\dj er primjetimo da je
     \begin{equation*}
         \skup{(\omega, t) \in \Omega \times \real}{f(\omega) - t > 0} = \{ g > 0 \},
@@ -356,8 +360,10 @@ Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
     \begin{equation*}
         \begin{aligned}
             \int\limits_{0}^{+\infty} \int\limits_\Omega \karaktFja_{\{  f > t \}} (\omega)\: d \mu (\omega) \: d \nu (t) &= \int\limits_{0}^{+\infty} \Big( \int\limits_\Omega \karaktFja_{\{  f > t \}} (\omega) \: d \mu (\omega) \Big) \: d \nu (t) = \int\limits_{0}^{+\infty} \mu (f > t) \: d \nu (t)\\
-            &= \int\limits_\Omega \Big( \int\limits_{0}^{+\infty} \karaktFja_{\{ f > t \}} (\omega) \: d \nu (t) \Big) \: d \mu (t) = \int\limits_\Omega \Big( \int\limits_{0}^{+\infty} \karaktFja_{\{ t < f \}} \Big) \: d \nu (t)\\
-            &= \int\limits_\Omega \Big( \int\limits_{0}^{+\infty} \karaktFja_{\desInt{0}{f(\omega)}} (t) \Big) \: d \nu (t) = \int\limits_\Omega \nu (\desInt{0}{f (\omega)}) \: d \mu (\omega).
+            &= \int\limits_\Omega \Big( \int\limits_{0}^{+\infty} \karaktFja_{\{ f > t \}} (\omega) \: d \nu (t) \Big) \: d \mu (\omega)\\
+            &= \int\limits_\Omega \Big( \int\limits_{0}^{+\infty} \karaktFja_{\{ t < f \}} (\omega) \: d \nu (t) \Big) \: d \mu (\omega)\\
+            &= \int\limits_\Omega \Big( \int\limits_{0}^{+\infty} \karaktFja_{\desInt{0}{f(\omega)}} (t)  \: d \nu (t) \Big) \: d \mu (\omega)\\
+            &= \int\limits_\Omega \nu (\desInt{0}{f (\omega)}) \: d \mu (\omega).
         \end{aligned}
     \end{equation*}
     Dakle vrijedi
@@ -378,6 +384,33 @@ Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
         \int\limits_\Omega f(\omega)^p \: d \mu (\omega) = p \int\limits_{0}^{+\infty} t^{p-1} \mu (f > t) \: d \lambda (t).
     \end{equation*}
 \end{proof}
+
+\begin{nap} \label{nap:12.11-1-1}
+    Analogno mo\v zemo dokazati i za
+    \begin{equation*}
+        X, Y : \Omega \to \real,
+    \end{equation*}
+    slu\v cajne varijable,
+    \begin{equation*}
+        \int\limits_\Omega \nu_1 \big(\desInt{0}{X(\omega)}\big) \cdot \nu_2 \big( \desInt{0}{Y(\omega)}\big) \: d \mu (\omega) = \int\limits_0^{+\infty} \int\limits_0^{+\infty} \mu \big(  X > s, Y > t \big) \: d \nu_1 (s) \: d \nu_2 (t).
+    \end{equation*}
+    Primjetimo, funkcije
+    \begin{equation*}
+        \begin{aligned}
+            (\omega, s, t) &\xmapsto{g_1} X(\omega) - s\\
+            (\omega, s, t) &\xmapsto{g_2} Y(\omega) - t
+        \end{aligned}
+    \end{equation*}
+    su izmjerive, te vrijedi
+    \begin{equation*}
+        \Big\{ \karaktFja_{\{ X > s, Y > t \}} = 1 \Big\} = \big\{ g_1 > 0 \big\} \cap \big\{ g_2 > 0 \big\},
+    \end{equation*}
+    pa je onda izmjeriva i funkcija
+    \begin{equation*}
+        (\omega, s, t) \mapsto \karaktFja_{\{ X > s, Y > t \}} (\omega).
+    \end{equation*}
+    Sada primjetnom Fubinijevog teorema tvrdnja slijedi.
+\end{nap}
 
 \begin{nap} \label{nap:12.11-2}
     Za nenegativnu slu\v cajnu varijablu $X$ iz teorema \ref{tm:12.11-1} slijedi
@@ -400,7 +433,7 @@ Sljede\' ci teorem daju potpuni odgovor u slu\v caju $\iid$ slu\v cajnog niza.
 \begin{rj}[\ref{zad:12.12}]
     Pretpostavimo suprotno, to jest, da vrijedi
     \begin{equation*}
-        (\exists \varepsilon > 0)(\forall M \geq 0) \quad  (x \geq M ) \land (x \: \masP (|X| > x)).
+        (\exists \varepsilon > 0)(\forall M \geq 0) \quad  (x \geq M ) \land (x \: \masP (|X| > x) \geq \varepsilon).
     \end{equation*}
 
     Prema teoremu \ref{tm:12.11-1} imamo
