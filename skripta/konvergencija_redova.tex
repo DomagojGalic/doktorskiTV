@@ -46,7 +46,7 @@ Preciznije:
 
 Ako su nizovi ekvivalentni, onda iz Borel-Cantellijeve leme (lema \ref{lm:9.2}) slijedi
 \begin{equation*}
-    \vjeroj{X_n \neq Y_n \; \io} < +\infty,
+    \vjeroj{X_n \neq Y_n \; \io} = 0,
 \end{equation*}
 \v sto daje da za ekvivalentne nizove $(X_n)$ i $(Y_n)$ vrijedi:
 \begin{equation}    \label{jed:13.7}
@@ -66,6 +66,32 @@ Dakle, za konvergenciju $(g.s.)$ osnovno pitanje postaje koji su nu\v zni i dovo
 \v Sto mo\v zemo re\' ci o konvergenciji po vjerojatnosti?
 Sljede\' ci teorem pokazuje da su kod redova nezavisnih slu\v cajnih varijabli ove konvergencije jednake.
 
+\begin{nap} \label{nap:13.8-1}
+    Primjetimo, ako je $\niz{A_n}{n \in \nat}$ niz doga\dj aja, tada vrijedi
+    \begin{equation}    \label{jed:13.8-2}
+        \Big( \limsup\limits_{n \to \infty} A_n \Big)^c = \liminf\limits_{n \to \infty} A_n^c.
+    \end{equation}
+    Sada primjetimo
+    \begin{equation*}
+        \{ X_n \neq Y_n \: \io \} = \limsup\limits_{n \to \infty} \: \{ X_n \neq Y_n \},
+    \end{equation*}
+    pa iz \eqref{jed:13.8-2} imamo
+    \begin{equation*}
+        \masP \Big( \liminf\limits_{n \to \infty} \: \{ X_n = Y_n \} \Big) = 1.
+    \end{equation*}
+    Dakle za gotovo sve $\omega \in \Omega$ su $X_n (\omega) = Y_n (\omega)$ za sve osim kona\v cno mnogo $n \in \nat$, pa vidimo da vrijedi \eqref{jed:13.7}.
+
+    Primjetimo nadalje da vrijedi
+    \begin{equation*}
+        \Big\{ X_n \neq X_n \karaktFja_{\{ |X_n| \leq 1 \}} \Big\} = \big\{ |X_n| > 1 \big\},
+    \end{equation*}
+    odakle direktno dobijemo
+    \begin{equation*}
+        \masP \Big( \Big\{ X_n \neq X_n \karaktFja_{\{ |X_n| \leq 1 \}} \Big\} \Big) = \masP \big( \big\{ |X_n| > 1 \big\} \big),
+    \end{equation*}
+    pa vidimo da vrijedi \eqref{jed:13.8}.
+\end{nap}
+
 \begin{tm}[P. L\' evy]  \label{tm:13.9}
     Red $\suma{n = 1}{\infty} X_n$ konvergira gotovo sigurno ako i samo ako konverigra po vjerojatnosti.
 \end{tm}
@@ -78,7 +104,7 @@ Sljede\' ci teorem pokazuje da su kod redova nezavisnih slu\v cajnih varijabli o
     \end{equation*}
     Koriste\' ci lemu \ref{lm:11.18} dobivamo da za svaki $0 < \varepsilon < \frac{1}{4}$, postoji $h_0 \in \nat$, takav da vrijedi
     \begin{equation*}
-        n, h \in \nat, \quad n > h \geq h_0 \implies \vjeroj{|S_{h, n}| Y \varepsilon} < \varepsilon.
+        n, h \in \nat, \quad n > h \geq h_0 \implies \vjeroj{|S_{h, n}| > \varepsilon} < \varepsilon.
     \end{equation*}
     Odavde slijedi $|m(S_{h, n})| \leq \varepsilon$, pa koriste\' ci L\' evyjeve nejednakosti (lema \ref{lm:12.8}) i nezavisnost od $(X_n)$ dobivamo
     \begin{equation*}
@@ -176,11 +202,24 @@ Po\v cnimo s pretpostavkom o drugim momentima.
 \end{proof}
 
 \begin{prop}    \label{prop:13.13}
-    Ako je $\masE \Big[ \sup\limits_{n \in \nat} X_n^2 \Big] < + \infty$ (posebno to zna\v ci da je $X_n \in L^2 (\masP), \; \forall n$) i $\masE X_n = 0$, za svaki $n \in \nat$ i $\masP \Big( \sup\limits_{n \in \nat} |S_n| < + \infty \Big) > 0$, tada
+    Ako je
+    \begin{equation*}
+        \masE \Big[ \sup\limits_{n \in \nat} X_n^2 \Big] < + \infty,
+    \end{equation*}
+    (posebno to zna\v ci da je $X_n \in L^2 (\masP), \; \forall n \in \nat$).
+    Ako je nadalje
+    \begin{equation*}
+        \masE X_n = 0, \quad \forall n \in \nat
+    \end{equation*}
+    i ako je
+    \begin{equation*}
+        \masP \Big( \sup\limits_{n \in \nat} |S_n| < + \infty \Big) > 0,
+    \end{equation*}
+    tada
     \begin{equation*}
         \begin{aligned}
             & \suma{n = 1}{\infty} X_n \quad \textnormal{ konvergira } (g.s.)\\
-            & \suma{n = 1}{\infty} \masE [ X_n^2 ] < + \infty
+            & \suma{n = 1}{\infty} \masE [ X_n^2 ] < + \infty.
         \end{aligned}
     \end{equation*}
 \end{prop}
@@ -192,7 +231,10 @@ Po\v cnimo s pretpostavkom o drugim momentima.
         V := \sup\limits_{n \in \nat} X_n^2.
     \end{equation*}
     Vidimo da je $V \geq 0$ pro\v sirena slu\v cajna varijabla i prema pretpostavci je $\masE V < +\infty$, pa je $V$ slu\v cajna varijabla.
-    Zbog neprekidnosti vjerojatnosti s obzirom na rastu\' ce nizove doga\dj aja, slijedi da postoji $K > 0$ dovoljno velik, takav da vrijedi $\masP \Big( \sup\limits_{n \in \nat} |S_n| < K \Big) > 0$.
+    Zbog neprekidnosti vjerojatnosti s obzirom na rastu\' ce nizove doga\dj aja, slijedi da postoji $K > 0$ dovoljno velik, takav da vrijedi
+    \begin{equation*}
+        \masP \Big( \sup\limits_{n \in \nat} |S_n| < K \Big) > 0.
+    \end{equation*}
     Definiramo
     \begin{equation*}
         \begin{gathered}
@@ -235,7 +277,7 @@ Po\v cnimo s pretpostavkom o drugim momentima.
         \begin{aligned}
             \masE [U_j^2] - \masE [U_{j - 1}^2] &= (\textnormal{nezavisnost})\\
             &= \masE [2 U_{j - 1} \karaktFja_{\{ T \geq j \}}] \cdot \underbrace{\masE X_j}_{= 0} + \masE [X_j^2] \masP (T \geq j)\\
-            &= \masE [X_j^2] \masP (T \geq j).
+            &= \masE [X_j^2] \cdot \masP (T \geq j).
         \end{aligned}
     \end{equation*}
     Dakle za svaki $n \in \nat$
