@@ -36,19 +36,19 @@ Nadalje, budu\' ci da su $Y_{n, p}$ ome\dj ene slu\v cajne varijable, one posjed
     Tada je
     \begin{equation*}
         \begin{aligned}
-            \suma{n = 1}{\infty} \masE \Big[ |Y_{n, p}|^\alpha \Big] &= \suma{n = 1}{\infty} \suma{j = 1}{n} \frac{1}{n^\frac{\alpha}{p}} \int_{A_j} |X_1|^\alpha \: d \masP =
-            \begin{smallmatrix}
+            \suma{n = 1}{\infty} \masE \Big[ |Y_{n, p}|^\alpha \Big] &= \suma{n = 1}{\infty} \suma{j = 1}{n} \frac{1}{n^\frac{\alpha}{p}} \int\limits_{A_j} |X_1|^\alpha \: d \masP =
+            \begin{psmallmatrix}
                 \textnormal{Fubini za}\\
                 \textnormal{sume } \geq 0
-            \end{smallmatrix}
-            = \suma{j = 1}{\infty} \suma{n = j}{\infty} n^{- \frac{\alpha}{p}} \int_{A_j} |X_1|^\alpha \: d \masP\\
-            &= \suma{j = 1}{\infty} \int_{A_j} |X_1|^\alpha \Big( \suma{n = j}{\infty} n^{-\frac{\alpha}{p}} \Big) \: d \masP \leq
-            \begin{smallmatrix}
+            \end{psmallmatrix}
+            = \suma{j = 1}{\infty} \suma{n = j}{\infty} n^{- \frac{\alpha}{p}} \int\limits_{A_j} |X_1|^\alpha \: d \masP\\
+            &= \suma{j = 1}{\infty} \int\limits_{A_j} |X_1|^\alpha \Big( \suma{n = j}{\infty} n^{-\frac{\alpha}{p}} \Big) \: d \masP \leq
+            \begin{psmallmatrix}
                 \textnormal{integralni}\\
                 \textnormal{test za redove}
-            \end{smallmatrix}\\
-            &\leq \suma{j = 1}{\infty} \int_{A_j} |X_1|^\alpha \: d \masP \Big( \frac{1}{j^\frac{\alpha}{p}} + \int_j^\infty \frac{du}{u^\frac{\alpha}{p}}\Big) = \suma{j = 1}{\infty} \int_{A_j} |X_1|^\alpha \: d \masP \cdot \Big( \frac{1}{j^\frac{\alpha}{p}} + \frac{1}{j^{\frac{\alpha}{p} - 1}} \cdot \frac{p}{\alpha - p} \Big)\\
-            &= \suma{j = 1}{\infty} \int_{A_j} \Bigg[ \frac{|X_j|}{ \underbrace{j^\frac{1}{p}}_{\leq 1}} \Bigg]^{\alpha - p} \cdot |X_1|^p \: d \masP \cdot \Big( \underbrace{\frac{1}{j}}_{\leq 1} + \frac{p}{\alpha - p} \Big) \leq \suma{j = 1}{\infty} \int_{A_j} |X_1|^p \: d \masP \cdot \frac{\alpha}{\alpha - p}\\
+            \end{psmallmatrix}\\
+            &\leq \suma{j = 1}{\infty} \int\limits_{A_j} |X_1|^\alpha \: d \masP \Big( \frac{1}{j^\frac{\alpha}{p}} + \int\limits_j^\infty \frac{du}{u^\frac{\alpha}{p}}\Big) = \suma{j = 1}{\infty} \int\limits_{A_j} |X_1|^\alpha \: d \masP \cdot \Big( \frac{1}{j^\frac{\alpha}{p}} + \frac{1}{j^{\frac{\alpha}{p} - 1}} \cdot \frac{p}{\alpha - p} \Big)\\
+            &= \suma{j = 1}{\infty} \int\limits_{A_j} \Bigg[ \frac{|X_j|}{ \underbrace{j^\frac{1}{p}}_{\leq 1}} \Bigg]^{\alpha - p} \cdot |X_1|^p \: d \masP \cdot \Big( \underbrace{\frac{1}{j}}_{\leq 1} + \frac{p}{\alpha - p} \Big) \leq \suma{j = 1}{\infty} \int\limits_{A_j} |X_1|^p \: d \masP \cdot \frac{\alpha}{\alpha - p}\\
             &= \frac{\alpha}{\alpha - p} \cdot \masE \big[ |X_1|^p \big] < +\infty.
         \end{aligned}
     \end{equation*}
@@ -59,7 +59,7 @@ Nadalje, budu\' ci da su $Y_{n, p}$ ome\dj ene slu\v cajne varijable, one posjed
     konvergira gotovo sigurno.
     Uo\v cimo
     \begin{equation*}
-        \suma{n = 1}{\infty} \masP \Big( \frac{X_n}{n^\frac{1}{p}} \neq Y_{n, p} \Big) = \suma{n = 1}{\infty} \masP (|X_1| > n^\frac{1}{p}) \neq \masE [ |X_1|^p ] < +\infty,
+        \suma{n = 1}{\infty} \masP \Big( \frac{X_n}{n^\frac{1}{p}} \neq Y_{n, p} \Big) = \suma{n = 1}{\infty} \masP (|X_1| > n^\frac{1}{p}) \leq \masE [ |X_1|^p ] < +\infty,
     \end{equation*}
     dakle nizovi $\bigNiz{\frac{X_n}{n^\frac{1}{p}}}{n \in \nat}$ i $\niz{Y_{n, p}}{n \in \nat}$ su ekvivalentni.
     Stoga
@@ -72,25 +72,28 @@ Nadalje, budu\' ci da su $Y_{n, p}$ ome\dj ene slu\v cajne varijable, one posjed
     Dobivamo
     \begin{equation*}
         \begin{aligned}
-            \suma{n = 1}{\infty} |\masE Y_{n, p}| &\overset{\textnormal{jer } \masE X_n = 0}{\leq}
-            \suma{n = 1}{\infty} n^{-\frac{1}{p}}
-            \int_{\Big\{ |X_n| > n^\frac{1}{p} \Big\}} |X_n| \: d \masP =
-            \begin{smallmatrix}
-                \textnormal{isti izvod kao gore}\\
+            \suma{n = 1}{\infty} |\masE Y_{n, p}| &\leq
+            \begin{psmallmatrix}
+                \textnormal{jer } \masE X_n = 0
+            \end{psmallmatrix}
+            \leq \suma{n = 1}{\infty} n^{-\frac{1}{p}}
+            \int\limits_{\Big\{ |X_n| > n^\frac{1}{p} \Big\}} |X_n| \: d \masP =
+            \begin{psmallmatrix}
+                \textnormal{isti izvod kao ranije}\\
                 \textnormal{uz } X_1 \distJed X_n
-            \end{smallmatrix}\\
-            &= \suma{n = 1}{\infty} \suma{i = n + 1}{\infty} n^\frac{1}{p} \int_{A_j} |X_1| \: d \masP = \suma{j = 2}{\infty} \suma{n = 1}{j - 1} n^{-\frac{1}{p}} \int_{A_j} |X_1| \: d \masP\\
-            &\leq \suma{j = 2}{\infty} \int_{A_j} |X_1| \: d \masP \Big( \underbrace{\int_0^{j-1} \frac{du}{u^\frac{1}{p}} }_{\frac{p}{p - 1} (j - 1)\frac{p - 1}{p}} \Big) =
-            \begin{smallmatrix}
+            \end{psmallmatrix}\\
+            &= \suma{n = 1}{\infty} \suma{i = n + 1}{\infty} n^\frac{1}{p} \int\limits_{A_j} |X_1| \: d \masP = \suma{j = 2}{\infty} \suma{n = 1}{j - 1} n^{-\frac{1}{p}} \int\limits_{A_j} |X_1| \: d \masP\\
+            &\leq \suma{j = 2}{\infty} \int\limits_{A_j} |X_1| \: d \masP \Big( \underbrace{\int\limits_0^{j-1} \frac{du}{u^\frac{1}{p}} }_{\frac{p}{p - 1} (j - 1)\frac{p - 1}{p}} \Big) =
+            \begin{psmallmatrix}
                 \textnormal{dodamo } j = 1 \textnormal{, jer}\\
                 \textnormal{je } j - 1 = 0
-            \end{smallmatrix}\\
-            &= \frac{p}{p - 1} \suma{j = 1}{\infty} (j - 1)^\frac{p - 1}{p} \int_{A_j} |X_1| \: d \masP \leq
-            \begin{smallmatrix}
+            \end{psmallmatrix}\\
+            &= \frac{p}{p - 1} \suma{j = 1}{\infty} (j - 1)^\frac{p - 1}{p} \int\limits_{A_j} |X_1| \: d \masP \leq
+            \begin{psmallmatrix}
                 \textnormal{kao u gornjem}\\
                 \textnormal{izvodu}
-            \end{smallmatrix}
-            \leq \frac{p}{p - 1} \suma{j = 1}{\infty} \int_{A_j} |X_1| \: d \masP\\
+            \end{psmallmatrix}
+            \leq \frac{p}{p - 1} \suma{j = 1}{\infty} \int\limits_{A_j} |X_1| \: d \masP\\
             &= \frac{p}{p - 1} \masE [ |X_1|^p ] < + \infty.
         \end{aligned}
     \end{equation*}
@@ -110,54 +113,68 @@ Nadalje, budu\' ci da su $Y_{n, p}$ ome\dj ene slu\v cajne varijable, one posjed
 \end{tm}
 
 \begin{proof}
-    Ako za neki $c \in \real$, vrijedi
-    \begin{equation*}
-        \frac{S_n - nc}{n^\frac{1}{p}} \xrightarrow[n \to \infty]{g.s.} 0,
-    \end{equation*}
-    tada je
-    \begin{equation*}
-        \frac{X_n}{n^\frac{1}{p}} = \frac{S_n - nc}{n^\frac{1}{p}} - \Big( \frac{n - 1}{n} \Big)^\frac{1}{p} \cdot \frac{S_{n - 1} - nc}{(n - 1)^\frac{1}{p}} \xrightarrow[n \to \infty]{g.s.} 0.
-    \end{equation*}
-    Dobivamo
-    \begin{equation*}
-        \masP \Big( \Big| \frac{X_n}{n^\frac{1}{p}} \Big| \geq 1 \; \io \Big) = 0.
-    \end{equation*}
-    Po Borelovom zakonu 0-1 imamo
-    \begin{equation*}
-        \begin{gathered}
-            \suma{n = 1}{\infty} \masP ( |X_1|^p \geq n ) \overset{\iid}{=} \suma{n = 1}{\infty} \masP (|X_1| \geq n^\frac{1}{p}) < +\infty\\
-            \implies \quad \masE [ |X_1|^p ] < +\infty.
-        \end{gathered}
-    \end{equation*}
-    Ako je $1 < p <2$ i $\masE |X_1|^p < +\infty$, onda po teoremu \ref{tm:14.1} red
-    \begin{equation*}
-        \suma{n = 1}{\infty} \frac{X_n - \masE X_n}{n^\frac{1}{p}}
-    \end{equation*}
-    konvergira gotovo sigurno.
+    \quad \\
+    \begin{enumerate}
+        \item[$\implies$]
+        Ako za neki $c \in \real$, vrijedi
+        \begin{equation*}
+            \frac{S_n - nc}{n^\frac{1}{p}} \xrightarrow[n \to \infty]{g.s.} 0,
+        \end{equation*}
+        tada je
+        \begin{equation*}
+            \frac{X_n}{n^\frac{1}{p}} = \frac{S_n - S_{n - 1}}{n^\frac{1}{p}} = \frac{S_n - nc}{n^\frac{1}{p}} - \Big( \frac{n - 1}{n} \Big)^\frac{1}{p} \cdot \frac{S_{n - 1} - nc}{(n - 1)^\frac{1}{p}} \xrightarrow[n \to \infty]{g.s.} 0.
+        \end{equation*}
+        Tada sigurno vrijedi
+        \begin{equation*}
+            \masP \Big( \liminf\limits_{n \to \infty} \Big\{ \Big| \frac{X_n}{n^\frac{1}{p}} \Big| < 1 \Big\} \Big) = 1,
+        \end{equation*}
+        zbog konvergencije gornjeg niz u $0$, pa onda iz svojstva
+        \begin{equation*}
+            \Big( \liminf\limits_{n \to \infty} A_n \Big)^c = \limsup\limits_{n \to \infty} A_n^c,
+        \end{equation*}
+        dobivamo
+        \begin{equation*}
+            \masP \Big( \Big| \frac{X_n}{n^\frac{1}{p}} \Big| \geq 1 \; \io \Big) = 0.
+        \end{equation*}
+        Po Borelovom zakonu 0-1 imamo
+        \begin{equation*}
+            \begin{gathered}
+                \suma{n = 1}{\infty} \masP ( |X_1|^p \geq n ) \overset{\iid}{=} \suma{n = 1}{\infty} \masP (|X_1| \geq n^\frac{1}{p}) < +\infty\\
+                \implies \quad \masE [ |X_1|^p ] < +\infty.
+            \end{gathered}
+        \end{equation*}
 
-    Ako je $p = 1$ i $\masE |X_1|^p < +\infty$, sada po teoremu \ref{tm:14.1} dobivamo da red
-    \begin{equation*}
-        \suma{n = 1}{\infty} \frac{X_n - \masE \Big[ X_n \cdot \karaktFja_{\{ |X_n| \leq n \}} \Big]}{n}
-    \end{equation*}
-    konverigra gotovo sigurno, dakle za $0 < p <1$ i $\masE |X_1|^p < \infty$ dobivamo konvergenciju gotovo sigurno
-    \begin{equation*}
-        \suma{n = 1}{\infty} \frac{X_n}{n^\frac{1}{p}}.
-    \end{equation*}
-    
-    Za $p \neq 1$ rezultat slijedi direktno iz Kroneckerove leme (lema \ref{lm:13.10-1}) za $c = 0$ ili $c = \masE X_1$.
+    \item[$\impliedby$]
+        Ako je $1 < p <2$ i $\masE |X_1|^p < +\infty$, onda po teoremu \ref{tm:14.1} red
+        \begin{equation*}
+            \suma{n = 1}{\infty} \frac{X_n - \masE X_n}{n^\frac{1}{p}}
+        \end{equation*}
+        konvergira gotovo sigurno.
 
-    Za $p = 1$, zbog $\iid$ imamo
-    \begin{equation*}
-        \masE \Big[ X_n \karaktFja_{\{ |X_n| \leq n \}} \Big] = \masE \Big[ X_1 \karaktFja_{\{ |X_1| \leq n \}} \Big] \xrightarrow[n \to \infty]{} \masE X_1. 
-    \end{equation*}
-    Po Kronekerovoj lemi (\ref{lm:13.10-1})
-    \begin{equation*}
-        \lim\limits_{n \to \infty} \frac{1}{n} \Big( S_n - \suma{j = 1}{n} \masE \big[ X_j \karaktFja_{\{ |X_j| \leq j \}} \big] \Big) = 0 \; (g.s.)
-    \end{equation*}
-    Uo\v cimo da za $0 < p < 1$ i za $c \in \real$ imamo
-    \begin{equation*}
-        \frac{n \cdot c}{n^\frac{1}{p}} \xrightarrow[n \to \infty]{} 0,
-    \end{equation*}
+        Ako je $p = 1$ i $\masE |X_1|^p < +\infty$, sada po teoremu \ref{tm:14.1} dobivamo da red
+        \begin{equation*}
+            \suma{n = 1}{\infty} \frac{X_n - \masE \Big[ X_n \cdot \karaktFja_{\{ |X_n| \leq n \}} \Big]}{n}
+        \end{equation*}
+        konverigra gotovo sigurno, dakle za $0 < p <1$ i $\masE |X_1|^p < \infty$ dobivamo konvergenciju gotovo sigurno
+        \begin{equation*}
+            \suma{n = 1}{\infty} \frac{X_n}{n^\frac{1}{p}}.
+        \end{equation*}
+        
+        Za $p \neq 1$ rezultat slijedi direktno iz Kroneckerove leme (lema \ref{lm:13.10-1}) za $c = 0$ ili $c = \masE X_1$.
+
+        Za $p = 1$, zbog $\iid$ imamo
+        \begin{equation*}
+            \masE \Big[ X_n \karaktFja_{\{ |X_n| \leq n \}} \Big] = \masE \Big[ X_1 \karaktFja_{\{ |X_1| \leq n \}} \Big] \xrightarrow[n \to \infty]{} \masE X_1. 
+        \end{equation*}
+        Po Kronekerovoj lemi (\ref{lm:13.10-1})
+        \begin{equation*}
+            \lim\limits_{n \to \infty} \frac{1}{n} \Big( S_n - \suma{j = 1}{n} \masE \big[ X_j \karaktFja_{\{ |X_j| \leq j \}} \big] \Big) = 0 \; (g.s.)
+        \end{equation*}
+        Uo\v cimo da za $0 < p < 1$ i za $c \in \real$ imamo
+        \begin{equation*}
+            \frac{n \cdot c}{n^\frac{1}{p}} \xrightarrow[n \to \infty]{} 0,
+        \end{equation*}
+    \end{enumerate}
     pa smo u potpunosti dokazali teorem.
 \end{proof}
 
@@ -259,7 +276,7 @@ Uo\v cimo u prethodnom teoremu nema pretpostavke jednake distribuiransoti.
             \begin{gathered}
                 0 < \alpha_n < 1\\
                 1 \leq \alpha_n \leq 2, \; \masE Z_n = 0
-            \end{gathered},
+            \end{gathered}
             \quad n \in \nat.
         \end{gathered}
     \end{equation*}
@@ -276,14 +293,14 @@ Uo\v cimo u prethodnom teoremu nema pretpostavke jednake distribuiransoti.
 
 Promotrimo sada situaciju s nizom nezavisnih jednako distribuiranih slu\v cajnih varijabli malo detaljnije.
 Dakle, neka je $X_1 \in L^2 (\masP)$ (to jest svi $X_n$ imaju druge momente).
-Oduzimanjem $\mu := \masE X_1$ lako dolazimo do situacije u kojoj bez smanjanja op\' cenitosti pretpostaviti da je $\masE X_n = 0$, za svaki $n \in \nat$ (time je $\masE S_n = 0$).
-Ozna\v cimo $\masE (X_1^2) = \masE (X_n^2)$ sa $\sigma^2$ i bez smanjenja op\' cenitosti $0 < \sigma^2 < +\infty$.
+Oduzimanjem $\mu := \masE X_1$ lako dolazimo do situacije u kojoj bez smanjanja op\' cenitosti mo\v zemo pretpostaviti da je $\masE X_n = 0$, za svaki $n \in \nat$ (time je $\masE S_n = 0$).
+Ozna\v cimo $\masE [X_1^2] = \masE [X_n^2]$ sa $\sigma^2$ i bez smanjenja op\' cenitosti $0 < \sigma^2 < +\infty$.
 
 Tada iz teorema \ref{tm:14.2} slijedi da je za svaki $1 \leq p < 2$
 \begin{equation}    \label{jed:14.9}
     \frac{S_n}{n^\frac{1}{p}} \xrightarrow[n \to \infty]{g.s.} 0.
 \end{equation}
-To zna\v ci da za gotovo sve $\omega in \Omega$, trajektorija
+To zna\v ci da za gotovo sve $\omega \in \Omega$, trajektorija
 \begin{equation*}
     n \mapsto S_n (\omega),
 \end{equation*}
