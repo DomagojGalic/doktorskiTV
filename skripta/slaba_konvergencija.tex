@@ -25,7 +25,7 @@ Uo\v cimo da je $\real \setminus C(G)$ najvi\v se prebrojiv, pa je $C(G)$ gust u
 Nadalje, vrijedi
 \begin{equation}    \label{jed:16.2}
     \begin{gathered}
-        G(G) \subseteq C(G^R)\\
+        C(G) \subseteq C(G^R)\\
         \restr{G^R}{C(G)} = \restr{G}{C(G)},
     \end{gathered}
 \end{equation}
@@ -59,7 +59,7 @@ te je $\Delta G(a) \in \real$, $\Delta G \in \extReal$, tako\dj er vrijedi:
 Uo\v cimo da ako je $\Delta G = 1$, onda je $G^R$ u su\v stini p.d.F., modulo pomak za $G(-\infty)$.
 
 \begin{defn}    \label{defn:16.5}
-    Niz $\niz{G_n}{n \in \nat} \subseteq \inc$ \emph{konvergira slabo} prema $G \in \inc$, i pis\v emo:
+    Niz $\niz{G_n}{n \in \nat} \subseteq \inc$ \emph{konvergira slabo} prema $G \in \inc$, i pi\v semo:
     \begin{equation*}
         G_n \xrightarrow[n \to \infty]{w} G,
     \end{equation*}
@@ -105,14 +105,14 @@ Uo\v cimo da ako je $\Delta G = 1$, onda je $G^R$ u su\v stini p.d.F., modulo po
         \item   \label{nap:16.6c}
         Ako $G_n \xrightarrow[n \to \infty]{w} G$, tada
             \begin{equation*}
-                \limsup\limits_n G_n(-\infty) \leq G(-\infty) \leq G(+ \infty) \leq \liminf\limits_n G(+\infty).
+                \limsup\limits_{n \to \infty} G_n(-\infty) \leq G(-\infty) \leq G(+ \infty) \leq \liminf\limits_{n \to \infty} G(+\infty).
             \end{equation*}
             Koriste\' ci \eqref{jed:16.4} dobijemo, za svaki $x \in C(G)$,
             \begin{equation*}
-                \limsup\limits_n G_n (-\infty) \leq G(x) \leq \liminf\limits_n G_n (+\infty).
+                \limsup\limits_{n \to \infty} G_n (-\infty) \leq G(x) \leq \liminf\limits_{n \to \infty} G_n (+\infty).
             \end{equation*}
         \item   \label{nap:16.6d}
-        Ako $G_n \xrightarrow{w} G$, tada je $\Delta G \leq \liminf\limits_n \Delta G_n$.
+        Ako $G_n \xrightarrow{w} G$, tada je $\Delta G \leq \liminf\limits_{n \to \infty} \Delta G_n$.
         Slijedi direktno iz \ref{nap:16.6c}.
         \item   \label{nap:16.6e}
         Ako je $D \subseteq \real$ gust u $\real$ i za svaki $x \in D$ $G_n (x) \xrightarrow{} G (x)$, tada $G_n \xrightarrow{w} G$.
@@ -231,16 +231,17 @@ Uo\v cimo da ako je $\Delta G = 1$, onda je $G^R$ u su\v stini p.d.F., modulo po
 \end{proof}
 
 \begin{tm}[1. verzija Helly-Bray-ovog teorema]  \label{tm:16.8}
+    \quad \\
     Ako je $(F_n)$ niz p.d.F. takav da $F_n \xrightarrow[n \to \infty]{w} F \in \inc$, tada za svaki $a, b \in C(F)$, $a < b$ i za svaku neprekidnu funkciju $g : \segment{a}{b} \to \real$, vrijedi
     \begin{equation*}
-        \lim\limits_{n \to \infty} \int_a^b g \: d F_n = \int_a^b g \: d F.
+        \lim\limits_{n \to \infty} \int\limits_a^b g \: d F_n = \int\limits_a^b g \: d F.
     \end{equation*}
 \end{tm}
 
 \begin{proof}
     Za $a \in C(F)$ je $\mu_F (\{ a \}) = 0$, pa je
     \begin{equation*}
-        \int_a^b g \: dF = \int_{\lijInt{a}{b}} g(x) \: d \mu_F (x).
+        \int\limits_a^b g \: dF = \int\limits_{\lijInt{a}{b}} g(x) \: d \mu_F (x).
     \end{equation*}
     Budu\' ci da je $\segment{a}{b}$ kompaktan funkcija $g$ je uniformno neprekidna
     \begin{equation*}
@@ -251,17 +252,17 @@ Uo\v cimo da ako je $\Delta G = 1$, onda je $G^R$ u su\v stini p.d.F., modulo po
     \begin{equation*}
         \begin{gathered}
             \begin{aligned}
-                \int_a^b g \: d F_n - \int_a^b g \: d F &= \suma{i = 1}{k} \Big[ \int_{x_i}^{x_{i+1}} g(x) \: d F_n - \int_{x_i}^{x_{i + 1}} g(x_i) \: d F_n + \int_{x_i}^{x_{i+1}} g(x_i) \: d F_n\\
-                &\quad \quad- \int_{x_i}^{x_{i + 1}} g(x_i) \: d F + \int_{x_i}^{x_{i + 1}} g(x_i) \: d F - \int_{x_i}^{x_{i + 1}} g(x) \: d F \Big]\\
-                &= \suma{i = 1}{k} \Big[ \int_{x_i}^{x_{i + 1}} (g (x) - g(x_i)) \: d F_n + \int_{x_i}^{X_{i + 1}} (g(x_i) - g(x)) \: d F\\
+                \int\limits_a^b g \: d F_n - \int\limits_a^b g \: d F &= \suma{i = 1}{k} \Big[ \int\limits_{x_i}^{x_{i+1}} g(x) \: d F_n - \int\limits_{x_i}^{x_{i + 1}} g(x_i) \: d F_n + \int\limits_{x_i}^{x_{i+1}} g(x_i) \: d F_n\\
+                &\quad \quad- \int\limits_{x_i}^{x_{i + 1}} g(x_i) \: d F + \int\limits_{x_i}^{x_{i + 1}} g(x_i) \: d F - \int\limits_{x_i}^{x_{i + 1}} g(x) \: d F \Big]\\
+                &= \suma{i = 1}{k} \Big[ \int\limits_{x_i}^{x_{i + 1}} (g (x) - g(x_i)) \: d F_n + \int\limits_{x_i}^{x_{i + 1}} (g(x_i) - g(x)) \: d F\\
                 &\quad \quad+ g(x_i) [ F_n (x_{i + 1}) - F_n (x_i) - F (x_{i + 1}) + F(x_i) ] \Big].
             \end{aligned}\\
             \begin{aligned}
-                \implies (\forall n \in \nat) \Big| \int_a^b g \: d F_n - \int_a^b g \: d F \Big| &\leq \varepsilon \cdot \underbrace{\masP_{F_n} (\lijInt{a}{b})}_{\leq 1} + \varepsilon \cdot \underbrace{\mu_{F} (\lijInt{a}{b})}_{\leq 1}\\
+                \implies (\forall n \in \nat) \quad \Big| \int\limits_a^b g \: d F_n - \int\limits_a^b g \: d F \Big| &\leq \varepsilon \cdot \underbrace{\masP_{F_n} (\lijInt{a}{b})}_{\leq 1} + \varepsilon \cdot \underbrace{\mu_{F} (\lijInt{a}{b})}_{\leq 1}\\
                 &\quad + \suma{i = 1}{k} | g(x_i) | \cdot \bigg[| F_n (x_{i + 1}) - F (x_{i + 1}) |\\
                 &\quad \quad \quad+ | F(x_i) - F_n (x_i) | \bigg].
             \end{aligned}\\
-            \implies (\forall \varepsilon > 0) \quad \limsup\limits_{n \to \infty} \Big| \int_a^b g \: d F_n - \int_a^b g \: d F \Big| \leq 2 \varepsilon.
+            \implies (\forall \varepsilon > 0) \quad \limsup\limits_{n \to \infty} \Big| \int\limits_a^b g \: d F_n - \int\limits_a^b g \: d F \Big| \leq 2 \varepsilon.
         \end{gathered}
     \end{equation*}
 \end{proof}
@@ -273,8 +274,8 @@ U daljenjem tekstu $(F_n) = \niz{F_n}{n \in \nat}$ uvijek ozna\v cava niz u koje
     Za svaki $n \in \nat$, $a \in C(F)$ i $x \in \extReal$, definiramo
     \begin{equation*}
         \begin{aligned}
-            G_n (x) &:= \int_a^x g \: d F_n\\
-            G(x) &:= \int_a^x g \: d F
+            G_n (x) &:= \int\limits_a^x g \: d F_n\\
+            G(x) &:= \int\limits_a^x g \: d F
         \end{aligned}
     \end{equation*}
     (uo\v cimo $G_n, G : \extReal \to \segment{0}{+\infty}$, jer ili integriramo $g \geq 0$, za $x > 0$, ili $-g \leq 0$, za $a < x$).
@@ -291,8 +292,8 @@ U daljenjem tekstu $(F_n) = \niz{F_n}{n \in \nat}$ uvijek ozna\v cava niz u koje
         \item \label{lm:16.9.3}
         \begin{equation*}
             \begin{aligned}
-                \liminf\limits_{n \to \infty} \int_a^{+\infty} g \: d F_n &\geq \int_a^{+\infty} g \: d F,\\
-                \liminf\limits_{n \to \infty} \int_{-\infty}^a g \: d F_n &\geq \int_{-\infty}^a g \: d F.
+                \liminf\limits_{n \to \infty} \int\limits_a^{+\infty} g \: d F_n &\geq \int\limits_a^{+\infty} g \: d F,\\
+                \liminf\limits_{n \to \infty} \int\limits_{-\infty}^a g \: d F_n &\geq \int\limits_{-\infty}^a g \: d F.
             \end{aligned}
         \end{equation*}
     \end{enumerate}
@@ -310,7 +311,7 @@ U daljenjem tekstu $(F_n) = \niz{F_n}{n \in \nat}$ uvijek ozna\v cava niz u koje
 \begin{defn}    \label{defn:16.10}
     Neprekidna funkcija $g: \real \to \real$ je \emph{uniformno integrabilna u odnosu na $(F_n)$} (ili kra\' ce \emph{$(F_n)-\ui$}) ako vrijedi
     \begin{equation*}
-        \lim\limits_{a \nearrow +\infty} \sup\limits_{n \in \nat} \int_{\{|y| \geq a\}} |g (y)| \: d F_n (y) = 0.
+        \lim\limits_{a \nearrow +\infty} \sup\limits_{n \in \nat} \int\limits_{\{|y| \geq a\}} |g (y)| \: d F_n (y) = 0.
     \end{equation*}
     
     Re\' ci \' cemo da je $(F_n)$ \emph{napet} ako je konstantna funkcija $g \equiv 1$ $(F_n)-\ui$.
@@ -330,11 +331,11 @@ U daljenjem tekstu $(F_n) = \niz{F_n}{n \in \nat}$ uvijek ozna\v cava niz u koje
 Korsite\' ci zadatak \ref{zad:16.11} mo\v zemo "prevesti" lemu \ref{lm:16.7} u:
 
 \begin{kor} \label{kor:16.12}
-    Ako je $F_n \xrightarrow{w} F \in \inc$, tada su sljede\' ce tvrdnje ekvivalentne:
+    Ako je $F_n \xrightarrow[n \to \infty]{w} F \in \inc$, tada su sljede\' ce tvrdnje ekvivalentne:
     \begin{enumerate}[label=(\roman*)]
         \item \label{kor:16.12.1}
         \begin{equation*}
-            F_n \xrightarrow{c} F,
+            F_n \xrightarrow[n \to \infty]{c} F,
         \end{equation*}
         \item   \label{kor:16.12.2}
         \begin{equation*}
@@ -346,9 +347,9 @@ Korsite\' ci zadatak \ref{zad:16.11} mo\v zemo "prevesti" lemu \ref{lm:16.7} u:
 \end{kor}
 
 \begin{lm}  \label{lm:16.13}
-    Ako $F_n \xrightarrow{w} F \in \inc$ i $g: \real \to \desInt{0}{+\infty}$ je neprekidna i takva da je $\int\limits_{\real} g \: d F_n < +\infty$, za svaki $n \in \nat$, tada je $g$ $(F_n)-\ui$ ako i samo ako
+    Ako $F_n \xrightarrow[n \to \infty]{w} F \in \inc$ i $g: \real \to \desInt{0}{+\infty}$ je neprekidna i takva da je $\int\limits_{\real} g \: d F_n < +\infty$, za svaki $n \in \nat$, tada je $g$ $(F_n)-\ui$ ako i samo ako
     \begin{equation*}
-        \lim\limits_{n \to \infty} \int_\real g \: d F_n = \int_\real g \: d F < +\infty.
+        \lim\limits_{n \to \infty} \int\limits_\real g \: d F_n = \int\limits_\real g \: d F < +\infty.
     \end{equation*}
 \end{lm}
 
@@ -363,14 +364,14 @@ Korsite\' ci zadatak \ref{zad:16.11} mo\v zemo "prevesti" lemu \ref{lm:16.7} u:
 
 \begin{kor} \label{kor:16.14}
     Neka je $g: \real \to \real$ neprekidna i $(F_n)-ui$.
-    Ako je $F_n \xrightarrow{w} f \in \inc$, tada je $\int\limits_\real |g| \: d F < +\infty$ i vrijedi
+    Ako je $F_n \xrightarrow[n \to \infty]{w} f \in \inc$, tada je $\int\limits_\real |g| \: d F < +\infty$ i vrijedi
     \begin{equation*}
-        \lim\limits_{n \to \infty} \int_\real g \: d F_n = \int_\real g \: d F \in \real.
+        \lim\limits_{n \to \infty} \int\limits_\real g \: d F_n = \int\limits_\real g \: d F \in \real.
     \end{equation*} 
 \end{kor}
 
 \begin{defn}    \label{defn:16.15}
-    Niz $(F_n)$ je \emph{slabo kompaktan} ako postoje podniz $(F_{n_k})$ i $F \in \inc$ takvi da $F_{n_k} \xrightarrow{w} F$.
+    Niz $(F_n)$ je \emph{slabo kompaktan} ako postoje podniz $(F_{n_k})$ i $F \in \inc$ takvi da $F_{n_k} \xrightarrow[n \to \infty]{w} F$.
 
     Re\' ci \' cemo da je $(F_n)$ \emph{potpuno kompaktan} ako svaki podniz sadr\v zi podpodniz koji konvergira potpuno pream nekoj p.d.F..
 \end{defn}
@@ -386,7 +387,7 @@ Korsite\' ci zadatak \ref{zad:16.11} mo\v zemo "prevesti" lemu \ref{lm:16.7} u:
     Induktivno nastavljamo dalje i uzmemo dijagnoalni podniz $(F_{n_j, j})$ i uo\v cimo da taj konvergira na $D$.
     Koriste\' ci napomenu \ref{nap:16.6f} dolazimo do $F \in \inc$ za koju
     \begin{equation*}
-        F_{n_j, j} \xrightarrow{w} F.
+        F_{n_j, j} \xrightarrow[j \to \infty]{w} F.
     \end{equation*} 
 \end{proof}
 
@@ -395,6 +396,7 @@ Korsite\' ci zadatak \ref{zad:16.11} mo\v zemo "prevesti" lemu \ref{lm:16.7} u:
 \end{kor}
 
 \begin{proof}
+    \quad \\
     \begin{itemize}
         \item[$\impliedby$]
         Direktno iz teorema \ref{tm:16.16} i korolara \ref{kor:16.12}
@@ -414,7 +416,7 @@ Korsite\' ci zadatak \ref{zad:16.11} mo\v zemo "prevesti" lemu \ref{lm:16.7} u:
 
 \begin{zad} \label{zad:16.18}
     \begin{equation*}
-        F_n \xrightarrow{w} F \quad \quad (F_n \xrightarrow{c} F)
+        F_n \xrightarrow[n \to \infty]{w} F \quad \quad \big( F_n \xrightarrow[n \to \infty]{c} F \big)
     \end{equation*}
     ako i samo ako svaki podniz od $(F_n)$ ima daljnji podniz koji konvergira slabo (potpuno) prema istoj funkciji $F$.
 \end{zad}
