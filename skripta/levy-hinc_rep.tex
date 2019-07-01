@@ -26,11 +26,11 @@ Tada slijedi
 \begin{equation*}
     \lim\limits_{n \to \infty} \frac{a_{m_n}}{a_n} = \frac{c_2}{c_1}.
 \end{equation*}
-Neka su $\widetilde{b_1}$, $\widetilde{b_2} \in \real$.
+Neka su $\widetilde{b}_1$, $\widetilde{b}_2 \in \real$.
 Postoje $B_{m, n}$ takvi da
 \begin{equation*}
-    \Big[c_1 \Big( \frac{1}{a_n} \suma{i = 1}{n} X_i - \frac{b_n}{a_n} \Big) - \widetilde{b_1} c_1 \Big]
-    + \Big[ c_1 \frac{a_{m_n}}{a_n} \Big( \frac{1}{a_{m_n}} \suma{i = n + 1}{n + m_n} X_i - \frac{b_{m_n}}{a_{m_n}} \Big) - \widetilde{b_2} c_2 \Big]
+    \Big[c_1 \Big( \frac{1}{a_n} \suma{i = 1}{n} X_i - \frac{b_n}{a_n} \Big) - \widetilde{b}_1 c_1 \Big]
+    + \Big[ c_1 \frac{a_{m_n}}{a_n} \Big( \frac{1}{a_{m_n}} \suma{i = n + 1}{n + m_n} X_i - \frac{b_{m_n}}{a_{m_n}} \Big) - \widetilde{b}_2 c_2 \Big]
     = \frac{c_1}{a_n} \suma{i = 1}{n + m_n} X_i - B_{m, n}.
 \end{equation*}
 Tada lijeva, pa onda i desna strana konvergiraju po distribuciji prema $G$ takvoj da je
@@ -40,8 +40,8 @@ Tada lijeva, pa onda i desna strana konvergiraju po distribuciji prema $G$ takvo
 gdje su
 \begin{equation*}
     \begin{aligned}
-        H_1 (x) &:= F_X \Big( \frac{x}{c_1} + \widetilde{b_1} \Big)\\
-        H_2 (x) &:= F_X \Big( \frac{x}{c_2} + \widetilde{b_2} \Big).
+        H_1 (x) &:= F_X \Big( \frac{x}{c_1} + \widetilde{b}_1 \Big)\\
+        H_2 (x) &:= F_X \Big( \frac{x}{c_2} + \widetilde{b}_2 \Big).
     \end{aligned}
 \end{equation*}
 S druge strane
@@ -62,7 +62,7 @@ Dakle gornji limes postoji, razdioba od $F_X$ pripada sljede\' coj klasi.
 \end{defn}
 
 \begin{pr}  \label{pr:20.3}
-    Neka je $\alpha > 0$ i $\varphi (t) = e^{-|x|^\alpha}$.
+    Neka je $\alpha > 0$ i $\varphi (t) = e^{-|t|^\alpha}$.
     Budu\' ci da za svaki $a_1, a_2 > 0$ postoji (jedinstveno odre\dj en) $a > 0$ takav da je $a^\alpha = a_1^\alpha + a_2^\alpha$, funkcija $\varphi$ zadovoljava \eqref{jed:20.2}.
     Da li je takva $\varphi$ karakteristi\v cna funkcija?
     Ne uvijek.
@@ -99,6 +99,7 @@ Mogu\' ca je i ne\v sto druga\v cija karakterizacija stabilnih distribucija.
 \end{tm}
 
 \begin{proof}
+    \quad \newline
     \begin{enumerate}
         \item[$\implies$]
         je dokazano na po\v cetku paragrafa.
@@ -153,7 +154,7 @@ Mogu\' ca je i ne\v sto druga\v cija karakterizacija stabilnih distribucija.
     \begin{equation}    \label{jed:20.10}
         \ln \varphi (t) = i t b - \beta |t| \Big[ 1 + i \theta \frac{t}{|t|} \ln |t| \Big],
     \end{equation}
-    pri \v cemu je $b \in \real$, $\beta \geq 0$, $|\theta| \leq 1$.
+    gdje je $b \in \real$, $\beta \geq 0$, $|\theta| \leq 1$.
     Uzimamo $\frac{t}{|t|} = 0$, za $t = 0$.
 
     Razdioba je simetri\v cna ako i samo ako je $\varphi$ realna funkcija.
@@ -166,20 +167,20 @@ Mogu\' ca je i ne\v sto druga\v cija karakterizacija stabilnih distribucija.
     Za $\beta = \frac{1}{2}$ i $\alpha = 2$ to je $N(0,1)$, za $\beta > 0$ i $\alpha = 1$, to je Cauchyjeva s parametrom $\beta$.
 \end{nap}
 
-Preostaje vidjeti \v sto se mo\v ze desiti u op\' cem stanju.
+Preostaje vidjeti \v sto se mo\v ze dogoditi u op\' cem slu\v caju.
 
 \v Cetvrto fundamentalno pitanje glasi: "\v Sto sve mo\v ze biti limes po distribuciji "velikog broja" "malih" nezavisnih doprinosa?"
 Precizirajmo to.
 Neka je $\niz{X_{n, k}}{n \in \nat, \; 1 \leq k \leq k_n}$ dvostrani niz slu\v cajnih varijabli za koji vrijedi: $k_n \nearrow +\infty$ i
 \begin{equation*}
-    X_{n1}, \ldots, X_{n k_n},
+    X_{n, 1}, \ldots, X_{n, k_n},
 \end{equation*}
 su nezavisne slu\v cajne varijable.
 Pretpostavljamo nadalje da je $(X_{n, k})$ \emph{infinitezimalni sustav} to jest da za svaki $\varepsilon > 0$ vrijedi
 \begin{equation}    \label{jed:20.12}
     \lim\limits_{n \to \infty} \max\limits_{1 \leq k \leq k_n} \masP (|X_{n, k}| \geq \varepsilon) = 0.
 \end{equation}
-Pitamo se, dakle, \v sto sve mogu biti limesi $X$ centriranog infinitezimalnog sustava to jest za razdiobe od $X$ vrijedi
+Pitamo se, dakle, \v sto sve mogu biti limesi $X$ centriranog infinitezimalnog sustava, to jest, za razdiobe od $X$ vrijedi
 \begin{equation}    \label{jed:20.13}
     \suma{k = 1}{k_n} X_{n, k} - c_n \xrightarrow[n \to \infty]{d} X?
 \end{equation}
@@ -219,7 +220,7 @@ Za to je prvo potrebno to\v cno opisati beskona\v cno djeljive distribucije.
     \quad \\
     Funkcija $\varphi$ je beskona\v cno djeljiva karakteristi\v cna funkcija ako i samo ako postoje $\gamma \in \real$ i $G \in \inc$, $G^R = G$, $\Delta G < +\infty$, takvi da je
     \begin{equation*}
-        \varphi (t) = e^{  i \gamma t + \int_{-\infty}^{+\infty} \big(e^{itx} - 1 - \frac{itx}{1 + t^2} \big) \frac{1 + x^2}{x^2}  \: d G(x)}, \quad t \in \real.
+        \varphi (t) = e^{  i \gamma t + \int\limits_{-\infty}^{+\infty} \big(e^{itx} - 1 - \frac{itx}{1 + t^2} \big) \frac{1 + x^2}{x^2}  \: d G(x)}, \quad t \in \real.
     \end{equation*}
 \end{tm}
 
@@ -236,7 +237,7 @@ Za to je prvo potrebno to\v cno opisati beskona\v cno djeljive distribucije.
         \begin{equation*}
             G_n (x) := n \int\limits_{-\infty}^x \frac{y^2}{1 + y^2} \: d F_{\varphi_n} (y) \implies G(-\infty) = 0,
         \end{equation*}
-        odakle slijedi $G_n(-\infty) = 0$, $G_n \in \inc$, $G_n^R = G_n$, $\Delta G_n = G_n (+\infty)$ je uniformno ograničena.
+        odakle slijedi $G_n(-\infty) = 0$, $G_n \in \inc$, $G_n^R = G_n$, $\Delta G_n = G_n (+\infty)$ je uniformno ograni\v cena.
         Po teoremu \ref{tm:16.16} (isti dokaz kao i za vjerojatnosne d.f.) postoji $G \in \inc$, $G^R = G$ i $\Delta G < +\infty$, takva da
         \begin{equation*}
             G_{n_k} \xrightarrow[n \to \infty]{w} G.
@@ -264,7 +265,7 @@ Za to je prvo potrebno to\v cno opisati beskona\v cno djeljive distribucije.
         \end{equation*}
         odakle slijedi
         \begin{equation*}
-            I_n (t) \to \ln \varphi (t).
+            I_n (t) \xrightarrow[n \to \infty]{} \ln \varphi (t).
         \end{equation*}
 
         Stavimo
@@ -277,7 +278,7 @@ Za to je prvo potrebno to\v cno opisati beskona\v cno djeljive distribucije.
         \end{equation*}
         odakle vidimo
         \begin{equation*}
-            \gamma_{n_k} \to \gamma,
+            \gamma_{n_k} \xrightarrow[k \to \infty]{} \gamma,
         \end{equation*}
         te vrijedi
         \begin{equation*}
@@ -299,14 +300,14 @@ pri \v cemu je $\gamma \in \real$, $\sigma^2 \geq 0$ i $\nu$ (L\' evyjeva) mjera
     \quad\\
     Vrijedi
     \begin{equation*}
-        \suma{k = 1}{k_n} X_{n, k} - c_n \xrightarrow[n \to \infty]{d} X \quad \iff \quad \varphi_x \; \textnormal{ beskona\v cno djeljiva}.
+        \suma{k = 1}{k_n} \big( X_{n, k} - c_n \big) \xrightarrow[n \to \infty]{d} X \quad \iff \quad \varphi_x \; \textnormal{ beskona\v cno djeljiva}.
     \end{equation*}
-    To je ispunjeno ako i samo ako $\gamma_n \to \gamma$ te $G_n \xrightarrow{c} G$, pri \v cemu su
+    To je ispunjeno ako i samo ako $\gamma_n \xrightarrow[n \to \infty]{} \gamma$ te $G_n \xrightarrow[n \to \infty]{c} G$, pri \v cemu su
     \begin{equation*}   %interval po kojem području?
         \begin{aligned}
             \gamma_n &:= -c_n + \suma{k = 1}{k_n} \Big( c_{n, k} + \int \frac{x}{1 + x^2} \: d \widetilde{F}_{n, k} (x) \Big),\\
             G_n (x) &:= \suma{k = 1}{k_n} \int\limits_{-\infty}^x \frac{y^2}{1 + y^2} \: d \widetilde{F}_{n, k}(y),\\
-            c_{n, k} &:= \int_{|x| < 1} x \: d F_{x_{n, k}},\\
+            c_{n, k} &:= \int\limits_{|x| < 1} x \: d F_{x_{n, k}}(x),\\
             \widetilde{F}_{n, k} (x) &:= F_{X_{n, k}} (x + c_{n, k}).
         \end{aligned}
     \end{equation*}
