@@ -18,13 +18,13 @@
             q& p
         \end{pmatrix}.
     \end{equation*}
-    Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih slu\v cajnih varijabli s gornjom razdiobom i neka je $\niz{S_n}{n \in \nat \cup \{0\}}$ slu\v cajna \v setnja s tim da je $S_0 \equiv K \in \nat$.
+    Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih slu\v cajnih varijabli s gornjom razdiobom i neka je $\niz{S_n}{n \in \nat_0}$ slu\v cajna \v setnja s tim da je $S_0 \equiv K \in \nat$.
     Uo\v cimo da je $S_n$ svota novca kojom raspola\v ze $B$ u trenutku $n$, s tim da dopu\v stamo i $S_n < 0$ (u smislu da se B zadu\v zio).
     Kada je igra po\v stena?
     Kada favorizira igra\v ca B, a kada A?
     Neka je $\famF_0 := \{ \varnothing, \Omega \}$ i neka je $\famF_n := \indSigAlg{X_k}{k = 1, \ldots, n}$.
     U trenutku $n$ $\sigma$-algebra $\famF_n$ sadr\v zi svu informaciju o igri do tog trenutka.
-    Igra \' ce biti po\v stena je o\v cekivani prirast "bogatstva" za ova igra\v ca isti, uz uvjet poznavanja "pro\v slosti":
+    Igra \' ce biti po\v stena ako je o\v cekivani prirast "bogatstva" za oba igra\v ca isti, uz uvjet poznavanja "pro\v slosti":
     \begin{equation*}
         \masE \big[ S_{n + 1} - S_n \big| \famF_n \big] = 0,
     \end{equation*}
@@ -56,7 +56,7 @@
 \end{pr}
 
 \begin{defn}    \label{defn:23.4}
-    Neka je $\masT$ jedan od sljede\' cih skupova $\{ 0, \ldots, n \}$, $\nat \cup \{0\}$, $\nat \cup \{0, +\infty\}$, $\{ \ldots, -n, \ldots, -1, 0\}$, $\segment{0}{a}$, $\desInt{0}{+\infty}$, $\segment{0}{+\infty}$.
+    Neka je $\masT$ jedan od sljede\' cih skupova $\{ 0, \ldots, n \}$, $\nat_0$, $\nat_0 \cup \{+\infty\}$, $\{ \ldots, -n, \ldots, -1, 0\}$, $\segment{0}{a}$, $\desInt{0}{+\infty}$, $\segment{0}{+\infty}$.
     Neka je $\vjerojatnosniProstor$ vjerojatnsni prostor s filtracijom $\indFamilija{\famF_t}{t \in \masT}$.
     Stohasti\v cki proces $\niz{X_t}{t \in \masT}$ je \emph{martingal} (\emph{submartingal, supermartingal}), u odnosu na $(\famF_t)$, ako vrijedi:
     \begin{enumerate}[label=(\alph*)]
