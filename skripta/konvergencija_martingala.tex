@@ -12,11 +12,14 @@ Slijede\' ci teorem ka\v ze da kako god izabrali takvu "strategiju propu\v stanj
     Neka je $\indFamilija{B_n}{n \in \nat}$ niz Borelovih skupova, tako da je $B_n \in \borel{\real^n}$, za svaki $n \in \nat$.
     Neka su slu\v cajne varijable $\varepsilon_1, \varepsilon_2, \ldots$ definirane sa
     \begin{equation*}
-        \varepsilon_k :=
+        \begin{aligned}
+            \varepsilon_k :&=
         \begin{cases}
             1 &, (X_1, \ldots, X_k) \in B_k\\
             0 &, (X_1, \ldots, X_k) \notin B_k
-        \end{cases},
+        \end{cases}\\
+        &= \karaktFja_{B_k} (X_1, \ldots, X_k),
+        \end{aligned}
     \end{equation*}
     i $\niz{Y_n}{n \in \nat}$ niz slu\v cajnih varijabli definiranih sa
     \begin{equation*}
@@ -72,13 +75,13 @@ Stavimo
     \begin{aligned}
         T_1 &:=
         \begin{cases}
-            \min \indFamilija{k}{1 \leq k \leq n, \; x_k \leq a}\\
-            +\infty, \quad \indFamilija{k}{1 \leq k \leq n, \; x_k \leq a} = \varnothing
+            \min \: \bigIndFamilija{k \in \{1, \ldots, n\}}{ x_k \leq a}\\
+            +\infty, \quad \bigIndFamilija{k \in \{1, \ldots, n\}}{ x_k \leq a} = \varnothing
         \end{cases},\\
         T_2 &:=
         \begin{cases}
-            \min \indFamilija{k}{T_1 < k \leq n, \; x_k \geq b}\\
-            +\infty, \quad \indFamilija{k}{T_1 < k \leq n, \; x_k \geq b} = \varnothing
+            \min \indFamilija{ T_1 < k \leq n}{ x_k \geq b}\\
+            +\infty, \quad \indFamilija{T_1 < k \leq n}{ x_k \geq b} = \varnothing
         \end{cases}.
     \end{aligned}
 \end{equation*}
@@ -99,7 +102,7 @@ Stavimo
 
 \begin{tm}[J. L. Doob, "upcrossing theorem"]    \label{tm:24.2}
     \quad \\
-    Neka su $a, b \in \real$, $a < b$ i neka je $\niz{X_k}{k = 1, \leq, n}$ submartingal u odnosu na filtraciju $\indFamilija{\famF_k}{k = 1, \ldots, n}$.
+    Neka su $a, b \in \real$, $a < b$ i neka je $\niz{X_k}{k = 1, \ldots, n}$ submartingal u odnosu na filtraciju $\indFamilija{\famF_k}{k = 1, \ldots, n}$.
     Neka je $U_{a b}$ slu\v cajna varijabla definirana pomo\' cu $X_1, \ldots, X_n$.
     Tada je
     \begin{equation*}
@@ -136,7 +139,7 @@ Za sljede\' ci teorem uo\v cimo da za niz $\niz{x_n}{n \in \nat} \subseteq \real
     \quad \iff \quad
     \begin{matrix}
         \textnormal{postoje } a, b \in \masQ, \; a < b\\
-        \liminf x_n \leq a < b \leq \limsup x_n
+        \liminf\limits_{n \to \infty} x_n \leq a < b \leq \limsup\limits_{n \to \infty} x_n
     \end{matrix}.
 \end{equation}
 
@@ -298,7 +301,7 @@ Koriste\' ci Fatuovu lemu, doka\v zite ovo pro\v sirenje.
         \item \label{nap:24.12.1}
         Uo\v cimo da prelaskom na podnizove lako doka\v zemo gornju tvrdnju i za slu\v caj $Y_n \xrightarrow[n \to \infty]{\masP} Y$.
         \item \label{nap:24.12.2}
-        U \eqref{jed:24.11} smo pokazali da svaka uniformno integrabilna familija mo\v ze biti $L^1 (\masP)$-ome\dj ena.
+        U \eqref{jed:24.11} smo pokazali da svaka uniformno integrabilna familija mora biti $L^1 (\masP)$-ome\dj ena.
         Obrat ne mora vrijediti, ali vrijedi sljede\' ci teorem.
     \end{enumerate}
 \end{nap}
