@@ -587,11 +587,65 @@ Po zadatku \ref{zad:2.9} i teoremu \ref{tm:2.11} slijedi:
         je $\mu_2$-integrabilna.
         \item
         \begin{align*}
-            \int\limits_{\Omega_1 \times \Omega_2}  f(x, \: y) \: d (\mu_1 \otimes \mu_2)(x, \: y)  &= \int\limits_{\Omega_2} \Big( \int\limits_{\Omega_1} f(x, \: y) \: d \mu_1 (x) \Big) \: d \mu_2(y)\\
+            \int\limits_{\Omega_1 \times \Omega_2}  f(x, \: y) \: d \mu_1 \otimes \mu_2 (x, \: y)  &= \int\limits_{\Omega_2} \Big( \int\limits_{\Omega_1} f(x, \: y) \: d \mu_1 (x) \Big) \: d \mu_2(y)\\
             &= \int\limits_{\Omega_1} \Big( \int\limits_{\Omega_2} f(x, \: y) \: d \mu_2 (y) \Big) \: d \mu_1(x).
         \end{align*}
     \end{enumerate}
 \end{zad}
+
+\begin{rj}[\ref{zad:4.16}]
+    \begin{enumerate}[label=(\roman*)]
+        \item   \label{rj:4.16.1}
+        Primjetimo, funkcija $f$ je integrabilna ako i samo ako je funkcija $|f|$ integrabilna.
+        U zadatku \ref{zad:4.15} smo pokazali da su funkcije
+        \begin{equation*}
+            \begin{aligned}
+                x \mapsto& |f (x, y)|, \quad \forall y \in \Omega_2\\
+                y \mapsto& |f (x, y)|, \quad \forall x \in \Omega_1.
+            \end{aligned}
+        \end{equation*}
+        izmjerive i vrijedi
+        \begin{equation*}
+            \begin{aligned}
+                \int\limits_{\Omega_1 \times \Omega_2} |f| \: d \mu_1 \otimes \mu_2 &= \int\limits_{\Omega_1} \Big( \int\limits_{\Omega_2} |f| \: d \mu_2 \Big) \: d \mu_2\\
+                &= \int\limits_{\Omega_2} \Big( \int\limits_{\Omega_1} |f| \: d \mu_1 \Big) \: d \mu_2 < +\infty.
+            \end{aligned}
+        \end{equation*}
+        Definirajmo
+        \begin{equation*}
+            g (x) := \int\limits_{\Omega_2} |f (x, y)| \: d \mu_2 (y),
+        \end{equation*}
+        budu\' ci je $|f| \geq 0$, tada je
+        \begin{equation*}
+            g \geq 0, \quad \forall x \in \Omega_1.
+        \end{equation*}
+        Kada bi postojao skup mjere ve\' ce od 0, na kojoj je $g = +\infty$, tada bi vrijedilo
+        \begin{equation*}
+            \int\limits_{\Omega_1} g(x) \: d \mu_1 (x) = +\infty,
+        \end{equation*}
+        stoga je nu\v zno
+        \begin{equation*}
+            \int\limits_{\Omega_2} |f (x, y)| \: d \mu_2 (y) = g (x) < +\infty, \quad \mu_1 - g.s.
+        \end{equation*}
+        Potpuno analogno se poka\v ze
+        \begin{equation*}
+            \int\limits_{\Omega_1} |f (x, y)| \: d \mu_1 (x) < +\infty, \quad \mu_2 - g.s.
+        \end{equation*}
+
+        \item   \label{rj:4.16.2}
+        Argumentacija je analogna kao i u \ref{rj:4.16.1}.
+    
+        \item   \label{rj:4.16.3}
+        Prijetimo
+        \begin{equation*}
+            \begin{aligned}
+                \int\limits_{\Omega_1 \times \Omega_2} f \: d \mu_1 \otimes \mu_2 &= \int\limits_{\Omega_1 \times \Omega_2} (f^+ - f^-) \: d \mu_1 \otimes \mu_2\\
+                &= \int\limits_{\Omega_1 \times \Omega_2} f^+ \: d \mu_1 \otimes \mu_2 - \int\limits_{\Omega_1 \times \Omega_2} f^- \: d \mu_1 \otimes \mu_2.
+            \end{aligned}
+        \end{equation*}
+        Sada tvrdnja slijedi po zadatku \ref{zad:4.15}.
+    \end{enumerate}
+\end{rj}
 
 \begin{defn}    \label{defn:4.17}
     Neka su $\urePar{\Omega_1}{\famF_1}$ i $\urePar{\Omega_2}{\famF_2}$ izmerivi prostori. Preslikavanje $k : \Omega_1 \times \famF_2 \to \segment{0}{+\infty}$ je \emph{uniformno $\sigma$-kon\v cna jezgra} ako vrijedi:
