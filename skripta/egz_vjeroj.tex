@@ -39,7 +39,7 @@ te tako\dj er $\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
         \item \label{rj:2.2a}
         $\sigAlg{\famE} = \famF$, odnosno $A$ ili $A^c$ moraju biti najvi\v se prebrojivi.
         \item   \label{rj:2.2b}
-        $\sigAlg{\famE} = \partitive{\Omega}$, ako i samo ako je $\Omega$ najvi\v se prebrojiv.
+        $\famF = \partitive{\Omega}$, ako i samo ako je $\Omega$ najvi\v se prebrojiv.
     \end{enumerate}
     Primjetimo da \ref{rj:2.2b} o\v cito vrijedi za kona\v cne i prebrojive $\Omega$, zato \v sto svaki podskup od $\Omega$ nu\v zno mora biti kona\v can ili prebrojiv, a kako je $\partitive{\Omega}$ $\sigma$-algebra, onda je i skup
     \begin{equation*}
@@ -47,7 +47,7 @@ te tako\dj er $\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
     \end{equation*}
     $\sigma$-algebra, stoga vrijedi i \ref{rj:2.2a}.
 
-    Dakle promatrajmo neprebrojiv slu\v caj.
+    Ostalo je pokazati da tvrdnja vrijedi i u neprebrojivom slu\v caju.
     Primjetimo, nije mogu\' ce da su $A$ i $A^c$ oba prebrojivi, jer bi tada njihova unije kao unija prebrojivih skupova, tako\dj er bila prebrojiva, a kako je njihova unije upravo $\Omega$, to nije mogu\' ce.
     Doka\v zimo da je $\famF$ $\sigma$-algebra.
     \begin{enumerate}[label=(\roman*)]
@@ -88,9 +88,9 @@ te tako\dj er $\sigAlg{\{A\}} = \{ \varnothing, \; A, \; A^c, \; \Omega \}$.
     \begin{equation*}
         f(x) :=
         \begin{cases}
-            g(m)    &, x_m \in \{ x_1, \; x_2, \ldots, x_n \} \subseteq A\\
-            f_0(x_{m - n})  &, x_m \in A \; \land \; m > n\\
-            f_0(x)  &, \textnormal{ina\v ce}
+            g(m), & x_m \in \{ x_1, \; x_2, \ldots, x_n \} \subseteq A\\
+            f_0(x_{m - n}), & x_m \in A \; \land \; m > n\\
+            f_0(x),  & \textnormal{ina\v ce}
         \end{cases}.
     \end{equation*}
     Dakle ako je $\Omega$ neprebrojiv, mogu\' ce ga je particionirati na dva neprebrojiva disjunktan skupa $\Omega = S_1 \dot{\cup} S_2$, tada je $S_1^c = S_2$, te je $S_1 \in \partitive{\Omega}$, a tako\dj er $S_1 \notin \famF$.
@@ -269,7 +269,7 @@ Iz teorije mjere poznat nam je sljede\' ci zadatak.
     i postoji rastu\' ci niz skupova $\niz{C_n}{n \in \N} \subseteq \famE$ takav da je
     \begin{equation*}
         \begin{aligned}
-            \unija{n}{}C_n &= \Omega\\
+            \unija{n \in \nat}{}C_n &= \Omega\\
             \mjera{C_n} &= \nu(C_n) < +\infty, \quad \forall n \in \nat,
         \end{aligned}
     \end{equation*}

@@ -57,7 +57,9 @@ Podsjetimo se da je $f: X \to Y$ neprekidno ako je $\praslika{f}(\famV) \subsete
 Kakva je veza izme\dj u ovih pojmova?
 
 \begin{lm}  \label{lm:3.4}
-    Ako je $f: D \to K$ preslikavanje i $\famC \subseteq \partitive{K}$, tada je $\sigAlg{\praslika{f}(\famC)} = \praslika{f} (\sigAlg{\famC})$.
+    Ako je $f: D \to K$ preslikavanje i $\famC \subseteq \partitive{K}$, tada je \begin{equation*}
+        \sigAlg{\praslika{f}(\famC)} = \praslika{f} (\sigAlg{\famC}).
+    \end{equation*}
 \end{lm}
 
 \begin{proof}
@@ -102,7 +104,7 @@ Uo\v cimo nadalje da direktno iz definicije slijedi:
     Neka je $\vjerojatnosniProstor$ vjerojatnosti prostor i neka je $\urePar{E}{\famE} = \urePar{\extReal}{\borel{\extReal}}$ izmjeriv prostor.
     Slu\v cajne elemente s vrijednostima u $\extReal$ nazivamo \emph{pro\v sirenim slu\v cajnim varijablama}.
 
-    Ako je $X$ pro\v sirena slu\v cajana varijabla i $\vjeroj{|X| = \infty} = 0$, tada ka\v zemo da je $X$ \emph{slu\v cajna varijabla}.
+    Ako je $X$ pro\v sirena slu\v cajana varijabla i $\vjeroj{|X| = + \infty} = 0$, tada ka\v zemo da je $X$ \emph{slu\v cajna varijabla}.
 \end{defn}
 
 \begin{nap} \label{nap:3.8-1}
@@ -127,7 +129,7 @@ Uo\v cimo nadalje da direktno iz definicije slijedi:
 \begin{nap} \label{nap:3.9}
     Neka je $\vjerojatnosniProstor$ vjerojatnosni prostor i $S$ neka je neko svojstvo, takvo da za svaki $\omega \in \Omega$ mo\v zemo utvrditi (u principu) da "$\omega$ zadovoljava $S$" ili da "$\omega$ ne zadovoljava $S$".
     Ka\v zemo da je $S$ zadovoljeno \emph{gotovo sigurno} ($g.s.$) ako postoji skup $A \in \F$ takvo da je $\vjeroj{A} = 1$ i $A \subseteq \skup{\omega \in \Omega}{\omega \; \textnormal{zadovoljava} \; S}$.
-    Uo\v cimo da skup $\vjeroj{A} = 1$ i $A \subseteq \skup{\omega \in \Omega}{\omega \; \textnormal{zadovoljava} \; S}$ ne mora biti doga\dj aj.
+    Uo\v cimo da skup $\skup{\omega \in \Omega}{\omega \; \textnormal{zadovoljava} \; S}$ ne mora biti doga\dj aj.
     Sjetimo se da je vjerojatnosni prostor \emph{potpun} ako vrijedi:
     \begin{equation*}
         A \subseteq E, \; E \in \F, \; \vjeroj{E} = 0 \implies A \in \F.
