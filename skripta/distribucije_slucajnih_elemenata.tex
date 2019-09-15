@@ -63,8 +63,19 @@ U slu\v caju $\urePar{E}{\famE} = \urePar{\extReal}{\borel{\extReal}}$ informaci
     nazivamo \emph{vjerojatnosnom funkcijom distribucije} slu\v cajnog elementa $X$.
 \end{defn}
 
-Funkcija $F_X$ je neopadaju\' ca (jer $a \leq b \implies \segment{-\infty}{a} \subseteq \segment{-\infty}{b} \implies \masP_X (\segment{-\infty}{a}) \leq \masP_X (\segment{-\infty}{b}) $) i neprekidna zdesna (jer $a_n \searrow a \implies \segment{-\infty}{a} = \presjek{n = 1}{\infty} \segment{-\infty}{a_n}$).
-Uo\v cimo da je $F_X (-\infty) \geq 0$ i da je
+Funkcija $F_X$ je neopadaju\' ca, jer
+\begin{equation*}
+    a \leq b \implies \segment{-\infty}{a} \subseteq \segment{-\infty}{b} \implies \masP_X (\segment{-\infty}{a}) \leq \masP_X (\segment{-\infty}{b}
+\end{equation*}
+i neprekidna zdesna, jer
+\begin{equation*}
+    a_n \searrow a \implies \segment{-\infty}{a} = \presjek{n = 1}{\infty} \segment{-\infty}{a_n}
+\end{equation*}
+Uo\v cimo da je
+\begin{equation*}
+    F_X (-\infty) \geq 0
+\end{equation*}
+i da je
 \begin{equation*}
     F_X (-\infty) = 0 \iff \masP (X = -\infty) = 0,
 \end{equation*}
@@ -146,7 +157,7 @@ Dakle vrijedi
 \begin{zad} \label{zad:5.11}
     Neka je $X = (X_1, \ldots, X_d)$ slu\v cajan vektor na $\vjerojatnosniProstor$.
     \begin{enumerate}[label=(\alph*)]
-        \item Opi\v si funkciju distribucije $F_x$ u ovom slu\v caju.
+        \item Opi\v si funkciju distribucije $F_X$ u ovom slu\v caju.
         \item Iska\v zite i doka\v zite analogon teorema \ref{tm:5.6}
         %uputa: umjesto \eqref{jed:5.7} promatrajte 
         %\begin{equation*}
