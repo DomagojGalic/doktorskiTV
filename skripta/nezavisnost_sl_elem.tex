@@ -91,7 +91,7 @@ Podsjetimo se da za $X, \; Y \in L^1$, $X \cdot Y$ ne mora biti u $L^1$. Ako su 
         &= \int\limits_{\real^2} |x| \cdot |y| \: d \masP_Z \urePar{x}{y} = \int\limits_\real |x| \: d \masP_X (x) \cdot \int\limits_{\real} |y| \: d \masP_Y (y)\\
         &= \masE [|X|] \cdot \masE [|Y|] < +\infty \implies X \cdot Y \in L^1.
     \end{align*}
-    Sada na sli\v can na\v cin Fubinijev teorem (zadatak \ref{zad:4.16}) daje
+    Sada na sli\v can na\v cin Fubinijev teorem (zadatak \ref{zad:4.16} i jednad\v zba \ref{jed:5.11-3-1}) daje
     \begin{equation*}
         \masE [X \cdot Y] = \masE X \cdot \masE Y.
     \end{equation*}
@@ -103,6 +103,57 @@ Podsjetimo se da za $X, \; Y \in L^1$, $X \cdot Y$ ne mora biti u $L^1$. Ako su 
         \Var (X + Y) = \Var X + \Var Y.
     \end{equation*}
 \end{zad}
+
+\begin{rj}[\ref{zad:7.8}]
+    Doka\v zimo najprije ne\v sto generalniji rezultat.
+
+    Neka su $X_1, \ldots, X_n \in L^2$, tada vrijedi
+    \begin{equation*}
+        \Var \Big( \suma{k = 1}{n} X_k \Big) = \suma{k = 1}{n} \Var X_k + 2 \cdot \suma{i < j}{} \masE \big[ (X_i - \masE X_i) (X_j - \masE X_j) \big].
+    \end{equation*}
+
+    Dokazujemo tvrdnju indukcijom po $n$.
+    \begin{enumerate}
+        \item[(B)]
+        Dokazujemo tvrdnju za $n = 2$.
+        \begin{equation*}
+            \begin{aligned}
+                \Var (X_1 + X_2) &= \masE \big[ (X_1 - X_2)^2 \big] - \big( \masE [ X_1 + X_2 ] \big)^2\\
+                &= \masE [X_1^2] + \masE [X_2^2] + 2 \cdot \masE [X_1 \cdot X_2] - (\masE X_1)^2 - (\masE X_2)^2 - 2 \cdot \masE X_1 \cdot \masE X_2\\
+                &= \big( \masE [X_1^2] - (\masE X_1)^2 \big) + \big( \masE [ X_2^2 ] - (\masE X_2)^2 \big) + 2 \cdot \big( \masE [ X_1 \cdot X_2 ] - \masE X_1 \cdot \masE X_2 \big)\\
+                &= \Var X_1 + \Var X_2 + 2 \cdot \masE \big[ (X_1 - \masE X_1) (X_2 - \masE X_2) \big].
+            \end{aligned}
+        \end{equation*}
+        \item[(K)]
+        Primjetimo
+        \begin{equation*}
+            \Var \Big( \suma{k = 1}{n + 1} X_k \Big) = \Var \Big( \Big( \suma{k = 1}{n} X_k \Big) + X_{n + 1} \Big),
+        \end{equation*}
+        prema bazi indukcij slijedi
+        \begin{equation*}
+            \begin{aligned}
+                \Var \Big( \suma{k = 1}{n + 1} X_k \Big) &= \Var \Big( \suma{k = 1}{n} X_k \Big) + \Var X_{n + 1} + 2 \cdot \masE \Big[ \Big(  \suma{k = 1}{n} X_k - \suma{k = 1}{n} \masE X_k \Big) (X_{n + 1} - \masE X_{n + 1}) \Big]\\
+                &= \suma{k = 1}{n} \Var X_k + 2  \cdot \suma{i < j \leq n}{} \masE \big[ (X_i - \masE X_i) (X_j - \masE X_j) \big] + \Var X_{n + 1}\\
+                &\quad \quad + 2 \cdot \masE \Big[ \Big( \suma{k = 1}{n} (X_k - \masE X_k) \Big) (X_{n + 1} - \masE X_{n + 1}) \Big]\\
+                &= \suma{k = 1}{n + 1} \Var X_k + 2 \cdot \masE \Big[ \Big(  \suma{k = 1}{n} X_k - \suma{k = 1}{n} \masE X_k \Big) (X_{n + 1} - \masE X_{n + 1}) \Big]\\
+                &\quad \quad + 2 \cdot \suma{k = 1}{n} \masE \big[ (X_k - \masE X_k) (X_{n + 1} - \masE X_{n + 1}) \big]\\
+                &= \suma{k = 1}{n + 1} \Var X_k + 2 \cdot \suma{i < j \leq n + 1}{} \masE \big[ (X_i - \masE X_i) (X_j - \masE X_j) \big]
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+    Sada po teoremu \ref{tm:7.7} imamo da za nezavisne $X_1, \ldots, X_n$, te za $i \neq j$ vrijedi
+    \begin{equation*}
+        \masE \big[ (X_i - \masE X_i) (X_j - \masE X_j) \big] = \masE X_i \cdot \masE X_j - \masE X_i \cdot \masE X_j = 0.
+    \end{equation*}
+    Dakle za nezavisne slu\v cajne varijable dobivamo izraz
+    \begin{equation*}
+        \Var \big( \suma{k = 1}{n} X_k \Big) = \suma{k = 1}{n} \Var X_k,
+    \end{equation*}
+    odnosno u slu\v caju kada je $n = 2$ imamo
+    \begin{equation*}
+        \Var (X + Y) = \Var X + \Var Y.
+    \end{equation*}
+\end{rj}
 
 Uo\v cimo da sada direktno iz korolara \ref{kor:6.11} direktno dobivamo:
 
