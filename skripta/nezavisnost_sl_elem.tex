@@ -204,6 +204,91 @@ Primjetimo u prethodnoj definiciji \emph{nije nu\v zno}
     Ako su $X$ i $Y$ nezavisni slu\v cajni elementi takvi da je $X + Y$ degenerirana, tada su $X$ i $Y$ degenerirane.
 \end{zad}
 
+%   djelomićno rješenje
+\begin{rj}[\ref{zad:7.11}]
+    Zadatak \' cemo rje\v siti kroz tri leme, kroz koje dokazujemo da ako je $X$ degenerirana slu\v cajna varijabla, tada je $\sigAlg{X}$ degenerirana $\sigma$-algebra, stoga je ona nezavisan sa svakom drugom $\sigma$-algebrom.
+
+    \begin{lm}   \label{lm:7.11-1-1}
+        Neka su $A, B \in \famF$ takvi da je $\masP (B) = 1$, tada vrijedi
+        \begin{equation*}
+            \masP (A \cap B) = \masP (A).
+        \end{equation*}
+    \end{lm}
+
+    \begin{proof}{\ref{lm:7.11-1-1}}
+        Primjetimo da se skup $A$ mo\v ze prikazati kao disjunktna unija
+        \begin{equation*}
+            A = (A \cap B) \cup (A \setminus B).
+        \end{equation*}
+        Sada vidimo da vrijedi
+        \begin{equation*}
+            \masP (A) = \masP (A \cap B) + \masP (A \setminus B),
+        \end{equation*}
+        primjetimo da vrijedi
+        \begin{equation*}
+            A \ setminus B = A \cap B^c \subseteq B^c.
+        \end{equation*}
+        Sada po monotonosti vjerojatnosti, te prema vjerojatnosti suprotnog doga\dj aja imamo
+        \begin{equation*}
+            \masP (A \setminus B) \leq \masP (B^c) = 1 - \masP (B) = 0,
+        \end{equation*}
+        odakle sada slijedi
+        \begin{equation*}
+            \masP (A) = \masP (A \cap B).
+        \end{equation*}
+    \end{proof}
+
+    \begin{lm}  \label{lm:7.11-1-2}
+        Neka su $\famG, \famH \subseteq \famF$ $\sigma$-algebre za koje vrijedi
+        \begin{equation*}
+            \forall B \in \famG \quad \masP (B) \in \{0, 1 \},
+        \end{equation*}
+        tada su $\famG$ i $\famH$ nezavisne.
+    \end{lm}
+
+    \begin{proof}{\ref{lm:7.11-1-2}}
+        Neka su $A \in \famH$, $B \in \famG$ proizvoljne.
+        Budu\' ci je $B \in \famG$ imamo dva slu\' caja
+        \begin{enumerate}[label=($\arabic*^\circ$)]
+            \item Pretpostavimo da vrijedi $\masP (B) = 1$, sada prema lemi \ref{lm:7.11-1-1} imamo
+            \begin{equation*}
+                \masP (A \cap B) = \masP (A) = 1 \cdot \masP (A) = \masP (A) \cdot \masP (B).
+            \end{equation*}
+            \item Pretpostavimo da je $\masP (B) = 0$, sada zbog $A \cap B \subseteq B$ imamo
+            \begin{equation*}
+                \masP (A \cap B) \leq \masP (B) = 0 = \masP (A) \cdot 0 = \masP (A) \cdot \masP (B).
+            \end{equation*}
+        \end{enumerate}
+        Budu\' ci su $A, B$ bili proizvoljni, $\famG$ i $\famH$ su nezavisne.
+    \end{proof}
+
+    \begin{lm}  \label{lm:7.11-3}
+        Ako je slu\v cajna varijabla $Y$ degenerirana, tada je $\sigAlg{Y}$ degenerirana $\sigma$-algebra.
+    \end{lm}
+
+    \begin{proof}{\ref{lm:7.11-3}}
+        Promatrajmo $A \in \sigAlg{Y}$, tada postoji $B \in \famE$ takav da vrijedi
+        \begin{equation*}
+            \{Y \in B\} = A.
+        \end{equation*}
+        Promatrajmo dva slu\v caja
+        \begin{enumerate}[label=$(\arabic*^\circ)$]
+            \item Neka je $a \in B$, sada imamo
+            \begin{equation*}
+                \{Y = a\} \subseteq \{Y \in B\} = A \quad \implies \quad \masP (A) = 1.
+            \end{equation*}
+            \item Alternativno, neka je $a \notin B$, sada imamo
+            \begin{equation*}
+                A = \{ Y \in B\} \subseteq \big\{ Y \in \{a\}^c \big\} = \{ Y \neq a \},
+            \end{equation*}
+            odakle imamo
+            \begin{equation*}
+                \masP (A) \leq \masP (Y \neq a) = 1 - \masP (Y = a) = 0.
+            \end{equation*}
+        \end{enumerate}
+    \end{proof}
+\end{rj}
+
 \begin{defn}    \label{defn:7.11-1}
     Grupa $\urePar{G}{\cdot}$ sa $\sigma$-algebrom $\famG$ je \emph{izmjeriva grupa} ako je grupovna operacija $\cdot : G \times G \to G$ izmjeriva u paru $\urePar{\famG \otimes \famG}{\famG}$.
 \end{defn}
@@ -221,6 +306,40 @@ Po zadatku \ref{zad:4.15} dobijemo da je za svaki $H \in \famG$
 \begin{equation*}   \label{jed:7.12}
     (\mu * \nu)(H) := \int\limits_G \nu (a^{-1} \: H) \: d \mu (a).
 \end{equation*}
+
+\begin{nap} \label{nap:7.12-1}
+    Definirajmo funkciju $f : G^2 \to G$, sa
+    \begin{equation*}
+        (a, b) \xmapsto{f} a \cdot b
+    \end{equation*}
+    i neka je $H \in \famG$.
+
+    Primjetimo
+    \begin{equation*}
+        \begin{aligned}
+            \praslika{f} (H) = \{f \in H \} &= \indFamilija{(a, b) \in G^2}{a \cdot b \in H}\\
+            &= \indFamilija{(a, b) \in G^2}{b \in a^{-1} H}.
+        \end{aligned}
+    \end{equation*}
+    Dakle vrijedi
+    \begin{equation*}
+        (a, b) \in \praslika{f} (H) \quad \iff \quad b \in a^{-1} H,
+    \end{equation*}
+    odnosno
+    \begin{equation}    \label{jed:7.12-2}
+        \karaktFja_{ \{ f \in H \} } (a, b) = \karaktFja_{a^{-1} H} (b).
+    \end{equation}
+    Sada imamo
+    \begin{equation*}
+        \begin{aligned}
+            (\mu * \nu) (H) :&= (\mu \otimes \nu) (\{ f \in H \})\\
+            &= \int\limits_{G^2} \karaktFja_{\{ f \in H \}} (a, b) \: d (\mu \otimes \nu) (a, b)\\
+            &= \int\limits_{G^2} \karaktFja_{ a^{-1} H } (b) \: d (\mu \otimes \nu) (a, b)\\
+            &= \int\limits_G \Big( \int\limits_G \karaktFja_{a^{-1} H} (b) \: d \nu (b) \Big) \: d \mu (a)\\
+            &= \int\limits_G \nu (a^{-1} H) \: d \mu (a). 
+        \end{aligned}
+    \end{equation*}
+\end{nap}
 
 \begin{zad} \label{zad:7.13}
     Ako je $\urePar{G}{\cdot}$ Abelova grupa, tada je konvolucija komutativana operacija.
