@@ -52,7 +52,7 @@ S druge strane ho\' cemo posti\' ci neku prirodnu generalizaciju niza nezavisnih
 \end{nap}
 
 \begin{defn}    \label{defn:21.3}
-    Stohasti\v cki proces $\niz{X_t}{t \geq 0}$ s vrijednostima u $\real$ je \emph{L\' evijev proces} ako vrijedi:
+    Stohasti\v cki proces $\niz{X_t}{t \geq 0}$ s vrijednostima u $\real$ je \emph{L\' evyjev proces} ako vrijedi:
     \begin{enumerate}[label=(\alph*)]
         \item   \label{defn:21.3.1}
         Za svaki $n \in \nat$ i za svaki izbor $0 \leq t_0 < t_1 \ldots < t_n$ su slu\v cajne varijable
@@ -110,7 +110,7 @@ Daleko je slo\v zenije pokazati obrat (i to ovdje ne\' cemo dokazivati) koji dal
     Neka je $\psi$ zadan sa $(\gamma, 0, 0)$.
     Tada je
     \begin{equation*}
-        \varphi_{X_t} = e^{i \gamma t u} \quad \implies \quad X_t = \gamma t
+        \varphi_{X_t} (u) = e^{i \gamma t u} \quad \implies \quad X_t = \gamma t
     \end{equation*} 
     \v sto je deterministi\v cko gibanje po pravcu $t \mapsto \gamma t$, $t \geq 0$.
 \end{pr}
@@ -185,7 +185,7 @@ Daleko je slo\v zenije pokazati obrat (i to ovdje ne\' cemo dokazivati) koji dal
     \end{equation}
     Odavde slijedi da je $\niz{X_t}{t \geq 0}$ L\' evyjev proces i $\psi$ je odre\dj en s
     \begin{equation}    \label{jed:21.13}
-        \psi (u) = \int\limits_\real \lambda \big( e^{i u x - 1} \big) \: d F (x),
+        \psi (u) = \int\limits_\real \lambda \cdot \big( e^{i u x} - 1 \big) \: d F (x),
     \end{equation}
     to zna\v ci da se $\nu$ dobije tako da se oduzme $\masP_F (\{0\}) \geq 0$, pa je $\nu$ kona\v cna mjera na $\real \setminus \{0\}$ (zapravo subvjerojatnosna) i integral
     \begin{equation*}
@@ -212,14 +212,14 @@ Mo\v ze se pokazati sljede\' ci teorem.
     \end{equation*}
     Uo\v cimo da je
     \begin{equation*}
-        \Var \Big( \frac{B_h}{h} \Big) = \frac{1}{h^2} \Var B_h = \frac{h}{h^2} = \frac{1}{h} \xrightarrow[h \to 0]{} +\infty,
+        \Var \Big( \frac{B_h}{h} \Big) = \frac{1}{h^2} \Var B_h = \frac{h}{h^2} = \frac{1}{h} \xrightarrow[h \searrow 0]{} +\infty,
     \end{equation*}
     \v sto sugerira da trajektorije Brownovog gibanja nisu diferencijabilne.
-    Zaista, mo\v ze se rigorozno pokazati da su nigdje diferencijabilne.
+    Mo\v ze se rigorozno pokazati da su nigdje diferencijabilne.
 \end{nap}
 
 \begin{nap} \label{nap:21.16}
-    Obratimo pa\v znju na jo\v s jedan fundamentalni aspekt.
+    Obratimo pa\v znju na jedan fundamentalni aspekt.
     Vidjeli smo da se niz nezavisnih jednako distribuiranih slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ ne generalizira prirodno na nezavisnu familiju $\niz{X_t}{t \geq 0}$, ve\' c na L\' evyjeve procese.
     Posebno,
     nezavisne familije $(X_t)$ s velikim nivoom neprekidnosti mogu samo biti trivijelne i nisu osobito interesantne.

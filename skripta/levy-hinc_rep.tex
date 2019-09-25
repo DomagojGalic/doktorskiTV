@@ -64,7 +64,7 @@ Dakle gornji limes postoji, razdioba od $F_X$ pripada sljede\' coj klasi.
 \begin{pr}  \label{pr:20.3}
     Neka je $\alpha > 0$ i $\varphi (t) = e^{-|t|^\alpha}$.
     Budu\' ci da za svaki $a_1, a_2 > 0$ postoji (jedinstveno odre\dj en) $a > 0$ takav da je $a^\alpha = a_1^\alpha + a_2^\alpha$, funkcija $\varphi$ zadovoljava \eqref{jed:20.2}.
-    Da li je takva $\varphi$ karakteristi\v cna funkcija?
+    Je li takva $\varphi$ karakteristi\v cna funkcija?
     Ne uvijek.
     Mo\v ze se pokazati da je $\varphi$ karakteristi\v cna funkcija samo za $0< \alpha \leq 2$.
     Budu\' ci da moment razdiobe implicira diferencijabilnost, jedina razdioba koja ima drugi moment je za slu\v caj $\alpha = 2$, \v sto daje normalnu razdiobu. 
@@ -91,24 +91,23 @@ Mogu\' ca je i ne\v sto druga\v cija karakterizacija stabilnih distribucija.
 \end{zad}
 
 \begin{tm}  \label{tm:20.6}
-    Za slu\v cajnu varijabu $X$ postoji niz nezavisnih, jednako distribuiranih slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ i nizovi $(a_n) \subseteq \obInt{0}{+\infty}$, $(b_n) \subseteq \real$ takvi da
+    Slu\v cajna varijabla $X$ je stabilna ako i samo ako postoji niz nezavisnih, jednako distribuiranih slu\v cajnih varijabli $\niz{X_n}{n \in \nat}$ i nizovi $(a_n) \subseteq \obInt{0}{+\infty}$, $(b_n) \subseteq \real$ takvi da
     \begin{equation*}
-        \frac{S_n - b_n}{a_n} \xrightarrow[n \to \infty]{d} X
+        \frac{S_n - b_n}{a_n} \xrightarrow[n \to \infty]{d} X.
     \end{equation*}
-    ako i samo ako je $X$ stabilna.
 \end{tm}
 
 \begin{proof}
-    \quad \newline
+    \quad
     \begin{enumerate}
         \item[$\implies$]
-        je dokazano na po\v cetku paragrafa.
+        ovaj smjer je dokazan na po\v cetku paragrafa.
         \item[$\impliedby$]
         Neka je $(X_n)$ niz nezavisnih kopija varijable $X$ i neka su $(a_n)$, $(b_n)$ iz zadatka \ref{zad:20.5}.
         Tada vrijedi
         \begin{equation*}
             \begin{aligned}
-                \varphi_{\frac{S_n - b_n}{a_n}} (t) &= e^{-i\frac{t}{a_n} b_n} \varphi_{S_n} \Big( \frac{t}{a_n} \Big) \overset{\iid}{=} e^{-i \frac{t}{a_n} b_n} \Big[ \varphi_X \Big( \frac{t}{a_n} \Big)  \Big]^n = \varphi \Big( a_n \cdot \frac{x}{a_n} \Big)\\
+                \varphi_{\frac{S_n - b_n}{a_n}} (t) &= e^{-i\frac{t}{a_n} b_n} \varphi_{S_n} \Big( \frac{t}{a_n} \Big) \overset{\iid}{=} e^{-i \frac{t}{a_n} b_n} \Big[ \varphi_X \Big( \frac{t}{a_n} \Big)  \Big]^n = \varphi \Big( a_n \cdot \frac{t}{a_n} \Big)\\
                 &= \varphi_X (t).
             \end{aligned}
         \end{equation*}

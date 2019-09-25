@@ -9,7 +9,7 @@ Prvo fundamentalno pitanje je: "Ako je $\niz{X_n}{n \in \nat}$ niz nezavisnih je
 Neka je $\niz{X_n}{n \in \nat}$ niz nezavisnih jednako distribuiranih slu\v cajnih varijabli na vjerojatnosnom prostoru $\vjerojatnosniProstor$.
 Neka je $S_n = X_1 + \ldots + X_n$.
 Pretpostavimo da $X_1$ imam momente svakog reda i ozna\v cimo sa $m:= \masE X_1$, te sa $\sigma^2 = \Var X_1$.
-Uo\v cimo da u slu\v caju kada je $\Var X_1 = 0$ vrijedi $X_n \equiv m \; g.s.$, pa tada $\frac{S_n}{n} \equiv m$ i taj je slu\v caj trivijalno rje\v sen.
+Uo\v cimo da u slu\v caju kada je $\Var X_1 = 0$ vrijedi $X_n \equiv m \; (g.s.)$, pa tada $\frac{S_n}{n} \equiv m$ i taj je slu\v caj trivijalno rje\v sen.
 Stoga bez smanjenja op\' cenitosti mo\v zemo promatrati $0 < \sigma^2 < +\infty$.
 Zbog nezavisnosti vrijedi
 \begin{equation*}
@@ -49,7 +49,7 @@ tada je $S_n \sim B (n, p)$, a u konvergenciji "$\xrightarrow{d}$" samo razdioba
 Stoga direktno dobijemo "majstariji CLT".
 
 \begin{kor}[de Moivre-Laplace]  \label{kor:19.2}
-    Neka je $0 < p < 1$ i $Z_n \sim B (0, 1)$, za svaki $n \in \nat$.
+    Neka je $0 < p < 1$ i $Z_n \sim B (n, p)$, za svaki $n \in \nat$.
     Tada
     \begin{equation*}
         \frac{Z_n - n p}{\sqrt{n p (1 - p)}} \xrightarrow[n \to \infty]{d} N (0, 1).
@@ -90,11 +90,11 @@ Sljede\' ci teorem je va\v zan u odgovoru na to pitanje.
     \begin{enumerate}[label=(\alph*)]
         \item \label{tm:19.4.1}
         \begin{equation*}
-            \suma{m = 1}{n} \masE \big( X_{n, m}^2 \big) \xrightarrow[n \to \infty]{} \sigma^2, \quad 0 < \sigma^2 < +\infty,
+            \suma{m = 1}{n} \masE \big[ X_{n, m}^2 \big] \xrightarrow[n \to \infty]{} \sigma^2, \quad 0 < \sigma^2 < +\infty,
         \end{equation*}
         \item \label{tm:19.4.2}
         \begin{equation*}
-            (\forall \varepsilon > 0) \quad \lim\limits_{n \to \infty} \suma{m = 1}{n} \masE \Big( |X_{n, m}|^2 \cdot \karaktFja_{\{ |X_{n, m}| > \varepsilon \}} \Big) = 0,
+            (\forall \varepsilon > 0) \quad \lim\limits_{n \to \infty} \suma{m = 1}{n} \masE \Big[ |X_{n, m}|^2 \cdot \karaktFja_{\{ |X_{n, m}| > \varepsilon \}} \Big] = 0,
         \end{equation*}
     \end{enumerate}
     tada
@@ -104,7 +104,7 @@ Sljede\' ci teorem je va\v zan u odgovoru na to pitanje.
 \end{tm}
 
 \begin{proof}
-    Neka je $\varphi_{n, m} := \varphi_{X_{n, m}}$ i neka je $\sigma^2_{n, m} := \masE [X_{n, m}^2] = \Var (X_{n, m}^2)$.
+    Neka je $\varphi_{n, m} := \varphi_{X_{n, m}}$ i neka je $\sigma^2_{n, m} := \masE [X_{n, m}^2] = \Var (X_{n, m})$.
     Po teoremu o neprekidnosti, dovoljno je dokazati
     \begin{equation*}
         \produkt{m = 1}{n} \varphi_{n, m} (t) \xrightarrow[n \to \infty]{} e^{-\frac{t^2 \sigma^2}{2}}.
@@ -119,7 +119,7 @@ Sljede\' ci teorem je va\v zan u odgovoru na to pitanje.
     Prema korolaru \ref{kor:17.7} slijedi
     \begin{equation*}
         \begin{aligned}
-            |z_{n, m} - w_{n, m}| &= \Big| \masE (e^{i t X_{n, m}}) - \Big( 1 + \frac{\masE \big[ (i t X_{n, m})^2 \big]}{2} \Big) \Big| \leq \masE \Big[ \frac{|t X_{n, m}|^3}{3!} \land \frac{2 |t X_{n, m}|^2}{2!} \Big]\\
+            |z_{n, m} - w_{n, m}| &= \Big| \masE \big[ e^{i t X_{n, m}} \big] - \Big( 1 + \frac{\masE \big[ (i t X_{n, m})^2 \big]}{2} \Big) \Big| \leq \masE \Big[ \frac{|t X_{n, m}|^3}{3!} \land \frac{2 |t X_{n, m}|^2}{2!} \Big]\\
             &\leq \masE \Big[ \frac{|t X_{n, m}|^3}{6} \karaktFja_{\{ |X_{n, m}| \leq \varepsilon \}} \Big] + \masE \Big[ |t X_{n, m}|^2 \karaktFja_{\{ |X_{n, m}| > \varepsilon \}} \Big]\\
             &\leq \frac{\varepsilon t^3}{6} \masE \Big[ |X_{n, m}|^2 \karaktFja_{\{ |X_{n, m}| \leq \varepsilon  \}} \Big] + t^2 \cdot \masE \Big[ |X_{n, m}|^2 \karaktFja_{\{ |X_{n, m}| > \varepsilon \}} \Big], \quad \varepsilon > 0.
         \end{aligned}
@@ -170,7 +170,7 @@ Sljede\' ci teorem je va\v zan u odgovoru na to pitanje.
     \quad \newline
     Ako za svaki $\varepsilon > 0$,
     \begin{equation}    \label{jed:19.7}
-        \lim\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{|X_k - m_k| \geq \varepsilon s_n\}} (x - m_k)^2 \: d F_{X_k} (x) = 0,
+        \lim\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{|x - m_k| > \varepsilon s_n\}} (x - m_k)^2 \: d F_{X_k} (x) = 0,
     \end{equation}
     tada
     \begin{equation*}
@@ -190,7 +190,7 @@ Sljede\' ci teorem je va\v zan u odgovoru na to pitanje.
     pa je uvjet teorema \ref{tm:19.4} \ref{tm:19.4.1} ispunjen uz $\sigma = 1$.
     Primjetimo da je
     \begin{equation*}
-        \suma{k = 1}{n} \int\limits_{\{|X_k - m_k| \geq \varepsilon s_n\}} (x - m_k)^2 \: d F_{X_k} (x) = \suma{m = 1}{n} \masE \Big[ |X_{n, m}|^2 \cdot \karaktFja_{\{ |X_{n, m}| > \varepsilon \}} \Big].
+        \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{|x - m_k| > \varepsilon s_n\}} (x - m_k)^2 \: d F_{X_k} (x) = \suma{m = 1}{n} \masE \Big[ |X_{n, m}|^2 \cdot \karaktFja_{\{ |X_{n, m}| > \varepsilon \}} \Big].
     \end{equation*}
     Stoga je ispunjen i zahtjev \ref{tm:19.4.2} teorema \ref{tm:19.4}.
     Sada po teoremu \ref{tm:19.4} slijedi
@@ -215,7 +215,7 @@ Odgovor je pozitivan uz uvijet da je zadovoljeno jedno svojstvo koje je posljedi
     Primjetimo
     \begin{equation*}
         \begin{aligned}
-            \max\limits_{1 \leq k \leq n} \frac{\sigma_k^2}{s_n^2} &= \max\limits_{1 \leq k \leq n} \frac{1}{s_n^2} \Big[ \int\limits_{\{ |X_k|\leq \varepsilon s_n \}} x^2 \: d F_k (x) + \int\limits_{\{ |x| > \varepsilon s_n \}} x^2 \: d F_k (x) \Big]\\
+            \max\limits_{1 \leq k \leq n} \frac{\sigma_k^2}{s_n^2} &= \max\limits_{1 \leq k \leq n} \frac{1}{s_n^2} \Big[ \int\limits_{\{ |x|\leq \varepsilon s_n \}} x^2 \: d F_k (x) + \int\limits_{\{ |x| > \varepsilon s_n \}} x^2 \: d F_k (x) \Big]\\
             &\leq \max\limits_{1 \leq k \leq n} \frac{1}{s_n^2} \Big[ \varepsilon^2 s_n^2 + \int\limits_{\{ |x| > \varepsilon s_n \}} x^2 \: d F_k (x) \Big]\\
             &\leq \varepsilon^2 + \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{ |x| > \varepsilon s_n \}} x^2 \: d F_k (x), \quad \forall \varepsilon > 0,
         \end{aligned}
@@ -268,7 +268,7 @@ i direktno za $z = 0$.
     \end{equation*}
     \v sto daje
     \begin{equation*}
-        \frac{t^2}{2} - \suma{k = 1}{n} \int\limits_{\{ |X_k| \leq \varepsilon s_n \}} \Big( 1 - \cos \frac{tx}{s_n} \Big) \: d F_k (x) = \suma{k = 1}{n} \int\limits_{\{ |X_k| > \varepsilon s_n \}} \Big( 1 - \cos \frac{tx}{s_n} \Big) \: d F_k (x) + o(1).
+        \frac{t^2}{2} - \suma{k = 1}{n} \int\limits_{\{ |x| \leq \varepsilon s_n \}} \Big( 1 - \cos \frac{tx}{s_n} \Big) \: d F_k (x) = \suma{k = 1}{n} \int\limits_{\{ |x| > \varepsilon s_n \}} \Big( 1 - \cos \frac{tx}{s_n} \Big) \: d F_k (x) + o(1).
     \end{equation*}
     Na desnoj strani imamo ocjenu
     \begin{equation*}
@@ -281,25 +281,25 @@ i direktno za $z = 0$.
     Odakle slijedi
     \begin{equation*}
         \begin{aligned}
-            \frac{t^2}{2} - \frac{t^2}{2 s_n^2} \suma{k = 1}{n} \int\limits_{\{ |X_k| \leq \varepsilon s_n \}} x^2 \: d F_k (x) &\leq \suma{k = 1}{n} \int\limits_{\{ |X_k| > \varepsilon s_n \}} \frac{2 x^2}{\varepsilon^2 s_n^2} \: d F_k (x) + o(1)\\
+            \frac{t^2}{2} - \frac{t^2}{2 s_n^2} \suma{k = 1}{n} \int\limits_{\{ |x| \leq \varepsilon s_n \}} x^2 \: d F_k (x) &\leq \suma{k = 1}{n} \int\limits_{\{ |x| > \varepsilon s_n \}} \frac{2 x^2}{\varepsilon^2 s_n^2} \: d F_k (x) + o(1)\\
             &\leq \frac{2}{\varepsilon^2 s_n^2} \suma{k = 1}{n} \sigma_k^2 + o (1) \quad \Big/ \cdot \frac{2}{t^2},
         \end{aligned}
     \end{equation*}
     \v sto ima za posljedicu
     \begin{equation*}
-        1 - \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{ |X_k| \leq \varepsilon s_n \}} x^2 \: d F_k (x) \leq \frac{4}{t^2 \varepsilon^2} + o(1) \quad \quad n \to \infty.
+        1 - \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{ |x| \leq \varepsilon s_n \}} x^2 \: d F_k (x) \leq \frac{4}{t^2 \varepsilon^2} + o(1) \quad \quad n \to \infty.
     \end{equation*}
     Sada, za svaki $t$ i za svaki $\varepsilon > 0$ vrijedi
     \begin{equation*}
-        1 - \frac{4}{t^2 \varepsilon^2} \leq \liminf_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{ |X_k| \leq \varepsilon s_n \}} x^2 \: d F_k (x),
+        1 - \frac{4}{t^2 \varepsilon^2} \leq \liminf_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{ |x| \leq \varepsilon s_n \}} x^2 \: d F_k (x),
     \end{equation*}
     pu\v stamo $t \to +\infty$ i vidimo
     \begin{equation*}
-        (\forall \varepsilon > 0) \quad 1 \leq \liminf\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{ |X_k| \leq \varepsilon s_n \}} x^2 \: d F_k (x) \leq \frac{1}{s_n^2} \suma{k = 1}{n} \sigma_k^2 = 1.
+        (\forall \varepsilon > 0) \quad 1 \leq \liminf\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{ |x| \leq \varepsilon s_n \}} x^2 \: d F_k (x) \leq \frac{1}{s_n^2} \suma{k = 1}{n} \sigma_k^2 = 1.
     \end{equation*}
     Kona\v cno, imamo
     \begin{equation*}
-        \lim\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{ |X_k| > \varepsilon s_n \}} x^2 \: d F_k (x) = 0.
+        \lim\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{ |x| > \varepsilon s_n \}} x^2 \: d F_k (x) = 0.
     \end{equation*}
 \end{proof}
 
@@ -307,7 +307,7 @@ i direktno za $z = 0$.
     Neka je $\niz{X_n}{n \in \nat} \subseteq L^2 (\masP)$ niz nezavisnih slu\v cajnih varijabli i neka je $m_n = \masE X_n$, $\sigma_n = \Var X_n$, $S_n = X_1 + \ldots + X_n$, $s_n^2 = \Var \: S_n^2$.
     Ako vrijedi $s_1 > 0$, $s_n \nearrow +\infty$ i $\frac{\sigma_n}{s_n} \to 0$, tada
     \begin{equation*}
-        \frac{S_n - \masE S_n}{s_n} \xrightarrow[n \to \infty]{d} N(0, 1) \; \; \iff \; \; \big( \forall \varepsilon > 0 \big) \; \; \lim\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{ |X_k - m_k| \geq \varepsilon s_n \}} (x - m_k)^2 \: d F_k (x) = 0, .
+        \frac{S_n - \masE S_n}{s_n} \xrightarrow[n \to \infty]{d} N(0, 1) \; \; \iff \; \; \big( \forall \varepsilon > 0 \big) \; \; \lim\limits_{n \to \infty} \frac{1}{s_n^2} \suma{k = 1}{n} \int\limits_{\{ |x - m_k| \geq \varepsilon s_n \}} (x - m_k)^2 \: d F_k (x) = 0, .
     \end{equation*}
 \end{kor}
 
