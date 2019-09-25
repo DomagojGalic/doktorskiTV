@@ -96,7 +96,8 @@ Odnosno elementarni doga\dj aj se nalazi u limes superioru niza ako se nalazi u 
             &= 0,
         \end{aligned}
     \end{equation*}
-    gdje zadnja jedakost slijedi kao $n$-ti ostatak konvergentnog reda.
+    gdje zadnja jedakost slijedi zato \v sto je izraz $n$-ti ostatak konvergentnog reda, 
+    koji konvergira u 0.
 \end{nap}
 
 \begin{nap} \label{nap:9.2-2}
@@ -147,10 +148,9 @@ Odnosno elementarni doga\dj aj se nalazi u limes superioru niza ako se nalazi u 
     Sada imamo:
     \begin{equation*}
         \begin{aligned}
-            \masP \Big(\unija{k \geq n}{} A_k \Big) &= 1 - \masP \Big( \presjek{k \geq n}{} A_k^c \Big) = (\textnormal{prema zadatku \ref{zad:6.14}})\\
-            &= 1 - \produkt{k \geq n}{} (1 - \vjeroj{A_k}) \geq 1 - \produkt{k \geq n}{} \Big( e^{- \masP (A_k)} \Big)\\
-            &= 1 - e^{- \suma{k \geq n}{} \vjeroj{A_k}}\\
-            &= 1
+            \masP \Big(\unija{k = n}{\infty} A_k \Big) &= 1 - \masP \Big( \presjek{k = n}{\infty} A_k^c \Big) = (\textnormal{prema zadatku \ref{zad:6.14}})\\
+            &= 1 - \produkt{k = n}{\infty} (1 - \vjeroj{A_k}) \geq 1 - \produkt{k = n}{\infty} \Big( e^{- \masP (A_k)} \Big)\\
+            &= 1 - e^{- \suma{k = n}{\infty} \vjeroj{A_k}} \xrightarrow[n \to \infty]{} 1.
         \end{aligned}
     \end{equation*}
     To, zbog neprekidnosti vjerojatnosti u odnosu na padaju\' ce nizove doga\dj aja, povla\v ci:
