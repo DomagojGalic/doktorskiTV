@@ -287,6 +287,10 @@ Primjetimo u prethodnoj definiciji \emph{nije nu\v zno}
             \end{equation*}
         \end{enumerate}
     \end{proof}
+
+    Sada primjetimo da, prema lemi \ref{lm:7.11-3}, $\sigAlg{X}$ je trivijalna $\sigma$-algebra.
+    Prema lemi \ref{lm:7.11-1-2} slijedi da su $\sigAlg{X}$ te $\sigAlg{Y}$ nezavisne,
+    za proizvoljan $Y$, stoga su $X$ i $Y$ nezavisne kao slu\v cajne varijable.
 \end{rj}
 
 \begin{defn}    \label{defn:7.11-1}
@@ -345,6 +349,43 @@ Po zadatku \ref{zad:4.15} dobijemo da je za svaki $H \in \famG$
     Ako je $\urePar{G}{\cdot}$ Abelova grupa, tada je konvolucija komutativana operacija.
 \end{zad}
 
+\begin{rj}[\ref{zad:7.13}]
+    Budu\' ci je $G$ Abelova vrijedi
+    \begin{equation*}
+        \forall a, b \in G \quad \quad a \cdot b = b \cdot a.
+    \end{equation*}
+    Sada, za $H \subseteq G$, imamo
+    \begin{equation*}
+        \begin{aligned}
+            \bigSkup{(a, b) \in G^2}{b \in a^{-1} H} &= \bigSkup{(a, b) \in G^2}{a \cdot b \in H} = \bigSkup{(a, b) \in G^2}{b \cdot a \in H}\\
+            &= \bigSkup{(a, b) \in G^2}{a \in b^{-1} H}.
+        \end{aligned}
+    \end{equation*}
+    Odnosno vrijedi
+    \begin{equation}    \label{jed:7.13-1}
+        \karaktFja_{a^{-1} H} (b) = \karaktFja_{b^{-1} H} (a).
+    \end{equation}
+    Dakle, za $H \subseteq G$ imamo
+    \begin{equation*}
+        \begin{aligned}
+            (\mu * \nu) (H) &= \int\limits_G \nu (a^-1 H) \: d \mu (a) = \int\limits_G \Big( \int\limits_G \karaktFja_{a^{-1} H} (b) \: d \nu (b) \Big) \: d \mu (a) =
+                \begin{psmallmatrix}
+                    \textnormal{Fubini}
+                \end{psmallmatrix}\\
+            &= \int\limits_{G^2} \karaktFja_{a^-1} (b) \: d ( \mu \otimes \nu ) (a, b) =
+                \begin{psmallmatrix}
+                    \ref{jed:7.13-1}
+                \end{psmallmatrix}
+            = \int\limits_{G^2} \karaktFja_{b^{-1} H} (a) \: d (\mu \otimes \nu) (a, b) =
+                \begin{psmallmatrix}
+                    \textnormal{Fubini}
+                \end{psmallmatrix}\\
+            &= \int\limits_G \Big( \int\limits_G \karaktFja_{b^{-1} H} (a) \: d \mu (a) \Big) \: d \nu (b) = \int\limits_G \mu (b^{-1} H) \: d \nu (b)\\
+            &= (\nu * \mu) (H).
+        \end{aligned}
+    \end{equation*}
+\end{rj}
+
 \begin{nap} \label{nap:7.14}
     \begin{enumerate}[label=(\alph*)]
         \item Op\' cenito govore\' ci mjera $\mu * \nu$ ne mora biti $\sigma$-kona\v cna.
@@ -392,6 +433,50 @@ Po zadatku \ref{zad:4.15} dobijemo da je za svaki $H \in \famG$
     Primjenite ove rezultate na Abelovu grupu $\urePar{\real^d}{+}$ i posebno obratite pa\v znju na slu\v caj $d = 1$.
     Za slu\v caj $d = 1$izvedite pravila za konvluciju d.f.
 \end{zad}
+
+\begin{rj}[\ref{zad:7.16}]
+    Neka su $F$ i $G$ d.f. na $\real$.
+    Pomo\' cu njih definiramo mjere sa
+    \begin{equation*}
+        \begin{aligned}
+            \mu (\lijInt{a}{b}) &:= F(b) - F(a)\\
+            \nu (\lijInt{a}{b}) &:= G(b) - G(a).
+        \end{aligned}
+    \end{equation*}
+    Sada imamo
+    \begin{equation*}
+        \begin{aligned}
+            (\mu * \nu) (\lijInt{a}{b}) = \int\limits_\real \nu (\lijInt{a}{b} - x) \: d \mu(x) = \int\limits_\real \nu (\lijInt{a - x}{b - x}) \: d  \mu (x)\\
+            &= \int\limits_\real \big( G(b - x) - G(a - x) \big) \: d F (x).
+        \end{aligned}
+    \end{equation*}
+    Ako je $\mu \ll \lambda$ te $\nu \ll \lambda$, tada stavimo
+    \begin{equation*}
+        \begin{aligned}
+            \frac{d \mu}{d \lambda} &= f\\
+            \frac{d \nu}{d \lambda} &= g.
+        \end{aligned}
+    \end{equation*}
+    Sada vrijedi
+    \begin{equation*}
+        (\mu * \nu) (\lijInt{a}{b}) = \int\limits_a^b \Big( \int\limits_\real f(x) \cdot g (y - x) \: d \lambda (x) \Big) \: d \lambda (y),
+    \end{equation*}
+    odnosno
+    \begin{equation*}
+        (f * g) (y) = \int\limits_\real f(t) \cdot g(y - t) \: d \lambda (t).
+    \end{equation*}
+    Tako\dj er, ako imamo
+    \begin{equation*}
+        \begin{aligned}
+            F (x) &= \masP (X \leq x)\\
+            G (y) &= \masP (Y \leq y),
+        \end{aligned}
+    \end{equation*}
+    tada vrijedi
+    \begin{equation*}
+        (F * G) (z) = \masP (X + Y \leq z) = \int\limits_\real F(z - y) \: d G(y).
+    \end{equation*}
+\end{rj}
 
 Promotrimo sada nezavisne familije slu\v cajnih elemenata.
 Po\v cnimo od kona\v cnog slu\v caja.
